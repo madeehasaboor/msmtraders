@@ -519,7 +519,7 @@
                 description: "Formula cleans, shines, protects. High gloss shine and water beading protection. 200GM.",
                 price: "18.99",
                 category: "polish and shinners",
-                image_url: "CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "CAR POLISH & SHINNERS/aim had wax.jpeg"
             },
             {
                 id: 2,
@@ -535,7 +535,7 @@
                 description: "Moistening, lustrous, durable tire gel. Creates a long lasting high gloss wet look. 500ML.",
                 price: "15.50",
                 category: "polish and shinners",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "CAR POLISH & SHINNERS/aim tire gel 500ml.jpeg"
             },
             {
                 id: 4,
@@ -543,7 +543,7 @@
                 description: "High shine, dries fast, long lasting tire shine. Provides deep black wet look finish.",
                 price: "22.99",
                 category: "polish and shinners",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "CAR POLISH & SHINNERS/black and gold tire shine.jpeg"
             },
             {
                 id: 5,
@@ -600,7 +600,7 @@
                 description: "Advanced UV protection spray. Shine, protect & freshen all surfaces. 500ML.",
                 price: "15.99",
                 category: "protectant sprays",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "CAR PROCTING SPRAYS/f1-120 formulla 1 protectant spray.jpeg"
             },
             {
                 id: 12,
@@ -649,7 +649,7 @@
                 description: "Professional automotive spray paint A-142. High-quality finish for all surfaces.",
                 price: "24.99",
                 category: "spray paints",
-                image_url: "products/CAR SPRAY PAINTS/A-142 AIM SPRAY PAINTS.jpeg"
+                image_url: "CAR SPRAY PAINTS/A-142 AIM SPRAY PAINTS.jpeg"
             },
             {
                 id: 18,
@@ -1643,6 +1643,16 @@
             }
         ];
 
+        // Fix image paths by removing 'products/' prefix
+        function fixImagePaths(products) {
+            return products.map(product => {
+                if (product.image_url && product.image_url.startsWith('products/')) {
+                    product.image_url = product.image_url.replace('products/', '');
+                }
+                return product;
+            });
+        }
+
         // Load all products
         async function loadProducts() {
             try {
@@ -1650,15 +1660,15 @@
                 const response = await fetch('http://localhost:3000/api/products');
                 const apiProducts = await response.json();
                 
-                // Combine API products with sample products
-                allProducts = [...apiProducts, ...sampleProducts];
+                // Combine API products with sample products and fix image paths
+                allProducts = fixImagePaths([...apiProducts, ...sampleProducts]);
                 filteredProducts = [...allProducts];
                 displayProducts();
                 setupEventListeners();
             } catch (error) {
                 console.error('Error loading products from API, using sample data:', error);
-                // If API fails, use sample products
-                allProducts = [...sampleProducts];
+                // If API fails, use sample products and fix image paths
+                allProducts = fixImagePaths([...sampleProducts]);
                 filteredProducts = [...allProducts];
                 displayProducts();
                 setupEventListeners();
@@ -1706,8 +1716,9 @@
                     <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 flex border border-yellow-400">
                         <div class="w-48 h-48 bg-gray-700 flex items-center justify-center flex-shrink-0">
                             ${product.image_url ? 
-                                `<img src="${product.image_url}" alt="${product.name}" class="w-full h-full object-cover">` :
-                                `<i class="fas fa-image text-4xl text-gray-400"></i>`
+                                `<img src="${product.image_url}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.nextElementSibling.style.display='none';">
+                                <i class="fas fa-car text-4xl text-yellow-400" style="display: none;"></i>` :
+                                `<i class="fas fa-car text-4xl text-yellow-400"></i>`
                             }
                         </div>
                         <div class="p-6 flex-1">
@@ -1730,8 +1741,9 @@
                     <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 border border-yellow-400">
                         <div class="h-48 bg-gray-700 flex items-center justify-center">
                             ${product.image_url ? 
-                                `<img src="${product.image_url}" alt="${product.name}" class="w-full h-full object-cover">` :
-                                `<i class="fas fa-image text-4xl text-gray-400"></i>`
+                                `<img src="${product.image_url}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.nextElementSibling.style.display='none';">
+                                <i class="fas fa-car text-4xl text-yellow-400" style="display: none;"></i>` :
+                                `<i class="fas fa-car text-4xl text-yellow-400"></i>`
                             }
                         </div>
                         <div class="p-4">
