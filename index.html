@@ -292,37 +292,22 @@
                         </div>
                     </div>
                 </div>
-                
-                                 <!-- Navigation Links -->
-                 <div class="hidden md:flex items-baseline space-x-3 lg:space-x-6 nav-links">
-                     <a href="index.html" class="text-yellow-400 hover:text-yellow-300 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Home</a>
-                     <a href="car care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Car Care</a>
-                     <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Laptops</a>
-                     <a href="electronics.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Electronics</a>
-                     <a href="perfumes.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Perfumes</a>
-                     <a href="sale.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Sale</a>
-                     <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Contact</a>
-                 </div>
-                 
-                 <!-- Mobile Navigation Menu -->
-                 <div class="md:hidden flex items-center space-x-1 sm:space-x-2">
-                     <div class="flex flex-col space-y-1">
-                         <a href="index.html" class="text-yellow-400 hover:text-yellow-300 px-2 py-1.5 rounded-md text-xs font-medium transition duration-200 bg-yellow-400 bg-opacity-20 shadow-lg whitespace-nowrap">Home</a>
-                         <a href="car care.html" class="text-gray-300 hover:text-yellow-400 px-2 py-1.5 rounded-md text-xs font-medium transition duration-200 hover:bg-yellow-400 hover:bg-opacity-20 hover:shadow-lg whitespace-nowrap">Car Care</a>
-                     </div>
-                     <div class="flex flex-col space-y-1">
-                         <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-2 py-1.5 rounded-md text-xs font-medium transition duration-200 hover:bg-yellow-400 hover:bg-opacity-20 hover:shadow-lg whitespace-nowrap">Laptops</a>
-                         <a href="perfumes.html" class="text-gray-300 hover:text-yellow-400 px-2 py-1.5 rounded-md text-xs font-medium transition duration-200 hover:bg-yellow-400 hover:bg-opacity-20 hover:shadow-lg whitespace-nowrap">Perfumes</a>
-                     </div>
-                     <div class="flex flex-col space-y-1">
-                         <a href="electronics.html" class="text-gray-300 hover:text-yellow-400 px-2 py-1.5 rounded-md text-xs font-medium transition duration-200 hover:bg-yellow-400 hover:bg-opacity-20 hover:shadow-lg whitespace-nowrap">Electronics</a>
-                         <a href="sale.html" class="text-gray-300 hover:text-yellow-400 px-2 py-1.5 rounded-md text-xs font-medium transition duration-200 hover:bg-yellow-400 hover:bg-opacity-20 hover:shadow-lg whitespace-nowrap">Sale</a>
-                     </div>
-                     <div class="flex flex-col space-y-1">
-                         <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-2 py-1.5 rounded-md text-xs font-medium transition duration-200 hover:bg-yellow-400 hover:bg-opacity-20 hover:shadow-lg whitespace-nowrap">Contact</a>
-                     </div>
-                 </div>
-                
+                <!-- Navigation Links (Desktop) -->
+                <div class="hidden md:flex items-baseline space-x-3 lg:space-x-6 nav-links">
+                    <a href="index.html" class="text-yellow-400 hover:text-yellow-300 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Home</a>
+                    <a href="car care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Car Care</a>
+                    <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Laptops</a>
+                    <a href="electronics.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Electronics</a>
+                    <a href="perfumes.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Perfumes</a>
+                    <a href="sale.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Sale</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Contact</a>
+                </div>
+                <!-- Hamburger Menu (Mobile) -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-toggle" class="text-gray-300 hover:text-yellow-400 p-2 rounded-lg focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
                 <!-- Cart and Search -->
                 <div class="flex items-center space-x-1 sm:space-x-2 lg:space-x-4">
                     <button class="text-gray-300 hover:text-yellow-400 p-1.5 sm:p-2 rounded-lg hover:bg-gray-800 transition duration-200">
@@ -333,6 +318,16 @@
                         <span id="cart-count" class="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center font-bold transition-all duration-200">0</span>
                     </button>
                 </div>
+            </div>
+            <!-- Mobile Navigation Dropdown -->
+            <div id="mobile-menu" class="md:hidden hidden flex-col bg-black border-t border-yellow-400 rounded-b-lg shadow-lg mt-2 py-2 px-4">
+                <a href="index.html" class="block text-yellow-400 hover:text-yellow-300 py-2 px-2 rounded-md text-base font-medium">Home</a>
+                <a href="car care.html" class="block text-gray-300 hover:text-yellow-400 py-2 px-2 rounded-md text-base font-medium">Car Care</a>
+                <a href="laptops.html" class="block text-gray-300 hover:text-yellow-400 py-2 px-2 rounded-md text-base font-medium">Laptops</a>
+                <a href="electronics.html" class="block text-gray-300 hover:text-yellow-400 py-2 px-2 rounded-md text-base font-medium">Electronics</a>
+                <a href="perfumes.html" class="block text-gray-300 hover:text-yellow-400 py-2 px-2 rounded-md text-base font-medium">Perfumes</a>
+                <a href="sale.html" class="block text-gray-300 hover:text-yellow-400 py-2 px-2 rounded-md text-base font-medium">Sale</a>
+                <a href="contact.html" class="block text-gray-300 hover:text-yellow-400 py-2 px-2 rounded-md text-base font-medium">Contact</a>
             </div>
         </div>
     </nav>
@@ -1315,6 +1310,7 @@
              const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
              document.getElementById('jazzcash-total').textContent = `$${total.toFixed(2)}`;
              
+            
              const jazzCashModal = document.getElementById('jazzcash-modal');
              jazzCashModal.classList.remove('hidden');
              jazzCashModal.classList.add('show');
@@ -1325,6 +1321,7 @@
              jazzCashModal.classList.add('hidden');
              jazzCashModal.classList.remove('show');
              
+            
              // Reset form
              document.getElementById('jazzcash-number').value = '';
              document.getElementById('transaction-id').value = '';
@@ -1334,6 +1331,7 @@
              const jazzCashNumber = document.getElementById('jazzcash-number').value.trim();
              const transactionId = document.getElementById('transaction-id').value.trim();
              
+            
              if (!jazzCashNumber) {
                  showNotification('Please enter your Jazz Cash number!', 'error');
                  return;
@@ -1346,25 +1344,29 @@
              
              const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
              
+            
              // Create order summary
              let orderSummary = `Jazz Cash Payment Order:\n\n`;
-             cart.forEach(item => {
+//              cart.forEach(item => {
                  orderSummary += `• ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
-             });
+//             });
              orderSummary += `\nTotal: $${total.toFixed(2)}\n`;
              orderSummary += `Jazz Cash Number: ${jazzCashNumber}\n`;
              if (transactionId) {
                  orderSummary += `Transaction ID: ${transactionId}\n`;
              }
              
+            
              // Send order details via WhatsApp
              const message = `Hello! I have made a Jazz Cash payment for my order:\n\n${orderSummary}\n\nPlease confirm my payment and process my order. Thank you!`;
              const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
              window.open(whatsappUrl, '_blank');
              
+            
              // Show success message
              showNotification('Payment submitted successfully! We will confirm your order shortly.', 'success');
              
+            
              // Clear cart and close modal
              clearCart();
              closeJazzCashPayment();
@@ -1385,6 +1387,7 @@
              const subscribeText = document.getElementById('subscribe-text');
              const subscribeIcon = document.getElementById('subscribe-icon');
              
+            
              if (!newsletterForm) return;
              
              newsletterForm.addEventListener('submit', function(e) {
@@ -1489,13 +1492,10 @@
              const notification = document.createElement('div');
              notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg text-white font-semibold transition-all duration-300 transform translate-x-full`;
              
+            
              switch(type) {
                  case 'success':
                      notification.className += ' bg-green-600';
-                     break;
-                 case 'error':
-                     notification.className += ' bg-red-600';
-                     break;
                  default:
                      notification.className += ' bg-blue-600';
              }
