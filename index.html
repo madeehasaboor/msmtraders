@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSM Traders - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#F59E0B',
+                        secondary: '#D97706',
+                        accent: '#F59E0B',
+                        dark: '#000000',
+                        gold: '#F59E0B'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+                 /* Cart modal styles */
+         #cart-modal {
+             transition: all 0.3s ease-in-out;
+         }
+         
+         #cart-modal.show {
+             display: flex !important;
+         }
+         
+         /* Jazz Cash modal styles */
+         #jazzcash-modal {
+             transition: all 0.3s ease-in-out;
+         }
+         
+         #jazzcash-modal.show {
+             display: flex !important;
+         }
+         
+         /* Jazz Cash modal styles */
+         #jazzcash-modal {
+             transition: all 0.3s ease-in-out;
+         }
+         
+         #jazzcash-modal.show {
+             display: flex !important;
+         }
+        
+        /* Cart item animation */
+        .cart-item {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Mobile-first responsive design */
+        @media (max-width: 768px) {
+            /* Navigation adjustments */
+            .nav-container {
+                padding: 0 0.5rem;
+            }
+            
+            .nav-links {
+                font-size: 0.75rem;
+                gap: 0.5rem;
+            }
+            
+            /* Mobile navigation improvements */
+            .md\\:hidden {
+                gap: 0.25rem;
+            }
+            
+            .md\\:hidden .flex-col {
+                gap: 0.25rem;
+            }
+            
+            .md\\:hidden a {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.7rem;
+                min-width: 60px;
+                text-align: center;
+            }
+            
+            /* Hero section adjustments */
+            .hero-title {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+                line-height: 1.4;
+            }
+            
+            /* Product grid adjustments */
+            .product-grid {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 1rem;
+            }
+            
+            /* Sale countdown adjustments */
+            .countdown-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+            
+            .countdown-item {
+                padding: 0.75rem;
+            }
+            
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+            
+            /* Button adjustments */
+            .mobile-btn {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                font-size: 0.875rem;
+            }
+            
+            /* Section spacing */
+            .mobile-section {
+                padding: 2rem 1rem;
+            }
+            
+            /* Text adjustments */
+            .mobile-text-lg {
+                font-size: 1rem;
+            }
+            
+            .mobile-text-xl {
+                font-size: 1.125rem;
+            }
+            
+            .mobile-text-2xl {
+                font-size: 1.5rem;
+            }
+            
+            .mobile-text-3xl {
+                font-size: 2rem;
+            }
+            
+            .mobile-text-4xl {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.875rem;
+            }
+            
+            .countdown-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.25rem;
+            }
+            
+            .countdown-item {
+                padding: 0.5rem;
+            }
+            
+            .countdown-number {
+                font-size: 1.25rem;
+            }
+            
+            .nav-links {
+                font-size: 0.7rem;
+                gap: 0.25rem;
+            }
+            
+            /* Mobile navigation for very small screens */
+            .md\\:hidden {
+                gap: 0.125rem;
+            }
+            
+            .md\\:hidden .flex-col {
+                gap: 0.125rem;
+            }
+            
+            .md\\:hidden a {
+                padding: 0.2rem 0.4rem;
+                font-size: 0.65rem;
+                min-width: 50px;
+            }
+            
+            /* Reduce logo size on very small screens */
+            .sm\\:hidden a {
+                font-size: 0.875rem;
+            }
+            
+            .sm\\:hidden p {
+                font-size: 0.6rem;
+            }
+        }
+        
+        /* Responsive cart modal */
+        @media (max-width: 640px) {
+            #cart-modal .bg-gray-900 {
+                margin: 0.5rem;
+                max-height: calc(100vh - 1rem);
+                width: calc(100% - 1rem);
+            }
+            
+            #cart-items {
+                max-height: 50vh;
+            }
+            
+            #cart-modal .p-4 {
+                padding: 0.75rem;
+            }
+            
+            #cart-modal .text-xl {
+                font-size: 1.125rem;
+            }
+        }
+        
+        /* Touch-friendly buttons */
+        @media (max-width: 768px) {
+            button, a {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            .nav-links a {
+                padding: 0.5rem 0.25rem;
+            }
+            
+            /* Ensure navigation doesn't overflow */
+            .nav-container {
+                overflow-x: hidden;
+            }
+            
+            /* Prevent text wrapping in navigation */
+            .nav-container a {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    </style>
+</head>
+<body class="bg-black">
+        <!-- Navigation -->
+    <nav class="bg-black border-b border-yellow-400 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 nav-container">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo Section -->
+                <div class="flex items-center">
+                    <div class="flex items-center space-x-2 sm:space-x-3">
+                        <div class="bg-black text-yellow-400 rounded-lg p-1.5 sm:p-2 relative">
+                            <i class="fas fa-shopping-cart text-lg sm:text-xl"></i>
+                            <i class="fas fa-star text-xs sm:text-sm absolute top-0 right-0 transform translate-x-1 -translate-y-1"></i>
+                        </div>
+                        <div class="hidden sm:block">
+                            <a href="index.html" class="text-xl sm:text-2xl font-bold text-yellow-400">Msmtraders</a>
+                            <p class="text-xs text-yellow-300 uppercase tracking-wide">CLICK.SHOP.SMILE</p>
+                        </div>
+                        <div class="sm:hidden">
+                            <a href="index.html" class="text-lg font-bold text-yellow-400">MSM</a>
+                            <p class="text-xs text-yellow-300 uppercase tracking-wide">TRADERS</p>
+                        </div>
+                    </div>
+                </div>
+                
+                                 <!-- Navigation Links -->
+                 <div class="hidden md:flex items-baseline space-x-3 lg:space-x-6 nav-links">
+                     <a href="index.html" class="text-yellow-400 hover:text-yellow-300 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Home</a>
+                     <a href="car care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Car Care</a>
+                     <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Laptops</a>
+                     <a href="electronics.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Electronics</a>
+                     <a href="perfumes.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Perfumes</a>
+                     <a href="sale.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Sale</a>
+                     <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition duration-200 whitespace-nowrap">Contact</a>
+                 </div>
+                 
+                 <!-- Mobile Navigation Menu -->
+                 <div class="md:hidden flex items-center space-x-2">
+                     <div class="flex flex-col space-y-1">
+                         <a href="index.html" class="text-yellow-400 hover:text-yellow-300 px-2 py-1.5 rounded-md text-xs font-medium transition duration-200 bg-yellow-400 bg-opacity-20 shadow-lg whitespace-nowrap">Home</a>
+                         <a href="car care.html" class="text-gray-300 hover:text-yellow-400 px-2 py-1.5 rounded-md text-xs font-medium transition duration-200 hover:bg-yellow-400 hover:bg-opacity-20 hover:shadow-lg whitespace-nowrap">Car Care</a>
+                     </div>
+                     <div class="flex flex-col space-y-1">
+                         <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-2 py-1.5 rounded-md text-xs font-medium transition duration-200 hover:bg-yellow-400 hover:bg-opacity-20 hover:shadow-lg whitespace-nowrap">Laptops</a>
+                         <a href="perfumes.html" class="text-gray-300 hover:text-yellow-400 px-2 py-1.5 rounded-md text-xs font-medium transition duration-200 hover:bg-yellow-400 hover:bg-opacity-20 hover:shadow-lg whitespace-nowrap">Perfumes</a>
+                     </div>
+                     <div class="flex flex-col space-y-1">
+                         <a href="electronics.html" class="text-gray-300 hover:text-yellow-400 px-2 py-1.5 rounded-md text-xs font-medium transition duration-200 hover:bg-yellow-400 hover:bg-opacity-20 hover:shadow-lg whitespace-nowrap">Electronics</a>
+                         <a href="sale.html" class="text-gray-300 hover:text-yellow-400 px-2 py-1.5 rounded-md text-xs font-medium transition duration-200 hover:bg-yellow-400 hover:bg-opacity-20 hover:shadow-lg whitespace-nowrap">Sale</a>
+                     </div>
+                     <div class="flex flex-col space-y-1">
+                         <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-2 py-1.5 rounded-md text-xs font-medium transition duration-200 hover:bg-yellow-400 hover:bg-opacity-20 hover:shadow-lg whitespace-nowrap">Contact</a>
+                     </div>
+                 </div>
+                
+                <!-- Cart and Search -->
+                <div class="flex items-center space-x-1 sm:space-x-2 lg:space-x-4">
+                    <button class="text-gray-300 hover:text-yellow-400 p-1.5 sm:p-2 rounded-lg hover:bg-gray-800 transition duration-200">
+                        <i class="fas fa-search text-base sm:text-lg lg:text-xl"></i>
+                    </button>
+                    <button id="cart-button" class="text-gray-300 hover:text-yellow-400 relative p-1.5 sm:p-2 rounded-lg hover:bg-gray-800 transition duration-200 transform hover:scale-105">
+                        <i class="fas fa-shopping-cart text-base sm:text-lg lg:text-xl"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center font-bold transition-all duration-200">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+     <!-- Shopping Cart Modal -->
+     <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+         <div class="flex items-center justify-center min-h-screen p-4">
+             <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-400">
+                 <!-- Cart Header -->
+                 <div class="flex items-center justify-between p-4 border-b border-yellow-400">
+                     <h3 class="text-xl font-bold text-yellow-400">Shopping Cart</h3>
+                     <button id="close-cart" class="text-gray-400 hover:text-yellow-400 text-2xl font-bold">
+                         <i class="fas fa-times"></i>
+                     </button>
+                 </div>
+                 
+                 <!-- Cart Items -->
+                 <div id="cart-items" class="max-h-96 overflow-y-auto p-4">
+                     <!-- Cart items will be dynamically added here -->
+                     <div id="empty-cart" class="text-center py-8">
+                         <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
+                         <p class="text-gray-400">Your cart is empty</p>
+                     </div>
+                 </div>
+                 
+                 <!-- Cart Footer -->
+                 <div class="border-t border-yellow-400 p-4">
+                     <div class="flex justify-between items-center mb-4">
+                         <span class="text-lg font-semibold text-yellow-400">Total:</span>
+                         <span id="cart-total" class="text-xl font-bold text-yellow-400">$0.00</span>
+                     </div>
+                     <div class="flex flex-col sm:flex-row gap-2">
+                         <button id="clear-cart" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm">
+                             Clear Cart
+                         </button>
+                                                   <button id="checkout-whatsapp" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center">
+                              <i class="fab fa-whatsapp mr-2"></i>
+                              Order via WhatsApp
+                          </button>
+                          <button id="checkout-jazzcash" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center mt-2">
+                              <i class="fas fa-credit-card mr-2"></i>
+                              Pay with Jazz Cash
+                          </button>
+                     </div>
+                 </div>
+             </div>
+               </div>
+  </div>
+
+      <!-- Jazz Cash Payment Modal -->
+      <div id="jazzcash-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+          <div class="flex items-center justify-center min-h-screen p-4">
+              <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-400">
+                  <!-- Payment Header -->
+                  <div class="flex items-center justify-between p-4 border-b border-yellow-400">
+                      <h3 class="text-xl font-bold text-yellow-400">Jazz Cash Payment</h3>
+                      <button id="close-jazzcash" class="text-gray-400 hover:text-yellow-400 text-2xl font-bold">
+                          <i class="fas fa-times"></i>
+                      </button>
+                  </div>
+                  
+                  <!-- Payment Form -->
+                  <div class="p-4">
+                      <div class="mb-4">
+                          <div class="flex items-center justify-center mb-4">
+                              <div class="bg-orange-500 text-white rounded-full p-3">
+                                  <i class="fas fa-credit-card text-2xl"></i>
+                              </div>
+                          </div>
+                          <h4 class="text-lg font-semibold text-yellow-400 text-center mb-2">Secure Payment</h4>
+                          <p class="text-gray-400 text-sm text-center mb-4">Complete your purchase securely with Jazz Cash</p>
+                      </div>
+                      
+                      <div class="space-y-4">
+                          <div>
+                              <label class="block text-yellow-400 text-sm font-medium mb-2">Order Total</label>
+                              <div class="bg-gray-800 rounded-lg p-3 border border-gray-700">
+                                  <span id="jazzcash-total" class="text-2xl font-bold text-yellow-400">$0.00</span>
+                              </div>
+                          </div>
+                          
+                          <div>
+                              <label class="block text-yellow-400 text-sm font-medium mb-2">Jazz Cash Number</label>
+                              <input type="tel" id="jazzcash-number" placeholder="03XXXXXXXXX" 
+                                     class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400">
+                          </div>
+                          
+                          <div>
+                              <label class="block text-yellow-400 text-sm font-medium mb-2">Transaction ID (Optional)</label>
+                              <input type="text" id="transaction-id" placeholder="Enter transaction ID after payment" 
+                                     class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400">
+                          </div>
+                          
+                          <div class="bg-gray-800 rounded-lg p-3 border border-gray-700">
+                              <h5 class="text-yellow-400 font-semibold mb-2">Payment Instructions:</h5>
+                              <ol class="text-gray-300 text-sm space-y-1">
+                                  <li>1. Send payment to: <span class="text-yellow-400 font-bold">03257385925</span></li>
+                                  <li>2. Use your order total as amount</li>
+                                  <li>3. Enter your Jazz Cash number above</li>
+                                  <li>4. Add transaction ID (optional)</li>
+                                  <li>5. Click "Confirm Payment"</li>
+                              </ol>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <!-- Payment Footer -->
+                  <div class="border-t border-yellow-400 p-4">
+                      <div class="flex flex-col sm:flex-row gap-2">
+                          <button id="cancel-jazzcash" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm">
+                              Cancel
+                          </button>
+                          <button id="confirm-jazzcash" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center">
+                              <i class="fas fa-check mr-2"></i>
+                              Confirm Payment
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-black to-gray-900 text-white mobile-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+            <div class="text-center">
+                <div class="flex justify-center mb-4 sm:mb-6">
+                    <div class="bg-black bg-opacity-20 rounded-full p-4 sm:p-6 lg:p-8 relative">
+                        <i class="fas fa-shopping-cart text-3xl sm:text-4xl lg:text-6xl text-yellow-400"></i>
+                        <i class="fas fa-star text-lg sm:text-xl lg:text-2xl text-yellow-400 absolute top-1 right-1 sm:top-2 sm:right-2"></i>
+                    </div>
+                </div>
+                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6 hero-title">Welcome to MSM Traders</h1>
+                <p class="text-base sm:text-lg md:text-xl lg:text-2xl mb-3 sm:mb-4 max-w-3xl mx-auto hero-subtitle">Your trusted partner for quality products and exceptional service. Discover amazing deals and find everything you need in one place.</p>
+                <p class="text-sm sm:text-base lg:text-lg text-yellow-300 font-semibold mb-6 sm:mb-8">CLICK.SHOP.SMILE</p>
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+                    <a href="car care.html" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg text-base sm:text-lg transition duration-300 w-full sm:w-auto text-center mobile-btn">Shop Now</a>
+                    <a href="#featured" class="border-2 border-yellow-400 hover:bg-yellow-400 hover:text-black text-yellow-400 font-bold py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg text-base sm:text-lg transition duration-300 w-full sm:w-auto text-center mobile-btn">View Products</a>
+                    <button class="add-to-cart-btn bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg text-base sm:text-lg transition duration-300 w-full sm:w-auto text-center mobile-btn" 
+                            data-name="Test Product" 
+                            data-price="9.99" 
+                            data-image="test">
+                        Test Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="featured" class="py-8 sm:py-12 lg:py-16 bg-gray-900 mobile-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400 mb-3 sm:mb-4 mobile-text-3xl">Featured Products</h2>
+                <p class="text-sm sm:text-base lg:text-lg text-gray-300 max-w-2xl mx-auto mobile-text-lg">Check out our most popular and trending products</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 product-grid" id="featured-products">
+                <!-- Products will be loaded here via JavaScript -->
+                <div class="bg-gray-800 animate-pulse rounded-lg h-64 sm:h-72 lg:h-80"></div>
+                <div class="bg-gray-800 animate-pulse rounded-lg h-64 sm:h-72 lg:h-80"></div>
+                <div class="bg-gray-800 animate-pulse rounded-lg h-64 sm:h-72 lg:h-80"></div>
+                <div class="bg-gray-800 animate-pulse rounded-lg h-64 sm:h-72 lg:h-80"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sale Section -->
+    <section class="py-16 bg-gradient-to-r from-red-600 to-red-800 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <div class="inline-block bg-yellow-400 text-black px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wide mb-4">
+                    Limited Time Offer
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">MEGA SALE</h2>
+                <p class="text-xl md:text-2xl mb-8">Up to 50% OFF on Selected Items</p>
+                <div class="flex justify-center items-center space-x-4 mb-8">
+                    <div class="bg-black bg-opacity-30 rounded-lg p-4">
+                        <div class="text-3xl font-bold text-yellow-400" id="days">00</div>
+                        <div class="text-sm">Days</div>
+                    </div>
+                    <div class="bg-black bg-opacity-30 rounded-lg p-4">
+                        <div class="text-3xl font-bold text-yellow-400" id="hours">00</div>
+                        <div class="text-sm">Hours</div>
+                    </div>
+                    <div class="bg-black bg-opacity-30 rounded-lg p-4">
+                        <div class="text-3xl font-bold text-yellow-400" id="minutes">00</div>
+                        <div class="text-sm">Minutes</div>
+                    </div>
+                    <div class="bg-black bg-opacity-30 rounded-lg p-4">
+                        <div class="text-3xl font-bold text-yellow-400" id="seconds">00</div>
+                        <div class="text-sm">Seconds</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Sale Product 1 -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-yellow-400 hover:bg-opacity-20 transition duration-300">
+                    <div class="relative">
+                        <div class="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full">
+                            -30%
+                        </div>
+                        <div class="h-32 bg-gray-700 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-car text-4xl text-yellow-400"></i>
+                        </div>
+                        <h3 class="text-yellow-400 font-semibold mb-2">Formula 1 Car Wax</h3>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="text-gray-300 line-through">$22.99</span>
+                            <span class="text-yellow-400 font-bold text-lg">$16.09</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg transition duration-300" 
+                                data-name="Formula 1 Car Wax" 
+                                data-price="16.09" 
+                                data-image="car-wax">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sale Product 2 -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-yellow-400 hover:bg-opacity-20 transition duration-300">
+                    <div class="relative">
+                        <div class="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full">
+                            -25%
+                        </div>
+                        <div class="h-32 bg-gray-700 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-microchip text-4xl text-yellow-400"></i>
+                        </div>
+                        <h3 class="text-yellow-400 font-semibold mb-2">Bluetooth Headphones</h3>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="text-gray-300 line-through">$89.99</span>
+                            <span class="text-yellow-400 font-bold text-lg">$67.49</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg transition duration-300" 
+                                data-name="Bluetooth Headphones" 
+                                data-price="67.49" 
+                                data-image="headphones">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sale Product 3 -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-yellow-400 hover:bg-opacity-20 transition duration-300">
+                    <div class="relative">
+                        <div class="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full">
+                            -40%
+                        </div>
+                        <div class="h-32 bg-gray-700 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-spray-can text-4xl text-yellow-400"></i>
+                        </div>
+                        <h3 class="text-yellow-400 font-semibold mb-2">Men's Cologne</h3>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="text-gray-300 line-through">$65.99</span>
+                            <span class="text-yellow-400 font-bold text-lg">$39.59</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg transition duration-300" 
+                                data-name="Men's Cologne" 
+                                data-price="39.59" 
+                                data-image="cologne">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sale Product 4 -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-yellow-400 hover:bg-opacity-20 transition duration-300">
+                    <div class="relative">
+                        <div class="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full">
+                            -35%
+                        </div>
+                        <div class="h-32 bg-gray-700 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-laptop text-4xl text-yellow-400"></i>
+                        </div>
+                        <h3 class="text-yellow-400 font-semibold mb-2">Gaming Laptop</h3>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="text-gray-300 line-through">$1299.99</span>
+                            <span class="text-yellow-400 font-bold text-lg">$844.99</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg transition duration-300" 
+                                data-name="Gaming Laptop" 
+                                data-price="844.99" 
+                                data-image="laptop">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="sale.html" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-lg text-lg transition duration-300 inline-block w-full sm:w-auto">
+                    View All Sale Items
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-yellow-400 mb-4">Featured Products</h2>
+                <p class="text-xl text-gray-300">Discover our top picks from each category</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Featured Laptop -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-700 transition duration-300 border border-yellow-400">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center">
+                        <i class="fas fa-laptop text-6xl text-yellow-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-yellow-400 mb-2">Dell XPS 13</h3>
+                        <p class="text-gray-300 text-sm mb-4">Ultra-thin laptop with 13.4" 4K display, Intel i7 processor, 16GB RAM, 512GB SSD</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-400">$1,299.99</span>
+                            <div class="flex gap-2">
+                                <button class="add-to-cart-btn bg-yellow-400 hover:bg-yellow-500 text-black px-3 py-2 rounded-md transition duration-300 font-semibold text-sm" 
+                                        data-name="Dell XPS 13" 
+                                        data-price="1299.99" 
+                                        data-image="laptop">
+                                    Add to Cart
+                                </button>
+                                <a href="laptops.html" class="bg-gray-700 hover:bg-gray-600 text-yellow-400 px-3 py-2 rounded-md transition duration-300 font-semibold text-sm">
+                                    View All
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Car Care -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-700 transition duration-300 border border-yellow-400">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center">
+                        <i class="fas fa-car text-6xl text-yellow-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-yellow-400 mb-2">AIM Hard Wax A-101</h3>
+                        <p class="text-gray-300 text-sm mb-4">Professional car wax that cleans, shines, and protects. High gloss shine and water beading protection</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-400">$18.99</span>
+                            <div class="flex gap-2">
+                                <button class="add-to-cart-btn bg-yellow-400 hover:bg-yellow-500 text-black px-3 py-2 rounded-md transition duration-300 font-semibold text-sm" 
+                                        data-name="AIM Hard Wax A-101" 
+                                        data-price="18.99" 
+                                        data-image="car-wax">
+                                    Add to Cart
+                                </button>
+                                <a href="car care.html" class="bg-gray-700 hover:bg-gray-600 text-yellow-400 px-3 py-2 rounded-md transition duration-300 font-semibold text-sm">
+                                    View All
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Perfume -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-700 transition duration-300 border border-yellow-400">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center">
+                        <i class="fas fa-spray-can text-6xl text-yellow-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-yellow-400 mb-2">Premium Men's Cologne</h3>
+                        <p class="text-gray-300 text-sm mb-4">Long-lasting men's fragrance with woody and citrus notes. 100ml bottle with elegant packaging</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-400">$65.99</span>
+                            <div class="flex gap-2">
+                                <button class="add-to-cart-btn bg-yellow-400 hover:bg-yellow-500 text-black px-3 py-2 rounded-md transition duration-300 font-semibold text-sm" 
+                                        data-name="Premium Men's Cologne" 
+                                        data-price="65.99" 
+                                        data-image="cologne">
+                                    Add to Cart
+                                </button>
+                                <a href="perfumes.html" class="bg-gray-700 hover:bg-gray-600 text-yellow-400 px-3 py-2 rounded-md transition duration-300 font-semibold text-sm">
+                                    View All
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Electronics -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-700 transition duration-300 border border-yellow-400">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center">
+                        <i class="fas fa-headphones text-6xl text-yellow-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-yellow-400 mb-2">Wireless Bluetooth Headphones</h3>
+                        <p class="text-gray-300 text-sm mb-4">High-quality wireless headphones with noise cancellation and 30-hour battery life</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-400">$89.99</span>
+                            <div class="flex gap-2">
+                                <button class="add-to-cart-btn bg-yellow-400 hover:bg-yellow-500 text-black px-3 py-2 rounded-md transition duration-300 font-semibold text-sm" 
+                                        data-name="Wireless Bluetooth Headphones" 
+                                        data-price="89.99" 
+                                        data-image="headphones">
+                                    Add to Cart
+                                </button>
+                                <a href="electronics.html" class="bg-gray-700 hover:bg-gray-600 text-yellow-400 px-3 py-2 rounded-md transition duration-300 font-semibold text-sm">
+                                    View All
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <a href="laptops.html" class="bg-gray-800 hover:bg-gray-700 text-yellow-400 font-semibold py-3 px-6 rounded-lg transition duration-300 border border-yellow-400 w-full text-center">
+                        <i class="fas fa-laptop mr-2"></i>Laptops
+                    </a>
+                    <a href="car care.html" class="bg-gray-800 hover:bg-gray-700 text-yellow-400 font-semibold py-3 px-6 rounded-lg transition duration-300 border border-yellow-400 w-full text-center">
+                        <i class="fas fa-car mr-2"></i>Car Care
+                    </a>
+                    <a href="perfumes.html" class="bg-gray-800 hover:bg-gray-700 text-yellow-400 font-semibold py-3 px-6 rounded-lg transition duration-300 border border-yellow-400 w-full text-center">
+                        <i class="fas fa-spray-can mr-2"></i>Perfumes
+                    </a>
+                    <a href="electronics.html" class="bg-gray-800 hover:bg-gray-700 text-yellow-400 font-semibold py-3 px-6 rounded-lg transition duration-300 border border-yellow-400 w-full text-center">
+                        <i class="fas fa-microchip mr-2"></i>Electronics
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Products & Customer Reviews Section -->
+    <section class="py-16 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-yellow-400 mb-4">Best Products & Customer Reviews</h2>
+                <p class="text-xl text-gray-300">See what our customers love most</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Best Products -->
+                <div>
+                    <h3 class="text-2xl font-bold text-yellow-400 mb-8 text-center">🏆 Best Sellers</h3>
+                    <div class="space-y-6">
+                        <!-- Best Product 1 -->
+                        <div class="bg-gray-800 rounded-lg p-6 border border-yellow-400 hover:bg-gray-700 transition duration-300">
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-yellow-400 text-black rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg">
+                                    1
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-yellow-400 font-semibold text-lg">AIM Hard Wax A-101</h4>
+                                    <p class="text-gray-300 text-sm">Professional car wax - Most popular car care product</p>
+                                    <div class="flex items-center mt-2">
+                                        <div class="flex text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span class="text-gray-400 text-sm ml-2">(4.9/5)</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-yellow-400 font-bold text-lg">$18.99</span>
+                                    <p class="text-gray-400 text-sm">2,847 sold</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Best Product 2 -->
+                        <div class="bg-gray-800 rounded-lg p-6 border border-yellow-400 hover:bg-gray-700 transition duration-300">
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-yellow-400 text-black rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg">
+                                    2
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-yellow-400 font-semibold text-lg">Wireless Bluetooth Headphones</h4>
+                                    <p class="text-gray-300 text-sm">Premium audio with noise cancellation</p>
+                                    <div class="flex items-center mt-2">
+                                        <div class="flex text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span class="text-gray-400 text-sm ml-2">(4.8/5)</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-yellow-400 font-bold text-lg">$89.99</span>
+                                    <p class="text-gray-400 text-sm">1,923 sold</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Best Product 3 -->
+                        <div class="bg-gray-800 rounded-lg p-6 border border-yellow-400 hover:bg-gray-700 transition duration-300">
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-yellow-400 text-black rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg">
+                                    3
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-yellow-400 font-semibold text-lg">Premium Men's Cologne</h4>
+                                    <p class="text-gray-300 text-sm">Long-lasting fragrance with woody notes</p>
+                                    <div class="flex items-center mt-2">
+                                        <div class="flex text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span class="text-gray-400 text-sm ml-2">(4.7/5)</span>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-yellow-400 font-bold text-lg">$65.99</span>
+                                    <p class="text-gray-400 text-sm">1,456 sold</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Reviews -->
+                <div>
+                    <h3 class="text-2xl font-bold text-yellow-400 mb-8 text-center">⭐ Customer Reviews</h3>
+                    <div class="space-y-6">
+                        <!-- Review 1 -->
+                        <div class="bg-gray-800 rounded-lg p-6 border border-yellow-400">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-yellow-400 text-black rounded-full w-10 h-10 flex items-center justify-center font-bold">
+                                    A
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="text-yellow-400 font-semibold">Ahmed Khan</h4>
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 italic">"The AIM Hard Wax is absolutely amazing! My car has never looked this good. Easy to apply and the shine lasts for weeks. Highly recommended!"</p>
+                            <p class="text-gray-400 text-sm mt-2">Verified Purchase • 2 days ago</p>
+                        </div>
+
+                        <!-- Review 2 -->
+                        <div class="bg-gray-800 rounded-lg p-6 border border-yellow-400">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-yellow-400 text-black rounded-full w-10 h-10 flex items-center justify-center font-bold">
+                                    S
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="text-yellow-400 font-semibold">Sarah Ahmed</h4>
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 italic">"Fast delivery and excellent customer service. The wireless headphones are perfect for my daily commute. Great quality and battery life!"</p>
+                            <p class="text-gray-400 text-sm mt-2">Verified Purchase • 1 week ago</p>
+                        </div>
+
+                        <!-- Review 3 -->
+                        <div class="bg-gray-800 rounded-lg p-6 border border-yellow-400">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-yellow-400 text-black rounded-full w-10 h-10 flex items-center justify-center font-bold">
+                                    M
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="text-yellow-400 font-semibold">Muhammad Ali</h4>
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 italic">"MSM Traders has become my go-to store for all car care products. The cologne smells fantastic and lasts all day. Will definitely order again!"</p>
+                            <p class="text-gray-400 text-sm mt-2">Verified Purchase • 3 days ago</p>
+                        </div>
+                    </div>
+
+                    <!-- Customer Stats -->
+                    <div class="mt-8 bg-gray-800 rounded-lg p-6 border border-yellow-400">
+                        <h4 class="text-yellow-400 font-semibold text-lg mb-4 text-center">Customer Satisfaction</h4>
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <div class="text-2xl font-bold text-yellow-400">4.8/5</div>
+                                <div class="text-gray-400 text-sm">Average Rating</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-yellow-400">15K+</div>
+                                <div class="text-gray-400 text-sm">Happy Customers</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-yellow-400">98%</div>
+                                <div class="text-gray-400 text-sm">Satisfaction Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shipping-fast text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-yellow-400">Free Shipping</h3>
+                    <p class="text-gray-300">Free shipping on orders over $50. Fast and reliable delivery to your doorstep.</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-undo text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-yellow-400">Easy Returns</h3>
+                    <p class="text-gray-300">30-day return policy. Not satisfied? Return it hassle-free.</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-2xl"></i>
+                    </div>
+                                         <h3 class="text-xl font-semibold mb-2 text-yellow-400">24 Hours Open</h3>
+                     <p class="text-gray-300">We're open 24/7 to serve you anytime, day or night.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">Stay Updated with MSM Traders</h2>
+            <p class="text-lg text-yellow-300 font-semibold mb-4">CLICK.SHOP.SMILE</p>
+            <p class="text-xl mb-8">Subscribe to our newsletter for the latest deals and product updates</p>
+            <form id="newsletter-form" class="max-w-md mx-auto">
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <input 
+                        type="email" 
+                        id="newsletter-email"
+                        placeholder="Enter your email" 
+                        class="flex-1 px-4 py-3 rounded-lg sm:rounded-l-lg sm:rounded-r-none text-black focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                        required
+                    >
+                    <button 
+                        type="submit"
+                        id="newsletter-submit"
+                        class="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg sm:rounded-l-none sm:rounded-r-lg font-semibold transition duration-300 w-full sm:w-auto flex items-center justify-center"
+                    >
+                        <span id="subscribe-text">Subscribe</span>
+                        <i id="subscribe-icon" class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </div>
+                <div id="newsletter-message" class="mt-4 text-sm hidden"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="bg-black text-yellow-400 rounded-lg p-2 relative">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <i class="fas fa-star text-sm absolute top-0 right-0 transform translate-x-1 -translate-y-1"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-yellow-400">Msmtraders</h3>
+                            <p class="text-xs text-gray-400 uppercase tracking-wide">CLICK.SHOP.SMILE</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Your trusted partner for quality products at great prices.</p>
+                                         <div class="flex space-x-4">
+                         <a href="https://www.facebook.com/share/19LERUiHdy/" target="_blank" class="text-gray-400 hover:text-yellow-400 transition duration-200"><i class="fab fa-facebook text-xl"></i></a>
+                         <a href="https://www.instagram.com/msmtraders222?igsh=NjA2enprZGZ3am81&utm_source=ig_contact_invite" target="_blank" class="text-gray-400 hover:text-yellow-400 transition duration-200"><i class="fab fa-instagram text-xl"></i></a>
+                         <a href="https://wa.me/923257385925" target="_blank" class="text-gray-400 hover:text-yellow-400 transition duration-200"><i class="fab fa-whatsapp text-xl"></i></a>
+                     </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-yellow-400">Home</a></li>
+                        <li><a href="car care.html" class="text-gray-400 hover:text-yellow-400">Car Care</a></li>
+                        <li><a href="sale.html" class="text-gray-400 hover:text-yellow-400">Sale</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-yellow-400">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400">Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400">Shipping Info</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-phone mr-2"></i>03257385925</li>
+                        <li><i class="fas fa-envelope mr-2"></i>msmtrader222@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>232 v block phase 2 defence lahore</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-yellow-400 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 MSM Traders. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Load featured products
+        async function loadFeaturedProducts() {
+            try {
+                const response = await fetch('http://localhost:3000/api/products');
+                const products = await response.json();
+                
+                const featuredContainer = document.getElementById('featured-products');
+                featuredContainer.innerHTML = '';
+                
+                // Display first 4 products as featured
+                products.slice(0, 4).forEach(product => {
+                    const productCard = `
+                        <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 border border-yellow-400">
+                            <div class="h-48 bg-gray-700 flex items-center justify-center">
+                                ${product.image_url ? 
+                                    `<img src="${product.image_url}" alt="${product.name}" class="w-full h-full object-cover">` :
+                                    `<i class="fas fa-image text-4xl text-gray-400"></i>`
+                                }
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold text-lg mb-2 text-yellow-400">${product.name}</h3>
+                                <p class="text-gray-300 text-sm mb-3 line-clamp-2">${product.description || 'No description available'}</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-2xl font-bold text-yellow-400">$${product.price}</span>
+                                                                         <button class="add-to-cart-btn bg-yellow-400 hover:bg-yellow-500 text-black px-4 py-2 rounded-lg transition duration-300" 
+                                             data-name="${product.name}" 
+                                             data-price="${product.price}" 
+                                             data-image="product">
+                                         Add to Cart
+                                     </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    featuredContainer.innerHTML += productCard;
+                });
+            } catch (error) {
+                console.error('Error loading products:', error);
+                document.getElementById('featured-products').innerHTML = '<p class="text-center text-gray-500 col-span-full">Unable to load products. Please try again later.</p>';
+            }
+        }
+
+        // Countdown timer for sale
+        function updateCountdown() {
+            // Set sale end date (7 days from now)
+            const saleEndDate = new Date();
+            saleEndDate.setDate(saleEndDate.getDate() + 7);
+            
+            const now = new Date().getTime();
+            const distance = saleEndDate.getTime() - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+
+        // Shopping Cart Functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const whatsappNumber = '923257385925'; // MSM Traders WhatsApp number
+
+        // Update cart count display
+        function updateCartCount() {
+            const cartCount = document.getElementById('cart-count');
+            console.log('updateCartCount called, cartCount element:', cartCount);
+            
+            if (!cartCount) {
+                console.error('cart-count element not found!');
+                return;
+            }
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            console.log('Total items in cart:', totalItems);
+            cartCount.textContent = totalItems;
+        }
+
+        // Update cart total
+        function updateCartTotal() {
+            const cartTotal = document.getElementById('cart-total');
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Render cart items
+        function renderCart() {
+            console.log('renderCart called, cart items:', cart);
+            
+            const cartItems = document.getElementById('cart-items');
+            console.log('cartItems element:', cartItems);
+            
+            if (!cartItems) {
+                console.error('cartItems element not found!');
+                return;
+            }
+            
+            if (cart.length === 0) {
+                console.log('Cart is empty, showing empty state');
+                cartItems.innerHTML = `
+                    <div id="empty-cart" class="text-center py-8">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">Your cart is empty</p>
+                    </div>
+                `;
+            } else {
+                console.log('Rendering cart items:', cart.length);
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item bg-gray-800 rounded-lg p-3 mb-3 border border-gray-700">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-${getItemIcon(item.image)} text-yellow-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-yellow-400 font-semibold text-sm">${item.name}</h4>
+                                    <p class="text-gray-400 text-xs">$${item.price}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}" data-action="decrease">-</button>
+                                <span class="text-yellow-400 font-semibold text-sm w-8 text-center">${item.quantity}</span>
+                                <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}" data-action="increase">+</button>
+                                <button class="remove-item bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            updateCartCount();
+            updateCartTotal();
+        }
+
+        // Get icon for item type
+        function getItemIcon(imageType) {
+            const icons = {
+                'car-wax': 'car',
+                'headphones': 'headphones',
+                'cologne': 'spray-can',
+                'laptop': 'laptop'
+            };
+            return icons[imageType] || 'box';
+        }
+
+        // Add item to cart
+        function addToCart(name, price, image) {
+            console.log('addToCart called with:', { name, price, image });
+            
+            // Add a simple alert to test if function is called
+            alert(`Adding ${name} to cart for $${price}!`);
+            
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+                console.log('Increased quantity for existing item:', existingItem);
+            } else {
+                const newItem = {
+                    name: name,
+                    price: parseFloat(price),
+                    image: image,
+                    quantity: 1
+                };
+                cart.push(newItem);
+                console.log('Added new item to cart:', newItem);
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            console.log('Cart saved to localStorage:', cart);
+            renderCart();
+            
+            // Show success message
+            showNotification('Item added to cart!', 'success');
+        }
+
+        // Remove item from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            showNotification('Item removed from cart!', 'info');
+        }
+
+        // Update item quantity
+        function updateQuantity(index, action) {
+            if (action === 'increase') {
+                cart[index].quantity += 1;
+            } else if (action === 'decrease') {
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity -= 1;
+                } else {
+                    removeFromCart(index);
+                    return;
+                }
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        // Clear cart
+        function clearCart() {
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            showNotification('Cart cleared!', 'info');
+        }
+
+                 // Send order via WhatsApp
+         function sendWhatsAppOrder() {
+             if (cart.length === 0) {
+                 showNotification('Your cart is empty!', 'error');
+                 return;
+             }
+             
+             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+             let message = `Hello! I would like to place an order:\n\n`;
+             
+             cart.forEach(item => {
+                 message += `• ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
+             });
+             
+             message += `\nTotal: $${total.toFixed(2)}\n\nPlease confirm my order. Thank you!`;
+             
+             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+             window.open(whatsappUrl, '_blank');
+         }
+
+         // Jazz Cash Payment Functions
+         function openJazzCashPayment() {
+             if (cart.length === 0) {
+                 showNotification('Your cart is empty!', 'error');
+                 return;
+             }
+             
+             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+             document.getElementById('jazzcash-total').textContent = `$${total.toFixed(2)}`;
+             
+             const jazzCashModal = document.getElementById('jazzcash-modal');
+             jazzCashModal.classList.remove('hidden');
+             jazzCashModal.classList.add('show');
+         }
+         
+         function closeJazzCashPayment() {
+             const jazzCashModal = document.getElementById('jazzcash-modal');
+             jazzCashModal.classList.add('hidden');
+             jazzCashModal.classList.remove('show');
+             
+             // Reset form
+             document.getElementById('jazzcash-number').value = '';
+             document.getElementById('transaction-id').value = '';
+         }
+         
+         function confirmJazzCashPayment() {
+             const jazzCashNumber = document.getElementById('jazzcash-number').value.trim();
+             const transactionId = document.getElementById('transaction-id').value.trim();
+             
+             if (!jazzCashNumber) {
+                 showNotification('Please enter your Jazz Cash number!', 'error');
+                 return;
+             }
+             
+             if (!isValidPhoneNumber(jazzCashNumber)) {
+                 showNotification('Please enter a valid Jazz Cash number!', 'error');
+                 return;
+             }
+             
+             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+             
+             // Create order summary
+             let orderSummary = `Jazz Cash Payment Order:\n\n`;
+             cart.forEach(item => {
+                 orderSummary += `• ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
+             });
+             orderSummary += `\nTotal: $${total.toFixed(2)}\n`;
+             orderSummary += `Jazz Cash Number: ${jazzCashNumber}\n`;
+             if (transactionId) {
+                 orderSummary += `Transaction ID: ${transactionId}\n`;
+             }
+             
+             // Send order details via WhatsApp
+             const message = `Hello! I have made a Jazz Cash payment for my order:\n\n${orderSummary}\n\nPlease confirm my payment and process my order. Thank you!`;
+             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+             window.open(whatsappUrl, '_blank');
+             
+             // Show success message
+             showNotification('Payment submitted successfully! We will confirm your order shortly.', 'success');
+             
+             // Clear cart and close modal
+             clearCart();
+             closeJazzCashPayment();
+         }
+         
+         function isValidPhoneNumber(phone) {
+             // Pakistani phone number validation (03XXXXXXXXX format)
+             const phoneRegex = /^03\d{9}$/;
+             return phoneRegex.test(phone);
+         }
+
+                 // Newsletter Subscription Functionality
+         function initializeNewsletter() {
+             const newsletterForm = document.getElementById('newsletter-form');
+             const newsletterEmail = document.getElementById('newsletter-email');
+             const newsletterSubmit = document.getElementById('newsletter-submit');
+             const newsletterMessage = document.getElementById('newsletter-message');
+             const subscribeText = document.getElementById('subscribe-text');
+             const subscribeIcon = document.getElementById('subscribe-icon');
+             
+             if (!newsletterForm) return;
+             
+             newsletterForm.addEventListener('submit', function(e) {
+                 e.preventDefault();
+                 
+                 const email = newsletterEmail.value.trim();
+                 
+                 // Validate email
+                 if (!email || !isValidEmail(email)) {
+                     showNewsletterMessage('Please enter a valid email address.', 'error');
+                     return;
+                 }
+                 
+                 // Check if already subscribed
+                 const subscribedEmails = JSON.parse(localStorage.getItem('newsletterSubscribers') || '[]');
+                 if (subscribedEmails.includes(email)) {
+                     showNewsletterMessage('You are already subscribed to our newsletter!', 'info');
+                     return;
+                 }
+                 
+                 // Show loading state
+                 setNewsletterLoading(true);
+                 
+                 // Simulate API call (replace with actual backend integration)
+                 setTimeout(() => {
+                     // Add email to local storage
+                     subscribedEmails.push(email);
+                     localStorage.setItem('newsletterSubscribers', JSON.stringify(subscribedEmails));
+                     
+                     // Show success message
+                     showNewsletterMessage('Thank you for subscribing! You will receive our latest updates.', 'success');
+                     
+                     // Reset form
+                     newsletterForm.reset();
+                     
+                     // Reset button state
+                     setNewsletterLoading(false);
+                     
+                     // Show notification
+                     showNotification('Successfully subscribed to newsletter!', 'success');
+                     
+                 }, 1500);
+             });
+         }
+         
+         function isValidEmail(email) {
+             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+             return emailRegex.test(email);
+         }
+         
+         function showNewsletterMessage(message, type) {
+             const newsletterMessage = document.getElementById('newsletter-message');
+             if (!newsletterMessage) return;
+             
+             newsletterMessage.textContent = message;
+             newsletterMessage.className = 'mt-4 text-sm';
+             
+             switch(type) {
+                 case 'success':
+                     newsletterMessage.className += ' text-green-400';
+                     break;
+                 case 'error':
+                     newsletterMessage.className += ' text-red-400';
+                     break;
+                 case 'info':
+                     newsletterMessage.className += ' text-yellow-400';
+                     break;
+                 default:
+                     newsletterMessage.className += ' text-gray-400';
+             }
+             
+             newsletterMessage.classList.remove('hidden');
+             
+             // Hide message after 5 seconds
+             setTimeout(() => {
+                 newsletterMessage.classList.add('hidden');
+             }, 5000);
+         }
+         
+         function setNewsletterLoading(loading) {
+             const newsletterSubmit = document.getElementById('newsletter-submit');
+             const subscribeText = document.getElementById('subscribe-text');
+             const subscribeIcon = document.getElementById('subscribe-icon');
+             
+             if (!newsletterSubmit) return;
+             
+             if (loading) {
+                 newsletterSubmit.disabled = true;
+                 newsletterSubmit.classList.add('opacity-50', 'cursor-not-allowed');
+                 subscribeText.textContent = 'Subscribing...';
+                 subscribeIcon.className = 'fas fa-spinner fa-spin ml-2';
+             } else {
+                 newsletterSubmit.disabled = false;
+                 newsletterSubmit.classList.remove('opacity-50', 'cursor-not-allowed');
+                 subscribeText.textContent = 'Subscribe';
+                 subscribeIcon.className = 'fas fa-paper-plane ml-2';
+             }
+         }
+
+         // Show notification
+         function showNotification(message, type = 'info') {
+             const notification = document.createElement('div');
+             notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg text-white font-semibold transition-all duration-300 transform translate-x-full`;
+             
+             switch(type) {
+                 case 'success':
+                     notification.className += ' bg-green-600';
+                     break;
+                 case 'error':
+                     notification.className += ' bg-red-600';
+                     break;
+                 default:
+                     notification.className += ' bg-blue-600';
+             }
+             
+             notification.textContent = message;
+             document.body.appendChild(notification);
+             
+             // Animate in
+             setTimeout(() => {
+                 notification.classList.remove('translate-x-full');
+             }, 100);
+             
+             // Animate out and remove
+             setTimeout(() => {
+                 notification.classList.add('translate-x-full');
+                 setTimeout(() => {
+                     document.body.removeChild(notification);
+                 }, 300);
+             }, 3000);
+         }
+
+                 // Load products when page loads
+         document.addEventListener('DOMContentLoaded', function() {
+             console.log('DOM loaded, initializing cart...');
+             
+             try {
+                 loadFeaturedProducts();
+                 updateCountdown();
+                 // Update countdown every second
+                 setInterval(updateCountdown, 1000);
+                 
+                 // Initialize cart
+                 renderCart();
+                 
+                 // Initialize newsletter subscription
+                 initializeNewsletter();
+             } catch (error) {
+                 console.error('Error during initialization:', error);
+                 alert('Error initializing cart: ' + error.message);
+             }
+            
+            // Cart button event listener
+            const cartButton = document.getElementById('cart-button');
+            const cartModal = document.getElementById('cart-modal');
+            const closeCart = document.getElementById('close-cart');
+            const clearCartBtn = document.getElementById('clear-cart');
+            const checkoutWhatsAppBtn = document.getElementById('checkout-whatsapp');
+            
+            console.log('Cart elements found:', {
+                cartButton: !!cartButton,
+                cartModal: !!cartModal,
+                closeCart: !!closeCart,
+                clearCartBtn: !!clearCartBtn,
+                checkoutWhatsAppBtn: !!checkoutWhatsAppBtn
+            });
+            
+            // Open cart modal
+            if (cartButton) {
+                cartButton.addEventListener('click', function() {
+                    console.log('Cart button clicked');
+                    console.log('Cart modal before:', cartModal.classList);
+                    cartModal.classList.remove('hidden');
+                    cartModal.classList.add('show');
+                    console.log('Cart modal after:', cartModal.classList);
+                    console.log('Cart modal display style:', cartModal.style.display);
+                });
+            }
+            
+            // Close cart modal
+            if (closeCart) {
+                closeCart.addEventListener('click', function() {
+                    console.log('Close cart clicked');
+                    cartModal.classList.add('hidden');
+                    cartModal.classList.remove('show');
+                });
+            }
+            
+            // Close cart modal when clicking outside
+            if (cartModal) {
+                cartModal.addEventListener('click', function(e) {
+                    if (e.target === cartModal) {
+                        console.log('Clicked outside cart modal');
+                        cartModal.classList.add('hidden');
+                        cartModal.classList.remove('show');
+                    }
+                });
+            }
+            
+            // Clear cart
+            if (clearCartBtn) {
+                clearCartBtn.addEventListener('click', function() {
+                    console.log('Clear cart clicked');
+                    clearCart();
+                });
+            }
+            
+                         // Checkout via WhatsApp
+             if (checkoutWhatsAppBtn) {
+                 checkoutWhatsAppBtn.addEventListener('click', function() {
+                     console.log('WhatsApp checkout clicked');
+                     sendWhatsAppOrder();
+                 });
+             }
+             
+             // Jazz Cash Payment Event Listeners
+             const checkoutJazzCashBtn = document.getElementById('checkout-jazzcash');
+             const jazzCashModal = document.getElementById('jazzcash-modal');
+             const closeJazzCashBtn = document.getElementById('close-jazzcash');
+             const cancelJazzCashBtn = document.getElementById('cancel-jazzcash');
+             const confirmJazzCashBtn = document.getElementById('confirm-jazzcash');
+             
+             // Open Jazz Cash payment modal
+             if (checkoutJazzCashBtn) {
+                 checkoutJazzCashBtn.addEventListener('click', function() {
+                     console.log('Jazz Cash checkout clicked');
+                     openJazzCashPayment();
+                 });
+             }
+             
+             // Close Jazz Cash payment modal
+             if (closeJazzCashBtn) {
+                 closeJazzCashBtn.addEventListener('click', function() {
+                     console.log('Close Jazz Cash clicked');
+                     closeJazzCashPayment();
+                 });
+             }
+             
+             // Cancel Jazz Cash payment
+             if (cancelJazzCashBtn) {
+                 cancelJazzCashBtn.addEventListener('click', function() {
+                     console.log('Cancel Jazz Cash clicked');
+                     closeJazzCashPayment();
+                 });
+             }
+             
+             // Confirm Jazz Cash payment
+             if (confirmJazzCashBtn) {
+                 confirmJazzCashBtn.addEventListener('click', function() {
+                     console.log('Confirm Jazz Cash clicked');
+                     confirmJazzCashPayment();
+                 });
+             }
+             
+             // Close Jazz Cash modal when clicking outside
+             if (jazzCashModal) {
+                 jazzCashModal.addEventListener('click', function(e) {
+                     if (e.target === jazzCashModal) {
+                         console.log('Clicked outside Jazz Cash modal');
+                         closeJazzCashPayment();
+                     }
+                 });
+             }
+            
+                    // Add to cart buttons
+        document.addEventListener('click', function(e) {
+            console.log('Click event detected on:', e.target);
+            console.log('Target classes:', e.target.classList);
+            
+            if (e.target.classList.contains('add-to-cart-btn')) {
+                console.log('Add to cart button clicked');
+                const name = e.target.dataset.name;
+                const price = e.target.dataset.price;
+                const image = e.target.dataset.image;
+                console.log('Adding to cart:', { name, price, image });
+                addToCart(name, price, image);
+            }
+            
+            // Quantity buttons
+            if (e.target.classList.contains('quantity-btn')) {
+                console.log('Quantity button clicked');
+                const index = parseInt(e.target.dataset.index);
+                const action = e.target.dataset.action;
+                updateQuantity(index, action);
+            }
+            
+            // Remove item buttons
+            if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
+                console.log('Remove item clicked');
+                const index = parseInt(e.target.dataset.index || e.target.closest('.remove-item').dataset.index);
+                removeFromCart(index);
+            }
+        });
+            
+            console.log('Cart initialization complete');
+        });
+    </script>
+</body>
+</html>
