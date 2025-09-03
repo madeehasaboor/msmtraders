@@ -176,6 +176,87 @@
             transform: translateY(0);
         }
         
+        /* Custom background animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .glow-animation {
+            animation: glow 4s ease-in-out infinite;
+        }
+        
+        .sparkle-animation {
+            animation: sparkle 3s ease-in-out infinite;
+        }
+        
+        /* Slideshow animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8) rotate(5deg);
+            }
+            to {
+                opacity: 0.2;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                opacity: 0.2;
+                transform: scale(1) rotate(0deg);
+            }
+            to {
+                opacity: 0;
+                transform: scale(0.8) rotate(-5deg);
+            }
+        }
+        
+        .slideshow-slide {
+            animation: slideIn 1s ease-out;
+        }
+        
+        .slideshow-slide.fade-out {
+            animation: slideOut 1s ease-out;
+        }
+        
+        /* Product image enhancements */
+        .slideshow-slide img {
+            transition: all 0.3s ease-in-out;
+            filter: brightness(0.9) contrast(1.1);
+        }
+        
+        .slideshow-slide img:hover {
+            transform: scale(1.05) rotate(2deg);
+            filter: brightness(1.1) contrast(1.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Icon container enhancements */
+        .slideshow-slide .bg-gradient-to-br {
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .slideshow-slide .bg-gradient-to-br:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
         /* Extra small screens */
         @media (max-width: 480px) {
             .hero-title {
@@ -555,27 +636,202 @@
 
       <!-- Heroic Hero Section -->
     <section class="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
+        <!-- Dynamic Background Gradient -->
+        <div class="absolute inset-0 bg-gradient-to-br from-black via-gray-900 via-yellow-900/20 to-black"></div>
+        
         <!-- Animated Background Elements -->
         <div class="absolute inset-0">
-            <div class="absolute top-20 left-10 w-20 h-20 bg-yellow-400 rounded-full opacity-10 animate-pulse"></div>
-            <div class="absolute top-40 right-20 w-16 h-16 bg-yellow-400 rounded-full opacity-15 animate-bounce"></div>
-            <div class="absolute bottom-20 left-1/4 w-12 h-12 bg-yellow-400 rounded-full opacity-20 animate-ping"></div>
-            <div class="absolute bottom-40 right-1/3 w-24 h-24 bg-yellow-400 rounded-full opacity-10 animate-pulse"></div>
+            <!-- Floating Orbs -->
+            <div class="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full opacity-20 animate-pulse blur-sm"></div>
+            <div class="absolute top-40 right-20 w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full opacity-15 animate-bounce blur-sm"></div>
+            <div class="absolute bottom-20 left-1/4 w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full opacity-25 animate-ping blur-sm"></div>
+            <div class="absolute bottom-40 right-1/3 w-24 h-24 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full opacity-10 animate-pulse blur-sm"></div>
+            
+            <!-- Additional Floating Elements -->
+            <div class="absolute top-1/3 left-1/6 w-8 h-8 bg-yellow-400 rounded-full opacity-30 animate-bounce blur-sm" style="animation-delay: 1s;"></div>
+            <div class="absolute top-2/3 right-1/6 w-10 h-10 bg-orange-400 rounded-full opacity-20 animate-pulse blur-sm" style="animation-delay: 2s;"></div>
+            <div class="absolute bottom-1/3 left-1/2 w-6 h-6 bg-yellow-500 rounded-full opacity-35 animate-ping blur-sm" style="animation-delay: 0.5s;"></div>
+            
+            <!-- Geometric Shapes -->
+            <div class="absolute top-1/4 right-1/4 w-16 h-16 border-2 border-yellow-400/30 rotate-45 animate-spin" style="animation-duration: 20s;"></div>
+            <div class="absolute bottom-1/4 left-1/3 w-12 h-12 border-2 border-orange-400/25 rotate-12 animate-spin" style="animation-duration: 15s; animation-direction: reverse;"></div>
         </div>
         
-        <!-- Grid Pattern Overlay -->
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23f59e0b" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+        <!-- Animated Grid Pattern -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23f59e0b" fill-opacity="0.08"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40 animate-pulse"></div>
+        
+        <!-- Moving Light Rays -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full">
+                <div class="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-yellow-400/20 to-transparent animate-pulse" style="animation-delay: 0s;"></div>
+                <div class="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-yellow-400/15 to-transparent animate-pulse" style="animation-delay: 1s;"></div>
+                <div class="absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-transparent via-yellow-400/25 to-transparent animate-pulse" style="animation-delay: 2s;"></div>
+            </div>
+        </div>
+        
+        <!-- Particle Effect -->
+        <div class="absolute inset-0">
+            <div class="absolute top-1/4 left-1/5 w-1 h-1 bg-yellow-400 rounded-full opacity-60 animate-ping" style="animation-delay: 0s;"></div>
+            <div class="absolute top-1/3 right-1/4 w-1 h-1 bg-yellow-400 rounded-full opacity-60 animate-ping" style="animation-delay: 0.5s;"></div>
+            <div class="absolute top-1/2 left-1/3 w-1 h-1 bg-yellow-400 rounded-full opacity-60 animate-ping" style="animation-delay: 1s;"></div>
+            <div class="absolute top-2/3 right-1/3 w-1 h-1 bg-yellow-400 rounded-full opacity-60 animate-ping" style="animation-delay: 1.5s;"></div>
+            <div class="absolute top-3/4 left-1/2 w-1 h-1 bg-yellow-400 rounded-full opacity-60 animate-ping" style="animation-delay: 2s;"></div>
+            
+            <!-- Custom Animated Elements -->
+            <div class="absolute top-1/6 right-1/5 w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full float-animation"></div>
+            <div class="absolute top-1/2 right-1/6 w-2 h-2 bg-yellow-300 rounded-full sparkle-animation"></div>
+            <div class="absolute bottom-1/4 left-1/6 w-4 h-4 bg-gradient-to-r from-orange-400 to-yellow-500 rounded-full glow-animation"></div>
+            <div class="absolute bottom-1/3 right-1/4 w-2 h-2 bg-yellow-400 rounded-full sparkle-animation" style="animation-delay: 1s;"></div>
+        </div>
+        
+        <!-- Glowing Border Effect -->
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/5 to-transparent animate-pulse"></div>
+        
+        <!-- Product Slideshow Background -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="relative w-full h-full">
+                <!-- Slide 1: Laptops -->
+                <div class="absolute inset-0 opacity-20 transition-opacity duration-1000 ease-in-out slideshow-slide" data-slide="0">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-purple-900/30 to-indigo-900/40"></div>
+                    <!-- Laptop Product Images -->
+                    <div class="absolute top-1/4 left-1/4 w-32 h-32 transform rotate-12">
+                        <div class="w-full h-full bg-gradient-to-br from-blue-400 to-purple-600 rounded-lg shadow-2xl flex items-center justify-center">
+                            <i class="fas fa-laptop text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="absolute top-1/3 right-1/4 w-24 h-24 transform -rotate-12">
+                        <div class="w-full h-full bg-gradient-to-br from-indigo-400 to-blue-600 rounded-lg shadow-2xl flex items-center justify-center">
+                            <i class="fas fa-desktop text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-1/3 left-1/3 w-28 h-28 transform rotate-6">
+                        <div class="w-full h-full bg-gradient-to-br from-purple-400 to-indigo-600 rounded-lg shadow-2xl flex items-center justify-center">
+                            <i class="fas fa-tablet-alt text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-1/4 right-1/3 w-20 h-20 transform -rotate-6">
+                        <div class="w-full h-full bg-gradient-to-br from-blue-500 to-purple-700 rounded-lg shadow-2xl flex items-center justify-center">
+                            <i class="fas fa-keyboard text-white text-lg"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 2: Perfumes -->
+                <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out slideshow-slide" data-slide="1">
+                    <div class="absolute inset-0 bg-gradient-to-br from-pink-900/40 via-rose-900/30 to-fuchsia-900/40"></div>
+                    <!-- Perfume Product Images -->
+                    <div class="absolute top-1/4 left-1/4 w-32 h-32 transform rotate-12">
+                        <img src="perfumes/aim air diffuser arabic oud.jpeg" alt="AIM Air Diffuser Arabic Oud" class="w-full h-full object-cover rounded-full shadow-2xl border-2 border-pink-300">
+                    </div>
+                    <div class="absolute top-1/3 right-1/4 w-24 h-24 transform -rotate-12">
+                        <img src="perfumes/jello air freshner lavender.jpeg" alt="Jello Air Freshener Lavender" class="w-full h-full object-cover rounded-full shadow-2xl border-2 border-rose-300">
+                    </div>
+                    <div class="absolute bottom-1/3 left-1/3 w-28 h-28 transform rotate-6">
+                        <img src="perfumes/xfresh air freshner ocean.jpeg" alt="XFresh Air Freshener Ocean" class="w-full h-full object-cover rounded-full shadow-2xl border-2 border-fuchsia-300">
+                    </div>
+                    <div class="absolute bottom-1/4 right-1/3 w-20 h-20 transform -rotate-6">
+                        <img src="perfumes/aim air freshner oud.jpeg" alt="AIM Air Freshener Oud" class="w-full h-full object-cover rounded-full shadow-2xl border-2 border-pink-300">
+                    </div>
+                </div>
+                
+                <!-- Slide 3: Car Care -->
+                <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out slideshow-slide" data-slide="2">
+                    <div class="absolute inset-0 bg-gradient-to-br from-green-900/40 via-emerald-900/30 to-teal-900/40"></div>
+                    <!-- Car Care Product Images -->
+                    <div class="absolute top-1/4 left-1/4 w-32 h-32 transform rotate-12">
+                        <img src="CAR WAX/FI-115 CERAMIC WASH&WAX.jpeg" alt="Ceramic Wash & Wax" class="w-full h-full object-cover rounded-lg shadow-2xl border-2 border-green-300">
+                    </div>
+                    <div class="absolute top-1/3 right-1/4 w-24 h-24 transform -rotate-12">
+                        <img src="CLEANERS/A-131 AIM GLASS CLEANER.jpeg" alt="AIM Glass Cleaner" class="w-full h-full object-cover rounded-lg shadow-2xl border-2 border-emerald-300">
+                    </div>
+                    <div class="absolute bottom-1/3 left-1/3 w-28 h-28 transform rotate-6">
+                        <img src="CAR WASH SHAMPOOS/AW-157 AIM WASH & SHAMPOO.jpeg" alt="AIM Wash & Shampoo" class="w-full h-full object-cover rounded-lg shadow-2xl border-2 border-teal-300">
+                    </div>
+                    <div class="absolute bottom-1/4 right-1/3 w-20 h-20 transform -rotate-6">
+                        <img src="CLEANERS/A-133 AIM LEATHER CLEANER.jpeg" alt="AIM Leather Cleaner" class="w-full h-full object-cover rounded-lg shadow-2xl border-2 border-green-300">
+                    </div>
+                </div>
+                
+                <!-- Slide 4: House Care -->
+                <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out slideshow-slide" data-slide="3">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-900/40 via-orange-900/30 to-yellow-900/40"></div>
+                    <!-- House Care Product Images -->
+                    <div class="absolute top-1/4 left-1/4 w-32 h-32 transform rotate-12">
+                        <img src="house_care/dtr kitchen cleaner.jpeg" alt="DTR Kitchen Cleaner" class="w-full h-full object-cover rounded-lg shadow-2xl border-2 border-amber-300">
+                    </div>
+                    <div class="absolute top-1/3 right-1/4 w-24 h-24 transform -rotate-12">
+                        <img src="house_care/dtr glass cleaner.jpeg" alt="DTR Glass Cleaner" class="w-full h-full object-cover rounded-lg shadow-2xl border-2 border-orange-300">
+                    </div>
+                    <div class="absolute bottom-1/3 left-1/3 w-28 h-28 transform rotate-6">
+                        <img src="house_care/aim anti rust.jpeg" alt="AIM Anti Rust" class="w-full h-full object-cover rounded-lg shadow-2xl border-2 border-yellow-300">
+                    </div>
+                    <div class="absolute bottom-1/4 right-1/3 w-20 h-20 transform -rotate-6">
+                        <img src="house_care/dtr foam cleaner.jpeg" alt="DTR Foam Cleaner" class="w-full h-full object-cover rounded-lg shadow-2xl border-2 border-amber-300">
+                    </div>
+                </div>
+                
+                <!-- Slide 5: Electronics -->
+                <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out slideshow-slide" data-slide="4">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-900/40 via-pink-900/30 to-purple-900/40"></div>
+                    <!-- Electronics Product Images -->
+                    <div class="absolute top-1/4 left-1/4 w-32 h-32 transform rotate-12">
+                        <div class="w-full h-full bg-gradient-to-br from-red-400 to-pink-600 rounded-lg shadow-2xl flex items-center justify-center">
+                            <i class="fas fa-mobile-alt text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="absolute top-1/3 right-1/4 w-24 h-24 transform -rotate-12">
+                        <div class="w-full h-full bg-gradient-to-br from-pink-400 to-purple-600 rounded-lg shadow-2xl flex items-center justify-center">
+                            <i class="fas fa-headphones text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-1/3 left-1/3 w-28 h-28 transform rotate-6">
+                        <div class="w-full h-full bg-gradient-to-br from-purple-400 to-red-600 rounded-lg shadow-2xl flex items-center justify-center">
+                            <i class="fas fa-tv text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-1/4 right-1/3 w-20 h-20 transform -rotate-6">
+                        <div class="w-full h-full bg-gradient-to-br from-red-500 to-pink-700 rounded-lg shadow-2xl flex items-center justify-center">
+                            <i class="fas fa-gamepad text-white text-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slideshow Navigation Dots -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
+            <button class="slideshow-dot w-3 h-3 bg-yellow-400 rounded-full transition-all duration-300 opacity-100" data-slide="0"></button>
+            <button class="slideshow-dot w-3 h-3 bg-yellow-400 rounded-full transition-all duration-300 opacity-50" data-slide="1"></button>
+            <button class="slideshow-dot w-3 h-3 bg-yellow-400 rounded-full transition-all duration-300 opacity-50" data-slide="2"></button>
+            <button class="slideshow-dot w-3 h-3 bg-yellow-400 rounded-full transition-all duration-300 opacity-50" data-slide="3"></button>
+            <button class="slideshow-dot w-3 h-3 bg-yellow-400 rounded-full transition-all duration-300 opacity-50" data-slide="4"></button>
+        </div>
         
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32 lg:py-40">
             <div class="text-center">
                 <!-- Animated Logo Container -->
                 <div class="flex justify-center mb-8 sm:mb-12">
                     <div class="relative group">
+                        <!-- Multiple Glow Layers -->
                         <div class="absolute inset-0 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
-                        <div class="relative bg-black bg-opacity-90 backdrop-blur-sm rounded-full p-6 sm:p-8 lg:p-12 border-2 border-yellow-400 shadow-2xl transform group-hover:scale-110 transition duration-500">
-                            <i class="fas fa-shopping-cart text-4xl sm:text-5xl lg:text-7xl text-yellow-400 animate-bounce"></i>
-                            <i class="fas fa-star text-xl sm:text-2xl lg:text-3xl text-yellow-400 absolute -top-2 -right-2 animate-spin" style="animation-duration: 3s;"></i>
-                            <div class="absolute -bottom-2 -left-2 w-4 h-4 bg-yellow-400 rounded-full animate-ping"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-orange-400 to-yellow-500 rounded-full blur-2xl opacity-50 group-hover:opacity-75 transition duration-500 animate-pulse" style="animation-delay: 0.5s;"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-yellow-300 to-orange-400 rounded-full blur-3xl opacity-30 group-hover:opacity-50 transition duration-500 animate-pulse" style="animation-delay: 1s;"></div>
+                        
+                        <!-- Main Logo Container -->
+                        <div class="relative bg-gradient-to-br from-gray-900 via-black to-gray-800 backdrop-blur-sm rounded-full p-6 sm:p-8 lg:p-12 border-2 border-yellow-400 shadow-2xl transform group-hover:scale-110 transition duration-500">
+                            <!-- Inner Glow Effect -->
+                            <div class="absolute inset-2 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 rounded-full blur-sm group-hover:blur-md transition duration-500"></div>
+                            
+                            <!-- Logo Icon -->
+                            <div class="relative z-10">
+                                <i class="fas fa-shopping-cart text-4xl sm:text-5xl lg:text-7xl text-yellow-400 animate-bounce group-hover:animate-pulse"></i>
+                                <i class="fas fa-star text-xl sm:text-2xl lg:text-3xl text-yellow-400 absolute -top-2 -right-2 animate-spin" style="animation-duration: 3s;"></i>
+                                <div class="absolute -bottom-2 -left-2 w-4 h-4 bg-yellow-400 rounded-full animate-ping"></div>
+                                
+                                <!-- Additional Decorative Elements -->
+                                <div class="absolute -top-4 -left-4 w-2 h-2 bg-orange-400 rounded-full animate-ping" style="animation-delay: 0.5s;"></div>
+                                <div class="absolute -bottom-4 -right-4 w-2 h-2 bg-yellow-300 rounded-full animate-ping" style="animation-delay: 1s;"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1957,6 +2213,69 @@
             observer.observe(heroContent);
         }
 
+        // Product slideshow functionality
+        function initializeProductSlideshow() {
+            const slides = document.querySelectorAll('.slideshow-slide');
+            const dots = document.querySelectorAll('.slideshow-dot');
+            let currentSlide = 0;
+            const slideInterval = 4000; // 4 seconds per slide
+
+            function showSlide(slideIndex) {
+                // Hide all slides
+                slides.forEach(slide => {
+                    slide.style.opacity = '0';
+                });
+                
+                // Update all dots
+                dots.forEach(dot => {
+                    dot.style.opacity = '0.5';
+                });
+                
+                // Show current slide
+                if (slides[slideIndex]) {
+                    slides[slideIndex].style.opacity = '0.2';
+                }
+                
+                // Update current dot
+                if (dots[slideIndex]) {
+                    dots[slideIndex].style.opacity = '1';
+                }
+                
+                currentSlide = slideIndex;
+            }
+
+            function nextSlide() {
+                const nextIndex = (currentSlide + 1) % slides.length;
+                showSlide(nextIndex);
+            }
+
+            // Auto-advance slides
+            let slideTimer = setInterval(nextSlide, slideInterval);
+
+            // Dot click handlers
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    clearInterval(slideTimer);
+                    showSlide(index);
+                    // Restart timer
+                    slideTimer = setInterval(nextSlide, slideInterval);
+                });
+            });
+
+            // Pause slideshow on hover
+            const slideshowContainer = document.querySelector('.slideshow-slide').parentElement;
+            slideshowContainer.addEventListener('mouseenter', () => {
+                clearInterval(slideTimer);
+            });
+
+            slideshowContainer.addEventListener('mouseleave', () => {
+                slideTimer = setInterval(nextSlide, slideInterval);
+            });
+
+            // Initialize first slide
+            showSlide(0);
+        }
+
         // Load products when page loads
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM loaded, initializing cart...');
@@ -1964,6 +2283,9 @@
             try {
                 // Initialize hero animation
                 initializeHeroAnimation();
+                
+                // Initialize product slideshow
+                initializeProductSlideshow();
                 
                 // Initialize mobile menu
                 initializeMobileMenu();
