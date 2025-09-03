@@ -3,7 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MSM Traders - Home</title>
+    <meta name="description" content="MSM Traders - Premium e-commerce store for laptops, perfumes, car care, house care, and electronics. Shop with confidence and get the best deals.">
+    <meta name="keywords" content="MSM Traders, e-commerce, laptops, perfumes, car care, house care, electronics, online shopping">
+    <meta name="author" content="MSM Traders">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="MSM Traders - Premium E-commerce Store">
+    <meta property="og:description" content="Shop the best laptops, perfumes, car care, house care, and electronics at MSM Traders">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://msmtraders.com">
+    <meta property="og:image" content="MSM TRADERS LOGO.jpeg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MSM Traders - Premium E-commerce Store">
+    <meta name="twitter:description" content="Shop the best laptops, perfumes, car care, house care, and electronics">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="MSM TRADERS LOGO.jpeg">
+    <link rel="apple-touch-icon" href="MSM TRADERS LOGO.jpeg">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    
+    <!-- DNS Prefetch for External Resources -->
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//wa.me">
+    
+    <title>MSM Traders - Premium E-commerce Store</title>
+    
+    <!-- Optimized CSS Loading -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
@@ -63,6 +98,109 @@
                 opacity: 1;
                 transform: translateX(0);
             }
+        }
+        
+        /* UI Optimization Features */
+        
+        /* Smooth scrolling for better UX */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Optimize animations for performance */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Loading skeleton animation */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        /* Image lazy loading placeholder */
+        .lazy-image {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        .lazy-image.loaded {
+            opacity: 1;
+        }
+        
+        /* Progressive image loading */
+        .progressive-image {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progressive-image img {
+            transition: filter 0.3s ease-in-out;
+        }
+        
+        .progressive-image.loading img {
+            filter: blur(10px);
+        }
+        
+        .progressive-image.loaded img {
+            filter: blur(0);
+        }
+        
+        /* Optimized hover effects */
+        .hover-lift {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Focus indicators for accessibility */
+        .focus-visible:focus {
+            outline: 2px solid #F59E0B;
+            outline-offset: 2px;
+        }
+        
+        /* Optimized button states */
+        .btn-optimized {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .btn-optimized::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+        }
+        
+        .btn-optimized:active::before {
+            width: 300px;
+            height: 300px;
         }
         
         /* Mobile-first responsive design */
@@ -363,7 +501,15 @@
         }
     </style>
 </head>
-<body class="bg-black">
+    <body class="bg-black">
+        <!-- Loading Indicator -->
+        <div id="loading-indicator" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+            <div class="text-center">
+                <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-yellow-400 mx-auto mb-4"></div>
+                <p class="text-yellow-400 text-lg">Loading MSM Traders...</p>
+            </div>
+        </div>
+
         <!-- Navigation -->
     <nav class="bg-black border-b border-yellow-400 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 nav-container">
@@ -1585,26 +1731,33 @@
                     return;
                 }
                 
+                // Clear skeleton loading and display featured products with UI optimizations
                 featuredContainer.innerHTML = '';
-                
-                // Display featured products
                 featuredProducts.forEach(product => {
                     const productCard = `
-                        <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 border border-yellow-400">
-                            <div class="h-48 bg-gray-700 flex items-center justify-center">
-                                <i class="fas fa-${getProductIcon(product.image)} text-4xl text-yellow-400"></i>
+                        <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 border border-yellow-400 hover-lift btn-optimized" 
+                             data-product-id="${product.id || Math.random()}"
+                             role="article"
+                             aria-label="Product: ${product.name}">
+                            <div class="h-48 bg-gray-700 flex items-center justify-center progressive-image">
+                                <i class="fas fa-${getProductIcon(product.image)} text-4xl text-yellow-400" 
+                                   aria-hidden="true"></i>
                             </div>
                             <div class="p-4">
-                                <h3 class="font-semibold text-lg mb-2 text-yellow-400">${product.name}</h3>
+                                <h3 class="font-semibold text-lg mb-2 text-yellow-400 focus-visible">${product.name}</h3>
                                 <p class="text-gray-300 text-sm mb-3">${product.description}</p>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-2xl font-bold text-yellow-400">₨${product.price}</span>
-                                                                         <button class="add-to-cart-btn bg-yellow-400 hover:bg-yellow-500 text-black px-4 py-2 rounded-lg transition duration-300" 
-                                             data-name="${product.name}" 
-                                             data-price="${product.price}" 
-                                            data-image="${product.image}">
-                                         Add to Cart
-                                     </button>
+                                    <span class="text-2xl font-bold text-yellow-400" aria-label="Price: ₨${product.price}">₨${product.price}</span>
+                                    <button class="add-to-cart-btn bg-yellow-400 hover:bg-yellow-500 text-black px-4 py-2 rounded-lg transition duration-300 btn-optimized focus-visible" 
+                                            data-name="${product.name}" 
+                                            data-price="${product.price}" 
+                                            data-image="${product.image}"
+                                            aria-label="Add ${product.name} to cart">
+                                        <span class="flex items-center">
+                                            <i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>
+                                            Add to Cart
+                                        </span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -2272,28 +2425,310 @@
                 slideTimer = setInterval(nextSlide, slideInterval);
             });
 
-            // Initialize first slide
-            showSlide(0);
-        }
+                    // Initialize first slide
+        showSlide(0);
+    }
 
-        // Load products when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, initializing cart...');
+    // UI Optimization Functions
+    function initializeUIOptimizations() {
+        // Register service worker
+        registerServiceWorker();
+        
+        // Lazy loading for images
+        initializeLazyLoading();
+        
+        // Performance monitoring
+        initializePerformanceMonitoring();
+        
+        // Accessibility improvements
+        initializeAccessibility();
+        
+        // Touch optimizations for mobile
+        initializeTouchOptimizations();
+        
+        // Memory management
+        initializeMemoryManagement();
+    }
+
+    // Service Worker Registration
+    function registerServiceWorker() {
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('Service Worker registered successfully:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    }
+
+    // Lazy Loading Implementation
+    function initializeLazyLoading() {
+        const images = document.querySelectorAll('img[data-src]');
+        
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    img.removeAttribute('data-src');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+        
+        images.forEach(img => imageObserver.observe(img));
+    }
+
+    // Performance Monitoring
+    function initializePerformanceMonitoring() {
+        // Monitor Core Web Vitals
+        if ('PerformanceObserver' in window) {
+            const observer = new PerformanceObserver((list) => {
+                for (const entry of list.getEntries()) {
+                    if (entry.entryType === 'largest-contentful-paint') {
+                        console.log('LCP:', entry.startTime);
+                    }
+                    if (entry.entryType === 'first-input') {
+                        console.log('FID:', entry.processingStart - entry.startTime);
+                    }
+                    if (entry.entryType === 'layout-shift') {
+                        console.log('CLS:', entry.value);
+                    }
+                }
+            });
             
-            try {
-                // Initialize hero animation
-                initializeHeroAnimation();
-                
-                // Initialize product slideshow
-                initializeProductSlideshow();
-                
-                // Initialize mobile menu
-                initializeMobileMenu();
+            observer.observe({ entryTypes: ['largest-contentful-paint', 'first-input', 'layout-shift'] });
+        }
+        
+        // Monitor memory usage
+        if ('memory' in performance) {
+            setInterval(() => {
+                const memory = performance.memory;
+                if (memory.usedJSHeapSize > memory.jsHeapSizeLimit * 0.8) {
+                    console.warn('High memory usage detected');
+                    cleanupMemory();
+                }
+            }, 30000);
+        }
+    }
+
+    // Accessibility Improvements
+    function initializeAccessibility() {
+        // Add skip links
+        const skipLink = document.createElement('a');
+        skipLink.href = '#main-content';
+        skipLink.textContent = 'Skip to main content';
+        skipLink.className = 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-400 text-black px-4 py-2 rounded z-50';
+        document.body.insertBefore(skipLink, document.body.firstChild);
+        
+        // Add ARIA labels to interactive elements
+        const buttons = document.querySelectorAll('button:not([aria-label])');
+        buttons.forEach(button => {
+            if (button.textContent.trim()) {
+                button.setAttribute('aria-label', button.textContent.trim());
+            }
+        });
+        
+        // Keyboard navigation improvements
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal.show, #cart-modal.show, #jazzcash-modal.show');
+                modals.forEach(modal => {
+                    modal.classList.remove('show');
+                    modal.classList.add('hidden');
+                });
+            }
+        });
+    }
+
+    // Touch Optimizations for Mobile
+    function initializeTouchOptimizations() {
+        // Prevent double-tap zoom on buttons
+        const buttons = document.querySelectorAll('button, a');
+        buttons.forEach(button => {
+            button.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                button.style.transform = 'scale(0.95)';
+            });
+            
+            button.addEventListener('touchend', () => {
+                button.style.transform = '';
+            });
+        });
+        
+        // Optimize scroll performance
+        let ticking = false;
+        function updateScroll() {
+            ticking = false;
+            // Scroll-based animations can be added here
+        }
+        
+        document.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateScroll);
+                ticking = true;
+            }
+        });
+    }
+
+    // Memory Management
+    function initializeMemoryManagement() {
+        // Clean up event listeners when elements are removed
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                mutation.removedNodes.forEach((node) => {
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        // Clean up any stored references
+                        if (node._eventListeners) {
+                            node._eventListeners.forEach(({event, handler}) => {
+                                node.removeEventListener(event, handler);
+                            });
+                        }
+                    }
+                });
+            });
+        });
+        
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    }
+
+    // Memory cleanup function
+    function cleanupMemory() {
+        // Clear any cached data
+        if (window.caches) {
+            caches.keys().then(names => {
+                names.forEach(name => {
+                    if (name !== 'v1') {
+                        caches.delete(name);
+                    }
+                });
+            });
+        }
+        
+        // Force garbage collection if available
+        if (window.gc) {
+            window.gc();
+        }
+    }
+
+    // Progressive Image Loading
+    function loadProgressiveImage(img) {
+        const lowResSrc = img.dataset.lowRes;
+        const highResSrc = img.dataset.highRes || img.src;
+        
+        if (lowResSrc) {
+            img.src = lowResSrc;
+            img.classList.add('loading');
+            
+            const highResImg = new Image();
+            highResImg.onload = () => {
+                img.src = highResSrc;
+                img.classList.remove('loading');
+                img.classList.add('loaded');
+            };
+            highResImg.src = highResSrc;
+        }
+    }
+
+    // Debounce function for performance
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // Throttle function for performance
+    function throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    }
+
+        // Hide loading indicator
+    function hideLoadingIndicator() {
+        const loadingIndicator = document.getElementById('loading-indicator');
+        if (loadingIndicator) {
+            loadingIndicator.style.opacity = '0';
+            setTimeout(() => {
+                loadingIndicator.style.display = 'none';
+            }, 300);
+        }
+    }
+
+    // Show skeleton loading for products
+    function showSkeletonLoading(containerId, count = 4) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        const skeletonHTML = Array(count).fill(`
+            <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden border border-gray-700 skeleton-card">
+                <div class="h-48 bg-gray-700 skeleton"></div>
+                <div class="p-4">
+                    <div class="h-6 bg-gray-700 skeleton mb-2"></div>
+                    <div class="h-4 bg-gray-700 skeleton mb-2"></div>
+                    <div class="h-4 bg-gray-700 skeleton mb-3"></div>
+                    <div class="flex justify-between items-center">
+                        <div class="h-8 w-20 bg-gray-700 skeleton"></div>
+                        <div class="h-10 w-24 bg-gray-700 skeleton"></div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        
+        container.innerHTML = skeletonHTML;
+    }
+
+    // Load products when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded, initializing cart...');
+        
+        // Show skeleton loading initially
+        showSkeletonLoading('featured-products', 4);
+        
+        try {
+            // Initialize UI optimizations
+            initializeUIOptimizations();
+            
+            // Initialize hero animation
+            initializeHeroAnimation();
+            
+            // Initialize product slideshow
+            initializeProductSlideshow();
+            
+            // Initialize mobile menu
+            initializeMobileMenu();
                 
                 loadFeaturedProducts();
                 updateCountdown();
                 // Update countdown every second
                 setInterval(updateCountdown, 1000);
+                
+                // Hide loading indicator after everything is loaded
+                setTimeout(hideLoadingIndicator, 1000);
                 
                 // Initialize cart
                 renderCart();

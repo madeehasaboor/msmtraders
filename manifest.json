@@ -1,0 +1,56 @@
+{
+  "name": "MSM Traders - Premium E-commerce Store",
+  "short_name": "MSM Traders",
+  "description": "Premium e-commerce store for laptops, perfumes, car care, house care, and electronics",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#F59E0B",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "MSM TRADERS LOGO.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "MSM TRADERS LOGO.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["shopping", "business", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "shortcuts": [
+    {
+      "name": "Shop Perfumes",
+      "short_name": "Perfumes",
+      "description": "Browse our perfume collection",
+      "url": "/perfumes.html",
+      "icons": [
+        {
+          "src": "MSM TRADERS LOGO.jpeg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Shop Electronics",
+      "short_name": "Electronics",
+      "description": "Browse our electronics collection",
+      "url": "/electronics.html",
+      "icons": [
+        {
+          "src": "MSM TRADERS LOGO.jpeg",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}
