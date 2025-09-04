@@ -528,9 +528,12 @@
                     <div class="p-4">
                         <h3 class="text-lg font-semibold text-yellow-400 mb-2">${product.name}</h3>
                         <p class="text-gray-300 text-sm mb-3">${product.description}</p>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-xl font-bold text-yellow-400">₨${product.price || 'Contact for Pricing'}</span>
+                        </div>
                         <div class="flex justify-center items-center">
                             <button class="add-to-cart-btn bg-yellow-400 text-black px-6 py-3 rounded-lg hover:bg-yellow-300 transition duration-200 text-sm font-semibold w-full" 
-                                    data-name="${product.name}" data-image="house-care">
+                                    data-name="${product.name}" data-price="${product.price || ''}" data-image="house-care">
                                 Add to Cart
                             </button>
                         </div>
@@ -596,7 +599,8 @@
         // Update cart total
         function updateCartTotal() {
             const cartTotal = document.getElementById('cart-total');
-            cartTotal.textContent = `Contact for Pricing`;
+            const total = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+            cartTotal.textContent = total > 0 ? `₨${total.toFixed(2)}` : `Contact for Pricing`;
         }
 
         // Render cart items
@@ -624,7 +628,7 @@
                                 </div>
                                 <div>
                                     <h4 class="text-yellow-400 font-semibold text-sm">${item.name}</h4>
-                                    <p class="text-gray-400 text-xs">Contact for pricing</p>
+                                    <p class="text-gray-400 text-xs">₨${item.price || 'Contact for pricing'}</p>
                                 </div>
                             </div>
                             <div class="flex items-center space-x-2">
@@ -648,7 +652,7 @@
         }
 
         // Add item to cart
-        function addToCart(name, image) {
+        function addToCart(name, price, image) {
             const existingItem = cart.find(item => item.name === name);
             
             if (existingItem) {
@@ -656,6 +660,7 @@
             } else {
                 const newItem = {
                     name: name,
+                    price: price,
                     image: image,
                     quantity: 1
                 };
@@ -708,12 +713,15 @@
             }
             
             let message = `Hello! I would like to place an order:\n\n`;
+            let total = 0;
             
             cart.forEach(item => {
-                message += `• ${item.name} x${item.quantity}\n`;
+                const itemTotal = parseFloat(item.price) * item.quantity;
+                total += itemTotal;
+                message += `• ${item.name} x${item.quantity} - ₨${item.price} each = ₨${itemTotal.toFixed(2)}\n`;
             });
             
-            message += `\nPlease provide pricing and confirm my order. Thank you!`;
+            message += `\nTotal: ₨${total.toFixed(2)}\n\nPlease confirm my order. Thank you!`;
             
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
@@ -726,7 +734,8 @@
                 return;
             }
             
-            document.getElementById('cod-total').textContent = `Contact for Pricing`;
+            const total = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+            document.getElementById('cod-total').textContent = total > 0 ? `₨${total.toFixed(2)}` : `Contact for Pricing`;
             
             // Show COD modal
             const codModal = document.getElementById('cod-modal');
@@ -965,8 +974,9 @@
             document.addEventListener('click', function(e) {
                 if (e.target.classList.contains('add-to-cart-btn')) {
                     const name = e.target.dataset.name;
+                    const price = e.target.dataset.price;
                     const image = e.target.dataset.image;
-                    addToCart(name, image);
+                    addToCart(name, price, image);
                 }
                 
                 // Quantity buttons
