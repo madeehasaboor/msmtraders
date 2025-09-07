@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1024">
     <title>Perfumes - MSM Traders</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -37,7 +37,8 @@
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Home</a>
-                    <a href="shop.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Car Care</a>
+                    <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Car Care</a>
+                    <a href="house_care.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">House Care</a>
                     <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Laptops</a>
                     <a href="electronics.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Electronics</a>
                     <a href="perfumes.html" class="text-yellow-400 font-semibold">Perfumes</a>
@@ -78,17 +79,9 @@
                     <option value="air diffuser">Air Diffusers</option>
                     <option value="air freshener">Air Fresheners</option>
                 </select>
-                <select id="priceFilter" class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
-                    <option value="">All Prices</option>
-                    <option value="0-300">₨0 - ₨300</option>
-                    <option value="300-400">₨300 - ₨400</option>
-                    <option value="400-500">₨400 - ₨500</option>
-                    <option value="500+">₨500+</option>
-                </select>
                 <select id="sortBy" class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
                     <option value="name">Sort by Name</option>
-                    <option value="price-low">Price: Low to High</option>
-                    <option value="price-high">Price: High to Low</option>
+                    <option value="category">Sort by Category</option>
                 </select>
             </div>
         </div>
@@ -122,7 +115,8 @@
                     <h4 class="text-yellow-400 font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
                         <li><a href="index.html" class="hover:text-yellow-400 transition duration-300">Home</a></li>
-                        <li><a href="shop.html" class="hover:text-yellow-400 transition duration-300">Car Care</a></li>
+                        <li><a href="car_care.html" class="hover:text-yellow-400 transition duration-300">Car Care</a></li>
+                        <li><a href="house_care.html" class="hover:text-yellow-400 transition duration-300">House Care</a></li>
                         <li><a href="laptops.html" class="hover:text-yellow-400 transition duration-300">Laptops</a></li>
                         <li><a href="electronics.html" class="hover:text-yellow-400 transition duration-300">Electronics</a></li>
                         <li><a href="perfumes.html" class="hover:text-yellow-400 transition duration-300">Perfumes</a></li>
@@ -179,7 +173,7 @@
                 <div class="border-t border-yellow-400 p-4">
                     <div class="flex justify-between items-center mb-4">
                         <span class="text-lg font-semibold text-yellow-400">Total:</span>
-                        <span id="cart-total" class="text-xl font-bold text-yellow-400">$0.00</span>
+                        <span id="cart-total" class="text-xl font-bold text-yellow-400">Contact for Pricing</span>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-2">
                         <button id="clear-cart" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm">
@@ -227,7 +221,7 @@
                           <div>
                               <label class="block text-yellow-400 text-sm font-medium mb-2">Order Total</label>
                               <div class="bg-gray-800 rounded-lg p-3 border border-gray-700">
-                                  <span id="cod-total" class="text-2xl font-bold text-yellow-400">$0.00</span>
+                                  <span id="cod-total" class="text-2xl font-bold text-yellow-400">Contact for Pricing</span>
                               </div>
                           </div>
                           
@@ -277,12 +271,12 @@
                           <button id="confirm-cod" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center">
                               <i class="fas fa-check mr-2"></i>
                               Place COD Order
-                          </button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         let allProducts = [];
@@ -296,7 +290,7 @@
                 id: 1,
                 name: "AIM Air Diffuser - Arabic Oud",
                 description: "Premium air diffuser with authentic Arabic oud fragrance. Long-lasting scent for your home or car.",
-                price: "450",
+                price: "1500",
                 category: "air diffuser",
                 image_url: "perfumes/aim air diffuser arabic oud.jpeg"
             },
@@ -304,7 +298,7 @@
                 id: 2,
                 name: "AIM Air Diffuser - Ocean",
                 description: "Refreshing ocean breeze air diffuser. Creates a calming and fresh atmosphere in any space.",
-                price: "380",
+                price: "1500",
                 category: "air diffuser",
                 image_url: "perfumes/aim air diffuser ocean.jpeg"
             },
@@ -312,7 +306,7 @@
                 id: 3,
                 name: "AIM Air Diffuser - Cool Ice",
                 description: "Cool and invigorating ice fragrance air diffuser. Perfect for hot days and refreshing environments.",
-                price: "420",
+                price: "1500",
                 category: "air diffuser",
                 image_url: "perfumes/aim air diffuser cool ice.jpeg"
             },
@@ -320,7 +314,7 @@
                 id: 4,
                 name: "AIM Air Diffuser - Classic",
                 description: "Classic fragrance air diffuser with timeless scent. Elegant and sophisticated for any setting.",
-                price: "400",
+                price: "1500",
                 category: "air diffuser",
                 image_url: "perfumes/aim air diffuser.jpeg"
             },
@@ -328,7 +322,7 @@
                 id: 5,
                 name: "AIM Air Freshener - New Car",
                 description: "Fresh new car scent air freshener. Reminds you of that brand new car feeling every day.",
-                price: "280",
+                price: "750",
                 category: "air freshener",
                 image_url: "perfumes/aim air freshner new car.jpeg"
             },
@@ -336,7 +330,7 @@
                 id: 6,
                 name: "AIM Air Freshener - Cool Ice",
                 description: "Cool ice fragrance air freshener. Provides a refreshing and cooling sensation.",
-                price: "250",
+                price: "750",
                 category: "air freshener",
                 image_url: "perfumes/aim air freshner cool ice.jpeg"
             },
@@ -344,7 +338,7 @@
                 id: 7,
                 name: "AIM Air Freshener - Oud",
                 description: "Luxurious oud fragrance air freshener. Rich and exotic scent for sophisticated spaces.",
-                price: "320",
+                price: "1100",
                 category: "air freshener",
                 image_url: "perfumes/aim air freshner oud.jpeg"
             },
@@ -352,7 +346,7 @@
                 id: 8,
                 name: "AIM Air Freshener - Cool Breeze",
                 description: "Gentle cool breeze air freshener. Light and refreshing scent for everyday use.",
-                price: "240",
+                price: "650",
                 category: "air freshener",
                 image_url: "perfumes/aimm air frshner cool breeze.jpeg"
             },
@@ -360,7 +354,7 @@
                 id: 9,
                 name: "Jello Air Freshener - Lavender",
                 description: "Soothing lavender air freshener. Calming and relaxing fragrance for peaceful environments.",
-                price: "260",
+                price: "650",
                 category: "air freshener",
                 image_url: "perfumes/jello air freshner  lavender.jpeg"
             },
@@ -368,7 +362,7 @@
                 id: 10,
                 name: "Jello Air Freshener - Cool Ice",
                 description: "Jello cool ice air freshener. Refreshing and invigorating scent for active spaces.",
-                price: "240",
+                price: "650",
                 category: "air freshener",
                 image_url: "perfumes/jello air freshner cool ice.jpeg"
             },
@@ -376,7 +370,7 @@
                 id: 11,
                 name: "Sameli Air Freshener - Vanilla",
                 description: "Sweet vanilla air freshener. Warm and comforting scent for cozy environments.",
-                price: "270",
+                price: "900",
                 category: "air freshener",
                 image_url: "perfumes/sameli air freshner  vanilla.jpeg"
             },
@@ -384,7 +378,7 @@
                 id: 12,
                 name: "Sameli Air Freshener - Cool",
                 description: "Sameli cool air freshener. Fresh and clean scent for modern spaces.",
-                price: "250",
+                price: "900",
                 category: "air freshener",
                 image_url: "perfumes/sameli air freshner cool.jpeg"
             },
@@ -392,7 +386,7 @@
                 id: 13,
                 name: "XFresh Air Freshener - Ocean",
                 description: "XFresh ocean breeze air freshener. Natural and refreshing ocean scent.",
-                price: "290",
+                price: "400",
                 category: "air freshener",
                 image_url: "perfumes/xfresh air freshner  ocean.jpeg"
             }
@@ -427,11 +421,9 @@
                     <div class="p-4">
                         <h3 class="text-lg font-semibold text-yellow-400 mb-2">${product.name}</h3>
                         <p class="text-gray-300 text-sm mb-3">${product.description}</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-yellow-400">₨${product.price}</span>
-                            <button class="add-to-cart-btn w-full sm:w-auto bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg text-base sm:text-lg transition duration-300 text-center"
+                        <div class="flex justify-center items-center">
+                            <button class="add-to-cart-btn w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg text-base sm:text-lg transition duration-300 text-center"
                                     data-name="${product.name}" 
-                                    data-price="${product.price}" 
                                     data-image="perfume">
                                 Add to Cart
                             </button>
@@ -487,7 +479,6 @@
         function filterProducts() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const categoryFilter = document.getElementById('categoryFilter').value.toLowerCase();
-            const priceFilter = document.getElementById('priceFilter').value;
             const sortBy = document.getElementById('sortBy').value;
 
             filteredProducts = allProducts.filter(product => {
@@ -495,26 +486,7 @@
                                     product.description.toLowerCase().includes(searchTerm);
                 const matchesCategory = !categoryFilter || product.category === categoryFilter;
                 
-                let matchesPrice = true;
-                if (priceFilter) {
-                    const price = parseFloat(product.price);
-                    switch (priceFilter) {
-                        case '0-300':
-                            matchesPrice = price >= 0 && price <= 300;
-                            break;
-                        case '300-400':
-                            matchesPrice = price > 300 && price <= 400;
-                            break;
-                        case '400-500':
-                            matchesPrice = price > 400 && price <= 500;
-                            break;
-                        case '500+':
-                            matchesPrice = price > 500;
-                            break;
-                    }
-                }
-
-                return matchesSearch && matchesCategory && matchesPrice;
+                return matchesSearch && matchesCategory;
             });
 
             // Sort products
@@ -522,10 +494,8 @@
                 switch (sortBy) {
                     case 'name':
                         return a.name.localeCompare(b.name);
-                    case 'price-low':
-                        return parseFloat(a.price) - parseFloat(b.price);
-                    case 'price-high':
-                        return parseFloat(b.price) - parseFloat(a.price);
+                    case 'category':
+                        return a.category.localeCompare(b.category);
                     default:
                         return 0;
                 }
@@ -539,7 +509,6 @@
         function setupEventListeners() {
             document.getElementById('searchInput').addEventListener('input', filterProducts);
             document.getElementById('categoryFilter').addEventListener('change', filterProducts);
-            document.getElementById('priceFilter').addEventListener('change', filterProducts);
             document.getElementById('sortBy').addEventListener('change', filterProducts);
         }
 
@@ -562,8 +531,7 @@
         // Update cart total
         function updateCartTotal() {
             const cartTotal = document.getElementById('cart-total');
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            cartTotal.textContent = `₨${total.toFixed(2)}`;
+            cartTotal.textContent = `Contact for Pricing`;
         }
 
         // Render cart items
@@ -591,7 +559,7 @@
                                 </div>
                                 <div>
                                     <h4 class="text-yellow-400 font-semibold text-sm">${item.name}</h4>
-                                    <p class="text-gray-400 text-xs">₨${item.price}</p>
+                                    <p class="text-gray-400 text-xs">Contact for pricing</p>
                                 </div>
                             </div>
                             <div class="flex items-center space-x-2">
@@ -628,7 +596,7 @@
         }
 
         // Add item to cart
-        function addToCart(name, price, image) {
+        function addToCart(name, image) {
             const existingItem = cart.find(item => item.name === name);
             
             if (existingItem) {
@@ -636,7 +604,6 @@
             } else {
                 const newItem = {
                     name: name,
-                    price: parseFloat(price),
                     image: image,
                     quantity: 1
                 };
@@ -688,14 +655,13 @@
                 return;
             }
             
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             let message = `Hello! I would like to place an order:\n\n`;
             
             cart.forEach(item => {
-                message += `• ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
+                message += `• ${item.name} x${item.quantity}\n`;
             });
             
-            message += `\nTotal: $${total.toFixed(2)}\n\nPlease confirm my order. Thank you!`;
+            message += `\nPlease provide pricing and confirm my order. Thank you!`;
             
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
@@ -708,8 +674,7 @@
                 return;
             }
             
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            document.getElementById('cod-total').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('cod-total').textContent = `Contact for Pricing`;
             
             // Show COD modal
             const codModal = document.getElementById('cod-modal');
@@ -761,14 +726,12 @@
                 return;
             }
             
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
             // Create order summary
             let orderSummary = `Cash on Delivery Order:\n\n`;
             cart.forEach(item => {
-                orderSummary += `• ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
+                orderSummary += `• ${item.name} x${item.quantity}\n`;
             });
-            orderSummary += `\nTotal: $${total.toFixed(2)}\n`;
+            orderSummary += `\nPlease provide pricing\n`;
             orderSummary += `Customer Name: ${name}\n`;
             orderSummary += `Phone Number: ${phone}\n`;
             orderSummary += `Delivery Address: ${address}\n`;
@@ -929,9 +892,8 @@
             document.addEventListener('click', function(e) {
                 if (e.target.classList.contains('add-to-cart-btn')) {
                     const name = e.target.dataset.name;
-                    const price = e.target.dataset.price;
                     const image = e.target.dataset.image;
-                    addToCart(name, price, image);
+                    addToCart(name, image);
                 }
                 
                 // Quantity buttons

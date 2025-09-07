@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024">
+    <title>Crockery - MSM Traders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-gray-900 via-black to-gray-900 border-b-2 border-yellow-500 sticky top-0 z-50 backdrop-blur-md bg-opacity-95 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-3 group">
+                        <div class="relative">
+                            <div class="w-10 h-10 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-yellow-500/25">
+                                <i class="fas fa-shopping-cart text-black text-lg"></i>
+                            </div>
+                            <div class="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-star text-black text-xs"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent group-hover:animate-glow">MSM Traders</h1>
+                            <p class="text-xs text-yellow-500 font-medium">CLICK.SHOP.SMILE</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-lg mx-8">
+                    <div class="relative group">
+                        <div class="absolute inset-0 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-xl blur opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                        <div class="relative">
+                            <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-yellow-500"></i>
+                            <input type="text" placeholder="Search crockery, dinnerware, kitchenware..." 
+                                   class="relative w-full px-6 py-3 pl-12 pr-4 bg-gray-800/90 border-2 border-yellow-500/50 text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-4 focus:ring-yellow-500/30 focus:border-yellow-400 transition-all duration-300 backdrop-blur-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Actions -->
+                <div class="flex items-center space-x-4">
+                    <button class="relative p-2 text-yellow-500 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:bg-yellow-500/10 rounded-lg group">
+                        <i class="fas fa-user text-xl group-hover:animate-bounce"></i>
+                        <div class="absolute inset-0 bg-yellow-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </button>
+                    <a href="orders.html" class="relative p-2 text-yellow-500 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:bg-yellow-500/10 rounded-lg group">
+                        <i class="fas fa-box text-xl group-hover:animate-bounce"></i>
+                        <div class="absolute inset-0 bg-yellow-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </a>
+                    <button class="relative p-2 text-yellow-500 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:bg-yellow-500/10 rounded-lg group">
+                        <i class="fas fa-shopping-cart text-xl group-hover:animate-bounce"></i>
+                        <span class="absolute -top-1 -right-1 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold shadow-lg animate-pulse">3</span>
+                        <div class="absolute inset-0 bg-yellow-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </button>
+                    <button class="p-2 text-yellow-500 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:bg-yellow-500/10 rounded-lg group" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl group-hover:animate-spin"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <!-- Left Sidebar -->
+        <aside class="hidden lg:block w-64 mr-6 space-y-6">
+            <!-- Categories Section -->
+            <div class="bg-gray-900 border border-yellow-500 rounded-lg shadow-md p-6">
+                <h3 class="text-lg font-semibold text-yellow-500 mb-4">Categories</h3>
+                <nav class="space-y-2">
+                    <a href="car_care.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
+                        <i class="fas fa-car mr-2"></i>Car Care
+                    </a>
+                    <a href="house_care.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
+                        <i class="fas fa-home mr-2"></i>House Care
+                    </a>
+                    <a href="perfumes.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
+                        <i class="fas fa-spray-can mr-2"></i>Perfumes
+                    </a>
+                    <a href="laptops.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
+                        <i class="fas fa-laptop mr-2"></i>Laptops
+                    </a>
+                    <a href="electronics.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
+                        <i class="fas fa-mobile-alt mr-2"></i>Electronics
+                    </a>
+                    <a href="cosmetics.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
+                        <i class="fas fa-palette mr-2"></i>Cosmetics
+                    </a>
+                    <a href="crockery.html" class="block py-2 px-3 text-yellow-400 bg-yellow-500/10 rounded-lg transition-colors">
+                        <i class="fas fa-utensils mr-2"></i>Crockery
+                    </a>
+                    <a href="sale.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
+                        <i class="fas fa-tags mr-2"></i>Sale
+                    </a>
+                    <a href="contact.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>Contact
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1">
+            <!-- Page Header -->
+            <div class="mb-8">
+                <h1 class="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">Crockery & Dinnerware</h1>
+                <p class="text-gray-300 text-lg">Elegant crockery sets for your dining table and kitchen</p>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Product 1 - Stainless Steel Chafing Dish -->
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                        <img src="crockery/Elegant Stainless Steel Serving Dish with Tempered Glass Lid.png" 
+                             alt="Stainless Steel Chafing Dish" 
+                             class="w-full h-full object-cover rounded-xl">
+                        <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                            New
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Stainless Steel Chafing Dish</h3>
+                    <p class="text-gray-400 text-sm mb-3">Premium chafing dish with glass lid and fuel holder for keeping food warm</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨4,500</span>
+                        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 - Black Non-Stick Cookware Set -->
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                        <img src="crockery/Non-Stick Cooking Set with Glass Lid.png" 
+                             alt="Black Non-Stick Cookware Set" 
+                             class="w-full h-full object-cover rounded-xl">
+                        <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                            -15%
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Black Non-Stick Cookware Set</h3>
+                    <p class="text-gray-400 text-sm mb-3">Complete 7-piece non-stick cookware set with frying pan, pots, and lids</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨28,950</span>
+                        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 - Cast Iron Pan with 7 Wells -->
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                        <img src="crockery/Premium Cast Iron Muffin Pan – Durable & Non-Stick Bakeware.png" 
+                             alt="Cast Iron Pan with 7 Wells" 
+                             class="w-full h-full object-cover rounded-xl">
+                        <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                            Popular
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Cast Iron Pan with 7 Wells</h3>
+                    <p class="text-gray-400 text-sm mb-3">Round cast iron pan with 7 circular wells for cooking multiple items simultaneously</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨6,440</span>
+                        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4 - Rectangular Cast Iron Pan -->
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                        <img src="crockery/Cast Iron Casserole.webp" 
+                             alt="Rectangular Cast Iron Pan" 
+                             class="w-full h-full object-cover rounded-xl">
+                        <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                            Best Seller
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Rectangular Cast Iron Pan</h3>
+                    <p class="text-gray-400 text-sm mb-3">Durable rectangular cast iron pan with integrated handles, perfect for baking and roasting</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨7,000 – ₨8,400</span>
+                        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 5 - 3 Tier Oval Porcelain Bowls Set -->
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                        <img src="crockery/cake dishes/3 Tier Serving Tray with Golden Stand.png" 
+                             alt="3 Tier Oval Porcelain Bowls Set" 
+                             class="w-full h-full object-cover rounded-xl">
+                        <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                            Premium
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">3 Tier Oval Porcelain Bowls Set with Stand</h3>
+                    <p class="text-gray-400 text-sm mb-3">Elegant three-tiered serving set with white oval porcelain bowls and golden metal stand - dishwasher, microwave, and oven safe</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨8,500</span>
+                        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cutlery Section -->
+            <div class="mt-16">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">Premium Cutlery Collection</h2>
+                    <p class="text-gray-300 text-lg">High-quality cutlery sets for elegant dining experiences</p>
+                </div>
+
+                <!-- Cutlery Product Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- German Family International Kitchen Utensil Set -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cutlery/Kitchen Cutlery Knife Set 12pcs.jpeg" 
+                                 alt="German Family International Kitchen Utensil Set" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Premium
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">German Family International Kitchen Utensil Set (12-Piece)</h3>
+                        <p class="text-gray-400 text-sm mb-3">Premium quality German kitchen utensil set with blue speckled stand, knives with blue handles, and black utensils</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨9,950</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- AVD High Quality Cutlery Set -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cutlery/AYD 84Pcs Golden Stainless Steel Cutlery Set.jpg" 
+                                 alt="AVD High Quality Cutlery Set" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-bold">
+                                Luxury
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">AVD High Quality Cutlery Set (84-Piece)</h3>
+                        <p class="text-gray-400 text-sm mb-3">Luxurious golden cutlery set in premium wooden presentation box with two-tiered design and comprehensive serving pieces</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨34,950</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Golden Cutlery Set -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cutlery/Gold Hammered Silverware Set.jpg" 
+                                 alt="Golden Cutlery Set" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Premium
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Golden Cutlery Set (5-Piece)</h3>
+                        <p class="text-gray-400 text-sm mb-3">Elegant golden cutlery set with hammered texture, featuring fork, knife, large fork, large spoon, and small spoon</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨22,500</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Two-Tone Cutlery Set -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cutlery/White & Gold Cutlery Set Matte Complete Stainless Steel 4Pcs.jpg" 
+                                 alt="Two-Tone Cutlery Set" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Modern
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Two-Tone Cutlery Set (4-Piece)</h3>
+                        <p class="text-gray-400 text-sm mb-3">Modern elegant cutlery with golden functional parts and white handles, featuring knife, large spoon, fork, and small spoon</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨2,050</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Modern Silver Cutlery Set -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cutlery/Silver Cutlery Set Matte Complete Stainless Steel 24Pcs.jpg" 
+                                 alt="Modern Silver Cutlery Set" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Elegant
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Modern Silver Cutlery Set (4-Piece)</h3>
+                        <p class="text-gray-400 text-sm mb-3">Polished silver cutlery with sleek elongated handles and decorative elements, featuring dinner fork, knife, soup spoon, and teaspoon</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨16,995</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Sleek Golden Cutlery Set -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cutlery/Golden Cutlery Set Matte Complete Stainless Steel 24Pcs.jpg" 
+                                 alt="Sleek Golden Cutlery Set" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-yellow-600 text-black px-2 py-1 rounded-full text-xs font-bold">
+                                Luxury
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Sleek Golden Cutlery Set (4-Piece)</h3>
+                        <p class="text-gray-400 text-sm mb-3">Highly polished golden cutlery with sleek modern design, featuring elegant tapered handles and decorative bulbous details</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨16,800</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- White Asian-Style Soup Spoon -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cutlery holders/Asian Long Handle Ceramic Soup.jpg" 
+                                 alt="White Asian-Style Soup Spoon" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-white text-gray-800 px-2 py-1 rounded-full text-xs font-bold">
+                                Classic
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">White Asian-Style Soup Spoon</h3>
+                        <p class="text-gray-400 text-sm mb-3">Pristine white ceramic soup spoon with deep oval bowl and curved handle, perfect for Asian cuisine</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨2,999</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cake Dishes Section -->
+            <div class="mt-16">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">Elegant Cake Dishes Collection</h2>
+                    <p class="text-gray-300 text-lg">Beautiful cake stands and serving dishes for special occasions and celebrations</p>
+                </div>
+
+                <!-- Cake Dishes Product Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Luxurious Two-Tiered Golden Cake Stand -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cake dishes/2 Tier Serving Platter Cake dish Golden Royal design.jpg" 
+                                 alt="Luxurious Two-Tiered Golden Cake Stand" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-bold">
+                                Luxury
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Luxurious Two-Tiered Golden Cake Stand</h3>
+                        <p class="text-gray-400 text-sm mb-3">Opulent two-tiered cake stand with polished golden metal frame, intricate grapevine embellishments, and clear glass plates</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨7,450</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Three-Tiered Golden Cake Stand -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cake dishes/3 Tier Serving Platter Cake dish Golden Royal design.jpg" 
+                                 alt="Three-Tiered Golden Cake Stand" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Premium
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Three-Tiered Golden Cake Stand</h3>
+                        <p class="text-gray-400 text-sm mb-3">Elegant three-tiered serving stand with golden grapevine decorations, clear glass plates, and ornate golden handle</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨9,050</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Royal Alba Bone China Cake Stand -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cake dishes/White Cake Stand With Metal Handles.jpg" 
+                                 alt="Royal Alba Bone China Cake Stand" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Classic
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Royal Alba Bone China Cake Stand (3-Tier)</h3>
+                        <p class="text-gray-400 text-sm mb-3">Classic English bone china cake stand with blue floral pattern, golden accents, and scalloped edges - perfect for afternoon tea</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨6,500</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Royal Albert Floral Cake Stand -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cake dishes/Multi-Tier Cake Stand – White.jpg" 
+                                 alt="Royal Albert Floral Cake Stand" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Elegant
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Royal Albert Floral Cake Stand (3-Tier)</h3>
+                        <p class="text-gray-400 text-sm mb-3">Delicate bone china cake stand with intricate floral pattern in purple, blue, and pink, featuring golden rims and ornate handle</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨5,950</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Water Sets Section -->
+            <div class="mt-16">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">Premium Water Sets Collection</h2>
+                    <p class="text-gray-300 text-lg">Elegant water bottles, jugs, and sets for hydration and serving</p>
+                </div>
+
+                <!-- Water Sets Product Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Premium Glass Water Pitcher Set -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/water sets/GLASS CUP AND PITCHER, 7 PCS.jpg" 
+                                 alt="Premium Glass Water Pitcher Set with Golden Handles" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Premium
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Premium Glass Water Pitcher Set with Golden Handles</h3>
+                        <p class="text-gray-400 text-sm mb-3">High-quality borosilicate glass water pitcher with matching glasses, featuring elegant golden handles and bamboo lid</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨5,500</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Elegant Glass Water Pitcher with Tumblers -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/water sets/Water Set 7 pcs Nordic Classic Style.jpg" 
+                                 alt="Elegant Glass Water Pitcher with Tumblers" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                New Arrival
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Elegant Glass Water Pitcher with Tumblers</h3>
+                        <p class="text-gray-400 text-sm mb-3">Beautiful clear glass pitcher with wooden lid and matching tumblers, perfect for serving infused water with lemon and mint</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨4,450</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cutlery Holders Section -->
+            <div class="mt-16">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">Elegant Cutlery Holders Collection</h2>
+                    <p class="text-gray-300 text-lg">Stylish and functional cutlery organizers for your dining table and kitchen</p>
+                </div>
+
+                <!-- Cutlery Holders Product Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- All-in-One Utensil Caddy -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cutlery holders/All-in-One Utensil Caddy- Black.jpg" 
+                                 alt="All-in-One Utensil Caddy" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Natural
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">All-in-One Utensil Caddy</h3>
+                        <p class="text-gray-400 text-sm mb-3">Black metal utensil caddy with multiple compartments for organizing cutlery, napkins, and serving accessories</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨2,800</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Kitchen Utensil Holder -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cutlery holders/Kitchen Utensil Holder -2 Cups with.jpg" 
+                                 alt="Kitchen Utensil Holder" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Elegant
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Kitchen Utensil Holder with 2 Cups</h3>
+                        <p class="text-gray-400 text-sm mb-3">Stylish gold metal frame with dark green ribbed glass cups for organizing chopsticks and cutlery</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨3,500</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Kitchen Organizer Cutlery Storage -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cutlery holders/Kitchen Organizer Cutlery Storage.jpg" 
+                                 alt="Kitchen Organizer Cutlery Storage" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Eco-Friendly
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Kitchen Organizer Cutlery Storage</h3>
+                        <p class="text-gray-400 text-sm mb-3">Modern kitchen organizer with multiple compartments for efficient cutlery storage and organization</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨2,200</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Utensil Caddy Golden -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cutlery holders/Utensil Caddy Golden.png" 
+                                 alt="Utensil Caddy Golden" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-gray-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Modern
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Golden Utensil Caddy</h3>
+                        <p class="text-gray-400 text-sm mb-3">Elegant golden utensil caddy with modern design, perfect for organizing cutlery in style</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨3,800</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Elegant Gold Dinnerware Set -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cutlery holders/Elegant Gold Dinnerware Set (For 6).jpg" 
+                                 alt="Elegant Gold Dinnerware Set" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Premium
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Elegant Gold Dinnerware Set (For 6)</h3>
+                        <p class="text-gray-400 text-sm mb-3">Luxurious gold dinnerware set with elegant design, perfect for formal dining occasions and special events</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨4,500</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Gold Flatware Set -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/cutlery holders/Gold Flatware Set.jpg" 
+                                 alt="Gold Flatware Set" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-yellow-600 text-black px-2 py-1 rounded-full text-xs font-bold">
+                                Luxury
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Gold Flatware Set</h3>
+                        <p class="text-gray-400 text-sm mb-3">Premium gold flatware set with elegant design and luxurious finish, perfect for sophisticated dining experiences</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨5,200</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kitchen Items Section -->
+            <div class="mt-16">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">Essential Kitchen Items Collection</h2>
+                    <p class="text-gray-300 text-lg">Practical and stylish kitchen accessories for everyday cooking and dining</p>
+                </div>
+
+                <!-- Kitchen Items Product Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Insulated Food Container -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/kitchen ware/White Floral Insulated Food Container.jpg" 
+                                 alt="Floral Design Insulated Food Container" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Insulated
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Floral Design Insulated Food Container</h3>
+                        <p class="text-gray-400 text-sm mb-3">White round insulated food container with beautiful floral design, golden accents, and secure lid with handle</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨5,500 – ₨6,900</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Red Serving Dishes Set -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/kitchen ware/Maroon Food Warmer.webp" 
+                                 alt="Red Serving Dishes Set" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Premium
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Red Serving Dishes Set (3-Piece)</h3>
+                        <p class="text-gray-400 text-sm mb-3">Deep red matte finish serving dishes with golden handles and knobs, perfect for elegant dining and food presentation</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨11,000 – ₨18,000</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Rotating Spice Rack -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/kitchen ware/Revolving Countertop Spice Rack.jpg" 
+                                 alt="Stainless Steel Rotating Spice Rack" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Rotating
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Stainless Steel Rotating Spice Rack (12 Jars)</h3>
+                        <p class="text-gray-400 text-sm mb-3">Modern rotating spice rack with 12 glass jars, brushed stainless steel construction, and organized spice storage</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨6,000</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Kitchen Storage Container -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/kitchen ware/Dual Dish Drying Rack.jpeg" 
+                                 alt="Premium Kitchen Storage Container Set" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Airtight
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Premium Kitchen Storage Container Set</h3>
+                        <p class="text-gray-400 text-sm mb-3">High-quality airtight storage containers for keeping food fresh, perfect for pantry organization and meal prep</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨1,900</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Premium Cookware Set -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                            <img src="crockery/kitchen ware/Hot Pot Casserole Set.webp" 
+                                 alt="Professional Stainless Steel Cookware Set" 
+                                 class="w-full h-full object-cover rounded-xl">
+                            <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                Professional
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Professional Stainless Steel Cookware Set (12-Piece)</h3>
+                        <p class="text-gray-400 text-sm mb-3">High-end stainless steel cookware set with non-stick coating, perfect for professional cooking and home chefs</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨16,999</span>
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-yellow-500 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-yellow-500 mb-4">MSM Traders</h3>
+                    <p class="text-gray-400 text-sm">Your trusted partner for quality products and exceptional service.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Home</a></li>
+                        <li><a href="car_care.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Car Care</a></li>
+                        <li><a href="house_care.html" class="text-gray-400 hover:text-yellow-500 transition-colors">House Care</a></li>
+                        <li><a href="perfumes.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Perfumes</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="laptops.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Laptops</a></li>
+                        <li><a href="electronics.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Electronics</a></li>
+                        <li><a href="cosmetics.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Cosmetics</a></li>
+                        <li><a href="crockery.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Crockery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li><a href="contact.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Contact Us</a></li>
+                        <li><a href="sale.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Sale</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400 text-sm">&copy; 2024 MSM Traders. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

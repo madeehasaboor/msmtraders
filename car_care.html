@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1024">
     <title>Car Care - MSM Traders</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -55,42 +55,98 @@
                 transform: translateX(0);
             }
         }
+
+        /* Breaking News Ticker Animations */
+        @keyframes ticker {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .ticker-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .ticker-content {
+            display: flex;
+            white-space: nowrap;
+            animation: ticker 60s linear infinite;
+        }
+
+        .ticker-item {
+            display: inline-block;
+            margin-right: 50px;
+            font-weight: 500;
+            font-size: 14px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Pause animation on hover */
+        .ticker-container:hover .ticker-content {
+            animation-play-state: paused;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .ticker-item {
+                font-size: 12px;
+                margin-right: 30px;
+            }
+            .ticker-content {
+                animation-duration: 45s;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ticker-item {
+                font-size: 11px;
+                margin-right: 20px;
+            }
+            .ticker-content {
+                animation-duration: 35s;
+            }
+        }
     </style>
 </head>
 <body class="bg-black">
     <!-- Navigation -->
-    <nav class="bg-black border-b border-yellow-400 sticky top-0 z-50">
+    <nav class="bg-black border-b border-yellow-500 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <div class="flex items-center space-x-3">
-                        <div class="bg-black text-yellow-400 rounded-lg p-2 relative">
+                        <div class="bg-black text-yellow-500 rounded-lg p-2 relative">
                             <i class="fas fa-shopping-cart text-xl"></i>
                             <i class="fas fa-star text-sm absolute top-0 right-0 transform translate-x-1 -translate-y-1"></i>
                         </div>
                         <div>
-                            <a href="index.html" class="text-2xl font-bold text-yellow-400">Msmtraders</a>
-                            <p class="text-xs text-yellow-300 uppercase tracking-wide">CLICK.SHOP.SMILE</p>
+                            <a href="index.html" class="text-2xl font-bold text-yellow-500">MSM Traders</a>
+                            <p class="text-xs text-yellow-400 uppercase tracking-wide">CLICK.SHOP.SMILE</p>
                         </div>
                     </div>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="index.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                        <a href="car care.html" class="text-yellow-400 hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium">Car Care</a>
-                        <a href="sale.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium">Sale</a>
-                        <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                        <a href="index.html" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="car care.html" class="text-yellow-500 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium">Car Care</a>
+                        <a href="sale.html" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium">Sale</a>
+                        <a href="contact.html" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button class="text-gray-300 hover:text-yellow-400 p-2 rounded-lg hover:bg-gray-800 transition duration-200">
+                    <button class="text-gray-300 hover:text-yellow-500 p-2 rounded-lg hover:bg-gray-800 transition duration-200">
                         <i class="fas fa-search text-xl"></i>
                     </button>
-                    <button id="cart-button" class="text-gray-300 hover:text-yellow-400 relative p-2 rounded-lg hover:bg-gray-800 transition duration-200 transform hover:scale-105">
+                    <button id="cart-button" class="text-gray-300 hover:text-yellow-500 relative p-2 rounded-lg hover:bg-gray-800 transition duration-200 transform hover:scale-105">
                         <i class="fas fa-shopping-cart text-xl"></i>
-                        <span id="cart-count" class="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold transition-all duration-200">0</span>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-yellow-500 text-black text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold transition-all duration-200">0</span>
                     </button>
-                    <button class="md:hidden text-gray-300 hover:text-yellow-400 p-2 rounded-lg hover:bg-gray-800 transition duration-200">
+                    <button class="text-gray-300 hover:text-yellow-500 p-2 rounded-lg hover:bg-gray-800 transition duration-200">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
@@ -101,11 +157,11 @@
     <!-- Shopping Cart Modal -->
     <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
         <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-400">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-500">
                 <!-- Cart Header -->
-                <div class="flex items-center justify-between p-4 border-b border-yellow-400">
-                    <h3 class="text-xl font-bold text-yellow-400">Shopping Cart</h3>
-                    <button id="close-cart" class="text-gray-400 hover:text-yellow-400 text-2xl font-bold">
+                <div class="flex items-center justify-between p-4 border-b border-yellow-500">
+                    <h3 class="text-xl font-bold text-yellow-500">Shopping Cart</h3>
+                    <button id="close-cart" class="text-gray-400 hover:text-yellow-500 text-2xl font-bold">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
@@ -120,10 +176,10 @@
                 </div>
                 
                 <!-- Cart Footer -->
-                <div class="border-t border-yellow-400 p-4">
+                <div class="border-t border-yellow-500 p-4">
                     <div class="flex justify-between items-center mb-4">
-                        <span class="text-lg font-semibold text-yellow-400">Total:</span>
-                        <span id="cart-total" class="text-xl font-bold text-yellow-400">$0.00</span>
+                        <span class="text-lg font-semibold text-yellow-500">Total:</span>
+                        <span id="cart-total" class="text-xl font-bold text-yellow-500">$0.00</span>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-2">
                         <button id="clear-cart" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm">
@@ -146,11 +202,11 @@
     <!-- Jazz Cash Payment Modal -->
     <div id="jazzcash-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
         <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
-            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-sm sm:max-w-md mx-auto border border-yellow-400">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-sm sm:max-w-md mx-auto border border-yellow-500">
                 <!-- Payment Header -->
-                <div class="flex items-center justify-between p-4 border-b border-yellow-400">
-                    <h3 class="text-xl font-bold text-yellow-400">Jazz Cash Payment</h3>
-                    <button id="close-jazzcash" class="text-gray-400 hover:text-yellow-400 text-2xl font-bold">
+                <div class="flex items-center justify-between p-4 border-b border-yellow-500">
+                    <h3 class="text-xl font-bold text-yellow-500">Jazz Cash Payment</h3>
+                    <button id="close-jazzcash" class="text-gray-400 hover:text-yellow-500 text-2xl font-bold">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
@@ -163,34 +219,34 @@
                                 <i class="fas fa-credit-card text-2xl"></i>
                             </div>
                         </div>
-                        <h4 class="text-lg font-semibold text-yellow-400 text-center mb-2">Secure Payment</h4>
+                        <h4 class="text-lg font-semibold text-yellow-500 text-center mb-2">Secure Payment</h4>
                         <p class="text-gray-400 text-sm text-center mb-4">Complete your purchase securely with Jazz Cash</p>
                     </div>
                     
                     <div class="space-y-4">
                         <div>
-                            <label class="block text-yellow-400 text-sm font-medium mb-2">Order Total</label>
+                            <label class="block text-yellow-500 text-sm font-medium mb-2">Order Total</label>
                             <div class="bg-gray-800 rounded-lg p-3 border border-gray-700">
-                                <span id="jazzcash-total" class="text-2xl font-bold text-yellow-400">$0.00</span>
+                                <span id="jazzcash-total" class="text-2xl font-bold text-yellow-500">$0.00</span>
                             </div>
                         </div>
                         
                         <div>
-                            <label class="block text-yellow-400 text-sm font-medium mb-2">Jazz Cash Number</label>
+                            <label class="block text-yellow-500 text-sm font-medium mb-2">Jazz Cash Number</label>
                             <input type="tel" id="jazzcash-number" placeholder="03XXXXXXXXX" 
-                                   class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400">
+                                   class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500">
                         </div>
                         
                         <div>
-                            <label class="block text-yellow-400 text-sm font-medium mb-2">Transaction ID (Optional)</label>
+                            <label class="block text-yellow-500 text-sm font-medium mb-2">Transaction ID (Optional)</label>
                             <input type="text" id="transaction-id" placeholder="Enter transaction ID after payment" 
-                                   class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400">
+                                   class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500">
                         </div>
                         
                         <div class="bg-gray-800 rounded-lg p-3 border border-gray-700">
-                            <h5 class="text-yellow-400 font-semibold mb-2">Payment Instructions:</h5>
+                            <h5 class="text-yellow-500 font-semibold mb-2">Payment Instructions:</h5>
                             <ol class="text-gray-300 text-xs sm:text-sm space-y-1">
-                                <li>1. Send payment to: <span class="text-yellow-400 font-bold">+923258573925</span></li>
+                                <li>1. Send payment to: <span class="text-yellow-500 font-bold">+923258573925</span></li>
                                 <li>2. Use your order total as amount</li>
                                 <li>3. Enter your Jazz Cash number above</li>
                                 <li>4. Add transaction ID (optional)</li>
@@ -201,7 +257,7 @@
                 </div>
                 
                 <!-- Payment Footer -->
-                <div class="border-t border-yellow-400 p-4">
+                <div class="border-t border-yellow-500 p-4">
                     <div class="flex flex-col sm:flex-row gap-2">
                         <button id="cancel-jazzcash" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm">
                             Cancel
@@ -221,23 +277,23 @@
         <div class="absolute inset-0 bg-black opacity-50"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <div class="inline-flex items-center justify-center w-20 h-20 bg-yellow-400 rounded-full mb-6">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-yellow-500 rounded-full mb-6">
                     <i class="fas fa-car text-3xl text-black"></i>
                 </div>
-                <h1 class="text-5xl md:text-7xl font-bold text-yellow-400 mb-4">Car Care</h1>
-                <p class="text-2xl text-yellow-400 font-semibold mb-4">CLICK.SHOP.SMILE</p>
+                <h1 class="text-5xl md:text-7xl font-bold text-yellow-500 mb-4">Car Care</h1>
+                <p class="text-2xl text-yellow-500 font-semibold mb-4">CLICK.SHOP.SMILE</p>
                 <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
                     Professional car care products for every need. From cleaning to protection, 
                     we have everything to keep your vehicle looking and performing its best.
                 </p>
                 <div class="mt-8 flex justify-center space-x-4">
-                    <div class="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold">
+                    <div class="bg-yellow-500 text-black px-6 py-3 rounded-full font-semibold">
                         <i class="fas fa-shield-alt mr-2"></i>Premium Quality
                     </div>
-                    <div class="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold">
+                    <div class="bg-yellow-500 text-black px-6 py-3 rounded-full font-semibold">
                         <i class="fas fa-truck mr-2"></i>Fast Delivery
                     </div>
-                    <div class="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold">
+                    <div class="bg-yellow-500 text-black px-6 py-3 rounded-full font-semibold">
                         <i class="fas fa-star mr-2"></i>Expert Approved
                     </div>
                     <button class="add-to-cart-btn bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full font-semibold transition duration-300" 
@@ -252,17 +308,17 @@
     </div>
 
     <!-- Search and Filters -->
-    <div class="bg-gray-900 border-b border-yellow-400">
+    <div class="bg-gray-900 border-b border-yellow-500">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex flex-col md:flex-row gap-4">
                 <div class="flex-1">
                     <div class="relative">
-                        <input type="text" id="searchInput" placeholder="Search car care products..." class="w-full pl-10 pr-4 py-3 bg-gray-800 border border-yellow-400 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400">
-                        <i class="fas fa-search absolute left-3 top-3 text-yellow-400"></i>
+                        <input type="text" id="searchInput" placeholder="Search car care products..." class="w-full pl-10 pr-4 py-3 bg-gray-800 border border-yellow-500 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <i class="fas fa-search absolute left-3 top-3 text-yellow-500"></i>
                     </div>
                 </div>
                 <div class="flex gap-4">
-                    <select id="categoryFilter" class="bg-gray-800 border border-yellow-400 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                    <select id="categoryFilter" class="bg-gray-800 border border-yellow-500 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-yellow-500">
                         <option value="">All Categories</option>
                         <option value="car care">Car Care</option>
                         <option value="polish and shinners">Polish & Shiners</option>
@@ -273,9 +329,10 @@
                         <option value="cleaners">Cleaners</option>
                         <option value="microfiber clothes">Microfiber Clothes</option>
                         <option value="radiator coolers">Radiator Coolers</option>
+                        <option value="lubricants">Lubricants</option>
                         <option value="house cleaners">House Cleaners</option>
                         </select>
-                    <select id="priceFilter" class="bg-gray-800 border border-yellow-400 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                    <select id="priceFilter" class="bg-gray-800 border border-yellow-500 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-yellow-500">
                         <option value="">All Prices</option>
                         <option value="0-25">$0 - $25</option>
                         <option value="25-50">$25 - $50</option>
@@ -287,114 +344,142 @@
         </div>
     </div>
 
+    <!-- Breaking News Ticker -->
+    <div class="bg-red-600 text-white py-3 overflow-hidden relative z-50">
+        <div class="flex items-center">
+            <div class="bg-black px-4 py-1 mr-4 flex-shrink-0">
+                <span class="font-bold text-sm uppercase tracking-wide">Breaking News</span>
+            </div>
+            <div class="ticker-container overflow-hidden flex-1">
+                <div class="ticker-content">
+                    <span class="ticker-item">🚗 Special Offer: 20% OFF on all Formula 1 Car Care Products! Limited time only!</span>
+                    <span class="ticker-item">✨ Professional Car Wax & Polish - Get Showroom Finish at Home!</span>
+                    <span class="ticker-item">🛡️ Anti-Rust Lubricant Sprays - Protect Your Vehicle Year-Round!</span>
+                    <span class="ticker-item">🧽 Premium Microfiber Cloths - Scratch-Free Cleaning Guaranteed!</span>
+                    <span class="ticker-item">🎨 Professional Spray Paints - Perfect Color Match Every Time!</span>
+                    <span class="ticker-item">💧 Radiator Coolers - Keep Your Engine Running Cool!</span>
+                    <span class="ticker-item">🚿 Car Shampoos & Cleaners - Gentle Yet Effective Cleaning!</span>
+                    <span class="ticker-item">🌟 Customer Satisfaction Guaranteed - Quality Car Care Products!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Categories Section -->
     <div class="bg-gray-900 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-yellow-400 mb-4">Car Care Categories</h2>
+                <h2 class="text-4xl font-bold text-yellow-500 mb-4">Car Care Categories</h2>
                 <p class="text-xl text-gray-300 max-w-2xl mx-auto">Professional car care solutions organized by category. Find exactly what you need for your vehicle.</p>
                 <div class="mt-6 flex justify-center">
-                    <div class="w-24 h-1 bg-yellow-400 rounded-full"></div>
+                    <div class="w-24 h-1 bg-yellow-500 rounded-full"></div>
                 </div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-400" onclick="filterByCategory('car care')">
-                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-500" onclick="filterByCategory('car care')">
+                    <div class="bg-yellow-500 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-car text-2xl"></i>
                     </div>
-                    <h3 class="text-yellow-400 font-semibold">Car Care</h3>
+                    <h3 class="text-yellow-500 font-semibold">Car Care</h3>
                     <p class="text-gray-300 text-sm mt-2">Auto accessories & maintenance</p>
                 </div>
-                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-400" onclick="filterByCategory('polish and shinners')">
-                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-500" onclick="filterByCategory('polish and shinners')">
+                    <div class="bg-yellow-500 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-sparkles text-2xl"></i>
                     </div>
-                    <h3 class="text-yellow-400 font-semibold">Polish & Shiners</h3>
+                    <h3 class="text-yellow-500 font-semibold">Polish & Shiners</h3>
                     <p class="text-gray-300 text-sm mt-2">Make everything shine bright</p>
                 </div>
-                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-400" onclick="filterByCategory('protectant sprays')">
-                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-500" onclick="filterByCategory('protectant sprays')">
+                    <div class="bg-yellow-500 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-spray-can text-2xl"></i>
                     </div>
-                    <h3 class="text-yellow-400 font-semibold">Protectant Sprays</h3>
+                    <h3 class="text-yellow-500 font-semibold">Protectant Sprays</h3>
                     <p class="text-gray-300 text-sm mt-2">Shine, protect & freshen</p>
                 </div>
-                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-400" onclick="filterByCategory('spray paints')">
-                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-500" onclick="filterByCategory('spray paints')">
+                    <div class="bg-yellow-500 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-paint-brush text-2xl"></i>
                     </div>
-                    <h3 class="text-yellow-400 font-semibold">Spray Paints</h3>
+                    <h3 class="text-yellow-500 font-semibold">Spray Paints</h3>
                     <p class="text-gray-300 text-sm mt-2">Professional paint solutions</p>
                 </div>
-                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-400" onclick="filterByCategory('wash & wax')">
-                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-500" onclick="filterByCategory('wash & wax')">
+                    <div class="bg-yellow-500 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-car-wash text-2xl"></i>
                     </div>
-                    <h3 class="text-yellow-400 font-semibold">Wash & Wax</h3>
+                    <h3 class="text-yellow-500 font-semibold">Wash & Wax</h3>
                     <p class="text-gray-300 text-sm mt-2">Clean, shine & protect</p>
                 </div>
-                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-400" onclick="filterByCategory('wash shampoos')">
-                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-500" onclick="filterByCategory('wash shampoos')">
+                    <div class="bg-yellow-500 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-soap text-2xl"></i>
                     </div>
-                    <h3 class="text-yellow-400 font-semibold">Wash Shampoos</h3>
+                    <h3 class="text-yellow-500 font-semibold">Wash Shampoos</h3>
                     <p class="text-gray-300 text-sm mt-2">Gentle cleaning solutions</p>
                 </div>
-                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-400" onclick="filterByCategory('cleaners')">
-                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-500" onclick="filterByCategory('cleaners')">
+                    <div class="bg-yellow-500 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-broom text-2xl"></i>
                     </div>
-                    <h3 class="text-yellow-400 font-semibold">Cleaners</h3>
+                    <h3 class="text-yellow-500 font-semibold">Cleaners</h3>
                     <p class="text-gray-300 text-sm mt-2">Deep cleaning solutions</p>
                 </div>
-                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-400" onclick="filterByCategory('microfiber clothes')">
-                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-500" onclick="filterByCategory('microfiber clothes')">
+                    <div class="bg-yellow-500 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-tshirt text-2xl"></i>
                     </div>
-                    <h3 class="text-yellow-400 font-semibold">Microfiber Clothes</h3>
+                    <h3 class="text-yellow-500 font-semibold">Microfiber Clothes</h3>
                     <p class="text-gray-300 text-sm mt-2">Premium cleaning cloths</p>
                 </div>
-                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-400" onclick="filterByCategory('radiator coolers')">
-                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-500" onclick="filterByCategory('radiator coolers')">
+                    <div class="bg-yellow-500 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-thermometer-half text-2xl"></i>
                     </div>
-                    <h3 class="text-yellow-400 font-semibold">Radiator Coolers</h3>
+                    <h3 class="text-yellow-500 font-semibold">Radiator Coolers</h3>
                     <p class="text-gray-300 text-sm mt-2">Engine cooling solutions</p>
                 </div>
-                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-400" onclick="filterByCategory('shampoos')">
-                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-500" onclick="filterByCategory('lubricants')">
+                    <div class="bg-yellow-500 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-oil-can text-2xl"></i>
+                    </div>
+                    <h3 class="text-yellow-500 font-semibold">Lubricants</h3>
+                    <p class="text-gray-300 text-sm mt-2">Anti-rust & lubrication solutions</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-500" onclick="filterByCategory('shampoos')">
+                    <div class="bg-yellow-500 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-soap text-2xl"></i>
                     </div>
-                    <h3 class="text-yellow-400 font-semibold">Shampoos</h3>
+                    <h3 class="text-yellow-500 font-semibold">Shampoos</h3>
                     <p class="text-gray-300 text-sm mt-2">Gentle cleaning solutions</p>
                 </div>
-                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-400" onclick="filterByCategory('car wax')">
-                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-500" onclick="filterByCategory('car wax')">
+                    <div class="bg-yellow-500 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-gem text-2xl"></i>
                     </div>
-                    <h3 class="text-yellow-400 font-semibold">Car Wax</h3>
+                    <h3 class="text-yellow-500 font-semibold">Car Wax</h3>
                     <p class="text-gray-300 text-sm mt-2">Premium protection & shine</p>
                 </div>
-                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-400" onclick="filterByCategory('cleaners')">
-                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-500" onclick="filterByCategory('cleaners')">
+                    <div class="bg-yellow-500 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-broom text-2xl"></i>
                     </div>
-                    <h3 class="text-yellow-400 font-semibold">Cleaners</h3>
+                    <h3 class="text-yellow-500 font-semibold">Cleaners</h3>
                     <p class="text-gray-300 text-sm mt-2">Deep cleaning solutions</p>
                 </div>
 
-                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-400" onclick="filterByCategory('house cleaners')">
-                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-500" onclick="filterByCategory('house cleaners')">
+                    <div class="bg-yellow-500 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-broom text-2xl"></i>
                     </div>
-                    <h3 class="text-yellow-400 font-semibold">House Cleaners</h3>
+                    <h3 class="text-yellow-500 font-semibold">House Cleaners</h3>
                     <p class="text-gray-300 text-sm mt-2">Cleaning supplies & tools</p>
                 </div>
-                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-400" onclick="filterByCategory('polish and shinners')">
-                    <div class="bg-yellow-400 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div class="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition duration-300 cursor-pointer border border-yellow-500" onclick="filterByCategory('polish and shinners')">
+                    <div class="bg-yellow-500 text-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-sparkles text-2xl"></i>
                     </div>
-                    <h3 class="text-yellow-400 font-semibold">Polish & Shiners</h3>
+                    <h3 class="text-yellow-500 font-semibold">Polish & Shiners</h3>
                     <p class="text-gray-300 text-sm mt-2">Make everything shine bright</p>
                 </div>
             </div>
@@ -405,12 +490,12 @@
     <div class="bg-black py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-yellow-400 mb-4">Featured Car Care Products</h2>
+                <h2 class="text-3xl font-bold text-yellow-500 mb-4">Featured Car Care Products</h2>
                 <p class="text-lg text-gray-300">Discover our premium selection of professional car care solutions</p>
             </div>
             <!-- Loading State -->
             <div id="loadingState" class="text-center py-12">
-                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-yellow-400"></div>
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-yellow-500"></div>
                 <p class="mt-4 text-gray-300">Loading products...</p>
             </div>
 
@@ -422,8 +507,8 @@
             
             <!-- No Products Found -->
             <div id="noProducts" class="hidden text-center py-12">
-                <i class="fas fa-search text-6xl text-yellow-400 mb-4"></i>
-                <h3 class="text-xl font-semibold text-yellow-400 mb-2">No products found</h3>
+                <i class="fas fa-search text-6xl text-yellow-500 mb-4"></i>
+                <h3 class="text-xl font-semibold text-yellow-500 mb-2">No products found</h3>
                 <p class="text-gray-300">Try adjusting your search or filter criteria</p>
             </div>
         </div>
@@ -431,13 +516,13 @@
         <!-- Pagination -->
         <div id="pagination" class="hidden mt-12 flex justify-center">
             <nav class="flex items-center space-x-2">
-                <button id="prevPage" class="px-4 py-2 bg-gray-800 border border-yellow-400 rounded-md text-sm font-medium text-yellow-400 hover:bg-yellow-400 hover:text-black transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                <button id="prevPage" class="px-4 py-2 bg-gray-800 border border-yellow-500 rounded-md text-sm font-medium text-yellow-500 hover:bg-yellow-500 hover:text-black transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
                     Previous
                 </button>
                 <div id="pageNumbers" class="flex space-x-1">
                     <!-- Page numbers will be generated here -->
                 </div>
-                <button id="nextPage" class="px-4 py-2 bg-gray-800 border border-yellow-400 rounded-md text-sm font-medium text-yellow-400 hover:bg-yellow-400 hover:text-black transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                <button id="nextPage" class="px-4 py-2 bg-gray-800 border border-yellow-500 rounded-md text-sm font-medium text-yellow-500 hover:bg-yellow-500 hover:text-black transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
                     Next
                 </button>
             </nav>
@@ -450,12 +535,12 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center space-x-3 mb-4">
-                        <div class="bg-black text-yellow-400 rounded-lg p-2 relative">
+                        <div class="bg-black text-yellow-500 rounded-lg p-2 relative">
                             <i class="fas fa-shopping-cart text-xl"></i>
                             <i class="fas fa-star text-sm absolute top-0 right-0 transform translate-x-1 -translate-y-1"></i>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-yellow-400">Msmtraders</h3>
+                            <h3 class="text-2xl font-bold text-yellow-500">MSM Traders</h3>
                             <p class="text-xs text-gray-400 uppercase tracking-wide">CLICK.SHOP.SMILE</p>
                         </div>
                     </div>
@@ -517,7 +602,6 @@
                 id: 1,
                 name: "AIM HARD WAX A-101",
                 description: "Formula cleans, shines, protects. High gloss shine and water beading protection. 200GM.",
-                price: "18.99",
                 category: "polish and shinners",
                 image_url: "CAR POLISH & SHINNERS/aim had wax.jpeg"
             },
@@ -525,7 +609,6 @@
                 id: 2,
                 name: "AIM FURNITURE POLISH",
                 description: "Premium furniture polish for wood surfaces. Restores shine and protects finish.",
-                price: "12.99",
                 category: "polish and shinners",
                 image_url: "CAR POLISH & SHINNERS/aim furtinure polish.jpeg"
             },
@@ -533,7 +616,6 @@
                 id: 3,
                 name: "AIM TIRE GEL 500ML",
                 description: "Moistening, lustrous, durable tire gel. Creates a long lasting high gloss wet look. 500ML.",
-                price: "15.50",
                 category: "polish and shinners",
                 image_url: "CAR POLISH & SHINNERS/aim tire gel 500ml.jpeg"
             },
@@ -541,7 +623,6 @@
                 id: 4,
                 name: "BLACK AND GOLD TIRE SHINE",
                 description: "High shine, dries fast, long lasting tire shine. Provides deep black wet look finish.",
-                price: "22.99",
                 category: "polish and shinners",
                 image_url: "CAR POLISH & SHINNERS/black and gold tire shine.jpeg"
             },
@@ -549,7 +630,6 @@
                 id: 5,
                 name: "LEATHER AND TYRE WAX LEMON",
                 description: "Lemon scented leather and tire wax. Conditions and protects with fresh fragrance.",
-                price: "16.99",
                 category: "polish and shinners",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -557,7 +637,6 @@
                 id: 6,
                 name: "LEATHER AND TYRE WAX",
                 description: "Premium leather and tire wax. Conditions, protects and enhances appearance.",
-                price: "16.99",
                 category: "polish and shinners",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -565,7 +644,6 @@
                 id: 7,
                 name: "SCRATCH OUT LIQUID",
                 description: "Advanced scratch removal liquid. Removes light scratches and swirl marks from paint.",
-                price: "19.99",
                 category: "polish and shinners",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -573,7 +651,6 @@
                 id: 8,
                 name: "SCRATCH OUT PASTE",
                 description: "Professional scratch removal paste. For deeper scratches and paint correction.",
-                price: "24.99",
                 category: "polish and shinners",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -581,7 +658,6 @@
                 id: 9,
                 name: "AUTO SHINE WAX",
                 description: "Professional auto shine wax. Provides long-lasting protection and brilliant shine.",
-                price: "18.99",
                 category: "polish and shinners",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -589,7 +665,6 @@
                 id: 10,
                 name: "FORMULA 1 BLACK GOLD TIRE SHINE",
                 description: "Premium tire shine with black gold formula. High shine, dries fast, long lasting. 680ML.",
-                price: "22.99",
                 category: "polish and shinners",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -598,7 +673,6 @@
                 id: 11,
                 name: "F1-120 FORMULA 1 PROTECTANT SPRAY",
                 description: "Advanced UV protection spray. Shine, protect & freshen all surfaces. 500ML.",
-                price: "15.99",
                 category: "protectant sprays",
                 image_url: "CAR PROCTING SPRAYS/f1-120 formulla 1 protectant spray.jpeg"
             },
@@ -606,7 +680,6 @@
                 id: 12,
                 name: "FORMULA 1 PROTECTANT SPRAY",
                 description: "Premium protectant spray with UV inhibitors. Protects and beautifies all surfaces.",
-                price: "18.99",
                 category: "protectant sprays",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -614,7 +687,6 @@
                 id: 13,
                 name: "FORMULA 1 PROTECTANT SPRAY 295ML",
                 description: "Compact protectant spray. Advanced UV protection in convenient size. 295ML.",
-                price: "12.99",
                 category: "protectant sprays",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -622,7 +694,6 @@
                 id: 14,
                 name: "FORMULA 1 PROTECTANT SPRAY F1-123",
                 description: "Professional protectant spray F1-123. Shine, protect & freshen formula.",
-                price: "16.99",
                 category: "protectant sprays",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -630,7 +701,6 @@
                 id: 15,
                 name: "FORMULA 1 PROTECTANT SPRAY",
                 description: "Standard protectant spray. UV protection and surface conditioning.",
-                price: "14.99",
                 category: "protectant sprays",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -638,7 +708,6 @@
                 id: 16,
                 name: "PROTECTANT SPRAY 295ML",
                 description: "Compact protectant spray. Perfect for quick touch-ups and maintenance.",
-                price: "11.99",
                 category: "protectant sprays",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -647,7 +716,6 @@
                 id: 17,
                 name: "AIM SPRAY PAINT A-142",
                 description: "Professional automotive spray paint A-142. High-quality finish for all surfaces.",
-                price: "24.99",
                 category: "spray paints",
                 image_url: "CAR SPRAY PAINTS/A-142 AIM SPRAY PAINTS.jpeg"
             },
@@ -655,7 +723,6 @@
                 id: 18,
                 name: "AIM SPRAY PAINT A-143 RED",
                 description: "Red automotive spray paint A-143. Perfect color match for touch-ups.",
-                price: "24.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/A-143 AIM SPRAY  PAINT RED.jpeg"
             },
@@ -663,7 +730,6 @@
                 id: 19,
                 name: "AIM SPRAY PAINT A-145",
                 description: "Professional spray paint A-145. Durable finish for automotive applications.",
-                price: "24.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -671,7 +737,6 @@
                 id: 20,
                 name: "AIM SPRAY PAINT A-146",
                 description: "High-quality spray paint A-146. Excellent coverage and adhesion.",
-                price: "24.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/A-146 AIM SPRAY PAINT.jpeg"
             },
@@ -679,7 +744,6 @@
                 id: 21,
                 name: "AIM SPRAY PAINT A-147",
                 description: "Professional spray paint A-147. Long-lasting color and protection.",
-                price: "24.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/A-147 AIM SPRAY PAINTS.jpeg"
             },
@@ -687,7 +751,6 @@
                 id: 22,
                 name: "AIM SPRAY PAINT A-148",
                 description: "Automotive spray paint A-148. Perfect for bodywork and touch-ups.",
-                price: "24.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/A-148 AIM SPARY PAINT.jpeg"
             },
@@ -695,7 +758,6 @@
                 id: 23,
                 name: "AIM SPRAY PAINT A-150",
                 description: "Professional spray paint A-150. High-quality automotive finish.",
-                price: "24.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/A-150 SPRAY PAINT.jpeg"
             },
@@ -703,7 +765,6 @@
                 id: 24,
                 name: "AIM SPRAY PAINT A-151",
                 description: "Automotive spray paint A-151. Excellent color retention and durability.",
-                price: "24.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -711,7 +772,6 @@
                 id: 25,
                 name: "AIM SPRAY PAINT A-152",
                 description: "Professional spray paint A-152. Perfect for automotive refinishing.",
-                price: "24.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/A-152 AIM SPRAY PAINT.jpeg"
             },
@@ -719,7 +779,6 @@
                 id: 26,
                 name: "AIM SPRAY PAINT A-153",
                 description: "High-quality spray paint A-153. Superior coverage and finish.",
-                price: "24.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/A-153 AIM SPRAY PAINT.jpeg"
             },
@@ -727,7 +786,6 @@
                 id: 27,
                 name: "AIM SPRAY PAINT A-154",
                 description: "Professional spray paint A-154. Long-lasting automotive finish.",
-                price: "24.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/A-154 SPRAY PAINT.jpeg"
             },
@@ -735,7 +793,6 @@
                 id: 28,
                 name: "AIM SPRAY PAINT A-141 GREEN",
                 description: "Green automotive spray paint A-141. Perfect color match for green vehicles.",
-                price: "24.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/AIM SPRAY PAINT A-141 GREEN.jpeg"
             },
@@ -743,7 +800,6 @@
                 id: 29,
                 name: "AIM SPRAY PAINT A-144",
                 description: "Professional spray paint A-144. High-quality automotive finish.",
-                price: "24.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/AIM SPRAY PAINT A-144.jpeg"
             },
@@ -751,7 +807,6 @@
                 id: 30,
                 name: "AIM SPRAY PAINT A-149 YELLOW",
                 description: "Yellow automotive spray paint A-149. Bright, vibrant yellow finish.",
-                price: "24.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/AIM SPRAY PAINT A-149 YELLOW.jpeg"
             },
@@ -759,7 +814,6 @@
                 id: 31,
                 name: "AIM SPRAY PAINT A-155 GRAY",
                 description: "Gray automotive spray paint A-155. Professional gray finish for vehicles.",
-                price: "24.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/AIM SPRAY PAINT GRAY A-155.jpeg"
             },
@@ -767,7 +821,6 @@
                 id: 32,
                 name: "F1-112 COLOR WAX CERAMIC SPRAY",
                 description: "Color wax ceramic spray F1-112. Advanced ceramic protection with color enhancement.",
-                price: "29.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/F1--112 COLOR WAX CERAMIC SPRAY.jpeg"
             },
@@ -775,7 +828,6 @@
                 id: 33,
                 name: "F1-108 COLOR WAX CERAMIC SPRAY",
                 description: "Color wax ceramic spray F1-108. Premium ceramic coating with color protection.",
-                price: "29.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/F1-108 COLOUR WAX CERAMIC SPRAY.jpeg"
             },
@@ -783,7 +835,6 @@
                 id: 34,
                 name: "F1-109 COLOR WAX CERAMIC SPRAY",
                 description: "Color wax ceramic spray F1-109. Advanced ceramic technology for superior protection.",
-                price: "29.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -791,7 +842,6 @@
                 id: 35,
                 name: "F1-111 COLOR WAX CERAMIC SPRAY",
                 description: "Color wax ceramic spray F1-111. Professional ceramic coating system.",
-                price: "29.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -799,7 +849,6 @@
                 id: 36,
                 name: "F1-110 COLOR WAX CERAMIC SPRAY",
                 description: "Color wax ceramic spray F1-110. High-performance ceramic protection.",
-                price: "29.99",
                 category: "spray paints",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -808,7 +857,6 @@
                 id: 37,
                 name: "A-113 LEATHER AND TYRE WAX",
                 description: "Premium leather and tire wax A-113. Conditions and protects with long-lasting shine.",
-                price: "16.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -816,7 +864,6 @@
                 id: 38,
                 name: "A-115 LEATHER AND TYRE WAX",
                 description: "Professional leather and tire wax A-115. Advanced protection formula.",
-                price: "16.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -824,7 +871,6 @@
                 id: 39,
                 name: "A-117 LEATHER AND TYRE WAX",
                 description: "High-quality leather and tire wax A-117. Superior conditioning and protection.",
-                price: "16.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -832,7 +878,6 @@
                 id: 40,
                 name: "A-118 LEATHER AND TYRE WAX",
                 description: "Premium leather and tire wax A-118. Long-lasting protection and shine.",
-                price: "16.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -840,7 +885,6 @@
                 id: 41,
                 name: "A-119 LEATHER AND TYRE WAX",
                 description: "Professional leather and tire wax A-119. Advanced formula for superior results.",
-                price: "16.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -848,7 +892,6 @@
                 id: 42,
                 name: "A-120 LEATHER AND TYRE WAX",
                 description: "High-performance leather and tire wax A-120. Premium protection and conditioning.",
-                price: "16.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -856,7 +899,6 @@
                 id: 43,
                 name: "A-121 LEATHER TYRE WAX",
                 description: "Professional leather tire wax A-121. Superior shine and protection.",
-                price: "16.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -864,7 +906,6 @@
                 id: 44,
                 name: "AW-102 AW WASH & WAX",
                 description: "Professional wash and wax AW-102. Cleans and protects in one step.",
-                price: "19.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -872,7 +913,6 @@
                 id: 45,
                 name: "AW-103 AW WASH & WAX",
                 description: "High-quality wash and wax AW-103. Advanced cleaning and protection formula.",
-                price: "19.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -880,7 +920,6 @@
                 id: 46,
                 name: "AW-104 AW WASH & WAX",
                 description: "Premium wash and wax AW-104. Superior cleaning and long-lasting protection.",
-                price: "19.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -888,7 +927,6 @@
                 id: 47,
                 name: "F1-101 CARNAUBA WASH & WAX",
                 description: "Carnauba wash and wax F1-101. Natural carnauba wax protection while washing.",
-                price: "22.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -896,7 +934,6 @@
                 id: 48,
                 name: "F1-102 CARNAUBA WASH & WAX",
                 description: "Premium carnauba wash and wax F1-102. High-performance natural protection.",
-                price: "22.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -904,7 +941,6 @@
                 id: 49,
                 name: "F1-103 CARNAUBA WASH & WAX",
                 description: "Professional carnauba wash and wax F1-103. Superior cleaning and protection.",
-                price: "22.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -920,7 +956,6 @@
                 id: 51,
                 name: "F1-106 CARNAUBA WAX PASTE",
                 description: "Carnauba wax paste F1-106. Traditional paste wax for superior protection.",
-                price: "26.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -928,7 +963,6 @@
                 id: 52,
                 name: "F1-107 CARNAUBA WAX PASTE",
                 description: "Premium carnauba wax paste F1-107. High-quality paste wax for maximum protection.",
-                price: "26.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -936,7 +970,6 @@
                 id: 53,
                 name: "F1-113 CERAMIC LIQUID WAX",
                 description: "Ceramic liquid wax F1-113. Advanced ceramic technology for superior protection.",
-                price: "29.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -944,7 +977,6 @@
                 id: 54,
                 name: "F1-114 CERAMIC SPRAY WAX",
                 description: "Ceramic spray wax F1-114. Easy-to-use ceramic protection in spray form.",
-                price: "27.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -952,7 +984,6 @@
                 id: 55,
                 name: "F1-115 CERAMIC WASH & WAX",
                 description: "Ceramic wash and wax F1-115. Advanced ceramic protection while washing.",
-                price: "28.99",
                 category: "wash & wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -961,7 +992,6 @@
                 id: 56,
                 name: "AIM WASH & SHAMPOO AW-157",
                 description: "Professional wash and shampoo AW-157. Cleans and shines all painted surfaces. 1 LTR.",
-                price: "14.99",
                 category: "wash shampoos",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -970,7 +1000,6 @@
                 id: 57,
                 name: "A-113 LEATHER AND TYRE WAX",
                 description: "Premium leather and tire wax A-113. Conditions and protects with long-lasting shine.",
-                price: "16.99",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -978,7 +1007,6 @@
                 id: 58,
                 name: "A-115 LEATHER AND TYRE WAX",
                 description: "Professional leather and tire wax A-115. Advanced protection formula.",
-                price: "16.99",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -986,7 +1014,6 @@
                 id: 59,
                 name: "A-117 LEATHER AND TYRE WAX",
                 description: "High-quality leather and tire wax A-117. Superior conditioning and protection.",
-                price: "16.99",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -994,7 +1021,6 @@
                 id: 60,
                 name: "A-118 LEATHER AND TYRE WAX",
                 description: "Premium leather and tire wax A-118. Long-lasting protection and shine.",
-                price: "16.99",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -1002,7 +1028,6 @@
                 id: 61,
                 name: "A-119 LEATHER AND TYRE WAX",
                 description: "Professional leather and tire wax A-119. Advanced formula for superior results.",
-                price: "16.99",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -1010,7 +1035,6 @@
                 id: 62,
                 name: "A-120 LEATHER AND TYRE WAX",
                 description: "High-performance leather and tire wax A-120. Premium protection and conditioning.",
-                price: "16.99",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -1026,7 +1050,6 @@
                 id: 64,
                 name: "AW-102 AW WASH & WAX",
                 description: "Professional wash and wax AW-102. Cleans and protects in one step.",
-                price: "19.99",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -1034,7 +1057,6 @@
                 id: 65,
                 name: "AW-103 AW WASH & WAX",
                 description: "High-quality wash and wax AW-103. Advanced cleaning and protection formula.",
-                price: "19.99",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -1042,7 +1064,6 @@
                 id: 66,
                 name: "AW-104 AW WASH & WAX",
                 description: "Premium wash and wax AW-104. Superior cleaning and long-lasting protection.",
-                price: "19.99",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -1050,7 +1071,6 @@
                 id: 67,
                 name: "F1-101 CARNAUBA WASH & WAX",
                 description: "Carnauba wash and wax F1-101. Natural carnauba wax protection while washing.",
-                price: "22.99",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -1058,7 +1078,6 @@
                 id: 68,
                 name: "F1-102 CARNAUBA WASH & WAX",
                 description: "Premium carnauba wash and wax F1-102. High-performance natural protection.",
-                price: "22.99",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
             },
@@ -1514,6 +1533,31 @@
                 price: "14.99",
                 category: "wash shampoos",
                 image_url: "CAR WASH SHAMPOOS/AW-157 AIM WASH & SHAMPOO.jpeg"
+            },
+            // Lubricants
+            {
+                id: 125,
+                name: "DEARGON ANTI-RUST LUBRICANT SPRAY 100ML",
+                description: "Professional anti-rust lubricant spray. Loosens rusted parts, frees sticky mechanisms, cleans and protects, drives out moisture, stops squeaks. NET 100ml.",
+                price: "8.99",
+                category: "lubricants",
+                image_url: "CAR LUBRICANTS/deargon-anti-rust-100ml.jpeg"
+            },
+            {
+                id: 126,
+                name: "DEARGON ANTI-RUST LUBRICANT SPRAY 220ML",
+                description: "Professional anti-rust lubricant spray with ISO9001 quality management system. Loosens rusted parts, frees sticky mechanisms, cleans and protects, drives out moisture, stops squeaks. NET 220ml.",
+                price: "12.99",
+                category: "lubricants",
+                image_url: "CAR LUBRICANTS/deargon-anti-rust-220ml.jpeg"
+            },
+            {
+                id: 127,
+                name: "DEARGON ANTI-RUST LUBRICANT SPRAY 450ML",
+                description: "International advanced formula anti-rust lubricant spray. Go beyond due to the high quality. Loosens rusted parts, frees sticky mechanisms, cleans and protects, drives out moisture, stops squeaks. NET 450ml.",
+                price: "18.99",
+                category: "lubricants",
+                image_url: "CAR LUBRICANTS/deargon-anti-rust-450ml.jpeg"
             }
         ];
 
@@ -1587,20 +1631,20 @@
         function createProductCard(product) {
             if (currentView === 'list') {
                 return `
-                    <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 flex border border-yellow-400">
+                    <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 flex border border-yellow-500">
                         <div class="w-48 h-48 bg-gray-700 flex items-center justify-center flex-shrink-0">
                             ${product.image_url ? 
                                 `<img src="${product.image_url}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.nextElementSibling.style.display='none';">
-                                <i class="fas fa-car text-4xl text-yellow-400" style="display: none;"></i>` :
-                                `<i class="fas fa-car text-4xl text-yellow-400"></i>`
+                                <i class="fas fa-car text-4xl text-yellow-500" style="display: none;"></i>` :
+                                `<i class="fas fa-car text-4xl text-yellow-500"></i>`
                             }
                         </div>
                         <div class="p-6 flex-1">
-                            <h3 class="font-semibold text-xl mb-2 text-yellow-400">${product.name}</h3>
+                            <h3 class="font-semibold text-xl mb-2 text-yellow-500">${product.name}</h3>
                             <p class="text-gray-300 mb-4">${product.description || 'No description available'}</p>
                             <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-yellow-400">$${product.price}</span>
-                                <button class="add-to-cart-btn bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg transition duration-300" 
+                                <span class="text-2xl font-bold text-yellow-500">$${product.price}</span>
+                                <button class="add-to-cart-btn bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 rounded-lg transition duration-300" 
                                         data-name="${product.name}" 
                                         data-price="${product.price}" 
                                         data-image="${product.image_url || 'product'}">
@@ -1612,20 +1656,20 @@
                 `;
             } else {
                 return `
-                    <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 border border-yellow-400">
+                    <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 border border-yellow-500">
                         <div class="h-48 bg-gray-700 flex items-center justify-center">
                             ${product.image_url ? 
                                 `<img src="${product.image_url}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.nextElementSibling.style.display='none';">
-                                <i class="fas fa-car text-4xl text-yellow-400" style="display: none;"></i>` :
-                                `<i class="fas fa-car text-4xl text-yellow-400"></i>`
+                                <i class="fas fa-car text-4xl text-yellow-500" style="display: none;"></i>` :
+                                `<i class="fas fa-car text-4xl text-yellow-500"></i>`
                             }
                         </div>
                         <div class="p-4">
-                            <h3 class="font-semibold text-lg mb-2 text-yellow-400">${product.name}</h3>
+                            <h3 class="font-semibold text-lg mb-2 text-yellow-500">${product.name}</h3>
                             <p class="text-gray-300 text-sm mb-3 line-clamp-2">${product.description || 'No description available'}</p>
                             <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-yellow-400">$${product.price}</span>
-                                <button class="add-to-cart-btn bg-yellow-400 hover:bg-yellow-500 text-black px-4 py-2 rounded-lg transition duration-300" 
+                                <span class="text-2xl font-bold text-yellow-500">$${product.price}</span>
+                                <button class="add-to-cart-btn bg-yellow-500 hover:bg-yellow-400 text-black px-4 py-2 rounded-lg transition duration-300" 
                                         data-name="${product.name}" 
                                         data-price="${product.price}" 
                                         data-image="${product.image_url || 'product'}">
@@ -1875,17 +1919,17 @@
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-3">
                                 <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-${getItemIcon(item.image)} text-yellow-400"></i>
+                                    <i class="fas fa-${getItemIcon(item.image)} text-yellow-500"></i>
                 </div>
                                 <div>
-                                    <h4 class="text-yellow-400 font-semibold text-sm">${item.name}</h4>
+                                    <h4 class="text-yellow-500 font-semibold text-sm">${item.name}</h4>
                                     <p class="text-gray-400 text-xs">$${item.price}</p>
                     </div>
                 </div>
                             <div class="flex items-center space-x-2">
                                 <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
                                         data-index="${index}" data-action="decrease">-</button>
-                                <span class="text-yellow-400 font-semibold text-sm w-8 text-center">${item.quantity}</span>
+                                <span class="text-yellow-500 font-semibold text-sm w-8 text-center">${item.quantity}</span>
                                 <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
                                         data-index="${index}" data-action="increase">+</button>
                                 <button class="remove-item bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded text-xs font-bold" 

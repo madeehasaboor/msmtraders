@@ -1,0 +1,442 @@
+/* Custom CSS for E-commerce Homepage */
+
+/* Modern UI Enhancements */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(251, 191, 36, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(251, 191, 36, 0.6); }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Banner Slider Styles */
+.banner-slider {
+    position: relative;
+    height: 320px;
+    background-color: #1f2937;
+}
+
+@media (min-width: 768px) {
+    .banner-slider {
+        height: 400px;
+    }
+}
+
+.banner-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.banner-slide.active {
+    opacity: 1;
+}
+
+.banner-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: optimize-quality;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    filter: brightness(1.1) contrast(1.1);
+    transition: filter 0.3s ease;
+}
+
+.banner-slide img:hover {
+    filter: brightness(1.2) contrast(1.2);
+}
+
+/* Banner Navigation Dots */
+.banner-dot {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.banner-dot:hover {
+    transform: scale(1.2);
+}
+
+.banner-dot.active {
+    background-color: #3b82f6 !important;
+}
+
+/* Product Card Hover Effects */
+.product-card {
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: #e5e7eb;
+}
+
+.product-card img {
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Search Bar Focus Effects */
+input[type="text"]:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Sidebar Category Hover Effects */
+aside nav a {
+    position: relative;
+    overflow: hidden;
+}
+
+aside nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+aside nav a:hover::before {
+    left: 100%;
+}
+
+/* Countdown Timer Animation */
+.countdown-timer {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Mobile Responsive Adjustments - DISABLED FOR DESKTOP-ONLY VIEW */
+
+/* Image Visibility and Error Handling */
+img {
+    display: block !important;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: opacity 0.3s ease;
+}
+
+/* Ensure all image containers have proper dimensions */
+.banner-slide img,
+.product-card img,
+img[src*="perfumes"],
+img[src*="house_care"],
+img[src*="crockery"],
+img[src*="slide show"] {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Loading Animation for Images */
+.product-card img {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.product-card img[src] {
+    animation: none;
+    background: none;
+}
+
+/* Ensure all images are visible */
+img[src] {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Fallback for broken images */
+img[src=""], img:not([src]) {
+    background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+img[src=""]:before, img:not([src]):before {
+    content: "Image not found";
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Header Sticky Effect */
+header {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Cart Badge Animation */
+.cart-badge {
+    animation: bounce 0.6s ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Fade In Animation for Sections */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Button Hover Effects */
+button, .product-card {
+    position: relative;
+    overflow: hidden;
+}
+
+button::before, .product-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before, .product-card:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Recently Viewed and Suggestions Hover */
+.space-y-3 > div {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.space-y-3 > div:hover {
+    background-color: #f8fafc;
+    border-radius: 8px;
+    padding: 8px;
+    margin: -8px;
+}
+
+/* Responsive Grid Adjustments - DISABLED FOR DESKTOP-ONLY VIEW */
+
+/* Force desktop grid layouts on all screen sizes */
+.grid-cols-1 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.grid-cols-2 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+/* Override responsive grid classes to always use desktop layout */
+.grid.grid-cols-1.md\\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.grid.grid-cols-1.md\\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+.grid.grid-cols-2.md\\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+/* Ensure cake dishes grid displays all products properly */
+.grid.grid-cols-2.md\\:grid-cols-3.lg\\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+.grid.grid-cols-1.sm\\:grid-cols-2.md\\:grid-cols-3.lg\\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+}
+
+/* Force main layout to always use desktop grid (sidebar + main content) */
+.grid.grid-cols-1.lg\\:grid-cols-4 {
+    grid-template-columns: 1fr 1fr 1fr 1fr !important;
+}
+
+/* Ensure sidebar always takes 1 column and main content takes 3 columns */
+.lg\\:col-span-1 {
+    grid-column: span 1 !important;
+}
+
+.lg\\:col-span-3 {
+    grid-column: span 3 !important;
+}
+
+/* Focus States for Accessibility */
+button:focus,
+a:focus,
+input:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Modern UI Classes */
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+.animate-slideInUp {
+    animation: slideInUp 0.6s ease-out;
+}
+
+.animate-fadeInScale {
+    animation: fadeInScale 0.5s ease-out;
+}
+
+/* Glass morphism effect */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Gradient text effect */
+.gradient-text {
+    background: linear-gradient(45deg, #fbbf24, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Hover effects for modern cards */
+.modern-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modern-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Print Styles */
+@media print {
+    .banner-slider,
+    .banner-dot,
+    header,
+    aside {
+        display: none;
+    }
+    
+    .product-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}
