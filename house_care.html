@@ -21,6 +21,25 @@
             }
         }
     </script>
+    <!-- Quick View Modal -->
+    <div id="quickview-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center p-4 z-[100]">
+        <div class="bg-gray-900 border border-yellow-400 rounded-xl shadow-2xl max-w-2xl w-full overflow-hidden">
+            <div class="flex justify-between items-center px-4 py-3 border-b border-gray-700">
+                <h3 id="qv-name" class="text-lg font-bold text-yellow-400 truncate">Product Name</h3>
+                <button id="qv-close" class="text-gray-300 hover:text-yellow-400">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-4 space-y-4">
+                <img id="qv-image" src="" alt="Product" class="w-full max-h-[60vh] sm:max-h-[70vh] object-contain rounded-lg bg-black">
+                <p id="qv-desc" class="text-gray-300 text-sm leading-relaxed">Description</p>
+                <div class="flex items-center justify-between">
+                    <span id="qv-price" class="text-xl font-bold text-yellow-400">Contact for Pricing</span>
+                    <button id="qv-add" class="bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-4 py-2 rounded-lg">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <style>
         /* Cart modal styles */
         #cart-modal {
@@ -56,6 +75,86 @@
             }
         }
     </style>
+    <style>
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #111;
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid #333;
+            z-index: 50;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        
+        /* Desktop styles */
+        .bottom-nav a {
+            text-decoration: none;
+            color: #ccc;
+            text-align: center;
+            font-size: 14px;
+            padding: 15px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            transition: all 0.3s ease;
+        }
+        .bottom-nav a i {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .bottom-nav a.active {
+            color: #fff;
+        }
+        
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .bottom-nav {
+                padding: 12px 0;
+            }
+            .bottom-nav a {
+                font-size: 16px;
+                padding: 12px 8px;
+                min-height: 60px;
+                flex: 1;
+            }
+            .bottom-nav a i {
+                font-size: 28px;
+                margin-bottom: 6px;
+            }
+            body { 
+                padding-bottom: calc(84px + env(safe-area-inset-bottom)); 
+            }
+        }
+        
+        /* Small mobile styles */
+        @media (max-width: 480px) {
+            .bottom-nav a {
+                font-size: 14px;
+                padding: 10px 6px;
+                min-height: 56px;
+            }
+            .bottom-nav a i {
+                font-size: 26px;
+                margin-bottom: 4px;
+            }
+            body { 
+                padding-bottom: calc(76px + env(safe-area-inset-bottom)); 
+            }
+        }
+        
+        /* Desktop body padding */
+        @media (min-width: 769px) {
+            body { 
+                padding-bottom: calc(74px + env(safe-area-inset-bottom)); 
+            }
+        }
+    </style>
 </head>
 <body class="bg-black">
     <!-- Navigation -->
@@ -76,26 +175,11 @@
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="index.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                        <a href="perfumes.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium">Perfumes</a>
-                        <a href="electronics.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium">Electronics</a>
-                        <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium">Laptops</a>
-                        <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium">Car Care</a>
-                        <a href="house_care.html" class="text-yellow-400 hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium">House Care</a>
-                        <a href="sale.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium">Sale</a>
-                        <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
                     <button class="text-gray-300 hover:text-yellow-400 p-2 rounded-lg hover:bg-gray-800 transition duration-200">
                         <i class="fas fa-search text-xl"></i>
-                    </button>
-                    <button id="cart-button" class="text-gray-300 hover:text-yellow-400 relative p-2 rounded-lg hover:bg-gray-800 transition duration-200 transform hover:scale-105">
-                        <i class="fas fa-shopping-cart text-xl"></i>
-                        <span id="cart-count" class="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold transition-all duration-200">0</span>
-                    </button>
-                    <button class="text-gray-300 hover:text-yellow-400 p-2 rounded-lg hover:bg-gray-800 transition duration-200">
-                        <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
@@ -519,28 +603,20 @@
             
             productsToShow.forEach(product => {
                 const productCard = document.createElement('div');
-                productCard.className = 'bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition duration-300 border border-gray-700';
+                productCard.className = '';
                 productCard.innerHTML = `
-                    <div class="relative">
-                        <img src="${product.image_url}" alt="${product.name}" class="w-full h-48 object-cover rounded-t-lg">
-                        <div class="absolute top-2 right-2 bg-yellow-400 text-black px-2 py-1 rounded-full text-xs font-bold">
-                            ${product.category}
+                    <div class="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden">
+                        <img src="${product.image_url}" alt="${product.name}" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="640" height="360" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw">
                         </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-yellow-400 mb-2">${product.name}</h3>
-                        <p class="text-gray-300 text-sm mb-3">${product.description}</p>
-                        <div class="flex justify-between items-center mb-3">
-                            <span class="text-xl font-bold text-yellow-400">₨${product.price || 'Contact for Pricing'}</span>
-                        </div>
-                        <div class="flex justify-center items-center">
-                            <button class="add-to-cart-btn bg-yellow-400 text-black px-6 py-3 rounded-lg hover:bg-yellow-300 transition duration-200 text-sm font-semibold w-full" 
-                                    data-name="${product.name}" data-price="${product.price || ''}" data-image="house-care">
-                                Add to Cart
-                            </button>
-                        </div>
+                    <div class="text-center mt-2">
+                        <h3 class="text-base sm:text-lg font-semibold text-yellow-400">${product.name}</h3>
                     </div>
                 `;
+                // Attach product data for Quick View
+                productCard.dataset.name = product.name || '';
+                productCard.dataset.price = product.price || '';
+                productCard.dataset.desc = product.description || '';
+                productCard.dataset.image = product.image_url || '';
                 productsGrid.appendChild(productCard);
             });
             
@@ -995,6 +1071,140 @@
                 }
             });
         });
+    </script>
+    <script>
+        // Quick View helpers
+        (function() {
+            const modal = document.getElementById('quickview-modal');
+            const nameEl = document.getElementById('qv-name');
+            const imgEl = document.getElementById('qv-image');
+            const descEl = document.getElementById('qv-desc');
+            const priceEl = document.getElementById('qv-price');
+            const addBtn = document.getElementById('qv-add');
+            const closeBtn = document.getElementById('qv-close');
+
+            function parsePrice(text) {
+                if (!text) return '';
+                const match = text.replace(/[,\s]/g, '').match(/(₨|\$)?(\d+(?:\.\d+)?)/);
+                return match ? match[2] : '';
+            }
+
+            function smartAddToCart(name, price, image) {
+                try { if (typeof addToCart === 'function') { addToCart(name, price, image); return; } } catch(e) {}
+                try { if (typeof addToCart === 'function') { addToCart(name, image); return; } } catch(e) {}
+                alert('Added to cart: ' + name);
+            }
+
+            window.openQuickView = function(data) {
+                nameEl.textContent = data.name || 'Product';
+                imgEl.src = data.image || '';
+                imgEl.alt = data.name || 'Product';
+                descEl.textContent = data.description || '—';
+                priceEl.textContent = data.priceText || 'Contact for Pricing';
+                addBtn.onclick = function() {
+                    smartAddToCart(data.name || 'Product', parsePrice(data.priceText), data.image || '');
+                    modal.classList.add('hidden');
+                };
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            };
+
+            window.closeQuickView = function() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            };
+
+            closeBtn.addEventListener('click', closeQuickView);
+            modal.addEventListener('click', function(e) { if (e.target === modal) closeQuickView(); });
+
+            // Open on product card click (ignore buttons/links)
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('button, a')) return;
+                const wrapper = e.target.closest('#productsGrid > div');
+                if (!wrapper) return;
+                const dataName = wrapper.dataset.name || (wrapper.querySelector('h3') ? wrapper.querySelector('h3').textContent.trim() : '');
+                const dataImg = wrapper.dataset.image || (wrapper.querySelector('img') ? wrapper.querySelector('img').src : '');
+                const dataDesc = wrapper.dataset.desc || (wrapper.querySelector('p') ? wrapper.querySelector('p').textContent.trim() : '');
+                const rawPrice = wrapper.dataset.price || '';
+                const priceText = rawPrice ? `₨${rawPrice}` : 'Contact for Pricing';
+                openQuickView({
+                    name: dataName,
+                    image: dataImg,
+                    description: dataDesc,
+                    priceText: priceText
+                });
+            });
+        })();
+    </script>
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a id="home-nav" href="index.html" onclick="setActiveNav('home')"><i class="fas fa-home"></i>Home</a>
+        <a id="category-nav" href="javascript:void(0)" onclick="openCategoryMenu(); setActiveNav('category'); return false;"><i class="fas fa-th-large"></i>Category</a>
+        <a id="deals-nav" href="deals.html" onclick="setActiveNav('deals')"><i class="fas fa-tags"></i>Deals</a>
+        <a id="cart-nav" href="javascript:void(0)" onclick="toggleCart(); setActiveNav('cart'); return false;"><i class="fas fa-shopping-cart"></i>Cart</a>
+    </nav>
+
+    <!-- Category Quick Menu (mobile) -->
+    <div id="category-menu" class="fixed inset-x-0 bottom-16 mx-4 bg-gray-900 border border-yellow-400 rounded-lg shadow-xl p-3 space-y-2 z-50 hidden">
+        <a href="car_care.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
+            <span><i class="fas fa-car mr-2"></i>Car Care</span>
+            <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+        <a href="house_care.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
+            <span><i class="fas fa-home mr-2"></i>House Care</span>
+            <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+        <a href="perfumes.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
+            <span><i class="fas fa-spray-can mr-2"></i>Perfumes</span>
+            <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+        <a href="crockery.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
+            <span><i class="fas fa-utensils mr-2"></i>Crockery</span>
+            <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+    </div>
+
+    <script>
+        function setActiveNav(key) {
+            const links = document.querySelectorAll('.bottom-nav a');
+            links.forEach(link => link.classList.remove('active'));
+            const ids = { home: 'home-nav', category: 'category-nav', cart: 'cart-nav', deals: 'deals-nav' };
+            const active = document.getElementById(ids[key]);
+            if (active) active.classList.add('active');
+        }
+
+        function openCategoryMenu() {
+            const menu = document.getElementById('category-menu');
+            if (!menu) return;
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => { document.addEventListener('click', closeOnOutsideClick, { once: true }); }, 0);
+                } else {
+                menu.classList.add('hidden');
+            }
+        }
+
+        function closeOnOutsideClick(e) {
+            const menu = document.getElementById('category-menu');
+            const trigger = document.getElementById('category-nav');
+            if (!menu || !trigger) return;
+            if (!menu.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
+                menu.classList.add('hidden');
+            }
+        }
+
+        // Provide toggleCart if not defined on this page
+        if (typeof toggleCart !== 'function') {
+            window.toggleCart = function() {
+                const cartModal = document.getElementById('cart-modal');
+                if (cartModal) {
+                    cartModal.classList.remove('hidden');
+                    cartModal.classList.add('show');
+                    return;
+                }
+                alert('Your cart is empty!');
+            }
+        }
     </script>
 </body>
 </html>
