@@ -36,20 +36,8 @@
                     </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Home</a>
-                    <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Car Care</a>
-                    <a href="house_care.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">House Care</a>
-                    <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Laptops</a>
-                    <a href="electronics.html" class="text-yellow-400 font-semibold">Electronics</a>
-                    <a href="perfumes.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Perfumes</a>
-                    <a href="sale.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Sale</a>
-                    <a href="contact.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Contact</a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button id="cart-button" class="bg-yellow-400 text-black rounded-full w-8 h-8 flex items-center justify-center relative hover:bg-yellow-500 transition duration-200">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold">0</span>
-                    </button>
                 </div>
             </div>
         </div>
@@ -100,7 +88,10 @@
 
         <!-- Products Grid -->
         <div id="productsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <!-- Products will be loaded here -->
+            <div class="col-span-full text-center py-12">
+                <h3 class="text-2xl font-bold text-yellow-400 mb-4">No Electronics Products Available</h3>
+                <p class="text-gray-300">We're currently updating our electronics collection. Please check back soon!</p>
+            </div>
         </div>
 
         <!-- Pagination -->
@@ -297,104 +288,7 @@
         const productsPerPage = 12;
 
         // Sample electronics products
-        const sampleProducts = [
-            {
-                id: 1,
-                name: "Wireless Bluetooth Headphones",
-                description: "High-quality wireless headphones with noise cancellation and 30-hour battery life.",
-                price: "89.99",
-                category: "audio",
-                image_url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 2,
-                name: "Smartphone Charging Cable",
-                description: "Fast charging USB-C cable compatible with all modern smartphones. 6ft length.",
-                price: "15.99",
-                category: "cables",
-                image_url: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 3,
-                name: "Portable Power Bank",
-                description: "20000mAh portable charger with fast charging technology. Compatible with all devices.",
-                price: "45.50",
-                category: "accessories",
-                image_url: "https://images.unsplash.com/photo-1609592807909-3c0a58b9e4e2?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 4,
-                name: "Smart Watch Series 8",
-                description: "Advanced smartwatch with health monitoring, GPS, and 2-day battery life.",
-                price: "299.99",
-                category: "smartphones",
-                image_url: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 5,
-                name: "Gaming Mouse Pro",
-                description: "High-precision gaming mouse with RGB lighting and customizable buttons.",
-                price: "79.99",
-                category: "gaming",
-                image_url: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 6,
-                name: "Bluetooth Speaker",
-                description: "Portable wireless speaker with 360-degree sound and waterproof design.",
-                price: "59.99",
-                category: "audio",
-                image_url: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 7,
-                name: "Smart Home Hub",
-                description: "Central control hub for all your smart home devices with voice control.",
-                price: "149.99",
-                category: "smart home",
-                image_url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 8,
-                name: "Wireless Earbuds",
-                description: "True wireless earbuds with active noise cancellation and 8-hour battery.",
-                price: "129.99",
-                category: "audio",
-                image_url: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 9,
-                name: "Phone Case & Screen Protector",
-                description: "Protective case with tempered glass screen protector for all phone models.",
-                price: "24.99",
-                category: "accessories",
-                image_url: "https://images.unsplash.com/photo-1556656793-08538906a9f8?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 10,
-                name: "Gaming Keyboard",
-                description: "Mechanical gaming keyboard with RGB backlighting and anti-ghosting.",
-                price: "119.99",
-                category: "gaming",
-                image_url: "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 11,
-                name: "Smart Light Bulbs",
-                description: "WiFi-enabled LED bulbs with color changing and dimming capabilities.",
-                price: "39.99",
-                category: "smart home",
-                image_url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 12,
-                name: "Car Phone Mount",
-                description: "Magnetic car mount with wireless charging for smartphones.",
-                price: "34.99",
-                category: "accessories",
-                image_url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&crop=center"
-            }
-        ];
+        const sampleProducts = [];
 
         // Load all products
         function loadProducts() {
@@ -945,6 +839,114 @@
                 }
             });
         });
+    </script>
+
+    <!-- Bottom Navigation Styles -->
+    <style>
+        .bottom-nav { 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            background: #111; 
+            display: flex; 
+            justify-content: space-around; 
+            border-top: 1px solid #333; 
+            z-index: 50; 
+            padding-bottom: env(safe-area-inset-bottom); 
+        }
+        
+        /* Desktop styles */
+        .bottom-nav a { 
+            text-decoration: none; 
+            color: #ccc; 
+            text-align: center; 
+            font-size: 14px; 
+            padding: 15px 12px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 44px; 
+            transition: all 0.3s ease; 
+        }
+        .bottom-nav a i { 
+            font-size: 24px; 
+            display: block; 
+            margin-bottom: 5px; 
+        }
+        .bottom-nav a.active { 
+            color: #fff; 
+        }
+        
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .bottom-nav {
+                padding: 12px 0;
+            }
+            .bottom-nav a {
+                font-size: 16px;
+                padding: 12px 8px;
+                min-height: 60px;
+                flex: 1;
+            }
+            .bottom-nav a i {
+                font-size: 28px;
+                margin-bottom: 6px;
+            }
+            body { 
+                padding-bottom: calc(84px + env(safe-area-inset-bottom)); 
+            }
+        }
+        
+        /* Small mobile styles */
+        @media (max-width: 480px) {
+            .bottom-nav a {
+                font-size: 14px;
+                padding: 10px 6px;
+                min-height: 56px;
+            }
+            .bottom-nav a i {
+                font-size: 26px;
+                margin-bottom: 4px;
+            }
+            body { 
+                padding-bottom: calc(76px + env(safe-area-inset-bottom)); 
+            }
+        }
+        
+        /* Desktop body padding */
+        @media (min-width: 769px) {
+            body { 
+                padding-bottom: calc(74px + env(safe-area-inset-bottom)); 
+            }
+        }
+    </style>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a id="home-nav" href="index.html" onclick="setActiveNav('home')"><i class="fas fa-home"></i>Home</a>
+        <a id="category-nav" href="javascript:void(0)" onclick="openCategoryMenu(); setActiveNav('category'); return false;"><i class="fas fa-th-large"></i>Category</a>
+        <a id="deals-nav" href="deals.html" onclick="setActiveNav('deals')"><i class="fas fa-tags"></i>Deals</a>
+        <a id="cart-nav" href="javascript:void(0)" onclick="toggleCart(); setActiveNav('cart'); return false;"><i class="fas fa-shopping-cart"></i>Cart</a>
+    </nav>
+
+    <script>
+        function setActiveNav(key) {
+            const links = document.querySelectorAll('.bottom-nav a');
+            links.forEach(link => link.classList.remove('active'));
+            const ids = { home: 'home-nav', category: 'category-nav', cart: 'cart-nav', deals: 'deals-nav' };
+            const active = document.getElementById(ids[key]);
+            if (active) active.classList.add('active');
+        }
+
+        function openCategoryMenu() {
+            alert('Category menu not available on this page.');
+        }
+
+        function toggleCart() {
+            alert('Cart functionality not available on this page.');
+        }
     </script>
 </body>
 </html>
