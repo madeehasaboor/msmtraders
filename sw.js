@@ -1,8 +1,10 @@
 // Service Worker for MSM Traders E-commerce
-const CACHE_NAME = 'msm-traders-v1';
+const CACHE_NAME = 'msm-traders-v2';
 const urlsToCache = [
     '/',
     '/index.html',
+    '/style.css',
+    '/script.js',
     '/perfumes.html',
     '/electronics.html',
     '/laptops.html',
@@ -34,7 +36,11 @@ self.addEventListener('fetch', event => {
                 if (response) {
                     return response;
                 }
-                return fetch(event.request);
+                return fetch(event.request).then(response => {
+                    const clone = response.clone();
+                    caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+                    return response;
+                });
             }
         )
     );
