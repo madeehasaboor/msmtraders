@@ -21,6 +21,48 @@
             }
         }
     </script>
+
+    <!-- Bottom Navigation (mobile) -->
+    <nav class="bottom-nav lg:hidden">
+        <a id="home-nav" href="index.html" onclick="setActiveNav('home')"><i class="fas fa-home"></i>Home</a>
+        <a id="category-nav" href="javascript:void(0)" onclick="openCategoryMenu(); setActiveNav('category'); return false;"><i class="fas fa-th-large"></i>Category</a>
+        <a id="cart-nav" href="javascript:void(0)" onclick="toggleCart(); setActiveNav('cart'); return false;"><i class="fas fa-shopping-cart"></i>Cart</a>
+        <a id="deals-nav" href="deals.html" onclick="setActiveNav('deals')"><i class="fas fa-tags"></i>Deals</a>
+    </nav>
+
+
+    <script>
+        function setActiveNav(key) {
+            const links = document.querySelectorAll('.bottom-nav a');
+            links.forEach(link => link.classList.remove('active'));
+            const ids = { home: 'home-nav', category: 'category-nav', cart: 'cart-nav', deals: 'deals-nav' };
+            const active = document.getElementById(ids[key]);
+            if (active) active.classList.add('active');
+        }
+
+        function openCategoryMenu() {
+            const menu = document.getElementById('category-menu');
+            if (!menu) return;
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => { document.addEventListener('click', closeOnOutsideClick, { once: true }); }, 0);
+            } else {
+                menu.classList.add('hidden');
+            }
+        }
+
+        function closeOnOutsideClick(e) {
+            const menu = document.getElementById('category-menu');
+            const trigger = document.getElementById('category-nav');
+            if (!menu || !trigger) return;
+            if (!menu.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
+                menu.classList.add('hidden');
+            }
+        }
+        if (typeof toggleCart !== 'function') {
+            window.toggleCart = function() { alert('Your cart is empty!'); }
+        }
+    </script>
     <style>
         /* Mobile-first responsive design */
         @media (max-width: 768px) {
@@ -49,6 +91,86 @@
             .nav-links {
                 font-size: 0.7rem;
                 gap: 0.25rem;
+            }
+        }
+    </style>
+    <style>
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #111;
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid #333;
+            z-index: 50;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        
+        /* Desktop styles */
+        .bottom-nav a {
+            text-decoration: none;
+            color: #ccc;
+            text-align: center;
+            font-size: 14px;
+            padding: 15px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            transition: all 0.3s ease;
+        }
+        .bottom-nav a i {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .bottom-nav a.active {
+            color: #fff;
+        }
+        
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .bottom-nav {
+                padding: 12px 0;
+            }
+            .bottom-nav a {
+                font-size: 16px;
+                padding: 12px 8px;
+                min-height: 60px;
+                flex: 1;
+            }
+            .bottom-nav a i {
+                font-size: 28px;
+                margin-bottom: 6px;
+            }
+            body { 
+                padding-bottom: calc(84px + env(safe-area-inset-bottom)); 
+            }
+        }
+        
+        /* Small mobile styles */
+        @media (max-width: 480px) {
+            .bottom-nav a {
+                font-size: 14px;
+                padding: 10px 6px;
+                min-height: 56px;
+            }
+            .bottom-nav a i {
+                font-size: 26px;
+                margin-bottom: 4px;
+            }
+            body { 
+                padding-bottom: calc(76px + env(safe-area-inset-bottom)); 
+            }
+        }
+        
+        /* Desktop body padding */
+        @media (min-width: 769px) {
+            body { 
+                padding-bottom: calc(74px + env(safe-area-inset-bottom)); 
             }
         }
     </style>
@@ -268,14 +390,6 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
-                        <li><a href="car_care.html" class="text-gray-400 hover:text-white">Car Care</a></li>
-                        <li><a href="house_care.html" class="text-gray-400 hover:text-white">House Care</a></li>
-                        <li><a href="laptops.html" class="text-gray-400 hover:text-white">Laptops</a></li>
-                        <li><a href="electronics.html" class="text-gray-400 hover:text-white">Electronics</a></li>
-                        <li><a href="perfumes.html" class="text-gray-400 hover:text-white">Perfumes</a></li>
-                        <li><a href="sale.html" class="text-gray-400 hover:text-white">Sale</a></li>
-                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
                     </ul>
                 </div>
                 <div>
@@ -288,11 +402,24 @@
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <h4 class="text-lg font-semibold mb-4 text-yellow-400">Contact Info</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><i class="fas fa-phone mr-2"></i>+923258573925</li>
-                        <li><i class="fas fa-envelope mr-2"></i>msmtrader222@gmail.com</li>
-                        <li><i class="fas fa-map-marker-alt mr-2"></i>232 v block phase 2 defence lahore</li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-yellow-400"></i>
+                            <span>+923258573925</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-yellow-400"></i>
+                            <span>msmtrader222@gmail.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-yellow-400"></i>
+                            <span>232 v block phase 2 defence lahore</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-2 text-yellow-400"></i>
+                            <span>24 Hours Open</span>
+                        </li>
                     </ul>
                 </div>
             </div>
