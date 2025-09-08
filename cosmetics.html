@@ -53,14 +53,6 @@
                         <i class="fas fa-box text-xl group-hover:animate-bounce"></i>
                         <div class="absolute inset-0 bg-yellow-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </a>
-                    <button class="relative p-2 text-yellow-500 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:bg-yellow-500/10 rounded-lg group">
-                        <i class="fas fa-shopping-cart text-xl group-hover:animate-bounce"></i>
-                        <span class="absolute -top-1 -right-1 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold shadow-lg animate-pulse">3</span>
-                        <div class="absolute inset-0 bg-yellow-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    </button>
-                    <button class="p-2 text-yellow-500 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:bg-yellow-500/10 rounded-lg group" onclick="toggleMobileMenu()">
-                        <i class="fas fa-bars text-xl group-hover:animate-spin"></i>
-                    </button>
                 </div>
             </div>
         </div>
@@ -74,32 +66,11 @@
             <div class="bg-gray-900 border border-yellow-500 rounded-lg shadow-md p-6">
                 <h3 class="text-lg font-semibold text-yellow-500 mb-4">Categories</h3>
                 <nav class="space-y-2">
-                    <a href="car_care.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
-                        <i class="fas fa-car mr-2"></i>Car Care
-                    </a>
-                    <a href="house_care.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
-                        <i class="fas fa-home mr-2"></i>House Care
-                    </a>
-                    <a href="perfumes.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
-                        <i class="fas fa-spray-can mr-2"></i>Perfumes
-                    </a>
-                    <a href="laptops.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
-                        <i class="fas fa-laptop mr-2"></i>Laptops
-                    </a>
-                    <a href="electronics.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
-                        <i class="fas fa-mobile-alt mr-2"></i>Electronics
-                    </a>
                     <a href="cosmetics.html" class="block py-2 px-3 text-yellow-400 bg-yellow-500/10 rounded-lg transition-colors">
                         <i class="fas fa-palette mr-2"></i>Cosmetics
                     </a>
                     <a href="crockery.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
                         <i class="fas fa-utensils mr-2"></i>Crockery
-                    </a>
-                    <a href="sale.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
-                        <i class="fas fa-tags mr-2"></i>Sale
-                    </a>
-                    <a href="contact.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
-                        <i class="fas fa-envelope mr-2"></i>Contact
                     </a>
                 </nav>
             </div>
@@ -115,147 +86,8 @@
 
             <!-- Product Grid -->
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- Product 1 -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
-                    <div class="relative overflow-hidden rounded-xl mb-4">
-                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                             alt="Premium Makeup Kit" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                            New
-                        </div>
-                    </div>
-                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Premium Makeup Kit</h3>
-                    <p class="text-gray-400 text-sm mb-3">Complete makeup set with foundation, lipstick, and eyeshadow</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨2,500</span>
-                        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
-                    <div class="relative overflow-hidden rounded-xl mb-4">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                             alt="Skincare Set" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                            -15%
-                        </div>
-                    </div>
-                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Skincare Set</h3>
-                    <p class="text-gray-400 text-sm mb-3">Complete skincare routine with cleanser, toner, and moisturizer</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨1,800</span>
-                        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
-                    <div class="relative overflow-hidden rounded-xl mb-4">
-                        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                             alt="Lipstick Collection" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Lipstick Collection</h3>
-                    <p class="text-gray-400 text-sm mb-3">Set of 6 premium lipsticks in various shades</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨1,200</span>
-                        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
-                    <div class="relative overflow-hidden rounded-xl mb-4">
-                        <img src="https://images.unsplash.com/photo-1515688594390-b649af70d282?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                             alt="Eyeshadow Palette" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                            Popular
-                        </div>
-                    </div>
-                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Eyeshadow Palette</h3>
-                    <p class="text-gray-400 text-sm mb-3">Professional 12-color eyeshadow palette</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨950</span>
-                        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
-                    <div class="relative overflow-hidden rounded-xl mb-4">
-                        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                             alt="Foundation" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Premium Foundation</h3>
-                    <p class="text-gray-400 text-sm mb-3">Long-lasting foundation with SPF protection</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨1,500</span>
-                        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
-                    <div class="relative overflow-hidden rounded-xl mb-4">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                             alt="Face Mask Set" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                            Best Seller
-                        </div>
-                    </div>
-                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Face Mask Set</h3>
-                    <p class="text-gray-400 text-sm mb-3">Set of 5 different face masks for all skin types</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨800</span>
-                        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product 7 -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
-                    <div class="relative overflow-hidden rounded-xl mb-4">
-                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                             alt="Nail Polish Set" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Nail Polish Set</h3>
-                    <p class="text-gray-400 text-sm mb-3">Set of 8 nail polishes in trendy colors</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨600</span>
-                        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product 8 -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
-                    <div class="relative overflow-hidden rounded-xl mb-4">
-                        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                             alt="Mascara" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                            Limited
-                        </div>
-                    </div>
-                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Volumizing Mascara</h3>
-                    <p class="text-gray-400 text-sm mb-3">Waterproof mascara for dramatic lashes</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">₨750</span>
-                        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-4 py-2 rounded-lg font-semibold hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300">
-                            Add to Cart
-                        </button>
-                    </div>
+                <div class="col-span-full text-center py-12">
+                    <p class="text-gray-400 text-lg">No cosmetic products available.</p>
                 </div>
             </div>
         </main>
@@ -302,5 +134,113 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- Bottom Navigation Styles -->
+    <style>
+        .bottom-nav { 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            background: #111; 
+            display: flex; 
+            justify-content: space-around; 
+            border-top: 1px solid #333; 
+            z-index: 50; 
+            padding-bottom: env(safe-area-inset-bottom); 
+        }
+        
+        /* Desktop styles */
+        .bottom-nav a { 
+            text-decoration: none; 
+            color: #ccc; 
+            text-align: center; 
+            font-size: 14px; 
+            padding: 15px 12px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 44px; 
+            transition: all 0.3s ease; 
+        }
+        .bottom-nav a i { 
+            font-size: 24px; 
+            display: block; 
+            margin-bottom: 5px; 
+        }
+        .bottom-nav a.active { 
+            color: #fff; 
+        }
+        
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .bottom-nav {
+                padding: 12px 0;
+            }
+            .bottom-nav a {
+                font-size: 16px;
+                padding: 12px 8px;
+                min-height: 60px;
+                flex: 1;
+            }
+            .bottom-nav a i {
+                font-size: 28px;
+                margin-bottom: 6px;
+            }
+            body { 
+                padding-bottom: calc(84px + env(safe-area-inset-bottom)); 
+            }
+        }
+        
+        /* Small mobile styles */
+        @media (max-width: 480px) {
+            .bottom-nav a {
+                font-size: 14px;
+                padding: 10px 6px;
+                min-height: 56px;
+            }
+            .bottom-nav a i {
+                font-size: 26px;
+                margin-bottom: 4px;
+            }
+            body { 
+                padding-bottom: calc(76px + env(safe-area-inset-bottom)); 
+            }
+        }
+        
+        /* Desktop body padding */
+        @media (min-width: 769px) {
+            body { 
+                padding-bottom: calc(74px + env(safe-area-inset-bottom)); 
+            }
+        }
+    </style>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a id="home-nav" href="index.html" onclick="setActiveNav('home')"><i class="fas fa-home"></i>Home</a>
+        <a id="category-nav" href="javascript:void(0)" onclick="openCategoryMenu(); setActiveNav('category'); return false;"><i class="fas fa-th-large"></i>Category</a>
+        <a id="deals-nav" href="deals.html" onclick="setActiveNav('deals')"><i class="fas fa-tags"></i>Deals</a>
+        <a id="cart-nav" href="javascript:void(0)" onclick="toggleCart(); setActiveNav('cart'); return false;"><i class="fas fa-shopping-cart"></i>Cart</a>
+    </nav>
+
+    <script>
+        function setActiveNav(key) {
+            const links = document.querySelectorAll('.bottom-nav a');
+            links.forEach(link => link.classList.remove('active'));
+            const ids = { home: 'home-nav', category: 'category-nav', cart: 'cart-nav', deals: 'deals-nav' };
+            const active = document.getElementById(ids[key]);
+            if (active) active.classList.add('active');
+        }
+
+        function openCategoryMenu() {
+            alert('Category menu not available on this page.');
+        }
+
+        function toggleCart() {
+            alert('Cart functionality not available on this page.');
+        }
+    </script>
 </body>
 </html>
