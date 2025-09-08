@@ -36,20 +36,8 @@
                     </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Home</a>
-                    <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Car Care</a>
-                    <a href="house_care.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">House Care</a>
-                    <a href="laptops.html" class="text-yellow-400 font-semibold">Laptops</a>
-                    <a href="electronics.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Electronics</a>
-                    <a href="perfumes.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Perfumes</a>
-                    <a href="sale.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Sale</a>
-                    <a href="contact.html" class="text-gray-300 hover:text-yellow-400 transition duration-300">Contact</a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button id="cart-button" class="bg-yellow-400 text-black rounded-full w-8 h-8 flex items-center justify-center relative hover:bg-yellow-500 transition duration-200">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-bold">0</span>
-                    </button>
                 </div>
             </div>
         </div>
@@ -207,81 +195,8 @@
         let currentPage = 1;
         const productsPerPage = 12;
 
-        // Sample laptop products
-        const sampleProducts = [
-            {
-                id: 1,
-                name: "Dell Inspiron 15 3000",
-                description: "15.6-inch laptop with Intel Core i5, 8GB RAM, 256GB SSD. Perfect for everyday computing and productivity.",
-                price: "699.99",
-                brand: "dell",
-                category: "laptops",
-                image_url: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 2,
-                name: "HP Pavilion 14",
-                description: "14-inch laptop with AMD Ryzen 5, 8GB RAM, 512GB SSD. Lightweight and powerful for work and entertainment.",
-                price: "599.99",
-                brand: "hp",
-                category: "laptops",
-                image_url: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 3,
-                name: "Lenovo ThinkPad E15",
-                description: "15.6-inch business laptop with Intel Core i7, 16GB RAM, 512GB SSD. Built for professionals.",
-                price: "999.99",
-                brand: "lenovo",
-                category: "laptops",
-                image_url: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 4,
-                name: "ASUS ROG Strix G15",
-                description: "15.6-inch gaming laptop with AMD Ryzen 7, 16GB RAM, 1TB SSD, RTX 3060. Ultimate gaming performance.",
-                price: "1299.99",
-                brand: "asus",
-                category: "laptops",
-                image_url: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 5,
-                name: "Acer Aspire 5",
-                description: "15.6-inch laptop with Intel Core i5, 8GB RAM, 256GB SSD. Great value for money with solid performance.",
-                price: "549.99",
-                brand: "acer",
-                category: "laptops",
-                image_url: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 6,
-                name: "MSI Gaming GF63",
-                description: "15.6-inch gaming laptop with Intel Core i5, 8GB RAM, 512GB SSD, GTX 1650. Affordable gaming solution.",
-                price: "799.99",
-                brand: "msi",
-                category: "laptops",
-                image_url: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 7,
-                name: "Dell XPS 13",
-                description: "13.4-inch premium laptop with Intel Core i7, 16GB RAM, 512GB SSD. Ultra-portable and powerful.",
-                price: "1399.99",
-                brand: "dell",
-                category: "laptops",
-                image_url: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&crop=center"
-            },
-            {
-                id: 8,
-                name: "HP Spectre x360",
-                description: "13.5-inch 2-in-1 laptop with Intel Core i7, 16GB RAM, 1TB SSD. Convertible design with premium build.",
-                price: "1599.99",
-                brand: "hp",
-                category: "laptops",
-                image_url: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&crop=center"
-            }
-        ];
+        // No products for this page currently
+        const sampleProducts = [];
 
         // Load all products
         function loadProducts() {
@@ -300,7 +215,7 @@
             const productsToShow = filteredProducts.slice(startIndex, endIndex);
 
             if (productsToShow.length === 0) {
-                container.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-gray-400 text-lg">No laptops found matching your criteria.</p></div>';
+                container.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-gray-400 text-lg">No laptop products available.</p></div>';
                 return;
             }
 
@@ -694,6 +609,114 @@
                 }
             });
         });
+    </script>
+
+    <!-- Bottom Navigation Styles -->
+    <style>
+        .bottom-nav { 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            background: #111; 
+            display: flex; 
+            justify-content: space-around; 
+            border-top: 1px solid #333; 
+            z-index: 50; 
+            padding-bottom: env(safe-area-inset-bottom); 
+        }
+        
+        /* Desktop styles */
+        .bottom-nav a { 
+            text-decoration: none; 
+            color: #ccc; 
+            text-align: center; 
+            font-size: 14px; 
+            padding: 15px 12px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 44px; 
+            transition: all 0.3s ease; 
+        }
+        .bottom-nav a i { 
+            font-size: 24px; 
+            display: block; 
+            margin-bottom: 5px; 
+        }
+        .bottom-nav a.active { 
+            color: #fff; 
+        }
+        
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .bottom-nav {
+                padding: 12px 0;
+            }
+            .bottom-nav a {
+                font-size: 16px;
+                padding: 12px 8px;
+                min-height: 60px;
+                flex: 1;
+            }
+            .bottom-nav a i {
+                font-size: 28px;
+                margin-bottom: 6px;
+            }
+            body { 
+                padding-bottom: calc(84px + env(safe-area-inset-bottom)); 
+            }
+        }
+        
+        /* Small mobile styles */
+        @media (max-width: 480px) {
+            .bottom-nav a {
+                font-size: 14px;
+                padding: 10px 6px;
+                min-height: 56px;
+            }
+            .bottom-nav a i {
+                font-size: 26px;
+                margin-bottom: 4px;
+            }
+            body { 
+                padding-bottom: calc(76px + env(safe-area-inset-bottom)); 
+            }
+        }
+        
+        /* Desktop body padding */
+        @media (min-width: 769px) {
+            body { 
+                padding-bottom: calc(74px + env(safe-area-inset-bottom)); 
+            }
+        }
+    </style>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a id="home-nav" href="index.html" onclick="setActiveNav('home')"><i class="fas fa-home"></i>Home</a>
+        <a id="category-nav" href="javascript:void(0)" onclick="openCategoryMenu(); setActiveNav('category'); return false;"><i class="fas fa-th-large"></i>Category</a>
+        <a id="deals-nav" href="deals.html" onclick="setActiveNav('deals')"><i class="fas fa-tags"></i>Deals</a>
+        <a id="cart-nav" href="javascript:void(0)" onclick="toggleCart(); setActiveNav('cart'); return false;"><i class="fas fa-shopping-cart"></i>Cart</a>
+    </nav>
+
+    <script>
+        function setActiveNav(key) {
+            const links = document.querySelectorAll('.bottom-nav a');
+            links.forEach(link => link.classList.remove('active'));
+            const ids = { home: 'home-nav', category: 'category-nav', cart: 'cart-nav', deals: 'deals-nav' };
+            const active = document.getElementById(ids[key]);
+            if (active) active.classList.add('active');
+        }
+
+        function openCategoryMenu() {
+            alert('Category menu not available on this page.');
+        }
+
+        function toggleCart() {
+            alert('Cart functionality not available on this page.');
+        }
     </script>
 </body>
 </html>
