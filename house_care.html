@@ -269,7 +269,7 @@
             </div>
 
             <!-- Products Grid -->
-            <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6">
                 <!-- Products will be dynamically loaded here -->
             </div>
 
@@ -426,13 +426,6 @@
 
         // Real house care products with actual images
         const sampleProducts = [
-            {
-                id: 1,
-                name: "AIM Anti Rust",
-                description: "Powerful anti-rust solution that protects metal surfaces from corrosion and rust. Long-lasting protection for tools and equipment.",
-                category: "cleaning",
-                image_url: "house_care/aim anti rust.jpeg"
-            },
             {
                 id: 2,
                 name: "AIM Foamy Cleaner",
@@ -634,13 +627,24 @@
             
             productsToShow.forEach(product => {
                 const productCard = document.createElement('div');
-                productCard.className = '';
+                productCard.className = 'product-card bg-gray-800 rounded-lg border border-gray-700 overflow-hidden hover:border-yellow-400 transition-all duration-300 transform hover:scale-105 cursor-pointer';
                 productCard.innerHTML = `
-                    <div class="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden">
-                        <img src="${product.image_url}" alt="${product.name}" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="640" height="360" sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw">
+                    <div class="relative">
+                        <img src="${product.image_url}" alt="${product.name}" class="w-full h-48 sm:h-56 md:h-64 lg:h-72 object-cover object-center" loading="lazy" decoding="async">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-yellow-400 mb-2 line-clamp-2">${product.name}</h3>
+                        <p class="text-xs sm:text-sm text-gray-300 mb-3 line-clamp-2">${product.description}</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg sm:text-xl font-bold text-yellow-400">${product.price ? '₨' + product.price : 'Contact for Pricing'}</span>
+                            <button class="add-to-cart-btn bg-yellow-400 hover:bg-yellow-300 text-black px-3 py-1 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition duration-200" 
+                                    data-name="${product.name}" 
+                                    data-price="${product.price || ''}" 
+                                    data-image="${product.image_url}">
+                                <i class="fas fa-cart-plus mr-1"></i>Add
+                            </button>
                         </div>
-                    <div class="text-center mt-2">
-                        <h3 class="text-base sm:text-lg font-semibold text-yellow-400">${product.name}</h3>
                     </div>
                 `;
                 // Attach product data for Quick View
