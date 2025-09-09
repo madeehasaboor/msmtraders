@@ -135,7 +135,7 @@
                     <a href="index.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a>
                     <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Car Care</a>
                     <a href="house_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">House Care</a>
-                    <a href="premium_perfumes.html" class="text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
+                    <a href="permium_perfume.html" class="text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
                     <a href="crockery.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Crockery</a>
                     <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
                     <a href="deals.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
@@ -227,7 +227,7 @@
                                 <img src="category imges/house_care_image.jpg.jfif" alt="House Care" class="w-full h-20 object-cover rounded-md mb-2">
                                 <h3 class="text-xs font-semibold text-yellow-400 text-center">House Care</h3>
                             </a>
-                            <a href="premium_perfumes.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
+                            <a href="permium_perfume.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
                                 <img src="category imges/perfumes_image.jpg.jfif" alt="Premium Perfumes" class="w-full h-20 object-cover rounded-md mb-2">
                                 <h3 class="text-xs font-semibold text-yellow-400 text-center">Premium Perfumes</h3>
                             </a>
@@ -254,7 +254,7 @@
                             <h3 class="text-lg font-semibold text-yellow-400 text-center">House Care</h3>
                             <p class="text-sm text-gray-300 text-center mt-2">Home cleaning solutions</p>
                         </a>
-                        <a href="premium_perfumes.html" class="bg-gray-700 rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
+                        <a href="permium_perfume.html" class="bg-gray-700 rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
                             <img src="category imges/perfumes_image.jpg.jfif" alt="Premium Perfumes" class="w-full h-32 object-cover rounded-md mb-3">
                             <h3 class="text-lg font-semibold text-yellow-400 text-center">Premium Perfumes</h3>
                             <p class="text-sm text-gray-300 text-center mt-2">Luxury fragrances</p>
@@ -659,3 +659,4 @@
     </script>
 </body>
 </html>
+
