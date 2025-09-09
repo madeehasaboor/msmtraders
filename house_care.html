@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>House Care - MSM Traders</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -21,6 +21,95 @@
             }
         }
     </script>
+    <style>
+        /* Responsive Design Enhancements */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Responsive images */
+        .responsive-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Mobile-first responsive breakpoints */
+        @media (max-width: 320px) {
+            .grid {
+                gap: 0.75rem;
+            }
+            .product-card {
+                min-height: 200px;
+            }
+        }
+
+        @media (min-width: 321px) and (max-width: 480px) {
+            .grid {
+                gap: 1rem;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .grid {
+                gap: 1.25rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .grid {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1025px) and (max-width: 1440px) {
+            .grid {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1441px) {
+            .grid {
+                gap: 2rem;
+            }
+        }
+
+        /* Touch targets for mobile */
+        @media (max-width: 768px) {
+            .product-card {
+                min-height: 44px;
+                touch-action: manipulation;
+            }
+            
+            button, .clickable {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+
+        /* Mobile navigation */
+        @media (max-width: 1024px) {
+            .mobile-menu {
+                display: block;
+            }
+            .desktop-nav {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .mobile-menu {
+                display: none;
+            }
+            .desktop-nav {
+                display: flex;
+            }
+        }
+    </style>
     <!-- Quick View Modal -->
     <div id="quickview-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center p-4 z-[100]">
         <div class="bg-gray-900 border border-yellow-400 rounded-xl shadow-2xl max-w-2xl w-full overflow-hidden">
@@ -75,86 +164,6 @@
             }
         }
     </style>
-    <style>
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #111;
-            display: flex;
-            justify-content: space-around;
-            border-top: 1px solid #333;
-            z-index: 50;
-            padding-bottom: env(safe-area-inset-bottom);
-        }
-        
-        /* Desktop styles */
-        .bottom-nav a {
-            text-decoration: none;
-            color: #ccc;
-            text-align: center;
-            font-size: 14px;
-            padding: 15px 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 44px;
-            transition: all 0.3s ease;
-        }
-        .bottom-nav a i {
-            font-size: 24px;
-            display: block;
-            margin-bottom: 5px;
-        }
-        .bottom-nav a.active {
-            color: #fff;
-        }
-        
-        /* Mobile styles */
-        @media (max-width: 768px) {
-            .bottom-nav {
-                padding: 12px 0;
-            }
-            .bottom-nav a {
-                font-size: 16px;
-                padding: 12px 8px;
-                min-height: 60px;
-                flex: 1;
-            }
-            .bottom-nav a i {
-                font-size: 28px;
-                margin-bottom: 6px;
-            }
-            body { 
-                padding-bottom: calc(84px + env(safe-area-inset-bottom)); 
-            }
-        }
-        
-        /* Small mobile styles */
-        @media (max-width: 480px) {
-            .bottom-nav a {
-                font-size: 14px;
-                padding: 10px 6px;
-                min-height: 56px;
-            }
-            .bottom-nav a i {
-                font-size: 26px;
-                margin-bottom: 4px;
-            }
-            body { 
-                padding-bottom: calc(76px + env(safe-area-inset-bottom)); 
-            }
-        }
-        
-        /* Desktop body padding */
-        @media (min-width: 769px) {
-            body { 
-                padding-bottom: calc(74px + env(safe-area-inset-bottom)); 
-            }
-        }
-    </style>
 </head>
 <body class="bg-black">
     <!-- Navigation -->
@@ -175,11 +184,23 @@
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a>
+                        <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Car Care</a>
+                        <a href="house_care.html" class="text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">House Care</a>
+                        <a href="premium_perfumes.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
+                        <a href="crockery.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Crockery</a>
+                        <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
+                        <a href="deals.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
+                        <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact</a>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
                     <button class="text-gray-300 hover:text-yellow-400 p-2 rounded-lg hover:bg-gray-800 transition duration-200">
                         <i class="fas fa-search text-xl"></i>
+                    </button>
+                    <button class="text-gray-300 hover:text-yellow-400 p-2 rounded-lg hover:bg-gray-800 transition duration-200 relative">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
                     </button>
                 </div>
             </div>
@@ -189,7 +210,9 @@
     <!-- Hero Section -->
     <section class="relative bg-gradient-to-br from-black via-gray-900 to-black py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-center lg:text-left">
                 <div class="mb-8">
                     <div class="inline-block bg-yellow-400 text-black px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
                         <span class="flex items-center">
@@ -200,9 +223,17 @@
                 </div>
                 <h1 class="text-4xl md:text-6xl font-bold text-yellow-400 mb-6">House Care Collection</h1>
                 <p class="text-xl md:text-2xl text-gray-300 mb-8">Keep your home clean, fresh, and beautiful with our premium house care products</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                     <a href="#products" class="bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition duration-300">Shop Now</a>
                     <a href="contact.html" class="border-2 border-yellow-400 text-yellow-400 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 hover:text-black transition duration-300">Contact Us</a>
+                    </div>
+                </div>
+                <!-- Hero Image -->
+                <div class="relative">
+                    <img src="category imges/house_care_image.jpg.jfif" 
+                         alt="House Care Products" 
+                         class="w-full h-96 object-cover rounded-xl shadow-2xl border-2 border-yellow-400">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
                 </div>
             </div>
         </div>
@@ -1136,13 +1167,6 @@
             });
         })();
     </script>
-    <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-        <a id="home-nav" href="index.html" onclick="setActiveNav('home')"><i class="fas fa-home"></i>Home</a>
-        <a id="category-nav" href="javascript:void(0)" onclick="openCategoryMenu(); setActiveNav('category'); return false;"><i class="fas fa-th-large"></i>Category</a>
-        <a id="deals-nav" href="deals.html" onclick="setActiveNav('deals')"><i class="fas fa-tags"></i>Deals</a>
-        <a id="cart-nav" href="javascript:void(0)" onclick="toggleCart(); setActiveNav('cart'); return false;"><i class="fas fa-shopping-cart"></i>Cart</a>
-    </nav>
 
     <!-- Category Quick Menu (mobile) -->
     <div id="category-menu" class="fixed inset-x-0 bottom-16 mx-4 bg-gray-900 border border-yellow-400 rounded-lg shadow-xl p-3 space-y-2 z-50 hidden">
@@ -1154,7 +1178,7 @@
             <span><i class="fas fa-home mr-2"></i>House Care</span>
             <i class="fas fa-chevron-right text-xs"></i>
         </a>
-        <a href="perfumes.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
+        <a href="premium_perfumes.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
             <span><i class="fas fa-spray-can mr-2"></i>Perfumes</span>
             <i class="fas fa-chevron-right text-xs"></i>
         </a>
@@ -1162,16 +1186,9 @@
             <span><i class="fas fa-utensils mr-2"></i>Crockery</span>
             <i class="fas fa-chevron-right text-xs"></i>
         </a>
-    </div>
+        </div>
 
     <script>
-        function setActiveNav(key) {
-            const links = document.querySelectorAll('.bottom-nav a');
-            links.forEach(link => link.classList.remove('active'));
-            const ids = { home: 'home-nav', category: 'category-nav', cart: 'cart-nav', deals: 'deals-nav' };
-            const active = document.getElementById(ids[key]);
-            if (active) active.classList.add('active');
-        }
 
         function openCategoryMenu() {
             const menu = document.getElementById('category-menu');
