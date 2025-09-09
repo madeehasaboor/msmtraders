@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Crockery - MSM Traders</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -22,9 +22,97 @@
         .qv-btn { background: #F59E0B; color: #000; border: 0; border-radius: 8px; padding: 10px 14px; font-weight: 600; cursor: pointer; }
         .qv-btn:hover { background: #f7b43a; }
         @media (min-width: 640px) { .qv-card { max-width: 700px; } .qv-img { max-height: 70vh; } }
+        
+        /* Responsive Design Enhancements */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Responsive images */
+        .responsive-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Mobile-first responsive breakpoints */
+        @media (max-width: 320px) {
+            .grid {
+                gap: 0.75rem;
+            }
+            .product-card {
+                min-height: 200px;
+            }
+        }
+
+        @media (min-width: 321px) and (max-width: 480px) {
+            .grid {
+                gap: 1rem;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .grid {
+                gap: 1.25rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .grid {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1025px) and (max-width: 1440px) {
+            .grid {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1441px) {
+            .grid {
+                gap: 2rem;
+            }
+        }
+
+        /* Touch targets for mobile */
+        @media (max-width: 768px) {
+            .product-card {
+                min-height: 44px;
+                touch-action: manipulation;
+            }
+            
+            button, .clickable {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+
+        /* Mobile navigation */
+        @media (max-width: 1024px) {
+            .mobile-menu {
+                display: block;
+            }
+            .desktop-nav {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .mobile-menu {
+                display: none;
+            }
+            .desktop-nav {
+                display: flex;
+            }
+        }
     </style>
     <style>
-        .bottom-nav {
+        .old-bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
@@ -38,7 +126,7 @@
         }
         
         /* Desktop styles */
-        .bottom-nav a {
+        .old-bottom-nav a {
             text-decoration: none;
             color: #ccc;
             text-align: center;
@@ -51,27 +139,27 @@
             min-height: 44px;
             transition: all 0.3s ease;
         }
-        .bottom-nav a i {
+        .old-bottom-nav a i {
             font-size: 24px;
             display: block;
             margin-bottom: 5px;
         }
-        .bottom-nav a.active {
+        .old-bottom-nav a.active {
             color: #fff;
         }
         
         /* Mobile styles */
         @media (max-width: 768px) {
-            .bottom-nav {
+            .old-bottom-nav {
                 padding: 12px 0;
             }
-            .bottom-nav a {
+            .old-bottom-nav a {
                 font-size: 16px;
                 padding: 12px 8px;
                 min-height: 60px;
                 flex: 1;
             }
-            .bottom-nav a i {
+            .old-bottom-nav a i {
                 font-size: 28px;
                 margin-bottom: 6px;
             }
@@ -82,12 +170,12 @@
         
         /* Small mobile styles */
         @media (max-width: 480px) {
-            .bottom-nav a {
+            .old-bottom-nav a {
                 font-size: 14px;
                 padding: 10px 6px;
                 min-height: 56px;
             }
-            .bottom-nav a i {
+            .old-bottom-nav a i {
                 font-size: 26px;
                 margin-bottom: 4px;
             }
@@ -127,6 +215,18 @@
                     </a>
                 </div>
 
+                <!-- Navigation Links -->
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a>
+                    <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Car Care</a>
+                    <a href="house_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">House Care</a>
+                    <a href="premium_perfumes.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
+                    <a href="crockery.html" class="text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Crockery</a>
+                    <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
+                    <a href="deals.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact</a>
+                </div>
+
                 <!-- Search Bar -->
                 <div class="flex-1 max-w-lg mx-8">
                     <div class="relative group">
@@ -142,13 +242,14 @@
                 <!-- User Actions -->
                 <div class="flex items-center space-x-4">
                     <button class="relative p-2 text-yellow-500 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:bg-yellow-500/10 rounded-lg group">
+                        <i class="fas fa-shopping-cart text-xl group-hover:animate-bounce"></i>
+                        <span class="absolute -top-1 -right-1 bg-yellow-500 text-black text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                        <div class="absolute inset-0 bg-yellow-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </button>
+                    <button class="relative p-2 text-yellow-500 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:bg-yellow-500/10 rounded-lg group">
                         <i class="fas fa-user text-xl group-hover:animate-bounce"></i>
                         <div class="absolute inset-0 bg-yellow-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </button>
-                    <a href="orders.html" class="relative p-2 text-yellow-500 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:bg-yellow-500/10 rounded-lg group">
-                        <i class="fas fa-box text-xl group-hover:animate-bounce"></i>
-                        <div class="absolute inset-0 bg-yellow-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    </a>
                 </div>
             </div>
         </div>
@@ -175,50 +276,85 @@
         <!-- Main Content Area -->
         <main class="flex-1">
             <!-- Page Header -->
-            <div class="mb-12 text-center">
-                <div class="relative inline-block">
-                    <h1 class="text-6xl md:text-7xl font-extrabold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent mb-6 tracking-wide">
-                        Crockery
-                    </h1>
-                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full"></div>
-                </div>
-                <p class="text-gray-300 text-xl md:text-2xl font-light max-w-2xl mx-auto leading-relaxed">
-                    Elegant crockery sets for your dining table and kitchen
-                </p>
-                <div class="mt-8 flex justify-center">
-                    <div class="flex space-x-2">
-                        <div class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
-                        <div class="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
-                        <div class="w-2 h-2 bg-yellow-600 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+            <div class="mb-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- Text Content -->
+                    <div class="text-center lg:text-left">
+                        <div class="relative inline-block">
+                            <h1 class="text-6xl md:text-7xl font-extrabold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent mb-6 tracking-wide">
+                                Crockery
+                            </h1>
+                            <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full"></div>
+                        </div>
+                        <p class="text-gray-300 text-xl md:text-2xl font-light max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Elegant crockery sets for your dining table and kitchen
+                        </p>
+                        <div class="mt-8 flex justify-center lg:justify-start">
+                            <div class="flex space-x-2">
+                                <div class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                                <div class="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                                <div class="w-2 h-2 bg-yellow-600 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Hero Image -->
+                    <div class="relative">
+                        <img src="category imges/crockery_image.jpg.jfif" 
+                             alt="Crockery Collection" 
+                             class="w-full h-96 object-cover rounded-xl shadow-2xl border-2 border-yellow-400">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
                     </div>
                 </div>
             </div>
 
             <!-- Category Buttons Row -->
-            <div class="mb-8 flex flex-wrap gap-3">
-                <a href="#top" class="group relative inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/80 text-yellow-400 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-yellow-500 hover:to-yellow-400 hover:text-black shadow-sm hover:shadow-yellow-500/30 transition-all">
-                    <i class="fas fa-utensils text-yellow-400 group-hover:text-black"></i>
-                    <span>Crockery & Dinnerware</span>
+            <div class="mb-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
+                <!-- Crockery & Dinnerware -->
+                <a href="#top" class="group relative bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-lg sm:rounded-xl p-2 sm:p-3 lg:p-4 hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 transform hover:scale-105 text-center min-h-[100px] sm:min-h-[120px] lg:min-h-[140px]">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-2 sm:mb-3 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="Crockery category/crockery and dinner aware.webp" alt="Crockery & Dinnerware" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <h3 class="text-xs sm:text-sm lg:text-base font-semibold text-yellow-400 group-hover:text-yellow-300 leading-tight">Crockery & Dinnerware</h3>
                 </a>
-                <a href="#cutlery" class="group relative inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/80 text-yellow-400 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-yellow-500 hover:to-yellow-400 hover:text-black shadow-sm hover:shadow-yellow-500/30 transition-all">
-                    <i class="fas fa-utensils text-yellow-400 group-hover:text-black"></i>
-                    <span>Premium Cutlery Collection</span>
+
+                <!-- Premium Cutlery Collection -->
+                <a href="#cutlery" class="group relative bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-lg sm:rounded-xl p-2 sm:p-3 lg:p-4 hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 transform hover:scale-105 text-center min-h-[100px] sm:min-h-[120px] lg:min-h-[140px]">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-2 sm:mb-3 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="Crockery category/cutlery sets.jpg" alt="Premium Cutlery Collection" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <h3 class="text-xs sm:text-sm lg:text-base font-semibold text-yellow-400 group-hover:text-yellow-300 leading-tight">Premium Cutlery Collection</h3>
                 </a>
-                <a href="#cakes" class="group relative inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/80 text-yellow-400 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-yellow-500 hover:to-yellow-400 hover:text-black shadow-sm hover:shadow-yellow-500/30 transition-all">
-                    <i class="fas fa-birthday-cake text-yellow-400 group-hover:text-black"></i>
-                    <span>Elegant Cake Dishes Collection</span>
+
+                <!-- Elegant Cake Dishes Collection -->
+                <a href="#cakes" class="group relative bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-lg sm:rounded-xl p-2 sm:p-3 lg:p-4 hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 transform hover:scale-105 text-center min-h-[100px] sm:min-h-[120px] lg:min-h-[140px]">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-2 sm:mb-3 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="Crockery category/cake dish.jfif" alt="Elegant Cake Dishes Collection" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <h3 class="text-xs sm:text-sm lg:text-base font-semibold text-yellow-400 group-hover:text-yellow-300 leading-tight">Elegant Cake Dishes Collection</h3>
                 </a>
-                <a href="#watersets" class="group relative inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/80 text-yellow-400 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-yellow-500 hover:to-yellow-400 hover:text-black shadow-sm hover:shadow-yellow-500/30 transition-all">
-                    <i class="fas fa-wine-glass text-yellow-400 group-hover:text-black"></i>
-                    <span>Premium Water Sets Collection</span>
+
+                <!-- Premium Water Sets Collection -->
+                <a href="#watersets" class="group relative bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-lg sm:rounded-xl p-2 sm:p-3 lg:p-4 hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 transform hover:scale-105 text-center min-h-[100px] sm:min-h-[120px] lg:min-h-[140px]">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-2 sm:mb-3 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="Crockery category/water sets.jfif" alt="Premium Water Sets Collection" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <h3 class="text-xs sm:text-sm lg:text-base font-semibold text-yellow-400 group-hover:text-yellow-300 leading-tight">Premium Water Sets Collection</h3>
                 </a>
-                <a href="#holders" class="group relative inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/80 text-yellow-400 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-yellow-500 hover:to-yellow-400 hover:text-black shadow-sm hover:shadow-yellow-500/30 transition-all">
-                    <i class="fas fa-box-open text-yellow-400 group-hover:text-black"></i>
-                    <span>Elegant Cutlery Holders Collection</span>
+
+                <!-- Elegant Cutlery Holders Collection -->
+                <a href="#holders" class="group relative bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-lg sm:rounded-xl p-2 sm:p-3 lg:p-4 hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 transform hover:scale-105 text-center min-h-[100px] sm:min-h-[120px] lg:min-h-[140px]">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-2 sm:mb-3 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="Crockery category/cutlery holders.jfif" alt="Elegant Cutlery Holders Collection" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <h3 class="text-xs sm:text-sm lg:text-base font-semibold text-yellow-400 group-hover:text-yellow-300 leading-tight">Elegant Cutlery Holders Collection</h3>
                 </a>
-                <a href="#essentials" class="group relative inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/80 text-yellow-400 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-yellow-500 hover:to-yellow-400 hover:text-black shadow-sm hover:shadow-yellow-500/30 transition-all">
-                    <i class="fas fa-blender text-yellow-400 group-hover:text-black"></i>
-                    <span>Essential Kitchen Items Collection</span>
+
+                <!-- Essential Kitchen Items Collection -->
+                <a href="#essentials" class="group relative bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-lg sm:rounded-xl p-2 sm:p-3 lg:p-4 hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 transform hover:scale-105 text-center min-h-[100px] sm:min-h-[120px] lg:min-h-[140px]">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-2 sm:mb-3 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="Crockery category/hotpots.jfif" alt="Essential Kitchen Items Collection" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <h3 class="text-xs sm:text-sm lg:text-base font-semibold text-yellow-400 group-hover:text-yellow-300 leading-tight">Essential Kitchen Items Collection</h3>
                 </a>
             </div>
 
@@ -724,7 +860,7 @@
                         <li><a href="index.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Home</a></li>
                         <li><a href="car_care.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Car Care</a></li>
                         <li><a href="house_care.html" class="text-gray-400 hover:text-yellow-500 transition-colors">House Care</a></li>
-                        <li><a href="perfumes.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Perfumes</a></li>
+                        <li><a href="premium_perfumes.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Premium Perfumes</a></li>
                     </ul>
                 </div>
                 <div>
@@ -769,7 +905,7 @@
         </div>
                 </div>
     <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
+    <nav class="old-bottom-nav" style="display: none;">
         <a id="home-nav" href="index.html" onclick="setActiveNav('home')"><i class="fas fa-home"></i>Home</a>
         <a id="category-nav" href="javascript:void(0)" onclick="openCategoryMenu(); setActiveNav('category'); return false;"><i class="fas fa-th-large"></i>Category</a>
         <a id="deals-nav" href="deals.html" onclick="setActiveNav('deals')"><i class="fas fa-tags"></i>Deals</a>
@@ -786,7 +922,7 @@
             <span><i class="fas fa-home mr-2"></i>House Care</span>
             <i class="fas fa-chevron-right text-xs"></i>
         </a>
-        <a href="perfumes.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
+        <a href="premium_perfumes.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
             <span><i class="fas fa-spray-can mr-2"></i>Perfumes</span>
             <i class="fas fa-chevron-right text-xs"></i>
         </a>
