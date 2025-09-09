@@ -50,6 +50,16 @@
             box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
         }
         
+        /* Hide scrollbars for horizontal scrolling */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
         /* Responsive Images */
         .responsive-image {
             width: 100%;
@@ -164,26 +174,26 @@
             <!-- Mobile Categories - Horizontal Scroll -->
             <div class="lg:hidden mb-6">
                 <h3 class="text-lg font-bold text-golden mb-4 text-center">Shop by Categories</h3>
-                <div class="flex space-x-3 overflow-x-auto pb-2">
-                    <a href="car_care.html" class="flex-shrink-0 bg-gray-900 border border-golden rounded-lg p-3 text-center min-w-[100px] hover:bg-golden hover:text-black transition-colors group">
-                        <i class="fas fa-car text-golden group-hover:text-black text-lg mb-1 block"></i>
-                        <span class="font-medium text-xs">Car Care</span>
+                <div class="flex space-x-4 overflow-x-auto pb-4 scrollbar-hide">
+                    <a href="car_care.html" class="flex-shrink-0 bg-gray-900 border border-golden rounded-lg p-3 text-center min-w-[120px] hover:bg-golden hover:text-black transition-all duration-300 transform hover:scale-105 group shadow-lg">
+                        <img src="category imges/car_care_image.jpg" alt="Car Care" class="w-full h-20 object-cover rounded-md mb-2 group-hover:scale-110 transition-transform duration-300">
+                        <span class="font-medium text-xs text-golden group-hover:text-black">Car Care</span>
                     </a>
-                    <a href="house_care.html" class="flex-shrink-0 bg-gray-900 border border-golden rounded-lg p-3 text-center min-w-[100px] hover:bg-golden hover:text-black transition-colors group">
-                        <i class="fas fa-home text-golden group-hover:text-black text-lg mb-1 block"></i>
-                        <span class="font-medium text-xs">House Care</span>
+                    <a href="house_care.html" class="flex-shrink-0 bg-gray-900 border border-golden rounded-lg p-3 text-center min-w-[120px] hover:bg-golden hover:text-black transition-all duration-300 transform hover:scale-105 group shadow-lg">
+                        <img src="category imges/house_care_image.jpg.jfif" alt="House Care" class="w-full h-20 object-cover rounded-md mb-2 group-hover:scale-110 transition-transform duration-300">
+                        <span class="font-medium text-xs text-golden group-hover:text-black">House Care</span>
                     </a>
-                    <a href="premium_perfumes.html" class="flex-shrink-0 bg-gray-900 border border-golden rounded-lg p-3 text-center min-w-[100px] hover:bg-golden hover:text-black transition-colors group">
-                        <i class="fas fa-spray-can text-golden group-hover:text-black text-lg mb-1 block"></i>
-                        <span class="font-medium text-xs">Premium Perfumes</span>
+                    <a href="premium_perfumes.html" class="flex-shrink-0 bg-gray-900 border border-golden rounded-lg p-3 text-center min-w-[120px] hover:bg-golden hover:text-black transition-all duration-300 transform hover:scale-105 group shadow-lg">
+                        <img src="category imges/perfumes_image.jpg.jfif" alt="Premium Perfumes" class="w-full h-20 object-cover rounded-md mb-2 group-hover:scale-110 transition-transform duration-300">
+                        <span class="font-medium text-xs text-golden group-hover:text-black">Premium Perfumes</span>
                     </a>
-                    <a href="crockery.html" class="flex-shrink-0 bg-gray-900 border border-golden rounded-lg p-3 text-center min-w-[100px] hover:bg-golden hover:text-black transition-colors group">
-                        <i class="fas fa-utensils text-golden group-hover:text-black text-lg mb-1 block"></i>
-                        <span class="font-medium text-xs">Crockery</span>
+                    <a href="crockery.html" class="flex-shrink-0 bg-gray-900 border border-golden rounded-lg p-3 text-center min-w-[120px] hover:bg-golden hover:text-black transition-all duration-300 transform hover:scale-105 group shadow-lg">
+                        <img src="category imges/crockery_image.jpg.jfif" alt="Crockery" class="w-full h-20 object-cover rounded-md mb-2 group-hover:scale-110 transition-transform duration-300">
+                        <span class="font-medium text-xs text-golden group-hover:text-black">Crockery</span>
                     </a>
-                    <a href="laptops.html" class="flex-shrink-0 bg-gray-900 border border-golden rounded-lg p-3 text-center min-w-[100px] hover:bg-golden hover:text-black transition-colors group">
-                        <i class="fas fa-laptop text-golden group-hover:text-black text-lg mb-1 block"></i>
-                        <span class="font-medium text-xs">Laptops</span>
+                    <a href="laptops.html" class="flex-shrink-0 bg-gray-900 border border-golden rounded-lg p-3 text-center min-w-[120px] hover:bg-golden hover:text-black transition-all duration-300 transform hover:scale-105 group shadow-lg">
+                        <img src="category imges/laptops_image.jpg.jfif" alt="Laptops" class="w-full h-20 object-cover rounded-md mb-2 group-hover:scale-110 transition-transform duration-300">
+                        <span class="font-medium text-xs text-golden group-hover:text-black">Laptops</span>
                     </a>
                 </div>
             </div>
@@ -193,26 +203,26 @@
                 <div class="hidden lg:block lg:w-1/4">
                     <div class="bg-gray-900 border border-golden rounded-lg p-6">
                         <h3 class="text-xl font-bold text-golden mb-6 text-center">Categories</h3>
-                        <div class="space-y-3">
-                            <a href="car_care.html" class="flex items-center p-3 text-gray-300 hover:bg-golden hover:text-black rounded-lg transition-colors group">
-                                <i class="fas fa-car text-golden group-hover:text-black mr-3"></i>
-                                <span class="font-medium">Car Care</span>
+                        <div class="grid grid-cols-1 gap-4">
+                            <a href="car_care.html" class="bg-gray-800 border border-golden/50 rounded-lg p-4 hover:bg-golden hover:text-black transition-all duration-300 transform hover:scale-105 group shadow-lg">
+                                <img src="category imges/car_care_image.jpg" alt="Car Care" class="w-full h-24 object-cover rounded-md mb-3 group-hover:scale-110 transition-transform duration-300">
+                                <h4 class="font-semibold text-golden group-hover:text-black text-center">Car Care</h4>
                             </a>
-                            <a href="house_care.html" class="flex items-center p-3 text-gray-300 hover:bg-golden hover:text-black rounded-lg transition-colors group">
-                                <i class="fas fa-home text-golden group-hover:text-black mr-3"></i>
-                                <span class="font-medium">House Care</span>
+                            <a href="house_care.html" class="bg-gray-800 border border-golden/50 rounded-lg p-4 hover:bg-golden hover:text-black transition-all duration-300 transform hover:scale-105 group shadow-lg">
+                                <img src="category imges/house_care_image.jpg.jfif" alt="House Care" class="w-full h-24 object-cover rounded-md mb-3 group-hover:scale-110 transition-transform duration-300">
+                                <h4 class="font-semibold text-golden group-hover:text-black text-center">House Care</h4>
                             </a>
-                            <a href="premium_perfumes.html" class="flex items-center p-3 text-gray-300 hover:bg-golden hover:text-black rounded-lg transition-colors group">
-                                <i class="fas fa-spray-can text-golden group-hover:text-black mr-3"></i>
-                                <span class="font-medium">Premium Perfumes</span>
+                            <a href="premium_perfumes.html" class="bg-gray-800 border border-golden/50 rounded-lg p-4 hover:bg-golden hover:text-black transition-all duration-300 transform hover:scale-105 group shadow-lg">
+                                <img src="category imges/perfumes_image.jpg.jfif" alt="Premium Perfumes" class="w-full h-24 object-cover rounded-md mb-3 group-hover:scale-110 transition-transform duration-300">
+                                <h4 class="font-semibold text-golden group-hover:text-black text-center">Premium Perfumes</h4>
                             </a>
-                            <a href="crockery.html" class="flex items-center p-3 text-gray-300 hover:bg-golden hover:text-black rounded-lg transition-colors group">
-                                <i class="fas fa-utensils text-golden group-hover:text-black mr-3"></i>
-                                <span class="font-medium">Crockery</span>
+                            <a href="crockery.html" class="bg-gray-800 border border-golden/50 rounded-lg p-4 hover:bg-golden hover:text-black transition-all duration-300 transform hover:scale-105 group shadow-lg">
+                                <img src="category imges/crockery_image.jpg.jfif" alt="Crockery" class="w-full h-24 object-cover rounded-md mb-3 group-hover:scale-110 transition-transform duration-300">
+                                <h4 class="font-semibold text-golden group-hover:text-black text-center">Crockery</h4>
                             </a>
-                            <a href="laptops.html" class="flex items-center p-3 text-gray-300 hover:bg-golden hover:text-black rounded-lg transition-colors group">
-                                <i class="fas fa-laptop text-golden group-hover:text-black mr-3"></i>
-                                <span class="font-medium">Laptops</span>
+                            <a href="laptops.html" class="bg-gray-800 border border-golden/50 rounded-lg p-4 hover:bg-golden hover:text-black transition-all duration-300 transform hover:scale-105 group shadow-lg">
+                                <img src="category imges/laptops_image.jpg.jfif" alt="Laptops" class="w-full h-24 object-cover rounded-md mb-3 group-hover:scale-110 transition-transform duration-300">
+                                <h4 class="font-semibold text-golden group-hover:text-black text-center">Laptops</h4>
                             </a>
                         </div>
                     </div>
