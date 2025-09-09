@@ -36,8 +36,20 @@
                     </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a>
+                    <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Car Care</a>
+                    <a href="house_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">House Care</a>
+                    <a href="premium_perfumes.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
+                    <a href="crockery.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Crockery</a>
+                    <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
+                    <a href="deals.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact</a>
                 </div>
                 <div class="flex items-center space-x-4">
+                    <button class="text-gray-300 hover:text-yellow-400 p-2 rounded-lg hover:bg-gray-800 transition duration-200 relative">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -122,7 +134,7 @@
                         <li><a href="house_care.html" class="hover:text-yellow-400 transition duration-300">House Care</a></li>
                         <li><a href="laptops.html" class="hover:text-yellow-400 transition duration-300">Laptops</a></li>
                         <li><a href="electronics.html" class="hover:text-yellow-400 transition duration-300">Electronics</a></li>
-                        <li><a href="perfumes.html" class="hover:text-yellow-400 transition duration-300">Perfumes</a></li>
+                        <li><a href="premium_perfumes.html" class="hover:text-yellow-400 transition duration-300">Premium Perfumes</a></li>
                         <li><a href="sale.html" class="hover:text-yellow-400 transition duration-300">Sale</a></li>
                         <li><a href="contact.html" class="hover:text-yellow-400 transition duration-300">Contact</a></li>
                     </ul>
@@ -843,7 +855,7 @@
 
     <!-- Bottom Navigation Styles -->
     <style>
-        .bottom-nav { 
+        .old-bottom-nav { 
             position: fixed; 
             bottom: 0; 
             left: 0; 
@@ -857,7 +869,7 @@
         }
         
         /* Desktop styles */
-        .bottom-nav a { 
+        .old-bottom-nav a { 
             text-decoration: none; 
             color: #ccc; 
             text-align: center; 
@@ -870,27 +882,27 @@
             min-height: 44px; 
             transition: all 0.3s ease; 
         }
-        .bottom-nav a i { 
+        .old-bottom-nav a i { 
             font-size: 24px; 
             display: block; 
             margin-bottom: 5px; 
         }
-        .bottom-nav a.active { 
+        .old-bottom-nav a.active { 
             color: #fff; 
         }
         
         /* Mobile styles */
         @media (max-width: 768px) {
-            .bottom-nav {
+            .old-bottom-nav {
                 padding: 12px 0;
             }
-            .bottom-nav a {
+            .old-bottom-nav a {
                 font-size: 16px;
                 padding: 12px 8px;
                 min-height: 60px;
                 flex: 1;
             }
-            .bottom-nav a i {
+            .old-bottom-nav a i {
                 font-size: 28px;
                 margin-bottom: 6px;
             }
@@ -901,12 +913,12 @@
         
         /* Small mobile styles */
         @media (max-width: 480px) {
-            .bottom-nav a {
+            .old-bottom-nav a {
                 font-size: 14px;
                 padding: 10px 6px;
                 min-height: 56px;
             }
-            .bottom-nav a i {
+            .old-bottom-nav a i {
                 font-size: 26px;
                 margin-bottom: 4px;
             }
@@ -924,7 +936,7 @@
     </style>
 
     <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
+    <nav class="old-bottom-nav" style="display: none;">
         <a id="home-nav" href="index.html" onclick="setActiveNav('home')"><i class="fas fa-home"></i>Home</a>
         <a id="category-nav" href="javascript:void(0)" onclick="openCategoryMenu(); setActiveNav('category'); return false;"><i class="fas fa-th-large"></i>Category</a>
         <a id="deals-nav" href="deals.html" onclick="setActiveNav('deals')"><i class="fas fa-tags"></i>Deals</a>
