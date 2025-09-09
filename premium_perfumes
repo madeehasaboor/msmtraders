@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Premium Perfumes - MSM Traders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Responsive Design Enhancements */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Responsive images */
+        .responsive-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Mobile-first responsive breakpoints */
+        @media (max-width: 320px) {
+            .grid {
+                gap: 0.75rem;
+            }
+            .product-card {
+                min-height: 200px;
+            }
+        }
+
+        @media (min-width: 321px) and (max-width: 480px) {
+            .grid {
+                gap: 1rem;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .grid {
+                gap: 1.25rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .grid {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1025px) and (max-width: 1440px) {
+            .grid {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1441px) {
+            .grid {
+                gap: 2rem;
+            }
+        }
+
+        /* Touch targets for mobile */
+        @media (max-width: 768px) {
+            .product-card {
+                min-height: 44px;
+                touch-action: manipulation;
+            }
+            
+            button, .clickable {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+
+        /* Mobile navigation */
+        @media (max-width: 1024px) {
+            .mobile-menu {
+                display: block;
+            }
+            .desktop-nav {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .mobile-menu {
+                display: none;
+            }
+            .desktop-nav {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-gray-900 via-black to-gray-900 border-b-2 border-yellow-500 sticky top-0 z-50 backdrop-blur-md bg-opacity-95 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-3 group">
+                        <div class="relative">
+                            <div class="w-10 h-10 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-yellow-500/25">
+                                <i class="fas fa-shopping-cart text-black text-lg"></i>
+                            </div>
+                            <div class="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-star text-black text-xs"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent group-hover:animate-glow">MSM Traders</h1>
+                            <p class="text-xs text-yellow-500 font-medium">CLICK.SHOP.SMILE</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a>
+                    <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Car Care</a>
+                    <a href="house_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">House Care</a>
+                    <a href="premium_perfumes.html" class="text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
+                    <a href="crockery.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Crockery</a>
+                    <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
+                    <a href="deals.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact</a>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-lg mx-8">
+                    <div class="relative group">
+                        <div class="absolute inset-0 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-xl blur opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                        <div class="relative">
+                            <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-yellow-500"></i>
+                            <input type="text" placeholder="Search perfumes, fragrances, candles..." 
+                                   class="relative w-full px-6 py-3 pl-12 pr-4 bg-gray-800/90 border-2 border-yellow-500/50 text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-4 focus:ring-yellow-500/30 focus:border-yellow-400 transition-all duration-300 backdrop-blur-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Actions -->
+                <div class="flex items-center space-x-4">
+                    <button class="relative p-2 text-yellow-500 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:bg-yellow-500/10 rounded-lg group">
+                        <i class="fas fa-shopping-cart text-xl group-hover:animate-bounce"></i>
+                        <span class="absolute -top-1 -right-1 bg-yellow-500 text-black text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                        <div class="absolute inset-0 bg-yellow-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </button>
+                    <button class="relative p-2 text-yellow-500 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:bg-yellow-500/10 rounded-lg group">
+                        <i class="fas fa-user text-xl group-hover:animate-bounce"></i>
+                        <div class="absolute inset-0 bg-yellow-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <!-- Left Sidebar -->
+        <aside class="hidden lg:block w-64 mr-6 space-y-6">
+            <!-- Categories Section -->
+            <div class="bg-gray-900 border border-yellow-500 rounded-lg shadow-md p-6">
+                <h3 class="text-lg font-semibold text-yellow-500 mb-4">Categories</h3>
+                <nav class="space-y-2">
+                    <a href="cosmetics.html" class="block py-2 px-3 text-yellow-400 bg-yellow-500/10 rounded-lg transition-colors">
+                        <i class="fas fa-palette mr-2"></i>Cosmetics
+                    </a>
+                    <a href="crockery.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
+                        <i class="fas fa-utensils mr-2"></i>Crockery
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1">
+            <!-- Page Header -->
+            <div class="mb-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- Text Content -->
+                    <div class="text-center lg:text-left">
+                        <h1 class="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">Premium Perfumes & Fragrances</h1>
+                        <p class="text-gray-300 text-lg">Discover our premium collection of perfumes, fragrances, and scented candles</p>
+                    </div>
+                    <!-- Hero Image -->
+                    <div class="relative">
+                        <img src="category imges/perfumes_image.jpg.jfif" 
+                             alt="Premium Perfumes Collection" 
+                             class="w-full h-96 object-cover rounded-xl shadow-2xl border-2 border-yellow-400">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6 mb-8">
+                <!-- For Her -->
+                <button onclick="showCategoryProducts('for-her')" class="bg-gray-800 border-2 border-yellow-500 rounded-xl px-4 py-4 sm:px-8 sm:py-6 lg:px-10 lg:py-8 hover:bg-gray-700 hover:border-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl min-w-[120px] sm:min-w-[160px] lg:min-w-[200px]">
+                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
+                            <img src="premium perfumes/CATEGORY IMGES/FOR HER.jfif" alt="For Her" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-yellow-400 font-semibold text-sm sm:text-base lg:text-lg">For Her</span>
+                    </div>
+                </button>
+
+                <!-- For Him -->
+                <button onclick="showCategoryProducts('for-him')" class="bg-gray-800 border-2 border-yellow-500 rounded-xl px-4 py-4 sm:px-8 sm:py-6 lg:px-10 lg:py-8 hover:bg-gray-700 hover:border-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl min-w-[120px] sm:min-w-[160px] lg:min-w-[200px]">
+                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
+                            <img src="premium perfumes/CATEGORY IMGES/FOR HIM.webp" alt="For Him" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-yellow-400 font-semibold text-sm sm:text-base lg:text-lg">For Him</span>
+                    </div>
+                </button>
+
+                <!-- Scented Candles -->
+                <button onclick="showCategoryProducts('scented-candles')" class="bg-gray-800 border-2 border-yellow-500 rounded-xl px-4 py-4 sm:px-8 sm:py-6 lg:px-10 lg:py-8 hover:bg-gray-700 hover:border-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl min-w-[120px] sm:min-w-[160px] lg:min-w-[200px]">
+                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
+                            <img src="premium perfumes/CATEGORY IMGES/SECENTED CANDEL.jfif" alt="Scented Candles" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-yellow-400 font-semibold text-sm sm:text-base lg:text-lg">Scented Candles</span>
+                    </div>
+                </button>
+
+                <!-- Premium Scented Candles -->
+                <button onclick="showCategoryProducts('premium-candles')" class="bg-gray-800 border-2 border-yellow-500 rounded-xl px-4 py-4 sm:px-8 sm:py-6 lg:px-10 lg:py-8 hover:bg-gray-700 hover:border-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl min-w-[120px] sm:min-w-[160px] lg:min-w-[200px]">
+                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
+                            <img src="premium perfumes/CATEGORY IMGES/PREMIUM SCENTED CANDELS.webp" alt="Premium Scented Candles" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-yellow-400 font-semibold text-sm sm:text-base lg:text-lg">Premium Candles</span>
+                    </div>
+                        </button>
+
+                <!-- Bahoors -->
+                <button onclick="showCategoryProducts('bahoors')" class="bg-gray-800 border-2 border-yellow-500 rounded-xl px-4 py-4 sm:px-8 sm:py-6 lg:px-10 lg:py-8 hover:bg-gray-700 hover:border-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl min-w-[120px] sm:min-w-[160px] lg:min-w-[200px]">
+                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
+                            <i class="fas fa-fire text-yellow-400 text-lg sm:text-xl lg:text-2xl"></i>
+                        </div>
+                        <span class="text-yellow-400 font-semibold text-sm sm:text-base lg:text-lg">Bahoors</span>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Products Display Area -->
+            <div id="products-display" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 sm:gap-6">
+                <!-- Default message -->
+                <div class="col-span-full text-center py-12">
+                    <div class="w-24 h-24 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-spray-can text-gray-400 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-300 mb-2">Select a Category</h3>
+                    <p class="text-gray-400">Choose a category above to view our premium perfume collection</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Product Popup Modal -->
+    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-2 sm:p-4">
+        <div class="bg-gray-800 rounded-lg sm:rounded-xl shadow-2xl max-w-xs sm:max-w-sm w-full max-h-[85vh] sm:max-h-[80vh] overflow-y-auto">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-3 sm:p-4 border-b border-gray-700">
+                <h3 class="text-sm sm:text-lg font-bold text-yellow-400">Product Details</h3>
+                <button id="closeModal" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-times text-lg sm:text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Content -->
+            <div class="p-3 sm:p-4">
+                <!-- Product Image -->
+                <div class="relative mb-3 sm:mb-4">
+                    <img id="modalProductImage" src="" alt="" class="w-full h-32 sm:h-40 object-cover rounded-md sm:rounded-lg">
+                    <div class="absolute top-1 right-1 sm:top-2 sm:right-2 bg-yellow-500 text-black px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-bold">
+                        Premium
+                    </div>
+                </div>
+                
+                <!-- Product Details -->
+                <div class="space-y-2 sm:space-y-3">
+                    <h4 id="modalProductName" class="text-base sm:text-xl font-bold text-yellow-400"></h4>
+                    <p id="modalProductDescription" class="text-gray-300 text-xs sm:text-sm leading-relaxed"></p>
+                    <div class="flex items-center justify-between">
+                        <span id="modalProductPrice" class="text-lg sm:text-2xl font-bold text-green-400"></span>
+                    </div>
+                </div>
+                
+                <!-- Add to Cart Button -->
+                <button id="modalAddToCart" class="w-full mt-4 sm:mt-6 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black py-2 sm:py-3 rounded-md sm:rounded-lg hover:from-yellow-600 hover:to-yellow-700 transition-all font-semibold text-sm sm:text-base">
+                    <i class="fas fa-shopping-cart mr-1 sm:mr-2"></i>Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-yellow-500 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-yellow-500 mb-4">MSM Traders</h3>
+                    <p class="text-gray-300 text-sm">Your trusted partner for premium products and exceptional service.</p>
+                </div>
+                <div>
+                    <h4 class="text-md font-semibold text-yellow-500 mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Home</a></li>
+                        <li><a href="cosmetics.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Cosmetics</a></li>
+                        <li><a href="crockery.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Crockery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-md font-semibold text-yellow-500 mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="contact.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition-colors">Shipping Info</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-md font-semibold text-yellow-500 mb-4">Contact</h4>
+                    <div class="space-y-2 text-sm text-gray-300">
+                        <p><i class="fas fa-phone mr-2 text-yellow-500"></i>+92 325 8573925</p>
+                        <p><i class="fas fa-envelope mr-2 text-yellow-500"></i>info@msmtraders.com</p>
+                        <p><i class="fas fa-map-marker-alt mr-2 text-yellow-500"></i>DHA Phase 2, Lahore</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400 text-sm">&copy; 2025 MSM Traders. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product data for different categories
+        const productData = {
+            'for-her': [
+                {
+                    name: 'Emerald Compare',
+                    description: 'Luxurious emerald-inspired fragrance with fresh floral notes',
+                    price: 650,
+                    image: 'premium perfumes/for her/Emrald_Compare.webp'
+                },
+                {
+                    name: 'Serenity Compare',
+                    description: 'Peaceful and calming scent with soft floral undertones',
+                    price: 550,
+                    image: 'premium perfumes/for her/Serenity_compare.webp'
+                },
+                {
+                    name: 'Forever Compare',
+                    description: 'Timeless and elegant fragrance with lasting appeal',
+                    price: 650,
+                    image: 'premium perfumes/for her/forever_compare.webp'
+                },
+                {
+                    name: 'Grace Comparison',
+                    description: 'Graceful and sophisticated scent with refined elegance',
+                    price: 550,
+                    image: 'premium perfumes/for her/Grace_Comparision.webp'
+                }
+            ],
+            'for-him': [
+                {
+                    name: 'OV Comparison',
+                    description: 'Premium masculine fragrance with sophisticated blend of woody and citrus notes',
+                    price: 650,
+                    image: 'premium perfumes/for Him/ov_comparision.webp'
+                },
+                {
+                    name: 'Ember Compare',
+                    description: 'Bold and intense fragrance with warm amber and spice undertones',
+                    price: 550,
+                    image: 'premium perfumes/for Him/ember_compare.webp'
+                },
+                {
+                    name: 'Fierce',
+                    description: 'Strong and confident scent with powerful masculine appeal',
+                    price: 650,
+                    image: 'premium perfumes/for Him/Feirce.webp'
+                },
+                {
+                    name: 'Royal Spirit',
+                    description: 'Elegant and regal fragrance with luxurious blend of oud and sandalwood',
+                    price: 550,
+                    image: 'premium perfumes/for Him/Royal Spirit.webp'
+                }
+            ],
+            'scented-candles': [
+                {
+                    name: 'Raspberry Candle',
+                    description: 'Sweet and fruity raspberry-scented candle for a delightful ambiance',
+                    price: 650,
+                    image: 'premium perfumes/scented candels/RASBERRY.webp'
+                },
+                {
+                    name: 'Lavender Candle',
+                    description: 'Calming lavender fragrance perfect for relaxation and sleep',
+                    price: 550,
+                    image: 'premium perfumes/scented candels/LAVENDER.webp'
+                },
+                {
+                    name: 'Coffee Candle',
+                    description: 'Rich and aromatic coffee-scented candle for a cozy atmosphere',
+                    price: 650,
+                    image: 'premium perfumes/scented candels/COFFEE.webp'
+                },
+                {
+                    name: 'Vanilla Candle',
+                    description: 'Classic warm vanilla-scented candle with long-lasting fragrance',
+                    price: 550,
+                    image: 'premium perfumes/scented candels/VANIALLA.webp'
+                }
+            ],
+            'premium-candles': [
+                {
+                    name: 'Rose Candle',
+                    description: 'Luxurious rose-scented candle with premium quality and elegant design',
+                    price: 850,
+                    image: 'premium perfumes/premium scented candels/Rose candle.webp'
+                },
+                {
+                    name: 'Premium Candles Set 8',
+                    description: 'Exclusive collection of 8 premium scented candles in elegant packaging',
+                    price: 2490,
+                    image: 'premium perfumes/premium scented candels/Premium Candles 8.webp'
+                },
+                {
+                    name: 'Premium Candles Set 3',
+                    description: 'Luxury set of 3 premium scented candles with sophisticated fragrances',
+                    price: 850,
+                    image: 'premium perfumes/premium scented candels/Premium Candles 3.webp'
+                },
+                {
+                    name: 'Cloud Candle Set',
+                    description: 'Dreamy cloud-themed candle set with ethereal fragrances',
+                    price: 1399,
+                    image: 'premium perfumes/premium scented candels/Cloud Candle Set.webp'
+                },
+                {
+                    name: 'Candle Bouquet with Wax Base',
+                    description: 'Beautiful candle bouquet arrangement with decorative wax base',
+                    price: 4990,
+                    image: 'premium perfumes/premium scented candels/Candle Bouquet With wax base.webp'
+                }
+            ],
+            'bahoors': [
+                {
+                    name: 'Bakhoor e Noor',
+                    description: 'Premium Arabic incense with luminous and radiant fragrance',
+                    price: 550,
+                    image: 'premium perfumes/BAHOORS/Bakhoor e Noor.webp'
+                },
+                {
+                    name: 'Bakhoor e Abyadh',
+                    description: 'White Arabic incense with pure and clean aromatic notes',
+                    price: 550,
+                    image: 'premium perfumes/BAHOORS/Bakhoor e Abyadh.webp'
+                },
+                {
+                    name: 'Bakhur e Zayn',
+                    description: 'Beautiful Arabic incense with elegant and refined fragrance',
+                    price: 550,
+                    image: 'premium perfumes/BAHOORS/Bakhur e Zayn.webp'
+                },
+                {
+                    name: 'Bakhoor e Khas',
+                    description: 'Special Arabic incense with unique and distinctive aroma',
+                    price: 650,
+                    image: 'premium perfumes/BAHOORS/Bakhoor e Khas.webp'
+                },
+                {
+                    name: 'Bakhoor e Saba',
+                    description: 'Morning breeze Arabic incense with fresh and uplifting scent',
+                    price: 550,
+                    image: 'premium perfumes/BAHOORS/Bakhoor e Saba.webp'
+                }
+            ]
+        };
+
+        function showCategoryProducts(category) {
+            console.log('Category button clicked:', category);
+            const productsDisplay = document.getElementById('products-display');
+            const products = productData[category] || [];
+            
+            if (products.length === 0) {
+                productsDisplay.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <div class="w-24 h-24 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-spray-can text-gray-400 text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-300 mb-2">No Products Available</h3>
+                        <p class="text-gray-400">Products for this category will be added soon</p>
+                    </div>
+                `;
+                return;
+            }
+
+            productsDisplay.innerHTML = products.map(product => `
+                <div class="bg-gray-700 border border-gray-600 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1 overflow-hidden group cursor-pointer" onclick="openProductModal('${product.name}', '${product.description}', ${product.price}, '${product.image}')">
+                    <div class="relative overflow-hidden">
+                        <img src="${product.image}" 
+                             alt="${product.name}" 
+                             class="w-full h-32 object-cover object-center transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute top-2 right-2 bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-bold">
+                            Premium
+                        </div>
+                    </div>
+                    <div class="p-3 text-center">
+                        <h4 class="text-sm font-bold text-yellow-400">${product.name}</h4>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(productName, price) {
+            alert(`${productName} added to cart for ${price}!`);
+        }
+
+        // Modal functions
+        function openProductModal(name, description, price, image) {
+            console.log('Opening product modal for:', name);
+            
+            // Update modal content
+            document.getElementById('modalProductName').textContent = name;
+            document.getElementById('modalProductDescription').textContent = description;
+            document.getElementById('modalProductPrice').textContent = price + ' PKR';
+            document.getElementById('modalProductImage').src = image;
+            document.getElementById('modalProductImage').alt = name;
+            
+            // Set up modal add to cart button
+            const modalAddToCartBtn = document.getElementById('modalAddToCart');
+            modalAddToCartBtn.onclick = function() {
+                addToCart(name, price);
+                closeProductModal();
+            };
+            
+            // Show modal
+            const modal = document.getElementById('productModal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeProductModal() {
+            console.log('Closing product modal');
+            const modal = document.getElementById('productModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Ensure functions are available when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Premium Perfumes page loaded successfully');
+            console.log('Category buttons ready - click any category to view products');
+            
+            // Set up modal event listeners
+            const modal = document.getElementById('productModal');
+            const closeBtn = document.getElementById('closeModal');
+            
+            // Close button click
+            closeBtn.addEventListener('click', closeProductModal);
+            
+            // Click outside modal to close
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeProductModal();
+                }
+            });
+            
+            // Escape key to close
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeProductModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
