@@ -31,6 +31,50 @@
         .black-gradient {
             background: linear-gradient(135deg, #000000, #1a1a1a);
         }
+        
+        /* Responsive Navigation */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        /* Responsive Product Cards */
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
+        }
+        
+        /* Responsive Images */
+        .responsive-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .mobile-text-sm { font-size: 0.875rem; }
+            .mobile-text-xs { font-size: 0.75rem; }
+            .mobile-p-2 { padding: 0.5rem; }
+            .mobile-p-4 { padding: 1rem; }
+        }
+        
+        /* Touch-friendly buttons */
+        .touch-target {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 <body class="bg-black">
@@ -113,32 +157,6 @@
                       </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="lg:hidden bg-gray-900 border-b border-golden hidden">
-        <div class="px-4 py-4 space-y-3">
-            <a href="#" class="block text-golden hover:text-yellow-300 py-2">Home</a>
-            <a href="#" class="block text-golden hover:text-yellow-300 py-2">Deals</a>
-            <a href="contact.html" class="block text-golden hover:text-yellow-300 py-2">Contact</a>
-            <div class="pt-3 border-t border-gray-700">
-                <button class="text-golden hover:text-yellow-300 py-2">
-                    <i class="fas fa-user mr-2"></i>Account
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Navigation - Desktop Only -->
-    <nav class="golden-gradient hidden lg:block">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-center h-12">
-                <div class="flex items-center space-x-8">
-                    <a href="index.html" class="text-black font-semibold hover:underline hover:text-gray-800">Home</a>
-                    <a href="#" class="text-black font-semibold hover:underline hover:text-gray-800">Deals</a>
-                    <a href="contact.html" class="text-black font-semibold hover:underline hover:text-gray-800">Contact</a>
-                  </div>
-                      </div>
-        </div>
-    </nav>
 
     <!-- Hero Banner with Categories Sidebar -->
     <section class="black-gradient py-8 lg:py-16">
@@ -155,9 +173,9 @@
                         <i class="fas fa-home text-golden group-hover:text-black text-lg mb-1 block"></i>
                         <span class="font-medium text-xs">House Care</span>
                     </a>
-                    <a href="perfumes.html" class="flex-shrink-0 bg-gray-900 border border-golden rounded-lg p-3 text-center min-w-[100px] hover:bg-golden hover:text-black transition-colors group">
+                    <a href="premium_perfumes.html" class="flex-shrink-0 bg-gray-900 border border-golden rounded-lg p-3 text-center min-w-[100px] hover:bg-golden hover:text-black transition-colors group">
                         <i class="fas fa-spray-can text-golden group-hover:text-black text-lg mb-1 block"></i>
-                        <span class="font-medium text-xs">Perfumes</span>
+                        <span class="font-medium text-xs">Premium Perfumes</span>
                     </a>
                     <a href="crockery.html" class="flex-shrink-0 bg-gray-900 border border-golden rounded-lg p-3 text-center min-w-[100px] hover:bg-golden hover:text-black transition-colors group">
                         <i class="fas fa-utensils text-golden group-hover:text-black text-lg mb-1 block"></i>
@@ -166,14 +184,6 @@
                     <a href="laptops.html" class="flex-shrink-0 bg-gray-900 border border-golden rounded-lg p-3 text-center min-w-[100px] hover:bg-golden hover:text-black transition-colors group">
                         <i class="fas fa-laptop text-golden group-hover:text-black text-lg mb-1 block"></i>
                         <span class="font-medium text-xs">Laptops</span>
-                    </a>
-                    <a href="electronics.html" class="flex-shrink-0 bg-gray-900 border border-golden rounded-lg p-3 text-center min-w-[100px] hover:bg-golden hover:text-black transition-colors group">
-                        <i class="fas fa-microchip text-golden group-hover:text-black text-lg mb-1 block"></i>
-                        <span class="font-medium text-xs">Electronics</span>
-                    </a>
-                    <a href="cosmetics.html" class="flex-shrink-0 bg-gray-900 border border-golden rounded-lg p-3 text-center min-w-[100px] hover:bg-golden hover:text-black transition-colors group">
-                        <i class="fas fa-palette text-golden group-hover:text-black text-lg mb-1 block"></i>
-                        <span class="font-medium text-xs">Cosmetics</span>
                     </a>
                 </div>
             </div>
@@ -192,9 +202,9 @@
                                 <i class="fas fa-home text-golden group-hover:text-black mr-3"></i>
                                 <span class="font-medium">House Care</span>
                             </a>
-                            <a href="perfumes.html" class="flex items-center p-3 text-gray-300 hover:bg-golden hover:text-black rounded-lg transition-colors group">
+                            <a href="premium_perfumes.html" class="flex items-center p-3 text-gray-300 hover:bg-golden hover:text-black rounded-lg transition-colors group">
                                 <i class="fas fa-spray-can text-golden group-hover:text-black mr-3"></i>
-                                <span class="font-medium">Perfumes</span>
+                                <span class="font-medium">Premium Perfumes</span>
                             </a>
                             <a href="crockery.html" class="flex items-center p-3 text-gray-300 hover:bg-golden hover:text-black rounded-lg transition-colors group">
                                 <i class="fas fa-utensils text-golden group-hover:text-black mr-3"></i>
@@ -203,14 +213,6 @@
                             <a href="laptops.html" class="flex items-center p-3 text-gray-300 hover:bg-golden hover:text-black rounded-lg transition-colors group">
                                 <i class="fas fa-laptop text-golden group-hover:text-black mr-3"></i>
                                 <span class="font-medium">Laptops</span>
-                            </a>
-                            <a href="electronics.html" class="flex items-center p-3 text-gray-300 hover:bg-golden hover:text-black rounded-lg transition-colors group">
-                                <i class="fas fa-microchip text-golden group-hover:text-black mr-3"></i>
-                                <span class="font-medium">Electronics</span>
-                            </a>
-                            <a href="cosmetics.html" class="flex items-center p-3 text-gray-300 hover:bg-golden hover:text-black rounded-lg transition-colors group">
-                                <i class="fas fa-palette text-golden group-hover:text-black mr-3"></i>
-                                <span class="font-medium">Cosmetics</span>
                             </a>
                         </div>
                     </div>
@@ -346,82 +348,99 @@
         </div>
     </section>
 
-    <!-- Featured Products -->
-    <section class="py-8 lg:py-12 bg-black">
+    <!-- Shop by Category Section -->
+    <section class="py-12 lg:py-16 bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-2xl lg:text-3xl font-bold text-center mb-6 lg:mb-8 text-golden">Featured Products</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-                <!-- Product 1 -->
-                <div class="bg-gray-900 border border-golden rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                    <img src="CAR WASH & WAX/F1-113 CERAMIC LIQUID WAX.jpeg" 
-                         alt="Ceramic Liquid Wax" class="w-full h-40 sm:h-48 object-cover">
-                    <div class="p-3 sm:p-4">
-                        <h3 class="font-semibold text-base sm:text-lg mb-2 text-golden">Ceramic Liquid Wax</h3>
-                        <p class="text-gray-300 text-xs sm:text-sm mb-3">Premium ceramic coating for ultimate car protection</p>
-                        <div class="flex gap-2">
-                            <button onclick="addToCart('Ceramic Liquid Wax', 0, 'CAR WASH & WAX/F1-113 CERAMIC LIQUID WAX.jpeg')" class="golden-gradient text-black px-3 sm:px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base flex-1">
-                                Add to Cart
-                            </button>
-                            <button onclick="addToWishlist('Ceramic Liquid Wax', 0, 'CAR WASH & WAX/F1-113 CERAMIC LIQUID WAX.jpeg')" class="bg-gray-700 hover:bg-red-600 text-white px-3 py-2 rounded-lg transition-colors">
-                                <i class="fas fa-heart"></i>
-                            </button>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold text-golden mb-4">Shop by Category</h2>
+                <p class="text-gray-300 text-lg">Explore our premium product categories</p>
+                        </div>
+            
+            <!-- Category Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                <!-- Car Care Category -->
+                <a href="car_care.html" class="group">
+                    <div class="bg-gray-800 border border-golden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden">
+                        <div class="relative h-48 sm:h-56 lg:h-64">
+                            <img src="category imges/car_care_image.jpg" 
+                                 alt="Car Care Products" 
+                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                            <div class="absolute top-4 right-4">
+                                <div class="bg-golden text-black px-3 py-1 rounded-full text-sm font-bold">
+                                    Car Care
                         </div>
                         </div>
                         </div>
-                    
-                <!-- Product 2 -->
-                <div class="bg-gray-900 border border-golden rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                    <img src="perfumes/aim air freshner cool ice.jpeg" 
-                         alt="Cool Ice Air Freshener" class="w-full h-40 sm:h-48 object-cover">
-                    <div class="p-3 sm:p-4">
-                        <h3 class="font-semibold text-base sm:text-lg mb-2 text-golden">Cool Ice Air Freshener</h3>
-                        <p class="text-gray-300 text-xs sm:text-sm mb-3">Refreshing cool ice fragrance for your space</p>
-                        <div class="flex gap-2">
-                            <button onclick="addToCart('Cool Ice Air Freshener', 0, 'perfumes/aim air freshner cool ice.jpeg')" class="golden-gradient text-black px-3 sm:px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base flex-1">
-                                Add to Cart
-                            </button>
-                            <button onclick="addToWishlist('Cool Ice Air Freshener', 0, 'perfumes/aim air freshner cool ice.jpeg')" class="bg-gray-700 hover:bg-red-600 text-white px-3 py-2 rounded-lg transition-colors">
-                                <i class="fas fa-heart"></i>
-                            </button>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-golden mb-2 group-hover:text-yellow-300 transition-colors">Car Care</h3>
+                            <p class="text-gray-300 text-sm">Professional car cleaning and maintenance products</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- House Care Category -->
+                <a href="house_care.html" class="group">
+                    <div class="bg-gray-800 border border-golden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden">
+                        <div class="relative h-48 sm:h-56 lg:h-64">
+                            <img src="category imges/house_care_image.jpg.jfif" 
+                                 alt="House Care Products" 
+                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                            <div class="absolute top-4 right-4">
+                                <div class="bg-golden text-black px-3 py-1 rounded-full text-sm font-bold">
+                                    House Care
                         </div>
                 </div>
                         </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-golden mb-2 group-hover:text-yellow-300 transition-colors">House Care</h3>
+                            <p class="text-gray-300 text-sm">Essential cleaning and home maintenance supplies</p>
+                        </div>
+                    </div>
+                </a>
 
-                <!-- Product 3 -->
-                <div class="bg-gray-900 border border-golden rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                    <img src="house_care/aim furniture polish.jpeg" 
-                         alt="Furniture Polish" class="w-full h-40 sm:h-48 object-cover">
-                    <div class="p-3 sm:p-4">
-                        <h3 class="font-semibold text-base sm:text-lg mb-2 text-golden">Aim Furniture Polish</h3>
-                        <p class="text-gray-300 text-xs sm:text-sm mb-3">Professional furniture care and protection</p>
-                        <div class="flex gap-2">
-                            <button onclick="addToCart('Aim Furniture Polish', 0, 'house_care/aim furniture polish.jpeg')" class="golden-gradient text-black px-3 sm:px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base flex-1">
-                                Add to Cart
-                            </button>
-                            <button onclick="addToWishlist('Aim Furniture Polish', 0, 'house_care/aim furniture polish.jpeg')" class="bg-gray-700 hover:bg-red-600 text-white px-3 py-2 rounded-lg transition-colors">
-                                <i class="fas fa-heart"></i>
-                            </button>
+                <!-- Premium Perfumes Category -->
+                <a href="premium_perfumes.html" class="group">
+                    <div class="bg-gray-800 border border-golden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden">
+                        <div class="relative h-48 sm:h-56 lg:h-64">
+                            <img src="category imges/perfumes_image.jpg.jfif" 
+                                 alt="Premium Perfumes" 
+                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                            <div class="absolute top-4 right-4">
+                                <div class="bg-golden text-black px-3 py-1 rounded-full text-sm font-bold">
+                                    Premium Perfumes
                         </div>
                         </div>
                 </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-golden mb-2 group-hover:text-yellow-300 transition-colors">Premium Perfumes</h3>
+                            <p class="text-gray-300 text-sm">Premium fragrances and scented candles</p>
+                        </div>
+                    </div>
+                </a>
 
-                <!-- Product 4 -->
-                <div class="bg-gray-900 border border-golden rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                    <img src="crockery/kitchen ware/3 Layers Cake Pastry Platter.webp" 
-                         alt="3 Layer Cake Platter" class="w-full h-40 sm:h-48 object-cover">
-                    <div class="p-3 sm:p-4">
-                        <h3 class="font-semibold text-base sm:text-lg mb-2 text-golden">3 Layer Cake Platter</h3>
-                        <p class="text-gray-300 text-xs sm:text-sm mb-3">Elegant multi-tier serving platter for special occasions</p>
-                        <div class="flex gap-2">
-                            <button onclick="addToCart('3 Layer Cake Platter', 0, 'crockery/kitchen ware/3 Layers Cake Pastry Platter.webp')" class="golden-gradient text-black px-3 sm:px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base flex-1">
-                                Add to Cart
-                            </button>
-                            <button onclick="addToWishlist('3 Layer Cake Platter', 0, 'crockery/kitchen ware/3 Layers Cake Pastry Platter.webp')" class="bg-gray-700 hover:bg-red-600 text-white px-3 py-2 rounded-lg transition-colors">
-                                <i class="fas fa-heart"></i>
-                            </button>
+                <!-- Crockery Category -->
+                <a href="crockery.html" class="group">
+                    <div class="bg-gray-800 border border-golden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden">
+                        <div class="relative h-48 sm:h-56 lg:h-64">
+                            <img src="category imges/crockery_image.jpg.jfif" 
+                                 alt="Crockery Collection" 
+                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                            <div class="absolute top-4 right-4">
+                                <div class="bg-golden text-black px-3 py-1 rounded-full text-sm font-bold">
+                                    Crockery
                         </div>
                 </div>
             </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-golden mb-2 group-hover:text-yellow-300 transition-colors">Crockery</h3>
+                            <p class="text-gray-300 text-sm">Elegant dinnerware and kitchen essentials</p>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -434,23 +453,23 @@
                 <div class="bg-gradient-to-r from-red-600 to-red-500 border border-golden rounded-lg p-4 sm:p-6 text-white">
                     <h3 class="text-xl sm:text-2xl font-bold mb-2">Flash Sale</h3>
                     <p class="mb-4 text-sm sm:text-base">Up to 50% off on selected items</p>
-                    <a href="deals.html#flash-sale" class="golden-gradient text-black px-3 sm:px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base inline-block text-center">
+                    <button onclick="showFlashSale()" class="golden-gradient text-black px-3 sm:px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base inline-block text-center cursor-pointer">
                         Shop Now
-                    </a>
+                    </button>
                     </div>
                 <div class="bg-gradient-to-r from-blue-600 to-blue-500 border border-golden rounded-lg p-4 sm:p-6 text-white">
                     <h3 class="text-xl sm:text-2xl font-bold mb-2">New Arrivals</h3>
                     <p class="mb-4 text-sm sm:text-base">Fresh products just landed</p>
-                    <a href="deals.html#new-arrivals" class="golden-gradient text-black px-3 sm:px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base inline-block text-center">
+                    <button onclick="showNewArrivals()" class="golden-gradient text-black px-3 sm:px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base inline-block text-center cursor-pointer">
                         Explore
-                    </a>
+                    </button>
                             </div>
                 <div class="bg-gradient-to-r from-green-600 to-green-500 border border-golden rounded-lg p-4 sm:p-6 text-white">
                     <h3 class="text-xl sm:text-2xl font-bold mb-2">Free Shipping</h3>
-                    <p class="mb-4 text-sm sm:text-base">On orders over $50</p>
-                    <a href="deals.html#free-shipping" class="golden-gradient text-black px-3 sm:px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base inline-block text-center">
+                    <p class="mb-4 text-sm sm:text-base">On orders over 5000 rps</p>
+                    <button onclick="showShippingInfo()" class="golden-gradient text-black px-3 sm:px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base inline-block text-center cursor-pointer">
                         Learn More
-                    </a>
+                    </button>
                         </div>
                     </div>
                 </div>
@@ -858,6 +877,19 @@
             updateCartCount();
             updateWishlistCount();
         });
+
+        // Deal buttons functionality
+        function showFlashSale() {
+            alert('🔥 FLASH SALE! 🔥\n\nUp to 50% OFF on selected items!\n\nVisit our deals page to see all discounted products.\n\nLimited time offer - Shop now!');
+        }
+
+        function showNewArrivals() {
+            alert('🆕 NEW ARRIVALS! 🆕\n\nFresh products just landed!\n\nCheck out our latest collection of premium products.\n\nBe the first to get your hands on these new items!');
+        }
+
+        function showShippingInfo() {
+            alert('🚚 FREE SHIPPING INFO 🚚\n\n✅ Free shipping on orders over 5000 rps\n✅ Fast and reliable delivery\n✅ Track your order in real-time\n✅ Safe and secure packaging\n\nOrder now and enjoy free shipping!');
+        }
     </script>
 </body>
-</html>	
+</html>
