@@ -437,7 +437,7 @@
                     <div class="space-y-2 text-sm text-gray-300">
                         <p><i class="fas fa-phone mr-2 text-yellow-500"></i>+92 325 8573925</p>
                         <p><i class="fas fa-envelope mr-2 text-yellow-500"></i>info@msmtraders.com</p>
-                        <p><i class="fas fa-map-marker-alt mr-2 text-yellow-500"></i>DHA Phase 2, Lahore</p>
+                        <p><i class="fas fa-map-marker-alt mr-2 text-yellow-500"></i>Phase 2 DHA Lahore</p>
                     </div>
                 </div>
             </div>
@@ -629,9 +629,76 @@
             `).join('');
         }
 
-        function addToCart(productName, price) {
-            alert(`${productName} added to cart for ${price}!`);
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartCount = 0;
+
+        function addToCart(productName, price, image = '') {
+            // Check if item already exists in cart
+            const existingItem = cart.find(item => item.name === productName);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: productName,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Update cart count
+            cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            updateCartCount();
+            
+            // Show notification
+            showCartNotification(`${productName} added to cart!`);
         }
+
+        function updateCartCount() {
+            const cartBadge = document.querySelector('.fa-shopping-cart').parentElement.querySelector('span');
+            if (cartBadge) {
+                cartBadge.textContent = cartCount;
+            }
+        }
+
+        function showCartNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-shopping-cart mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Initialize cart count on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            updateCartCount();
+        });
 
         // Modal functions
         function openProductModal(name, description, price, image) {
@@ -647,7 +714,7 @@
             // Set up modal add to cart button
             const modalAddToCartBtn = document.getElementById('modalAddToCart');
             modalAddToCartBtn.onclick = function() {
-                addToCart(name, price);
+                addToCart(name, price, image);
                 closeProductModal();
             };
             
