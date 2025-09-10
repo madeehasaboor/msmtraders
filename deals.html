@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Deals & Offers - MSM Traders</title>
+    <title>Contact Us - MSM Traders</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
@@ -11,21 +11,17 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#fbbf24',
-                        secondary: '#000000',
-                        golden: '#fbbf24',
+                        primary: '#F59E0B',
+                        secondary: '#D97706',
+                        accent: '#F59E0B',
                         dark: '#000000',
+                        gold: '#F59E0B'
                     }
                 }
             }
         }
     </script>
     <style>
-        body {
-            background-color: #000000;
-            color: #ffffff;
-        }
-        
         /* Responsive Design Enhancements */
         .line-clamp-2 {
             display: -webkit-box;
@@ -114,28 +110,78 @@
                 display: flex;
             }
         }
+    </style>
 
-        /* Hide scrollbars for horizontal scrolling */
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+    <!-- Bottom Navigation (mobile) -->
+    <nav class="old-bottom-nav lg:hidden" style="display: none;">
+        <a id="home-nav" href="index.html" onclick="setActiveNav('home')"><i class="fas fa-home"></i>Home</a>
+        <a id="category-nav" href="javascript:void(0)" onclick="openCategoryMenu(); setActiveNav('category'); return false;"><i class="fas fa-th-large"></i>Category</a>
+        <a id="cart-nav" href="javascript:void(0)" onclick="toggleCart(); setActiveNav('cart'); return false;"><i class="fas fa-shopping-cart"></i>Cart</a>
+        <a id="deals-nav" href="deals.html" onclick="setActiveNav('deals')"><i class="fas fa-tags"></i>Deals</a>
+    </nav>
+
+
+    <script>
+        function setActiveNav(key) {
+            const links = document.querySelectorAll('.bottom-nav a');
+            links.forEach(link => link.classList.remove('active'));
+            const ids = { home: 'home-nav', category: 'category-nav', cart: 'cart-nav', deals: 'deals-nav' };
+            const active = document.getElementById(ids[key]);
+            if (active) active.classList.add('active');
+        }
+
+        function openCategoryMenu() {
+            const menu = document.getElementById('category-menu');
+            if (!menu) return;
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => { document.addEventListener('click', closeOnOutsideClick, { once: true }); }, 0);
+            } else {
+                menu.classList.add('hidden');
+            }
+        }
+
+        function closeOnOutsideClick(e) {
+            const menu = document.getElementById('category-menu');
+            const trigger = document.getElementById('category-nav');
+            if (!menu || !trigger) return;
+            if (!menu.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
+                menu.classList.add('hidden');
+            }
+        }
+        if (typeof toggleCart !== 'function') {
+            window.toggleCart = function() { alert('Your cart is empty!'); }
+        }
+    </script>
+    <style>
+        /* Mobile-first responsive design */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .nav-links {
+                font-size: 0.75rem;
+                gap: 0.5rem;
+            }
+            
+            /* Touch-friendly buttons */
+            button, a {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            .nav-links a {
+                padding: 0.5rem 0.25rem;
+            }
         }
         
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-        .golden-gradient {
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-        }
-        .black-gradient {
-            background: linear-gradient(135deg, #000000, #1a1a1a);
-        }
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .nav-links {
+                font-size: 0.7rem;
+                gap: 0.25rem;
+            }
         }
     </style>
     <style>
@@ -220,744 +266,366 @@
     </style>
 </head>
 <body class="bg-black">
-    <!-- Header -->
-    <header class="bg-black shadow-lg sticky top-0 z-50 border-b border-golden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Mobile Header -->
-            <div class="flex justify-between items-center h-16 lg:hidden">
-                <!-- Mobile Logo -->
-                <div class="flex items-center">
-                    <img src="MSM TRADERS LOGO.jpeg" alt="MSM Traders Logo" class="h-8 w-auto">
-                    <div class="ml-2">
-                        <h1 class="text-lg font-bold text-golden">MSM TRADERS</h1>
-                        <p class="text-xs text-golden">CLICK.SHOP.SMILE</p>
-                    </div>
-                </div>
-                
-                <!-- Mobile Actions -->
-                <div class="flex items-center space-x-3">
-                </div>
-            </div>
-
-            <!-- Desktop Header -->
-            <div class="hidden lg:flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center space-x-3">
-                        <img src="MSM TRADERS LOGO.jpeg" alt="MSM Traders Logo" class="h-10 w-auto">
-                        <div>
-                            <h1 class="text-2xl font-bold text-golden">MSM TRADERS</h1>
-                            <p class="text-xs text-golden">CLICK.SHOP.SMILE</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden lg:flex items-center space-x-6">
-                    <a href="index.html" class="text-gray-300 hover:text-golden px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a>
-                    <a href="car_care.html" class="text-gray-300 hover:text-golden px-3 py-2 rounded-md text-sm font-medium transition duration-200">Car Care</a>
-                    <a href="house_care.html" class="text-gray-300 hover:text-golden px-3 py-2 rounded-md text-sm font-medium transition duration-200">House Care</a>
-                    <a href="premium_perfumes.html" class="text-gray-300 hover:text-golden px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
-                    <a href="crockery.html" class="text-gray-300 hover:text-golden px-3 py-2 rounded-md text-sm font-medium transition duration-200">Crockery</a>
-                    <a href="laptops.html" class="text-gray-300 hover:text-golden px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
-                    <a href="deals.html" class="text-golden px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
-                    <a href="contact.html" class="text-gray-300 hover:text-golden px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact</a>
-                </div>
-
-                <!-- Search Bar -->
-                <div class="flex-1 max-w-lg mx-8">
-                    <div class="relative">
-                        <input type="text" placeholder="Search products..." 
-                               class="w-full px-4 py-2 bg-gray-800 border border-golden rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-golden focus:border-transparent">
-                        <button class="absolute right-2 top-2 text-golden hover:text-yellow-300">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- User Actions -->
+    <!-- Navigation -->
+    <nav class="bg-gray-900 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
                 <div class="flex items-center space-x-4">
-                    <button class="text-gray-300 hover:text-golden p-2 rounded-lg hover:bg-gray-800 transition duration-200 relative">
+                    <div class="bg-yellow-400 text-black rounded-full w-10 h-10 flex items-center justify-center">
                         <i class="fas fa-shopping-cart text-xl"></i>
-                        <span class="absolute -top-1 -right-1 bg-golden text-black text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Mobile Search Bar -->
-            <div class="lg:hidden pb-4">
-                <div class="relative">
-                    <input type="text" placeholder="Search products..." 
-                           class="w-full px-4 py-2 bg-gray-800 border border-golden rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-golden focus:border-transparent">
-                    <button class="absolute right-2 top-2 text-golden hover:text-yellow-300">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-
-
-    <!-- Hero Banner with Categories Sidebar -->
-    <section class="black-gradient py-8 lg:py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Mobile Categories - Above Hero Content -->
-            <div class="lg:hidden mb-8">
-                <h3 class="text-lg font-bold text-golden mb-4 text-center">Shop by Category</h3>
-                <div class="bg-gray-900 border border-golden rounded-lg p-4">
-                    <ul class="space-y-2">
-                        <li>
-                            <a href="car_care.html" class="flex items-center justify-between p-3 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
-                                <div class="flex items-center space-x-3">
-                                    <i class="fas fa-car text-golden group-hover:text-black text-lg"></i>
-                                    <span class="font-medium text-golden group-hover:text-black">Car Care</span>
-                                </div>
-                                <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="house_care.html" class="flex items-center justify-between p-3 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
-                                <div class="flex items-center space-x-3">
-                                    <i class="fas fa-home text-golden group-hover:text-black text-lg"></i>
-                                    <span class="font-medium text-golden group-hover:text-black">House Care</span>
-                                </div>
-                                <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="premium_perfumes.html" class="flex items-center justify-between p-3 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
-                                <div class="flex items-center space-x-3">
-                                    <i class="fas fa-spray-can text-golden group-hover:text-black text-lg"></i>
-                                    <span class="font-medium text-golden group-hover:text-black">Premium Perfumes</span>
-                                </div>
-                                <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="crockery.html" class="flex items-center justify-between p-3 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
-                                <div class="flex items-center space-x-3">
-                                    <i class="fas fa-utensils text-golden group-hover:text-black text-lg"></i>
-                                    <span class="font-medium text-golden group-hover:text-black">Crockery</span>
-                                </div>
-                                <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="laptops.html" class="flex items-center justify-between p-3 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
-                                <div class="flex items-center space-x-3">
-                                    <i class="fas fa-laptop text-golden group-hover:text-black text-lg"></i>
-                                    <span class="font-medium text-golden group-hover:text-black">Laptops</span>
-                                </div>
-                                <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="flex flex-col lg:flex-row gap-8">
-                <!-- Categories Sidebar - Desktop Only -->
-                <div class="hidden lg:block lg:w-1/4">
-                    <div class="bg-gray-900 border border-golden rounded-lg p-6">
-                        <h3 class="text-xl font-bold text-golden mb-6 text-center">Shop by Category</h3>
-                        <ul class="space-y-3">
-                            <li>
-                                <a href="car_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-car text-golden group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-golden group-hover:text-black">Car Care</span>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="house_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-home text-golden group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-golden group-hover:text-black">House Care</span>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="premium_perfumes.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-spray-can text-golden group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-golden group-hover:text-black">Premium Perfumes</span>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="crockery.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-utensils text-golden group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-golden group-hover:text-black">Crockery</span>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="laptops.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-laptop text-golden group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-golden group-hover:text-black">Laptops</span>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <i class="fas fa-star text-xs absolute -top-1 -right-1"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-yellow-400">MSM Traders</h1>
+                        <p class="text-sm text-gray-300">CLICK.SHOP.SMILE</p>
                     </div>
                 </div>
-
-                <!-- Hero Content -->
-                <div class="flex-1 text-center">
-                    <h1 class="text-3xl lg:text-5xl font-bold text-golden mb-4">ðŸ”¥ Exclusive Deals & Offers</h1>
-                    <p class="text-xl lg:text-2xl text-gray-300 mb-8">Don't miss out on these amazing deals!</p>
-                    <div class="flex justify-center items-center space-x-4 text-golden">
-                        <i class="fas fa-clock text-2xl"></i>
-                        <span class="text-lg font-semibold">Limited Time Offers</span>
-                    </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a>
+                    <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Car Care</a>
+                    <a href="house_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">House Care</a>
+                    <a href="premium_perfumes.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
+                    <a href="crockery.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Crockery</a>
+                    <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
+                    <a href="deals.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
+                    <a href="contact.html" class="text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact</a>
                 </div>
-            </div>
-        </div>
-    </section><!-- Flash Sale Section -->
-    <section id="flash-sale" class="py-8 lg:py-12 bg-red-900 bg-opacity-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <h2 class="text-3xl lg:text-4xl font-bold text-red-400 mb-4 pulse-animation">âš¡ FLASH SALE âš¡</h2>
-                <p class="text-xl text-gray-300">Up to 70% OFF - Limited Time Only!</p>
-                <div class="mt-4 bg-red-600 text-white px-6 py-2 rounded-full inline-block">
-                    <i class="fas fa-fire mr-2"></i>Ends in 24 Hours!
-                </div>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Flash Sale Product 1 -->
-                <div class="bg-gray-900 border-2 border-red-500 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
-                    <div class="absolute top-2 left-2 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
-                        70% OFF
-                    </div>
-                    <img src="A-113 LEATHER AND TYRE WAX.jpeg" alt="Car Care Products" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2 text-golden">A-113 Leather & Tyre Wax</h3>
-                        <p class="text-gray-300 text-sm mb-3">Professional car care with jasmine scent</p>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-red-400 line-through text-lg">$29.99</span>
-                            <span class="text-golden font-bold text-2xl">$8.99</span>
-                        </div>
-                        <button onclick="addToCart('A-113 Leather & Tyre Wax (Flash Sale)', 8.99, 'A-113 LEATHER AND TYRE WAX.jpeg')" class="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg font-semibold transition-colors">
-                            Add to Cart - Flash Sale!
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Flash Sale Product 2 -->
-                <div class="bg-gray-900 border-2 border-red-500 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
-                    <div class="absolute top-2 left-2 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
-                        60% OFF
-                    </div>
-                    <img src="slide show/makeup.jfif" alt="Perfume Collection" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2 text-golden">Premium Perfume Collection</h3>
-                        <p class="text-gray-300 text-sm mb-3">Elegant fragrances for every occasion</p>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-red-400 line-through text-lg">$49.99</span>
-                            <span class="text-golden font-bold text-2xl">$19.99</span>
-                        </div>
-                        <button onclick="addToCart('Premium Perfume Collection (Flash Sale)', 19.99, 'slide show/makeup.jfif')" class="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg font-semibold transition-colors">
-                            Add to Cart - Flash Sale!
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Flash Sale Product 3 -->
-                <div class="bg-gray-900 border-2 border-red-500 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
-                    <div class="absolute top-2 left-2 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
-                        50% OFF
-                    </div>
-                    <img src="slide show/crockery.jpg" alt="Crockery Collection" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2 text-golden">Premium Crockery Set</h3>
-                        <p class="text-gray-300 text-sm mb-3">Beautiful ceramic dinnerware collection</p>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-red-400 line-through text-lg">$89.99</span>
-                            <span class="text-golden font-bold text-2xl">$44.99</span>
-                        </div>
-                        <button onclick="addToCart('Premium Crockery Set (Flash Sale)', 44.99, 'slide show/crockery.jpg')" class="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg font-semibold transition-colors">
-                            Add to Cart - Flash Sale!
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- New Arrivals Section -->
-    <section id="new-arrivals" class="py-8 lg:py-12 bg-blue-900 bg-opacity-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <h2 class="text-3xl lg:text-4xl font-bold text-blue-400 mb-4">âœ¨ NEW ARRIVALS</h2>
-                <p class="text-xl text-gray-300">Fresh products just landed - Be the first to get them!</p>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- New Arrival 1 -->
-                <div class="bg-gray-900 border border-blue-500 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
-                    <div class="absolute top-2 left-2 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
-                        NEW
-                    </div>
-                    <img src="slide show/laptop-murjp1nk4lp1idlt.jpg" alt="Gaming Laptop" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2 text-golden">Gaming Laptop Pro</h3>
-                        <p class="text-gray-300 text-sm mb-3">High-performance gaming with RTX graphics</p>
-                        <div class="mb-3">
-                            <span class="text-golden font-bold text-2xl">$1,299.99</span>
-                        </div>
-                        <button onclick="addToCart('Gaming Laptop Pro (New)', 1299.99, 'slide show/laptop-murjp1nk4lp1idlt.jpg')" class="w-full golden-gradient text-black py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-
-                <!-- New Arrival 2 -->
-                <div class="bg-gray-900 border border-blue-500 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
-                    <div class="absolute top-2 left-2 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
-                        NEW
-                    </div>
-                    <img src="slide show/diffusr hd.jpg" alt="Smart Diffuser" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2 text-golden">Smart Home Diffuser</h3>
-                        <p class="text-gray-300 text-sm mb-3">WiFi-enabled essential oil diffuser</p>
-                        <div class="mb-3">
-                            <span class="text-golden font-bold text-2xl">$79.99</span>
-                        </div>
-                        <button onclick="addToCart('Smart Home Diffuser (New)', 79.99, 'slide show/diffusr hd.jpg')" class="w-full golden-gradient text-black py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-
-                <!-- New Arrival 3 -->
-                <div class="bg-gray-900 border border-blue-500 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
-                    <div class="absolute top-2 left-2 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
-                        NEW
-                    </div>
-                    <img src="slide show/8a3223b3-ae77-42cc-b3db-abc5a1cf8c1e.__CR0,0,2983,1845_PT0_SX970_V1___.jpg" alt="House Care" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2 text-golden">Smart House Care Kit</h3>
-                        <p class="text-gray-300 text-sm mb-3">Complete home cleaning solution</p>
-                        <div class="mb-3">
-                            <span class="text-golden font-bold text-2xl">$39.99</span>
-                        </div>
-                        <button onclick="addToCart('Smart House Care Kit (New)', 39.99, 'slide show/8a3223b3-ae77-42cc-b3db-abc5a1cf8c1e.__CR0,0,2983,1845_PT0_SX970_V1___.jpg')" class="w-full golden-gradient text-black py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-
-                <!-- New Arrival 4 -->
-                <div class="bg-gray-900 border border-blue-500 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
-                    <div class="absolute top-2 left-2 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
-                        NEW
-                    </div>
-                    <img src="slide show/makeup.jfif" alt="Cosmetics" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2 text-golden">Premium Cosmetics Set</h3>
-                        <p class="text-gray-300 text-sm mb-3">Complete beauty and style collection</p>
-                        <div class="mb-3">
-                            <span class="text-golden font-bold text-2xl">$59.99</span>
-                        </div>
-                        <button onclick="addToCart('Premium Cosmetics Set (New)', 59.99, 'slide show/makeup.jfif')" class="w-full golden-gradient text-black py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Special Offers Section -->
-    <section class="py-8 lg:py-12 bg-green-900 bg-opacity-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <h2 class="text-3xl lg:text-4xl font-bold text-green-400 mb-4">ðŸŽ SPECIAL OFFERS</h2>
-                <p class="text-xl text-gray-300">Exclusive deals and bundle offers</p>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Bundle Offer 1 -->
-                <div class="bg-gradient-to-r from-green-600 to-green-500 border border-golden rounded-lg p-6 text-white">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-gift text-3xl mr-4"></i>
-                        <div>
-                            <h3 class="text-2xl font-bold">Car Care Bundle</h3>
-                            <p class="text-green-100">Complete car maintenance kit</p>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <span class="text-3xl font-bold">$49.99</span>
-                        <span class="text-green-200 line-through ml-2">$79.99</span>
-                        <span class="bg-yellow-400 text-black px-2 py-1 rounded ml-2 text-sm font-bold">Save $30</span>
-                    </div>
-                    <p class="mb-4 text-green-100">Includes: A-113 Leather & Tyre Wax, Car Shampoo, Tire Shine, and Microfiber Cloths</p>
-                    <button onclick="addToCart('Car Care Bundle', 49.99, 'A-113 LEATHER AND TYRE WAX.jpeg')" class="w-full bg-yellow-400 hover:bg-yellow-300 text-black py-3 rounded-lg font-bold transition-colors">
-                        Get Bundle Deal
-                    </button>
-                </div>
-
-                <!-- Bundle Offer 2 -->
-                <div class="bg-gradient-to-r from-purple-600 to-purple-500 border border-golden rounded-lg p-6 text-white">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-star text-3xl mr-4"></i>
-                        <div>
-                            <h3 class="text-2xl font-bold">Home Essentials Pack</h3>
-                            <p class="text-purple-100">Everything you need for your home</p>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <span class="text-3xl font-bold">$89.99</span>
-                        <span class="text-purple-200 line-through ml-2">$129.99</span>
-                        <span class="bg-yellow-400 text-black px-2 py-1 rounded ml-2 text-sm font-bold">Save $40</span>
-                    </div>
-                    <p class="mb-4 text-purple-100">Includes: Crockery Set, House Care Kit, Smart Diffuser, and Cleaning Supplies</p>
-                    <button onclick="addToCart('Home Essentials Pack', 89.99, 'slide show/crockery.jpg')" class="w-full bg-yellow-400 hover:bg-yellow-300 text-black py-3 rounded-lg font-bold transition-colors">
-                        Get Bundle Deal
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-300 hover:text-yellow-400 p-2 rounded-lg hover:bg-gray-800 transition duration-200 relative">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
                     </button>
                 </div>
             </div>
         </div>
-    </section>
+    </nav>
 
-    <!-- Free Shipping Banner -->
-    <section id="free-shipping" class="py-8 golden-gradient">
+    <!-- Page Header -->
+    <div class="bg-gradient-to-r from-black to-gray-900 text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="flex items-center justify-center mb-4">
-                <i class="fas fa-shipping-fast text-4xl text-black mr-4"></i>
-                <h2 class="text-3xl lg:text-4xl font-bold text-black">FREE SHIPPING</h2>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-yellow-400">Contact Us</h1>
+            <p class="text-lg text-yellow-400 font-semibold mb-4">CLICK.SHOP.SMILE</p>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto text-gray-300">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Contact Form -->
+            <div class="bg-gray-800 rounded-lg shadow-lg p-8 border border-yellow-400">
+                <h2 class="text-2xl font-bold text-yellow-400 mb-6">Send us a Message</h2>
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="firstName" class="block text-sm font-medium text-gray-300 mb-2">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium text-gray-300 mb-2">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address *</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-300 mb-2">Subject *</label>
+                        <select id="subject" name="subject" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="order">Order Support</option>
+                            <option value="return">Returns & Exchanges</option>
+                            <option value="shipping">Shipping Information</option>
+                            <option value="product">Product Question</option>
+                            <option value="complaint">Complaint</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message *</label>
+                        <textarea id="message" name="message" rows="6" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent" placeholder="Tell us how we can help you..."></textarea>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="newsletter" name="newsletter" class="h-4 w-4 text-yellow-400 focus:ring-yellow-400 border-gray-600 rounded bg-gray-700">
+                        <label for="newsletter" class="ml-2 block text-sm text-gray-300">
+                            Subscribe to our newsletter for updates and special offers
+                        </label>
+                    </div>
+                    <button type="submit" class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2">
+                        Send Message
+                    </button>
+                </form>
+                
+                <!-- Success Message -->
+                <div id="successMessage" class="hidden mt-6 p-4 bg-green-900 border border-green-400 text-green-300 rounded-lg">
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span>Thank you! Your message has been sent successfully. We'll get back to you soon.</span>
+                    </div>
+                </div>
             </div>
-            <p class="text-xl text-black mb-4">On all orders over $50</p>
-            <div class="bg-black text-golden px-6 py-3 rounded-lg inline-block">
-                <span class="font-bold">Current cart total: $<span id="current-total">0.00</span></span>
-                <span id="shipping-status" class="ml-2"></span>
+
+            <!-- Contact Information -->
+            <div class="space-y-8">
+                <!-- Contact Details -->
+                <div class="bg-gray-800 rounded-lg shadow-lg p-8 border border-yellow-400">
+                    <h2 class="text-2xl font-bold text-yellow-400 mb-6">Get in Touch</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-black rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-yellow-400 mb-1">Address</h3>
+                                <p class="text-gray-300">232 v block phase 2 defence lahore</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-black rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-yellow-400 mb-1">Phone</h3>
+                                <p class="text-gray-300">+923258573925<br>Mon-Fri: 9AM-6PM EST</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-black rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-yellow-400 mb-1">Email</h3>
+                                <p class="text-gray-300">msmtrader222@gmail.com<br>support@msmtraders.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-400 text-black rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-yellow-400 mb-1">Business Hours</h3>
+                                <p class="text-gray-300">24 Hours Open<br>We're available 24/7 to serve you!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div class="bg-gray-800 rounded-lg shadow-lg p-8 border border-yellow-400">
+                    <h2 class="text-2xl font-bold text-yellow-400 mb-6">Follow Us</h2>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/share/19LERUiHdy/" target="_blank" class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-blue-700 transition duration-300 hover:scale-110">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/msmtraders222?igsh=NjA2enprZGZ3am81&utm_source=ig_contact_invite" target="_blank" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full w-12 h-12 flex items-center justify-center hover:from-purple-600 hover:to-pink-600 transition duration-300 hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/+923258573925" target="_blank" class="bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-green-700 transition duration-300 hover:scale-110">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div class="bg-gray-800 rounded-lg shadow-lg p-8 border border-yellow-400">
+                    <h2 class="text-2xl font-bold text-yellow-400 mb-6">Frequently Asked Questions</h2>
+                    <div class="space-y-4">
+                        <div class="border-b border-gray-600 pb-4">
+                            <h3 class="font-semibold text-yellow-400 mb-2">How long does shipping take?</h3>
+                            <p class="text-gray-300 text-sm">Standard shipping takes 3-5 business days. Express shipping is available for 1-2 business days.</p>
+                        </div>
+                        <div class="border-b border-gray-600 pb-4">
+                            <h3 class="font-semibold text-yellow-400 mb-2">What is your return policy?</h3>
+                            <p class="text-gray-300 text-sm">We offer a 30-day return policy for unused items in original packaging.</p>
+                        </div>
+                        <div class="border-b border-gray-600 pb-4">
+                            <h3 class="font-semibold text-yellow-400 mb-2">Do you ship internationally?</h3>
+                            <p class="text-gray-300 text-sm">Yes, we ship to most countries worldwide. Shipping costs and delivery times vary by location.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-yellow-400 mb-2">How can I track my order?</h3>
+                            <p class="text-gray-300 text-sm">You'll receive a tracking number via email once your order ships. You can also track it in your account.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- Map Section -->
+    <div class="bg-gray-900 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-yellow-400 mb-4">Find Us</h2>
+                <p class="text-lg text-gray-300">Visit our store location</p>
+            </div>
+            <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-yellow-400">
+                <div class="h-96 bg-gray-700">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.1234567890123!2d74.12345678901234!3d31.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDA3JzM0LjQiTiA3NMKwMDcnMzQuNCJF!5e0!3m2!1sen!2spk!4v1234567890123"
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="MSM Traders Location - 232 V Block Phase 2 Defence Lahore">
+                    </iframe>
+                </div>
+                <div class="p-4 bg-gray-800 border-t border-yellow-400">
+                    <div class="flex items-center justify-center space-x-2">
+                        <i class="fas fa-map-marker-alt text-yellow-400"></i>
+                        <p class="text-gray-300 text-sm">232 V Block Phase 2 Defence, Lahore, Pakistan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
-    <footer class="bg-black text-white py-8 lg:py-12 border-t border-golden">
+    <footer class="bg-black text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4 text-golden">MSM TRADERS</h3>
-                    <p class="text-gray-400">Your trusted partner for premium products and exceptional service.</p>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="bg-black text-yellow-400 rounded-lg p-2 relative">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <i class="fas fa-star text-sm absolute top-0 right-0 transform translate-x-1 -translate-y-1"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-yellow-400">MSM Traders</h3>
+                            <p class="text-xs text-gray-400 uppercase tracking-wide">CLICK.SHOP.SMILE</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Your trusted partner for quality products at great prices.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/share/19LERUiHdy/" target="_blank" class="text-gray-400 hover:text-yellow-400 transition duration-200"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="https://www.instagram.com/msmtraders222?igsh=NjA2enprZGZ3am81&utm_source=ig_contact_invite" target="_blank" class="text-gray-400 hover:text-yellow-400 transition duration-200"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="https://wa.me/+923258573925" target="_blank" class="text-gray-400 hover:text-yellow-400 transition duration-200"><i class="fab fa-whatsapp text-xl"></i></a>
+                    </div>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4 text-golden">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-golden">About Us</a></li>
-                        <li><a href="#" class="hover:text-golden">Contact</a></li>
-                        <li><a href="#" class="hover:text-golden">Shipping</a></li>
-                        <li><a href="#" class="hover:text-golden">Returns</a></li>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4 text-golden">Customer Service</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-golden">Help Center</a></li>
-                        <li><a href="#" class="hover:text-golden">Track Order</a></li>
-                        <li><a href="#" class="hover:text-golden">Size Guide</a></li>
-                        <li><a href="#" class="hover:text-golden">FAQ</a></li>
+                    <h4 class="text-lg font-semibold mb-4">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping Info</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Size Guide</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4 text-golden">Contact Info</h4>
+                    <h4 class="text-lg font-semibold mb-4 text-yellow-400">Contact Info</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li class="flex items-center">
-                            <i class="fas fa-phone mr-2 text-golden"></i>
-                            <span>+923258573926</span>
+                            <i class="fas fa-phone mr-2 text-yellow-400"></i>
+                            <span>+923258573925</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-map-marker-alt mr-2 text-golden"></i>
-                            <span>232-v block phase2 defence lahore</span>
+                            <i class="fas fa-envelope mr-2 text-yellow-400"></i>
+                            <span>msmtrader222@gmail.com</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-clock mr-2 text-golden"></i>
+                            <i class="fas fa-map-marker-alt mr-2 text-yellow-400"></i>
+                            <span>232 v block phase 2 defence lahore</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-2 text-yellow-400"></i>
                             <span>24 Hours Open</span>
                         </li>
                     </ul>
-                    <div class="mt-4">
-                        <h5 class="font-semibold mb-2 text-golden">Follow Us</h5>
-                        <div class="flex space-x-4">
-                            <a href="https://www.facebook.com/share/17A1BGDUkh/" target="_blank" class="text-gray-400 hover:text-golden transition-colors">
-                                <i class="fab fa-facebook text-xl"></i>
-                            </a>
-                            <a href="https://www.instagram.com/msmtraders222?igsh=NjA2enprZGZ3am81&utm_source=ig_contact_invite" target="_blank" class="text-gray-400 hover:text-golden transition-colors">
-                                <i class="fab fa-instagram text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
-            <div class="border-t border-golden mt-8 pt-8 text-center text-gray-400">
+            <div class="border-t border-yellow-400 mt-8 pt-8 text-center text-gray-400">
                 <p>&copy; 2024 MSM Traders. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Cart functionality
-        let cart = [];
-        let cartCount = 0;
-
-        function addToCart(name, price, image) {
-            // Check if item already exists in cart
-            const existingItem = cart.find(item => item.name === name);
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    name: name,
-                    price: price,
-                    image: image,
-                    quantity: 1
-                });
-            }
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
             
-            cartCount++;
-            updateCartCount();
-            updateShippingStatus();
-            showCartNotification(name);
-        }
-
-        function updateCartCount() {
-            const cartCountElement = document.getElementById('cart-count');
-            const cartCountMobileElement = document.getElementById('cart-count-mobile');
-            if (cartCountElement) {
-                cartCountElement.textContent = cartCount;
-            }
-            if (cartCountMobileElement) {
-                cartCountMobileElement.textContent = cartCount;
-            }
-        }
-
-        function updateShippingStatus() {
-            const currentTotal = getCartTotal();
-            const totalElement = document.getElementById('current-total');
-            const statusElement = document.getElementById('shipping-status');
+            // Simulate form submission
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
             
-            if (totalElement) {
-                totalElement.textContent = currentTotal.toFixed(2);
-            }
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
             
-            if (statusElement) {
-                if (currentTotal >= 50) {
-                    statusElement.innerHTML = '<span class="text-green-400 font-bold">ðŸŽ‰ You qualify for free shipping!</span>';
-                } else {
-                    const remaining = (50 - currentTotal).toFixed(2);
-                    statusElement.innerHTML = `<span class="text-yellow-400">Add $${remaining} more for free shipping!</span>`;
-                }
-            }
-        }
-
-        function getCartTotal() {
-            return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-        }
-
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenu) {
-                mobileMenu.classList.toggle('hidden');
-            }
-        }
-
-        function showCartNotification(productName) {
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-20 right-4 bg-golden text-black px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
-            notification.innerHTML = `
-                <div class="flex items-center">
-                    <i class="fas fa-check-circle mr-2"></i>
-                    <span>${productName} added to cart!</span>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Animate in
+            // Simulate API call
             setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-            
-            // Remove after 3 seconds
-            setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-
-        function toggleCart() {
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
-            
-            // Create cart modal
-            const cartModal = document.createElement('div');
-            cartModal.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4';
-            cartModal.innerHTML = `
-                <div class="bg-gray-900 border border-golden rounded-lg p-4 sm:p-6 max-w-md w-full max-h-[80vh] overflow-y-auto">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-bold text-golden">Shopping Cart</h3>
-                        <button onclick="closeCart()" class="text-golden hover:text-yellow-300">
-                            <i class="fas fa-times text-xl"></i>
-                        </button>
-                    </div>
-                    <div id="cart-items">
-                        ${cart.map(item => `
-                            <div class="flex items-center justify-between py-3 border-b border-gray-700">
-                                <div class="flex items-center">
-                                    <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded mr-3">
-                                    <div>
-                                        <h4 class="text-golden font-semibold">${item.name}</h4>
-                                        <p class="text-gray-300 text-sm">$${item.price} x ${item.quantity}</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center">
-                                    <button onclick="removeFromCart('${item.name}')" class="text-red-400 hover:text-red-300 mr-2">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                    <span class="text-golden font-bold">$${(item.price * item.quantity).toFixed(2)}</span>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                    <div class="mt-4 pt-4 border-t border-gray-700">
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-lg font-bold text-golden">Total: $${getCartTotal().toFixed(2)}</span>
-                        </div>
-                        <button onclick="checkout()" class="w-full golden-gradient text-black py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                            Proceed to Checkout
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            document.body.appendChild(cartModal);
-        }
-
-        function closeCart() {
-            const cartModal = document.querySelector('.fixed.inset-0');
-            if (cartModal) {
-                document.body.removeChild(cartModal);
-            }
-        }
-
-        function removeFromCart(productName) {
-            const itemIndex = cart.findIndex(item => item.name === productName);
-            if (itemIndex !== -1) {
-                cartCount -= cart[itemIndex].quantity;
-                cart.splice(itemIndex, 1);
-                updateCartCount();
-                updateShippingStatus();
+                // Show success message
+                document.getElementById('successMessage').classList.remove('hidden');
                 
-                // Refresh cart modal
-                closeCart();
-                if (cart.length > 0) {
-                    toggleCart();
-                }
-            }
-        }
-
-        function checkout() {
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
-            
-            alert(`Checkout initiated! Total: $${getCartTotal().toFixed(2)}\n\nItems: ${cart.map(item => `${item.name} (${item.quantity})`).join(', ')}`);
-            
-            // Clear cart after checkout
-            cart = [];
-            cartCount = 0;
-            updateCartCount();
-            updateShippingStatus();
-            closeCart();
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            updateCartCount();
-            updateShippingStatus();
+                // Reset form
+                this.reset();
+                
+                // Reset button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('successMessage').classList.add('hidden');
+                }, 5000);
+                
+                // Scroll to success message
+                document.getElementById('successMessage').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+            }, 2000);
         });
-    </script>
-    <!-- Bottom Navigation (mobile) -->
-    <nav class="old-bottom-nav lg:hidden" style="display: none;">
-        <a id="home-nav" href="index.html" onclick="setActiveNav('home')"><i class="fas fa-home"></i>Home</a>
-        <a id="category-nav" href="javascript:void(0)" onclick="openCategoryMenu(); setActiveNav('category'); return false;"><i class="fas fa-th-large"></i>Category</a>
-        <a id="cart-nav" href="javascript:void(0)" onclick="toggleCart(); setActiveNav('cart'); return false;"><i class="fas fa-shopping-cart"></i>Cart</a>
-        <a id="deals-nav" href="deals.html" class="active" onclick="setActiveNav('deals')"><i class="fas fa-tags"></i>Deals</a>
-    </nav>
 
-    <!-- Category Quick Menu (mobile) -->
-    <div id="category-menu" class="fixed inset-x-0 bottom-16 mx-4 bg-gray-900 border border-golden rounded-lg shadow-xl p-3 space-y-2 z-50 hidden">
-        <a href="car_care.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-golden">
-            <span><i class="fas fa-car mr-2"></i>Car Care</span>
-            <i class="fas fa-chevron-right text-xs"></i>
-        </a>
-        <a href="house_care.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-golden">
-            <span><i class="fas fa-home mr-2"></i>House Care</span>
-            <i class="fas fa-chevron-right text-xs"></i>
-        </a>
-        <a href="premium_perfumes.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-golden">
-            <span><i class="fas fa-spray-can mr-2"></i>Perfumes</span>
-            <i class="fas fa-chevron-right text-xs"></i>
-        </a>
-        <a href="crockery.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-golden">
-            <span><i class="fas fa-utensils mr-2"></i>Crockery</span>
-            <i class="fas fa-chevron-right text-xs"></i>
-        </a>
-    </div>
-
-    <script>
-        function setActiveNav(key) {
-            const links = document.querySelectorAll('.bottom-nav a');
-            links.forEach(link => link.classList.remove('active'));
-            const ids = { home: 'home-nav', category: 'category-nav', cart: 'cart-nav', deals: 'deals-nav' };
-            const active = document.getElementById(ids[key]);
-            if (active) active.classList.add('active');
-        }
-
-        function openCategoryMenu() {
-            const menu = document.getElementById('category-menu');
-            if (!menu) return;
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                setTimeout(() => { document.addEventListener('click', closeOnOutsideClick, { once: true }); }, 0);
+        // Form validation
+        const inputs = document.querySelectorAll('input[required], select[required], textarea[required]');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.classList.add('border-red-500');
+                    this.classList.remove('border-gray-300');
                 } else {
-                menu.classList.add('hidden');
-            }
-        }
+                    this.classList.remove('border-red-500');
+                    this.classList.add('border-gray-300');
+                }
+            });
+            
+            input.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.classList.remove('border-red-500');
+                    this.classList.add('border-gray-300');
+                }
+            });
+        });
 
-        function closeOnOutsideClick(e) {
-            const menu = document.getElementById('category-menu');
-            const trigger = document.getElementById('category-nav');
-            if (!menu || !trigger) return;
-            if (!menu.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
-                menu.classList.add('hidden');
+        // Email validation
+        const emailInput = document.getElementById('email');
+        emailInput.addEventListener('blur', function() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (this.value && !emailRegex.test(this.value)) {
+                this.classList.add('border-red-500');
+                this.classList.remove('border-gray-300');
+            } else if (this.value) {
+                this.classList.remove('border-red-500');
+                this.classList.add('border-gray-300');
             }
-        }
-        // Preserve existing toggleCart if present
-        if (typeof toggleCart !== 'function') {
-            window.toggleCart = function() {
-                alert('Your cart is empty!');
-            }
-        }
+        });
     </script>
 </body>
 </html>
-
