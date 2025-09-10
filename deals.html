@@ -257,7 +257,7 @@
                     <a href="index.html" class="text-gray-300 hover:text-golden px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a>
                     <a href="car_care.html" class="text-gray-300 hover:text-golden px-3 py-2 rounded-md text-sm font-medium transition duration-200">Car Care</a>
                     <a href="house_care.html" class="text-gray-300 hover:text-golden px-3 py-2 rounded-md text-sm font-medium transition duration-200">House Care</a>
-                    <a href="permium_perfume.html" class="text-gray-300 hover:text-golden px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
+                    <a href="premium_perfumes.html" class="text-gray-300 hover:text-golden px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
                     <a href="crockery.html" class="text-gray-300 hover:text-golden px-3 py-2 rounded-md text-sm font-medium transition duration-200">Crockery</a>
                     <a href="laptops.html" class="text-gray-300 hover:text-golden px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
                     <a href="deals.html" class="text-golden px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
@@ -299,83 +299,134 @@
 
 
 
-    <!-- Hero Banner -->
+    <!-- Hero Banner with Categories Sidebar -->
     <section class="black-gradient py-8 lg:py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-3xl lg:text-5xl font-bold text-golden mb-4">🔥 Exclusive Deals & Offers</h1>
-            <p class="text-xl lg:text-2xl text-gray-300 mb-8">Don't miss out on these amazing deals!</p>
-            <div class="flex justify-center items-center space-x-4 text-golden">
-                <i class="fas fa-clock text-2xl"></i>
-                <span class="text-lg font-semibold">Limited Time Offers</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Categories Section -->
-    <section class="py-12 bg-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <h2 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-4">Shop by Category</h2>
-                <p class="text-gray-300">Find the perfect products for your needs</p>
-            </div>
-            
-            <!-- Mobile: Horizontal Scrollable Categories -->
-            <div class="block md:hidden">
-                <div class="flex space-x-4 overflow-x-auto pb-4 scrollbar-hide">
-                    <a href="car_care.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
-                        <img src="category imges/car_care_image.jpg" alt="Car Care" class="w-full h-20 object-cover rounded-md mb-2">
-                        <h3 class="text-xs font-semibold text-yellow-400 text-center">Car Care</h3>
-                    </a>
-                    <a href="house_care.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
-                        <img src="category imges/house_care_image.jpg.jfif" alt="House Care" class="w-full h-20 object-cover rounded-md mb-2">
-                        <h3 class="text-xs font-semibold text-yellow-400 text-center">House Care</h3>
-                    </a>
-                    <a href="permium_perfume.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
-                        <img src="category imges/perfumes_image.jpg.jfif" alt="Premium Perfumes" class="w-full h-20 object-cover rounded-md mb-2">
-                        <h3 class="text-xs font-semibold text-yellow-400 text-center">Premium Perfumes</h3>
-                    </a>
-                    <a href="crockery.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
-                        <img src="category imges/crockery_image.jpg.jfif" alt="Crockery" class="w-full h-20 object-cover rounded-md mb-2">
-                        <h3 class="text-xs font-semibold text-yellow-400 text-center">Crockery</h3>
-                    </a>
-                    <a href="laptops.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
-                        <img src="category imges/laptops_image.jpg.jfif" alt="Laptops" class="w-full h-20 object-cover rounded-md mb-2">
-                        <h3 class="text-xs font-semibold text-yellow-400 text-center">Laptops</h3>
-                    </a>
+            <!-- Mobile Categories - Above Hero Content -->
+            <div class="lg:hidden mb-8">
+                <h3 class="text-lg font-bold text-golden mb-4 text-center">Shop by Category</h3>
+                <div class="bg-gray-900 border border-golden rounded-lg p-4">
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="car_care.html" class="flex items-center justify-between p-3 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-car text-golden group-hover:text-black text-lg"></i>
+                                    <span class="font-medium text-golden group-hover:text-black">Car Care</span>
+                                </div>
+                                <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="house_care.html" class="flex items-center justify-between p-3 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-home text-golden group-hover:text-black text-lg"></i>
+                                    <span class="font-medium text-golden group-hover:text-black">House Care</span>
+                                </div>
+                                <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="premium_perfumes.html" class="flex items-center justify-between p-3 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-spray-can text-golden group-hover:text-black text-lg"></i>
+                                    <span class="font-medium text-golden group-hover:text-black">Premium Perfumes</span>
+                                </div>
+                                <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="crockery.html" class="flex items-center justify-between p-3 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-utensils text-golden group-hover:text-black text-lg"></i>
+                                    <span class="font-medium text-golden group-hover:text-black">Crockery</span>
+                                </div>
+                                <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="laptops.html" class="flex items-center justify-between p-3 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-laptop text-golden group-hover:text-black text-lg"></i>
+                                    <span class="font-medium text-golden group-hover:text-black">Laptops</span>
+                                </div>
+                                <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             
-            <!-- Desktop/Tablet: Grid Layout -->
-            <div class="hidden md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <a href="car_care.html" class="bg-gray-700 rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-                    <img src="category imges/car_care_image.jpg" alt="Car Care" class="w-full h-32 object-cover rounded-md mb-3">
-                    <h3 class="text-lg font-semibold text-yellow-400 text-center">Car Care</h3>
-                    <p class="text-sm text-gray-300 text-center mt-2">Premium car cleaning products</p>
-                </a>
-                <a href="house_care.html" class="bg-gray-700 rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-                    <img src="category imges/house_care_image.jpg.jfif" alt="House Care" class="w-full h-32 object-cover rounded-md mb-3">
-                    <h3 class="text-lg font-semibold text-yellow-400 text-center">House Care</h3>
-                    <p class="text-sm text-gray-300 text-center mt-2">Home cleaning solutions</p>
-                </a>
-                <a href="permium_perfume.html" class="bg-gray-700 rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-                    <img src="category imges/perfumes_image.jpg.jfif" alt="Premium Perfumes" class="w-full h-32 object-cover rounded-md mb-3">
-                    <h3 class="text-lg font-semibold text-yellow-400 text-center">Premium Perfumes</h3>
-                    <p class="text-sm text-gray-300 text-center mt-2">Luxury fragrances</p>
-                </a>
-                <a href="crockery.html" class="bg-gray-700 rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-                    <img src="category imges/crockery_image.jpg.jfif" alt="Crockery" class="w-full h-32 object-cover rounded-md mb-3">
-                    <h3 class="text-lg font-semibold text-yellow-400 text-center">Crockery</h3>
-                    <p class="text-sm text-gray-300 text-center mt-2">Elegant dinnerware</p>
-                </a>
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Categories Sidebar - Desktop Only -->
+                <div class="hidden lg:block lg:w-1/4">
+                    <div class="bg-gray-900 border border-golden rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-golden mb-6 text-center">Shop by Category</h3>
+                        <ul class="space-y-3">
+                            <li>
+                                <a href="car_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-car text-golden group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-golden group-hover:text-black">Car Care</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="house_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-home text-golden group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-golden group-hover:text-black">House Care</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="premium_perfumes.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-spray-can text-golden group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-golden group-hover:text-black">Premium Perfumes</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="crockery.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-utensils text-golden group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-golden group-hover:text-black">Crockery</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="laptops.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-laptop text-golden group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-golden group-hover:text-black">Laptops</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Hero Content -->
+                <div class="flex-1 text-center">
+                    <h1 class="text-3xl lg:text-5xl font-bold text-golden mb-4">ðŸ”¥ Exclusive Deals & Offers</h1>
+                    <p class="text-xl lg:text-2xl text-gray-300 mb-8">Don't miss out on these amazing deals!</p>
+                    <div class="flex justify-center items-center space-x-4 text-golden">
+                        <i class="fas fa-clock text-2xl"></i>
+                        <span class="text-lg font-semibold">Limited Time Offers</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
-
-    <!-- Flash Sale Section -->
+    </section><!-- Flash Sale Section -->
     <section id="flash-sale" class="py-8 lg:py-12 bg-red-900 bg-opacity-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8">
-                <h2 class="text-3xl lg:text-4xl font-bold text-red-400 mb-4 pulse-animation">⚡ FLASH SALE ⚡</h2>
+                <h2 class="text-3xl lg:text-4xl font-bold text-red-400 mb-4 pulse-animation">âš¡ FLASH SALE âš¡</h2>
                 <p class="text-xl text-gray-300">Up to 70% OFF - Limited Time Only!</p>
                 <div class="mt-4 bg-red-600 text-white px-6 py-2 rounded-full inline-block">
                     <i class="fas fa-fire mr-2"></i>Ends in 24 Hours!
@@ -447,7 +498,7 @@
     <section id="new-arrivals" class="py-8 lg:py-12 bg-blue-900 bg-opacity-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8">
-                <h2 class="text-3xl lg:text-4xl font-bold text-blue-400 mb-4">✨ NEW ARRIVALS</h2>
+                <h2 class="text-3xl lg:text-4xl font-bold text-blue-400 mb-4">âœ¨ NEW ARRIVALS</h2>
                 <p class="text-xl text-gray-300">Fresh products just landed - Be the first to get them!</p>
             </div>
             
@@ -531,7 +582,7 @@
     <section class="py-8 lg:py-12 bg-green-900 bg-opacity-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8">
-                <h2 class="text-3xl lg:text-4xl font-bold text-green-400 mb-4">🎁 SPECIAL OFFERS</h2>
+                <h2 class="text-3xl lg:text-4xl font-bold text-green-400 mb-4">ðŸŽ SPECIAL OFFERS</h2>
                 <p class="text-xl text-gray-300">Exclusive deals and bundle offers</p>
             </div>
             
@@ -703,7 +754,7 @@
             
             if (statusElement) {
                 if (currentTotal >= 50) {
-                    statusElement.innerHTML = '<span class="text-green-400 font-bold">🎉 You qualify for free shipping!</span>';
+                    statusElement.innerHTML = '<span class="text-green-400 font-bold">ðŸŽ‰ You qualify for free shipping!</span>';
                 } else {
                     const remaining = (50 - currentTotal).toFixed(2);
                     statusElement.innerHTML = `<span class="text-yellow-400">Add $${remaining} more for free shipping!</span>`;
@@ -862,7 +913,7 @@
             <span><i class="fas fa-home mr-2"></i>House Care</span>
             <i class="fas fa-chevron-right text-xs"></i>
         </a>
-        <a href="permium_perfume.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-golden">
+        <a href="premium_perfumes.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-golden">
             <span><i class="fas fa-spray-can mr-2"></i>Perfumes</span>
             <i class="fas fa-chevron-right text-xs"></i>
         </a>
@@ -909,3 +960,4 @@
     </script>
 </body>
 </html>
+
