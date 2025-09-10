@@ -392,60 +392,6 @@
     </style>
 </head>
 <body class="bg-gray-900 text-white min-h-screen">
-    <!-- Fixed Category Sidebar -->
-    <div class="fixed-category-sidebar">
-        <h3>Shop by Category</h3>
-        <ul>
-            <li>
-                <a href="index.html">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="car_care.html">
-                    <i class="fas fa-car"></i>
-                    <span>Car Care</span>
-                </a>
-            </li>
-            <li>
-                <a href="house_care.html">
-                    <i class="fas fa-home"></i>
-                    <span>House Care</span>
-                </a>
-            </li>
-            <li>
-                <a href="premium_perfumes.html">
-                    <i class="fas fa-spray-can"></i>
-                    <span>Premium Perfumes</span>
-                </a>
-            </li>
-            <li>
-                <a href="crockery.html">
-                    <i class="fas fa-utensils"></i>
-                    <span>Crockery</span>
-                </a>
-            </li>
-            <li>
-                <a href="laptops.html">
-                    <i class="fas fa-laptop"></i>
-                    <span>Laptops</span>
-                </a>
-            </li>
-            <li>
-                <a href="deals.html">
-                    <i class="fas fa-tags"></i>
-                    <span>Deals</span>
-                </a>
-            </li>
-            <li>
-                <a href="contact.html">
-                    <i class="fas fa-envelope"></i>
-                    <span>Contact</span>
-                </a>
-            </li>
-        </ul>
-    </div>
 
     <!-- Header -->
     <header class="bg-gradient-to-r from-gray-900 via-black to-gray-900 border-b-2 border-yellow-500 sticky top-0 z-50 backdrop-blur-md bg-opacity-95 shadow-2xl">
@@ -478,8 +424,11 @@
                     <a href="crockery.html" class="text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Crockery</a>
                     <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
                     <a href="deals.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
-                    <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact</a>
-                </div>
+                        <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact</a>
+                        <a href="cart.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200 flex items-center">
+                            <i class="fas fa-shopping-cart mr-2"></i>Cart
+                        </a>
+                    </div>
 
                 <!-- Search Bar -->
                 <div class="flex-1 max-w-lg mx-8 search-bar">
@@ -496,11 +445,6 @@
                 <!-- User Actions -->
                 <div class="flex items-center space-x-4">
                     <button class="relative p-2 text-yellow-500 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:bg-yellow-500/10 rounded-lg group">
-                        <i class="fas fa-shopping-cart text-xl group-hover:animate-bounce"></i>
-                        <span class="absolute -top-1 -right-1 bg-yellow-500 text-black text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
-                        <div class="absolute inset-0 bg-yellow-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    </button>
-                    <button class="relative p-2 text-yellow-500 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:bg-yellow-500/10 rounded-lg group">
                         <i class="fas fa-user text-xl group-hover:animate-bounce"></i>
                         <div class="absolute inset-0 bg-yellow-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </button>
@@ -515,59 +459,6 @@
         <main class="flex-1">
             <!-- Hero Section with Categories Sidebar -->
             <div class="mb-12">
-                <!-- Mobile Categories - Above Hero Content -->
-                <div class="lg:hidden mb-8">
-                    <h3 class="text-lg font-bold text-yellow-400 mb-4 text-center">Shop by Category</h3>
-                    <div class="bg-gray-900 border border-yellow-400 rounded-lg p-4">
-                        <ul class="space-y-2">
-                            <li>
-                                <a href="car_care.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-car text-yellow-400 group-hover:text-black text-lg"></i>
-                                        <span class="font-medium text-yellow-400 group-hover:text-black">Car Care</span>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="house_care.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-home text-yellow-400 group-hover:text-black text-lg"></i>
-                                        <span class="font-medium text-yellow-400 group-hover:text-black">House Care</span>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="premium_perfumes.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-spray-can text-yellow-400 group-hover:text-black text-lg"></i>
-                                        <span class="font-medium text-yellow-400 group-hover:text-black">Premium Perfumes</span>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="crockery.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-utensils text-yellow-400 group-hover:text-black text-lg"></i>
-                                        <span class="font-medium text-yellow-400 group-hover:text-black">Crockery</span>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="laptops.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-laptop text-yellow-400 group-hover:text-black text-lg"></i>
-                                        <span class="font-medium text-yellow-400 group-hover:text-black">Laptops</span>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
                 
                 <div class="flex flex-col lg:flex-row gap-8">
                     <!-- Categories Sidebar - Desktop Only -->
@@ -747,17 +638,17 @@
                     </div>
                 </div>
 
-                <!-- Product 4 - Rectangular Cast Iron Pan -->
+                <!-- Product 4 - Cast Iron Casserole -->
                 <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                     <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                         <img src="crockery/Cast Iron Casserole.webp" 
-                             alt="Rectangular Cast Iron Pan" 
+                             alt="Cast Iron Casserole" 
                              class="w-full h-full object-cover rounded-xl">
                         <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                             Best Seller
                         </div>
                     </div>
-                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Rectangular Cast Iron Pan</h3>
+                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Cast Iron Casserole</h3>
                     
                     
                 </div>
@@ -1247,7 +1138,7 @@
                 <img id="qv-img" class="qv-img" src="" alt="Product">
                 <div id="qv-desc" class="qv-desc">Description</div>
                 <div class="qv-footer">
-                    <div id="qv-price" class="qv-price">â‚¨0.00</div>
+                    <div id="qv-price" class="qv-price">Contact for Pricing</div>
                     <button id="qv-add" class="qv-btn">Add to Cart</button>
                 </div>
             </div>
@@ -1258,7 +1149,7 @@
         <a id="home-nav" href="index.html" onclick="setActiveNav('home')"><i class="fas fa-home"></i>Home</a>
         <a id="category-nav" href="javascript:void(0)" onclick="openCategoryMenu(); setActiveNav('category'); return false;"><i class="fas fa-th-large"></i>Category</a>
         <a id="deals-nav" href="deals.html" onclick="setActiveNav('deals')"><i class="fas fa-tags"></i>Deals</a>
-        <a id="cart-nav" href="javascript:void(0)" onclick="toggleCart(); setActiveNav('cart'); return false;"><i class="fas fa-shopping-cart"></i>Cart</a>
+        <a id="cart-nav" href="cart.html" onclick="setActiveNav('cart')"><i class="fas fa-shopping-cart"></i>Cart</a>
     </nav>
 
     <!-- Category Quick Menu (mobile) -->
@@ -1295,119 +1186,119 @@
             // Fallback details for tiles that no longer render text in the card
             const productMeta = {
                 'Stainless Steel Chafing Dish': {
-                    price: 'â‚¨4,500',
+                    price: '4,500',
                     desc: 'Premium chafing dish with glass lid and fuel holder for keeping food warm'
                 },
                 'Black Non-Stick Cookware Set': {
-                    price: 'â‚¨28,950',
+                    price: '28,950',
                     desc: 'Complete 7-piece non-stick cookware set with frying pan, pots, and lids'
                 },
                 'Cast Iron Pan with 7 Wells': {
-                    price: 'â‚¨6,440',
+                    price: '6,440',
                     desc: 'Round cast iron pan with 7 circular wells for cooking multiple items simultaneously'
                 },
-                'Rectangular Cast Iron Pan': {
-                    price: 'â‚¨3,200',
-                    desc: 'Versatile rectangular cast iron pan perfect for grilling and cooking various dishes'
+                'Cast Iron Casserole': {
+                    price: '3,200',
+                    desc: 'Versatile cast iron casserole perfect for grilling and cooking various dishes'
                 },
                 '3 Tier Oval Porcelain Bowls Set with Stand': {
-                    price: 'â‚¨8,500',
+                    price: '8,500',
                     desc: 'Elegant 3-tier oval porcelain serving bowls with decorative stand for special occasions'
                 },
                 'German Family International Kitchen Utensil Set (12-Piece)': {
-                    price: 'â‚¨2,800',
+                    price: '2,800',
                     desc: 'Professional 12-piece kitchen utensil set with ergonomic handles and durable construction'
                 },
                 'AVD High Quality Cutlery Set (84-Piece)': {
-                    price: 'â‚¨15,000',
+                    price: '15,000',
                     desc: 'Premium 84-piece cutlery set with elegant design and superior quality materials'
                 },
                 'Golden Cutlery Set (5-Piece)': {
-                    price: 'â‚¨1,200',
+                    price: '1,200',
                     desc: 'Luxurious 5-piece golden cutlery set with elegant finish and premium quality'
                 },
                 'Two-Tone Cutlery Set (4-Piece)': {
-                    price: 'â‚¨950',
+                    price: '950',
                     desc: 'Modern 4-piece two-tone cutlery set with contemporary design and durable construction'
                 },
                 'Modern Silver Cutlery Set (4-Piece)': {
-                    price: 'â‚¨1,100',
+                    price: '1,100',
                     desc: 'Sleek 4-piece modern silver cutlery set with minimalist design and premium finish'
                 },
                 'Sleek Golden Cutlery Set (4-Piece)': {
-                    price: 'â‚¨1,300',
+                    price: '1,300',
                     desc: 'Elegant 4-piece sleek golden cutlery set with sophisticated design and luxury finish'
                 },
                 'White Asian-Style Soup Spoon': {
-                    price: 'â‚¨350',
+                    price: '350',
                     desc: 'Traditional white Asian-style soup spoon with authentic design and comfortable grip'
                 },
                 'Luxurious Two-Tiered Golden Cake Stand': {
-                    price: 'â‚¨4,200',
+                    price: '4,200',
                     desc: 'Elegant two-tiered golden cake stand perfect for displaying desserts and pastries'
                 },
                 'Three-Tiered Golden Cake Stand': {
-                    price: 'â‚¨5,800',
+                    price: '5,800',
                     desc: 'Stunning three-tiered golden cake stand ideal for special occasions and celebrations'
                 },
                 'Royal Alba Bone China Cake Stand (3-Tier)': {
-                    price: 'â‚¨7,500',
+                    price: '7,500',
                     desc: 'Premium Royal Alba bone china 3-tier cake stand with exquisite craftsmanship'
                 },
                 'Royal Albert Floral Cake Stand (3-Tier)': {
-                    price: 'â‚¨8,200',
+                    price: '8,200',
                     desc: 'Beautiful Royal Albert floral 3-tier cake stand with classic English design'
                 },
                 'Premium Glass Water Pitcher Set with Golden Handles': {
-                    price: 'â‚¨2,500',
+                    price: '2,500',
                     desc: 'Elegant glass water pitcher set with golden handles and matching tumblers'
                 },
                 'Elegant Glass Water Pitcher with Tumblers': {
-                    price: 'â‚¨1,800',
+                    price: '1,800',
                     desc: 'Sophisticated glass water pitcher with matching tumblers for elegant serving'
                 },
                 'All-in-One Utensil Caddy': {
-                    price: 'â‚¨1,500',
+                    price: '1,500',
                     desc: 'Convenient all-in-one utensil caddy for organized kitchen storage and easy access'
                 },
                 'Kitchen Utensil Holder with 2 Cups': {
-                    price: 'â‚¨800',
+                    price: '800',
                     desc: 'Practical kitchen utensil holder with 2 cups for efficient organization'
                 },
                 'Kitchen Organizer Cutlery Storage': {
-                    price: 'â‚¨1,200',
+                    price: '1,200',
                     desc: 'Smart kitchen organizer for cutlery storage with multiple compartments'
                 },
                 'Golden Utensil Caddy': {
-                    price: 'â‚¨1,100',
+                    price: '1,100',
                     desc: 'Stylish golden utensil caddy with elegant design and practical functionality'
                 },
                 'Elegant Gold Dinnerware Set (For 6)': {
-                    price: 'â‚¨12,000',
+                    price: '12,000',
                     desc: 'Luxurious gold dinnerware set with elegant design, perfect for formal dining occasions and special events'
                 },
                 'Gold Flatware Set': {
-                    price: 'â‚¨3,500',
+                    price: '3,500',
                     desc: 'Premium gold flatware set with elegant design and luxurious finish, perfect for sophisticated dining experiences'
                 },
                 'Floral Design Insulated Food Container': {
-                    price: 'â‚¨1,800',
+                    price: '1,800',
                     desc: 'Beautiful floral design insulated food container for keeping meals fresh and warm'
                 },
                 'Red Serving Dishes Set (3-Piece)': {
-                    price: 'â‚¨2,200',
+                    price: '2,200',
                     desc: 'Vibrant red serving dishes set with 3 pieces for elegant food presentation'
                 },
                 'Stainless Steel Rotating Spice Rack (12 Jars)': {
-                    price: 'â‚¨3,800',
+                    price: '3,800',
                     desc: 'Convenient stainless steel rotating spice rack with 12 jars for organized spice storage'
                 },
                 'Premium Kitchen Storage Container Set': {
-                    price: 'â‚¨2,800',
+                    price: '2,800',
                     desc: 'High-quality kitchen storage container set for organized food storage and freshness'
                 },
                 'Professional Stainless Steel Cookware Set (12-Piece)': {
-                    price: 'â‚¨18,500',
+                    price: '18,500',
                     desc: 'Professional 12-piece stainless steel cookware set with superior heat distribution and durability'
                 }
             };
@@ -1421,8 +1312,13 @@
                 title.textContent = data.name || 'Product';
                 img.src = data.image || '';
                 img.alt = data.name || 'Product';
-                desc.textContent = data.description || 'â€”';
-                price.textContent = data.priceText || 'Contact for Pricing';
+                desc.textContent = data.description || 'â€"';
+                // Clean price text by removing malformed currency symbols
+                let cleanPrice = data.priceText || 'Contact for Pricing';
+                if (cleanPrice && cleanPrice !== 'Contact for Pricing') {
+                    cleanPrice = cleanPrice.replace(/[â‚¨$₨]/g, '').trim();
+                }
+                price.textContent = cleanPrice;
                 add.onclick = function(){ smartAdd(data.name||'Product', parsePrice(data.priceText), data.image||''); hide(); };
                 overlay.classList.add('show');
             };
@@ -1499,11 +1395,14 @@
         let cartCount = 0;
 
         function addToCart(name, price, image) {
+            console.log('Adding to cart:', { name, price, image });
+            
             // Check if item already exists in cart
             const existingItem = cart.find(item => item.name === name);
             
             if (existingItem) {
                 existingItem.quantity += 1;
+                console.log('Item already exists, increasing quantity to:', existingItem.quantity);
             } else {
                 cart.push({
                     name: name,
@@ -1511,14 +1410,17 @@
                     image: image,
                     quantity: 1
                 });
+                console.log('New item added to cart');
             }
             
             // Save to localStorage
             localStorage.setItem('cart', JSON.stringify(cart));
+            console.log('Cart saved to localStorage');
             
             // Update cart count
             cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
             updateCartCount();
+            console.log('Cart count updated to:', cartCount);
             
             // Show notification
             showCartNotification(`${name} added to cart!`);
@@ -1526,8 +1428,12 @@
 
         function updateCartCount() {
             const cartBadge = document.querySelector('.fa-shopping-cart').parentElement.querySelector('span');
+            console.log('Updating cart count. Badge found:', !!cartBadge, 'Count:', cartCount);
             if (cartBadge) {
                 cartBadge.textContent = cartCount;
+                console.log('Cart badge updated to:', cartCount);
+            } else {
+                console.error('Cart badge not found!');
             }
         }
 
@@ -1620,9 +1526,29 @@
 
         // Initialize cart count on page load
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('Initializing cart...');
             cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
             updateCartCount();
+            console.log('Cart initialized with', cartCount, 'items');
         });
+
+        // Debug function to check cart status
+        function debugCart() {
+            console.log('Current cart:', cart);
+            console.log('Cart count:', cartCount);
+            console.log('LocalStorage cart:', localStorage.getItem('cart'));
+        }
+
+        // Test function to add a sample item
+        function testAddToCart() {
+            addToCart('Test Product', '100', 'test-image.jpg');
+        }
+
+        // Make functions globally available for testing
+        window.addToCart = addToCart;
+        window.toggleCart = toggleCart;
+        window.debugCart = debugCart;
+        window.testAddToCart = testAddToCart;
     </script>
 </body>
 </html>
