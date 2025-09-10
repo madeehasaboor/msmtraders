@@ -98,140 +98,6 @@
             display: none;
         }
 
-        /* Fixed Category Sidebar */
-        .fixed-category-sidebar {
-            position: fixed;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 280px;
-            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-            border: 2px solid #f59e0b;
-            border-left: none;
-            border-radius: 0 20px 20px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            padding: 20px 0;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .fixed-category-sidebar:hover {
-            transform: translateY(-50%) translateX(10px);
-            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.3);
-        }
-
-        .fixed-category-sidebar h3 {
-            color: #f59e0b;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 0 20px;
-            border-bottom: 1px solid #f59e0b;
-            padding-bottom: 10px;
-        }
-
-        .fixed-category-sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .fixed-category-sidebar li {
-            margin: 0;
-        }
-
-        .fixed-category-sidebar a {
-            display: flex;
-            align-items: center;
-            padding: 15px 20px;
-            color: #d1d5db;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border-left: 3px solid transparent;
-            position: relative;
-        }
-
-        .fixed-category-sidebar a:hover {
-            background: linear-gradient(90deg, rgba(245, 158, 11, 0.1) 0%, transparent 100%);
-            color: #f59e0b;
-            border-left-color: #f59e0b;
-            transform: translateX(5px);
-        }
-
-        .fixed-category-sidebar a i {
-            width: 20px;
-            margin-right: 12px;
-            font-size: 16px;
-            text-align: center;
-        }
-
-        .fixed-category-sidebar a span {
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        /* Mobile responsive sidebar */
-        @media (max-width: 1024px) {
-            .fixed-category-sidebar {
-                width: 60px;
-                padding: 15px 0;
-            }
-            
-            .fixed-category-sidebar h3 {
-                display: none;
-            }
-            
-            .fixed-category-sidebar a {
-                padding: 12px 15px;
-                justify-content: center;
-            }
-            
-            .fixed-category-sidebar a span {
-                display: none;
-            }
-            
-            .fixed-category-sidebar a i {
-                margin-right: 0;
-                font-size: 18px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .fixed-category-sidebar {
-                width: 50px;
-                padding: 10px 0;
-            }
-            
-            .fixed-category-sidebar a {
-                padding: 10px 12px;
-            }
-            
-            .fixed-category-sidebar a i {
-                font-size: 16px;
-            }
-        }
-
-        /* Adjust main content to account for sidebar */
-        @media (min-width: 1025px) {
-            body {
-                margin-left: 280px;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            body {
-                margin-left: 60px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                margin-left: 50px;
-            }
-        }
-
         /* Responsive Design Enhancements */
         .line-clamp-2 {
             display: -webkit-box;
@@ -305,61 +171,6 @@
     </style>
 </head>
 <body class="bg-black">
-    <!-- Fixed Category Sidebar -->
-    <div class="fixed-category-sidebar">
-        <h3>Shop by Category</h3>
-        <ul>
-            <li>
-                <a href="index.html">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="car_care.html">
-                    <i class="fas fa-car"></i>
-                    <span>Car Care</span>
-                </a>
-            </li>
-            <li>
-                <a href="house_care.html">
-                    <i class="fas fa-home"></i>
-                    <span>House Care</span>
-                </a>
-            </li>
-            <li>
-                <a href="premium_perfumes.html">
-                    <i class="fas fa-spray-can"></i>
-                    <span>Premium Perfumes</span>
-                </a>
-            </li>
-            <li>
-                <a href="crockery.html">
-                    <i class="fas fa-utensils"></i>
-                    <span>Crockery</span>
-                </a>
-            </li>
-            <li>
-                <a href="laptops.html">
-                    <i class="fas fa-laptop"></i>
-                    <span>Laptops</span>
-                </a>
-            </li>
-            <li>
-                <a href="deals.html">
-                    <i class="fas fa-tags"></i>
-                    <span>Deals</span>
-                </a>
-            </li>
-            <li>
-                <a href="contact.html">
-                    <i class="fas fa-envelope"></i>
-                    <span>Contact</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-
     <!-- Navigation -->
     <nav class="bg-black border-b border-yellow-500 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -386,15 +197,14 @@
                         <a href="laptops.html" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
                         <a href="deals.html" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
                         <a href="contact.html" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact</a>
+                        <a href="cart.html" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium transition duration-200 flex items-center">
+                            <i class="fas fa-shopping-cart mr-2"></i>Cart
+                        </a>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
                     <button class="text-gray-300 hover:text-yellow-500 p-2 rounded-lg hover:bg-gray-800 transition duration-200">
                         <i class="fas fa-search text-xl"></i>
-                    </button>
-                    <button class="text-gray-300 hover:text-yellow-500 p-2 rounded-lg hover:bg-gray-800 transition duration-200 relative">
-                        <i class="fas fa-shopping-cart text-xl"></i>
-                        <span class="absolute -top-1 -right-1 bg-yellow-500 text-black text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
                     </button>
                 </div>
             </div>
@@ -533,7 +343,7 @@
                                 <div class="flex items-center space-x-3">
                                     <i class="fas fa-car text-yellow-500 group-hover:text-black text-lg"></i>
                                     <span class="font-medium text-yellow-500 group-hover:text-black">Car Care</span>
-                                </div>
+                </div>
                                 <i class="fas fa-chevron-right text-yellow-500 group-hover:text-black"></i>
                             </a>
                         </li>
@@ -542,7 +352,7 @@
                                 <div class="flex items-center space-x-3">
                                     <i class="fas fa-home text-yellow-500 group-hover:text-black text-lg"></i>
                                     <span class="font-medium text-yellow-500 group-hover:text-black">House Care</span>
-                                </div>
+                    </div>
                                 <i class="fas fa-chevron-right text-yellow-500 group-hover:text-black"></i>
                             </a>
                         </li>
@@ -551,7 +361,7 @@
                                 <div class="flex items-center space-x-3">
                                     <i class="fas fa-spray-can text-yellow-500 group-hover:text-black text-lg"></i>
                                     <span class="font-medium text-yellow-500 group-hover:text-black">Premium Perfumes</span>
-                                </div>
+                    </div>
                                 <i class="fas fa-chevron-right text-yellow-500 group-hover:text-black"></i>
                             </a>
                         </li>
@@ -560,7 +370,7 @@
                                 <div class="flex items-center space-x-3">
                                     <i class="fas fa-utensils text-yellow-500 group-hover:text-black text-lg"></i>
                                     <span class="font-medium text-yellow-500 group-hover:text-black">Crockery</span>
-                                </div>
+                    </div>
                                 <i class="fas fa-chevron-right text-yellow-500 group-hover:text-black"></i>
                             </a>
                         </li>
@@ -569,7 +379,7 @@
                                 <div class="flex items-center space-x-3">
                                     <i class="fas fa-laptop text-yellow-500 group-hover:text-black text-lg"></i>
                                     <span class="font-medium text-yellow-500 group-hover:text-black">Laptops</span>
-                                </div>
+                </div>
                                 <i class="fas fa-chevron-right text-yellow-500 group-hover:text-black"></i>
                             </a>
                         </li>
@@ -710,12 +520,12 @@
                 <!-- Polish & Shiners Category -->
                 <div class="text-center" onclick="filterByCategory('polish and shinners')">
                     <img src="CAR_CARE CATEGORY/POLISH & SHINNER.jfif" alt="Polish & Shiners" class="w-full h-24 object-cover rounded-lg cursor-pointer">
-                </div>
+    </div>
 
                 <!-- Protectant Sprays Category -->
                 <div class="text-center" onclick="filterByCategory('protectant sprays')">
                     <img src="CAR_CARE CATEGORY/CAR PROTECTANT.jfif" alt="Protectant Sprays" class="w-full h-24 object-cover rounded-lg cursor-pointer">
-                </div>
+            </div>
 
                 <!-- Spray Paints Category -->
                 <div class="text-center" onclick="filterByCategory('spray paints')">
@@ -725,7 +535,7 @@
                 <!-- Wash & Wax Category -->
                 <div class="text-center" onclick="filterByCategory('wash & wax')">
                     <img src="CAR_CARE CATEGORY/WASH & WAX.jfif" alt="Wash & Wax" class="w-full h-24 object-cover rounded-lg cursor-pointer">
-                </div>
+    </div>
 
                 <!-- Cleaners Category -->
                 <div class="text-center" onclick="filterByCategory('cleaners')">
@@ -735,8 +545,8 @@
                 <!-- Car Perfumes Category -->
                 <div class="text-center" onclick="filterByCategory('car perfumes')">
                     <img src="CAR_CARE CATEGORY/CAR PERFUME.jfif" alt="Car Perfumes" class="w-full h-24 object-cover rounded-lg cursor-pointer">
+                    </div>
                 </div>
-            </div>
                 </div>
             </div>
         </div>
