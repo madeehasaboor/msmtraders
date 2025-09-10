@@ -80,11 +80,59 @@
             }
         }
 
-        /* Touch targets for mobile */
+        /* Mobile optimization for product cards */
         @media (max-width: 768px) {
             .product-card {
                 min-height: 44px;
                 touch-action: manipulation;
+            }
+            
+            /* Fix stretched images on mobile */
+            .product-card img {
+                object-fit: contain !important;
+                object-position: center;
+                max-height: 200px;
+                width: 100%;
+                background-color: #f3f4f6;
+                padding: 8px;
+                border-radius: 8px;
+            }
+            
+            /* Product grid mobile optimization */
+            .products-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem;
+                padding: 0.5rem;
+            }
+            
+            /* Product card container mobile optimization */
+            .product-card {
+                min-height: auto;
+                padding: 0.75rem;
+                margin-bottom: 1rem;
+            }
+            
+            /* Category buttons mobile optimization */
+            .category-buttons {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.5rem;
+                padding: 0.5rem;
+            }
+            
+            .category-button {
+                min-height: 80px;
+                padding: 0.5rem;
+            }
+            
+            .category-button img {
+                width: 40px;
+                height: 40px;
+                object-fit: contain;
+            }
+            
+            .category-button h3 {
+                font-size: 0.75rem;
+                line-height: 1.2;
             }
             
             button, .clickable {
@@ -599,9 +647,9 @@
             </div>
 
             <!-- Product Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 products-grid">
+            <div class="products-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <!-- Product 1 - Stainless Steel Chafing Dish -->
-                <div>
+                <div class="product-card">
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
                         <div class="relative bg-gray-700 flex items-center justify-center h-48">
                         <img src="crockery/Elegant Stainless Steel Serving Dish with Tempered Glass Lid.png" 
@@ -639,7 +687,7 @@
                 </div>
 
                 <!-- Product 4 - Cast Iron Casserole -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                <div class="product-card bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
                     <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                         <img src="crockery/Cast Iron Casserole.webp" 
                              alt="Cast Iron Casserole" 
