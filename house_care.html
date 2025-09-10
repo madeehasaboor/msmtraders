@@ -103,23 +103,23 @@
         
         .hamburger {
             display: none;
-            flex-direction: column;
             cursor: pointer;
             padding: 0.5rem;
+            font-size: 1.5rem;
+            color: white;
+            background: none;
+            border: none;
         }
         
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background-color: white;
-            margin: 3px 0;
+        .hamburger:hover {
+            color: #fbbf24;
         }
         
         /* Mobile menu */
         @media (max-width: 768px) {
             .navbar-menu {
                 position: fixed;
-                top: 100%;
+                top: 70px;
                 left: 0;
                 right: 0;
                 background-color: #111;
@@ -127,6 +127,7 @@
                 padding: 1rem;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
                 display: none;
+                z-index: 999;
             }
             
             .navbar-menu.active {
@@ -137,10 +138,17 @@
                 padding: 1rem;
                 border-bottom: 1px solid #333;
                 text-align: center;
+                color: white;
+                text-decoration: none;
+                font-weight: 500;
             }
             
             .navbar-menu a:last-child {
                 border-bottom: none;
+            }
+            
+            .navbar-menu a:hover {
+                background-color: #333;
             }
             
             .hamburger {
@@ -415,11 +423,9 @@
             </ul>
             
             <!-- Hamburger Menu -->
-            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+                ☰
+            </button>
         </div>
     </nav>
 
@@ -1239,15 +1245,37 @@
             const menu = document.getElementById('navbar-menu');
             const hamburger = document.getElementById('hamburger');
             
+            console.log('Toggle menu clicked'); // Debug log
+            
             if (menu && hamburger) {
                 menu.classList.toggle('active');
                 hamburger.classList.toggle('active');
+                console.log('Menu toggled, active class:', menu.classList.contains('active')); // Debug log
+            } else {
+                console.log('Menu or hamburger not found'); // Debug log
             }
         }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             loadProducts();
+            
+            // Add click event listener to hamburger button
+            const hamburger = document.getElementById('hamburger');
+            if (hamburger) {
+                hamburger.addEventListener('click', toggleMenu);
+            }
+            
+            // Close mobile menu when clicking on menu items
+            const menuItems = document.querySelectorAll('.navbar-menu a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const menu = document.getElementById('navbar-menu');
+                    if (menu && menu.classList.contains('active')) {
+                        menu.classList.remove('active');
+                    }
+                });
+            });
             
             // Initialize cart with a delay to ensure DOM is fully ready
             setTimeout(() => {
