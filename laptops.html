@@ -144,12 +144,11 @@
                     <a href="laptops.html" class="text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
                     <a href="deals.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
                     <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact</a>
+                    <a href="cart.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200 flex items-center">
+                        <i class="fas fa-shopping-cart mr-2"></i>Cart
+                    </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button class="text-gray-300 hover:text-yellow-400 p-2 rounded-lg hover:bg-gray-800 transition duration-200 relative">
-                        <i class="fas fa-shopping-cart text-xl"></i>
-                        <span class="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
-                    </button>
                 </div>
             </div>
         </div>
@@ -264,8 +263,8 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
-                </div>
+        </div>
+    </div>
 
                 <!-- Hero Content -->
                 <div class="flex-1">
@@ -933,7 +932,7 @@
         <a id="home-nav" href="index.html" onclick="setActiveNav('home')"><i class="fas fa-home"></i>Home</a>
         <a id="category-nav" href="javascript:void(0)" onclick="openCategoryMenu(); setActiveNav('category'); return false;"><i class="fas fa-th-large"></i>Category</a>
         <a id="deals-nav" href="deals.html" onclick="setActiveNav('deals')"><i class="fas fa-tags"></i>Deals</a>
-        <a id="cart-nav" href="javascript:void(0)" onclick="toggleCart(); setActiveNav('cart'); return false;"><i class="fas fa-shopping-cart"></i>Cart</a>
+        <a id="cart-nav" href="cart.html" onclick="setActiveNav('cart')"><i class="fas fa-shopping-cart"></i>Cart</a>
     </nav>
 
     <script>
