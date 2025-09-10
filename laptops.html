@@ -36,6 +36,121 @@
             object-fit: cover;
             object-position: center;
         }
+        
+        body {
+            padding-top: 80px;
+        }
+        
+        /* Responsive Navbar */
+        .navbar {
+            background-color: #111;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0.75rem 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar-logo {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .navbar-logo img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 1.5rem;
+        }
+        
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+        }
+        
+        .navbar-menu a.active {
+            background-color: #fbbf24;
+            color: #000;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+        }
+        
+        /* Mobile menu */
+        @media (max-width: 768px) {
+            .navbar-menu {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #111;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+                display: none;
+            }
+            
+            .navbar-menu.active {
+                display: flex;
+            }
+            
+            .navbar-menu a {
+                padding: 1rem;
+                border-bottom: 1px solid #333;
+                text-align: center;
+            }
+            
+            .navbar-menu a:last-child {
+                border-bottom: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .navbar-logo {
+                font-size: 1.25rem;
+            }
+            
+            .navbar-logo img {
+                height: 35px;
+            }
+        }
 
         /* Mobile-first responsive breakpoints */
         @media (max-width: 320px) {
@@ -121,35 +236,31 @@
     </style>
 </head>
 <body class="bg-black text-white">
-    <!-- Navigation -->
-    <nav class="bg-gray-900 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center space-x-4">
-                    <div class="bg-yellow-400 text-black rounded-full w-10 h-10 flex items-center justify-center">
-                        <i class="fas fa-shopping-cart text-xl"></i>
-                        <i class="fas fa-star text-xs absolute -top-1 -right-1"></i>
-                    </div>
-                    <div>
-                        <h1 class="text-2xl font-bold text-yellow-400">MSM Traders</h1>
-                        <p class="text-sm text-gray-300">CLICK.SHOP.SMILE</p>
-                    </div>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a>
-                    <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Car Care</a>
-                    <a href="house_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">House Care</a>
-                    <a href="premium_perfumes.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
-                    <a href="crockery.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Crockery</a>
-                    <a href="laptops.html" class="text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
-                    <a href="deals.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
-                    <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact</a>
-                    <a href="cart.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200 flex items-center">
-                        <i class="fas fa-shopping-cart mr-2"></i>Cart
-                    </a>
-                </div>
-                <div class="flex items-center space-x-4">
-                </div>
+    <!-- Responsive Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="MSM TRADERS LOGO.jpeg" alt="MSM Traders Logo">
+                <span>MSM TRADERS</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <ul class="navbar-menu" id="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="car_care.html">Car Care</a></li>
+                <li><a href="house_care.html">House Care</a></li>
+                <li><a href="premium_perfumes.html">Premium Perfumes</a></li>
+                <li><a href="crockery.html">Crockery</a></li>
+                <li><a href="laptops.html" class="active">Laptop Deals</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <!-- Mobile Menu Button -->
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </nav>
@@ -950,6 +1061,16 @@
 
         function toggleCart() {
             alert('Cart functionality not available on this page.');
+        }
+
+        // Toggle mobile menu
+        function toggleMenu() {
+            const menu = document.getElementById('navbar-menu');
+            const hamburger = document.getElementById('hamburger');
+            if (menu && hamburger) {
+                menu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            }
         }
     </script>
 </body>
