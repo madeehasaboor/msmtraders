@@ -832,23 +832,12 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
                     </div>
                     <div class="p-4 text-center">
-                        <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-yellow-400 mb-2 line-clamp-2">${product.name}</h3>
-                        <p class="text-xs sm:text-sm text-gray-300 mb-3 line-clamp-2">${product.description}</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-lg sm:text-xl font-bold text-yellow-400">${product.price ? '₨' + product.price : 'Contact for Pricing'}</span>
-                            <button class="add-to-cart-btn bg-yellow-400 hover:bg-yellow-300 text-black px-3 py-1 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition duration-200" 
-                                    data-name="${product.name}" 
-                                    data-price="${product.price || ''}" 
-                                    data-image="${product.image_url}">
-                                <i class="fas fa-cart-plus mr-1"></i>Add
-                            </button>
-                        </div>
+                        <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-yellow-400 line-clamp-2">${product.name}</h3>
                     </div>
                 `;
                 // Attach product data for Quick View
                 productCard.dataset.name = product.name || '';
-                productCard.dataset.price = product.price || '';
-                productCard.dataset.desc = product.description || '';
+                // Only image and name are shown; omit price and description dataset fields
                 productCard.dataset.image = product.image_url || '';
                 productsGrid.appendChild(productCard);
             });
