@@ -204,22 +204,63 @@
             object-position: center;
         }
 
-        /* Product card styling */
+        /* Product Grid Layout */
+        .products {
+            display: grid;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Desktop: 4 per row */
+        @media screen and (min-width: 1024px) {
+            .products {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Tablet: 2 per row */
+        @media screen and (min-width: 600px) and (max-width: 1023px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Mobile: 1 per row */
+        @media screen and (max-width: 599px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Product Card */
         .product-card {
-            min-height: 300px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-card img {
-            flex-shrink: 0;
-        }
-
-        .product-card .p-4 {
-            flex-grow: 1;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            
+            /* Fix height so all cards equal */
+            height: 350px;        /* adjust if needed */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+        }
+
+        /* Product Image */
+        .product-card img {
+            width: 100%;
+            height: 200px;       /* all images same height */
+            object-fit: cover;   /* crop/fit nicely */
+            border-radius: 8px;
+        }
+
+        /* Product Name */
+        .product-card h3 {
+            font-size: 16px;
+            margin: 10px 0 0;
+            min-height: 40px;    /* reserve space for 2 lines */
         }
 
         /* Mobile-first responsive breakpoints */
@@ -505,7 +546,7 @@
             </div>
 
             <!-- Products Grid -->
-            <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6">
+            <div id="productsGrid" class="products">
                 <!-- Products will be dynamically loaded here -->
             </div>
 
@@ -864,15 +905,10 @@
             
             productsToShow.forEach(product => {
                 const productCard = document.createElement('div');
-                productCard.className = 'product-card bg-gray-800 rounded-lg border border-gray-700 overflow-hidden hover:border-yellow-400 transition-all duration-300 transform hover:scale-105 cursor-pointer';
+                productCard.className = 'product-card';
                 productCard.innerHTML = `
-                    <div class="relative overflow-hidden">
-                        <img src="${product.image_url}" alt="${product.name}" class="w-full h-auto max-h-80 object-contain object-center bg-gray-100" loading="lazy" decoding="async">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
-                        </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-yellow-400 line-clamp-2">${product.name}</h3>
-                    </div>
+                    <img src="${product.image_url}" alt="${product.name}" loading="lazy" decoding="async">
+                    <h3>${product.name}</h3>
                 `;
                 // Attach product data for Quick View
                 productCard.dataset.name = product.name || '';
