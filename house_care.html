@@ -93,12 +93,7 @@
             text-decoration: none;
             padding: 0.5rem 1rem;
             border-radius: 0.375rem;
-            transition: background-color 0.3s ease;
             font-weight: 500;
-        }
-        
-        .navbar-menu a:hover {
-            background-color: #575757;
         }
         
         .navbar-menu a.active {
@@ -118,19 +113,6 @@
             height: 3px;
             background-color: white;
             margin: 3px 0;
-            transition: 0.3s;
-        }
-        
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
         }
         
         /* Mobile menu */
@@ -144,16 +126,11 @@
                 flex-direction: column;
                 padding: 1rem;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
+                display: none;
             }
             
             .navbar-menu.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
+                display: flex;
             }
             
             .navbar-menu a {
@@ -417,10 +394,10 @@
                         <ul class="space-y-3">
                             <li>
                                 <a href="car_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
+                    <div class="flex items-center space-x-3">
                                         <i class="fas fa-car text-yellow-400 group-hover:text-black text-xl"></i>
                                         <span class="font-semibold text-yellow-400 group-hover:text-black">Car Care</span>
-                                    </div>
+                        </div>
                                     <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                                 </a>
                             </li>
@@ -429,7 +406,7 @@
                                     <div class="flex items-center space-x-3">
                                         <i class="fas fa-home text-yellow-400 group-hover:text-black text-xl"></i>
                                         <span class="font-semibold text-yellow-400 group-hover:text-black">House Care</span>
-                                    </div>
+                        </div>
                                     <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                                 </a>
                             </li>
@@ -438,7 +415,7 @@
                                     <div class="flex items-center space-x-3">
                                         <i class="fas fa-spray-can text-yellow-400 group-hover:text-black text-xl"></i>
                                         <span class="font-semibold text-yellow-400 group-hover:text-black">Premium Perfumes</span>
-                                    </div>
+                    </div>
                                     <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                                 </a>
                             </li>
@@ -447,7 +424,7 @@
                                     <div class="flex items-center space-x-3">
                                         <i class="fas fa-utensils text-yellow-400 group-hover:text-black text-xl"></i>
                                         <span class="font-semibold text-yellow-400 group-hover:text-black">Crockery</span>
-                                    </div>
+                </div>
                                     <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                                 </a>
                             </li>
@@ -456,12 +433,12 @@
                                     <div class="flex items-center space-x-3">
                                         <i class="fas fa-laptop text-yellow-400 group-hover:text-black text-xl"></i>
                                         <span class="font-semibold text-yellow-400 group-hover:text-black">Laptops</span>
-                                    </div>
+                    </div>
                                     <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                </div>
                 </div>
 
                 <!-- Hero Content -->
@@ -1231,7 +1208,7 @@
                 hamburger.classList.toggle('active');
             }
         }
-        
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             loadProducts();
@@ -1239,7 +1216,7 @@
             // Initialize cart with a delay to ensure DOM is fully ready
             setTimeout(() => {
                 console.log('Initializing cart...');
-                renderCart();
+            renderCart();
             }, 200);
             
             // Fallback initialization after longer delay
