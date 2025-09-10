@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -107,197 +107,219 @@
             display: none;
         }
 
-        /* Fixed Category Sidebar */
-        .fixed-category-sidebar {
-            position: fixed;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 280px;
-            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-            border: 2px solid #f59e0b;
-            border-left: none;
-            border-radius: 0 20px 20px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            padding: 20px 0;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+        /* Mobile and Desktop Optimization */
+        .header-logo {
+            font-size: 1.5rem;
         }
-
-        .fixed-category-sidebar:hover {
-            transform: translateY(-50%) translateX(10px);
-            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.3);
+        
+        .header-nav {
+            display: none;
         }
-
-        .fixed-category-sidebar h3 {
-            color: #f59e0b;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 0 20px;
-            border-bottom: 1px solid #f59e0b;
-            padding-bottom: 10px;
+        
+        .search-bar {
+            width: 100%;
+            margin: 0.5rem 0;
         }
-
-        .fixed-category-sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .fixed-category-sidebar li {
-            margin: 0;
-        }
-
-        .fixed-category-sidebar a {
-            display: flex;
-            align-items: center;
-            padding: 15px 20px;
-            color: #d1d5db;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border-left: 3px solid transparent;
-            position: relative;
-        }
-
-        .fixed-category-sidebar a:hover {
-            background: linear-gradient(90deg, rgba(245, 158, 11, 0.1) 0%, transparent 100%);
-            color: #f59e0b;
-            border-left-color: #f59e0b;
-            transform: translateX(5px);
-        }
-
-        .fixed-category-sidebar a i {
-            width: 20px;
-            margin-right: 12px;
+        
+        .search-input {
             font-size: 16px;
+            padding: 0.75rem;
+        }
+        
+        .hero-content {
+            padding: 1rem;
+        }
+        
+        .hero-title {
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.125rem;
+        }
+        
+        .category-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+        }
+        
+        .category-button {
+            min-width: 120px;
+            padding: 0.75rem;
+        }
+        
+        .products-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        
+        .product-card {
+            min-height: 300px;
+            padding: 1rem;
+        }
+        
+        .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .footer-section {
             text-align: center;
         }
 
-        .fixed-category-sidebar a span {
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        /* Mobile responsive sidebar */
-        @media (max-width: 1024px) {
-            .fixed-category-sidebar {
-                width: 60px;
-                padding: 15px 0;
-            }
-            
-            .fixed-category-sidebar h3 {
-                display: none;
-            }
-            
-            .fixed-category-sidebar a {
-                padding: 12px 15px;
-                justify-content: center;
-            }
-            
-            .fixed-category-sidebar a span {
-                display: none;
-            }
-            
-            .fixed-category-sidebar a i {
-                margin-right: 0;
-                font-size: 18px;
-            }
-        }
-
+        /* Mobile-specific optimizations */
         @media (max-width: 768px) {
-            .fixed-category-sidebar {
-                width: 50px;
-                padding: 10px 0;
+            .header-logo {
+                font-size: 1.25rem;
             }
             
-            .fixed-category-sidebar a {
-                padding: 10px 12px;
+            .header-nav {
+                display: none;
             }
             
-            .fixed-category-sidebar a i {
+            .search-bar {
+                width: 100%;
+                margin: 0.5rem 0;
+                order: 3;
+            }
+            
+            .search-input {
                 font-size: 16px;
+                padding: 0.75rem;
+                width: 100%;
+            }
+            
+            .hero-content {
+                padding: 0.75rem;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 1.75rem;
+                line-height: 1.2;
+                margin-bottom: 0.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .category-buttons {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                justify-content: center;
+                padding: 0.5rem;
+            }
+            
+            .category-button {
+                min-width: 100px;
+                padding: 0.5rem;
+                font-size: 0.875rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 0.5rem;
+            }
+            
+            .product-card {
+                min-height: 250px;
+                padding: 0.75rem;
+                margin-bottom: 1rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            
+            .footer-section {
+                text-align: center;
+            }
+            
+            /* Touch targets for mobile */
+            button, a {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            /* Mobile navigation */
+            .mobile-nav {
+                display: block;
+            }
+            
+            .desktop-nav {
+                display: none;
             }
         }
 
-        /* Adjust main content to account for sidebar */
+        /* Tablet optimizations */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .header-logo {
+                font-size: 1.75rem;
+            }
+            
+            .search-bar {
+                max-width: 400px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .category-buttons {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        /* Desktop optimizations */
         @media (min-width: 1025px) {
-            body {
-                margin-left: 280px;
+            .header-logo {
+                font-size: 2rem;
             }
-        }
-
-        @media (max-width: 1024px) {
-            body {
-                margin-left: 60px;
+            
+            .header-nav {
+                display: flex;
             }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                margin-left: 50px;
+            
+            .search-bar {
+                max-width: 500px;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .category-buttons {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
 </head>
 <body class="bg-gray-900 text-white min-h-screen">
-    <!-- Fixed Category Sidebar -->
-    <div class="fixed-category-sidebar">
-        <h3>Shop by Category</h3>
-        <ul>
-            <li>
-                <a href="index.html">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="car_care.html">
-                    <i class="fas fa-car"></i>
-                    <span>Car Care</span>
-                </a>
-            </li>
-            <li>
-                <a href="house_care.html">
-                    <i class="fas fa-home"></i>
-                    <span>House Care</span>
-                </a>
-            </li>
-            <li>
-                <a href="premium_perfumes.html">
-                    <i class="fas fa-spray-can"></i>
-                    <span>Premium Perfumes</span>
-                </a>
-            </li>
-            <li>
-                <a href="crockery.html">
-                    <i class="fas fa-utensils"></i>
-                    <span>Crockery</span>
-                </a>
-            </li>
-            <li>
-                <a href="laptops.html">
-                    <i class="fas fa-laptop"></i>
-                    <span>Laptops</span>
-                </a>
-            </li>
-            <li>
-                <a href="deals.html">
-                    <i class="fas fa-tags"></i>
-                    <span>Deals</span>
-                </a>
-            </li>
-            <li>
-                <a href="contact.html">
-                    <i class="fas fa-envelope"></i>
-                    <span>Contact</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-
     <!-- Header -->
     <header class="bg-gradient-to-r from-gray-900 via-black to-gray-900 border-b-2 border-yellow-500 sticky top-0 z-50 backdrop-blur-md bg-opacity-95 shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -314,14 +336,14 @@
                             </div>
                         </div>
                         <div>
-                            <h1 class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent group-hover:animate-glow">MSM Traders</h1>
+                            <h1 class="header-logo text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent group-hover:animate-glow">MSM Traders</h1>
                             <p class="text-xs text-yellow-500 font-medium">CLICK.SHOP.SMILE</p>
                         </div>
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden lg:flex items-center space-x-6">
+                <div class="header-nav hidden lg:flex items-center space-x-6">
                     <a href="index.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a>
                     <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Car Care</a>
                     <a href="house_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">House Care</a>
@@ -330,27 +352,25 @@
                     <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
                     <a href="deals.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
                     <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact</a>
+                    <a href="cart.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200 flex items-center">
+                        <i class="fas fa-shopping-cart mr-2"></i>Cart
+                    </a>
                 </div>
 
                 <!-- Search Bar -->
-                <div class="flex-1 max-w-lg mx-8">
+                <div class="search-bar flex-1 max-w-lg mx-8">
                     <div class="relative group">
                         <div class="absolute inset-0 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-xl blur opacity-20 group-hover:opacity-30 transition-opacity"></div>
                         <div class="relative">
                             <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-yellow-500"></i>
                             <input type="text" placeholder="Search perfumes, fragrances, candles..." 
-                                   class="relative w-full px-6 py-3 pl-12 pr-4 bg-gray-800/90 border-2 border-yellow-500/50 text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-4 focus:ring-yellow-500/30 focus:border-yellow-400 transition-all duration-300 backdrop-blur-sm">
+                                   class="search-input relative w-full px-6 py-3 pl-12 pr-4 bg-gray-800/90 border-2 border-yellow-500/50 text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-4 focus:ring-yellow-500/30 focus:border-yellow-400 transition-all duration-300 backdrop-blur-sm">
                         </div>
                     </div>
                 </div>
 
                 <!-- User Actions -->
                 <div class="flex items-center space-x-4">
-                    <button class="relative p-2 text-yellow-500 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:bg-yellow-500/10 rounded-lg group">
-                        <i class="fas fa-shopping-cart text-xl group-hover:animate-bounce"></i>
-                        <span class="absolute -top-1 -right-1 bg-yellow-500 text-black text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
-                        <div class="absolute inset-0 bg-yellow-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    </button>
                     <button class="relative p-2 text-yellow-500 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:bg-yellow-500/10 rounded-lg group">
                         <i class="fas fa-user text-xl group-hover:animate-bounce"></i>
                         <div class="absolute inset-0 bg-yellow-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -474,22 +494,22 @@
                 </div>
 
                 <!-- Hero Content -->
-                <div class="flex-1">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <!-- Text Content -->
-                        <div class="text-center lg:text-left">
-                            <h1 class="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">Premium Perfumes & Fragrances</h1>
-                            <p class="text-gray-300 text-lg">Discover our premium collection of perfumes, fragrances, and scented candles</p>
-                        </div>
-                        <!-- Hero Image -->
-                        <div class="relative">
-                            <img src="category imges/perfumes_image.jpg.jfif" 
-                                 alt="Premium Perfumes Collection" 
-                                 class="w-full h-96 object-cover rounded-xl shadow-2xl border-2 border-yellow-400">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
-                        </div>
+                <div class="hero-content flex-1">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- Text Content -->
+                    <div class="text-center lg:text-left">
+                        <h1 class="hero-title text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">Premium Perfumes & Fragrances</h1>
+                        <p class="hero-subtitle text-gray-300 text-lg">Discover our premium collection of perfumes, fragrances, and scented candles</p>
+                    </div>
+                    <!-- Hero Image -->
+                    <div class="relative">
+                        <img src="category imges/perfumes_image.jpg.jfif" 
+                             alt="Premium Perfumes Collection" 
+                             class="w-full h-96 object-cover rounded-xl shadow-2xl border-2 border-yellow-400">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
                     </div>
                 </div>
+            </div>
             </div>
         </div><!-- Category Buttons -->
             <div class="flex flex-wrap justify-center gap-4 sm:gap-6 mb-8">
@@ -537,7 +557,7 @@
                 <button onclick="showCategoryProducts('bahoors')" class="bg-gray-800 border-2 border-yellow-500 rounded-xl px-4 py-4 sm:px-8 sm:py-6 lg:px-10 lg:py-8 hover:bg-gray-700 hover:border-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl min-w-[120px] sm:min-w-[160px] lg:min-w-[200px]">
                     <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
                         <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
-                            <i class="fas fa-fire text-yellow-400 text-lg sm:text-xl lg:text-2xl"></i>
+                            <img src="premium perfumes/BAHOORS/Bakhoor e Noor.webp" alt="Bahoors" class="w-full h-full object-cover">
                         </div>
                         <span class="text-yellow-400 font-semibold text-sm sm:text-base lg:text-lg">Bahoors</span>
                     </div>
@@ -849,9 +869,10 @@
         }
 
         function updateCartCount() {
-            const cartBadge = document.querySelector('.fa-shopping-cart').parentElement.querySelector('span');
-            if (cartBadge) {
-                cartBadge.textContent = cartCount;
+            const cartCountElement = document.getElementById('cart-count');
+            if (cartCountElement) {
+                cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCountElement.textContent = cartCount;
             }
         }
 
@@ -882,12 +903,6 @@
                 }, 300);
             }, 3000);
         }
-
-        // Initialize cart count on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-            updateCartCount();
-        });
 
         // Modal functions
         function openProductModal(name, description, price, image) {
@@ -925,6 +940,10 @@
             console.log('Premium Perfumes page loaded successfully');
             console.log('Category buttons ready - click any category to view products');
             
+            // Initialize cart count
+            cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            updateCartCount();
+            
             // Set up modal event listeners
             const modal = document.getElementById('productModal');
             const closeBtn = document.getElementById('closeModal');
@@ -949,5 +968,4 @@
     </script>
 </body>
 </html>
-
 
