@@ -231,7 +231,7 @@
                     <a href="index.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a>
                     <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Car Care</a>
                     <a href="house_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">House Care</a>
-                    <a href="permium_perfume.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
+                    <a href="premium_perfumes.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
                     <a href="crockery.html" class="text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Crockery</a>
                     <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
                     <a href="deals.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
@@ -267,118 +267,153 @@
     </header>
 
     <!-- Main Content -->
-    <div class="flex max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <!-- Left Sidebar -->
-        <aside class="hidden lg:block w-64 mr-6 space-y-6">
-            <!-- Categories Section -->
-            <div class="bg-gray-900 border border-yellow-500 rounded-lg shadow-md p-6">
-                <h3 class="text-lg font-semibold text-yellow-500 mb-4">Categories</h3>
-                <nav class="space-y-2">
-                    <a href="cosmetics.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
-                        <i class="fas fa-palette mr-2"></i>Cosmetics
-                    </a>
-                    <a href="crockery.html" class="block py-2 px-3 text-yellow-400 bg-yellow-500/10 rounded-lg transition-colors">
-                        <i class="fas fa-utensils mr-2"></i>Crockery
-                    </a>
-                </nav>
-            </div>
-        </aside>
-
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <!-- Main Content Area -->
         <main class="flex-1">
-            <!-- Page Header -->
+            <!-- Hero Section with Categories Sidebar -->
             <div class="mb-12">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <!-- Text Content -->
-                    <div class="text-center lg:text-left">
-                        <div class="relative inline-block">
-                            <h1 class="text-6xl md:text-7xl font-extrabold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent mb-6 tracking-wide">
-                                Crockery
-                            </h1>
-                            <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full"></div>
+                <!-- Mobile Categories - Above Hero Content -->
+                <div class="lg:hidden mb-8">
+                    <h3 class="text-lg font-bold text-yellow-400 mb-4 text-center">Shop by Category</h3>
+                    <div class="bg-gray-900 border border-yellow-400 rounded-lg p-4">
+                        <ul class="space-y-2">
+                            <li>
+                                <a href="car_care.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-car text-yellow-400 group-hover:text-black text-lg"></i>
+                                        <span class="font-medium text-yellow-400 group-hover:text-black">Car Care</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="house_care.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-home text-yellow-400 group-hover:text-black text-lg"></i>
+                                        <span class="font-medium text-yellow-400 group-hover:text-black">House Care</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="premium_perfumes.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-spray-can text-yellow-400 group-hover:text-black text-lg"></i>
+                                        <span class="font-medium text-yellow-400 group-hover:text-black">Premium Perfumes</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="crockery.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-utensils text-yellow-400 group-hover:text-black text-lg"></i>
+                                        <span class="font-medium text-yellow-400 group-hover:text-black">Crockery</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="laptops.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-laptop text-yellow-400 group-hover:text-black text-lg"></i>
+                                        <span class="font-medium text-yellow-400 group-hover:text-black">Laptops</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <!-- Categories Sidebar - Desktop Only -->
+                    <div class="hidden lg:block lg:w-1/4">
+                        <div class="bg-gray-900 border border-yellow-400 rounded-lg p-6">
+                            <h3 class="text-xl font-bold text-yellow-400 mb-6 text-center">Shop by Category</h3>
+                            <ul class="space-y-3">
+                                <li>
+                                    <a href="car_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-car text-yellow-400 group-hover:text-black text-xl"></i>
+                                            <span class="font-semibold text-yellow-400 group-hover:text-black">Car Care</span>
+                                        </div>
+                                        <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="house_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-home text-yellow-400 group-hover:text-black text-xl"></i>
+                                            <span class="font-semibold text-yellow-400 group-hover:text-black">House Care</span>
+                                        </div>
+                                        <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="premium_perfumes.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-spray-can text-yellow-400 group-hover:text-black text-xl"></i>
+                                            <span class="font-semibold text-yellow-400 group-hover:text-black">Premium Perfumes</span>
+                                        </div>
+                                        <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="crockery.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-utensils text-yellow-400 group-hover:text-black text-xl"></i>
+                                            <span class="font-semibold text-yellow-400 group-hover:text-black">Crockery</span>
+                                        </div>
+                                        <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="laptops.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-laptop text-yellow-400 group-hover:text-black text-xl"></i>
+                                            <span class="font-semibold text-yellow-400 group-hover:text-black">Laptops</span>
+                                        </div>
+                                        <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                        <p class="text-gray-300 text-xl md:text-2xl font-light max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                            Elegant crockery sets for your dining table and kitchen
-                        </p>
-                        <div class="mt-8 flex justify-center lg:justify-start">
-                            <div class="flex space-x-2">
-                                <div class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
-                                <div class="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
-                                <div class="w-2 h-2 bg-yellow-600 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                    </div>
+
+                    <!-- Hero Content -->
+                    <div class="flex-1">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                            <!-- Text Content -->
+                            <div class="text-center lg:text-left">
+                                <div class="relative inline-block">
+                                    <h1 class="text-6xl md:text-7xl font-extrabold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent mb-6 tracking-wide">
+                                        Crockery
+                                    </h1>
+                                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full"></div>
+                                </div>
+                                <p class="text-gray-300 text-xl md:text-2xl font-light max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                                    Elegant crockery sets for your dining table and kitchen
+                                </p>
+                                <div class="mt-8 flex justify-center lg:justify-start">
+                                    <div class="flex space-x-2">
+                                        <div class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                                        <div class="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                                        <div class="w-2 h-2 bg-yellow-600 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Hero Image -->
+                            <div class="relative">
+                                <img src="category imges/crockery_image.jpg.jfif" 
+                                     alt="Crockery Collection" 
+                                     class="w-full h-96 object-cover rounded-xl shadow-2xl border-2 border-yellow-400">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
                             </div>
                         </div>
                     </div>
-                    <!-- Hero Image -->
-                    <div class="relative">
-                        <img src="category imges/crockery_image.jpg.jfif" 
-                             alt="Crockery Collection" 
-                             class="w-full h-96 object-cover rounded-xl shadow-2xl border-2 border-yellow-400">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
-                    </div>
                 </div>
-            </div>
-
-            <!-- Categories Section -->
-            <section class="py-12 bg-gray-800 mb-8">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-8">
-                        <h2 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-4">Shop by Category</h2>
-                        <p class="text-gray-300">Find the perfect crockery and kitchenware for your needs</p>
-                    </div>
-                    
-                    <!-- Mobile: Horizontal Scrollable Categories -->
-                    <div class="block md:hidden">
-                        <div class="flex space-x-4 overflow-x-auto pb-4 scrollbar-hide">
-                            <a href="car_care.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
-                                <img src="category imges/car_care_image.jpg" alt="Car Care" class="w-full h-20 object-cover rounded-md mb-2">
-                                <h3 class="text-xs font-semibold text-yellow-400 text-center">Car Care</h3>
-                            </a>
-                            <a href="house_care.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
-                                <img src="category imges/house_care_image.jpg.jfif" alt="House Care" class="w-full h-20 object-cover rounded-md mb-2">
-                                <h3 class="text-xs font-semibold text-yellow-400 text-center">House Care</h3>
-                            </a>
-                            <a href="permium_perfume.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
-                                <img src="category imges/perfumes_image.jpg.jfif" alt="Premium Perfumes" class="w-full h-20 object-cover rounded-md mb-2">
-                                <h3 class="text-xs font-semibold text-yellow-400 text-center">Premium Perfumes</h3>
-                            </a>
-                            <a href="crockery.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
-                                <img src="category imges/crockery_image.jpg.jfif" alt="Crockery" class="w-full h-20 object-cover rounded-md mb-2">
-                                <h3 class="text-xs font-semibold text-yellow-400 text-center">Crockery</h3>
-                            </a>
-                            <a href="laptops.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
-                                <img src="category imges/laptops_image.jpg.jfif" alt="Laptops" class="w-full h-20 object-cover rounded-md mb-2">
-                                <h3 class="text-xs font-semibold text-yellow-400 text-center">Laptops</h3>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Desktop/Tablet: Grid Layout -->
-                    <div class="hidden md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                        <a href="car_care.html" class="bg-gray-700 rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-                            <img src="category imges/car_care_image.jpg" alt="Car Care" class="w-full h-32 object-cover rounded-md mb-3">
-                            <h3 class="text-lg font-semibold text-yellow-400 text-center">Car Care</h3>
-                            <p class="text-sm text-gray-300 text-center mt-2">Premium car cleaning products</p>
-                        </a>
-                        <a href="house_care.html" class="bg-gray-700 rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-                            <img src="category imges/house_care_image.jpg.jfif" alt="House Care" class="w-full h-32 object-cover rounded-md mb-3">
-                            <h3 class="text-lg font-semibold text-yellow-400 text-center">House Care</h3>
-                            <p class="text-sm text-gray-300 text-center mt-2">Home cleaning solutions</p>
-                        </a>
-                        <a href="permium_perfume.html" class="bg-gray-700 rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-                            <img src="category imges/perfumes_image.jpg.jfif" alt="Premium Perfumes" class="w-full h-32 object-cover rounded-md mb-3">
-                            <h3 class="text-lg font-semibold text-yellow-400 text-center">Premium Perfumes</h3>
-                            <p class="text-sm text-gray-300 text-center mt-2">Luxury fragrances</p>
-                        </a>
-                        <a href="crockery.html" class="bg-gray-700 rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-                            <img src="category imges/crockery_image.jpg.jfif" alt="Crockery" class="w-full h-32 object-cover rounded-md mb-3">
-                            <h3 class="text-lg font-semibold text-yellow-400 text-center">Crockery</h3>
-                            <p class="text-sm text-gray-300 text-center mt-2">Elegant dinnerware</p>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Category Buttons Row -->
+            </div><!-- Category Buttons Row -->
             <div class="mb-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
                 <!-- Crockery & Dinnerware -->
                 <a href="#top" class="group relative bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-lg sm:rounded-xl p-2 sm:p-3 lg:p-4 hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 transform hover:scale-105 text-center min-h-[100px] sm:min-h-[120px] lg:min-h-[140px]">
@@ -460,7 +495,7 @@
                 <!-- Product 3 - Cast Iron Pan with 7 Wells -->
                 <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
                     <div class="relative overflow-hidden bg-gray-700 flex items-center justify-center h-48">
-                        <img src="crockery/Premium Cast Iron Muffin Pan – Durable & Non-Stick Bakeware.png" 
+                        <img src="crockery/Premium Cast Iron Muffin Pan â€“ Durable & Non-Stick Bakeware.png" 
                              alt="Cast Iron Pan with 7 Wells" 
                              class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                         </div>
@@ -673,7 +708,7 @@
                     <!-- Royal Albert Floral Cake Stand -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
-                            <img src="crockery/cake dishes/Multi-Tier Cake Stand – White.jpg" 
+                            <img src="crockery/cake dishes/Multi-Tier Cake Stand â€“ White.jpg" 
                                  alt="Royal Albert Floral Cake Stand" 
                                  class="w-full h-full object-cover rounded-xl">
                             <div class="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-bold">
@@ -931,7 +966,7 @@
                         <li><a href="index.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Home</a></li>
                         <li><a href="car_care.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Car Care</a></li>
                         <li><a href="house_care.html" class="text-gray-400 hover:text-yellow-500 transition-colors">House Care</a></li>
-                        <li><a href="permium_perfume.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Premium Perfumes</a></li>
+                        <li><a href="premium_perfumes.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Premium Perfumes</a></li>
                     </ul>
                 </div>
                 <div>
@@ -969,7 +1004,7 @@
                 <img id="qv-img" class="qv-img" src="" alt="Product">
                 <div id="qv-desc" class="qv-desc">Description</div>
                 <div class="qv-footer">
-                    <div id="qv-price" class="qv-price">₨0.00</div>
+                    <div id="qv-price" class="qv-price">â‚¨0.00</div>
                     <button id="qv-add" class="qv-btn">Add to Cart</button>
                 </div>
             </div>
@@ -993,7 +1028,7 @@
             <span><i class="fas fa-home mr-2"></i>House Care</span>
             <i class="fas fa-chevron-right text-xs"></i>
         </a>
-        <a href="permium_perfume.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
+        <a href="premium_perfumes.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
             <span><i class="fas fa-spray-can mr-2"></i>Perfumes</span>
             <i class="fas fa-chevron-right text-xs"></i>
         </a>
@@ -1017,131 +1052,131 @@
             // Fallback details for tiles that no longer render text in the card
             const productMeta = {
                 'Stainless Steel Chafing Dish': {
-                    price: '₨4,500',
+                    price: 'â‚¨4,500',
                     desc: 'Premium chafing dish with glass lid and fuel holder for keeping food warm'
                 },
                 'Black Non-Stick Cookware Set': {
-                    price: '₨28,950',
+                    price: 'â‚¨28,950',
                     desc: 'Complete 7-piece non-stick cookware set with frying pan, pots, and lids'
                 },
                 'Cast Iron Pan with 7 Wells': {
-                    price: '₨6,440',
+                    price: 'â‚¨6,440',
                     desc: 'Round cast iron pan with 7 circular wells for cooking multiple items simultaneously'
                 },
                 'Rectangular Cast Iron Pan': {
-                    price: '₨3,200',
+                    price: 'â‚¨3,200',
                     desc: 'Versatile rectangular cast iron pan perfect for grilling and cooking various dishes'
                 },
                 '3 Tier Oval Porcelain Bowls Set with Stand': {
-                    price: '₨8,500',
+                    price: 'â‚¨8,500',
                     desc: 'Elegant 3-tier oval porcelain serving bowls with decorative stand for special occasions'
                 },
                 'German Family International Kitchen Utensil Set (12-Piece)': {
-                    price: '₨2,800',
+                    price: 'â‚¨2,800',
                     desc: 'Professional 12-piece kitchen utensil set with ergonomic handles and durable construction'
                 },
                 'AVD High Quality Cutlery Set (84-Piece)': {
-                    price: '₨15,000',
+                    price: 'â‚¨15,000',
                     desc: 'Premium 84-piece cutlery set with elegant design and superior quality materials'
                 },
                 'Golden Cutlery Set (5-Piece)': {
-                    price: '₨1,200',
+                    price: 'â‚¨1,200',
                     desc: 'Luxurious 5-piece golden cutlery set with elegant finish and premium quality'
                 },
                 'Two-Tone Cutlery Set (4-Piece)': {
-                    price: '₨950',
+                    price: 'â‚¨950',
                     desc: 'Modern 4-piece two-tone cutlery set with contemporary design and durable construction'
                 },
                 'Modern Silver Cutlery Set (4-Piece)': {
-                    price: '₨1,100',
+                    price: 'â‚¨1,100',
                     desc: 'Sleek 4-piece modern silver cutlery set with minimalist design and premium finish'
                 },
                 'Sleek Golden Cutlery Set (4-Piece)': {
-                    price: '₨1,300',
+                    price: 'â‚¨1,300',
                     desc: 'Elegant 4-piece sleek golden cutlery set with sophisticated design and luxury finish'
                 },
                 'White Asian-Style Soup Spoon': {
-                    price: '₨350',
+                    price: 'â‚¨350',
                     desc: 'Traditional white Asian-style soup spoon with authentic design and comfortable grip'
                 },
                 'Luxurious Two-Tiered Golden Cake Stand': {
-                    price: '₨4,200',
+                    price: 'â‚¨4,200',
                     desc: 'Elegant two-tiered golden cake stand perfect for displaying desserts and pastries'
                 },
                 'Three-Tiered Golden Cake Stand': {
-                    price: '₨5,800',
+                    price: 'â‚¨5,800',
                     desc: 'Stunning three-tiered golden cake stand ideal for special occasions and celebrations'
                 },
                 'Royal Alba Bone China Cake Stand (3-Tier)': {
-                    price: '₨7,500',
+                    price: 'â‚¨7,500',
                     desc: 'Premium Royal Alba bone china 3-tier cake stand with exquisite craftsmanship'
                 },
                 'Royal Albert Floral Cake Stand (3-Tier)': {
-                    price: '₨8,200',
+                    price: 'â‚¨8,200',
                     desc: 'Beautiful Royal Albert floral 3-tier cake stand with classic English design'
                 },
                 'Premium Glass Water Pitcher Set with Golden Handles': {
-                    price: '₨2,500',
+                    price: 'â‚¨2,500',
                     desc: 'Elegant glass water pitcher set with golden handles and matching tumblers'
                 },
                 'Elegant Glass Water Pitcher with Tumblers': {
-                    price: '₨1,800',
+                    price: 'â‚¨1,800',
                     desc: 'Sophisticated glass water pitcher with matching tumblers for elegant serving'
                 },
                 'All-in-One Utensil Caddy': {
-                    price: '₨1,500',
+                    price: 'â‚¨1,500',
                     desc: 'Convenient all-in-one utensil caddy for organized kitchen storage and easy access'
                 },
                 'Kitchen Utensil Holder with 2 Cups': {
-                    price: '₨800',
+                    price: 'â‚¨800',
                     desc: 'Practical kitchen utensil holder with 2 cups for efficient organization'
                 },
                 'Kitchen Organizer Cutlery Storage': {
-                    price: '₨1,200',
+                    price: 'â‚¨1,200',
                     desc: 'Smart kitchen organizer for cutlery storage with multiple compartments'
                 },
                 'Golden Utensil Caddy': {
-                    price: '₨1,100',
+                    price: 'â‚¨1,100',
                     desc: 'Stylish golden utensil caddy with elegant design and practical functionality'
                 },
                 'Elegant Gold Dinnerware Set (For 6)': {
-                    price: '₨12,000',
+                    price: 'â‚¨12,000',
                     desc: 'Luxurious gold dinnerware set with elegant design, perfect for formal dining occasions and special events'
                 },
                 'Gold Flatware Set': {
-                    price: '₨3,500',
+                    price: 'â‚¨3,500',
                     desc: 'Premium gold flatware set with elegant design and luxurious finish, perfect for sophisticated dining experiences'
                 },
                 'Floral Design Insulated Food Container': {
-                    price: '₨1,800',
+                    price: 'â‚¨1,800',
                     desc: 'Beautiful floral design insulated food container for keeping meals fresh and warm'
                 },
                 'Red Serving Dishes Set (3-Piece)': {
-                    price: '₨2,200',
+                    price: 'â‚¨2,200',
                     desc: 'Vibrant red serving dishes set with 3 pieces for elegant food presentation'
                 },
                 'Stainless Steel Rotating Spice Rack (12 Jars)': {
-                    price: '₨3,800',
+                    price: 'â‚¨3,800',
                     desc: 'Convenient stainless steel rotating spice rack with 12 jars for organized spice storage'
                 },
                 'Premium Kitchen Storage Container Set': {
-                    price: '₨2,800',
+                    price: 'â‚¨2,800',
                     desc: 'High-quality kitchen storage container set for organized food storage and freshness'
                 },
                 'Professional Stainless Steel Cookware Set (12-Piece)': {
-                    price: '₨18,500',
+                    price: 'â‚¨18,500',
                     desc: 'Professional 12-piece stainless steel cookware set with superior heat distribution and durability'
                 }
             };
 
-            function parsePrice(text){ if(!text) return ''; const m=text.replace(/[,\s₨$]/g,'').match(/(\d+(?:\.\d+)?)/); return m?m[1]:''; }
+            function parsePrice(text){ if(!text) return ''; const m=text.replace(/[,\sâ‚¨$]/g,'').match(/(\d+(?:\.\d+)?)/); return m?m[1]:''; }
             function smartAdd(name, priceVal, image){ try{ if(typeof addToCart==='function'){ addToCart(name, priceVal || '', image||''); return; } }catch(e){} alert('Added to cart: '+name); }
 
             window.showQV = function(data){
                 title.textContent = data.name || 'Product';
                 img.src = data.image || '';
                 img.alt = data.name || 'Product';
-                desc.textContent = data.description || '—';
+                desc.textContent = data.description || 'â€”';
                 price.textContent = data.priceText || 'Contact for Pricing';
                 add.onclick = function(){ smartAdd(data.name||'Product', parsePrice(data.priceText), data.image||''); hide(); };
                 overlay.classList.add('show');
@@ -1182,7 +1217,7 @@
                 showQV({
                     name: nameText || 'Product',
                     image: imgEl ? imgEl.src : '',
-                    description: descText || '—',
+                    description: descText || 'â€”',
                     priceText: priceText || 'Contact for Pricing'
                 });
             });
@@ -1220,3 +1255,4 @@
     </script>
 </body>
 </html>
+
