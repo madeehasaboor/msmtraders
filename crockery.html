@@ -121,6 +121,194 @@
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
         }
+
+        /* Enhanced Mobile Optimizations */
+        @media (max-width: 768px) {
+            /* Header optimizations */
+            .header-logo {
+                font-size: 1.5rem;
+            }
+            
+            .header-nav {
+                display: none;
+            }
+            
+            .search-bar {
+                max-width: 200px;
+                margin: 0 8px;
+            }
+            
+            .search-input {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+            
+            /* Hero section mobile */
+            .hero-content {
+                padding: 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            /* Category buttons mobile */
+            .category-buttons {
+                flex-wrap: wrap;
+                gap: 0.75rem;
+                justify-content: center;
+            }
+            
+            .category-button {
+                min-width: 140px;
+                padding: 0.75rem;
+            }
+            
+            .category-button img {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .category-button span {
+                font-size: 0.875rem;
+            }
+            
+            /* Product grid mobile */
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+            
+            .product-card {
+                min-height: 200px;
+            }
+            
+            .product-card img {
+                height: 120px;
+            }
+            
+            .product-card h3 {
+                font-size: 0.875rem;
+                line-height: 1.3;
+            }
+            
+            /* Quick view modal mobile */
+            .qv-card {
+                margin: 1rem;
+                max-height: 90vh;
+            }
+            
+            .qv-img {
+                max-height: 50vh;
+            }
+            
+            .qv-title {
+                font-size: 1rem;
+            }
+            
+            .qv-price {
+                font-size: 1.25rem;
+            }
+            
+            /* Footer mobile */
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            
+            .footer-section h4 {
+                font-size: 1rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .footer-section p,
+            .footer-section li {
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Extra small mobile devices */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.75rem;
+            }
+            
+            .category-buttons {
+                gap: 0.5rem;
+            }
+            
+            .category-button {
+                min-width: 120px;
+                padding: 0.5rem;
+            }
+            
+            .category-button img {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .product-card {
+                min-height: 180px;
+            }
+            
+            .product-card img {
+                height: 100px;
+            }
+            
+            .qv-card {
+                margin: 0.5rem;
+            }
+            
+            .qv-img {
+                max-height: 40vh;
+            }
+        }
+
+        /* Touch-friendly interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .product-card:hover {
+                transform: none;
+            }
+            
+            .category-button:hover {
+                transform: none;
+            }
+            
+            .product-card:active {
+                transform: scale(0.98);
+            }
+            
+            .category-button:active {
+                transform: scale(0.95);
+            }
+        }
+
+        /* Improved text readability on mobile */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+            
+            h1, h2, h3, h4, h5, h6 {
+                line-height: 1.3;
+            }
+            
+            p {
+                line-height: 1.6;
+            }
+        }
     </style>
     <style>
         .old-bottom-nav {
@@ -204,6 +392,61 @@
     </style>
 </head>
 <body class="bg-gray-900 text-white min-h-screen">
+    <!-- Fixed Category Sidebar -->
+    <div class="fixed-category-sidebar">
+        <h3>Shop by Category</h3>
+        <ul>
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="car_care.html">
+                    <i class="fas fa-car"></i>
+                    <span>Car Care</span>
+                </a>
+            </li>
+            <li>
+                <a href="house_care.html">
+                    <i class="fas fa-home"></i>
+                    <span>House Care</span>
+                </a>
+            </li>
+            <li>
+                <a href="premium_perfumes.html">
+                    <i class="fas fa-spray-can"></i>
+                    <span>Premium Perfumes</span>
+                </a>
+            </li>
+            <li>
+                <a href="crockery.html">
+                    <i class="fas fa-utensils"></i>
+                    <span>Crockery</span>
+                </a>
+            </li>
+            <li>
+                <a href="laptops.html">
+                    <i class="fas fa-laptop"></i>
+                    <span>Laptops</span>
+                </a>
+            </li>
+            <li>
+                <a href="deals.html">
+                    <i class="fas fa-tags"></i>
+                    <span>Deals</span>
+                </a>
+            </li>
+            <li>
+                <a href="contact.html">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
     <!-- Header -->
     <header class="bg-gradient-to-r from-gray-900 via-black to-gray-900 border-b-2 border-yellow-500 sticky top-0 z-50 backdrop-blur-md bg-opacity-95 shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -220,14 +463,14 @@
                             </div>
                         </div>
                         <div>
-                            <h1 class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent group-hover:animate-glow">MSM Traders</h1>
+                            <h1 class="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent group-hover:animate-glow header-logo">MSM Traders</h1>
                             <p class="text-xs text-yellow-500 font-medium">CLICK.SHOP.SMILE</p>
                         </div>
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden lg:flex items-center space-x-6">
+                <div class="hidden lg:flex items-center space-x-6 header-nav">
                     <a href="index.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a>
                     <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Car Care</a>
                     <a href="house_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">House Care</a>
@@ -239,13 +482,13 @@
                 </div>
 
                 <!-- Search Bar -->
-                <div class="flex-1 max-w-lg mx-8">
+                <div class="flex-1 max-w-lg mx-8 search-bar">
                     <div class="relative group">
                         <div class="absolute inset-0 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-xl blur opacity-20 group-hover:opacity-30 transition-opacity"></div>
                         <div class="relative">
                             <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-yellow-500"></i>
                             <input type="text" placeholder="Search crockery, dinnerware, kitchenware..." 
-                                   class="relative w-full px-6 py-3 pl-12 pr-4 bg-gray-800/90 border-2 border-yellow-500/50 text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-4 focus:ring-yellow-500/30 focus:border-yellow-400 transition-all duration-300 backdrop-blur-sm">
+                                   class="relative w-full px-6 py-3 pl-12 pr-4 bg-gray-800/90 border-2 border-yellow-500/50 text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-4 focus:ring-yellow-500/30 focus:border-yellow-400 transition-all duration-300 backdrop-blur-sm search-input">
                         </div>
                     </div>
                 </div>
@@ -373,7 +616,7 @@
                                         <div class="flex items-center space-x-3">
                                             <i class="fas fa-laptop text-yellow-400 group-hover:text-black text-xl"></i>
                                             <span class="font-semibold text-yellow-400 group-hover:text-black">Laptops</span>
-                                        </div>
+            </div>
                                         <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                                     </a>
                                 </li>
@@ -383,16 +626,16 @@
 
                     <!-- Hero Content -->
                     <div class="flex-1">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center hero-content">
                             <!-- Text Content -->
                             <div class="text-center lg:text-left">
                                 <div class="relative inline-block">
-                                    <h1 class="text-6xl md:text-7xl font-extrabold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent mb-6 tracking-wide">
+                                    <h1 class="text-6xl md:text-7xl font-extrabold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent mb-6 tracking-wide hero-title">
                                         Crockery
                                     </h1>
                                     <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full"></div>
                                 </div>
-                                <p class="text-gray-300 text-xl md:text-2xl font-light max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                                <p class="text-gray-300 text-xl md:text-2xl font-light max-w-2xl mx-auto lg:mx-0 leading-relaxed hero-subtitle">
                                     Elegant crockery sets for your dining table and kitchen
                                 </p>
                                 <div class="mt-8 flex justify-center lg:justify-start">
@@ -413,10 +656,10 @@
                         </div>
                     </div>
                 </div>
-            </div><!-- Category Buttons Row -->
-            <div class="mb-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
+            </div>            <!-- Category Buttons Row -->
+            <div class="mb-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-6 category-buttons">
                 <!-- Crockery & Dinnerware -->
-                <a href="#top" class="group relative bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-lg sm:rounded-xl p-2 sm:p-3 lg:p-4 hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 transform hover:scale-105 text-center min-h-[100px] sm:min-h-[120px] lg:min-h-[140px]">
+                <a href="#top" class="group relative bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-lg sm:rounded-xl p-2 sm:p-3 lg:p-4 hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 transform hover:scale-105 text-center min-h-[100px] sm:min-h-[120px] lg:min-h-[140px] category-button">
                     <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-2 sm:mb-3 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
                         <img src="Crockery category/crockery and dinner aware.webp" alt="Crockery & Dinnerware" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                     </div>
@@ -465,7 +708,7 @@
             </div>
 
             <!-- Product Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 products-grid">
                 <!-- Product 1 - Stainless Steel Chafing Dish -->
                 <div>
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
@@ -481,7 +724,7 @@
                 </div>
 
                 <!-- Product 2 - Black Non-Stick Cookware Set -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                     <div class="relative overflow-hidden bg-gray-700 flex items-center justify-center h-48">
                         <img src="crockery/Non-Stick Cooking Set with Glass Lid.png" 
                              alt="Black Non-Stick Cookware Set" 
@@ -493,7 +736,7 @@
                 </div>
 
                 <!-- Product 3 - Cast Iron Pan with 7 Wells -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                     <div class="relative overflow-hidden bg-gray-700 flex items-center justify-center h-48">
                         <img src="crockery/Premium Cast Iron Muffin Pan â€“ Durable & Non-Stick Bakeware.png" 
                              alt="Cast Iron Pan with 7 Wells" 
@@ -505,7 +748,7 @@
                 </div>
 
                 <!-- Product 4 - Rectangular Cast Iron Pan -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                     <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                         <img src="crockery/Cast Iron Casserole.webp" 
                              alt="Rectangular Cast Iron Pan" 
@@ -520,7 +763,7 @@
                 </div>
 
                 <!-- Product 5 - 3 Tier Oval Porcelain Bowls Set -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                     <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                         <img src="crockery/cake dishes/3 Tier Serving Tray with Golden Stand.png" 
                              alt="3 Tier Oval Porcelain Bowls Set" 
@@ -543,9 +786,9 @@
                 </div>
 
                 <!-- Cutlery Product Grid -->
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 products-grid">
                     <!-- German Family International Kitchen Utensil Set -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cutlery/Kitchen Cutlery Knife Set 12pcs.jpeg" 
                                  alt="German Family International Kitchen Utensil Set" 
@@ -560,7 +803,7 @@
                     </div>
 
                     <!-- AVD High Quality Cutlery Set -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cutlery/AYD 84Pcs Golden Stainless Steel Cutlery Set.jpg" 
                                  alt="AVD High Quality Cutlery Set" 
@@ -575,7 +818,7 @@
                     </div>
 
                     <!-- Golden Cutlery Set -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cutlery/Gold Hammered Silverware Set.jpg" 
                                  alt="Golden Cutlery Set" 
@@ -590,7 +833,7 @@
                     </div>
 
                     <!-- Two-Tone Cutlery Set -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cutlery/White & Gold Cutlery Set Matte Complete Stainless Steel 4Pcs.jpg" 
                                  alt="Two-Tone Cutlery Set" 
@@ -605,7 +848,7 @@
                     </div>
 
                     <!-- Modern Silver Cutlery Set -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cutlery/Silver Cutlery Set Matte Complete Stainless Steel 24Pcs.jpg" 
                                  alt="Modern Silver Cutlery Set" 
@@ -620,7 +863,7 @@
                     </div>
 
                     <!-- Sleek Golden Cutlery Set -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cutlery/Golden Cutlery Set Matte Complete Stainless Steel 24Pcs.jpg" 
                                  alt="Sleek Golden Cutlery Set" 
@@ -635,7 +878,7 @@
                     </div>
 
                     <!-- White Asian-Style Soup Spoon -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cutlery holders/Asian Long Handle Ceramic Soup.jpg" 
                                  alt="White Asian-Style Soup Spoon" 
@@ -661,7 +904,7 @@
                 <!-- Cake Dishes Product Grid -->
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     <!-- Luxurious Two-Tiered Golden Cake Stand -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cake dishes/2 Tier Serving Platter Cake dish Golden Royal design.jpg" 
                                  alt="Luxurious Two-Tiered Golden Cake Stand" 
@@ -676,7 +919,7 @@
                     </div>
 
                     <!-- Three-Tiered Golden Cake Stand -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cake dishes/3 Tier Serving Platter Cake dish Golden Royal design.jpg" 
                                  alt="Three-Tiered Golden Cake Stand" 
@@ -691,7 +934,7 @@
                     </div>
 
                     <!-- Royal Alba Bone China Cake Stand -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cake dishes/White Cake Stand With Metal Handles.jpg" 
                                  alt="Royal Alba Bone China Cake Stand" 
@@ -706,7 +949,7 @@
                     </div>
 
                     <!-- Royal Albert Floral Cake Stand -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cake dishes/Multi-Tier Cake Stand â€“ White.jpg" 
                                  alt="Royal Albert Floral Cake Stand" 
@@ -732,7 +975,7 @@
                 <!-- Water Sets Product Grid -->
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     <!-- Premium Glass Water Pitcher Set -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/water sets/GLASS CUP AND PITCHER, 7 PCS.jpg" 
                                  alt="Premium Glass Water Pitcher Set with Golden Handles" 
@@ -747,7 +990,7 @@
                     </div>
 
                     <!-- Elegant Glass Water Pitcher with Tumblers -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/water sets/Water Set 7 pcs Nordic Classic Style.jpg" 
                                  alt="Elegant Glass Water Pitcher with Tumblers" 
@@ -773,7 +1016,7 @@
                 <!-- Cutlery Holders Product Grid -->
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     <!-- All-in-One Utensil Caddy -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cutlery holders/All-in-One Utensil Caddy- Black.jpg" 
                                  alt="All-in-One Utensil Caddy" 
@@ -788,7 +1031,7 @@
                     </div>
 
                     <!-- Kitchen Utensil Holder -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cutlery holders/Kitchen Utensil Holder -2 Cups with.jpg" 
                                  alt="Kitchen Utensil Holder" 
@@ -803,7 +1046,7 @@
                     </div>
 
                     <!-- Kitchen Organizer Cutlery Storage -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cutlery holders/Kitchen Organizer Cutlery Storage.jpg" 
                                  alt="Kitchen Organizer Cutlery Storage" 
@@ -818,7 +1061,7 @@
                     </div>
 
                     <!-- Utensil Caddy Golden -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cutlery holders/Utensil Caddy Golden.png" 
                                  alt="Utensil Caddy Golden" 
@@ -833,7 +1076,7 @@
                     </div>
 
                     <!-- Elegant Gold Dinnerware Set -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cutlery holders/Elegant Gold Dinnerware Set (For 6).jpg" 
                                  alt="Elegant Gold Dinnerware Set" 
@@ -848,7 +1091,7 @@
                     </div>
 
                     <!-- Gold Flatware Set -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/cutlery holders/Gold Flatware Set.jpg" 
                                  alt="Gold Flatware Set" 
@@ -874,7 +1117,7 @@
                 <!-- Kitchen Items Product Grid -->
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     <!-- Insulated Food Container -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/kitchen ware/White Floral Insulated Food Container.jpg" 
                                  alt="Floral Design Insulated Food Container" 
@@ -889,7 +1132,7 @@
                     </div>
 
                     <!-- Red Serving Dishes Set -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/kitchen ware/Maroon Food Warmer.webp" 
                                  alt="Red Serving Dishes Set" 
@@ -904,7 +1147,7 @@
                     </div>
 
                     <!-- Rotating Spice Rack -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/kitchen ware/Revolving Countertop Spice Rack.jpg" 
                                  alt="Stainless Steel Rotating Spice Rack" 
@@ -919,7 +1162,7 @@
                     </div>
 
                     <!-- Kitchen Storage Container -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/kitchen ware/Dual Dish Drying Rack.jpeg" 
                                  alt="Premium Kitchen Storage Container Set" 
@@ -934,7 +1177,7 @@
                     </div>
 
                     <!-- Premium Cookware Set -->
-                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                             <img src="crockery/kitchen ware/Hot Pot Casserole Set.webp" 
                                  alt="Professional Stainless Steel Cookware Set" 
@@ -955,7 +1198,7 @@
     <!-- Footer -->
     <footer class="bg-gray-900 border-t border-yellow-500 mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 footer-grid">
                 <div>
                     <h3 class="text-lg font-semibold text-yellow-500 mb-4">MSM Traders</h3>
                     <p class="text-gray-400 text-sm">Your trusted partner for quality products and exceptional service.</p>
@@ -1170,7 +1413,9 @@
             };
 
             function parsePrice(text){ if(!text) return ''; const m=text.replace(/[,\sâ‚¨$]/g,'').match(/(\d+(?:\.\d+)?)/); return m?m[1]:''; }
-            function smartAdd(name, priceVal, image){ try{ if(typeof addToCart==='function'){ addToCart(name, priceVal || '', image||''); return; } }catch(e){} alert('Added to cart: '+name); }
+            function smartAdd(name, priceVal, image){ 
+                addToCart(name, priceVal || '', image || ''); 
+            }
 
             window.showQV = function(data){
                 title.textContent = data.name || 'Product';
@@ -1236,7 +1481,7 @@
             if (menu.classList.contains('hidden')) {
                 menu.classList.remove('hidden');
                 setTimeout(() => { document.addEventListener('click', closeOnOutsideClick, { once: true }); }, 0);
-            } else {
+                } else {
                 menu.classList.add('hidden');
             }
         }
@@ -1249,9 +1494,135 @@
                 menu.classList.add('hidden');
             }
         }
-        if (typeof toggleCart !== 'function') {
-            window.toggleCart = function() { alert('Your cart is empty!'); }
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartCount = 0;
+
+        function addToCart(name, price, image) {
+            // Check if item already exists in cart
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Update cart count
+            cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            updateCartCount();
+            
+            // Show notification
+            showCartNotification(`${name} added to cart!`);
         }
+
+        function updateCartCount() {
+            const cartBadge = document.querySelector('.fa-shopping-cart').parentElement.querySelector('span');
+            if (cartBadge) {
+                cartBadge.textContent = cartCount;
+            }
+        }
+
+        function showCartNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-shopping-cart mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        function toggleCart() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            // Create cart modal
+            const cartModal = document.createElement('div');
+            cartModal.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4';
+            cartModal.innerHTML = `
+                <div class="bg-gray-800 rounded-lg shadow-2xl max-w-md w-full max-h-[80vh] overflow-y-auto">
+                    <div class="flex justify-between items-center p-4 border-b border-gray-700">
+                        <h3 class="text-xl font-bold text-yellow-400">Shopping Cart (${cartCount} items)</h3>
+                        <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-white">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        ${cart.map(item => `
+                            <div class="flex items-center justify-between py-3 border-b border-gray-700">
+                                <div class="flex items-center space-x-3">
+                                    <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded">
+                                    <div>
+                                        <h4 class="text-yellow-400 font-semibold">${item.name}</h4>
+                                        <p class="text-gray-300 text-sm">Qty: ${item.quantity}</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-yellow-400 font-bold">₨${item.price}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                        <div class="mt-4 pt-4 border-t border-gray-700">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-lg font-bold text-yellow-400">Total:</span>
+                                <span class="text-xl font-bold text-yellow-400">₨${cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0)}</span>
+                            </div>
+                            <button onclick="checkout()" class="w-full bg-yellow-400 text-black py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-colors">
+                                Proceed to Checkout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(cartModal);
+        }
+
+        function checkout() {
+            const total = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+            const message = `Order Summary:\n\n${cart.map(item => `${item.name} x${item.quantity} - ₨${item.price}`).join('\n')}\n\nTotal: ₨${total}`;
+            
+            const whatsappNumber = '+923258573925';
+            const whatsappMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Initialize cart count on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            updateCartCount();
+        });
     </script>
 </body>
 </html>
