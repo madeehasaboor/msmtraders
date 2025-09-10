@@ -139,7 +139,7 @@
                     <a href="index.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a>
                     <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Car Care</a>
                     <a href="house_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">House Care</a>
-                    <a href="permium_perfume.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
+                    <a href="premium_perfumes.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
                     <a href="crockery.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Crockery</a>
                     <a href="laptops.html" class="text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
                     <a href="deals.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
@@ -158,85 +158,136 @@
     <!-- Page Header -->
     <div class="bg-gradient-to-r from-gray-900 to-black py-16">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <!-- Text Content -->
-                <div class="text-center lg:text-left">
-            <h1 class="text-4xl md:text-6xl font-bold text-yellow-400 mb-4">Laptops</h1>
-            <p class="text-xl text-yellow-400 mb-4">CLICK.SHOP.SMILE</p>
-                    <p class="text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0">Discover our premium collection of laptops for work, gaming, and everyday use. High-performance devices at unbeatable prices.</p>
+            <!-- Mobile Categories - Above Hero Content -->
+            <div class="lg:hidden mb-8">
+                <h3 class="text-lg font-bold text-yellow-400 mb-4 text-center">Shop by Category</h3>
+                <div class="bg-gray-900 border border-yellow-400 rounded-lg p-4">
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="car_care.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-car text-yellow-400 group-hover:text-black text-lg"></i>
+                                    <span class="font-medium text-yellow-400 group-hover:text-black">Car Care</span>
+                                </div>
+                                <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="house_care.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-home text-yellow-400 group-hover:text-black text-lg"></i>
+                                    <span class="font-medium text-yellow-400 group-hover:text-black">House Care</span>
+                                </div>
+                                <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="premium_perfumes.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-spray-can text-yellow-400 group-hover:text-black text-lg"></i>
+                                    <span class="font-medium text-yellow-400 group-hover:text-black">Premium Perfumes</span>
+                                </div>
+                                <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="crockery.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-utensils text-yellow-400 group-hover:text-black text-lg"></i>
+                                    <span class="font-medium text-yellow-400 group-hover:text-black">Crockery</span>
+                                </div>
+                                <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="laptops.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fas fa-laptop text-yellow-400 group-hover:text-black text-lg"></i>
+                                    <span class="font-medium text-yellow-400 group-hover:text-black">Laptops</span>
+                                </div>
+                                <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <!-- Hero Image -->
-                <div class="relative">
-                    <img src="category imges/laptops_image.jpg.jfif" 
-                         alt="Laptops Collection" 
-                         class="w-full h-96 object-cover rounded-xl shadow-2xl border-2 border-yellow-400">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Categories Sidebar - Desktop Only -->
+                <div class="hidden lg:block lg:w-1/4">
+                    <div class="bg-gray-900 border border-yellow-400 rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-yellow-400 mb-6 text-center">Shop by Category</h3>
+                        <ul class="space-y-3">
+                            <li>
+                                <a href="car_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-car text-yellow-400 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Car Care</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="house_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-home text-yellow-400 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-400 group-hover:text-black">House Care</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="premium_perfumes.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-spray-can text-yellow-400 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Premium Perfumes</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="crockery.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-utensils text-yellow-400 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Crockery</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="laptops.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-laptop text-yellow-400 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Laptops</span>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Hero Content -->
+                <div class="flex-1">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <!-- Text Content -->
+                        <div class="text-center lg:text-left">
+                    <h1 class="text-4xl md:text-6xl font-bold text-yellow-400 mb-4">Laptops</h1>
+                    <p class="text-xl text-yellow-400 mb-4">CLICK.SHOP.SMILE</p>
+                            <p class="text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0">Discover our premium collection of laptops for work, gaming, and everyday use. High-performance devices at unbeatable prices.</p>
+                        </div>
+                        <!-- Hero Image -->
+                        <div class="relative">
+                            <img src="category imges/laptops_image.jpg.jfif" 
+                                 alt="Laptops Collection" 
+                                 class="w-full h-96 object-cover rounded-xl shadow-2xl border-2 border-yellow-400">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Categories Section -->
-    <section class="py-12 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <h2 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-4">Shop by Category</h2>
-                <p class="text-gray-300">Find the perfect products for your needs</p>
-            </div>
-            
-            <!-- Mobile: Horizontal Scrollable Categories -->
-            <div class="block md:hidden">
-                <div class="flex space-x-4 overflow-x-auto pb-4 scrollbar-hide">
-                    <a href="car_care.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
-                        <img src="category imges/car_care_image.jpg" alt="Car Care" class="w-full h-20 object-cover rounded-md mb-2">
-                        <h3 class="text-xs font-semibold text-yellow-400 text-center">Car Care</h3>
-                    </a>
-                    <a href="house_care.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
-                        <img src="category imges/house_care_image.jpg.jfif" alt="House Care" class="w-full h-20 object-cover rounded-md mb-2">
-                        <h3 class="text-xs font-semibold text-yellow-400 text-center">House Care</h3>
-                    </a>
-                    <a href="permium_perfume.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
-                        <img src="category imges/perfumes_image.jpg.jfif" alt="Premium Perfumes" class="w-full h-20 object-cover rounded-md mb-2">
-                        <h3 class="text-xs font-semibold text-yellow-400 text-center">Premium Perfumes</h3>
-                    </a>
-                    <a href="crockery.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
-                        <img src="category imges/crockery_image.jpg.jfif" alt="Crockery" class="w-full h-20 object-cover rounded-md mb-2">
-                        <h3 class="text-xs font-semibold text-yellow-400 text-center">Crockery</h3>
-                    </a>
-                    <a href="laptops.html" class="flex-shrink-0 bg-gray-700 rounded-lg p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[120px]">
-                        <img src="category imges/laptops_image.jpg.jfif" alt="Laptops" class="w-full h-20 object-cover rounded-md mb-2">
-                        <h3 class="text-xs font-semibold text-yellow-400 text-center">Laptops</h3>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Desktop/Tablet: Grid Layout -->
-            <div class="hidden md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <a href="car_care.html" class="bg-gray-700 rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-                    <img src="category imges/car_care_image.jpg" alt="Car Care" class="w-full h-32 object-cover rounded-md mb-3">
-                    <h3 class="text-lg font-semibold text-yellow-400 text-center">Car Care</h3>
-                    <p class="text-sm text-gray-300 text-center mt-2">Premium car cleaning products</p>
-                </a>
-                <a href="house_care.html" class="bg-gray-700 rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-                    <img src="category imges/house_care_image.jpg.jfif" alt="House Care" class="w-full h-32 object-cover rounded-md mb-3">
-                    <h3 class="text-lg font-semibold text-yellow-400 text-center">House Care</h3>
-                    <p class="text-sm text-gray-300 text-center mt-2">Home cleaning solutions</p>
-                </a>
-                <a href="permium_perfume.html" class="bg-gray-700 rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-                    <img src="category imges/perfumes_image.jpg.jfif" alt="Premium Perfumes" class="w-full h-32 object-cover rounded-md mb-3">
-                    <h3 class="text-lg font-semibold text-yellow-400 text-center">Premium Perfumes</h3>
-                    <p class="text-sm text-gray-300 text-center mt-2">Luxury fragrances</p>
-                </a>
-                <a href="crockery.html" class="bg-gray-700 rounded-lg p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-                    <img src="category imges/crockery_image.jpg.jfif" alt="Crockery" class="w-full h-32 object-cover rounded-md mb-3">
-                    <h3 class="text-lg font-semibold text-yellow-400 text-center">Crockery</h3>
-                    <p class="text-sm text-gray-300 text-center mt-2">Elegant dinnerware</p>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Filters -->
+    </div><!-- Filters -->
     <div class="max-w-7xl mx-auto px-4 py-8">
         <div class="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
             <div class="flex-1 max-w-md">
@@ -303,7 +354,7 @@
                         <li><a href="house_care.html" class="hover:text-yellow-400 transition duration-300">House Care</a></li>
                         <li><a href="laptops.html" class="hover:text-yellow-400 transition duration-300">Laptops</a></li>
                         <li><a href="electronics.html" class="hover:text-yellow-400 transition duration-300">Electronics</a></li>
-                        <li><a href="permium_perfume.html" class="hover:text-yellow-400 transition duration-300">Premium Perfumes</a></li>
+                        <li><a href="premium_perfumes.html" class="hover:text-yellow-400 transition duration-300">Premium Perfumes</a></li>
                         <li><a href="sale.html" class="hover:text-yellow-400 transition duration-300">Sale</a></li>
                         <li><a href="contact.html" class="hover:text-yellow-400 transition duration-300">Contact</a></li>
                     </ul>
@@ -674,7 +725,7 @@
             let message = `Hello! I would like to place an order:\n\n`;
             
             cart.forEach(item => {
-                message += `• ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
+                message += `â€¢ ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
             });
             
             message += `\nTotal: $${total.toFixed(2)}\n\nPlease confirm my order. Thank you!`;
@@ -904,3 +955,5 @@
     </script>
 </body>
 </html>
+
+
