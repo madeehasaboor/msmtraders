@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Crockery - MSM Traders</title>
+    <link rel="icon" type="image/x-icon" href="MSM TRADERS LOGO.jpeg">
+    <!-- Note: Tailwind CDN warning is expected in development. For production, use PostCSS plugin or CLI -->
+    <!-- Tailwind CSS CDN - Note: For production, install Tailwind CSS as PostCSS plugin -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -106,6 +109,20 @@
             color: #fbbf24;
         }
         
+        /* Cart Button */
+        #cart-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        #cart-count {
+            font-size: 0.75rem;
+            font-weight: bold;
+            min-width: 20px;
+            height: 20px;
+        }
+        
         /* Mobile menu */
         @media (max-width: 768px) {
             .navbar-menu {
@@ -157,6 +174,34 @@
                 background-color: #333;
             }
             
+            /* Cart badge styling */
+            .cart-badge {
+                background-color: #fbbf24;
+                color: #000;
+                border-radius: 50%;
+                padding: 2px 6px;
+                font-size: 0.75rem;
+                font-weight: bold;
+                margin-left: 4px;
+                min-width: 18px;
+                text-align: center;
+                display: inline-block;
+            }
+            
+            /* Desktop cart badge styling */
+            .navbar-menu .cart-badge {
+                background-color: #fbbf24;
+                color: #000;
+                border-radius: 50%;
+                padding: 2px 6px;
+                font-size: 0.75rem;
+                font-weight: bold;
+                margin-left: 4px;
+                min-width: 18px;
+                text-align: center;
+                display: inline-block;
+            }
+            
             .hamburger {
                 display: flex !important;
                 background-color: rgba(251, 191, 36, 0.2) !important;
@@ -164,6 +209,17 @@
                 min-width: 40px;
                 min-height: 40px;
                 border: 2px solid #fbbf24;
+            }
+            
+            /* Hide cart button text on mobile, show only icon */
+            #cart-button span:not(#cart-count) {
+                display: none;
+            }
+            
+            #cart-button {
+                padding: 0.5rem;
+                min-width: 40px;
+                min-height: 40px;
             }
             
             .navbar-logo {
@@ -297,8 +353,8 @@
             
             /* Product grid mobile optimization */
             .products-grid {
-                grid-template-columns: 1fr !important;
-                gap: 1rem;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.75rem !important;
                 padding: 0.5rem;
             }
             
@@ -306,7 +362,7 @@
             .product-card {
                 min-height: auto;
                 padding: 0.75rem;
-                margin-bottom: 1rem;
+                margin-bottom: 0;
             }
             
             /* Category buttons mobile optimization */
@@ -464,22 +520,43 @@
         /* Mobile responsive */
         @media (max-width: 768px) {
             .product-card .image-container {
-                height: 120px;        /* smaller image area for mobile - same as house_care */
+                height: 150px;        /* optimized image area for mobile */
             }
             
             .product-card img {
-                height: 120px;
+                height: 150px;
             }
             
             .product-card h3 {
                 font-size: 0.875rem;
                 line-height: 1.3;
+                margin: 0.5rem 0;
             }
             
-            /* Mobile optimizer for product display - same as house_care */
+            /* Mobile optimizer for product display - consistent 2 columns */
             .products-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
                 gap: 0.75rem !important;
+            }
+            
+            /* Specific mobile optimization for all collections */
+            #cakes .products-grid .product-card,
+            #watersets .products-grid .product-card,
+            #holders .products-grid .product-card,
+            #essentials .products-grid .product-card,
+            #blu .products-grid .product-card {
+                padding: 0.75rem;
+                margin-bottom: 0;
+            }
+            
+            #cakes .products-grid .product-card h3,
+            #watersets .products-grid .product-card h3,
+            #holders .products-grid .product-card h3,
+            #essentials .products-grid .product-card h3,
+            #blu .products-grid .product-card h3 {
+                font-size: 0.8rem;
+                line-height: 1.2;
+                margin: 0.5rem 0 0 0;
             }
             
             /* Responsive grids */
@@ -568,8 +645,8 @@
             }
             
             .products-grid {
-                grid-template-columns: 1fr;
-                gap: 0.5rem;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.5rem !important;
             }
             
             .product-card {
@@ -724,15 +801,21 @@
                 <li><a href="premium_perfumes.html">Premium Perfumes</a></li>
                 <li><a href="crockery.html" class="active">Crockery</a></li>
                 <li><a href="laptops.html">Laptop Deals</a></li>
-                <li><a href="cart.html">Cart</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            
+            <!-- Cart Button -->
+            <button id="cart-button" class="relative bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-2 rounded-lg transition duration-200 flex items-center gap-1.5">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Cart</span>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            </button>
             
             <!-- Hamburger Menu -->
             <button class="hamburger" id="hamburger">
                 ☰
             </button>
-                            </div>
+        </div>
     </nav>
 
     <!-- Main Content -->
@@ -882,7 +965,7 @@
                 <!-- BLU Premium Stainless Steel Collection -->
                 <a href="#blu" class="group relative bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-lg sm:rounded-xl p-2 sm:p-3 lg:p-4 hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 transform hover:scale-105 text-center min-h-[100px] sm:min-h-[120px] lg:min-h-[140px]">
                     <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto mb-2 sm:mb-3 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
-                        <img src="BLUE CUPS.jpeg" alt="BLU Premium Stainless Steel Collection" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <img src="crockery/BLU/BLUE CUPS.jpeg" alt="BLU Premium Stainless Steel Collection" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                     </div>
                     <h3 class="text-xs sm:text-sm lg:text-base font-semibold text-yellow-400 group-hover:text-yellow-300 leading-tight">BLU Premium Stainless Steel Collection</h3>
                 </a>
@@ -919,7 +1002,7 @@
                 <!-- Product 3 - Cast Iron Pan with 7 Wells -->
                 <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                     <div class="image-container">
-                        <img src="crockery/Premium Cast Iron Muffin Pan â€" Durable & Non-Stick Bakeware.png" 
+                        <img src="crockery/Premium Cast Iron Muffin Pan – Durable & Non-Stick Bakeware.png" 
                              alt="Cast Iron Pan with 7 Wells" 
                              class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                         </div>
@@ -933,7 +1016,7 @@
                     <div class="image-container">
                         <img src="crockery/Cast Iron Casserole.webp" 
                              alt="Cast Iron Casserole" 
-                             class="w-full h-full object-cover rounded-xl">
+                             class="w-full h-full object-contain rounded-xl">
                         <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                             Best Seller
                         </div>
@@ -948,7 +1031,7 @@
                     <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
                         <img src="crockery/cake dishes/3 Tier Serving Tray with Golden Stand.png" 
                              alt="3 Tier Oval Porcelain Bowls Set" 
-                             class="w-full h-full object-cover rounded-xl">
+                             class="w-full h-full object-contain rounded-xl">
                         <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                             Premium
                         </div>
@@ -970,10 +1053,10 @@
                 <div class="grid grid-cols-2 lg:grid-cols-5 gap-6 products-grid">
                     <!-- German Family International Kitchen Utensil Set -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
-                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                        <div class="image-container">
                             <img src="crockery/cutlery/Kitchen Cutlery Knife Set 12pcs.jpeg" 
                                  alt="German Family International Kitchen Utensil Set" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Premium
                             </div>
@@ -985,10 +1068,10 @@
 
                     <!-- AVD High Quality Cutlery Set -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
-                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                        <div class="image-container">
                             <img src="crockery/cutlery/AYD 84Pcs Golden Stainless Steel Cutlery Set.jpg" 
                                  alt="AVD High Quality Cutlery Set" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-bold">
                                 Luxury
                             </div>
@@ -1000,10 +1083,10 @@
 
                     <!-- Golden Cutlery Set -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
-                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                        <div class="image-container">
                             <img src="crockery/cutlery/Gold Hammered Silverware Set.jpg" 
                                  alt="Golden Cutlery Set" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Premium
                             </div>
@@ -1015,10 +1098,10 @@
 
                     <!-- Two-Tone Cutlery Set -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
-                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                        <div class="image-container">
                             <img src="crockery/cutlery/White & Gold Cutlery Set Matte Complete Stainless Steel 4Pcs.jpg" 
                                  alt="Two-Tone Cutlery Set" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Modern
                             </div>
@@ -1030,10 +1113,10 @@
 
                     <!-- Modern Silver Cutlery Set -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
-                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                        <div class="image-container">
                             <img src="crockery/cutlery/Silver Cutlery Set Matte Complete Stainless Steel 24Pcs.jpg" 
                                  alt="Modern Silver Cutlery Set" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Elegant
                             </div>
@@ -1045,10 +1128,10 @@
 
                     <!-- Sleek Golden Cutlery Set -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
-                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                        <div class="image-container">
                             <img src="crockery/cutlery/Golden Cutlery Set Matte Complete Stainless Steel 24Pcs.jpg" 
                                  alt="Sleek Golden Cutlery Set" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-yellow-600 text-black px-2 py-1 rounded-full text-xs font-bold">
                                 Luxury
                             </div>
@@ -1060,10 +1143,10 @@
 
                     <!-- White Asian-Style Soup Spoon -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
-                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-700 flex items-center justify-center h-48">
+                        <div class="image-container">
                             <img src="crockery/cutlery holders/Asian Long Handle Ceramic Soup.jpg" 
                                  alt="White Asian-Style Soup Spoon" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-white text-gray-800 px-2 py-1 rounded-full text-xs font-bold">
                                 Classic
                             </div>
@@ -1083,13 +1166,13 @@
                 </div>
 
                 <!-- Cake Dishes Product Grid -->
-                <div class="grid grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="grid grid-cols-2 lg:grid-cols-5 gap-6 products-grid">
                     <!-- Luxurious Two-Tiered Golden Cake Stand -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="image-container">
                             <img src="crockery/cake dishes/2 Tier Serving Platter Cake dish Golden Royal design.jpg" 
                                  alt="Luxurious Two-Tiered Golden Cake Stand" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-bold">
                                 Luxury
                             </div>
@@ -1104,7 +1187,7 @@
                         <div class="image-container">
                             <img src="crockery/cake dishes/3 Tier Serving Platter Cake dish Golden Royal design.jpg" 
                                  alt="Three-Tiered Golden Cake Stand" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Premium
                             </div>
@@ -1119,7 +1202,7 @@
                         <div class="image-container">
                             <img src="crockery/cake dishes/White Cake Stand With Metal Handles.jpg" 
                                  alt="Royal Alba Bone China Cake Stand" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Classic
                             </div>
@@ -1132,9 +1215,9 @@
                     <!-- Royal Albert Floral Cake Stand -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="image-container">
-                            <img src="crockery/cake dishes/Multi-Tier Cake Stand â€" White.jpg" 
+                            <img src="crockery/cake dishes/Multi-Tier Cake Stand – White.jpg" 
                                  alt="Royal Albert Floral Cake Stand" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Elegant
                             </div>
@@ -1154,13 +1237,13 @@
                 </div>
 
                 <!-- Water Sets Product Grid -->
-                <div class="grid grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="grid grid-cols-2 lg:grid-cols-5 gap-6 products-grid">
                     <!-- Premium Glass Water Pitcher Set -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="image-container">
                             <img src="crockery/water sets/GLASS CUP AND PITCHER, 7 PCS.jpg" 
                                  alt="Premium Glass Water Pitcher Set with Golden Handles" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Premium
                             </div>
@@ -1175,7 +1258,7 @@
                         <div class="image-container">
                             <img src="crockery/water sets/Water Set 7 pcs Nordic Classic Style.jpg" 
                                  alt="Elegant Glass Water Pitcher with Tumblers" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 New Arrival
                             </div>
@@ -1195,13 +1278,13 @@
                 </div>
 
                 <!-- Cutlery Holders Product Grid -->
-                <div class="grid grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="grid grid-cols-2 lg:grid-cols-5 gap-6 products-grid">
                     <!-- All-in-One Utensil Caddy -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="image-container">
                             <img src="crockery/cutlery holders/All-in-One Utensil Caddy- Black.jpg" 
                                  alt="All-in-One Utensil Caddy" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Natural
                             </div>
@@ -1216,7 +1299,7 @@
                         <div class="image-container">
                             <img src="crockery/cutlery holders/Kitchen Utensil Holder -2 Cups with.jpg" 
                                  alt="Kitchen Utensil Holder" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Elegant
                             </div>
@@ -1231,7 +1314,7 @@
                         <div class="image-container">
                             <img src="crockery/cutlery holders/Kitchen Organizer Cutlery Storage.jpg" 
                                  alt="Kitchen Organizer Cutlery Storage" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Eco-Friendly
                             </div>
@@ -1246,7 +1329,7 @@
                         <div class="image-container">
                             <img src="crockery/cutlery holders/Utensil Caddy Golden.png" 
                                  alt="Utensil Caddy Golden" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-gray-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Modern
                             </div>
@@ -1261,7 +1344,7 @@
                         <div class="image-container">
                             <img src="crockery/cutlery holders/Elegant Gold Dinnerware Set (For 6).jpg" 
                                  alt="Elegant Gold Dinnerware Set" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Premium
                             </div>
@@ -1276,7 +1359,7 @@
                         <div class="image-container">
                             <img src="crockery/cutlery holders/Gold Flatware Set.jpg" 
                                  alt="Gold Flatware Set" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-yellow-600 text-black px-2 py-1 rounded-full text-xs font-bold">
                                 Luxury
                             </div>
@@ -1296,13 +1379,13 @@
                 </div>
 
                 <!-- Kitchen Items Product Grid -->
-                <div class="grid grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="grid grid-cols-2 lg:grid-cols-5 gap-6 products-grid">
                     <!-- Insulated Food Container -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="image-container">
-                            <img src="crockery/kitchen ware/White Floral Insulated Food Container.jpg" 
+                            <img src="crockery/kitchen ware/Insulated Hot Pot.webp" 
                                  alt="Floral Design Insulated Food Container" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Insulated
                             </div>
@@ -1317,7 +1400,7 @@
                         <div class="image-container">
                             <img src="crockery/kitchen ware/Maroon Food Warmer.webp" 
                                  alt="Red Serving Dishes Set" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Premium
                             </div>
@@ -1332,7 +1415,7 @@
                         <div class="image-container">
                             <img src="crockery/kitchen ware/Revolving Countertop Spice Rack.jpg" 
                                  alt="Stainless Steel Rotating Spice Rack" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Rotating
                             </div>
@@ -1347,7 +1430,7 @@
                         <div class="image-container">
                             <img src="crockery/kitchen ware/Dual Dish Drying Rack.jpeg" 
                                  alt="Premium Kitchen Storage Container Set" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Airtight
                             </div>
@@ -1362,7 +1445,7 @@
                         <div class="image-container">
                             <img src="crockery/kitchen ware/Hot Pot Casserole Set.webp" 
                                  alt="Professional Stainless Steel Cookware Set" 
-                                 class="w-full h-full object-cover rounded-xl">
+                                 class="w-full h-full object-contain rounded-xl">
                             <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">
                                 Professional
                             </div>
@@ -1382,12 +1465,12 @@
                 </div>
 
                 <!-- BLU Product Grid -->
-                <div class="grid grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="grid grid-cols-2 lg:grid-cols-5 gap-6 products-grid">
                     <!-- BLU Red Insulated Tumbler -->
                     <div class="product-card">
                         <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
                             <div class="image-container">
-                                <img src="BLUE CUPS.jpeg" 
+                                <img src="crockery/BLU/BLUE CUPS.jpeg" 
                                      alt="BLU Red Insulated Tumbler" 
                                      class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                                 <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
@@ -1404,7 +1487,7 @@
                     <!-- BLU Blue Insulated Bottle -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="image-container">
-                            <img src="BLUE CUPS.jpeg" 
+                            <img src="crockery/BLU/BLUE CUPS.jpeg" 
                                  alt="BLU Blue Insulated Bottle" 
                                  class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                             <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
@@ -1420,7 +1503,7 @@
                     <!-- BLU Stainless Steel Cooler -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="image-container">
-                            <img src="BLUE CUPS.jpeg" 
+                            <img src="crockery/BLU/BLUE CUPS.jpeg" 
                                  alt="BLU Stainless Steel Cooler" 
                                  class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                             <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
@@ -1436,7 +1519,7 @@
                     <!-- BLU Hydration Set -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="image-container">
-                            <img src="BLUE CUPS.jpeg" 
+                            <img src="crockery/BLU/BLUE CUPS.jpeg" 
                                  alt="BLU Hydration Set" 
                                  class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                             <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-bold">
@@ -1452,7 +1535,7 @@
                     <!-- BLU Premium Cookware -->
                     <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
                         <div class="image-container">
-                            <img src="BLUE CUPS.jpeg" 
+                            <img src="crockery/BLU/BLUE CUPS.jpeg" 
                                  alt="BLU Premium Cookware" 
                                  class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                             <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">
@@ -1509,7 +1592,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
     <!-- Quick View Modal -->
     <div id="qv-overlay" class="qv-overlay">
         <div class="qv-card">
@@ -1830,13 +1912,24 @@
         }
 
         function updateCartCount() {
-            const cartBadge = document.querySelector('.fa-shopping-cart').parentElement.querySelector('span');
+            const cartBadge = document.querySelector('.cart-badge');
             console.log('Updating cart count. Badge found:', !!cartBadge, 'Count:', cartCount);
+            console.log('All cart badges found:', document.querySelectorAll('.cart-badge'));
+            console.log('Cart link found:', document.querySelector('a[href="cart.html"]'));
+            
             if (cartBadge) {
                 cartBadge.textContent = cartCount;
                 console.log('Cart badge updated to:', cartCount);
             } else {
                 console.error('Cart badge not found!');
+                // Try alternative selectors
+                const altBadge = document.querySelector('a[href="cart.html"] span');
+                if (altBadge) {
+                    altBadge.textContent = cartCount;
+                    console.log('Cart badge found with alternative selector and updated to:', cartCount);
+                } else {
+                    console.error('Cart badge not found with any selector!');
+                }
             }
         }
 
