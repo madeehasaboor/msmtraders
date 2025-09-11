@@ -150,14 +150,15 @@
                 background-color: #111;
                 flex-direction: column;
                 padding: 1rem;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
                 display: none;
                 z-index: 999;
                 max-height: calc(100vh - 70px);
                 overflow-y: auto;
                 width: 100%;
                 box-sizing: border-box;
-                border-top: 2px solid #fbbf24;
+                border-top: 3px solid #fbbf24;
+                border-bottom: 3px solid #fbbf24;
             }
             
             .navbar-menu.active {
@@ -175,13 +176,16 @@
             
             .navbar-menu a {
                 display: block;
-                padding: 1rem;
+                padding: 1.2rem;
                 border-bottom: 1px solid #333;
                 text-align: center;
                 color: white;
                 text-decoration: none;
-                font-weight: 500;
-                transition: background-color 0.3s ease;
+                font-weight: 600;
+                font-size: 1.1rem;
+                transition: all 0.3s ease;
+                border-radius: 8px;
+                margin: 0.2rem 0;
             }
             
             .navbar-menu a:last-child {
@@ -189,26 +193,40 @@
             }
             
             .navbar-menu a:hover {
-                background-color: #333;
+                background-color: #fbbf24;
+                color: #000;
+                transform: translateX(5px);
             }
             
             .hamburger {
                 display: flex !important;
                 background-color: #fbbf24 !important;
-                border-radius: 6px;
-                min-width: 50px;
-                min-height: 50px;
+                border-radius: 8px;
+                min-width: 60px;
+                min-height: 60px;
                 border: 3px solid #fbbf24 !important;
                 color: #000 !important;
-                font-size: 1.6rem !important;
+                font-size: 1.8rem !important;
                 font-weight: bold !important;
                 align-items: center;
                 justify-content: center;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
                 position: relative;
                 z-index: 1001;
                 margin-left: auto;
                 flex-shrink: 0;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .hamburger:hover {
+                background-color: #f59e0b !important;
+                transform: scale(1.05);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+            }
+            
+            .hamburger:active {
+                transform: scale(0.95);
             }
             
             .navbar-logo {
@@ -652,14 +670,6 @@
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <!-- Text Content -->
                         <div class="text-center lg:text-left">
-                            <div class="mb-8">
-                                <div class="inline-block bg-yellow-500 text-black px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
-                                    <span class="flex items-center">
-                                        <i class="fas fa-car mr-2"></i>
-                                        Premium Car Care Products
-                                    </span>
-                                </div>
-                            </div>
                             <h1 class="text-4xl md:text-6xl font-bold text-yellow-500 mb-6">Car Care Collection</h1>
                             <p class="text-xl md:text-2xl text-gray-300 mb-8">Professional car care products for every need. From cleaning to protection, we have everything to keep your vehicle looking and performing its best.</p>
                             <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -2556,7 +2566,17 @@
                     e.preventDefault();
                     e.stopPropagation();
                     console.log('Hamburger clicked via event listener');
+                    console.log('Hamburger button is working!');
                     toggleMenu();
+                });
+                
+                // Add visual feedback on click
+                hamburger.addEventListener('mousedown', function() {
+                    this.style.transform = 'scale(0.95)';
+                });
+                
+                hamburger.addEventListener('mouseup', function() {
+                    this.style.transform = 'scale(1)';
                 });
             } else {
                 console.log('Hamburger element not found during initialization');
@@ -2634,6 +2654,12 @@
                     menu.classList.add('active');
                     hamburger.classList.add('active');
                     console.log('Menu opened');
+                    // Temporary alert for testing
+                    setTimeout(() => {
+                        if (menu.classList.contains('active')) {
+                            console.log('Menu should be visible now');
+                        }
+                    }, 100);
                 }
             } else {
                 console.log('Menu or hamburger not found');
