@@ -538,6 +538,12 @@
             .product-card .image-container {
                 height: 150px;        /* smaller image area for mobile */
             }
+            
+            /* Ensure 2 products per row on mobile */
+            #products-display {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.75rem !important;
+            }
         }
     </style>
 </head>
@@ -701,7 +707,7 @@
             </div>
 
             <!-- Products Display Area -->
-            <div id="products-display" class="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
+            <div id="products-display" class="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
                 <!-- Default message -->
                 <div class="col-span-2 lg:col-span-5 text-center py-12">
                     <div class="w-24 h-24 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
