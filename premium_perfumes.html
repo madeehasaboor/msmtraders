@@ -16,6 +16,7 @@
         body {
             overflow-x: hidden;
             max-width: 100vw;
+            padding-top: 80px;
         }
         
         .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
@@ -28,6 +29,154 @@
         img, video, iframe {
             max-width: 100%;
             height: auto;
+        }
+        
+        /* Responsive Navbar */
+        .navbar {
+            background-color: #111;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0.75rem 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar-logo {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .navbar-logo img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 1.5rem;
+        }
+        
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+        }
+        
+        .navbar-menu a.active {
+            background-color: #fbbf24;
+            color: #000;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+            color: white;
+            background: none;
+            border: none;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            min-height: 40px;
+        }
+        
+        .hamburger:hover {
+            color: #fbbf24;
+        }
+        
+        /* Mobile menu */
+        @media (max-width: 768px) {
+            .navbar-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: #111;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+                display: none;
+                z-index: 999;
+                max-height: calc(100vh - 70px);
+                overflow-y: auto;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .navbar-menu.active {
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+            
+            .navbar-menu li {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .navbar-menu a {
+                display: block;
+                padding: 1rem;
+                border-bottom: 1px solid #333;
+                text-align: center;
+                color: white;
+                text-decoration: none;
+                font-weight: 500;
+                transition: background-color 0.3s ease;
+            }
+            
+            .navbar-menu a:last-child {
+                border-bottom: none;
+            }
+            
+            .navbar-menu a:hover {
+                background-color: #333;
+            }
+            
+            .hamburger {
+                display: flex !important;
+                background-color: rgba(251, 191, 36, 0.2) !important;
+                border-radius: 4px;
+                min-width: 40px;
+                min-height: 40px;
+                border: 2px solid #fbbf24 !important;
+                color: white !important;
+                font-size: 1.2rem !important;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            
+            .navbar-logo {
+                font-size: 1.25rem;
+            }
+            
+            .navbar-logo img {
+                height: 35px;
+            }
         }
         
         /* Responsive text and elements */
@@ -364,126 +513,66 @@
                 grid-template-columns: repeat(3, 1fr);
             }
         }
+
+        /* Product card image area */
+        .product-card .image-container {
+            width: 100%;
+            height: 250px;          /* desktop height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;       /* hides extra image parts */
+            background: #000;       /* black background */
+            border-radius: 8px;     /* optional: rounded edges */
+        }
+
+        /* Product images */
+        .product-card .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;    /* shows full product without stretching */
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .product-card .image-container {
+                height: 150px;        /* smaller image area for mobile */
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white min-h-screen">
-    <!-- Header -->
-    <header class="bg-gradient-to-r from-gray-900 via-black to-gray-900 border-b-2 border-yellow-500 sticky top-0 z-50 backdrop-blur-md bg-opacity-95 shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <a href="index.html" class="flex items-center space-x-3 group">
-                        <div class="relative">
-                            <div class="w-10 h-10 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-yellow-500/25">
-                                <i class="fas fa-shopping-cart text-black text-lg"></i>
-                            </div>
-                            <div class="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
-                                <i class="fas fa-star text-black text-xs"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <h1 class="header-logo text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent group-hover:animate-glow">MSM Traders</h1>
-                            <p class="text-xs text-yellow-500 font-medium">CLICK.SHOP.SMILE</p>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Navigation Links -->
-                <div class="header-nav hidden lg:flex items-center space-x-6">
-                    <a href="index.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a>
-                    <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Car Care</a>
-                    <a href="house_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">House Care</a>
-                    <a href="premium_perfumes.html" class="text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
-                    <a href="crockery.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Crockery</a>
-                    <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
-                    <a href="deals.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
-                    <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact</a>
-                    <a href="cart.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200 flex items-center">
-                        <i class="fas fa-shopping-cart mr-2"></i>Cart
-                    </a>
-                </div>
-
-                <!-- Search Bar -->
-                <div class="search-bar flex-1 max-w-lg mx-8">
-                    <div class="relative group">
-                        <div class="absolute inset-0 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-xl blur opacity-20 group-hover:opacity-30 transition-opacity"></div>
-                        <div class="relative">
-                            <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-yellow-500"></i>
-                            <input type="text" placeholder="Search perfumes, fragrances, candles..." 
-                                   class="search-input relative w-full px-6 py-3 pl-12 pr-4 bg-gray-800/90 border-2 border-yellow-500/50 text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-4 focus:ring-yellow-500/30 focus:border-yellow-400 transition-all duration-300 backdrop-blur-sm">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- User Actions -->
-                <div class="flex items-center space-x-4">
-                    <button class="relative p-2 text-yellow-500 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:bg-yellow-500/10 rounded-lg group">
-                        <i class="fas fa-user text-xl group-hover:animate-bounce"></i>
-                        <div class="absolute inset-0 bg-yellow-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    </button>
-                </div>
-            </div>
+    <!-- Responsive Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="MSM TRADERS LOGO.jpeg" alt="MSM Traders Logo">
+                <span>MSM TRADERS</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <ul class="navbar-menu" id="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="car_care.html">Car Care</a></li>
+                <li><a href="house_care.html">House Care</a></li>
+                <li><a href="premium_perfumes.html" class="active">Premium Perfumes</a></li>
+                <li><a href="crockery.html">Crockery</a></li>
+                <li><a href="laptops.html">Laptop Deals</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <!-- Mobile Menu Button -->
+            <button class="hamburger" id="hamburger">
+                ☰
+            </button>
         </div>
-    </header>
+    </nav>
 
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <!-- Hero Section with Categories Sidebar -->
         <div class="mb-8">
-            <!-- Mobile Categories - Above Hero Content -->
-            <div class="lg:hidden mb-8">
-                <h3 class="text-lg font-bold text-yellow-400 mb-4 text-center">Shop by Category</h3>
-                <div class="bg-gray-900 border border-yellow-400 rounded-lg p-4">
-                    <ul class="space-y-2">
-                        <li>
-                            <a href="car_care.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                <div class="flex items-center space-x-3">
-                                    <i class="fas fa-car text-yellow-400 group-hover:text-black text-lg"></i>
-                                    <span class="font-medium text-yellow-400 group-hover:text-black">Car Care</span>
-                                </div>
-                                <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="house_care.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                <div class="flex items-center space-x-3">
-                                    <i class="fas fa-home text-yellow-400 group-hover:text-black text-lg"></i>
-                                    <span class="font-medium text-yellow-400 group-hover:text-black">House Care</span>
-                                </div>
-                                <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="premium_perfumes.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                <div class="flex items-center space-x-3">
-                                    <i class="fas fa-spray-can text-yellow-400 group-hover:text-black text-lg"></i>
-                                    <span class="font-medium text-yellow-400 group-hover:text-black">Premium Perfumes</span>
-                                </div>
-                                <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="crockery.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                <div class="flex items-center space-x-3">
-                                    <i class="fas fa-utensils text-yellow-400 group-hover:text-black text-lg"></i>
-                                    <span class="font-medium text-yellow-400 group-hover:text-black">Crockery</span>
-                                </div>
-                                <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="laptops.html" class="flex items-center justify-between p-3 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                <div class="flex items-center space-x-3">
-                                    <i class="fas fa-laptop text-yellow-400 group-hover:text-black text-lg"></i>
-                                    <span class="font-medium text-yellow-400 group-hover:text-black">Laptops</span>
-                                </div>
-                                <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
             
             <div class="flex flex-col lg:flex-row gap-8">
                 <!-- Categories Sidebar - Desktop Only -->
@@ -538,7 +627,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+            </div>
 
                 <!-- Hero Content -->
                 <div class="hero-content flex-1">
@@ -612,9 +701,9 @@
             </div>
 
             <!-- Products Display Area -->
-            <div id="products-display" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 sm:gap-6">
+            <div id="products-display" class="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
                 <!-- Default message -->
-                <div class="col-span-full text-center py-12">
+                <div class="col-span-2 lg:col-span-5 text-center py-12">
                     <div class="w-24 h-24 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-spray-can text-gray-400 text-3xl"></i>
                     </div>
@@ -857,7 +946,7 @@
             
             if (products.length === 0) {
                 productsDisplay.innerHTML = `
-                    <div class="col-span-full text-center py-12">
+                    <div class="col-span-2 lg:col-span-5 text-center py-12">
                         <div class="w-24 h-24 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-spray-can text-gray-400 text-3xl"></i>
                         </div>
@@ -869,11 +958,12 @@
             }
 
             productsDisplay.innerHTML = products.map(product => `
-                <div class="bg-gray-700 border border-gray-600 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1 overflow-hidden group cursor-pointer" onclick="openProductModal('${product.name}', '${product.description}', ${product.price}, '${product.image}')">
-                    <div class="relative overflow-hidden">
+                <div class="bg-gray-700 border border-gray-600 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1 overflow-hidden group cursor-pointer product-card" onclick="openProductModal('${product.name}', '${product.description}', ${product.price}, '${product.image}')">
+                    <div class="image-container">
                         <img src="${product.image}" 
                              alt="${product.name}" 
-                             class="w-full h-32 object-cover object-center transition-transform duration-300 group-hover:scale-105">
+                             loading="lazy" 
+                             decoding="async">
                         <div class="absolute top-2 right-2 bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-bold">
                             Premium
                         </div>
@@ -991,6 +1081,60 @@
             cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
             updateCartCount();
             
+            // Debug: Check if elements exist
+            const menu = document.getElementById('navbar-menu');
+            const hamburger = document.getElementById('hamburger');
+            console.log('Menu element found:', !!menu);
+            console.log('Hamburger element found:', !!hamburger);
+            
+            // Add event listener to hamburger
+            if (hamburger) {
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Hamburger clicked via event listener');
+                    toggleMenu();
+                });
+            } else {
+                console.log('Hamburger element not found during initialization');
+            }
+            
+            // Close mobile menu when clicking on menu items
+            const menuItems = document.querySelectorAll('.navbar-menu a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    console.log('Menu item clicked:', this.href);
+                    const menu = document.getElementById('navbar-menu');
+                    if (menu && menu.classList.contains('active')) {
+                        // Close menu after a small delay to allow navigation
+                        setTimeout(() => {
+                            menu.classList.remove('active');
+                            const hamburger = document.getElementById('hamburger');
+                            if (hamburger) {
+                                hamburger.classList.remove('active');
+                            }
+                        }, 100);
+                    }
+                    // Allow the default navigation to proceed
+                    // Don't prevent default behavior
+                });
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                const menu = document.getElementById('navbar-menu');
+                const hamburger = document.getElementById('hamburger');
+                
+                if (menu && menu.classList.contains('active')) {
+                    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                        menu.classList.remove('active');
+                        if (hamburger) {
+                            hamburger.classList.remove('active');
+                        }
+                    }
+                }
+            });
+            
             // Set up modal event listeners
             const modal = document.getElementById('productModal');
             const closeBtn = document.getElementById('closeModal');
@@ -1011,6 +1155,40 @@
                     closeProductModal();
                 }
             });
+
+        // Toggle mobile menu
+        // Toggle mobile menu
+        function toggleMenu() {
+            console.log('toggleMenu function called');
+            const menu = document.getElementById('navbar-menu');
+            const hamburger = document.getElementById('hamburger');
+            
+            console.log('Toggle menu clicked'); // Debug log
+            console.log('Menu element:', menu);
+            console.log('Hamburger element:', hamburger);
+            
+            if (menu && hamburger) {
+                const isActive = menu.classList.contains('active');
+                console.log('Menu is currently active:', isActive);
+                
+                if (isActive) {
+                    menu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    console.log('Menu closed');
+                } else {
+                    menu.classList.add('active');
+                    hamburger.classList.add('active');
+                    console.log('Menu opened');
+                }
+            } else {
+                console.log('Menu or hamburger not found');
+                console.log('Menu element:', menu);
+                console.log('Hamburger element:', hamburger);
+            }
+        }
+
+        // Make toggleMenu globally accessible
+        window.toggleMenu = toggleMenu;
         });
     </script>
 </body>
