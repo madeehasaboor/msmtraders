@@ -570,6 +570,131 @@
                 gap: 0.75rem !important;
             }
         }
+        
+        /* UI Optimizations */
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Enhanced focus states */
+        button:focus,
+        a:focus,
+        input:focus,
+        select:focus {
+            outline: 2px solid #fbbf24;
+            outline-offset: 2px;
+        }
+        
+        /* Improved button hover effects */
+        .btn-primary {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+        }
+        
+        /* Enhanced card hover effects */
+        .product-card {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Loading states */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        /* Improved typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        /* Better spacing */
+        .section-spacing {
+            padding: 3rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .section-spacing {
+                padding: 2rem 0;
+            }
+        }
+        
+        /* Enhanced shadows */
+        .shadow-enhanced {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .shadow-enhanced-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Improved animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Better form styling */
+        .form-input {
+            border: 2px solid #374151;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+            background: #1f2937;
+            color: white;
+        }
+        
+        .form-input:focus {
+            border-color: #fbbf24;
+            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+        }
+        
+        /* Improved accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Performance optimizations */
+        .will-change-transform {
+            will-change: transform;
+        }
+        
+        .will-change-opacity {
+            will-change: opacity;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white min-h-screen">
@@ -603,7 +728,7 @@
             <button class="hamburger" id="hamburger">
                 ☰
             </button>
-        </div>
+                </div>
     </nav>
 
     <!-- Main Content -->
@@ -622,7 +747,7 @@
                                     <div class="flex items-center space-x-3">
                                         <i class="fas fa-car text-yellow-400 group-hover:text-black text-xl"></i>
                                         <span class="font-semibold text-yellow-400 group-hover:text-black">Car Care</span>
-                                    </div>
+                        </div>
                                     <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                                 </a>
                             </li>
@@ -631,7 +756,7 @@
                                     <div class="flex items-center space-x-3">
                                         <i class="fas fa-home text-yellow-400 group-hover:text-black text-xl"></i>
                                         <span class="font-semibold text-yellow-400 group-hover:text-black">House Care</span>
-                                    </div>
+                    </div>
                                     <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                                 </a>
                             </li>
@@ -640,7 +765,7 @@
                                     <div class="flex items-center space-x-3">
                                         <i class="fas fa-spray-can text-yellow-400 group-hover:text-black text-xl"></i>
                                         <span class="font-semibold text-yellow-400 group-hover:text-black">Premium Perfumes</span>
-                                    </div>
+                </div>
                                     <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                                 </a>
                             </li>
@@ -649,7 +774,7 @@
                                     <div class="flex items-center space-x-3">
                                         <i class="fas fa-utensils text-yellow-400 group-hover:text-black text-xl"></i>
                                         <span class="font-semibold text-yellow-400 group-hover:text-black">Crockery</span>
-                                    </div>
+                </div>
                                     <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                                 </a>
                             </li>
@@ -658,12 +783,12 @@
                                     <div class="flex items-center space-x-3">
                                         <i class="fas fa-laptop text-yellow-400 group-hover:text-black text-xl"></i>
                                         <span class="font-semibold text-yellow-400 group-hover:text-black">Laptops</span>
-                                    </div>
+            </div>
                                     <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                                 </a>
                             </li>
                         </ul>
-                    </div>
+            </div>
             </div>
 
                 <!-- Hero Content -->
@@ -731,8 +856,18 @@
                     <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
                         <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
                             <img src="premium perfumes/BAHOORS/Bakhoor e Noor.webp" alt="Bahoors" class="w-full h-full object-cover">
-                        </div>
+                    </div>
                         <span class="text-yellow-400 font-semibold text-sm sm:text-base lg:text-lg">Bahoors</span>
+                    </div>
+                </button>
+
+                <!-- Car Perfumes -->
+                <button onclick="showCategoryProducts('car-perfumes')" class="bg-gray-800 border-2 border-yellow-500 rounded-xl px-4 py-4 sm:px-8 sm:py-6 lg:px-10 lg:py-8 hover:bg-gray-700 hover:border-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl min-w-[120px] sm:min-w-[160px] lg:min-w-[200px]">
+                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
+                            <img src="CAR_CARE CATEGORY/CAR PERFUME.jfif" alt="Car Perfumes" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-yellow-400 font-semibold text-sm sm:text-base lg:text-lg">Car Perfumes</span>
                     </div>
                 </button>
             </div>
@@ -753,37 +888,37 @@
     </div>
 
     <!-- Product Popup Modal -->
-    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-2 sm:p-4">
-        <div class="bg-gray-800 rounded-lg sm:rounded-xl shadow-2xl max-w-xs sm:max-w-sm w-full max-h-[85vh] sm:max-h-[80vh] overflow-y-auto">
+    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-1 sm:p-2 md:p-4">
+        <div class="bg-gray-800 rounded-lg sm:rounded-xl shadow-2xl max-w-[95vw] sm:max-w-xs md:max-w-sm w-full max-h-[95vh] sm:max-h-[85vh] md:max-h-[80vh] overflow-y-auto">
             <!-- Modal Header -->
-            <div class="flex justify-between items-center p-3 sm:p-4 border-b border-gray-700">
-                <h3 class="text-sm sm:text-lg font-bold text-yellow-400">Product Details</h3>
-                <button id="closeModal" class="text-gray-400 hover:text-white transition-colors">
-                    <i class="fas fa-times text-lg sm:text-xl"></i>
+            <div class="flex justify-between items-center p-2 sm:p-3 md:p-4 border-b border-gray-700 flex-shrink-0">
+                <h3 class="text-xs sm:text-sm md:text-lg font-bold text-yellow-400">Product Details</h3>
+                <button id="closeModal" class="text-gray-400 hover:text-white transition-colors p-1">
+                    <i class="fas fa-times text-base sm:text-lg md:text-xl"></i>
                 </button>
             </div>
             
             <!-- Modal Content -->
-            <div class="p-3 sm:p-4">
+            <div class="p-2 sm:p-3 md:p-4 flex-1">
                 <!-- Product Image -->
-                <div class="relative mb-3 sm:mb-4">
-                    <img id="modalProductImage" src="" alt="" class="w-full h-32 sm:h-40 object-cover rounded-md sm:rounded-lg">
-                    <div class="absolute top-1 right-1 sm:top-2 sm:right-2 bg-yellow-500 text-black px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-bold">
+                <div class="relative mb-2 sm:mb-3 md:mb-4">
+                    <img id="modalProductImage" src="" alt="" class="w-full h-24 sm:h-32 md:h-40 object-cover rounded-md sm:rounded-lg">
+                    <div class="absolute top-1 right-1 sm:top-2 sm:right-2 bg-yellow-500 text-black px-1 py-0.5 sm:px-1.5 sm:py-0.5 md:px-2 md:py-1 rounded-full text-xs font-bold">
                         Premium
                     </div>
                 </div>
                 
                 <!-- Product Details -->
-                <div class="space-y-2 sm:space-y-3">
-                    <h4 id="modalProductName" class="text-base sm:text-xl font-bold text-yellow-400"></h4>
-                    <p id="modalProductDescription" class="text-gray-300 text-xs sm:text-sm leading-relaxed"></p>
-                    <div class="flex items-center justify-between">
-                        <span id="modalProductPrice" class="text-lg sm:text-2xl font-bold text-green-400"></span>
+                <div class="space-y-1 sm:space-y-2 md:space-y-3">
+                    <h4 id="modalProductName" class="text-sm sm:text-base md:text-xl font-bold text-yellow-400 leading-tight"></h4>
+                    <p id="modalProductDescription" class="text-gray-300 text-xs sm:text-sm leading-relaxed line-clamp-3"></p>
+                    <div class="flex items-center justify-between pt-1">
+                        <span id="modalProductPrice" class="text-base sm:text-lg md:text-2xl font-bold text-green-400"></span>
                     </div>
                 </div>
                 
                 <!-- Add to Cart Button -->
-                <button id="modalAddToCart" class="w-full mt-4 sm:mt-6 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black py-2 sm:py-3 rounded-md sm:rounded-lg hover:from-yellow-600 hover:to-yellow-700 transition-all font-semibold text-sm sm:text-base">
+                <button id="modalAddToCart" class="w-full mt-3 sm:mt-4 md:mt-6 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black py-2 sm:py-2.5 md:py-3 rounded-md sm:rounded-lg hover:from-yellow-600 hover:to-yellow-700 transition-all font-semibold text-xs sm:text-sm md:text-base flex items-center justify-center">
                     <i class="fas fa-shopping-cart mr-1 sm:mr-2"></i>Add to Cart
                 </button>
             </div>
@@ -793,7 +928,7 @@
     <!-- Footer -->
     <footer class="bg-gray-900 border-t border-yellow-500 mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <h3 class="text-lg font-semibold text-yellow-500 mb-4">MSM Traders</h3>
                     <p class="text-gray-300 text-sm">Your trusted partner for premium products and exceptional service.</p>
@@ -804,14 +939,6 @@
                         <li><a href="index.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Home</a></li>
                         <li><a href="cosmetics.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Cosmetics</a></li>
                         <li><a href="crockery.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Crockery</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-md font-semibold text-yellow-500 mb-4">Support</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="contact.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Contact Us</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition-colors">FAQ</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition-colors">Shipping Info</a></li>
                     </ul>
                 </div>
                 <div>
@@ -836,25 +963,25 @@
                 {
                     name: 'Emerald Compare',
                     description: 'Luxurious emerald-inspired fragrance with fresh floral notes',
-                    price: 650,
+                    price: 1949,
                     image: 'premium perfumes/for her/Emrald_Compare.webp'
                 },
                 {
                     name: 'Serenity Compare',
                     description: 'Peaceful and calming scent with soft floral undertones',
-                    price: 550,
+                    price: 1949,
                     image: 'premium perfumes/for her/Serenity_compare.webp'
                 },
                 {
                     name: 'Forever Compare',
                     description: 'Timeless and elegant fragrance with lasting appeal',
-                    price: 650,
+                    price: 1999,
                     image: 'premium perfumes/for her/forever_compare.webp'
                 },
                 {
                     name: 'Grace Comparison',
                     description: 'Graceful and sophisticated scent with refined elegance',
-                    price: 550,
+                    price: 1999,
                     image: 'premium perfumes/for her/Grace_Comparision.webp'
                 }
             ],
@@ -862,25 +989,25 @@
                 {
                     name: 'OV Comparison',
                     description: 'Premium masculine fragrance with sophisticated blend of woody and citrus notes',
-                    price: 650,
+                    price: 2199,
                     image: 'premium perfumes/for Him/ov_comparision.webp'
                 },
                 {
                     name: 'Ember Compare',
                     description: 'Bold and intense fragrance with warm amber and spice undertones',
-                    price: 550,
+                    price: 1999,
                     image: 'premium perfumes/for Him/ember_compare.webp'
                 },
                 {
                     name: 'Fierce',
                     description: 'Strong and confident scent with powerful masculine appeal',
-                    price: 650,
+                    price: 1999,
                     image: 'premium perfumes/for Him/Feirce.webp'
                 },
                 {
                     name: 'Royal Spirit',
                     description: 'Elegant and regal fragrance with luxurious blend of oud and sandalwood',
-                    price: 550,
+                    price: 1999,
                     image: 'premium perfumes/for Him/Royal Spirit.webp'
                 }
             ],
@@ -973,6 +1100,86 @@
                     price: 550,
                     image: 'premium perfumes/BAHOORS/Bakhoor e Saba.webp'
                 }
+            ],
+            'car-perfumes': [
+                {
+                    name: 'AIM Air Diffuser - Arabic Oud',
+                    description: 'Premium air diffuser with authentic Arabic oud fragrance. Long-lasting scent for your home or car.',
+                    price: 1500,
+                    image: 'perfumes/aim air diffuser arabic oud.jpeg'
+                },
+                {
+                    name: 'AIM Air Diffuser - Ocean',
+                    description: 'Refreshing ocean breeze air diffuser. Creates a calming and fresh atmosphere in any space.',
+                    price: 1500,
+                    image: 'perfumes/aim air diffuser ocean.jpeg'
+                },
+                {
+                    name: 'AIM Air Diffuser - Cool Ice',
+                    description: 'Cool and invigorating ice fragrance air diffuser. Perfect for hot days and refreshing environments.',
+                    price: 1500,
+                    image: 'perfumes/aim air diffuser cool ice.jpeg'
+                },
+                {
+                    name: 'AIM Air Diffuser - Classic',
+                    description: 'Classic fragrance air diffuser with timeless scent. Elegant and sophisticated for any setting.',
+                    price: 1500,
+                    image: 'perfumes/aim air diffuser.jpeg'
+                },
+                {
+                    name: 'AIM Air Freshener - New Car',
+                    description: 'Fresh new car scent air freshener. Reminds you of that brand new car feeling every day.',
+                    price: 750,
+                    image: 'perfumes/aim air freshner new car.jpeg'
+                },
+                {
+                    name: 'AIM Air Freshener - Cool Ice',
+                    description: 'Cool ice fragrance air freshener. Provides a refreshing and cooling sensation.',
+                    price: 750,
+                    image: 'perfumes/aim air freshner cool ice.jpeg'
+                },
+                {
+                    name: 'AIM Air Freshener - Oud',
+                    description: 'Luxurious oud fragrance air freshener. Rich and exotic scent for sophisticated spaces.',
+                    price: 1100,
+                    image: 'perfumes/aim air freshner oud.jpeg'
+                },
+                {
+                    name: 'AIM Air Freshener - Cool Breeze',
+                    description: 'Gentle cool breeze air freshener. Light and refreshing scent for everyday use.',
+                    price: 650,
+                    image: 'perfumes/aimm air frshner cool breeze.jpeg'
+                },
+                {
+                    name: 'Jello Air Freshener - Lavender',
+                    description: 'Soothing lavender air freshener. Calming and relaxing fragrance for peaceful environments.',
+                    price: 650,
+                    image: 'perfumes/jello air freshner  lavender.jpeg'
+                },
+                {
+                    name: 'Jello Air Freshener - Cool Ice',
+                    description: 'Jello cool ice air freshener. Refreshing and invigorating scent for active spaces.',
+                    price: 650,
+                    image: 'perfumes/jello air freshner cool ice.jpeg'
+                },
+                {
+                    name: 'Sameli Air Freshener - Vanilla',
+                    description: 'Sweet vanilla air freshener. Warm and comforting scent for cozy environments.',
+                    price: 900,
+                    image: 'perfumes/sameli air freshner  vanilla.jpeg'
+                },
+                {
+                    name: 'Sameli Air Freshener - Cool',
+                    description: 'Sameli cool air freshener. Fresh and clean scent for modern spaces.',
+                    price: 900,
+                    image: 'perfumes/sameli air freshner cool.jpeg'
+                },
+                {
+                    name: 'XFresh Air Freshener - Ocean',
+                    description: 'XFresh ocean breeze air freshener. Natural and refreshing ocean scent.',
+                    price: 400,
+                    image: 'perfumes/xfresh air freshner  ocean.jpeg'
+                }
             ]
         };
 
@@ -980,6 +1187,12 @@
             console.log('Category button clicked:', category);
             const productsDisplay = document.getElementById('products-display');
             const products = productData[category] || [];
+            
+            // Scroll to products section smoothly
+            productsDisplay.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
             
             if (products.length === 0) {
                 productsDisplay.innerHTML = `
@@ -1007,7 +1220,7 @@
                     </div>
                     <div class="p-3 text-center">
                         <h4 class="text-sm font-bold text-yellow-400">${product.name}</h4>
-                    </div>
+                        </div>
                 </div>
             `).join('');
         }
@@ -1031,6 +1244,9 @@
                 });
             }
             
+            // Show cart popup when item is added
+            showCartPopup();
+            
             // Save to localStorage
             localStorage.setItem('cart', JSON.stringify(cart));
             
@@ -1040,6 +1256,79 @@
             
             // Show notification
             showCartNotification(`${productName} added to cart!`);
+        }
+
+        // Show cart popup
+        function showCartPopup() {
+            const cartModal = document.getElementById('cart-modal');
+            if (cartModal) {
+                cartModal.classList.remove('hidden');
+                cartModal.classList.add('show');
+            }
+        }
+
+        // Render cart items
+        function renderCart() {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-gray-400 text-center">Your cart is empty</p>';
+                cartTotal.textContent = '0 RPS';
+                return;
+            }
+            
+            cartItems.innerHTML = cart.map((item, index) => `
+                <div class="flex items-center justify-between p-2 sm:p-3 bg-gray-800 rounded-lg mb-2">
+                    <div class="flex items-center space-x-2 sm:space-x-3 flex-1 min-w-0">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gray-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-perfume text-yellow-400 text-sm sm:text-base"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <h4 class="text-white font-semibold text-sm sm:text-base truncate">${item.name}</h4>
+                            <p class="text-gray-400 text-xs sm:text-sm">${item.price} RPS</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-1 sm:space-x-2 flex-shrink-0">
+                        <button onclick="updateQuantity(${index}, -1)" class="bg-gray-700 hover:bg-gray-600 text-white w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-sm">-</button>
+                        <span class="text-white font-semibold w-6 sm:w-8 text-center text-sm sm:text-base">${item.quantity}</span>
+                        <button onclick="updateQuantity(${index}, 1)" class="bg-gray-700 hover:bg-gray-600 text-white w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-sm">+</button>
+                        <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-300 ml-1 sm:ml-2">
+                            <i class="fas fa-trash text-sm sm:text-base"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+            cartTotal.textContent = `${total.toFixed(2)} RPS`;
+        }
+
+        // Update item quantity
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+        }
+
+        // Remove item from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+        }
+
+        // Clear cart
+        function clearCart() {
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
         }
 
         function updateCartCount() {
@@ -1226,8 +1515,220 @@
 
         // Make toggleMenu globally accessible
         window.toggleMenu = toggleMenu;
+
+        // Initialize cart modal event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartModal = document.getElementById('cart-modal');
+            const closeCart = document.getElementById('close-cart');
+            const clearCartBtn = document.getElementById('clear-cart');
+            const checkoutWhatsAppBtn = document.getElementById('checkout-whatsapp');
+            
+            // Close cart modal
+            if (closeCart) {
+                closeCart.addEventListener('click', function() {
+                    cartModal.classList.add('hidden');
+                    cartModal.classList.remove('show');
+                });
+            }
+            
+            // Close cart modal when clicking outside
+            if (cartModal) {
+                cartModal.addEventListener('click', function(e) {
+                    if (e.target === cartModal) {
+                        cartModal.classList.add('hidden');
+                        cartModal.classList.remove('show');
+                    }
+                });
+            }
+            
+            // Clear cart
+            if (clearCartBtn) {
+                clearCartBtn.addEventListener('click', clearCart);
+            }
+            
+            // Checkout via WhatsApp
+            if (checkoutWhatsAppBtn) {
+                checkoutWhatsAppBtn.addEventListener('click', function() {
+                    if (cart.length === 0) {
+                        alert('Your cart is empty!');
+                        return;
+                    }
+                    
+                    let message = '🛒 *Order Details*\n\n';
+                    cart.forEach((item, index) => {
+                        message += `${index + 1}. ${item.name}\n   Price: ${item.price} RPS\n   Quantity: ${item.quantity}\n\n`;
+                    });
+                    
+                    const total = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+                    message += `💰 *Total: ${total.toFixed(2)} RPS*\n\n`;
+                    message += 'Please confirm this order.';
+                    
+                    const whatsappUrl = `https://wa.me/923001234567?text=${encodeURIComponent(message)}`;
+                    window.open(whatsappUrl, '_blank');
+                    
+                    // Clear cart after checkout
+                    clearCart();
+                    cartModal.classList.add('hidden');
+                    cartModal.classList.remove('show');
+                });
+            }
+            
+            // Initial render
+            renderCart();
+        });
         });
     </script>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-400 max-h-[90vh] sm:max-h-[80vh] overflow-hidden flex flex-col">
+                <!-- Cart Header -->
+                <div class="flex items-center justify-between p-3 sm:p-4 border-b border-yellow-400 flex-shrink-0">
+                    <h3 class="text-lg sm:text-xl font-bold text-yellow-400">Shopping Cart</h3>
+                    <button id="close-cart" class="text-yellow-400 hover:text-yellow-300 text-xl sm:text-2xl">&times;</button>
+                </div>
+                
+                <!-- Cart Items -->
+                <div id="cart-items" class="flex-1 overflow-y-auto p-3 sm:p-4">
+                    <p class="text-gray-400 text-center">Your cart is empty</p>
+                </div>
+                
+                <!-- Cart Footer -->
+                <div class="p-3 sm:p-4 border-t border-yellow-400 flex-shrink-0">
+                    <div class="flex justify-between items-center mb-3 sm:mb-4">
+                        <span class="text-base sm:text-lg font-bold text-yellow-400">Total: <span id="cart-total">0 RPS</span></span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <button id="clear-cart" class="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg transition-colors text-sm sm:text-base">
+                            Clear Cart
+                        </button>
+                        <button id="checkout-whatsapp" class="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition-colors text-sm sm:text-base">
+                            <i class="fab fa-whatsapp mr-1 sm:mr-2"></i>Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Cart modal styles */
+        #cart-modal {
+            transition: all 0.3s ease-in-out;
+        }
+        
+        #cart-modal.show {
+            display: flex !important;
+        }
+
+        /* Mobile responsive cart modal */
+        @media (max-width: 768px) {
+            #cart-modal .bg-gray-900 {
+                margin: 0.5rem;
+                max-width: calc(100vw - 1rem);
+                max-height: calc(100vh - 1rem);
+                width: 100%;
+            }
+            
+            #cart-modal .max-h-96 {
+                max-height: 50vh;
+            }
+            
+            #cart-modal .p-4 {
+                padding: 0.75rem;
+            }
+            
+            #cart-modal .text-xl {
+                font-size: 1.125rem;
+            }
+            
+            #cart-modal .flex.gap-2 {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            #cart-modal .flex.gap-2 button {
+                width: 100%;
+            }
+            
+            #cart-modal .space-x-3 {
+                gap: 0.5rem;
+            }
+            
+            #cart-modal .w-12.h-12 {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #cart-modal .bg-gray-900 {
+                margin: 0.25rem;
+                max-width: calc(100vw - 0.5rem);
+                max-height: calc(100vh - 0.5rem);
+            }
+            
+            #cart-modal .max-h-96 {
+                max-height: 45vh;
+            }
+            
+            #cart-modal .p-4 {
+                padding: 0.5rem;
+            }
+            
+            #cart-modal .text-xl {
+                font-size: 1rem;
+            }
+            
+            #cart-modal .space-x-3 {
+                gap: 0.375rem;
+            }
+            
+            #cart-modal .w-12.h-12 {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+
+        /* Mobile responsive product modal */
+        @media (max-width: 640px) {
+            #productModal .bg-gray-800 {
+                border-radius: 0.5rem;
+            }
+            
+            #productModal .line-clamp-3 {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+            
+            #productModal .flex-shrink-0 {
+                flex-shrink: 0;
+            }
+            
+            #productModal .flex-1 {
+                flex: 1;
+                min-height: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #productModal {
+                padding: 0.25rem;
+            }
+            
+            #productModal .bg-gray-800 {
+                max-height: 98vh;
+                border-radius: 0.375rem;
+            }
+            
+            #productModal .h-24 {
+                height: 5rem;
+            }
+        }
+    </style>
 </body>
 </html>
 
