@@ -1387,7 +1387,6 @@
                     e.preventDefault();
                     e.stopPropagation();
                     console.log('Hamburger clicked via event listener');
-                    alert('Hamburger clicked!'); // Test alert
                     toggleMenu();
                 });
             } else {
@@ -1398,15 +1397,21 @@
             // Close mobile menu when clicking on menu items
             const menuItems = document.querySelectorAll('.navbar-menu a');
             menuItems.forEach(item => {
-                item.addEventListener('click', function() {
+                item.addEventListener('click', function(e) {
+                    console.log('Menu item clicked:', this.href);
                     const menu = document.getElementById('navbar-menu');
                     if (menu && menu.classList.contains('active')) {
-                        menu.classList.remove('active');
-                        const hamburger = document.getElementById('hamburger');
-                        if (hamburger) {
-                            hamburger.classList.remove('active');
-                        }
+                        // Close menu after a small delay to allow navigation
+                        setTimeout(() => {
+                            menu.classList.remove('active');
+                            const hamburger = document.getElementById('hamburger');
+                            if (hamburger) {
+                                hamburger.classList.remove('active');
+                            }
+                        }, 100);
                     }
+                    // Allow the default navigation to proceed
+                    // Don't prevent default behavior
                 });
             });
             
