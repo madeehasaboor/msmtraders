@@ -43,6 +43,11 @@
                 min-height: 70px;
                 padding: 0.5rem 1rem;
             }
+            
+            .navbar-container {
+                padding: 0;
+                min-height: 60px;
+            }
         }
         
         .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
@@ -76,6 +81,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
+            position: relative;
         }
         
         .navbar-logo {
@@ -150,6 +157,7 @@
                 overflow-y: auto;
                 width: 100%;
                 box-sizing: border-box;
+                border-top: 2px solid #fbbf24;
             }
             
             .navbar-menu.active {
@@ -187,18 +195,20 @@
             .hamburger {
                 display: flex !important;
                 background-color: #fbbf24 !important;
-                border-radius: 4px;
-                min-width: 45px;
-                min-height: 45px;
-                border: 2px solid #fbbf24 !important;
+                border-radius: 6px;
+                min-width: 50px;
+                min-height: 50px;
+                border: 3px solid #fbbf24 !important;
                 color: #000 !important;
-                font-size: 1.4rem !important;
+                font-size: 1.6rem !important;
                 font-weight: bold !important;
                 align-items: center;
                 justify-content: center;
-                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
                 position: relative;
                 z-index: 1001;
+                margin-left: auto;
+                flex-shrink: 0;
             }
             
             .navbar-logo {
