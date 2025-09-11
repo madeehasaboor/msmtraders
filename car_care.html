@@ -354,6 +354,28 @@
             }
         }
 
+        /* Product Grid Layout */
+        .product-grid {
+            display: grid;
+            gap: 15px; /* space between cards */
+            grid-template-columns: repeat(5, 1fr); /* Desktop: 5 per row */
+        }
+
+        .product-card {
+            background: #1f2937; /* dark gray background */
+            border-radius: 8px;
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #374151; /* subtle border */
+        }
+
+        /* Mobile: 2 per row */
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
     </style>
 </head>
 <body class="bg-black">
@@ -747,7 +769,7 @@
 
         <!-- Products Grid -->
         <div id="productsContainer" class="hidden">
-            <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6">
+            <div id="productsGrid" class="product-grid">
                 <!-- Products will be loaded here -->
             </div>
             
