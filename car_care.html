@@ -24,6 +24,7 @@
     </script>
     <!-- Quick View Modal -->
     <style>
+
         /* Global responsive fixes */
         * {
             box-sizing: border-box;
@@ -322,6 +323,131 @@
             max-width: 100%;
             border-radius: 10px;
         }
+        
+        /* UI Optimizations */
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Enhanced focus states */
+        button:focus,
+        a:focus,
+        input:focus,
+        select:focus {
+            outline: 2px solid #fbbf24;
+            outline-offset: 2px;
+        }
+        
+        /* Improved button hover effects */
+        .btn-primary {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+        }
+        
+        /* Enhanced card hover effects */
+        .product-card {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Loading states */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        /* Improved typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        /* Better spacing */
+        .section-spacing {
+            padding: 3rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .section-spacing {
+                padding: 2rem 0;
+            }
+        }
+        
+        /* Enhanced shadows */
+        .shadow-enhanced {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .shadow-enhanced-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Improved animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Better form styling */
+        .form-input {
+            border: 2px solid #374151;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+            background: #1f2937;
+            color: white;
+        }
+        
+        .form-input:focus {
+            border-color: #fbbf24;
+            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+        }
+        
+        /* Improved accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Performance optimizations */
+        .will-change-transform {
+            will-change: transform;
+        }
+        
+        .will-change-opacity {
+            will-change: opacity;
+        }
     </style>
     <div id="qv-overlay" class="qv-overlay">
         <div class="qv-card">
@@ -347,6 +473,57 @@
         
         #cart-modal.show {
             display: flex !important;
+        }
+
+        /* Mobile responsive cart modal */
+        @media (max-width: 768px) {
+            #cart-modal .bg-gray-900 {
+                margin: 0.5rem;
+                max-width: calc(100vw - 1rem);
+                max-height: calc(100vh - 1rem);
+                width: 100%;
+            }
+            
+            #cart-modal .max-h-96 {
+                max-height: 50vh;
+            }
+            
+            #cart-modal .p-4 {
+                padding: 0.75rem;
+            }
+            
+            #cart-modal .text-xl {
+                font-size: 1.125rem;
+            }
+            
+            #cart-modal .flex.gap-2 {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            #cart-modal .flex.gap-2 button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #cart-modal .bg-gray-900 {
+                margin: 0.25rem;
+                max-width: calc(100vw - 0.5rem);
+                max-height: calc(100vh - 0.5rem);
+            }
+            
+            #cart-modal .max-h-96 {
+                max-height: 45vh;
+            }
+            
+            #cart-modal .p-4 {
+                padding: 0.5rem;
+            }
+            
+            #cart-modal .text-xl {
+                font-size: 1rem;
+            }
         }
         
         /* Jazz Cash modal styles */
@@ -529,29 +706,29 @@
                 <i class="fas fa-shopping-cart"></i>
                 <span>Cart</span>
                 <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
-            </button>
+                    </button>
             
             <!-- Mobile Menu Button -->
             <button class="hamburger" id="hamburger">
                 ☰
-            </button>
+                    </button>
         </div>
     </nav>
 
     <!-- Shopping Cart Modal -->
     <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-500">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-500 max-h-[90vh] sm:max-h-[80vh] overflow-hidden flex flex-col">
                 <!-- Cart Header -->
-                <div class="flex items-center justify-between p-4 border-b border-yellow-500">
-                    <h3 class="text-xl font-bold text-yellow-500">Shopping Cart</h3>
-                    <button id="close-cart" class="text-gray-400 hover:text-yellow-500 text-2xl font-bold">
+                <div class="flex items-center justify-between p-3 sm:p-4 border-b border-yellow-500 flex-shrink-0">
+                    <h3 class="text-lg sm:text-xl font-bold text-yellow-500">Shopping Cart</h3>
+                    <button id="close-cart" class="text-gray-400 hover:text-yellow-500 text-xl sm:text-2xl font-bold">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
                 
                 <!-- Cart Items -->
-                <div id="cart-items" class="max-h-96 overflow-y-auto p-4">
+                <div id="cart-items" class="flex-1 overflow-y-auto p-3 sm:p-4">
                     <!-- Cart items will be dynamically added here -->
                     <div id="empty-cart" class="text-center py-8">
                         <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
@@ -560,21 +737,21 @@
                 </div>
                 
                 <!-- Cart Footer -->
-                <div class="border-t border-yellow-500 p-4">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-lg font-semibold text-yellow-500">Total:</span>
-                        <span id="cart-total" class="text-xl font-bold text-yellow-500">$0.00</span>
+                <div class="border-t border-yellow-500 p-3 sm:p-4 flex-shrink-0">
+                    <div class="flex justify-between items-center mb-3 sm:mb-4">
+                        <span class="text-base sm:text-lg font-semibold text-yellow-500">Total:</span>
+                        <span id="cart-total" class="text-lg sm:text-xl font-bold text-yellow-500">$0.00</span>
                     </div>
-                    <div class="flex flex-col sm:flex-row gap-2">
-                        <button id="clear-cart" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm">
+                    <div class="flex flex-col gap-2">
+                        <button id="clear-cart" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base">
                             Clear Cart
                         </button>
-                        <button id="checkout-whatsapp" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center">
-                            <i class="fab fa-whatsapp mr-2"></i>
+                        <button id="checkout-whatsapp" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-1 sm:mr-2"></i>
                             Order via WhatsApp
                         </button>
-                        <button id="checkout-jazzcash" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center mt-2">
-                            <i class="fas fa-credit-card mr-2"></i>
+                        <button id="checkout-jazzcash" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base flex items-center justify-center">
+                            <i class="fas fa-credit-card mr-1 sm:mr-2"></i>
                             Pay with Jazz Cash
                         </button>
                     </div>
@@ -672,7 +849,7 @@
                                     <div class="flex items-center space-x-3">
                                         <i class="fas fa-car text-yellow-500 group-hover:text-black text-xl"></i>
                                         <span class="font-semibold text-yellow-500 group-hover:text-black">Car Care</span>
-                                    </div>
+                </div>
                                     <i class="fas fa-chevron-right text-yellow-500 group-hover:text-black"></i>
                                 </a>
                             </li>
@@ -681,7 +858,7 @@
                                     <div class="flex items-center space-x-3">
                                         <i class="fas fa-home text-yellow-500 group-hover:text-black text-xl"></i>
                                         <span class="font-semibold text-yellow-500 group-hover:text-black">House Care</span>
-                                    </div>
+                    </div>
                                     <i class="fas fa-chevron-right text-yellow-500 group-hover:text-black"></i>
                                 </a>
                             </li>
@@ -690,7 +867,7 @@
                                     <div class="flex items-center space-x-3">
                                         <i class="fas fa-spray-can text-yellow-500 group-hover:text-black text-xl"></i>
                                         <span class="font-semibold text-yellow-500 group-hover:text-black">Premium Perfumes</span>
-                                    </div>
+                    </div>
                                     <i class="fas fa-chevron-right text-yellow-500 group-hover:text-black"></i>
                                 </a>
                             </li>
@@ -699,7 +876,7 @@
                                     <div class="flex items-center space-x-3">
                                         <i class="fas fa-utensils text-yellow-500 group-hover:text-black text-xl"></i>
                                         <span class="font-semibold text-yellow-500 group-hover:text-black">Crockery</span>
-                                    </div>
+                    </div>
                                     <i class="fas fa-chevron-right text-yellow-500 group-hover:text-black"></i>
                                 </a>
                             </li>
@@ -708,7 +885,7 @@
                                     <div class="flex items-center space-x-3">
                                         <i class="fas fa-laptop text-yellow-500 group-hover:text-black text-xl"></i>
                                         <span class="font-semibold text-yellow-500 group-hover:text-black">Laptops</span>
-                                    </div>
+                </div>
                                     <i class="fas fa-chevron-right text-yellow-500 group-hover:text-black"></i>
                                 </a>
                             </li>
@@ -787,13 +964,13 @@
                 <div class="text-center" onclick="filterByCategory('polish and shinners')">
                     <img src="CAR_CARE CATEGORY/POLISH & SHINNER.jfif" alt="Polish & Shiners" class="w-full h-24 object-cover rounded-lg cursor-pointer">
                     <p class="text-white text-sm mt-2 font-medium">Polish & Shiners</p>
-                </div>
+    </div>
 
                 <!-- Protectant Sprays Category -->
                 <div class="text-center" onclick="filterByCategory('protectant sprays')">
                     <img src="CAR_CARE CATEGORY/CAR PROTECTANT.jfif" alt="Protectant Sprays" class="w-full h-24 object-cover rounded-lg cursor-pointer">
                     <p class="text-white text-sm mt-2 font-medium">Protectant Sprays</p>
-                </div>
+            </div>
 
                 <!-- Spray Paints Category -->
                 <div class="text-center" onclick="filterByCategory('spray paints')">
@@ -805,7 +982,7 @@
                 <div class="text-center" onclick="filterByCategory('wash & wax')">
                     <img src="CAR_CARE CATEGORY/WASH & WAX.jfif" alt="Wash & Wax" class="w-full h-24 object-cover rounded-lg cursor-pointer">
                     <p class="text-white text-sm mt-2 font-medium">Wash & Wax</p>
-                </div>
+    </div>
 
                 <!-- Cleaners Category -->
                 <div class="text-center" onclick="filterByCategory('cleaners')">
@@ -813,12 +990,6 @@
                     <p class="text-white text-sm mt-2 font-medium">Cleaners</p>
                 </div>
 
-                <!-- Car Perfumes Category -->
-                <div class="text-center" onclick="filterByCategory('car perfumes')">
-                    <img src="CAR_CARE CATEGORY/CAR PERFUME.jfif" alt="Car Perfumes" class="w-full h-24 object-cover rounded-lg cursor-pointer">
-                    <p class="text-white text-sm mt-2 font-medium">Car Perfumes</p>
-                </div>
-            </div>
             </div>
         </div>
     </div>
@@ -869,7 +1040,7 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <div class="flex items-center space-x-3 mb-4">
                         <div class="bg-black text-yellow-500 rounded-lg p-2 relative">
@@ -883,10 +1054,8 @@
                     </div>
                     <p class="text-gray-400 mb-4">Your trusted partner for quality products at great prices.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin text-xl"></i></a>
+                        <a href="https://www.facebook.com/share/17A1BGDUkh/" target="_blank" class="text-gray-400 hover:text-yellow-500 transition-colors"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="https://www.instagram.com/msmtraders222?igsh=NjA2enprZGZ3am81&utm_source=ig_contact_invite" target="_blank" class="text-gray-400 hover:text-yellow-500 transition-colors"><i class="fab fa-instagram text-xl"></i></a>
                     </div>
                 </div>
                 <div>
@@ -895,15 +1064,6 @@
                         <li><a href="laptops.html" class="text-gray-400 hover:text-white">Laptops</a></li>
                         <li><a href="electronics.html" class="text-gray-400 hover:text-white">Electronics</a></li>
                         <li><a href="premium_perfumes.html" class="text-gray-400 hover:text-white">Premium Perfumes</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Customer Service</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">Help Center</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Returns</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping Info</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Size Guide</a></li>
                     </ul>
                 </div>
                 <div>
@@ -1797,110 +1957,6 @@
                 image_url: "CAR LUBRICANTS/deargon-anti-rust-450ml.jpeg"
             },
             // Car Perfumes
-            {
-                id: 128,
-                name: "AIM Air Diffuser - Arabic Oud",
-                description: "Premium air diffuser with authentic Arabic oud fragrance. Long-lasting scent for your home or car.",
-                price: "1500",
-                category: "car perfumes",
-                image_url: "perfumes/aim air diffuser arabic oud.jpeg"
-            },
-            {
-                id: 129,
-                name: "AIM Air Diffuser - Ocean",
-                description: "Refreshing ocean breeze air diffuser. Creates a calming and fresh atmosphere in any space.",
-                price: "1500",
-                category: "car perfumes",
-                image_url: "perfumes/aim air diffuser ocean.jpeg"
-            },
-            {
-                id: 130,
-                name: "AIM Air Diffuser - Cool Ice",
-                description: "Cool and invigorating ice fragrance air diffuser. Perfect for hot days and refreshing environments.",
-                price: "1500",
-                category: "car perfumes",
-                image_url: "perfumes/aim air diffuser cool ice.jpeg"
-            },
-            {
-                id: 131,
-                name: "AIM Air Diffuser - Classic",
-                description: "Classic fragrance air diffuser with timeless scent. Elegant and sophisticated for any setting.",
-                price: "1500",
-                category: "car perfumes",
-                image_url: "perfumes/aim air diffuser.jpeg"
-            },
-            {
-                id: 132,
-                name: "AIM Air Freshener - New Car",
-                description: "Fresh new car scent air freshener. Reminds you of that brand new car feeling every day.",
-                price: "750",
-                category: "car perfumes",
-                image_url: "perfumes/aim air freshner new car.jpeg"
-            },
-            {
-                id: 133,
-                name: "AIM Air Freshener - Cool Ice",
-                description: "Cool ice fragrance air freshener. Provides a refreshing and cooling sensation.",
-                price: "750",
-                category: "car perfumes",
-                image_url: "perfumes/aim air freshner cool ice.jpeg"
-            },
-            {
-                id: 134,
-                name: "AIM Air Freshener - Oud",
-                description: "Luxurious oud fragrance air freshener. Rich and exotic scent for sophisticated spaces.",
-                price: "1100",
-                category: "car perfumes",
-                image_url: "perfumes/aim air freshner oud.jpeg"
-            },
-            {
-                id: 135,
-                name: "AIM Air Freshener - Cool Breeze",
-                description: "Gentle cool breeze air freshener. Light and refreshing scent for everyday use.",
-                price: "650",
-                category: "car perfumes",
-                image_url: "perfumes/aimm air frshner cool breeze.jpeg"
-            },
-            {
-                id: 136,
-                name: "Jello Air Freshener - Lavender",
-                description: "Soothing lavender air freshener. Calming and relaxing fragrance for peaceful environments.",
-                price: "650",
-                category: "car perfumes",
-                image_url: "perfumes/jello air freshner  lavender.jpeg"
-            },
-            {
-                id: 137,
-                name: "Jello Air Freshener - Cool Ice",
-                description: "Jello cool ice air freshener. Refreshing and invigorating scent for active spaces.",
-                price: "650",
-                category: "car perfumes",
-                image_url: "perfumes/jello air freshner cool ice.jpeg"
-            },
-            {
-                id: 138,
-                name: "Sameli Air Freshener - Vanilla",
-                description: "Sweet vanilla air freshener. Warm and comforting scent for cozy environments.",
-                price: "900",
-                category: "car perfumes",
-                image_url: "perfumes/sameli air freshner  vanilla.jpeg"
-            },
-            {
-                id: 139,
-                name: "Sameli Air Freshener - Cool",
-                description: "Sameli cool air freshener. Fresh and clean scent for modern spaces.",
-                price: "900",
-                category: "car perfumes",
-                image_url: "perfumes/sameli air freshner cool.jpeg"
-            },
-            {
-                id: 140,
-                name: "XFresh Air Freshener - Ocean",
-                description: "XFresh ocean breeze air freshener. Natural and refreshing ocean scent.",
-                price: "400",
-                category: "car perfumes",
-                image_url: "perfumes/xfresh air freshner  ocean.jpeg"
-            }
         ];
 
         // Fix image paths by removing 'products/' prefix
@@ -1923,7 +1979,6 @@
                 filteredProducts = [...allProducts];
             
             console.log('Total products loaded:', allProducts.length);
-            console.log('Car perfume products:', allProducts.filter(p => p.category === 'car perfumes').length);
             
                 displayProducts();
                 setupEventListeners();
@@ -2109,16 +2164,6 @@
                                                 productDesc.includes('wash') || productDesc.includes('wax') ||
                                                 productDesc.includes('clean') || productDesc.includes('shine');
                                 break;
-                            case 'car perfumes':
-                                matchesCategory = productName.includes('air') || productName.includes('diffuser') ||
-                                                productName.includes('freshener') || productName.includes('perfume') ||
-                                                productName.includes('fragrance') || productName.includes('oud') ||
-                                                productName.includes('ocean') || productName.includes('ice') ||
-                                                productName.includes('vanilla') || productName.includes('lavender') ||
-                                                productDesc.includes('air') || productDesc.includes('diffuser') ||
-                                                productDesc.includes('freshener') || productDesc.includes('fragrance') ||
-                                                productDesc.includes('scent') || productDesc.includes('perfume');
-                                break;
                             default:
                                 matchesCategory = productName.includes(category);
                         }
@@ -2157,6 +2202,15 @@
             console.log('Filtering by category:', category);
             document.getElementById('categoryFilter').value = category;
             filterProducts();
+            
+            // Scroll to products section smoothly
+            const productsContainer = document.getElementById('productsContainer');
+            if (productsContainer) {
+                productsContainer.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }
         }
 
         // Sort products
@@ -2207,21 +2261,21 @@
             
             if (prevPage) {
                 prevPage.addEventListener('click', () => {
-                    if (currentPage > 1) {
-                        currentPage--;
-                        displayProducts();
-                    }
-                });
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayProducts();
+                }
+            });
             }
             
             if (nextPage) {
                 nextPage.addEventListener('click', () => {
-                    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
-                    if (currentPage < totalPages) {
-                        currentPage++;
-                        displayProducts();
-                    }
-                });
+                const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayProducts();
+                }
+            });
             }
 
             const gridView = document.getElementById('gridView');
@@ -2229,24 +2283,24 @@
             
             if (gridView) {
                 gridView.addEventListener('click', () => {
-                    currentView = 'grid';
+                currentView = 'grid';
                     gridView.classList.add('bg-primary', 'text-white');
                     if (listView) {
                         listView.classList.remove('bg-primary', 'text-white');
                     }
-                    displayProducts();
-                });
+                displayProducts();
+            });
             }
 
             if (listView) {
                 listView.addEventListener('click', () => {
-                    currentView = 'list';
+                currentView = 'list';
                     listView.classList.add('bg-primary', 'text-white');
                     if (gridView) {
                         gridView.classList.remove('bg-primary', 'text-white');
                     }
-                    displayProducts();
-                });
+                displayProducts();
+            });
             }
         }
 
@@ -2353,8 +2407,20 @@
             localStorage.setItem('cart', JSON.stringify(cart));
             renderCart();
             
+            // Show cart popup when item is added
+            showCartPopup();
+            
             // Show success message
             showNotification('Item added to cart!', 'success');
+        }
+
+        // Show cart popup
+        function showCartPopup() {
+            const cartModal = document.getElementById('cart-modal');
+            if (cartModal) {
+                cartModal.classList.remove('hidden');
+                cartModal.classList.add('show');
+            }
         }
 
         // Remove item from cart
