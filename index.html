@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MSM Traders - Premium E-commerce Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>House Care - MSM Traders</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
@@ -11,26 +11,26 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#fbbf24',
-                        secondary: '#000000',
-                        golden: '#fbbf24',
+                        primary: '#F59E0B',
+                        secondary: '#D97706',
+                        accent: '#F59E0B',
                         dark: '#000000',
+                        gold: '#F59E0B'
                     }
                 }
             }
         }
     </script>
     <style>
-        body {
-            background-color: #000000;
-            color: #ffffff;
-            overflow-x: hidden;
-            max-width: 100vw;
-        }
-        
         /* Global responsive fixes */
         * {
             box-sizing: border-box;
+        }
+        
+        body {
+            overflow-x: hidden;
+            max-width: 100vw;
+            padding-top: 80px;
         }
         
         .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
@@ -55,6 +55,8 @@
             z-index: 1000;
             padding: 0.75rem 1rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .navbar-container {
@@ -93,12 +95,7 @@
             text-decoration: none;
             padding: 0.5rem 1rem;
             border-radius: 0.375rem;
-            transition: background-color 0.3s ease;
             font-weight: 500;
-        }
-        
-        .navbar-menu a:hover {
-            background-color: #575757;
         }
         
         .navbar-menu a.active {
@@ -108,66 +105,78 @@
         
         .hamburger {
             display: none;
-            flex-direction: column;
             cursor: pointer;
             padding: 0.5rem;
+            font-size: 1.5rem;
+            color: white;
+            background: none;
+            border: none;
+            align-items: center;
+            justify-content: center;
         }
         
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background-color: white;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-        
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
+        .hamburger:hover {
+            color: #fbbf24;
         }
         
         /* Mobile menu */
         @media (max-width: 768px) {
             .navbar-menu {
                 position: fixed;
-                top: 100%;
+                top: 70px;
                 left: 0;
                 right: 0;
                 background-color: #111;
                 flex-direction: column;
                 padding: 1rem;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
+                display: none;
+                z-index: 999;
+                max-height: calc(100vh - 70px);
+                overflow-y: auto;
+                width: 100%;
+                box-sizing: border-box;
             }
             
             .navbar-menu.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+            
+            .navbar-menu li {
+                list-style: none;
+                margin: 0;
+                padding: 0;
             }
             
             .navbar-menu a {
+                display: block;
                 padding: 1rem;
                 border-bottom: 1px solid #333;
                 text-align: center;
+                color: white;
+                text-decoration: none;
+                font-weight: 500;
+                transition: background-color 0.3s ease;
             }
             
             .navbar-menu a:last-child {
                 border-bottom: none;
             }
             
+            .navbar-menu a:hover {
+                background-color: #333;
+            }
+            
             .hamburger {
-                display: flex;
+                display: flex !important;
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 4px;
+                min-width: 40px;
+                min-height: 40px;
+                border: 2px solid #fbbf24;
             }
             
             .navbar-logo {
@@ -179,10 +188,6 @@
             }
         }
         
-        /* Body padding for fixed navbar */
-        body {
-            padding-top: 80px;
-        }
         
         /* Responsive text and elements */
         @media (max-width: 768px) {
@@ -213,31 +218,191 @@
                 padding-right: 0.5rem;
             }
         }
-        .golden-gradient {
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-        }
-        .black-gradient {
-            background: linear-gradient(135deg, #000000, #1a1a1a);
-        }
         
-        /* Responsive Navigation */
-        .mobile-menu {
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
+        /* Responsive Design Enhancements */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
-        .mobile-menu.open {
-            transform: translateX(0);
+
+        /* Responsive images */
+        .responsive-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            object-position: center;
         }
-        
-        /* Responsive Product Cards */
+
+        /* Product Grid Layout */
+        .products {
+            display: grid;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Desktop: 4 per row */
+        @media screen and (min-width: 1024px) {
+            .products {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Tablet: 2 per row */
+        @media screen and (min-width: 600px) and (max-width: 1023px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Mobile: 1 per row */
+        @media screen and (max-width: 599px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Product Card */
         .product-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            background: #000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            
+            /* Fix height so all cards equal */
+            height: 350px;        /* adjust if needed */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
         }
+
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
-        
+
+        /* Product card image area */
+        .product-card .image-container {
+            width: 100%;
+            height: 250px;          /* desktop height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;       /* hides extra image parts */
+            background: #000;       /* black background */
+            border-radius: 8px;     /* optional: rounded edges */
+        }
+
+        /* Product images */
+        .product-card .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;    /* shows full product without stretching */
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .product-card .image-container {
+                height: 120px;        /* smaller image area for mobile */
+            }
+        }
+
+        /* Product Name */
+        .product-card h3 {
+            font-size: 16px;
+            margin: 10px 0 0;
+            min-height: 40px;    /* reserve space for 2 lines */
+            color: #fff;
+        }
+
+        /* Add a small "Click to view" indicator */
+        .product-card::after {
+            content: "Click to view details";
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #ccc;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .product-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Mobile-first responsive breakpoints */
+        @media (max-width: 320px) {
+            .grid {
+                gap: 0.75rem;
+            }
+        }
+
+        @media (min-width: 321px) and (max-width: 480px) {
+            .grid {
+                gap: 1rem;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .grid {
+                gap: 1.25rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .grid {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1025px) and (max-width: 1440px) {
+            .grid {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1441px) {
+            .grid {
+                gap: 2rem;
+            }
+        }
+
+        /* Touch targets for mobile */
+        @media (max-width: 768px) {
+            button, .clickable {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+
+        /* Mobile navigation */
+        @media (max-width: 1024px) {
+            .mobile-menu {
+                display: block;
+            }
+            .desktop-nav {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .mobile-menu {
+                display: none;
+            }
+            .desktop-nav {
+                display: flex;
+            }
+        }
+
         /* Hide scrollbars for horizontal scrolling */
         .scrollbar-hide {
             -ms-overflow-style: none;
@@ -247,31 +412,61 @@
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
         }
-        
-        /* Responsive Images */
-        .responsive-image {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
+    </style>
+    <!-- Quick View Modal -->
+    <div id="quickview-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center p-4 z-[100]">
+        <div class="bg-gray-900 border border-yellow-400 rounded-xl shadow-2xl max-w-2xl w-full overflow-hidden">
+            <div class="flex justify-between items-center px-4 py-3 border-b border-gray-700">
+                <h3 id="qv-name" class="text-lg font-bold text-yellow-400 truncate">Product Name</h3>
+                <button id="qv-close" class="text-gray-300 hover:text-yellow-400">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-4 space-y-4">
+                <div class="w-full h-[250px] sm:h-[300px] flex items-center justify-center bg-gray-100 rounded-lg overflow-hidden">
+                    <img id="qv-image" src="" alt="Product" class="max-w-full max-h-full object-contain">
+                </div>
+                <p id="qv-desc" class="text-gray-300 text-sm leading-relaxed">Description</p>
+                <div class="flex items-center justify-between">
+                    <span id="qv-price" class="text-xl font-bold text-yellow-400">Contact for Pricing</span>
+                    <button id="qv-add" class="bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-4 py-2 rounded-lg">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        /* Cart modal styles */
+        #cart-modal {
+            transition: all 0.3s ease-in-out;
         }
         
-        /* Mobile Optimizations */
-        @media (max-width: 768px) {
-            .mobile-text-sm { font-size: 0.875rem; }
-            .mobile-text-xs { font-size: 0.75rem; }
-            .mobile-p-2 { padding: 0.5rem; }
-            .mobile-p-4 { padding: 1rem; }
+        #cart-modal.show {
+            display: flex !important;
         }
         
-        /* Touch-friendly buttons */
-        .touch-target {
-            min-height: 44px;
-            min-width: 44px;
+        /* Jazz Cash modal styles */
+        #jazzcash-modal {
+            transition: all 0.3s ease-in-out;
         }
         
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
+        #jazzcash-modal.show {
+            display: flex !important;
+        }
+        
+        /* Cart item animation */
+        .cart-item {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
     </style>
 </head>
@@ -287,9 +482,9 @@
             
             <!-- Desktop Menu -->
             <ul class="navbar-menu" id="navbar-menu">
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="car_care.html">Car Care</a></li>
-                <li><a href="house_care.html">House Care</a></li>
+                <li><a href="house_care.html" class="active">House Care</a></li>
                 <li><a href="premium_perfumes.html">Premium Perfumes</a></li>
                 <li><a href="crockery.html">Crockery</a></li>
                 <li><a href="laptops.html">Laptop Deals</a></li>
@@ -298,684 +493,1202 @@
             </ul>
             
             <!-- Hamburger Menu -->
-            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="hamburger" id="hamburger">
+                ☰
+            </button>
         </div>
     </nav>
 
-
-    <!-- Hero Banner -->
-    <section class="black-gradient py-8 lg:py-16">
+    <!-- Hero Section with Categories Sidebar -->
+    <section class="relative bg-gradient-to-br from-black via-gray-900 to-black py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <!-- Full Width Slideshow -->
-                <div class="w-full">
-                    <div class="flex justify-center">
-                        <!-- Full Width Slideshow -->
-                        <div class="w-full max-w-6xl">
-                            <div class="relative overflow-hidden rounded-lg lg:rounded-xl shadow-2xl h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px]">
-                                <div id="banner-slideshow" class="relative h-full">
-                                    <!-- Slide 1 -->
-                                    <div class="slide active absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100">
-                            <img src="slide show/8a3223b3-ae77-42cc-b3db-abc5a1cf8c1e.__CR0,0,2983,1845_PT0_SX970_V1___.jpg" 
-                                             alt="Premium Products" class="w-full h-full object-cover">
-                                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                <div class="text-center text-white">
-                                                <h3 class="text-3xl lg:text-4xl font-bold mb-3">Premium Quality</h3>
-                                                <p class="text-xl lg:text-2xl">Best Products Available</p>
+            
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Categories Sidebar - Desktop Only -->
+                <div class="hidden lg:block lg:w-1/4">
+                    <div class="bg-gray-900 border border-yellow-400 rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-yellow-400 mb-6 text-center">Shop by Category</h3>
+                        <ul class="space-y-3">
+                            <li>
+                                <a href="car_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-car text-yellow-400 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Car Care</span>
+                        </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="house_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-home text-yellow-400 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-400 group-hover:text-black">House Care</span>
+                        </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="premium_perfumes.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-spray-can text-yellow-400 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Premium Perfumes</span>
+                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="crockery.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-utensils text-yellow-400 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Crockery</span>
+                </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="laptops.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-laptop text-yellow-400 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Laptops</span>
+                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                        </ul>
+                </div>
+                </div>
+
+                <!-- Hero Content -->
+                <div class="flex-1">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <!-- Text Content -->
+                        <div class="text-center lg:text-left">
+                <div class="mb-8">
+                    <div class="inline-block bg-yellow-400 text-black px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
+                        <span class="flex items-center">
+                            <i class="fas fa-home mr-2"></i>
+                            Premium House Care Products
+                        </span>
+                    </div>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold text-yellow-400 mb-6">House Care Collection</h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8">Keep your home clean, fresh, and beautiful with our premium house care products</p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#products" class="bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition duration-300">Shop Now</a>
+                    <a href="contact.html" class="border-2 border-yellow-400 text-yellow-400 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 hover:text-black transition duration-300">Contact Us</a>
+                </div>
+            </div>
+                        <!-- Hero Image -->
+                        <div class="relative">
+                            <img src="category imges/house_care_image.jpg.jfif" 
+                                 alt="House Care Products" 
+                                 class="w-full h-96 object-cover rounded-xl shadow-2xl border-2 border-yellow-400">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Filters and Products Section -->
+    <section id="products" class="py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Filters -->
+            <div class="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
+                <div class="flex-1 max-w-md">
+                    <div class="relative">
+                        <input type="text" id="searchInput" placeholder="Search house care products..." class="w-full pl-10 pr-4 py-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <select id="categoryFilter" class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-gray-800 text-white">
+                        <option value="">All Categories</option>
+                        <option value="cleaning">Cleaning Products</option>
+                        <option value="laundry">Laundry Care</option>
+                        <option value="kitchen">Kitchen Care</option>
+                        <option value="bathroom">Bathroom Care</option>
+                        <option value="furniture">Furniture Care</option>
+                        <option value="air-fresheners">Air Fresheners</option>
+                        <option value="disinfectants">Disinfectants</option>
+                    </select>
+                    <select id="sortBy" class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-gray-800 text-white">
+                        <option value="name">Sort by Name</option>
+                        <option value="category">Sort by Category</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="productsGrid" class="products">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-center mt-12">
+                <div class="flex space-x-2">
+                    <button id="prevPage" class="px-4 py-2 bg-gray-800 text-yellow-400 rounded-lg hover:bg-gray-700 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+                        <i class="fas fa-chevron-left mr-2"></i>Previous
+                    </button>
+                    <span id="pageInfo" class="px-4 py-2 bg-gray-800 text-yellow-400 rounded-lg">Page 1 of 1</span>
+                    <button id="nextPage" class="px-4 py-2 bg-gray-800 text-yellow-400 rounded-lg hover:bg-gray-700 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+                        Next<i class="fas fa-chevron-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-400">
+                <!-- Cart Header -->
+                <div class="flex items-center justify-between p-4 border-b border-yellow-400">
+                    <h3 class="text-xl font-bold text-yellow-400">Shopping Cart</h3>
+                    <button id="close-cart" class="text-gray-400 hover:text-yellow-400 text-2xl font-bold">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Cart Items -->
+                <div id="cart-items" class="max-h-96 overflow-y-auto p-4">
+                    <!-- Cart items will be dynamically added here -->
+                    <div id="empty-cart" class="text-center py-8">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">Your cart is empty</p>
+                    </div>
+                </div>
+                
+                <!-- Cart Footer -->
+                <div class="border-t border-yellow-400 p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-lg font-semibold text-yellow-400">Total:</span>
+                        <span id="cart-total" class="text-xl font-bold text-yellow-400">Contact for Pricing</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <button id="clear-cart" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm">
+                            Clear Cart
+                        </button>
+                        <button id="checkout-whatsapp" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Order via WhatsApp
+                        </button>
+                        <button id="checkout-cod" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center mt-2">
+                            <i class="fas fa-money-bill-wave mr-2"></i>
+                            Cash on Delivery
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cash on Delivery Modal -->
+    <div id="cod-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-sm sm:max-w-md mx-auto border border-yellow-400">
+                  <!-- COD Header -->
+                  <div class="flex items-center justify-between p-4 border-b border-yellow-400">
+                      <h3 class="text-xl font-bold text-yellow-400">Cash on Delivery</h3>
+                      <button id="close-cod" class="text-gray-400 hover:text-yellow-400 text-2xl font-bold">
+                          <i class="fas fa-times"></i>
+                      </button>
+                  </div>
+                  
+                  <!-- COD Form -->
+                  <div class="p-4">
+                      <div class="mb-4">
+                          <div class="flex items-center justify-center mb-4">
+                              <div class="bg-blue-500 text-white rounded-full p-3">
+                                  <i class="fas fa-money-bill-wave text-2xl"></i>
+                              </div>
                           </div>
+                          <h4 class="text-lg font-semibold text-yellow-400 text-center mb-2">Pay When You Receive</h4>
+                          <p class="text-gray-400 text-sm text-center mb-4">Complete your order and pay cash when your items arrive</p>
+                      </div>
+                      
+                      <div class="space-y-4">
+                          <div>
+                              <label class="block text-yellow-400 text-sm font-medium mb-2">Order Total</label>
+                              <div class="bg-gray-800 rounded-lg p-3 border border-gray-700">
+                                  <span id="cod-total" class="text-2xl font-bold text-yellow-400">₨0.00</span>
+                              </div>
+                          </div>
+                          
+                          <div>
+                              <label class="block text-yellow-400 text-sm font-medium mb-2">Full Name *</label>
+                              <input type="text" id="cod-name" placeholder="Enter your full name" 
+                                     class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400">
+                          </div>
+                          
+                          <div>
+                              <label class="block text-yellow-400 text-sm font-medium mb-2">Phone Number *</label>
+                              <input type="tel" id="cod-phone" placeholder="03XXXXXXXXX" 
+                                     class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400">
+                          </div>
+                          
+                          <div>
+                              <label class="block text-yellow-400 text-sm font-medium mb-2">Delivery Address *</label>
+                              <textarea id="cod-address" placeholder="Enter your complete delivery address" rows="3"
+                                     class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400 resize-none"></textarea>
+                          </div>
+                          
+                          <div>
+                              <label class="block text-yellow-400 text-sm font-medium mb-2">City *</label>
+                              <input type="text" id="cod-city" placeholder="Enter your city" 
+                                     class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400">
+                          </div>
+                          
+                          <div class="bg-gray-800 rounded-lg p-3 border border-gray-700">
+                              <h5 class="text-yellow-400 font-semibold mb-2">COD Information:</h5>
+                            <ol class="text-gray-300 text-xs sm:text-sm space-y-1">
+                                  <li>• Pay cash when your order arrives</li>
+                                  <li>• No advance payment required</li>
+                                  <li>• Delivery within 2-3 business days</li>
+                                  <li>• Free delivery on orders above ₨1000</li>
+                                  <li>• Delivery charge: ₨100 for orders below ₨1000</li>
+                              </ol>
                           </div>
                       </div>
-                                    
-                                    <!-- Slide 2 -->
-                                    <div class="slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
-                            <img src="slide show/crockery.jpg" 
-                                 alt="Crockery Collection" class="w-full h-full object-cover">
-                                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                <div class="text-center text-white">
-                                                <h3 class="text-3xl lg:text-4xl font-bold mb-3">Crockery Collection</h3>
-                                                <p class="text-xl lg:text-2xl">Beautiful Kitchenware</p>
                   </div>
+                  
+                  <!-- COD Footer -->
+                  <div class="border-t border-yellow-400 p-4">
+                      <div class="flex flex-col sm:flex-row gap-2">
+                          <button id="cancel-cod" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm">
+                              Cancel
+                          </button>
+                          <button id="confirm-cod" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center">
+                              <i class="fas fa-check mr-2"></i>
+                              Place COD Order
+                          </button>
                       </div>
                   </div>
-                                    
-                                    <!-- Slide 3 -->
-                                    <div class="slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
-                                        <img src="slide show/diffusr hd.jpg" 
-                                             alt="Electronics" class="w-full h-full object-cover">
-                                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                <div class="text-center text-white">
-                                                <h3 class="text-3xl lg:text-4xl font-bold mb-3">Elegant Style</h3>
-                                                <p class="text-xl lg:text-2xl">and Fragrance</p>
               </div>
           </div>
       </div>
 
-                
-                                    <!-- Slide 5 -->
-                                    <div class="slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
-                                        <img src="slide show/laptop-murjp1nk4lp1idlt.jpg" 
-                                             alt="Laptops" class="w-full h-full object-cover">
-                                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                            <div class="text-center text-white">
-                                                <h3 class="text-3xl lg:text-4xl font-bold mb-3">Laptops</h3>
-                                                <p class="text-xl lg:text-2xl">High Performance</p>
-                    </div>
-                    </div>
-                    </div>
-                    
-                                    <!-- Slide 5 - Perfumes -->
-                                    <div class="slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
-                                        <img src="slide show/perfumes.jpg" 
-                                             alt="Premium Perfumes" class="w-full h-full object-cover">
-                                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                            <div class="text-center text-white">
-                                                <h3 class="text-3xl lg:text-4xl font-bold mb-3">Premium Perfumes</h3>
-                                                <p class="text-xl lg:text-2xl">Luxury Fragrances</p>
-                    </div>
-                                     </div>
-                                    </div>
-                    
-                </div>
-
-                                <!-- Navigation Arrows -->
-                                <button class="absolute left-2 sm:left-4 lg:left-6 top-1/2 transform -translate-y-1/2 bg-golden text-black w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-colors shadow-lg" onclick="changeSlide(-1)">
-                                    <i class="fas fa-chevron-left text-sm sm:text-base lg:text-lg"></i>
-                                </button>
-                                <button class="absolute right-2 sm:right-4 lg:right-6 top-1/2 transform -translate-y-1/2 bg-golden text-black w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-colors shadow-lg" onclick="changeSlide(1)">
-                                    <i class="fas fa-chevron-right text-sm sm:text-base lg:text-lg"></i>
-                                </button>
-                                
-                                <!-- Slide Indicators -->
-                                <div class="absolute bottom-2 sm:bottom-4 lg:bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3">
-                                    <button class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-golden opacity-100 slide-indicator active shadow-lg" onclick="showSlide(0)"></button>
-                                    <button class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-golden opacity-50 slide-indicator shadow-lg" onclick="showSlide(1)"></button>
-                                    <button class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-golden opacity-50 slide-indicator shadow-lg" onclick="showSlide(2)"></button>
-                                    <button class="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-golden opacity-50 slide-indicator shadow-lg" onclick="showSlide(3)"></button>
-        </div>
-        </div>
-        </div>
-                </div>
-    </section>
-
-    <!-- Social Media Buttons -->
-    <section class="py-6 bg-gray-900 border-t border-golden border-b border-golden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h3 class="text-lg font-semibold text-golden mb-4">Follow Us on Social Media</h3>
-                <div class="flex justify-center items-center space-x-6">
-                    <!-- Facebook Button -->
-                    <a href="https://www.facebook.com/share/17A1BGDUkh/" target="_blank" 
-                       class="group bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center space-x-2">
-                        <i class="fab fa-facebook-f text-xl"></i>
-                        <span class="hidden sm:inline">Facebook</span>
-                    </a>
-                    
-                    <!-- Instagram Button -->
-                    <a href="https://www.instagram.com/msmtraders222?igsh=NjA2enprZGZ3am81&utm_source=ig_contact_invite" target="_blank" 
-                       class="group bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center space-x-2">
-                        <i class="fab fa-instagram text-xl"></i>
-                        <span class="hidden sm:inline">Instagram</span>
-                    </a>
-                </div>
-                <p class="text-gray-400 text-sm mt-3">Stay updated with our latest products and offers!</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Shop by Category Section -->
-    <section class="py-12 lg:py-16 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl lg:text-4xl font-bold text-golden mb-4">Shop by Category</h2>
-                <p class="text-gray-300 text-lg">Explore our premium product categories</p>
-                        </div>
-            
-            <!-- Category Cards Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-                <!-- Car Care Category -->
-                <a href="car_care.html" class="group">
-                    <div class="bg-gray-800 border border-golden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden">
-                        <div class="relative h-48 sm:h-56 lg:h-64">
-                            <img src="category imges/car_care_image.jpg" 
-                                 alt="Car Care Products" 
-                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                            <div class="absolute top-4 right-4">
-                                <div class="bg-golden text-black px-3 py-1 rounded-full text-sm font-bold">
-                                    Car Care
-                        </div>
-                        </div>
-                        </div>
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-bold text-golden mb-2 group-hover:text-yellow-300 transition-colors">Car Care</h3>
-                            <p class="text-gray-300 text-sm">Professional car cleaning and maintenance products</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- House Care Category -->
-                <a href="house_care.html" class="group">
-                    <div class="bg-gray-800 border border-golden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden">
-                        <div class="relative h-48 sm:h-56 lg:h-64">
-                            <img src="category imges/house_care_image.jpg.jfif" 
-                                 alt="House Care Products" 
-                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                            <div class="absolute top-4 right-4">
-                                <div class="bg-golden text-black px-3 py-1 rounded-full text-sm font-bold">
-                                    House Care
-                        </div>
-                </div>
-                        </div>
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-bold text-golden mb-2 group-hover:text-yellow-300 transition-colors">House Care</h3>
-                            <p class="text-gray-300 text-sm">Essential cleaning and home maintenance supplies</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Premium Perfumes Category -->
-                <a href="premium_perfumes.html" class="group">
-                    <div class="bg-gray-800 border border-golden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden">
-                        <div class="relative h-48 sm:h-56 lg:h-64">
-                            <img src="category imges/perfumes_image.jpg.jfif" 
-                                 alt="Premium Perfumes" 
-                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                            <div class="absolute top-4 right-4">
-                                <div class="bg-golden text-black px-3 py-1 rounded-full text-sm font-bold">
-                                    Premium Perfumes
-                        </div>
-                        </div>
-                </div>
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-bold text-golden mb-2 group-hover:text-yellow-300 transition-colors">Premium Perfumes</h3>
-                            <p class="text-gray-300 text-sm">Premium fragrances and scented candles</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Crockery Category -->
-                <a href="crockery.html" class="group">
-                    <div class="bg-gray-800 border border-golden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden">
-                        <div class="relative h-48 sm:h-56 lg:h-64">
-                            <img src="category imges/crockery_image.jpg.jfif" 
-                                 alt="Crockery Collection" 
-                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                            <div class="absolute top-4 right-4">
-                                <div class="bg-golden text-black px-3 py-1 rounded-full text-sm font-bold">
-                                    Crockery
-                        </div>
-                </div>
-            </div>
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-bold text-golden mb-2 group-hover:text-yellow-300 transition-colors">Crockery</h3>
-                            <p class="text-gray-300 text-sm">Elegant dinnerware and kitchen essentials</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Deals Section -->
-    <section class="py-8 lg:py-12 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-2xl lg:text-3xl font-bold text-center mb-6 lg:mb-8 text-golden">Today's Deals</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-                <div class="bg-gradient-to-r from-red-600 to-red-500 border border-golden rounded-lg p-4 sm:p-6 text-white">
-                    <h3 class="text-xl sm:text-2xl font-bold mb-2">Flash Sale</h3>
-                    <p class="mb-4 text-sm sm:text-base">Up to 50% off on selected items</p>
-                    <button onclick="showFlashSale()" class="golden-gradient text-black px-3 sm:px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base inline-block text-center cursor-pointer">
-                        Shop Now
-                    </button>
-                    </div>
-                <div class="bg-gradient-to-r from-blue-600 to-blue-500 border border-golden rounded-lg p-4 sm:p-6 text-white">
-                    <h3 class="text-xl sm:text-2xl font-bold mb-2">New Arrivals</h3>
-                    <p class="mb-4 text-sm sm:text-base">Fresh products just landed</p>
-                    <button onclick="showNewArrivals()" class="golden-gradient text-black px-3 sm:px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base inline-block text-center cursor-pointer">
-                        Explore
-                    </button>
-                            </div>
-                <div class="bg-gradient-to-r from-green-600 to-green-500 border border-golden rounded-lg p-4 sm:p-6 text-white">
-                    <h3 class="text-xl sm:text-2xl font-bold mb-2">Free Shipping</h3>
-                    <p class="mb-4 text-sm sm:text-base">On orders over 5000 rps</p>
-                    <button onclick="showShippingInfo()" class="golden-gradient text-black px-3 sm:px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base inline-block text-center cursor-pointer">
-                        Learn More
-                    </button>
-                        </div>
-                    </div>
-                </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="py-8 lg:py-12 golden-gradient">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-2xl lg:text-3xl font-bold text-black mb-4">Stay Updated</h2>
-            <p class="text-black mb-6 text-sm sm:text-base">Subscribe to our newsletter for exclusive deals and updates</p>
-            <div class="max-w-md mx-auto flex flex-col sm:flex-row gap-2 sm:gap-0">
-                <input type="email" placeholder="Enter your email" 
-                       class="flex-1 px-4 py-2 rounded-lg sm:rounded-l-lg sm:rounded-r-none border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black">
-                <button class="bg-black text-golden px-6 py-2 rounded-lg sm:rounded-l-none sm:rounded-r-lg font-semibold hover:bg-gray-800 transition-colors">
-                    Subscribe
-                </button>
-                                        </div>
-                                    </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black text-white py-8 lg:py-12 border-t border-golden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-                                <div>
-                    <h3 class="text-xl font-bold mb-4 text-golden">MSM TRADERS</h3>
-                    <p class="text-gray-400">Your trusted partner for premium products and exceptional service.</p>
-                                </div>
-                                <div>
-                    <h4 class="font-semibold mb-4 text-golden">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-golden">About Us</a></li>
-                        <li><a href="#" class="hover:text-golden">Contact</a></li>
-                        <li><a href="#" class="hover:text-golden">Shipping</a></li>
-                        <li><a href="#" class="hover:text-golden">Returns</a></li>
-                    </ul>
-                                </div>
-                                <div>
-                    <h4 class="font-semibold mb-4 text-golden">Customer Service</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-golden">Help Center</a></li>
-                        <li><a href="#" class="hover:text-golden">Track Order</a></li>
-                        <li><a href="#" class="hover:text-golden">Size Guide</a></li>
-                        <li><a href="#" class="hover:text-golden">FAQ</a></li>
-                    </ul>
-                                </div>
-                                <div>
-                    <h4 class="font-semibold mb-4 text-golden">Contact Info</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li class="flex items-center">
-                            <i class="fas fa-phone mr-2 text-golden"></i>
-                            <span>+923258573925</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-map-marker-alt mr-2 text-golden"></i>
-                            <span>Phase 2 DHA Lahore</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-clock mr-2 text-golden"></i>
-                            <span>24 Hours Open</span>
-                        </li>
-                    </ul>
-                    <div class="mt-4">
-                        <h5 class="font-semibold mb-2 text-golden">Follow Us</h5>
-                        <div class="flex space-x-4">
-                            <a href="https://www.facebook.com/share/17A1BGDUkh/" target="_blank" class="text-gray-400 hover:text-golden transition-colors">
-                                <i class="fab fa-facebook text-xl"></i>
-                            </a>
-                            <a href="https://www.instagram.com/msmtraders222?igsh=NjA2enprZGZ3am81&utm_source=ig_contact_invite" target="_blank" class="text-gray-400 hover:text-golden transition-colors">
-                                <i class="fab fa-instagram text-xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                                    </div>
-            <div class="border-t border-golden mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 MSM Traders. All rights reserved.</p>
-                                </div>
-                            </div>
-    </footer>
-
     <script>
-        // Banner Slideshow functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const indicators = document.querySelectorAll('.slide-indicator');
+        // Cart functionality v2.0 - Updated with retry logic
+        let allProducts = [];
+        let filteredProducts = [];
+        let currentPage = 1;
+        const productsPerPage = 12;
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.style.opacity = i === index ? '1' : '0';
-            });
-            indicators.forEach((indicator, i) => {
-                indicator.classList.toggle('active', i === index);
-                indicator.style.opacity = i === index ? '1' : '0.5';
-            });
-            currentSlide = index;
-        }
-
-        function changeSlide(direction) {
-            currentSlide += direction;
-            if (currentSlide >= slides.length) {
-                currentSlide = 0;
-            } else if (currentSlide < 0) {
-                currentSlide = slides.length - 1;
+        // Real house care products with actual images
+        const sampleProducts = [
+            {
+                id: 1,
+                name: "AIM Anti Rust",
+                description: "Powerful anti-rust formula that prevents and removes rust from metal surfaces. Long-lasting protection.",
+                price: "420",
+                category: "maintenance",
+                image_url: "house_care/aim anti rust 420 rps.jpeg"
+            },
+            {
+                id: 2,
+                name: "AIM Foamy Cleaner",
+                description: "Versatile foamy cleaner for multiple surfaces. Removes dirt, grease, and stains effectively with rich foam action.",
+                price: "750",
+                category: "cleaning",
+                image_url: "house_care/aim foamy cleaner.jpeg"
+            },
+            {
+                id: 3,
+                name: "AIM Furniture Polish",
+                description: "Premium furniture polish that protects and enhances wood surfaces. Leaves a beautiful shine and protects from damage.",
+                price: "650",
+                category: "furniture",
+                image_url: "house_care/aim furniture polish.jpeg"
+            },
+            {
+                id: 4,
+                name: "AIM Glass Cleaner",
+                description: "Streak-free glass cleaner for windows, mirrors, and glass surfaces. Professional results every time.",
+                price: "650",
+                category: "cleaning",
+                image_url: "house_care/aim glass cleaner.jpeg"
+            },
+            {
+                id: 5,
+                name: "AIM Leather Cleaner (Jasmine)",
+                description: "Gentle leather cleaner with jasmine fragrance. Safely cleans and conditions leather furniture and accessories.",
+                price: "800",
+                category: "furniture",
+                image_url: "house_care/aim leather cleaner jasmine.jpeg"
+            },
+            {
+                id: 6,
+                name: "AIM Leather Cleaner (Yellow)",
+                description: "Effective leather cleaner with yellow formula. Removes dirt and stains while maintaining leather quality.",
+                price: "800",
+                category: "furniture",
+                image_url: "house_care/aim leather cleaner yellow.jpeg"
+            },
+            {
+                id: 7,
+                name: "AIM Leather Cleaner",
+                description: "Professional leather cleaner for all types of leather. Cleans, conditions, and protects leather surfaces.",
+                price: "400",
+                category: "furniture",
+                image_url: "house_care/aim leather cleaner.jpeg"
+            },
+            {
+                id: 8,
+                name: "DTR Foam Cleaner",
+                description: "Heavy-duty foam cleaner for deep cleaning. Penetrates and lifts dirt from various surfaces effectively.",
+                price: "650",
+                category: "cleaning",
+                image_url: "house_care/dtr foam cleaner.jpeg"
+            },
+            {
+                id: 9,
+                name: "DTR Glass Cleaner",
+                description: "Professional glass cleaner for crystal clear results. Removes fingerprints, smudges, and streaks.",
+                price: "650",
+                category: "cleaning",
+                image_url: "house_care/dtr glass cleaner.jpeg"
+            },
+            {
+                id: 10,
+                name: "DTR Kitchen Cleaner",
+                description: "Specialized kitchen cleaner that removes grease, food stains, and kitchen grime. Safe for all kitchen surfaces.",
+                price: "800",
+                category: "kitchen",
+                image_url: "house_care/dtr kitchen cleaner.jpeg"
+            },
+            {
+                id: 11,
+                name: "DTR Leather Cleaner",
+                description: "Advanced leather cleaner that deeply cleans and conditions leather surfaces. Restores natural beauty.",
+                price: "750",
+                category: "furniture",
+                image_url: "house_care/dtr leather cleaner.jpeg"
+            },
+            {
+                id: 12,
+                name: "DTR Scratch Out",
+                description: "Professional scratch remover for various surfaces. Effectively removes scratches and restores smooth finish.",
+                price: "900",
+                category: "maintenance",
+                image_url: "house_care/dtr scratchout.jpeg"
+            },
+            {
+                id: 13,
+                name: "Electronic Cleaner",
+                description: "Safe electronic cleaner for computers, phones, and electronic devices. Removes dust and fingerprints safely.",
+                price: "500",
+                category: "electronics",
+                image_url: "house_care/electronic cleaner.jpeg"
+            },
+            {
+                id: 14,
+                name: "Formula 1 Glass Cleaner",
+                description: "Premium glass cleaner with advanced formula. Provides streak-free shine on all glass surfaces.",
+                price: "600",
+                category: "cleaning",
+                image_url: "house_care/formula 1 glass cleaner.jpeg"
+            },
+            {
+                id: 15,
+                name: "Formula 1 Leather Cleaner",
+                description: "Professional leather cleaner with advanced cleaning agents. Safely removes dirt and stains from leather.",
+                price: "700",
+                category: "furniture",
+                image_url: "house_care/formula 1 leather cleaner.jpeg"
+            },
+            {
+                id: 16,
+                name: "Formula 1 Scratch Out",
+                description: "High-performance scratch remover. Effectively removes scratches from various surfaces with professional results.",
+                price: "850",
+                category: "maintenance",
+                image_url: "house_care/formula 1 scratch out.jpeg"
+            },
+            {
+                id: 17,
+                name: "Formula 1 Dry Clean",
+                description: "Dry cleaning solution for delicate fabrics and surfaces. Safe and effective cleaning without water.",
+                price: "650",
+                category: "cleaning",
+                image_url: "house_care/formulla 1 dry clean.jpeg"
+            },
+            {
+                id: 18,
+                name: "Leather Protectant",
+                description: "Advanced leather protectant that creates a protective barrier. Prevents damage and maintains leather quality.",
+                price: "800",
+                category: "furniture",
+                image_url: "house_care/leather protectant.jpeg"
+            },
+            {
+                id: 19,
+                name: "Microfiber Cloth (Pack of 2)",
+                description: "High-quality microfiber cloths for cleaning. Soft, absorbent, and reusable for various cleaning tasks.",
+                price: "300",
+                category: "accessories",
+                image_url: "house_care/microfiber cloth pack of 2.webp"
+            },
+            {
+                id: 20,
+                name: "Microfiber Pack of 4",
+                description: "Value pack of 4 microfiber cloths. Perfect for comprehensive cleaning tasks around the house.",
+                price: "500",
+                category: "accessories",
+                image_url: "house_care/microfiber pack of 4.jpeg"
+            },
+            {
+                id: 21,
+                name: "Microfiber Towel (Pack of 2)",
+                description: "Premium microfiber towels for heavy-duty cleaning. Large size and superior absorbency.",
+                price: "400",
+                category: "accessories",
+                image_url: "house_care/microfiber towel pack of 2.webp"
+            },
+                        {
+                id: 22,
+                name: "Microfiber Towel (Pack of 4)",
+                description: "Bulk pack of microfiber towels. Ideal for professional cleaning or large households.",
+                price: "700",
+                category: "accessories",
+                image_url: "house_care/microfiber towel back of 4.webp"
+            },
+            {
+                id: 23,
+                name: "Sofa Cleaner",
+                description: "Specialized sofa cleaner for upholstery. Removes stains and odors while protecting fabric surfaces.",
+                price: "750",
+                category: "furniture",
+                image_url: "house_care/sofa cleaner.jpeg"
             }
-            showSlide(currentSlide);
+        ];
+
+        // Shopping Cart Functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const whatsappNumber = '+923258573925'; // MSM Traders WhatsApp number
+
+        // Load products
+        function loadProducts() {
+            allProducts = [...sampleProducts];
+            filteredProducts = [...allProducts];
+            renderProducts();
         }
 
-        // Auto-advance slides every 4 seconds
-        setInterval(() => {
-            changeSlide(1);
-        }, 4000);
+        // Render products
+        function renderProducts() {
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const productsToShow = filteredProducts.slice(startIndex, endIndex);
+            
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = '';
+            
+            productsToShow.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="image-container">
+                        <img src="${product.image_url}" alt="${product.name}" loading="lazy" decoding="async">
+                        </div>
+                    <h3>${product.name}</h3>
+                `;
+                // Attach product data for Quick View
+                productCard.dataset.name = product.name || '';
+                productCard.dataset.image = product.image_url || '';
+                productCard.dataset.price = product.price || '';
+                productCard.dataset.desc = product.description || '';
+                
+                // Add click event to open Quick View
+                productCard.addEventListener('click', function() {
+                    const dataName = this.dataset.name || '';
+                    const dataImg = this.dataset.image || '';
+                    const dataDesc = this.dataset.desc || '';
+                    const rawPrice = this.dataset.price || '';
+                    const priceText = rawPrice ? `₨${rawPrice}` : 'Contact for Pricing';
+                    
+                    openQuickView({
+                        name: dataName,
+                        image: dataImg,
+                        description: dataDesc,
+                        priceText: priceText
+                    });
+                });
+                
+                productsGrid.appendChild(productCard);
+            });
+            
+            updatePagination();
+        }
 
-        // Cart functionality
-        let cart = [];
-        let cartCount = 0;
+        // Update pagination
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+            const pageInfo = document.getElementById('pageInfo');
+            const prevBtn = document.getElementById('prevPage');
+            const nextBtn = document.getElementById('nextPage');
+            
+            pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === totalPages;
+        }
 
-        // Wishlist functionality
-        let wishlist = [];
-        let wishlistCount = 0;
+        // Filter products
+        function filterProducts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const sortBy = document.getElementById('sortBy').value;
+            
+            filteredProducts = allProducts.filter(product => {
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm) || 
+                                    product.description.toLowerCase().includes(searchTerm);
+                const matchesCategory = !categoryFilter || product.category === categoryFilter;
+                
+                return matchesSearch && matchesCategory;
+            });
+            
+            // Sort products
+            if (sortBy === 'name') {
+                filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (sortBy === 'category') {
+                filteredProducts.sort((a, b) => a.category.localeCompare(b.category));
+            }
+            
+            currentPage = 1;
+            renderProducts();
+        }
 
+
+
+        // Update cart count display - Updated with retry logic
+        function updateCartCount() {
+            const cartCount = document.getElementById('cart-count');
+            if (!cartCount) {
+                console.log('cart-count element not found, retrying in 100ms...');
+                // Retry after a short delay
+                setTimeout(updateCartCount, 100);
+                return;
+            }
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            console.log('Cart count updated to:', totalItems);
+        }
+
+        // Update cart total
+        function updateCartTotal() {
+            const cartTotal = document.getElementById('cart-total');
+            if (!cartTotal) {
+                console.log('cart-total element not found, retrying...');
+                setTimeout(updateCartTotal, 100);
+                return;
+            }
+            const total = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+            cartTotal.textContent = total > 0 ? `₨${total.toFixed(2)}` : `Contact for Pricing`;
+        }
+
+        // Render cart items
+        function renderCart() {
+            const cartItems = document.getElementById('cart-items');
+            if (!cartItems) {
+                console.error('cartItems element not found!');
+                return;
+            }
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div id="empty-cart" class="text-center py-8">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">Your cart is empty</p>
+                    </div>
+                `;
+            } else {
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item bg-gray-800 rounded-lg p-3 mb-3 border border-gray-700">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-home text-yellow-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-yellow-400 font-semibold text-sm">${item.name}</h4>
+                                    <p class="text-gray-400 text-xs">₨${item.price || 'Contact for pricing'}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}" data-action="decrease">-</button>
+                                <span class="text-yellow-400 font-semibold text-sm w-8 text-center">${item.quantity}</span>
+                                <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}" data-action="increase">+</button>
+                                <button class="remove-item bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            updateCartCount();
+            updateCartTotal();
+        }
+
+        // Add item to cart
         function addToCart(name, price, image) {
-            // Check if item already exists in cart
             const existingItem = cart.find(item => item.name === name);
             
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                cart.push({
+                const newItem = {
                     name: name,
                     price: price,
                     image: image,
                     quantity: 1
-                });
+                };
+                cart.push(newItem);
             }
             
-            cartCount++;
-            updateCartCount();
-            showCartNotification(name);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            showNotification('Item added to cart!', 'success');
         }
 
-        function updateCartCount() {
-            const cartCountElement = document.getElementById('cart-count');
-            const cartCountMobileElement = document.getElementById('cart-count-mobile');
-            if (cartCountElement) {
-                cartCountElement.textContent = cartCount;
-            }
-            if (cartCountMobileElement) {
-                cartCountMobileElement.textContent = cartCount;
-            }
+        // Remove item from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            showNotification('Item removed from cart!', 'info');
         }
 
+        // Update item quantity
+        function updateQuantity(index, action) {
+            if (action === 'increase') {
+                cart[index].quantity += 1;
+            } else if (action === 'decrease') {
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity -= 1;
+                } else {
+                    removeFromCart(index);
+                    return;
+                }
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        // Clear cart
+        function clearCart() {
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            showNotification('Cart cleared!', 'info');
+        }
+
+        // Send order via WhatsApp
+        function sendWhatsAppOrder() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!', 'error');
+                return;
+            }
+            
+            let message = `Hello! I would like to place an order:\n\n`;
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = parseFloat(item.price) * item.quantity;
+                total += itemTotal;
+                message += `• ${item.name} x${item.quantity} - ₨${item.price} each = ₨${itemTotal.toFixed(2)}\n`;
+            });
+            
+            message += `\nTotal: ₨${total.toFixed(2)}\n\nPlease confirm my order. Thank you!`;
+            
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Cash on Delivery Functions
+        function openCODPayment() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!', 'error');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+            document.getElementById('cod-total').textContent = total > 0 ? `₨${total.toFixed(2)}` : `Contact for Pricing`;
+            
+            // Show COD modal
+            const codModal = document.getElementById('cod-modal');
+            codModal.classList.remove('hidden');
+            codModal.classList.add('show');
+        }
+        
+        function closeCODPayment() {
+            const codModal = document.getElementById('cod-modal');
+            codModal.classList.add('hidden');
+            codModal.classList.remove('show');
+            
+            // Reset form
+            document.getElementById('cod-name').value = '';
+            document.getElementById('cod-phone').value = '';
+            document.getElementById('cod-address').value = '';
+            document.getElementById('cod-city').value = '';
+        }
+        
+        function confirmCODPayment() {
+            const name = document.getElementById('cod-name').value.trim();
+            const phone = document.getElementById('cod-phone').value.trim();
+            const address = document.getElementById('cod-address').value.trim();
+            const city = document.getElementById('cod-city').value.trim();
+            
+            // Validate required fields
+            if (!name) {
+                showNotification('Please enter your full name!', 'error');
+                return;
+            }
+            
+            if (!phone) {
+                showNotification('Please enter your phone number!', 'error');
+                return;
+            }
+            
+            if (!isValidPhoneNumber(phone)) {
+                showNotification('Please enter a valid phone number!', 'error');
+                return;
+            }
+            
+            if (!address) {
+                showNotification('Please enter your delivery address!', 'error');
+                return;
+            }
+            
+            if (!city) {
+                showNotification('Please enter your city!', 'error');
+                return;
+            }
+            
+            // Create order summary
+            let orderSummary = `Cash on Delivery Order:\n\n`;
+            cart.forEach(item => {
+                orderSummary += `• ${item.name} x${item.quantity}\n`;
+            });
+            orderSummary += `\nPlease provide pricing\n`;
+            orderSummary += `Customer Name: ${name}\n`;
+            orderSummary += `Phone Number: ${phone}\n`;
+            orderSummary += `Delivery Address: ${address}\n`;
+            orderSummary += `City: ${city}\n`;
+            orderSummary += `Payment Method: Cash on Delivery`;
+            
+            // Send order details via WhatsApp
+            const message = `Hello! I would like to place a Cash on Delivery order:\n\n${orderSummary}\n\nPlease confirm my order and arrange delivery. Thank you!`;
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            showNotification('COD order submitted successfully! We will contact you shortly to confirm delivery.', 'success');
+            
+            // Clear cart and close modal
+            clearCart();
+            closeCODPayment();
+        }
+        
+        function isValidPhoneNumber(phone) {
+            // Pakistani phone number validation (03XXXXXXXXX format)
+            const phoneRegex = /^03\d{9}$/;
+            return phoneRegex.test(phone);
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg text-white font-semibold transition-all duration-300 transform translate-x-full`;
+            
+            switch(type) {
+                case 'success':
+                    notification.className += ' bg-green-600';
+                    break;
+                case 'error':
+                    notification.className += ' bg-red-600';
+                    break;
+                default:
+                    notification.className += ' bg-blue-600';
+            }
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Animate out and remove
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Toggle mobile menu
         function toggleMenu() {
+            console.log('toggleMenu function called');
             const menu = document.getElementById('navbar-menu');
             const hamburger = document.getElementById('hamburger');
             
+            console.log('Toggle menu clicked'); // Debug log
+            console.log('Menu element:', menu);
+            console.log('Hamburger element:', hamburger);
+            
             if (menu && hamburger) {
-                menu.classList.toggle('active');
-                hamburger.classList.toggle('active');
-            }
-        }
-        
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenu) {
-                mobileMenu.classList.toggle('hidden');
-            }
-        }
-
-        function showCartNotification(productName) {
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-20 right-4 bg-golden text-black px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
-            notification.innerHTML = `
-                            <div class="flex items-center">
-                    <i class="fas fa-check-circle mr-2"></i>
-                    <span>${productName} added to cart!</span>
-                            </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Animate in
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-            
-            // Remove after 3 seconds
-            setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-
-        function toggleCart() {
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
-            
-            // Create cart modal
-            const cartModal = document.createElement('div');
-            cartModal.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4';
-            cartModal.innerHTML = `
-                <div class="bg-gray-900 border border-golden rounded-lg p-4 sm:p-6 max-w-md w-full max-h-[80vh] overflow-y-auto">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-bold text-golden">Shopping Cart</h3>
-                        <button onclick="closeCart()" class="text-golden hover:text-yellow-300">
-                            <i class="fas fa-times text-xl"></i>
-                        </button>
-                                    </div>
-                    <div id="cart-items">
-                        ${cart.map(item => `
-                            <div class="flex items-center justify-between py-3 border-b border-gray-700">
-                            <div class="flex items-center">
-                                    <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded mr-3">
-                            <div>
-                                        <h4 class="text-golden font-semibold">${item.name}</h4>
-                                        <p class="text-gray-300 text-sm">$${item.price} x ${item.quantity}</p>
-                            </div>
-                            </div>
-                                <div class="flex items-center">
-                                    <button onclick="removeFromCart('${item.name}')" class="text-red-400 hover:text-red-300 mr-2">
-                                        <i class="fas fa-trash"></i>
-                        </button>
-                                    <span class="text-golden font-bold">$${(item.price * item.quantity).toFixed(2)}</span>
-                    </div>
-                </div>
-                        `).join('')}
-                    </div>
-                    <div class="mt-4 pt-4 border-t border-gray-700">
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-lg font-bold text-golden">Total: $${getCartTotal().toFixed(2)}</span>
-                </div>
-                        <button onclick="checkout()" class="w-full golden-gradient text-black py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                            Proceed to Checkout
-                                     </button>
-                                </div>
-                            </div>
-            `;
-            
-            document.body.appendChild(cartModal);
-        }
-
-        function closeCart() {
-            const cartModal = document.querySelector('.fixed.inset-0');
-            if (cartModal) {
-                document.body.removeChild(cartModal);
-            }
-        }
-
-        function removeFromCart(productName) {
-            const itemIndex = cart.findIndex(item => item.name === productName);
-            if (itemIndex !== -1) {
-                cartCount -= cart[itemIndex].quantity;
-                cart.splice(itemIndex, 1);
-                updateCartCount();
+                const isActive = menu.classList.contains('active');
+                console.log('Menu is currently active:', isActive);
                 
-                // Refresh cart modal
-                closeCart();
-                if (cart.length > 0) {
-                    toggleCart();
+                if (isActive) {
+                    menu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    console.log('Menu closed');
+                } else {
+                    menu.classList.add('active');
+                    hamburger.classList.add('active');
+                    console.log('Menu opened');
                 }
+            } else {
+                console.log('Menu or hamburger not found');
+                console.log('Menu element:', menu);
+                console.log('Hamburger element:', hamburger);
             }
         }
 
-        function getCartTotal() {
-            return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-        }
+        // Make toggleMenu globally accessible
+        window.toggleMenu = toggleMenu;
 
-        function checkout() {
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
-                return;
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing...');
+            loadProducts();
+            
+            // Debug: Check if elements exist
+            const menu = document.getElementById('navbar-menu');
+            const hamburger = document.getElementById('hamburger');
+            console.log('Menu element found:', !!menu);
+            console.log('Hamburger element found:', !!hamburger);
+            
+            // Add event listener to hamburger
+            if (hamburger) {
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Hamburger clicked via event listener');
+                    alert('Hamburger clicked!'); // Test alert
+                    toggleMenu();
+                });
+            } else {
+                console.log('Hamburger element not found during initialization');
             }
             
-            alert(`Checkout initiated! Total: $${getCartTotal().toFixed(2)}\n\nItems: ${cart.map(item => `${item.name} (${item.quantity})`).join(', ')}`);
             
-            // Clear cart after checkout
-            cart = [];
-            cartCount = 0;
-            updateCartCount();
-            closeCart();
-        }
-
-        // Wishlist functions
-        function addToWishlist(name, price, image) {
-            // Check if item already exists in wishlist
-            const existingItem = wishlist.find(item => item.name === name);
-            
-            if (existingItem) {
-                showWishlistNotification(`${name} is already in your wishlist!`);
-                return;
-            }
-            
-            wishlist.push({
-                name: name,
-                price: price,
-                image: image
+            // Close mobile menu when clicking on menu items
+            const menuItems = document.querySelectorAll('.navbar-menu a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const menu = document.getElementById('navbar-menu');
+                    if (menu && menu.classList.contains('active')) {
+                        menu.classList.remove('active');
+                        const hamburger = document.getElementById('hamburger');
+                        if (hamburger) {
+                            hamburger.classList.remove('active');
+                        }
+                    }
+                });
             });
             
-            wishlistCount++;
-            updateWishlistCount();
-            showWishlistNotification(`${name} added to wishlist!`);
-        }
-
-        function updateWishlistCount() {
-            const wishlistCountElement = document.getElementById('wishlist-count');
-            if (wishlistCountElement) {
-                wishlistCountElement.textContent = wishlistCount;
-            }
-        }
-
-        function showWishlistNotification(message) {
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-20 right-4 bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
-            notification.innerHTML = `
-                <div class="flex items-center">
-                    <i class="fas fa-heart mr-2"></i>
-                    <span>${message}</span>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Animate in
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-            
-            // Remove after 3 seconds
-            setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-
-        function toggleWishlist() {
-            if (wishlist.length === 0) {
-                alert('Your wishlist is empty!');
-                return;
-            }
-            
-            // Create wishlist modal
-            const wishlistModal = document.createElement('div');
-            wishlistModal.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4';
-            wishlistModal.innerHTML = `
-                <div class="bg-gray-900 border border-golden rounded-lg p-4 sm:p-6 max-w-md w-full max-h-[80vh] overflow-y-auto">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-bold text-golden">❤️ My Wishlist</h3>
-                        <button onclick="closeWishlist()" class="text-golden hover:text-yellow-300">
-                            <i class="fas fa-times text-xl"></i>
-                        </button>
-                    </div>
-                    <div id="wishlist-items">
-                        ${wishlist.map(item => `
-                            <div class="flex items-center justify-between py-3 border-b border-gray-700">
-                                <div class="flex items-center">
-                                    <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded mr-3">
-                                    <div>
-                                        <h4 class="text-golden font-semibold">${item.name}</h4>
-                                        <p class="text-gray-300 text-sm">$${item.price}</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <button onclick="addToCart('${item.name}', ${item.price}, '${item.image}'); removeFromWishlist('${item.name}');" class="bg-golden text-black px-3 py-1 rounded text-sm font-semibold hover:opacity-90">
-                                        Add to Cart
-                                    </button>
-                                    <button onclick="removeFromWishlist('${item.name}')" class="text-red-400 hover:text-red-300">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                    <div class="mt-4 pt-4 border-t border-gray-700 text-center">
-                        <p class="text-gray-300">${wishlist.length} item(s) in wishlist</p>
-                    </div>
-                </div>
-            `;
-            
-            document.body.appendChild(wishlistModal);
-        }
-
-        function closeWishlist() {
-            const wishlistModal = document.querySelector('.fixed.inset-0');
-            if (wishlistModal) {
-                document.body.removeChild(wishlistModal);
-            }
-        }
-
-        function removeFromWishlist(productName) {
-            const itemIndex = wishlist.findIndex(item => item.name === productName);
-            if (itemIndex !== -1) {
-                wishlist.splice(itemIndex, 1);
-                wishlistCount--;
-                updateWishlistCount();
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                const menu = document.getElementById('navbar-menu');
+                const hamburger = document.getElementById('hamburger');
                 
-                // Refresh wishlist modal
-                closeWishlist();
-                if (wishlist.length > 0) {
-                    toggleWishlist();
+                if (menu && menu.classList.contains('active')) {
+                    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                        menu.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
                 }
+            });
+            
+            // Initialize cart with a delay to ensure DOM is fully ready
+            setTimeout(() => {
+                console.log('Initializing cart...');
+            renderCart();
+            }, 200);
+            
+            // Fallback initialization after longer delay
+            setTimeout(() => {
+                console.log('Fallback cart initialization...');
+                updateCartCount();
+            }, 500);
+            
+            // Cart button event listener
+            const cartButton = document.getElementById('cart-button');
+            const cartModal = document.getElementById('cart-modal');
+            const closeCart = document.getElementById('close-cart');
+            const clearCartBtn = document.getElementById('clear-cart');
+            const checkoutWhatsAppBtn = document.getElementById('checkout-whatsapp');
+            
+            // Open cart modal
+            if (cartButton) {
+                cartButton.addEventListener('click', function() {
+                    cartModal.classList.remove('hidden');
+                    cartModal.classList.add('show');
+                });
+            }
+            
+            // Close cart modal
+            if (closeCart) {
+                closeCart.addEventListener('click', function() {
+                    cartModal.classList.add('hidden');
+                    cartModal.classList.remove('show');
+                });
+            }
+            
+            // Close cart modal when clicking outside
+            if (cartModal) {
+                cartModal.addEventListener('click', function(e) {
+                    if (e.target === cartModal) {
+                        cartModal.classList.add('hidden');
+                        cartModal.classList.remove('show');
+                    }
+                });
+            }
+            
+            // Clear cart
+            if (clearCartBtn) {
+                clearCartBtn.addEventListener('click', function() {
+                    clearCart();
+                });
+            }
+            
+            // Checkout via WhatsApp
+            if (checkoutWhatsAppBtn) {
+                checkoutWhatsAppBtn.addEventListener('click', function() {
+                    sendWhatsAppOrder();
+                });
+            }
+            
+            // Cash on Delivery Event Listeners
+            const checkoutCODBtn = document.getElementById('checkout-cod');
+            const codModal = document.getElementById('cod-modal');
+            const closeCODBtn = document.getElementById('close-cod');
+            const cancelCODBtn = document.getElementById('cancel-cod');
+            const confirmCODBtn = document.getElementById('confirm-cod');
+            
+            // Open COD payment modal
+            if (checkoutCODBtn) {
+                checkoutCODBtn.addEventListener('click', function() {
+                    openCODPayment();
+                });
+            }
+            
+            // Close COD payment modal
+            if (closeCODBtn) {
+                closeCODBtn.addEventListener('click', function() {
+                    closeCODPayment();
+                });
+            }
+            
+            // Cancel COD payment
+            if (cancelCODBtn) {
+                cancelCODBtn.addEventListener('click', function() {
+                    closeCODPayment();
+                });
+            }
+            
+            // Confirm COD payment
+            if (confirmCODBtn) {
+                confirmCODBtn.addEventListener('click', function() {
+                    confirmCODPayment();
+                });
+            }
+            
+            // Close COD modal when clicking outside
+            if (codModal) {
+                codModal.addEventListener('click', function(e) {
+                    if (e.target === codModal) {
+                        closeCODPayment();
+                    }
+                });
+            }
+            
+            // Filter event listeners
+            document.getElementById('searchInput').addEventListener('input', filterProducts);
+            document.getElementById('categoryFilter').addEventListener('change', filterProducts);
+            document.getElementById('sortBy').addEventListener('change', filterProducts);
+            
+            // Pagination event listeners
+            document.getElementById('prevPage').addEventListener('click', function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderProducts();
+                }
+            });
+            
+            document.getElementById('nextPage').addEventListener('click', function() {
+                const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderProducts();
+                }
+            });
+            
+            // Add to cart buttons
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('add-to-cart-btn')) {
+                    const name = e.target.dataset.name;
+                    const price = e.target.dataset.price;
+                    const image = e.target.dataset.image;
+                    addToCart(name, price, image);
+                }
+                
+                // Quantity buttons
+                if (e.target.classList.contains('quantity-btn')) {
+                    const index = parseInt(e.target.dataset.index);
+                    const action = e.target.dataset.action;
+                    updateQuantity(index, action);
+                }
+                
+                // Remove item buttons
+                if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
+                    const index = parseInt(e.target.dataset.index || e.target.closest('.remove-item').dataset.index);
+                    removeFromCart(index);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Quick View helpers
+        (function() {
+            const modal = document.getElementById('quickview-modal');
+            const nameEl = document.getElementById('qv-name');
+            const imgEl = document.getElementById('qv-image');
+            const descEl = document.getElementById('qv-desc');
+            const priceEl = document.getElementById('qv-price');
+            const addBtn = document.getElementById('qv-add');
+            const closeBtn = document.getElementById('qv-close');
+
+            function parsePrice(text) {
+                if (!text) return '';
+                const match = text.replace(/[,\s]/g, '').match(/(₨|\$)?(\d+(?:\.\d+)?)/);
+                return match ? match[2] : '';
+            }
+
+            function smartAddToCart(name, price, image) {
+                try { if (typeof addToCart === 'function') { addToCart(name, price, image); return; } } catch(e) {}
+                try { if (typeof addToCart === 'function') { addToCart(name, image); return; } } catch(e) {}
+                alert('Added to cart: ' + name);
+            }
+
+            window.openQuickView = function(data) {
+                nameEl.textContent = data.name || 'Product';
+                imgEl.src = data.image || '';
+                imgEl.alt = data.name || 'Product';
+                descEl.textContent = data.description || '—';
+                priceEl.textContent = data.priceText || 'Contact for Pricing';
+                addBtn.onclick = function() {
+                    smartAddToCart(data.name || 'Product', parsePrice(data.priceText), data.image || '');
+                    modal.classList.add('hidden');
+                };
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            };
+
+            window.closeQuickView = function() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            };
+
+            closeBtn.addEventListener('click', closeQuickView);
+            modal.addEventListener('click', function(e) { if (e.target === modal) closeQuickView(); });
+
+            // Open on product card click (ignore buttons/links)
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('button, a')) return;
+                const wrapper = e.target.closest('#productsGrid > div');
+                if (!wrapper) return;
+                const dataName = wrapper.dataset.name || (wrapper.querySelector('h3') ? wrapper.querySelector('h3').textContent.trim() : '');
+                const dataImg = wrapper.dataset.image || (wrapper.querySelector('img') ? wrapper.querySelector('img').src : '');
+                const dataDesc = wrapper.dataset.desc || (wrapper.querySelector('p') ? wrapper.querySelector('p').textContent.trim() : '');
+                const rawPrice = wrapper.dataset.price || '';
+                const priceText = rawPrice ? `₨${rawPrice}` : 'Contact for Pricing';
+                openQuickView({
+                    name: dataName,
+                    image: dataImg,
+                    description: dataDesc,
+                    priceText: priceText
+                });
+            });
+        })();
+    </script>
+
+    <!-- Category Quick Menu (mobile) -->
+    <div id="category-menu" class="fixed inset-x-0 bottom-16 mx-4 bg-gray-900 border border-yellow-400 rounded-lg shadow-xl p-3 space-y-2 z-50 hidden">
+        <a href="car_care.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
+            <span><i class="fas fa-car mr-2"></i>Car Care</span>
+            <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+        <a href="house_care.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
+            <span><i class="fas fa-home mr-2"></i>House Care</span>
+            <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+        <a href="premium_perfumes.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
+            <span><i class="fas fa-spray-can mr-2"></i>Perfumes</span>
+            <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+        <a href="crockery.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
+            <span><i class="fas fa-utensils mr-2"></i>Crockery</span>
+            <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+        </div>
+
+    <script>
+
+        function openCategoryMenu() {
+            const menu = document.getElementById('category-menu');
+            if (!menu) return;
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => { document.addEventListener('click', closeOnOutsideClick, { once: true }); }, 0);
+                } else {
+                menu.classList.add('hidden');
             }
         }
 
-
-        // Initialize cart and wishlist counts on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            updateCartCount();
-            updateWishlistCount();
-        });
-
-        // Deal buttons functionality
-        function showFlashSale() {
-            alert('🔥 FLASH SALE! 🔥\n\nUp to 50% OFF on selected items!\n\nVisit our deals page to see all discounted products.\n\nLimited time offer - Shop now!');
+        function closeOnOutsideClick(e) {
+            const menu = document.getElementById('category-menu');
+            const trigger = document.getElementById('category-nav');
+            if (!menu || !trigger) return;
+            if (!menu.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
+                menu.classList.add('hidden');
+            }
         }
 
-        function showNewArrivals() {
-            alert('🆕 NEW ARRIVALS! 🆕\n\nFresh products just landed!\n\nCheck out our latest collection of premium products.\n\nBe the first to get your hands on these new items!');
-        }
-
-        function showShippingInfo() {
-            alert('🚚 FREE SHIPPING INFO 🚚\n\n✅ Free shipping on orders over 5000 rps\n✅ Fast and reliable delivery\n✅ Track your order in real-time\n✅ Safe and secure packaging\n\nOrder now and enjoy free shipping!');
+        // Provide toggleCart if not defined on this page
+        if (typeof toggleCart !== 'function') {
+            window.toggleCart = function() {
+                const cartModal = document.getElementById('cart-modal');
+                if (cartModal) {
+                    cartModal.classList.remove('hidden');
+                    cartModal.classList.add('show');
+                    return;
+                }
+                alert('Your cart is empty!');
+            }
         }
     </script>
 </body>
