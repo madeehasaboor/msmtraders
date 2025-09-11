@@ -464,7 +464,7 @@
         /* Mobile responsive */
         @media (max-width: 768px) {
             .product-card .image-container {
-                height: 150px;        /* smaller image area for mobile */
+                height: 120px;        /* smaller image area for mobile - same as house_care */
             }
             
             .product-card img {
@@ -474,6 +474,41 @@
             .product-card h3 {
                 font-size: 0.875rem;
                 line-height: 1.3;
+            }
+            
+            /* Mobile optimizer for product display - same as house_care */
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.75rem !important;
+            }
+            
+            /* Responsive grids */
+            .grid {
+                gap: 0.75rem;
+            }
+            
+            /* Prevent text overflow */
+            h1, h2, h3, h4, h5, h6, p, span, div {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+            
+            /* Touch targets for mobile */
+            button, .clickable {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            /* Container mobile optimization */
+            .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            
+            /* All product grids mobile optimization */
+            .grid.grid-cols-2.lg\\:grid-cols-5 {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.75rem !important;
             }
             
             /* Quick view modal mobile */
