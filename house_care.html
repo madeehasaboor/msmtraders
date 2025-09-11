@@ -134,10 +134,15 @@
                 z-index: 999;
                 max-height: calc(100vh - 70px);
                 overflow-y: auto;
+                width: 100%;
+                box-sizing: border-box;
             }
             
             .navbar-menu.active {
                 display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                transform: translateY(0) !important;
             }
             
             .navbar-menu li {
@@ -171,6 +176,7 @@
                 border-radius: 4px;
                 min-width: 40px;
                 min-height: 40px;
+                border: 2px solid #fbbf24;
             }
             
             .navbar-logo {
@@ -282,18 +288,29 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
-        /* Product Image */
-        .product-card img {
+        /* Product card image area */
+        .product-card .image-container {
             width: 100%;
-            height: 250px;       /* desktop: 250x250 */
-            object-fit: cover;   /* crop/fit nicely */
-            border-radius: 8px;
+            height: 250px;          /* desktop height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;       /* hides extra image parts */
+            background: #fff;       /* optional: keeps background neat */
+            border-radius: 8px;     /* optional: rounded edges */
         }
 
-        /* Mobile: 250x250 (same size for mobile) */
-        @media screen and (max-width: 768px) {
-            .product-card img {
-                height: 250px;   /* mobile: 250x250 */
+        /* Product images */
+        .product-card .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;    /* shows full product without stretching */
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .product-card .image-container {
+                height: 150px;        /* smaller image area for mobile */
             }
         }
 
@@ -406,7 +423,9 @@
                 </button>
             </div>
             <div class="p-4 space-y-4">
-                <img id="qv-image" src="" alt="Product" class="w-full max-h-[60vh] sm:max-h-[70vh] object-contain rounded-lg bg-black">
+                <div class="w-full h-[250px] sm:h-[300px] flex items-center justify-center bg-gray-100 rounded-lg overflow-hidden">
+                    <img id="qv-image" src="" alt="Product" class="max-w-full max-h-full object-contain">
+                </div>
                 <p id="qv-desc" class="text-gray-300 text-sm leading-relaxed">Description</p>
                 <div class="flex items-center justify-between">
                     <span id="qv-price" class="text-xl font-bold text-yellow-400">Contact for Pricing</span>
@@ -474,7 +493,7 @@
             </ul>
             
             <!-- Hamburger Menu -->
-            <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <button class="hamburger" id="hamburger">
                 ☰
             </button>
         </div>
@@ -767,7 +786,7 @@
                 description: "Powerful anti-rust formula that prevents and removes rust from metal surfaces. Long-lasting protection.",
                 price: "420",
                 category: "maintenance",
-                image_url: "house_care/aim anti rust 420 rps.jpg"
+                image_url: "house_care/aim anti rust 420 rps.jpeg"
             },
             {
                 id: 2,
@@ -775,7 +794,7 @@
                 description: "Versatile foamy cleaner for multiple surfaces. Removes dirt, grease, and stains effectively with rich foam action.",
                 price: "750",
                 category: "cleaning",
-                image_url: "house_care/aim foamy cleaner.jpg"
+                image_url: "house_care/aim foamy cleaner.jpeg"
             },
             {
                 id: 3,
@@ -783,7 +802,7 @@
                 description: "Premium furniture polish that protects and enhances wood surfaces. Leaves a beautiful shine and protects from damage.",
                 price: "650",
                 category: "furniture",
-                image_url: "house_care/aim furniture polish.jpg"
+                image_url: "house_care/aim furniture polish.jpeg"
             },
             {
                 id: 4,
@@ -791,7 +810,7 @@
                 description: "Streak-free glass cleaner for windows, mirrors, and glass surfaces. Professional results every time.",
                 price: "650",
                 category: "cleaning",
-                image_url: "house_care/aim glass cleaner.jpg"
+                image_url: "house_care/aim glass cleaner.jpeg"
             },
             {
                 id: 5,
@@ -799,7 +818,7 @@
                 description: "Gentle leather cleaner with jasmine fragrance. Safely cleans and conditions leather furniture and accessories.",
                 price: "800",
                 category: "furniture",
-                image_url: "house_care/aim leather cleaner jasmine.jpg"
+                image_url: "house_care/aim leather cleaner jasmine.jpeg"
             },
             {
                 id: 6,
@@ -807,7 +826,7 @@
                 description: "Effective leather cleaner with yellow formula. Removes dirt and stains while maintaining leather quality.",
                 price: "800",
                 category: "furniture",
-                image_url: "house_care/aim leather cleaner yellow.jpg"
+                image_url: "house_care/aim leather cleaner yellow.jpeg"
             },
             {
                 id: 7,
@@ -815,7 +834,7 @@
                 description: "Professional leather cleaner for all types of leather. Cleans, conditions, and protects leather surfaces.",
                 price: "400",
                 category: "furniture",
-                image_url: "house_care/aim leather cleaner.jpg"
+                image_url: "house_care/aim leather cleaner.jpeg"
             },
             {
                 id: 8,
@@ -823,7 +842,7 @@
                 description: "Heavy-duty foam cleaner for deep cleaning. Penetrates and lifts dirt from various surfaces effectively.",
                 price: "650",
                 category: "cleaning",
-                image_url: "house_care/dtr foam cleaner.jpg"
+                image_url: "house_care/dtr foam cleaner.jpeg"
             },
             {
                 id: 9,
@@ -831,7 +850,7 @@
                 description: "Professional glass cleaner for crystal clear results. Removes fingerprints, smudges, and streaks.",
                 price: "650",
                 category: "cleaning",
-                image_url: "house_care/dtr glass cleaner.jpg"
+                image_url: "house_care/dtr glass cleaner.jpeg"
             },
             {
                 id: 10,
@@ -839,7 +858,7 @@
                 description: "Specialized kitchen cleaner that removes grease, food stains, and kitchen grime. Safe for all kitchen surfaces.",
                 price: "800",
                 category: "kitchen",
-                image_url: "house_care/dtr kitchen cleaner.jpg"
+                image_url: "house_care/dtr kitchen cleaner.jpeg"
             },
             {
                 id: 11,
@@ -847,7 +866,7 @@
                 description: "Advanced leather cleaner that deeply cleans and conditions leather surfaces. Restores natural beauty.",
                 price: "750",
                 category: "furniture",
-                image_url: "house_care/dtr leather cleaner.jpg"
+                image_url: "house_care/dtr leather cleaner.jpeg"
             },
             {
                 id: 12,
@@ -855,7 +874,7 @@
                 description: "Professional scratch remover for various surfaces. Effectively removes scratches and restores smooth finish.",
                 price: "900",
                 category: "maintenance",
-                image_url: "house_care/dtr scratchout.jpg"
+                image_url: "house_care/dtr scratchout.jpeg"
             },
             {
                 id: 13,
@@ -863,7 +882,7 @@
                 description: "Safe electronic cleaner for computers, phones, and electronic devices. Removes dust and fingerprints safely.",
                 price: "500",
                 category: "electronics",
-                image_url: "house_care/electronic cleaner.jpg"
+                image_url: "house_care/electronic cleaner.jpeg"
             },
             {
                 id: 14,
@@ -871,7 +890,7 @@
                 description: "Premium glass cleaner with advanced formula. Provides streak-free shine on all glass surfaces.",
                 price: "600",
                 category: "cleaning",
-                image_url: "house_care/formula 1 glass cleaner.jpg"
+                image_url: "house_care/formula 1 glass cleaner.jpeg"
             },
             {
                 id: 15,
@@ -879,7 +898,7 @@
                 description: "Professional leather cleaner with advanced cleaning agents. Safely removes dirt and stains from leather.",
                 price: "700",
                 category: "furniture",
-                image_url: "house_care/formula 1 leather cleaner.jpg"
+                image_url: "house_care/formula 1 leather cleaner.jpeg"
             },
             {
                 id: 16,
@@ -887,7 +906,7 @@
                 description: "High-performance scratch remover. Effectively removes scratches from various surfaces with professional results.",
                 price: "850",
                 category: "maintenance",
-                image_url: "house_care/formula 1 scratch out.jpg"
+                image_url: "house_care/formula 1 scratch out.jpeg"
             },
             {
                 id: 17,
@@ -895,7 +914,7 @@
                 description: "Dry cleaning solution for delicate fabrics and surfaces. Safe and effective cleaning without water.",
                 price: "650",
                 category: "cleaning",
-                image_url: "house_care/formulla 1 dry clean.jpg"
+                image_url: "house_care/formulla 1 dry clean.jpeg"
             },
             {
                 id: 18,
@@ -903,7 +922,7 @@
                 description: "Advanced leather protectant that creates a protective barrier. Prevents damage and maintains leather quality.",
                 price: "800",
                 category: "furniture",
-                image_url: "house_care/leather protectant.jpg"
+                image_url: "house_care/leather protectant.jpeg"
             },
             {
                 id: 19,
@@ -911,47 +930,39 @@
                 description: "High-quality microfiber cloths for cleaning. Soft, absorbent, and reusable for various cleaning tasks.",
                 price: "300",
                 category: "accessories",
-                image_url: "house_care/microfiber cloth pack of 2.jpg"
+                image_url: "house_care/microfiber cloth pack of 2.webp"
             },
             {
                 id: 20,
-                name: "Microfiber Cloth (Single)",
-                description: "Single microfiber cloth for everyday cleaning. Soft texture and excellent absorbency for all surfaces.",
-                price: "150",
-                category: "accessories",
-                image_url: "house_care/microfiber cloth single.jpg"
-            },
-            {
-                id: 21,
                 name: "Microfiber Pack of 4",
                 description: "Value pack of 4 microfiber cloths. Perfect for comprehensive cleaning tasks around the house.",
                 price: "500",
                 category: "accessories",
-                image_url: "house_care/microfiber pack of 4.jpg"
+                image_url: "house_care/microfiber pack of 4.jpeg"
             },
             {
-                id: 22,
+                id: 21,
                 name: "Microfiber Towel (Pack of 2)",
                 description: "Premium microfiber towels for heavy-duty cleaning. Large size and superior absorbency.",
                 price: "400",
                 category: "accessories",
-                image_url: "house_care/microfiber towel pack of 2.jpg"
+                image_url: "house_care/microfiber towel pack of 2.webp"
             },
-            {
-                id: 23,
+                        {
+                id: 22,
                 name: "Microfiber Towel (Pack of 4)",
                 description: "Bulk pack of microfiber towels. Ideal for professional cleaning or large households.",
                 price: "700",
                 category: "accessories",
-                image_url: "house_care/microfiber towel back of 4.jpg"
+                image_url: "house_care/microfiber towel back of 4.webp"
             },
             {
-                id: 24,
+                id: 23,
                 name: "Sofa Cleaner",
                 description: "Specialized sofa cleaner for upholstery. Removes stains and odors while protecting fabric surfaces.",
                 price: "750",
                 category: "furniture",
-                image_url: "house_care/sofa cleaner.jpg"
+                image_url: "house_care/sofa cleaner.jpeg"
             }
         ];
 
@@ -979,7 +990,9 @@
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
                 productCard.innerHTML = `
-                    <img src="${product.image_url}" alt="${product.name}" loading="lazy" decoding="async">
+                    <div class="image-container">
+                        <img src="${product.image_url}" alt="${product.name}" loading="lazy" decoding="async">
+                        </div>
                     <h3>${product.name}</h3>
                 `;
                 // Attach product data for Quick View
@@ -1326,6 +1339,7 @@
 
         // Toggle mobile menu
         function toggleMenu() {
+            console.log('toggleMenu function called');
             const menu = document.getElementById('navbar-menu');
             const hamburger = document.getElementById('hamburger');
             
@@ -1353,6 +1367,9 @@
             }
         }
 
+        // Make toggleMenu globally accessible
+        window.toggleMenu = toggleMenu;
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM loaded, initializing...');
@@ -1370,8 +1387,11 @@
                     e.preventDefault();
                     e.stopPropagation();
                     console.log('Hamburger clicked via event listener');
+                    alert('Hamburger clicked!'); // Test alert
                     toggleMenu();
                 });
+            } else {
+                console.log('Hamburger element not found during initialization');
             }
             
             
