@@ -259,18 +259,14 @@
 
         /* Product Card */
         .product-card {
-            border: 1px solid #ddd;
+            background: #000;        /* black background */
             border-radius: 10px;
-            padding: 15px;
+            padding: 10px;           /* keep small padding only */
             text-align: center;
-            background: #000;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            
-            /* Fix height so all cards equal */
-            height: 350px;        /* adjust if needed */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            height: auto;            /* no fixed height */
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             position: relative;
@@ -284,20 +280,22 @@
         /* Product card image area */
         .product-card .image-container {
             width: 100%;
-            height: 250px;          /* desktop height */
+            height: 180px;          /* control image height */
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;       /* hides extra image parts */
-            background: #fff;       /* optional: keeps background neat */
-            border-radius: 8px;     /* optional: rounded edges */
+            background: #fff;       /* white background behind image */
+            border-radius: 8px;     /* rounded edges */
         }
 
         /* Product images */
         .product-card .image-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;    /* shows full product without stretching */
+            width: 100%;
+            height: 180px;           /* control image height */
+            object-fit: contain;     /* keep full image visible */
+            background: #fff;        /* white background behind image */
+            border-radius: 8px;
         }
 
         /* Mobile responsive */
@@ -305,14 +303,17 @@
             .product-card .image-container {
                 height: 120px;        /* smaller image area for mobile */
             }
+            
+            .product-card .image-container img {
+                height: 120px;        /* smaller image height for mobile */
+            }
         }
 
         /* Product Name */
         .product-card h3 {
-            font-size: 16px;
-            margin: 10px 0 0;
-            min-height: 40px;    /* reserve space for 2 lines */
+            margin: 10px 0 0 0;      /* small space below image */
             color: #fff;
+            font-size: 14px;
         }
 
         /* Add a small "Click to view" indicator */
