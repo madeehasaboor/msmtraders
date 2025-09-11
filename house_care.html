@@ -119,6 +119,20 @@
             color: #fbbf24;
         }
         
+        /* Cart Button */
+        #cart-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        #cart-count {
+            font-size: 0.75rem;
+            font-weight: bold;
+            min-width: 20px;
+            height: 20px;
+        }
+        
         /* Mobile menu */
         @media (max-width: 768px) {
             .navbar-menu {
@@ -177,6 +191,17 @@
                 min-width: 40px;
                 min-height: 40px;
                 border: 2px solid #fbbf24;
+            }
+            
+            /* Hide cart button text on mobile, show only icon */
+            #cart-button span:not(#cart-count) {
+                display: none;
+            }
+            
+            #cart-button {
+                padding: 0.5rem;
+                min-width: 40px;
+                min-height: 40px;
             }
             
             .navbar-logo {
@@ -482,9 +507,15 @@
                 <li><a href="premium_perfumes.html">Premium Perfumes</a></li>
                 <li><a href="crockery.html">Crockery</a></li>
                 <li><a href="laptops.html">Laptop Deals</a></li>
-                <li><a href="cart.html">Cart</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            
+            <!-- Cart Button -->
+            <button id="cart-button" class="relative bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-2 rounded-lg transition duration-200 flex items-center gap-1.5">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Cart</span>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            </button>
             
             <!-- Hamburger Menu -->
             <button class="hamburger" id="hamburger">
