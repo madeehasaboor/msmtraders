@@ -258,6 +258,182 @@
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
         }
+        
+        /* UI Optimizations */
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Enhanced focus states */
+        button:focus,
+        a:focus,
+        input:focus,
+        select:focus {
+            outline: 2px solid #fbbf24;
+            outline-offset: 2px;
+        }
+        
+        /* Improved button hover effects */
+        .btn-primary {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+        }
+        
+        /* Enhanced card hover effects */
+        .product-card {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Loading states */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        /* Improved typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        /* Better spacing */
+        .section-spacing {
+            padding: 3rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .section-spacing {
+                padding: 2rem 0;
+            }
+        }
+        
+        /* Enhanced shadows */
+        .shadow-enhanced {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .shadow-enhanced-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Improved animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Better form styling */
+        .form-input {
+            border: 2px solid #374151;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+            background: #1f2937;
+            color: white;
+        }
+        
+        .form-input:focus {
+            border-color: #fbbf24;
+            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+        }
+        
+        /* Improved accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Performance optimizations */
+        .will-change-transform {
+            will-change: transform;
+        }
+        
+        .will-change-opacity {
+            will-change: opacity;
+        }
+
+        /* Mobile responsive cart modal */
+        @media (max-width: 768px) {
+            #cart-modal .bg-gray-900 {
+                margin: 0.5rem;
+                max-width: calc(100vw - 1rem);
+                max-height: calc(100vh - 1rem);
+                width: 100%;
+            }
+            
+            #cart-modal .max-h-96 {
+                max-height: 50vh;
+            }
+            
+            #cart-modal .p-4 {
+                padding: 0.75rem;
+            }
+            
+            #cart-modal .text-xl {
+                font-size: 1.125rem;
+            }
+            
+            #cart-modal .flex.gap-2 {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            #cart-modal .flex.gap-2 button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #cart-modal .bg-gray-900 {
+                margin: 0.25rem;
+                max-width: calc(100vw - 0.5rem);
+                max-height: calc(100vh - 0.5rem);
+            }
+            
+            #cart-modal .max-h-96 {
+                max-height: 45vh;
+            }
+            
+            #cart-modal .p-4 {
+                padding: 0.5rem;
+            }
+            
+            #cart-modal .text-xl {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-black text-white">
@@ -309,7 +485,7 @@
                                 <div class="flex items-center space-x-3">
                                     <i class="fas fa-car text-yellow-400 group-hover:text-black text-lg"></i>
                                     <span class="font-medium text-yellow-400 group-hover:text-black">Car Care</span>
-                                </div>
+                    </div>
                                 <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                             </a>
                         </li>
@@ -318,7 +494,7 @@
                                 <div class="flex items-center space-x-3">
                                     <i class="fas fa-home text-yellow-400 group-hover:text-black text-lg"></i>
                                     <span class="font-medium text-yellow-400 group-hover:text-black">House Care</span>
-                                </div>
+                    </div>
                                 <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                             </a>
                         </li>
@@ -327,7 +503,7 @@
                                 <div class="flex items-center space-x-3">
                                     <i class="fas fa-spray-can text-yellow-400 group-hover:text-black text-lg"></i>
                                     <span class="font-medium text-yellow-400 group-hover:text-black">Premium Perfumes</span>
-                                </div>
+                </div>
                                 <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                             </a>
                         </li>
@@ -336,7 +512,7 @@
                                 <div class="flex items-center space-x-3">
                                     <i class="fas fa-utensils text-yellow-400 group-hover:text-black text-lg"></i>
                                     <span class="font-medium text-yellow-400 group-hover:text-black">Crockery</span>
-                                </div>
+                </div>
                                 <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                             </a>
                         </li>
@@ -345,13 +521,13 @@
                                 <div class="flex items-center space-x-3">
                                     <i class="fas fa-laptop text-yellow-400 group-hover:text-black text-lg"></i>
                                     <span class="font-medium text-yellow-400 group-hover:text-black">Laptops</span>
-                                </div>
+                </div>
                                 <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                             </a>
                         </li>
                     </ul>
-                </div>
             </div>
+        </div>
 
             <div class="flex flex-col lg:flex-row gap-8">
                 <!-- Categories Sidebar - Desktop Only -->
@@ -413,17 +589,17 @@
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <!-- Text Content -->
                         <div class="text-center lg:text-left">
-                    <h1 class="text-4xl md:text-6xl font-bold text-yellow-400 mb-4">Laptops</h1>
-                    <p class="text-xl text-yellow-400 mb-4">CLICK.SHOP.SMILE</p>
+            <h1 class="text-4xl md:text-6xl font-bold text-yellow-400 mb-4">Laptops</h1>
+            <p class="text-xl text-yellow-400 mb-4">CLICK.SHOP.SMILE</p>
                             <p class="text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0">Discover our premium collection of laptops for work, gaming, and everyday use. High-performance devices at unbeatable prices.</p>
-                        </div>
+        </div>
                         <!-- Hero Image -->
                         <div class="relative">
                             <img src="category imges/laptops_image.jpg.jfif" 
                                  alt="Laptops Collection" 
                                  class="w-full h-96 object-cover rounded-xl shadow-2xl border-2 border-yellow-400">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
-                        </div>
+    </div>
                     </div>
                 </div>
             </div>
@@ -511,10 +687,8 @@
                 <div>
                     <h4 class="text-yellow-400 font-semibold mb-4">Follow Us</h4>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/share/17A1BGDUkh/" target="_blank" class="text-gray-400 hover:text-yellow-400 transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/msmtraders222?igsh=NjA2enprZGZ3am81&utm_source=ig_contact_invite" target="_blank" class="text-gray-400 hover:text-yellow-400 transition duration-300"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -526,18 +700,18 @@
 
     <!-- Shopping Cart Modal -->
     <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-400">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-400 max-h-[90vh] sm:max-h-[80vh] overflow-hidden flex flex-col">
                 <!-- Cart Header -->
-                <div class="flex items-center justify-between p-4 border-b border-yellow-400">
-                    <h3 class="text-xl font-bold text-yellow-400">Shopping Cart</h3>
-                    <button id="close-cart" class="text-gray-400 hover:text-yellow-400 text-2xl font-bold">
+                <div class="flex items-center justify-between p-3 sm:p-4 border-b border-yellow-400 flex-shrink-0">
+                    <h3 class="text-lg sm:text-xl font-bold text-yellow-400">Shopping Cart</h3>
+                    <button id="close-cart" class="text-gray-400 hover:text-yellow-400 text-xl sm:text-2xl font-bold">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
                 
                 <!-- Cart Items -->
-                <div id="cart-items" class="max-h-96 overflow-y-auto p-4">
+                <div id="cart-items" class="flex-1 overflow-y-auto p-3 sm:p-4">
                     <!-- Cart items will be dynamically added here -->
                     <div id="empty-cart" class="text-center py-8">
                         <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
@@ -546,17 +720,17 @@
                 </div>
                 
                 <!-- Cart Footer -->
-                <div class="border-t border-yellow-400 p-4">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-lg font-semibold text-yellow-400">Total:</span>
-                        <span id="cart-total" class="text-xl font-bold text-yellow-400">$0.00</span>
+                <div class="border-t border-yellow-400 p-3 sm:p-4 flex-shrink-0">
+                    <div class="flex justify-between items-center mb-3 sm:mb-4">
+                        <span class="text-base sm:text-lg font-semibold text-yellow-400">Total:</span>
+                        <span id="cart-total" class="text-lg sm:text-xl font-bold text-yellow-400">$0.00</span>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-2">
-                        <button id="clear-cart" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm">
+                        <button id="clear-cart" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base">
                             Clear Cart
                         </button>
-                        <button id="checkout-whatsapp" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center">
-                            <i class="fab fa-whatsapp mr-2"></i>
+                        <button id="checkout-whatsapp" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-1 sm:mr-2"></i>
                             Order via WhatsApp
                         </button>
                     </div>
@@ -817,9 +991,21 @@
                 cart.push(newItem);
             }
             
+            // Show cart popup when item is added
+            showCartPopup();
+            
             localStorage.setItem('cart', JSON.stringify(cart));
             renderCart();
             showNotification('Item added to cart!', 'success');
+        }
+
+        // Show cart popup
+        function showCartPopup() {
+            const cartModal = document.getElementById('cart-modal');
+            if (cartModal) {
+                cartModal.classList.remove('hidden');
+                cartModal.classList.add('show');
+            }
         }
 
         // Remove item from cart
