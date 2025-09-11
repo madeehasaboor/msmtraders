@@ -31,6 +31,7 @@
         body {
             overflow-x: hidden;
             max-width: 100vw;
+            padding-top: 80px;
         }
         
         .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
@@ -43,6 +44,117 @@
         img, video, iframe {
             max-width: 100%;
             height: auto;
+        }
+        
+        /* Responsive Navbar */
+        .navbar {
+            background-color: #111;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0.75rem 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar-logo {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .navbar-logo img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 1.5rem;
+        }
+        
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+        }
+        
+        .navbar-menu a.active {
+            background-color: #fbbf24;
+            color: #000;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+        }
+        
+        /* Mobile menu */
+        @media (max-width: 768px) {
+            .navbar-menu {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #111;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+                display: none;
+            }
+            
+            .navbar-menu.active {
+                display: flex;
+            }
+            
+            .navbar-menu a {
+                padding: 1rem;
+                border-bottom: 1px solid #333;
+                text-align: center;
+            }
+            
+            .navbar-menu a:last-child {
+                border-bottom: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .navbar-logo {
+                font-size: 1.25rem;
+            }
+            
+            .navbar-logo img {
+                height: 35px;
+            }
         }
         
         /* Responsive text and elements */
@@ -216,45 +328,60 @@
             }
         }
 
+        /* Product card image area */
+        .product-card .image-container {
+            width: 100%;
+            height: 250px;          /* desktop height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;       /* hides extra image parts */
+            background: #000;       /* black background */
+            border-radius: 8px;     /* optional: rounded edges */
+        }
+
+        /* Product images */
+        .product-card .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;    /* shows full product without stretching */
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .product-card .image-container {
+                height: 150px;        /* smaller image area for mobile */
+            }
+        }
+
     </style>
 </head>
 <body class="bg-black">
-    <!-- Navigation -->
-    <nav class="bg-black border-b border-yellow-500 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <div class="flex items-center space-x-3">
-                        <div class="bg-black text-yellow-500 rounded-lg p-2 relative">
-                            <i class="fas fa-shopping-cart text-xl"></i>
-                            <i class="fas fa-star text-sm absolute top-0 right-0 transform translate-x-1 -translate-y-1"></i>
-                        </div>
-                        <div>
-                            <a href="index.html" class="text-2xl font-bold text-yellow-500">MSM Traders</a>
-                            <p class="text-xs text-yellow-400 uppercase tracking-wide">CLICK.SHOP.SMILE</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="index.html" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a>
-                        <a href="car_care.html" class="text-yellow-500 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Car Care</a>
-                        <a href="house_care.html" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium transition duration-200">House Care</a>
-                        <a href="premium_perfumes.html" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
-                        <a href="crockery.html" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Crockery</a>
-                        <a href="laptops.html" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
-                        <a href="deals.html" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
-                        <a href="contact.html" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact</a>
-                        <a href="cart.html" class="text-gray-300 hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium transition duration-200 flex items-center">
-                            <i class="fas fa-shopping-cart mr-2"></i>Cart
-                        </a>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <button class="text-gray-300 hover:text-yellow-500 p-2 rounded-lg hover:bg-gray-800 transition duration-200">
-                        <i class="fas fa-search text-xl"></i>
-                    </button>
-                </div>
+    <!-- Responsive Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="MSM TRADERS LOGO.jpeg" alt="MSM Traders Logo">
+                <span>MSM TRADERS</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <ul class="navbar-menu" id="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="car_care.html" class="active">Car Care</a></li>
+                <li><a href="house_care.html">House Care</a></li>
+                <li><a href="premium_perfumes.html">Premium Perfumes</a></li>
+                <li><a href="crockery.html">Crockery</a></li>
+                <li><a href="laptops.html">Laptop Deals</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <!-- Mobile Menu Button -->
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </nav>
@@ -568,34 +695,39 @@
                 <!-- Polish & Shiners Category -->
                 <div class="text-center" onclick="filterByCategory('polish and shinners')">
                     <img src="CAR_CARE CATEGORY/POLISH & SHINNER.jfif" alt="Polish & Shiners" class="w-full h-24 object-cover rounded-lg cursor-pointer">
-    </div>
+                    <p class="text-white text-sm mt-2 font-medium">Polish & Shiners</p>
+                </div>
 
                 <!-- Protectant Sprays Category -->
                 <div class="text-center" onclick="filterByCategory('protectant sprays')">
                     <img src="CAR_CARE CATEGORY/CAR PROTECTANT.jfif" alt="Protectant Sprays" class="w-full h-24 object-cover rounded-lg cursor-pointer">
-            </div>
+                    <p class="text-white text-sm mt-2 font-medium">Protectant Sprays</p>
+                </div>
 
                 <!-- Spray Paints Category -->
                 <div class="text-center" onclick="filterByCategory('spray paints')">
                     <img src="CAR_CARE CATEGORY/SPRAY PAINTS.jfif" alt="Spray Paints" class="w-full h-24 object-cover rounded-lg cursor-pointer">
+                    <p class="text-white text-sm mt-2 font-medium">Spray Paints</p>
                 </div>
 
                 <!-- Wash & Wax Category -->
                 <div class="text-center" onclick="filterByCategory('wash & wax')">
                     <img src="CAR_CARE CATEGORY/WASH & WAX.jfif" alt="Wash & Wax" class="w-full h-24 object-cover rounded-lg cursor-pointer">
-    </div>
+                    <p class="text-white text-sm mt-2 font-medium">Wash & Wax</p>
+                </div>
 
                 <!-- Cleaners Category -->
                 <div class="text-center" onclick="filterByCategory('cleaners')">
                     <img src="CAR_CARE CATEGORY/CLEANNERS.jfif" alt="Cleaners" class="w-full h-24 object-cover rounded-lg cursor-pointer">
+                    <p class="text-white text-sm mt-2 font-medium">Cleaners</p>
                 </div>
 
                 <!-- Car Perfumes Category -->
                 <div class="text-center" onclick="filterByCategory('car perfumes')">
                     <img src="CAR_CARE CATEGORY/CAR PERFUME.jfif" alt="Car Perfumes" class="w-full h-24 object-cover rounded-lg cursor-pointer">
-                    </div>
+                    <p class="text-white text-sm mt-2 font-medium">Car Perfumes</p>
                 </div>
-                </div>
+            </div>
             </div>
         </div>
     </div>
@@ -1773,9 +1905,9 @@
             } else {
                 return `
                     <div class="bg-gray-900 rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition duration-300 border border-yellow-500/50 product-card cursor-pointer">
-                        <div class="h-32 sm:h-40 md:h-44 lg:h-48 bg-gray-800 flex items-center justify-center">
+                        <div class="image-container">
                             ${product.image_url ? 
-                                `<img src="${product.image_url}" alt="${product.name}" class="w-full h-full object-cover" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.nextElementSibling.style.display='none';">
+                                `<img src="${product.image_url}" alt="${product.name}" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.nextElementSibling.style.display='none';">
                                 <i class="fas fa-car text-2xl sm:text-3xl md:text-4xl text-yellow-500" style="display: none;"></i>` :
                                 `<i class="fas fa-car text-2xl sm:text-3xl md:text-4xl text-yellow-500"></i>`
                             }
@@ -2394,6 +2526,16 @@
                 }
             }, 1000);
         });
+
+        // Toggle mobile menu
+        function toggleMenu() {
+            const menu = document.getElementById('navbar-menu');
+            const hamburger = document.getElementById('hamburger');
+            if (menu && hamburger) {
+                menu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            }
+        }
     </script>
     <script>
         // Quick View logic for car_care
