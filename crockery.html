@@ -820,6 +820,29 @@
             color: #fff;
         }
         
+        /* Cart badge styles */
+        .cart-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #f59e0b;
+            color: #000;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            min-width: 20px;
+            padding: 2px;
+        }
+        
+        .old-bottom-nav a {
+            position: relative;
+        }
+        
         /* Mobile styles */
         @media (max-width: 768px) {
             .old-bottom-nav {
@@ -2213,7 +2236,10 @@
         <a id="home-nav" href="index.html" onclick="setActiveNav('home')"><i class="fas fa-home"></i>Home</a>
         <a id="category-nav" href="javascript:void(0)" onclick="openCategoryMenu(); setActiveNav('category'); return false;"><i class="fas fa-th-large"></i>Category</a>
         <a id="deals-nav" href="deals.html" onclick="setActiveNav('deals')"><i class="fas fa-tags"></i>Deals</a>
-        <a id="cart-nav" href="cart.html" onclick="setActiveNav('cart')"><i class="fas fa-shopping-cart"></i>Cart</a>
+        <a id="cart-nav" href="cart.html" onclick="setActiveNav('cart')">
+            <i class="fas fa-shopping-cart"></i>Cart
+            <span id="cart-badge" class="cart-badge">0</span>
+        </a>
     </nav>
 
     <!-- Category Quick Menu (mobile) -->
