@@ -1091,56 +1091,62 @@
         // Sample products for all categories
         const sampleProducts = [
             // Polish & Shiners (curated)
-            { id: 1, name: "F1-131 BLACK GOLD TIRE SHINE", description: "High shine, dries fast, long lasting. NET: 680ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/black and gold tire shine.jpeg" },
-            { id: 2, name: "A-130 AIM TIRE GEL", description: "Moistening, lustrous, durable. NET: 500ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/aim tire gel 500ml.jpeg" },
-            { id: 3, name: "A-114 LEATHER AND TYRE WAX (LEMON)", description: "Leather & Tyre Wax. NET: 300ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/leather and tyre wax lemon.jpeg" },
-            { id: 4, name: "A-116 LEATHER AND TYRE WAX (ROSE)", description: "Leather & Tyre Wax (Rose). NET: 300ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/leather and tyre wax.jpeg" },
-            { id: 5, name: "F1-129 SCRATCH OUT (LIQUID)", description: "Fine scratch + swirl remover. NET: 207ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/scratch out liquid.jpeg" },
-            { id: 6, name: "F1-130 SCRATCH OUT (PASTE)", description: "Paste polishing compound. NET: 227G", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/scratchout paste.jpeg" },
-            { id: 7, name: "A-156 AIM FURNITURE POLISH", description: "Leather & Tyre Wax. NET: 550ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/aim furtinure polish.jpeg" },
-            { id: 8, name: "A-101 AIM HARD WAX", description: "Cleans, shines, protects. 200GM", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/aim had wax.jpeg" },
+            { id: 1, name: "F1-131 BLACK GOLD TIRE SHINE", description: "High shine, dries fast, long lasting. NET: 680ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/black and gold tire shine.jpeg", price: 2000 },
+            { id: 2, name: "A-130 AIM TIRE GEL", description: "Moistening, lustrous, durable. NET: 500ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/aim tire gel 500ml.jpeg", price: 750 },
+            { id: 3, name: "A-114 LEATHER AND TYRE WAX (LEMON)", description: "Leather & Tyre Wax. NET: 300ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/leather and tyre wax lemon.jpeg", price: 250 },
+            { id: 4, name: "A-116 LEATHER AND TYRE WAX (ROSE)", description: "Leather & Tyre Wax (Rose). NET: 300ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/leather and tyre wax.jpeg", price: 250 },
+            { id: 5, name: "F1-129 SCRATCH OUT (LIQUID)", description: "Fine scratch + swirl remover. NET: 207ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/scratch out liquid.jpeg", price: 1500 },
+            { id: 6, name: "F1-130 SCRATCH OUT (PASTE)", description: "Paste polishing compound. NET: 227G", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/scratchout paste.jpeg", price: 1600 },
+            { id: 7, name: "A-156 AIM FURNITURE POLISH", description: "Leather & Tyre Wax. NET: 550ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/aim furtinure polish.jpeg", price: 600 },
+            { id: 8, name: "A-101 AIM HARD WAX", description: "Cleans, shines, protects. 200GM", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/aim had wax.jpeg", price: 900 },
             // Protectant Sprays (curated)
             {
                 id: 11,
                 name: "F1-120 PROTECTANT SPRAY",
                 description: "Cleans, shines & protects. NET: 680ML",
                 category: "protectant sprays",
-                image_url: "CAR PROCTING SPRAYS/f1-120 formulla 1 protectant spray.jpeg"
+                image_url: "CAR PROCTING SPRAYS/f1-120 formulla 1 protectant spray.jpeg",
+                price: 1800
             },
             {
                 id: 12,
                 name: "F1-121 PROTECTANT SPRAY (CHERRY)",
                 description: "Shines, protects & freshens. Cherry fragrance. NET: 295ML",
                 category: "protectant sprays",
-                image_url: "CAR PROCTING SPRAYS/formulla 1 protectant spray 295ml.jpeg"
+                image_url: "CAR PROCTING SPRAYS/formulla 1 protectant spray 295ml.jpeg",
+                price: 1200
             },
             {
                 id: 13,
                 name: "F1-122 PROTECTANT SPRAY (CITRUS)",
                 description: "Shines, protects & freshens. Citrus fragrance. NET: 295ML",
                 category: "protectant sprays",
-                image_url: "CAR PROCTING SPRAYS/protectant spray 295ml.jpeg"
+                image_url: "CAR PROCTING SPRAYS/protectant spray 295ml.jpeg",
+                price: 1200
             },
             {
                 id: 14,
                 name: "F1-123 PROTECTANT SPRAY (NEW CAR)",
                 description: "Shines, protects & freshens. New car fragrance. NET: 295ML",
                 category: "protectant sprays",
-                image_url: "CAR PROCTING SPRAYS/formulla 1 protectant spray f1-123.jpeg"
+                image_url: "CAR PROCTING SPRAYS/formulla 1 protectant spray f1-123.jpeg",
+                price: 1200
             },
             {
                 id: 15,
                 name: "F1-126 PROTECTANT SPRAY",
                 description: "Shines, protects & freshens. NET: 295ML",
                 category: "protectant sprays",
-                image_url: "CAR PROCTING SPRAYS/formula 1 protectant spray.jpeg"
+                image_url: "CAR PROCTING SPRAYS/formula 1 protectant spray.jpeg",
+                price: 1200
             },
             {
                 id: 16,
                 name: "F1-125 PROTECTANT SPRAY (VANILLA)",
                 description: "Shines, protects & freshens. Vanilla fragrance. NET: 295ML",
                 category: "protectant sprays",
-                image_url: "CAR PROCTING SPRAYS/protectant spray 295ml.jpeg"
+                image_url: "CAR PROCTING SPRAYS/protectant spray 295ml.jpeg",
+                price: 1200
             },
             // Spray Paints
             {
@@ -1148,105 +1154,120 @@
                 name: "AIM SPRAY PAINT A-142",
                 description: "Professional automotive spray paint A-142. High-quality finish for all surfaces.",
                 category: "spray paints",
-                image_url: "CAR SPRAY PAINTS/A-142 AIM SPRAY PAINTS.jpeg"
+                image_url: "CAR SPRAY PAINTS/A-142 AIM SPRAY PAINTS.jpeg",
+                price: 600
             },
             {
                 id: 18,
                 name: "AIM SPRAY PAINT A-143 RED",
                 description: "Red automotive spray paint A-143. Perfect color match for touch-ups.",
                 category: "spray paints",
-                image_url: "CAR SPRAY PAINTS/A-143 AIM SPRAY PAINT RED.jpeg"
+                image_url: "CAR SPRAY PAINTS/A-143 AIM SPRAY  PAINT RED.jpeg",
+                price: 600
             },
             {
                 id: 19,
                 name: "AIM SPRAY PAINT A-145",
                 description: "Professional spray paint A-145. Durable finish for automotive applications.",
                 category: "spray paints",
-                image_url: "CAR SPRAY PAINTS/A-145 AIM SPRAY PAINT.jpeg"
+                image_url: "CAR SPRAY PAINTS/A-145 AIM SPRAY PAINT.jpeg",
+                price: 600
             },
             {
                 id: 20,
                 name: "AIM SPRAY PAINT A-146",
                 description: "High-quality spray paint A-146. Excellent coverage and adhesion.",
                 category: "spray paints",
-                image_url: "CAR SPRAY PAINTS/A-146 AIM SPRAY PAINT.jpeg"
+                image_url: "CAR SPRAY PAINTS/A-146 AIM SPRAY PAINT.jpeg",
+                price: 600
             },
             {
                 id: 21,
                 name: "AIM SPRAY PAINT A-147",
                 description: "Professional spray paint A-147. Long-lasting color and protection.",
                 category: "spray paints",
-                image_url: "CAR SPRAY PAINTS/A-147 AIM SPRAY PAINT.jpeg"
+                image_url: "CAR SPRAY PAINTS/A-147 AIM SPRAY PAINTS.jpeg",
+                price: 600
             },
             {
                 id: 22,
                 name: "AIM SPRAY PAINT A-148",
                 description: "Automotive spray paint A-148. Perfect for bodywork and touch-ups.",
                 category: "spray paints",
-                image_url: "CAR SPRAY PAINTS/A-148 AIM SPRAY PAINT.jpeg"
+                image_url: "CAR SPRAY PAINTS/A-148 AIM SPARY PAINT.jpeg",
+                price: 600
             },
             {
                 id: 23,
                 name: "AIM SPRAY PAINT A-150",
                 description: "Professional spray paint A-150. High-quality automotive finish.",
                 category: "spray paints",
-                image_url: "CAR SPRAY PAINTS/A-150 SPRAY PAINT.jpeg"
+                image_url: "CAR SPRAY PAINTS/A-150 SPRAY PAINT.jpeg",
+                price: 600
             },
             {
                 id: 24,
                 name: "AIM SPRAY PAINT A-151",
                 description: "Automotive spray paint A-151. Excellent color retention and durability.",
                 category: "spray paints",
-                image_url: "CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 600
             },
             {
                 id: 25,
                 name: "AIM SPRAY PAINT A-152",
                 description: "Professional spray paint A-152. Perfect for automotive refinishing.",
                 category: "spray paints",
-                image_url: "CAR SPRAY PAINTS/A-152 AIM SPRAY PAINT.jpeg"
+                image_url: "CAR SPRAY PAINTS/A-152 AIM SPRAY PAINT.jpeg",
+                price: 600
             },
             {
                 id: 26,
                 name: "AIM SPRAY PAINT A-153",
                 description: "High-quality spray paint A-153. Superior coverage and finish.",
                 category: "spray paints",
-                image_url: "CAR SPRAY PAINTS/A-153 AIM SPRAY PAINT.jpeg"
+                image_url: "CAR SPRAY PAINTS/A-153 AIM SPRAY PAINT.jpeg",
+                price: 600
             },
             {
                 id: 27,
                 name: "AIM SPRAY PAINT A-154",
                 description: "Professional spray paint A-154. Long-lasting automotive finish.",
                 category: "spray paints",
-                image_url: "CAR SPRAY PAINTS/A-154 SPRAY PAINT.jpeg"
+                image_url: "CAR SPRAY PAINTS/A-154 SPRAY PAINT.jpeg",
+                price: 600
             },
             {
                 id: 28,
                 name: "AIM SPRAY PAINT A-141 GREEN",
                 description: "Green automotive spray paint A-141. Perfect color match for green vehicles.",
                 category: "spray paints",
-                image_url: "CAR SPRAY PAINTS/AIM SPRAY PAINT A-141 GREEN.jpeg"
+                image_url: "CAR SPRAY PAINTS/AIM SPRAY PAINT A-141 GREEN.jpeg",
+                price: 600
             },
             {
                 id: 29,
                 name: "AIM SPRAY PAINT A-144",
                 description: "Professional spray paint A-144. High-quality automotive finish.",
                 category: "spray paints",
-                image_url: "CAR SPRAY PAINTS/AIM SPRAY PAINT A-144.jpeg"
+                image_url: "CAR SPRAY PAINTS/AIM SPRAY PAINT A-144.jpeg",
+                price: 600
             },
             {
                 id: 30,
                 name: "AIM SPRAY PAINT A-149 YELLOW",
                 description: "Yellow automotive spray paint A-149. Bright, vibrant yellow finish.",
                 category: "spray paints",
-                image_url: "CAR SPRAY PAINTS/AIM SPRAY PAINT A-149 YELLOW.jpeg"
+                image_url: "CAR SPRAY PAINTS/AIM SPRAY PAINT A-149 YELLOW.jpeg",
+                price: 600
             },
             {
                 id: 31,
                 name: "AIM SPRAY PAINT A-155 GRAY",
                 description: "Gray automotive spray paint A-155. Professional gray finish for vehicles.",
                 category: "spray paints",
-                image_url: "CAR SPRAY PAINTS/AIM SPRAY PAINT GRAY A-155.jpeg"
+                image_url: "CAR SPRAY PAINTS/AIM SPRAY PAINT GRAY A-155.jpeg",
+                price: 600
             },
             // Wash & Wax
             {
@@ -1254,97 +1275,110 @@
                 name: "A-113 LEATHER AND TYRE WAX",
                 description: "Premium leather and tire wax A-113. Conditions and protects with long-lasting shine.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/A-113 LEATHER AND TYRE WAX.jpeg"
+                image_url: "CAR WASH & WAX/A-113 LEATHER AND TYRE WAX.jpeg",
+                price: 250
             },
             {
                 id: 38,
                 name: "A-115 LEATHER AND TYRE WAX",
                 description: "Professional leather and tire wax A-115. Advanced protection formula.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/A-115 LEATHER AND TYRE WAX.jpeg"
+                image_url: "CAR WASH & WAX/A-115 LEATHER AND TYRE WAX.jpeg",
+                price: 250
             },
             {
                 id: 39,
                 name: "A-117 LEATHER AND TYRE WAX",
                 description: "High-quality leather and tire wax A-117. Superior conditioning and protection.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/A-117 LEATHER AND TYRE WAX.jpeg"
+                image_url: "CAR WASH & WAX/A-117 LEATHER AND TYRE WAX.jpeg",
+                price: 250
             },
             {
                 id: 40,
                 name: "A-118 LEATHER AND TYRE WAX",
                 description: "Premium leather and tire wax A-118. Long-lasting protection and shine.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/A-118 LEATHER AND TYPRE WAX.jpeg"
+                image_url: "CAR WASH & WAX/A-118 LEATHER AND TYPRE WAX.jpeg",
+                price: 500  
             },
             {
                 id: 41,
                 name: "A-119 LEATHER AND TYRE WAX",
                 description: "Professional leather and tire wax A-119. Advanced formula for superior results.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/A-119 LEATHER AND TYPRE WAX.jpeg"
+                image_url: "CAR WASH & WAX/A-119 LEATHER AND TYPRE WAX.jpeg",
+                price: 500
             },
             {
                 id: 42,
                 name: "A-120 LEATHER AND TYRE WAX",
                 description: "High-performance leather and tire wax A-120. Premium protection and conditioning.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/A-120 LEATHER AND TYRE WAX.jpeg"
+                image_url: "CAR WASH & WAX/A-120 LEATHER AND TYRE WAX.jpeg",
+                price: 500
             },
             {
                 id: 43,
                 name: "A-121 LEATHER TYRE WAX",
                 description: "Professional leather tire wax A-121. Superior shine and protection.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/A-121 LEATHER TYRE WAX.jpeg"
+                image_url: "CAR WASH & WAX/A-121 LEATHER TYRE WAX.jpeg",
+                price: 500
             },
             {
                 id: 44,
                 name: "AW-102 AW WASH & WAX",
                 description: "Professional wash and wax AW-102. Cleans and protects in one step.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/AW-102 AW WASH & WAX.jpeg"
+                image_url: "CAR WASH & WAX/AW-102 AW WASH & WAX.jpeg",
+                price: 750
             },
             {
                 id: 45,
                 name: "AW-103 AW WASH & WAX",
                 description: "High-quality wash and wax AW-103. Advanced cleaning and protection formula.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/AW-103 AW WASH & WAX.jpeg"
+                image_url: "CAR WASH & WAX/AW-103 AW WASH & WAX.jpeg",
+                price: 750
             },
             {
                 id: 46,
                 name: "AW-104 AW WASH & WAX",
                 description: "Premium wash and wax AW-104. Superior cleaning and long-lasting protection.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/AW-104 AW WASH & WAX.jpeg"
+                image_url: "CAR WASH & WAX/AW-104 AW WASH & WAX.jpeg",
+                price: 1250
             },
             {
                 id: 47,
                 name: "F1-101 CARNAUBA WASH & WAX",
                 description: "Carnauba wash and wax F1-101. Natural carnauba wax protection while washing.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/F1-101 CARNAUBA WASH &WAX.jpeg"
+                image_url: "CAR WASH & WAX/F1-101 CARNAUBA WASH &WAX.jpeg",
+                price: 1250
             },
             {
                 id: 48,
                 name: "F1-102 CARNAUBA WASH & WAX",
                 description: "Premium carnauba wash and wax F1-102. High-performance natural protection.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/F1-102 CARNAUBA WASH & WAX.jpeg"
+                image_url: "CAR WASH & WAX/F1-102 CARNAUBA WASH & WAX.jpeg",
+                price: 2000
             },
             {
                 id: 49,
                 name: "F1-103 CARNAUBA WASH & WAX",
                 description: "Professional carnauba wash and wax F1-103. Superior cleaning and protection.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/F1-103 CARNAUBA WASH & WAX.jpeg"
+                image_url: "CAR WASH & WAX/F1-103 CARNAUBA WASH & WAX.jpeg",
+                price: 1250
             },
             {
                 id: 50,
                 name: "F1-104 CARNAUBA LIQUID WAX",
                 description: "Carnauba liquid wax F1-104. Easy-to-use liquid wax with natural protection.",
-                price: "24.99",
+                price: 1500,
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/F1-104 CARNAUBA LIQUID WAX.jpeg"
             },
@@ -1353,35 +1387,40 @@
                 name: "F1-106 CARNAUBA WAX PASTE",
                 description: "Carnauba wax paste F1-106. Traditional paste wax for superior protection.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/F1-106 CARNAUBA WAX PASTE.jpeg"
+                image_url: "CAR WASH & WAX/F1-106 CARNAUBA WAX PASTE.jpeg",
+                price: 1500
             },
             {
                 id: 52,
                 name: "F1-107 CARNAUBA WAX PASTE",
                 description: "Premium carnauba wax paste F1-107. High-quality paste wax for maximum protection.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/F1-107 CARNAUBA WAX PASTE.jpeg"
+                image_url: "CAR WASH & WAX/F1-107 CARNAUBA WAX PASTE.jpeg",
+                price: 1500
             },
             {
                 id: 53,
                 name: "F1-113 CERAMIC LIQUID WAX",
                 description: "Ceramic liquid wax F1-113. Advanced ceramic technology for superior protection.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/F1-113 CERAMIC LIQUID WAX.jpeg"
+                image_url: "CAR WASH & WAX/F1-113 CERAMIC LIQUID WAX.jpeg",
+                price: 2000
             },
             {
                 id: 54,
                 name: "F1-114 CERAMIC SPRAY WAX",
                 description: "Ceramic spray wax F1-114. Easy-to-use ceramic protection in spray form.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/F1-114 CERAMIC SPRAY WAX.jpeg"
+                image_url: "CAR WASH & WAX/F1-114 CERAMIC SPRAY WAX.jpeg",
+                price: 2000
             },
             {
                 id: 55,
                 name: "F1-115 CERAMIC WASH & WAX",
                 description: "Ceramic wash and wax F1-115. Advanced ceramic protection while washing.",
                 category: "wash & wax",
-                image_url: "CAR WASH & WAX/F1-115 CERAMIC WASH & WAX.jpeg"
+                image_url: "CAR WASH & WAX/F1-115 CERAMIC WASH & WAX.jpeg",
+                price: 2000
             },
             // Wash Shampoos
             {
@@ -2033,7 +2072,7 @@
         function createProductCard(product) {
             if (currentView === 'list') {
                 return `
-                    <div class="bg-gray-900 rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition duration-300 flex border border-yellow-500/50">
+                    <div class="bg-gray-900 rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition duration-300 flex border border-yellow-500/50 product-card cursor-pointer">
                         <div class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 bg-gray-800 flex items-center justify-center flex-shrink-0">
                             ${product.image_url ? 
                                 `<img src="${product.image_url}" alt="${product.name}" class="w-full h-full object-cover" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.nextElementSibling.style.display='none';">
@@ -2043,8 +2082,6 @@
                         </div>
                         <div class="p-3 sm:p-4 md:p-6 flex-1">
                             <h3 class="font-semibold text-sm sm:text-base md:text-xl mb-1 sm:mb-2 text-yellow-400">${product.name}</h3>
-                            <p class="text-gray-300 text-xs sm:text-sm md:text-base line-clamp-2 mb-2">${product.description || ''}</p>
-                            <div class="text-yellow-500 font-bold text-sm sm:text-base md:text-lg">${product.price ? product.price + ' PKR' : 'Contact for Price'}</div>
                         </div>
                     </div>
                 `;
@@ -2060,7 +2097,6 @@
                         </div>
                         <div class="p-2 sm:p-3 md:p-4">
                             <h3 class="font-semibold text-center text-yellow-400 text-xs sm:text-sm md:text-base mb-1 sm:mb-2 line-clamp-2">${product.name}</h3>
-                            <div class="text-yellow-500 font-bold text-center text-sm sm:text-base md:text-lg">${product.price ? product.price + ' PKR' : 'Contact for Price'}</div>
                         </div>
                     </div>
                 `;
@@ -2153,6 +2189,14 @@
                                 matchesCategory = productName.includes('cleaner') || productName.includes('cleaning') ||
                                                 productName.includes('detergent') || productName.includes('floor') ||
                                                 productName.includes('bathroom') || productDesc.includes('clean');
+                                break;
+                            case 'polish and shinners':
+                                matchesCategory = productName.includes('polish') || productName.includes('shine') ||
+                                                productName.includes('tire') || productName.includes('wax') ||
+                                                productName.includes('scratch') || productName.includes('gel') ||
+                                                productDesc.includes('polish') || productDesc.includes('shine') ||
+                                                productDesc.includes('tire') || productDesc.includes('wax') ||
+                                                productDesc.includes('scratch') || productDesc.includes('gel');
                                 break;
                             case 'protectant sprays':
                                 matchesCategory = productName.includes('protectant') || productName.includes('spray') ||
@@ -2839,7 +2883,7 @@
                 title.textContent = data.name || 'Product';
                 img.src = data.image || '';
                 img.alt = data.name || 'Product';
-                desc.textContent = data.description || 'â€”';
+                desc.textContent = data.description || '—';
                 price.textContent = data.priceText || 'Contact for Pricing';
                 add.onclick = function(){ smartAdd(data.name||'Product', parsePrice(data.priceText), data.image||''); hide(); };
                 overlay.classList.add('show');
@@ -2850,17 +2894,21 @@
 
             document.addEventListener('click', function(e){
                 if (e.target.closest('button, a')) return;
-                const card = e.target.closest('.product-card, .bg-gray-800, .bg-gradient-to-br');
+                const card = e.target.closest('.product-card, .bg-gray-900, .bg-gray-800, .bg-gradient-to-br');
                 if(!card) return;
+                
                 const imgEl = card.querySelector('img');
                 const nameEl = card.querySelector('h3');
-                const descEl = card.querySelector('p');
-                const priceEl = card.querySelector('.text-yellow-400, .text-golden, span.text-2xl');
+                
+                // Get product data from the global products array
+                const productName = nameEl ? nameEl.textContent.trim() : '';
+                const product = allProducts.find(p => p.name === productName);
+                
                 showQV({
-                    name: nameEl?nameEl.textContent.trim():'',
-                    image: imgEl?imgEl.src:'',
-                    description: descEl?descEl.textContent.trim():'',
-                    priceText: priceEl?priceEl.textContent.trim():'Contact for Pricing'
+                    name: productName,
+                    image: imgEl ? imgEl.src : '',
+                    description: product ? product.description : '',
+                    priceText: product && product.price ? product.price + ' PKR' : 'Contact for Pricing'
                 });
             });
         })();
