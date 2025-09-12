@@ -262,19 +262,125 @@
             }
         }
         
-        .qv-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.65); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 100; }
-        .qv-overlay.show { display: flex; }
-        .qv-card { background: #111827; border: 1px solid #F59E0B; border-radius: 12px; max-width: 85vw; width: 100%; max-height: 85vh; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.45); }
-        .qv-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #374151; }
-        .qv-title { color: #F59E0B; font-weight: 700; font-size: 18px; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; }
-        .qv-body { padding: 16px; overflow-y: auto; max-height: calc(85vh - 120px); }
-        .qv-img { width: 100%; height: auto; max-height: 40vh; object-fit: contain; border-radius: 10px; background: #000; }
-        .qv-desc { color: #d1d5db; font-size: 14px; line-height: 1.5; margin-top: 10px; }
-        .qv-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
-        .qv-price { color: #F59E0B; font-weight: 700; font-size: 18px; }
-        .qv-btn { background: #F59E0B; color: #000; border: 0; border-radius: 8px; padding: 10px 14px; font-weight: 600; cursor: pointer; }
-        .qv-btn:hover { background: #f7b43a; }
-        @media (min-width: 640px) { .qv-card { max-width: 600px; max-height: 80vh; } .qv-img { max-height: 45vh; } }
+        /* Product Popup Modal Styles */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        .popup {
+            background: #1f2937;
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-sizing: border-box;
+            text-align: center;
+            border: 2px solid #f59e0b;
+            color: white;
+        }
+
+        .popup img {
+            width: 100%;
+            height: auto;
+            max-height: 250px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #000;
+            margin-bottom: 16px;
+        }
+
+        .popup h2 {
+            color: #f59e0b;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 0 12px 0;
+        }
+
+        .popup p {
+            color: #d1d5db;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 0 0 16px 0;
+        }
+
+        .close-btn {
+            padding: 10px 20px;
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #dc2626;
+        }
+
+        /* Mobile responsive popup */
+        @media (max-width: 768px) {
+            .popup {
+                width: 95%;
+                max-width: 350px;
+                padding: 16px;
+                margin: 8px;
+            }
+            
+            .popup img {
+                max-height: 200px;
+            }
+            
+            .popup h2 {
+                font-size: 1.25rem;
+            }
+            
+            .popup p {
+                font-size: 0.85rem;
+            }
+            
+            .flex.gap-3 {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .flex.gap-3 button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .popup {
+                width: 98%;
+                max-width: 320px;
+                padding: 12px;
+                margin: 4px;
+            }
+            
+            .popup img {
+                max-height: 180px;
+            }
+            
+            .popup h2 {
+                font-size: 1.1rem;
+            }
+            
+            .popup p {
+                font-size: 0.8rem;
+            }
+        }
         
         /* Responsive Design Enhancements */
         .line-clamp-2 {
@@ -588,24 +694,6 @@
                 gap: 0.75rem !important;
             }
             
-            /* Quick view modal mobile */
-            .qv-card {
-                margin: 0.5rem;
-                max-height: 90vh;
-                max-width: 95vw;
-            }
-            
-            .qv-img {
-                max-height: 40vh;
-            }
-            
-            .qv-title {
-                font-size: 1rem;
-            }
-            
-            .qv-price {
-                font-size: 1.25rem;
-            }
             
             /* Footer mobile */
             .footer-grid {
@@ -658,15 +746,6 @@
                 height: 100px;
             }
             
-            .qv-card {
-                margin: 0.25rem;
-                max-width: 98vw;
-                max-height: 95vh;
-            }
-            
-            .qv-img {
-                max-height: 35vh;
-            }
         }
 
         /* Touch-friendly interactions */
@@ -1874,6 +1953,160 @@
                     </div>
                 </div>
 
+                <!-- Tumbler 30 OZ Subcategory -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-500/30 pb-2">TUMBLER 30 OZ</h3>
+                    <p class="text-gray-300 mb-6">Premium 30oz stainless steel tumblers with advanced insulation technology for hot and cold beverages</p>
+                    
+                    <!-- Tumbler 30 OZ Product Grid -->
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 products-grid">
+                        <!-- BLU Tumbler 30 OZ - Black -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/tumbler 30 OZ/TUMBLERS 30 OZ BLACK.jpeg" 
+                                         alt="BLU Tumbler 30 OZ - Black" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-black text-white px-2 py-1 rounded-full text-xs font-bold">
+                                        30oz
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 30 OZ - Black</h3>
+                            </div>
+                        </div>
+
+                        <!-- BLU Tumbler 30 OZ - Pink -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/tumbler 30 OZ/TUMBLERS 30 OZ PINK.jpeg" 
+                                         alt="BLU Tumbler 30 OZ - Pink" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                        30oz
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 30 OZ - Pink</h3>
+                            </div>
+                        </div>
+
+                        <!-- BLU Tumbler 30 OZ - Red -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/tumbler 30 OZ/TUMBLERS 30 OZ RED.jpeg" 
+                                         alt="BLU Tumbler 30 OZ - Red" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                        30oz
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 30 OZ - Red</h3>
+                            </div>
+                        </div>
+
+                        <!-- BLU Tumbler 30 OZ - White -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/tumbler 30 OZ/TUMBLERS 30 OZ WHITE.jpeg" 
+                                         alt="BLU Tumbler 30 OZ - White" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-gray-200 text-black px-2 py-1 rounded-full text-xs font-bold">
+                                        30oz
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 30 OZ - White</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tumbler 40 OZ Subcategory -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-500/30 pb-2">TUMBLER 40 OZ</h3>
+                    <p class="text-gray-300 mb-6">Premium 40oz stainless steel tumblers with advanced insulation technology for hot and cold beverages</p>
+                    
+                    <!-- Tumbler 40 OZ Product Grid -->
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 products-grid">
+                        <!-- BLU Tumbler 40 OZ - Black -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/tumbler40oz/tumbler 40oz black.jpeg" 
+                                         alt="BLU Tumbler 40 OZ - Black" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-black text-white px-2 py-1 rounded-full text-xs font-bold">
+                                        40oz
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 40 OZ - Black</h3>
+                            </div>
+                        </div>
+
+                        <!-- BLU Tumbler 40 OZ - Pink -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/tumbler40oz/tumbler 40oz pink.jpeg" 
+                                         alt="BLU Tumbler 40 OZ - Pink" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                        40oz
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 40 OZ - Pink</h3>
+                            </div>
+                        </div>
+
+                        <!-- BLU Tumbler 40 OZ - Purple -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/tumbler40oz/tumbler 40oz purple.jpeg" 
+                                         alt="BLU Tumbler 40 OZ - Purple" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                        40oz
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 40 OZ - Purple</h3>
+                            </div>
+                        </div>
+
+                        <!-- BLU Tumbler 40 OZ - White -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/tumbler40oz/tumbler 40oz white.jpeg" 
+                                         alt="BLU Tumbler 40 OZ - White" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-gray-200 text-black px-2 py-1 rounded-full text-xs font-bold">
+                                        40oz
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 40 OZ - White</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>
@@ -1909,23 +2142,19 @@
         </div>
     </footer>
 
-    <!-- Quick View Modal -->
-    <div id="qv-overlay" class="qv-overlay">
-        <div class="qv-card">
-            <div class="qv-header">
-                <div id="qv-title" class="qv-title">Product</div>
-                <button id="qv-x" class="text-gray-300 hover:text-white"><i class="fas fa-times"></i></button>
-        </div>
-            <div class="qv-body">
-                <img id="qv-img" class="qv-img" src="" alt="Product">
-                <div id="qv-desc" class="qv-desc">Description</div>
-                <div class="qv-footer">
-                    <div id="qv-price" class="qv-price">Contact for Pricing</div>
-                    <button id="qv-add" class="qv-btn">Add to Cart</button>
-                </div>
+    <!-- Product Popup Modal -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <img id="popupImage" src="" alt="Product Image" />
+            <h2 id="popupTitle">Product Title</h2>
+            <p id="popupDescription">Product description</p>
+            <div id="popupPrice" class="text-yellow-400 font-bold text-lg mb-4">Price</div>
+            <div class="flex gap-3">
+                <button class="close-btn" id="closeBtn">Close</button>
+                <button id="addToCartBtn" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded font-semibold">Add to Cart</button>
             </div>
         </div>
-                </div>
+    </div>
     <!-- Bottom Navigation -->
     <nav class="old-bottom-nav" style="display: none;">
         <a id="home-nav" href="index.html" onclick="setActiveNav('home')"><i class="fas fa-home"></i>Home</a>
@@ -1955,256 +2184,309 @@
     </div>
 
     <script>
-        // Quick View logic
-        (function(){
-            const overlay = document.getElementById('qv-overlay');
-            const title = document.getElementById('qv-title');
-            const img = document.getElementById('qv-img');
-            const desc = document.getElementById('qv-desc');
-            const price = document.getElementById('qv-price');
-            const add = document.getElementById('qv-add');
-            const x = document.getElementById('qv-x');
+        // Popup Modal functionality
+        const popupOverlay = document.getElementById('popupOverlay');
+        const popupImage = document.getElementById('popupImage');
+        const popupTitle = document.getElementById('popupTitle');
+        const popupDescription = document.getElementById('popupDescription');
+        const popupPrice = document.getElementById('popupPrice');
+        const closeBtn = document.getElementById('closeBtn');
+        const addToCartBtn = document.getElementById('addToCartBtn');
 
-            // Fallback details for tiles that no longer render text in the card
-            const productMeta = {
-                'Stainless Steel Chafing Dish': {
-                    price: '4,500',
-                    desc: 'Premium chafing dish with glass lid and fuel holder for keeping food warm'
-                },
-                'Black Non-Stick Cookware Set': {
-                    price: '28,950',
-                    desc: 'Complete 7-piece non-stick cookware set with frying pan, pots, and lids'
-                },
-                'Cast Iron Pan with 7 Wells': {
-                    price: '6,440',
-                    desc: 'Round cast iron pan with 7 circular wells for cooking multiple items simultaneously'
-                },
-                'Cast Iron Casserole': {
-                    price: '3,200',
-                    desc: 'Versatile cast iron casserole perfect for grilling and cooking various dishes'
-                },
-                '3 Tier Oval Porcelain Bowls Set with Stand': {
-                    price: '8,500',
-                    desc: 'Elegant 3-tier oval porcelain serving bowls with decorative stand for special occasions'
-                },
-                'German Family International Kitchen Utensil Set (12-Piece)': {
-                    price: '2,800',
-                    desc: 'Professional 12-piece kitchen utensil set with ergonomic handles and durable construction'
-                },
-                'AVD High Quality Cutlery Set (84-Piece)': {
-                    price: '15,000',
-                    desc: 'Premium 84-piece cutlery set with elegant design and superior quality materials'
-                },
-                'Golden Cutlery Set (5-Piece)': {
-                    price: '1,200',
-                    desc: 'Luxurious 5-piece golden cutlery set with elegant finish and premium quality'
-                },
-                'Two-Tone Cutlery Set (4-Piece)': {
-                    price: '950',
-                    desc: 'Modern 4-piece two-tone cutlery set with contemporary design and durable construction'
-                },
-                'Modern Silver Cutlery Set (4-Piece)': {
-                    price: '1,100',
-                    desc: 'Sleek 4-piece modern silver cutlery set with minimalist design and premium finish'
-                },
-                'Sleek Golden Cutlery Set (4-Piece)': {
-                    price: '1,300',
-                    desc: 'Elegant 4-piece sleek golden cutlery set with sophisticated design and luxury finish'
-                },
-                'White Asian-Style Soup Spoon': {
-                    price: '350',
-                    desc: 'Traditional white Asian-style soup spoon with authentic design and comfortable grip'
-                },
-                'Luxurious Two-Tiered Golden Cake Stand': {
-                    price: '4,200',
-                    desc: 'Elegant two-tiered golden cake stand perfect for displaying desserts and pastries'
-                },
-                'Three-Tiered Golden Cake Stand': {
-                    price: '5,800',
-                    desc: 'Stunning three-tiered golden cake stand ideal for special occasions and celebrations'
-                },
-                'Royal Alba Bone China Cake Stand (3-Tier)': {
-                    price: '7,500',
-                    desc: 'Premium Royal Alba bone china 3-tier cake stand with exquisite craftsmanship'
-                },
-                'Royal Albert Floral Cake Stand (3-Tier)': {
-                    price: '8,200',
-                    desc: 'Beautiful Royal Albert floral 3-tier cake stand with classic English design'
-                },
-                'Premium Glass Water Pitcher Set with Golden Handles': {
-                    price: '2,500',
-                    desc: 'Elegant glass water pitcher set with golden handles and matching tumblers'
-                },
-                'Elegant Glass Water Pitcher with Tumblers': {
-                    price: '1,800',
-                    desc: 'Sophisticated glass water pitcher with matching tumblers for elegant serving'
-                },
-                'All-in-One Utensil Caddy': {
-                    price: '1,500',
-                    desc: 'Convenient all-in-one utensil caddy for organized kitchen storage and easy access'
-                },
-                'Kitchen Utensil Holder with 2 Cups': {
-                    price: '800',
-                    desc: 'Practical kitchen utensil holder with 2 cups for efficient organization'
-                },
-                'Kitchen Organizer Cutlery Storage': {
-                    price: '1,200',
-                    desc: 'Smart kitchen organizer for cutlery storage with multiple compartments'
-                },
-                'Golden Utensil Caddy': {
-                    price: '1,100',
-                    desc: 'Stylish golden utensil caddy with elegant design and practical functionality'
-                },
-                'Elegant Gold Dinnerware Set (For 6)': {
-                    price: '12,000',
-                    desc: 'Luxurious gold dinnerware set with elegant design, perfect for formal dining occasions and special events'
-                },
-                'Gold Flatware Set': {
-                    price: '3,500',
-                    desc: 'Premium gold flatware set with elegant design and luxurious finish, perfect for sophisticated dining experiences'
-                },
-                'Floral Design Insulated Food Container': {
-                    price: '1,800',
-                    desc: 'Beautiful floral design insulated food container for keeping meals fresh and warm'
-                },
-                'Red Serving Dishes Set (3-Piece)': {
-                    price: '2,200',
-                    desc: 'Vibrant red serving dishes set with 3 pieces for elegant food presentation'
-                },
-                'Stainless Steel Rotating Spice Rack (12 Jars)': {
-                    price: '3,800',
-                    desc: 'Convenient stainless steel rotating spice rack with 12 jars for organized spice storage'
-                },
-                'Premium Kitchen Storage Container Set': {
-                    price: '2,800',
-                    desc: 'High-quality kitchen storage container set for organized food storage and freshness'
-                },
-                'Professional Stainless Steel Cookware Set (12-Piece)': {
-                    price: '18,500',
-                    desc: 'Professional 12-piece stainless steel cookware set with superior heat distribution and durability'
-                },
-                'BLU Flip Lid Bottle - Black': {
-                    price: '29,90 RPS',
-                    desc: 'Premium 18oz flip lid bottle in black with advanced insulation technology and flip lid design'
-                },
-                'BLU Flip Lid Bottle - White': {
-                    price: '29,90 RPS',
-                    desc: 'Premium 18oz flip lid bottle in white with advanced insulation technology and flip lid design'
-                },
-                'BLU Flip Lid Bottle - Silver': {
-                    price: '29,90 RPS',
-                    desc: 'Premium 18oz flip lid bottle in silver with advanced insulation technology and flip lid design'
-                },
-                'BLU Flip Lid Bottle - Baby Pink': {
-                    price: '29,90 RPS',
-                    desc: 'Premium 18oz flip lid bottle in baby pink with advanced insulation technology and flip lid design'
-                },
-                'BLU Flip Lid Bottle - Blue': {
-                    price: '29,90 RPS',
-                    desc: 'Premium 18oz flip lid bottle in blue with advanced insulation technology and flip lid design'
-                },
-                'BLU Screw Lid Bottle - Black': {
-                    price: '32,50 RPS',
-                    desc: 'Premium 24oz screw lid bottle in black with advanced insulation technology and secure screw cap design'
-                },
-                'BLU Screw Lid Bottle - Blue': {
-                    price: '32,50 RPS',
-                    desc: 'Premium 24oz screw lid bottle in blue with advanced insulation technology and secure screw cap design'
-                },
-                'BLU Screw Lid Bottle - Pink': {
-                    price: '32,50 RPS',
-                    desc: 'Premium 24oz screw lid bottle in pink with advanced insulation technology and secure screw cap design'
-                },
-                'BLU Screw Lid Bottle - Silver': {
-                    price: '32,50 RPS',
-                    desc: 'Premium 24oz screw lid bottle in silver with advanced insulation technology and secure screw cap design'
-                },
-                'BLU Screw Lid Bottle - Silver White': {
-                    price: '32,50 RPS',
-                    desc: 'Premium 24oz screw lid bottle in silver white with advanced insulation technology and secure screw cap design'
-                },
-                'BLU Chug Lid Bottle - Black': {
-                    price: '36,99 RPS',
-                    desc: 'Premium chug lid bottle in black with advanced insulation technology and convenient chug lid design for easy drinking'
-                },
-                'BLU Chug Lid Bottle - Navy Blue': {
-                    price: '36,99 RPS',
-                    desc: 'Premium chug lid bottle in navy blue with advanced insulation technology and convenient chug lid design for easy drinking'
-                },
-                'BLU Chug Lid Bottle - Sky Blue': {
-                    price: '36,99 RPS',
-                    desc: 'Premium chug lid bottle in sky blue with advanced insulation technology and convenient chug lid design for easy drinking'
-                },
-                'BLU Chug Lid Bottle - Silver': {
-                    price: '36,99 RPS',
-                    desc: 'Premium chug lid bottle in silver with advanced insulation technology and convenient chug lid design for easy drinking'
-                },
-                'BLU Chug Lid Bottle - White': {
-                    price: '36,99 RPS',
-                    desc: 'Premium chug lid bottle in white with advanced insulation technology and convenient chug lid design for easy drinking'
-                },
+        // Fallback details for tiles that no longer render text in the card
+        const productMeta = {
+            'Stainless Steel Chafing Dish': {
+                price: '4,500',
+                desc: 'Premium chafing dish with glass lid and fuel holder for keeping food warm'
+            },
+            'Black Non-Stick Cookware Set': {
+                price: '28,950',
+                desc: 'Complete 7-piece non-stick cookware set with frying pan, pots, and lids'
+            },
+            'Cast Iron Pan with 7 Wells': {
+                price: '6,440',
+                desc: 'Round cast iron pan with 7 circular wells for cooking multiple items simultaneously'
+            },
+            'Cast Iron Casserole': {
+                price: '3,200',
+                desc: 'Versatile cast iron casserole perfect for grilling and cooking various dishes'
+            },
+            '3 Tier Oval Porcelain Bowls Set with Stand': {
+                price: '8,500',
+                desc: 'Elegant 3-tier oval porcelain serving bowls with decorative stand for special occasions'
+            },
+            'German Family International Kitchen Utensil Set (12-Piece)': {
+                price: '2,800',
+                desc: 'Professional 12-piece kitchen utensil set with ergonomic handles and durable construction'
+            },
+            'AVD High Quality Cutlery Set (84-Piece)': {
+                price: '15,000',
+                desc: 'Premium 84-piece cutlery set with elegant design and superior quality materials'
+            },
+            'Golden Cutlery Set (5-Piece)': {
+                price: '1,200',
+                desc: 'Luxurious 5-piece golden cutlery set with elegant finish and premium quality'
+            },
+            'Two-Tone Cutlery Set (4-Piece)': {
+                price: '950',
+                desc: 'Modern 4-piece two-tone cutlery set with contemporary design and durable construction'
+            },
+            'Modern Silver Cutlery Set (4-Piece)': {
+                price: '1,100',
+                desc: 'Sleek 4-piece modern silver cutlery set with minimalist design and premium finish'
+            },
+            'Sleek Golden Cutlery Set (4-Piece)': {
+                price: '1,300',
+                desc: 'Elegant 4-piece sleek golden cutlery set with sophisticated design and luxury finish'
+            },
+            'White Asian-Style Soup Spoon': {
+                price: '350',
+                desc: 'Traditional white Asian-style soup spoon with authentic design and comfortable grip'
+            },
+            'Luxurious Two-Tiered Golden Cake Stand': {
+                price: '4,200',
+                desc: 'Elegant two-tiered golden cake stand perfect for displaying desserts and pastries'
+            },
+            'Three-Tiered Golden Cake Stand': {
+                price: '5,800',
+                desc: 'Stunning three-tiered golden cake stand ideal for special occasions and celebrations'
+            },
+            'Royal Alba Bone China Cake Stand (3-Tier)': {
+                price: '7,500',
+                desc: 'Premium Royal Alba bone china 3-tier cake stand with exquisite craftsmanship'
+            },
+            'Royal Albert Floral Cake Stand (3-Tier)': {
+                price: '8,200',
+                desc: 'Beautiful Royal Albert floral 3-tier cake stand with classic English design'
+            },
+            'Premium Glass Water Pitcher Set with Golden Handles': {
+                price: '2,500',
+                desc: 'Elegant glass water pitcher set with golden handles and matching tumblers'
+            },
+            'Elegant Glass Water Pitcher with Tumblers': {
+                price: '1,800',
+                desc: 'Sophisticated glass water pitcher with matching tumblers for elegant serving'
+            },
+            'All-in-One Utensil Caddy': {
+                price: '1,500',
+                desc: 'Convenient all-in-one utensil caddy for organized kitchen storage and easy access'
+            },
+            'Kitchen Utensil Holder with 2 Cups': {
+                price: '800',
+                desc: 'Practical kitchen utensil holder with 2 cups for efficient organization'
+            },
+            'Kitchen Organizer Cutlery Storage': {
+                price: '1,200',
+                desc: 'Smart kitchen organizer for cutlery storage with multiple compartments'
+            },
+            'Golden Utensil Caddy': {
+                price: '1,100',
+                desc: 'Stylish golden utensil caddy with elegant design and practical functionality'
+            },
+            'Elegant Gold Dinnerware Set (For 6)': {
+                price: '12,000',
+                desc: 'Luxurious gold dinnerware set with elegant design, perfect for formal dining occasions and special events'
+            },
+            'Gold Flatware Set': {
+                price: '3,500',
+                desc: 'Premium gold flatware set with elegant design and luxurious finish, perfect for sophisticated dining experiences'
+            },
+            'Floral Design Insulated Food Container': {
+                price: '1,800',
+                desc: 'Beautiful floral design insulated food container for keeping meals fresh and warm'
+            },
+            'Red Serving Dishes Set (3-Piece)': {
+                price: '2,200',
+                desc: 'Vibrant red serving dishes set with 3 pieces for elegant food presentation'
+            },
+            'Stainless Steel Rotating Spice Rack (12 Jars)': {
+                price: '3,800',
+                desc: 'Convenient stainless steel rotating spice rack with 12 jars for organized spice storage'
+            },
+            'Premium Kitchen Storage Container Set': {
+                price: '2,800',
+                desc: 'High-quality kitchen storage container set for organized food storage and freshness'
+            },
+            'Professional Stainless Steel Cookware Set (12-Piece)': {
+                price: '18,500',
+                desc: 'Professional 12-piece stainless steel cookware set with superior heat distribution and durability'
+            },
+            'BLU Flip Lid Bottle - Black': {
+                price: '29,90 RPS',
+                desc: 'Premium 18oz flip lid bottle in black with advanced insulation technology and flip lid design'
+            },
+            'BLU Flip Lid Bottle - White': {
+                price: '29,90 RPS',
+                desc: 'Premium 18oz flip lid bottle in white with advanced insulation technology and flip lid design'
+            },
+            'BLU Flip Lid Bottle - Silver': {
+                price: '29,90 RPS',
+                desc: 'Premium 18oz flip lid bottle in silver with advanced insulation technology and flip lid design'
+            },
+            'BLU Flip Lid Bottle - Baby Pink': {
+                price: '29,90 RPS',
+                desc: 'Premium 18oz flip lid bottle in baby pink with advanced insulation technology and flip lid design'
+            },
+            'BLU Flip Lid Bottle - Blue': {
+                price: '29,90 RPS',
+                desc: 'Premium 18oz flip lid bottle in blue with advanced insulation technology and flip lid design'
+            },
+            'BLU Screw Lid Bottle - Black': {
+                price: '32,50 RPS',
+                desc: 'Premium 24oz screw lid bottle in black with advanced insulation technology and secure screw cap design'
+            },
+            'BLU Screw Lid Bottle - Blue': {
+                price: '32,50 RPS',
+                desc: 'Premium 24oz screw lid bottle in blue with advanced insulation technology and secure screw cap design'
+            },
+            'BLU Screw Lid Bottle - Pink': {
+                price: '32,50 RPS',
+                desc: 'Premium 24oz screw lid bottle in pink with advanced insulation technology and secure screw cap design'
+            },
+            'BLU Screw Lid Bottle - Silver': {
+                price: '32,50 RPS',
+                desc: 'Premium 24oz screw lid bottle in silver with advanced insulation technology and secure screw cap design'
+            },
+            'BLU Screw Lid Bottle - Silver White': {
+                price: '32,50 RPS',
+                desc: 'Premium 24oz screw lid bottle in silver white with advanced insulation technology and secure screw cap design'
+            },
+            'BLU Chug Lid Bottle - Black': {
+                price: '36,99 RPS',
+                desc: 'Premium chug lid bottle in black with advanced insulation technology and convenient chug lid design for easy drinking'
+            },
+            'BLU Chug Lid Bottle - Navy Blue': {
+                price: '36,99 RPS',
+                desc: 'Premium chug lid bottle in navy blue with advanced insulation technology and convenient chug lid design for easy drinking'
+            },
+            'BLU Chug Lid Bottle - Sky Blue': {
+                price: '36,99 RPS',
+                desc: 'Premium chug lid bottle in sky blue with advanced insulation technology and convenient chug lid design for easy drinking'
+            },
+            'BLU Chug Lid Bottle - Silver': {
+                price: '36,99 RPS',
+                desc: 'Premium chug lid bottle in silver with advanced insulation technology and convenient chug lid design for easy drinking'
+            },
+            'BLU Chug Lid Bottle - White': {
+                price: '36,99 RPS',
+                desc: 'Premium chug lid bottle in white with advanced insulation technology and convenient chug lid design for easy drinking'
+            },
+            'BLU Tumbler 30 OZ - Black': {
+                price: '3,800',
+                desc: 'Premium 30oz stainless steel tumbler in black with advanced insulation technology for hot and cold beverages'
+            },
+            'BLU Tumbler 30 OZ - Pink': {
+                price: '3,800',
+                desc: 'Premium 30oz stainless steel tumbler in pink with advanced insulation technology for hot and cold beverages'
+            },
+            'BLU Tumbler 30 OZ - Red': {
+                price: '3,800',
+                desc: 'Premium 30oz stainless steel tumbler in red with advanced insulation technology for hot and cold beverages'
+            },
+            'BLU Tumbler 30 OZ - White': {
+                price: '3,800',
+                desc: 'Premium 30oz stainless steel tumbler in white with advanced insulation technology for hot and cold beverages'
+            },
+            'BLU Tumbler 40 OZ - Black': {
+                price: '4,500',
+                desc: 'Premium 40oz stainless steel tumbler in black with advanced insulation technology for hot and cold beverages'
+            },
+            'BLU Tumbler 40 OZ - Pink': {
+                price: '4,500',
+                desc: 'Premium 40oz stainless steel tumbler in pink with advanced insulation technology for hot and cold beverages'
+            },
+            'BLU Tumbler 40 OZ - Purple': {
+                price: '4,500',
+                desc: 'Premium 40oz stainless steel tumbler in purple with advanced insulation technology for hot and cold beverages'
+            },
+            'BLU Tumbler 40 OZ - White': {
+                price: '4,500',
+                desc: 'Premium 40oz stainless steel tumbler in white with advanced insulation technology for hot and cold beverages'
+            },
+        };
+
+        function parsePrice(text){ if(!text) return ''; const m=text.replace(/[,\sâ‚¨$]/g,'').match(/(\d+(?:\.\d+)?)/); return m?m[1]:''; }
+        function smartAdd(name, priceVal, image){ 
+            addToCart(name, priceVal || '', image || ''); 
+        }
+
+        function openProductModal(name, description, price, image) {
+            console.log('Opening product modal for:', name);
+            
+            // Update popup content
+            popupImage.src = image;
+            popupImage.alt = name;
+            popupTitle.textContent = name;
+            popupDescription.textContent = description;
+            popupPrice.textContent = price + ' RPS';
+            
+            // Set up add to cart button
+            addToCartBtn.onclick = function() {
+                addToCart(name, price, image);
+                closePopup();
             };
+            
+            // Show popup
+            popupOverlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
 
-            function parsePrice(text){ if(!text) return ''; const m=text.replace(/[,\sâ‚¨$]/g,'').match(/(\d+(?:\.\d+)?)/); return m?m[1]:''; }
-            function smartAdd(name, priceVal, image){ 
-                addToCart(name, priceVal || '', image || ''); 
+        function closePopup() {
+            popupOverlay.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Event listeners
+        closeBtn.addEventListener('click', closePopup);
+
+        // Close popup when clicking outside
+        popupOverlay.addEventListener('click', (e) => {
+            if (e.target === popupOverlay) {
+                closePopup();
             }
+        });
 
-            window.showQV = function(data){
-                title.textContent = data.name || 'Product';
-                img.src = data.image || '';
-                img.alt = data.name || 'Product';
-                desc.textContent = data.description || 'â€"';
-                // Clean price text by removing malformed currency symbols
-                let cleanPrice = data.priceText || 'Contact for Pricing';
-                if (cleanPrice && cleanPrice !== 'Contact for Pricing') {
-                    cleanPrice = cleanPrice.replace(/[â‚¨$₨]/g, '').trim();
-                }
-                price.textContent = cleanPrice;
-                add.onclick = function(){ smartAdd(data.name||'Product', parsePrice(data.priceText), data.image||''); hide(); };
-                overlay.classList.add('show');
-            };
-            function hide(){ overlay.classList.remove('show'); }
-            x.addEventListener('click', hide);
-            overlay.addEventListener('click', function(e){ if(e.target===overlay) hide(); });
+        // Close popup with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && popupOverlay.style.display === 'flex') {
+                closePopup();
+            }
+        });
 
-            document.addEventListener('click', function(e){
-                if (e.target.closest('button, a')) return;
-                const grid = e.target.closest('.grid');
-                if (!grid) return;
-                let wrapper = e.target.closest('div');
-                while (wrapper && wrapper.parentElement !== grid) {
-                    wrapper = wrapper.parentElement;
+        // Product click handler for existing product cards
+        document.addEventListener('click', function(e){
+            if (e.target.closest('button, a')) return;
+            const grid = e.target.closest('.grid');
+            if (!grid) return;
+            let wrapper = e.target.closest('div');
+            while (wrapper && wrapper.parentElement !== grid) {
+                wrapper = wrapper.parentElement;
+            }
+            if (!wrapper || wrapper.parentElement !== grid) return;
+            const imgEl = wrapper.querySelector('img');
+            const nameEl = wrapper.querySelector('h3');
+            // Prefer a description inside the tile; else try next sibling paragraph under the same section
+            let descEl = wrapper.querySelector('p');
+            if (!descEl) {
+                const nextP = wrapper.querySelector('div + p');
+                if (nextP) descEl = nextP;
+            }
+            // Find a price element in the tile
+            let priceEl = wrapper.querySelector('span.text-2xl, .price, .product-price');
+            const nameText = nameEl ? nameEl.textContent.trim() : '';
+            let descText = descEl ? descEl.textContent.trim() : '';
+            let priceText = priceEl ? priceEl.textContent.trim() : '';
+            if ((!descText || !priceText) && nameText) {
+                const meta = productMeta[nameText];
+                if (meta) {
+                    if (!descText) descText = meta.desc;
+                    if (!priceText) priceText = meta.price;
                 }
-                if (!wrapper || wrapper.parentElement !== grid) return;
-                const imgEl = wrapper.querySelector('img');
-                const nameEl = wrapper.querySelector('h3');
-                // Prefer a description inside the tile; else try next sibling paragraph under the same section
-                let descEl = wrapper.querySelector('p');
-                if (!descEl) {
-                    const nextP = wrapper.querySelector('div + p');
-                    if (nextP) descEl = nextP;
-                }
-                // Find a price element in the tile
-                let priceEl = wrapper.querySelector('span.text-2xl, .price, .product-price');
-                const nameText = nameEl ? nameEl.textContent.trim() : '';
-                let descText = descEl ? descEl.textContent.trim() : '';
-                let priceText = priceEl ? priceEl.textContent.trim() : '';
-                if ((!descText || !priceText) && nameText) {
-                    const meta = productMeta[nameText];
-                    if (meta) {
-                        if (!descText) descText = meta.desc;
-                        if (!priceText) priceText = meta.price;
-                    }
-                }
-                showQV({
-                    name: nameText || 'Product',
-                    image: imgEl ? imgEl.src : '',
-                    description: descText || 'â€”',
-                    priceText: priceText || 'Contact for Pricing'
-                });
-            });
-        })();
+            }
+            if (nameText) {
+                openProductModal(nameText, descText || 'Premium quality product', priceText || 'Contact for Pricing', imgEl ? imgEl.src : '');
+            }
+        });
         function setActiveNav(key) {
             const links = document.querySelectorAll('.bottom-nav a');
             links.forEach(link => link.classList.remove('active'));
