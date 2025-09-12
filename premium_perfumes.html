@@ -695,6 +695,126 @@
         .will-change-opacity {
             will-change: opacity;
         }
+        
+        /* Product Popup Modal Styles */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        .popup {
+            background: #1f2937;
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-sizing: border-box;
+            text-align: center;
+            border: 2px solid #f59e0b;
+            color: white;
+        }
+
+        .popup img {
+            width: 100%;
+            height: auto;
+            max-height: 250px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #000;
+            margin-bottom: 16px;
+        }
+
+        .popup h2 {
+            color: #f59e0b;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 0 12px 0;
+        }
+
+        .popup p {
+            color: #d1d5db;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 0 0 16px 0;
+        }
+
+        .close-btn {
+            padding: 10px 20px;
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #dc2626;
+        }
+
+        /* Mobile responsive popup */
+        @media (max-width: 768px) {
+            .popup {
+                width: 95%;
+                max-width: 350px;
+                padding: 16px;
+                margin: 8px;
+            }
+            
+            .popup img {
+                max-height: 200px;
+            }
+            
+            .popup h2 {
+                font-size: 1.25rem;
+            }
+            
+            .popup p {
+                font-size: 0.85rem;
+            }
+            
+            .flex.gap-3 {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .flex.gap-3 button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .popup {
+                width: 98%;
+                max-width: 320px;
+                padding: 12px;
+                margin: 4px;
+            }
+            
+            .popup img {
+                max-height: 180px;
+            }
+            
+            .popup h2 {
+                font-size: 1.1rem;
+            }
+            
+            .popup p {
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white min-h-screen">
@@ -888,39 +1008,15 @@
     </div>
 
     <!-- Product Popup Modal -->
-    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-1 sm:p-2 md:p-4">
-        <div class="bg-gray-800 rounded-lg sm:rounded-xl shadow-2xl max-w-[95vw] sm:max-w-xs md:max-w-sm w-full max-h-[95vh] sm:max-h-[85vh] md:max-h-[80vh] overflow-y-auto">
-            <!-- Modal Header -->
-            <div class="flex justify-between items-center p-2 sm:p-3 md:p-4 border-b border-gray-700 flex-shrink-0">
-                <h3 class="text-xs sm:text-sm md:text-lg font-bold text-yellow-400">Product Details</h3>
-                <button id="closeModal" class="text-gray-400 hover:text-white transition-colors p-1">
-                    <i class="fas fa-times text-base sm:text-lg md:text-xl"></i>
-                </button>
-            </div>
-            
-            <!-- Modal Content -->
-            <div class="p-2 sm:p-3 md:p-4 flex-1">
-                <!-- Product Image -->
-                <div class="relative mb-2 sm:mb-3 md:mb-4">
-                    <img id="modalProductImage" src="" alt="" class="w-full h-24 sm:h-32 md:h-40 object-cover rounded-md sm:rounded-lg">
-                    <div class="absolute top-1 right-1 sm:top-2 sm:right-2 bg-yellow-500 text-black px-1 py-0.5 sm:px-1.5 sm:py-0.5 md:px-2 md:py-1 rounded-full text-xs font-bold">
-                        Premium
-                    </div>
-                </div>
-                
-                <!-- Product Details -->
-                <div class="space-y-1 sm:space-y-2 md:space-y-3">
-                    <h4 id="modalProductName" class="text-sm sm:text-base md:text-xl font-bold text-yellow-400 leading-tight"></h4>
-                    <p id="modalProductDescription" class="text-gray-300 text-xs sm:text-sm leading-relaxed line-clamp-3"></p>
-                    <div class="flex items-center justify-between pt-1">
-                        <span id="modalProductPrice" class="text-base sm:text-lg md:text-2xl font-bold text-green-400"></span>
-                    </div>
-                </div>
-                
-                <!-- Add to Cart Button -->
-                <button id="modalAddToCart" class="w-full mt-3 sm:mt-4 md:mt-6 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black py-2 sm:py-2.5 md:py-3 rounded-md sm:rounded-lg hover:from-yellow-600 hover:to-yellow-700 transition-all font-semibold text-xs sm:text-sm md:text-base flex items-center justify-center">
-                    <i class="fas fa-shopping-cart mr-1 sm:mr-2"></i>Add to Cart
-                </button>
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <img id="popupImage" src="" alt="Product Image" />
+            <h2 id="popupTitle">Product Title</h2>
+            <p id="popupDescription">Product description</p>
+            <div id="popupPrice" class="text-yellow-400 font-bold text-lg mb-4">Price</div>
+            <div class="flex gap-3">
+                <button class="close-btn" id="closeBtn">Close</button>
+                <button id="addToCartBtn" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded font-semibold">Add to Cart</button>
             </div>
         </div>
     </div>
@@ -1367,36 +1463,57 @@
             }, 3000);
         }
 
-        // Modal functions
+        // Popup Modal functionality
+        const popupOverlay = document.getElementById('popupOverlay');
+        const popupImage = document.getElementById('popupImage');
+        const popupTitle = document.getElementById('popupTitle');
+        const popupDescription = document.getElementById('popupDescription');
+        const popupPrice = document.getElementById('popupPrice');
+        const closeBtn = document.getElementById('closeBtn');
+        const addToCartBtn = document.getElementById('addToCartBtn');
+
         function openProductModal(name, description, price, image) {
             console.log('Opening product modal for:', name);
             
-            // Update modal content
-            document.getElementById('modalProductName').textContent = name;
-            document.getElementById('modalProductDescription').textContent = description;
-            document.getElementById('modalProductPrice').textContent = price + ' PKR';
-            document.getElementById('modalProductImage').src = image;
-            document.getElementById('modalProductImage').alt = name;
+            // Update popup content
+            popupImage.src = image;
+            popupImage.alt = name;
+            popupTitle.textContent = name;
+            popupDescription.textContent = description;
+            popupPrice.textContent = price + ' PKR';
             
-            // Set up modal add to cart button
-            const modalAddToCartBtn = document.getElementById('modalAddToCart');
-            modalAddToCartBtn.onclick = function() {
+            // Set up add to cart button
+            addToCartBtn.onclick = function() {
                 addToCart(name, price, image);
-                closeProductModal();
+                closePopup();
             };
             
-            // Show modal
-            const modal = document.getElementById('productModal');
-            modal.classList.remove('hidden');
+            // Show popup
+            popupOverlay.style.display = 'flex';
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
 
-        function closeProductModal() {
-            console.log('Closing product modal');
-            const modal = document.getElementById('productModal');
-            modal.classList.add('hidden');
+        function closePopup() {
+            popupOverlay.style.display = 'none';
             document.body.style.overflow = 'auto'; // Restore scrolling
         }
+
+        // Event listeners
+        closeBtn.addEventListener('click', closePopup);
+
+        // Close popup when clicking outside
+        popupOverlay.addEventListener('click', (e) => {
+            if (e.target === popupOverlay) {
+                closePopup();
+            }
+        });
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && popupOverlay.style.display === 'flex') {
+                closePopup();
+            }
+        });
 
         // Ensure functions are available when page loads
         document.addEventListener('DOMContentLoaded', function() {
@@ -1461,26 +1578,7 @@
                 }
             });
             
-            // Set up modal event listeners
-            const modal = document.getElementById('productModal');
-            const closeBtn = document.getElementById('closeModal');
-            
-            // Close button click
-            closeBtn.addEventListener('click', closeProductModal);
-            
-            // Click outside modal to close
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    closeProductModal();
-                }
-            });
-            
-            // Escape key to close
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-                    closeProductModal();
-                }
-            });
+            // Popup modal is already set up above
 
         // Toggle mobile menu
         // Toggle mobile menu
@@ -1691,43 +1789,6 @@
             }
         }
 
-        /* Mobile responsive product modal */
-        @media (max-width: 640px) {
-            #productModal .bg-gray-800 {
-                border-radius: 0.5rem;
-            }
-            
-            #productModal .line-clamp-3 {
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
-            
-            #productModal .flex-shrink-0 {
-                flex-shrink: 0;
-            }
-            
-            #productModal .flex-1 {
-                flex: 1;
-                min-height: 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            #productModal {
-                padding: 0.25rem;
-            }
-            
-            #productModal .bg-gray-800 {
-                max-height: 98vh;
-                border-radius: 0.375rem;
-            }
-            
-            #productModal .h-24 {
-                height: 5rem;
-            }
-        }
     </style>
 </body>
 </html>
