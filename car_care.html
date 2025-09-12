@@ -294,18 +294,55 @@
             }
         }
         
-        .qv-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 100; }
-        .qv-overlay.show { display: flex; }
-        .qv-card { background: #111827; border: 1px solid #F59E0B; border-radius: 12px; max-width: 92vw; width: 100%; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.45); }
-        .qv-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #374151; }
-        .qv-title { color: #F59E0B; font-weight: 700; font-size: 18px; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; }
-        .qv-body { padding: 16px; }
-        .qv-img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; }
-        .qv-desc { color: #d1d5db; font-size: 14px; line-height: 1.5; margin-top: 10px; }
-        .qv-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
-        .qv-price { color: #F59E0B; font-weight: 700; font-size: 18px; }
-        .qv-btn { background: #F59E0B; color: #000; border: 0; border-radius: 8px; padding: 10px 14px; font-weight: 600; cursor: pointer; }
-        .qv-btn:hover { background: #f7b43a; }
+        /* Popup overlay */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Popup content */
+        .popup {
+            background: #fff;
+            width: 90%;
+            max-width: 400px;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* Responsive image */
+        .popup img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        /* Close button */
+        .close-btn {
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background: #c0392b;
+        }
         @media (min-width: 640px) { .qv-card { max-width: 560px; } .qv-img { height: 280px; } }
         
         /* Hero Section Styling */
@@ -449,20 +486,14 @@
             will-change: opacity;
         }
     </style>
-    <div id="qv-overlay" class="qv-overlay">
-        <div class="qv-card">
-            <div class="qv-header">
-                <div id="qv-title" class="qv-title">Product</div>
-                <button id="qv-x" class="text-gray-300 hover:text-white"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="qv-body">
-                <img id="qv-img" class="qv-img" src="" alt="Product">
-                <div id="qv-desc" class="qv-desc">Description</div>
-                <div class="qv-footer">
-                    <div id="qv-price" class="qv-price">Contact for Pricing</div>
-                    <button id="qv-add" class="qv-btn">Add to Cart</button>
-                </div>
-            </div>
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <img id="popup-img" src="" alt="Product Image" />
+            <h2 id="popup-title">Product Title</h2>
+            <p id="popup-desc">Product description</p>
+            <p id="popup-price" style="color: #F59E0B; font-weight: bold; font-size: 18px; margin: 10px 0;">Price</p>
+            <button class="close-btn" id="closeBtn">Close</button>
         </div>
     </div>
     <style>
@@ -694,7 +725,7 @@
             <ul class="navbar-menu" id="navbar-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="car_care.html" class="active">Car Care</a></li>
-                <li><a href="house_care.html">House Care</a></li>
+                <li><a href="house_care.html">Microfiber & Cleaners</a></li>
                 <li><a href="premium_perfumes.html">Premium Perfumes</a></li>
                 <li><a href="crockery.html">Crockery</a></li>
                 <li><a href="laptops.html">Laptop Deals</a></li>
@@ -857,7 +888,7 @@
                                 <a href="house_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-500/50 rounded-lg hover:bg-yellow-500 hover:text-black transition-all duration-300 group">
                                     <div class="flex items-center space-x-3">
                                         <i class="fas fa-home text-yellow-500 group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-yellow-500 group-hover:text-black">House Care</span>
+                                        <span class="font-semibold text-yellow-500 group-hover:text-black">Microfiber & Cleaners</span>
                     </div>
                                     <i class="fas fa-chevron-right text-yellow-500 group-hover:text-black"></i>
                                 </a>
@@ -988,6 +1019,12 @@
                 <div class="text-center" onclick="filterByCategory('cleaners')">
                     <img src="CAR_CARE CATEGORY/CLEANNERS.jfif" alt="Cleaners" class="w-full h-24 object-cover rounded-lg cursor-pointer">
                     <p class="text-white text-sm mt-2 font-medium">Cleaners</p>
+                </div>
+
+                <!-- Microfiber Clothes Category -->
+                <div class="text-center" onclick="filterByCategory('microfiber clothes')">
+                    <img src="CAR_CARE CATEGORY/MICROFIBER CLOTHES.jfif" alt="Microfiber Clothes" class="w-full h-24 object-cover rounded-lg cursor-pointer">
+                    <p class="text-white text-sm mt-2 font-medium">Microfiber Clothes</p>
                 </div>
 
             </div>
@@ -1348,7 +1385,7 @@
                 description: "Premium wash and wax AW-104. Superior cleaning and long-lasting protection.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/AW-104 AW WASH & WAX.jpeg",
-                price: 1250
+                price: 750
             },
             {
                 id: 47,
@@ -1372,13 +1409,13 @@
                 description: "Professional carnauba wash and wax F1-103. Superior cleaning and protection.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/F1-103 CARNAUBA WASH & WAX.jpeg",
-                price: 1250
+                price: 3250
             },
             {
                 id: 50,
                 name: "F1-104 CARNAUBA LIQUID WAX",
                 description: "Carnauba liquid wax F1-104. Easy-to-use liquid wax with natural protection.",
-                price: 1500,
+                price: 1600,
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/F1-104 CARNAUBA LIQUID WAX.jpeg"
             },
@@ -1396,7 +1433,7 @@
                 description: "Premium carnauba wax paste F1-107. High-quality paste wax for maximum protection.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/F1-107 CARNAUBA WAX PASTE.jpeg",
-                price: 1500
+                price: 2000
             },
             {
                 id: 53,
@@ -1404,7 +1441,7 @@
                 description: "Ceramic liquid wax F1-113. Advanced ceramic technology for superior protection.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/F1-113 CERAMIC LIQUID WAX.jpeg",
-                price: 2000
+                price: 250
             },
             {
                 id: 54,
@@ -1428,7 +1465,8 @@
                 name: "AIM WASH & SHAMPOO AW-157",
                 description: "Professional wash and shampoo AW-157. Cleans and shines all painted surfaces. 1 LTR.",
                 category: "wash shampoos",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 500
             },
             // Car Wax
             {
@@ -1436,148 +1474,159 @@
                 name: "A-113 LEATHER AND TYRE WAX",
                 description: "Premium leather and tire wax A-113. Conditions and protects with long-lasting shine.",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 250
             },
             {
                 id: 58,
                 name: "A-115 LEATHER AND TYRE WAX",
                 description: "Professional leather and tire wax A-115. Advanced protection formula.",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 250
             },
             {
                 id: 59,
                 name: "A-117 LEATHER AND TYRE WAX",
                 description: "High-quality leather and tire wax A-117. Superior conditioning and protection.",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 250
             },
             {
                 id: 60,
                 name: "A-118 LEATHER AND TYRE WAX",
                 description: "Premium leather and tire wax A-118. Long-lasting protection and shine.",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 500
             },
             {
                 id: 61,
                 name: "A-119 LEATHER AND TYRE WAX",
                 description: "Professional leather and tire wax A-119. Advanced formula for superior results.",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 500
             },
             {
                 id: 62,
                 name: "A-120 LEATHER AND TYRE WAX",
                 description: "High-performance leather and tire wax A-120. Premium protection and conditioning.",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 500
             },
             {
                 id: 63,
                 name: "A-121 LEATHER TYRE WAX",
                 description: "Professional leather tire wax A-121. Superior shine and protection.",
-                price: "16.99",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 500
             },
             {
                 id: 64,
                 name: "AW-102 AW WASH & WAX",
                 description: "Professional wash and wax AW-102. Cleans and protects in one step.",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 750
             },
             {
                 id: 65,
                 name: "AW-103 AW WASH & WAX",
                 description: "High-quality wash and wax AW-103. Advanced cleaning and protection formula.",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 750
             },
             {
                 id: 66,
                 name: "AW-104 AW WASH & WAX",
                 description: "Premium wash and wax AW-104. Superior cleaning and long-lasting protection.",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 1250
             },
             {
                 id: 67,
                 name: "F1-101 CARNAUBA WASH & WAX",
                 description: "Carnauba wash and wax F1-101. Natural carnauba wax protection while washing.",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 1250
             },
             {
                 id: 68,
                 name: "F1-102 CARNAUBA WASH & WAX",
                 description: "Premium carnauba wash and wax F1-102. High-performance natural protection.",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 2000
             },
             {
                 id: 69,
                 name: "F1-103 CARNAUBA WASH & WAX",
                 description: "Professional carnauba wash and wax F1-103. Superior cleaning and protection.",
-                price: "22.99",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 1250
             },
             {
                 id: 70,
                 name: "F1-104 CARNAUBA LIQUID WAX",
                 description: "Carnauba liquid wax F1-104. Easy-to-use liquid wax with natural protection.",
-                price: "24.99",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 1500
             },
             {
                 id: 71,
                 name: "F1-106 CARNAUBA WAX PASTE",
                 description: "Carnauba wax paste F1-106. Traditional paste wax for superior protection.",
-                price: "26.99",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 1500
             },
             {
                 id: 72,
                 name: "F1-107 CARNAUBA WAX PASTE",
                 description: "Premium carnauba wax paste F1-107. High-quality paste wax for maximum protection.",
-                price: "26.99",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 1500
             },
             {
                 id: 73,
                 name: "F1-113 CERAMIC LIQUID WAX",
                 description: "Ceramic liquid wax F1-113. Advanced ceramic technology for superior protection.",
-                price: "29.99",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 2000
             },
             {
                 id: 74,
                 name: "F1-114 CERAMIC SPRAY WAX",
                 description: "Ceramic spray wax F1-114. Easy-to-use ceramic protection in spray form.",
-                price: "27.99",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 2000
             },
             {
                 id: 75,
                 name: "F1-115 CERAMIC WASH & WAX",
                 description: "Ceramic wash and wax F1-115. Advanced ceramic protection while washing.",
-                price: "28.99",
                 category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg"
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 2000
             },
             // Cleaners
             {
                 id: 76,
                 name: "A-109 INJECTOR CLEANER",
                 description: "Professional injector cleaner A-109. Cleans fuel injectors for optimal performance.",
-                price: "12.99",
+                price: 400,
                 category: "cleaners",
                 image_url: "CLEANERS/A-109 INJECTOR CLEANER.jpeg"
             },
@@ -1585,7 +1634,7 @@
                 id: 77,
                 name: "A-110 INJECTOR CLEANER",
                 description: "High-quality injector cleaner A-110. Advanced formula for fuel system cleaning.",
-                price: "12.99",
+                price: 400,
                 category: "cleaners",
                 image_url: "CLEANERS/A-110 INJECTOR CLEANER.jpeg"
             },
@@ -1593,7 +1642,7 @@
                 id: 78,
                 name: "A-111 INJECTOR CLEANER",
                 description: "Premium injector cleaner A-111. Professional fuel system maintenance.",
-                price: "12.99",
+                price: 400,
                 category: "cleaners",
                 image_url: "CLEANERS/A-111 INJECTOR CLEANER.jpeg"
             },
@@ -1601,7 +1650,7 @@
                 id: 79,
                 name: "A-112 AIM CARB CLEANER",
                 description: "Professional carburetor cleaner A-112. Removes deposits and restores performance.",
-                price: "14.99",
+                price: 750,
                 category: "cleaners",
                 image_url: "CLEANERS/A-112 AIM CARB CLEANER.jpeg"
             },
@@ -1609,7 +1658,7 @@
                 id: 80,
                 name: "A-123 AIM ANTI-RUST",
                 description: "Anti-rust protection A-123. Prevents corrosion and protects metal surfaces.",
-                price: "16.99",
+                price: 750,
                 category: "cleaners",
                 image_url: "CLEANERS/A-123 AIM ANTI-RUST.jpeg"
             },
@@ -1617,7 +1666,7 @@
                 id: 81,
                 name: "A-124 AIM ANTI-RUST",
                 description: "Premium anti-rust protection A-124. Advanced corrosion prevention formula.",
-                price: "16.99",
+                price: 250,
                 category: "cleaners",
                 image_url: "CLEANERS/A-124 AIM ANTI-RUST.jpeg"
             },
@@ -1625,7 +1674,7 @@
                 id: 82,
                 name: "A-125 AIM ENGINE CLEANER",
                 description: "Professional engine cleaner A-125. Removes grease and grime from engine surfaces.",
-                price: "18.99",
+                price: 700,
                 category: "cleaners",
                 image_url: "CLEANERS/A-125 AIM ENGINE CLEANER.jpeg"
             },
@@ -1633,7 +1682,7 @@
                 id: 83,
                 name: "A-126 AIM TIRE FOAM",
                 description: "Tire foam cleaner A-126. Cleans and shines tires with foaming action.",
-                price: "13.99",
+                price: 450,
                 category: "cleaners",
                 image_url: "CLEANERS/A-126 AIM TIRE FOAM.jpeg"
             },
@@ -1641,7 +1690,7 @@
                 id: 84,
                 name: "A-127 AIM TIRE FOAM",
                 description: "Premium tire foam cleaner A-127. Advanced foaming formula for superior cleaning.",
-                price: "13.99",
+                price: 500,
                 category: "cleaners",
                 image_url: "CLEANERS/A-127 AIM TIRE FOAM.jpeg"
             },
@@ -1649,7 +1698,7 @@
                 id: 85,
                 name: "A-128 AIM FOAMY CLEANER",
                 description: "Foamy cleaner A-128. Versatile cleaning solution for multiple surfaces.",
-                price: "15.99",
+                price: 700,
                 category: "cleaners",
                 image_url: "CLEANERS/A-128 AIM FOAMY CLEANER.jpeg"
             },
@@ -1657,7 +1706,7 @@
                 id: 86,
                 name: "A-129 AIM FOAMY CLEANER",
                 description: "Premium foamy cleaner A-129. Advanced foaming technology for deep cleaning.",
-                price: "15.99",
+                price: 550,
                 category: "cleaners",
                 image_url: "CLEANERS/A-129 AIM FOAMY CLEANER.jpeg"
             },
@@ -1665,7 +1714,7 @@
                 id: 87,
                 name: "A-131 AIM GLASS CLEANER",
                 description: "Professional glass cleaner A-131. Streak-free cleaning for all glass surfaces.",
-                price: "11.99",
+                price: 350,
                 category: "cleaners",
                 image_url: "CLEANERS/A-131 AIM GLASS CLEANER.jpeg"
             },
@@ -1673,7 +1722,7 @@
                 id: 88,
                 name: "A-132 AIM WIND SCREEN WASHER",
                 description: "Wind screen washer fluid A-132. Cleans and prevents freezing in cold weather.",
-                price: "9.99",
+                price: 750,
                 category: "cleaners",
                 image_url: "CLEANERS/A-132 AIM WIND SCREEN WASHER.jpeg"
             },
@@ -1681,7 +1730,7 @@
                 id: 89,
                 name: "A-133 AIM LEATHER CLEANER",
                 description: "Professional leather cleaner A-133. Cleans and conditions leather surfaces.",
-                price: "17.99",
+                price: 1000,
                 category: "cleaners",
                 image_url: "CLEANERS/A-133 AIM LEATHER CLEANER.jpeg"
             },
@@ -1689,7 +1738,7 @@
                 id: 90,
                 name: "A-135 AIM FUEL INJECTOR CLEANER",
                 description: "Fuel injector cleaner A-135. Advanced formula for fuel system maintenance.",
-                price: "13.99",
+                price: 750,
                 category: "cleaners",
                 image_url: "CLEANERS/A-135 AIM FUEL INJECTOR CLEANER.jpeg"
             },
@@ -1697,7 +1746,7 @@
                 id: 91,
                 name: "A-136 AIM CATALYTIC SYSTEM CLEANER",
                 description: "Catalytic system cleaner A-136. Cleans and maintains catalytic converter performance.",
-                price: "19.99",
+                price: 750,
                 category: "cleaners",
                 image_url: "CLEANERS/A-136 AIM CATALYIC SYSTEM CLEANER.jpeg"
             },
@@ -1705,7 +1754,7 @@
                 id: 92,
                 name: "A-136 AIM CATALYTIC SYSTEM CLEANER",
                 description: "Premium catalytic system cleaner A-136. Advanced cleaning for emission systems.",
-                price: "19.99",
+                price: 750,
                 category: "cleaners",
                 image_url: "CLEANERS/A-136-AIM-CATALYIC-SYSTEM-CLEANER.jpeg"
             },
@@ -1714,7 +1763,7 @@
                 id: 93,
                 name: "MICRO FIBER TOWEL",
                 description: "Premium microfiber towel. Ultra-soft and absorbent for gentle cleaning.",
-                price: "8.99",
+                price: 1000,
                 category: "microfiber clothes",
                 image_url: "MICRO FIBER CLOTHES/MICRO FIBER TOWEL.jpeg"
             },
@@ -1722,15 +1771,15 @@
                 id: 94,
                 name: "MICROFIBER CLOTH PACK OF 4",
                 description: "Pack of 4 microfiber cloths. Perfect for multiple cleaning tasks.",
-                price: "24.99",
+                price: 1600,
                 category: "microfiber clothes",
                 image_url: "MICRO FIBER CLOTHES/MICROFIBER CLOTH PACK OF 4.jpeg"
             },
             {
                 id: 95,
-                name: "MICROFIBER TOWEL (5)",
-                description: "Pack of 5 microfiber towels. High-quality cleaning cloths for professional use.",
-                price: "29.99",
+                name: "MICROFIBER TOWEL",
+                description: "Pack of 4 microfiber towels. High-quality cleaning cloths for professional use.",
+                price: 1200,
                 category: "microfiber clothes",
                 image_url: "MICRO FIBER CLOTHES/MICROFIBER TOWEL (5).jpeg"
             },
@@ -1738,17 +1787,9 @@
                 id: 96,
                 name: "MICROFIBER TOWEL PACK OF 4",
                 description: "Pack of 4 premium microfiber towels. Ultra-soft and highly absorbent.",
-                price: "24.99",
+                price: 1000,
                 category: "microfiber clothes",
                 image_url: "MICRO FIBER CLOTHES/MICROFIBER TOWEL PACK OF 4.jpeg"
-            },
-            {
-                id: 97,
-                name: "SINGLE MICROFIBER TOWEL",
-                description: "Single microfiber towel. Perfect for individual cleaning tasks.",
-                price: "6.99",
-                category: "microfiber clothes",
-                image_url: "MICRO FIBER CLOTHES/SINGLE MICROFIBER TOWEL.jpeg"
             },
             // Radiator Coolers
             {
@@ -1836,7 +1877,7 @@
                 id: 108,
                 name: "A-118 LEATHER AND TYRE WAX",
                 description: "Premium leather and tire wax A-118. Long-lasting protection and shine.",
-                price: "16.99",
+                price: "500",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/A-118 LEATHER AND TYPRE WAX.jpeg"
             },
@@ -1965,7 +2006,7 @@
                 id: 124,
                 name: "AIM WASH & SHAMPOO AW-157",
                 description: "Professional wash and shampoo AW-157. Cleans and shines all painted surfaces. 1 LTR.",
-                price: "14.99",
+                price: 500,
                 category: "wash shampoos",
                 image_url: "CAR WASH SHAMPOOS/AW-157 AIM WASH & SHAMPOO.jpeg"
             },
@@ -1991,7 +2032,7 @@
                 
                 name: "DEARGON ANTI-RUST LUBRICANT SPRAY 450ML",
                 description: "International advanced formula anti-rust lubricant spray. Go beyond due to the high quality. Loosens rusted parts, frees sticky mechanisms, cleans and protects, drives out moisture, stops squeaks. NET 450ml.",
-                price: "18.99",
+                price: "",
                 category: "lubricants",
                 image_url: "CAR LUBRICANTS/deargon-anti-rust-450ml.jpeg"
             },
@@ -2185,10 +2226,12 @@
                                                 productName.includes('notebook') || productName.includes('gaming') ||
                                                 productName.includes('business') || productDesc.includes('laptop');
                                 break;
-                            case 'house cleaners':
+                            case 'microfiber and cleaners':
                                 matchesCategory = productName.includes('cleaner') || productName.includes('cleaning') ||
                                                 productName.includes('detergent') || productName.includes('floor') ||
-                                                productName.includes('bathroom') || productDesc.includes('clean');
+                                                productName.includes('bathroom') || productDesc.includes('clean') ||
+                                                productName.includes('microfiber') || productName.includes('towel') ||
+                                                productName.includes('cloth');
                                 break;
                             case 'polish and shinners':
                                 matchesCategory = productName.includes('polish') || productName.includes('shine') ||
@@ -2866,31 +2909,36 @@
         window.toggleMenu = toggleMenu;
     </script>
     <script>
-        // Quick View logic for car_care
+        // New Popup logic for car_care
         (function(){
-            const overlay = document.getElementById('qv-overlay');
-            const title = document.getElementById('qv-title');
-            const img = document.getElementById('qv-img');
-            const desc = document.getElementById('qv-desc');
-            const price = document.getElementById('qv-price');
-            const add = document.getElementById('qv-add');
-            const x = document.getElementById('qv-x');
+            const popupOverlay = document.getElementById('popupOverlay');
+            const popupTitle = document.getElementById('popup-title');
+            const popupImg = document.getElementById('popup-img');
+            const popupDesc = document.getElementById('popup-desc');
+            const popupPrice = document.getElementById('popup-price');
+            const closeBtn = document.getElementById('closeBtn');
 
-            function parsePrice(text){ if(!text) return ''; const m=text.replace(/[,\sâ‚¨$]/g,'').match(/(\d+(?:\.\d+)?)/); return m?m[1]:''; }
-            function smartAdd(name, priceVal, image){ try{ if(typeof addToCart==='function'){ addToCart(name, priceVal || '', image||''); return; } }catch(e){} alert('Added to cart: '+name); }
+            function openProductModal(data){
+                popupTitle.textContent = data.name || 'Product';
+                popupImg.src = data.image || '';
+                popupImg.alt = data.name || 'Product';
+                popupDesc.textContent = data.description || '—';
+                popupPrice.textContent = data.priceText || 'Contact for Pricing';
+                popupOverlay.style.display = 'flex';
+            }
 
-            window.showQV = function(data){
-                title.textContent = data.name || 'Product';
-                img.src = data.image || '';
-                img.alt = data.name || 'Product';
-                desc.textContent = data.description || '—';
-                price.textContent = data.priceText || 'Contact for Pricing';
-                add.onclick = function(){ smartAdd(data.name||'Product', parsePrice(data.priceText), data.image||''); hide(); };
-                overlay.classList.add('show');
-            };
-            function hide(){ overlay.classList.remove('show'); }
-            x.addEventListener('click', hide);
-            overlay.addEventListener('click', function(e){ if(e.target===overlay) hide(); });
+            function closePopup(){
+                popupOverlay.style.display = 'none';
+            }
+
+            closeBtn.addEventListener('click', closePopup);
+            
+            // Close popup when clicking outside the popup
+            popupOverlay.addEventListener('click', function(e){
+                if (e.target === popupOverlay) {
+                    closePopup();
+                }
+            });
 
             document.addEventListener('click', function(e){
                 if (e.target.closest('button, a')) return;
@@ -2904,7 +2952,7 @@
                 const productName = nameEl ? nameEl.textContent.trim() : '';
                 const product = allProducts.find(p => p.name === productName);
                 
-                showQV({
+                openProductModal({
                     name: productName,
                     image: imgEl ? imgEl.src : '',
                     description: product ? product.description : '',
