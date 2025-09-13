@@ -117,7 +117,7 @@
         @media (max-width: 768px) {
             .navbar-menu {
                 position: fixed;
-                top: 100%;
+                top: 80px;
                 left: 0;
                 right: 0;
                 background-color: #111;
@@ -125,6 +125,7 @@
                 padding: 1rem;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
                 display: none;
+                z-index: 999;
             }
             
             .navbar-menu.active {
@@ -238,7 +239,7 @@
 
     <script>
         function setActiveNav(key) {
-            const links = document.querySelectorAll('.bottom-nav a');
+            const links = document.querySelectorAll('.old-bottom-nav a');
             links.forEach(link => link.classList.remove('active'));
             const ids = { home: 'home-nav', category: 'category-nav', cart: 'cart-nav', deals: 'deals-nav' };
             const active = document.getElementById(ids[key]);
@@ -247,7 +248,11 @@
 
         function openCategoryMenu() {
             const menu = document.getElementById('category-menu');
-            if (!menu) return;
+            if (!menu) {
+                // If no category menu exists, redirect to main page
+                window.location.href = 'index.html';
+                return;
+            }
             if (menu.classList.contains('hidden')) {
                 menu.classList.remove('hidden');
                 setTimeout(() => { document.addEventListener('click', closeOnOutsideClick, { once: true }); }, 0);
@@ -518,13 +523,18 @@
             <ul class="navbar-menu" id="navbar-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="car_care.html">Car Care</a></li>
-                <li><a href="microfiber_and_cleaners.html">Microfiber & Cleaners</a></li>
                 <li><a href="premium_perfumes.html">Premium Perfumes</a></li>
                 <li><a href="crockery.html">Crockery</a></li>
                 <li><a href="laptops.html">Laptop Deals</a></li>
-                <li><a href="cart.html">Cart</a></li>
                 <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
+            
+            <!-- Cart Button -->
+            <button id="cart-button" class="relative bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-2 rounded-lg transition duration-200 flex items-center gap-1.5">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Cart</span>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            </button>
             
             <!-- Mobile Menu Button -->
             <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -862,6 +872,16 @@
                 hamburger.classList.toggle('active');
             }
         }
+
+        // Cart button functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartButton = document.getElementById('cart-button');
+            if (cartButton) {
+                cartButton.addEventListener('click', function() {
+                    window.location.href = 'cart.html';
+                });
+            }
+        });
     </script>
 </body>
 </html>
