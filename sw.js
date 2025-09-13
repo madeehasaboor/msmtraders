@@ -9,7 +9,7 @@ const urlsToCache = [
     '/electronics.html',
     '/laptops.html',
     '/car_care.html',
-    '/microfiber-cleaners.html',
+    '/microfiber_and_cleaners.html',
     '/sale.html',
     '/contact.html',
     'https://cdn.tailwindcss.com',
