@@ -169,7 +169,7 @@ function initMobileMenu() {
                 <a href="car_care.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
                     <i class="fas fa-car mr-2"></i>Car Care
                 </a>
-                <a href="house_care.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
+                <a href="microfiber-cleaners.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
                     <i class="fas fa-home mr-2"></i>House Care
                 </a>
                 <a href="perfumes.html" class="block py-2 px-3 text-gray-300 hover:bg-yellow-500 hover:text-black rounded-lg transition-colors">
