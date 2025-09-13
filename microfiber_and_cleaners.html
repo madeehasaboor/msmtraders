@@ -284,7 +284,7 @@
 
         /* Product Card */
         .product-card {
-            background: #000;        /* black background */
+            background: #374151;     /* grey background */
             border-radius: 10px;
             padding: 10px;           /* keep small padding only */
             text-align: center;
@@ -305,28 +305,26 @@
         /* Product card image area */
         .product-card .image-container {
             width: 100%;
-            height: 180px;          /* control image height */
+            height: 250px;          /* desktop height */
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;       /* hides extra image parts */
-            background: #000;       /* black background behind image */
-            border-radius: 8px;     /* rounded edges */
+            background: #000;       /* black background */
+            border-radius: 8px;     /* optional: rounded edges */
         }
 
         /* Product images */
         .product-card .image-container img {
-            width: 100%;
-            height: 180px;           /* control image height */
-            object-fit: contain;     /* keep full image visible */
-            background: #000;        /* black background behind image */
-            border-radius: 8px;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;    /* shows full product without stretching */
         }
 
         /* Mobile responsive */
         @media (max-width: 768px) {
             .product-card .image-container {
-                height: 120px;        /* smaller image area for mobile */
+                height: 150px;        /* smaller image area for mobile */
             }
             
             .product-card .image-container img {
@@ -337,8 +335,15 @@
         /* Product Name */
         .product-card h3 {
             margin: 10px 0 0 0;      /* small space below image */
-            color: #fff;
+            color: #F59E0B;
             font-size: 14px;
+        }
+
+        .product-card .price {
+            color: #F59E0B;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 4px 0;
         }
 
         /* Add a small "Click to view" indicator */
@@ -706,6 +711,7 @@
                 <li><a href="microfiber_and_cleaners.html" class="active">Microfiber & Cleaners</a></li>
                 <li><a href="premium_perfumes.html">Premium Perfumes</a></li>
                 <li><a href="crockery.html">Crockery</a></li>
+                <li><a href="special_offers.html">Special Offers</a></li>
                 <li><a href="laptops.html">Laptop Deals</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -1301,6 +1307,7 @@
                         <img src="${product.image_url}" alt="${product.name}" loading="lazy" decoding="async">
                         </div>
                     <h3>${product.name}</h3>
+                    <p class="price">₨${product.price}</p>
                 `;
                 // Attach product data for Quick View
                 productCard.dataset.name = product.name || '';
