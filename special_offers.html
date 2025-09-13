@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Deals & Offers - MSM Traders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#fbbf24',
+                        secondary: '#000000',
+                        golden: '#fbbf24',
+                        dark: '#000000',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        
+        /* Responsive Design Enhancements */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Responsive images */
+        .responsive-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        body {
+            padding-top: 80px;
+        }
+        
+        /* Responsive Navbar */
+        .navbar {
+            background-color: #111;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0.75rem 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar-logo {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .navbar-logo img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 1.5rem;
+        }
+        
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+        }
+        
+        .navbar-menu a.active {
+            background-color: #fbbf24;
+            color: #000;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
+        /* Mobile menu */
+        @media (max-width: 768px) {
+            .navbar-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background-color: #111;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+                display: none;
+                z-index: 999;
+            }
+            
+            .navbar-menu.active {
+                display: flex;
+            }
+            
+            .navbar-menu a {
+                padding: 1rem;
+                border-bottom: 1px solid #333;
+                text-align: center;
+            }
+            
+            .navbar-menu a:last-child {
+                border-bottom: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .navbar-logo {
+                font-size: 1.25rem;
+            }
+            
+            .navbar-logo img {
+                height: 35px;
+            }
+        }
+
+        /* Mobile-first responsive breakpoints */
+        @media (max-width: 320px) {
+            .grid {
+                gap: 0.75rem;
+            }
+            .product-card {
+                min-height: 200px;
+            }
+        }
+
+        @media (min-width: 321px) and (max-width: 480px) {
+            .grid {
+                gap: 1rem;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .grid {
+                gap: 1.25rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .grid {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1025px) and (max-width: 1440px) {
+            .grid {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1441px) {
+            .grid {
+                gap: 2rem;
+            }
+        }
+
+        /* Touch targets for mobile */
+        @media (max-width: 768px) {
+            .product-card {
+                min-height: 44px;
+                touch-action: manipulation;
+            }
+            
+            button, .clickable {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+
+        /* Mobile navigation */
+        @media (max-width: 1024px) {
+            .mobile-menu {
+                display: block;
+            }
+            .desktop-nav {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .mobile-menu {
+                display: none;
+            }
+            .desktop-nav {
+                display: flex;
+            }
+        }
+
+        /* Hide scrollbars for horizontal scrolling */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .golden-gradient {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        }
+        .black-gradient {
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+    <style>
+        .old-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #111;
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid #333;
+            z-index: 50;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        
+        /* Desktop styles */
+        .old-bottom-nav a {
+            text-decoration: none;
+            color: #ccc;
+            text-align: center;
+            font-size: 14px;
+            padding: 15px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            transition: all 0.3s ease;
+        }
+        .old-bottom-nav a i {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .old-bottom-nav a.active {
+            color: #fff;
+        }
+        
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .old-bottom-nav {
+                padding: 12px 0;
+            }
+            .old-bottom-nav a {
+                font-size: 16px;
+                padding: 12px 8px;
+                min-height: 60px;
+                flex: 1;
+            }
+            .old-bottom-nav a i {
+                font-size: 28px;
+                margin-bottom: 6px;
+            }
+            body { 
+                padding-bottom: calc(84px + env(safe-area-inset-bottom)); 
+            }
+        }
+        
+        /* Small mobile styles */
+        @media (max-width: 480px) {
+            .old-bottom-nav a {
+                font-size: 14px;
+                padding: 10px 6px;
+                min-height: 56px;
+            }
+            .old-bottom-nav a i {
+                font-size: 26px;
+                margin-bottom: 4px;
+            }
+            body { 
+                padding-bottom: calc(76px + env(safe-area-inset-bottom)); 
+            }
+        }
+        
+        /* Desktop body padding */
+        @media (min-width: 769px) {
+            body { 
+                padding-bottom: calc(74px + env(safe-area-inset-bottom)); 
+            }
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <!-- Responsive Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="MSM TRADERS LOGO.jpeg" alt="MSM Traders Logo">
+                <span>MSM TRADERS</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <ul class="navbar-menu" id="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="car_care.html">Car Care</a></li>
+                <li><a href="microfiber_and_cleaners.html">House Care</a></li>
+                <li><a href="premium_perfumes.html">Premium Perfumes</a></li>
+                <li><a href="crockery.html">Crockery</a></li>
+                <li><a href="laptops.html">Laptop Deals</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <!-- Mobile Menu Button -->
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+                    </div>
+                </div>
+    </nav>
+
+
+
+    <!-- Hero Banner with Categories Sidebar -->
+    <section class="black-gradient py-8 lg:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Categories Sidebar - Desktop Only -->
+                <div class="hidden lg:block lg:w-1/4">
+                    <div class="bg-gray-900 border border-golden rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-golden mb-6 text-center">Shop by Category</h3>
+                        <ul class="space-y-3">
+                            <li>
+                                <a href="car_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-car text-golden group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-golden group-hover:text-black">Car Care</span>
+                </div>
+                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="microfiber_and_cleaners.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-home text-golden group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-golden group-hover:text-black">House Care</span>
+            </div>
+                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="premium_perfumes.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-spray-can text-golden group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-golden group-hover:text-black">Premium Perfumes</span>
+                </div>
+                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="crockery.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-utensils text-golden group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-golden group-hover:text-black">Crockery</span>
+            </div>
+                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="laptops.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-laptop text-golden group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-golden group-hover:text-black">Laptops</span>
+        </div>
+                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                                </a>
+                            </li>
+                        </ul>
+        </div>
+    </div>
+
+                <!-- Hero Content -->
+                <div class="flex-1 text-center">
+            <h1 class="text-3xl lg:text-5xl font-bold text-golden mb-4">Special Offers</h1>
+            <p class="text-xl lg:text-2xl text-gray-300 mb-8">Don't miss out on these amazing deals!</p>
+            
+            <!-- Promotional Video -->
+            <div class="mb-8">
+                <video controls class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto rounded-lg shadow-lg" poster="">
+                    <source src="videos/WhatsApp Video 2025-09-14 at 4.04.14 AM.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="flex justify-center items-center space-x-4 text-golden">
+                <i class="fas fa-clock text-2xl"></i>
+                <span class="text-lg font-semibold">Limited Time Offers</span>
+            </div>
+        </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Free Shipping Banner -->
+    <section id="free-shipping" class="py-8 golden-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center mb-4">
+                <i class="fas fa-shipping-fast text-4xl text-black mr-4"></i>
+                <h2 class="text-3xl lg:text-4xl font-bold text-black">FREE SHIPPING</h2>
+            </div>
+            <p class="text-xl text-black mb-4">On all orders over 5000 Rs</p>
+            <div class="bg-black text-golden px-6 py-3 rounded-lg inline-block">
+                <span class="font-bold">Current cart total: $<span id="current-total">0.00</span></span>
+                <span id="shipping-status" class="ml-2"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-8 lg:py-12 border-t border-golden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-golden">MSM TRADERS</h3>
+                    <p class="text-gray-400">Your trusted partner for premium products and exceptional service.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 text-golden">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-golden">About Us</a></li>
+                        <li><a href="#" class="hover:text-golden">Contact</a></li>
+                        <li><a href="#" class="hover:text-golden">Shipping</a></li>
+                        <li><a href="#" class="hover:text-golden">Returns</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 text-golden">Customer Service</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-golden">Help Center</a></li>
+                        <li><a href="#" class="hover:text-golden">Track Order</a></li>
+                        <li><a href="#" class="hover:text-golden">Size Guide</a></li>
+                        <li><a href="#" class="hover:text-golden">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 text-golden">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-golden"></i>
+                            <span>+923258573926</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-golden"></i>
+                            <span>Phase 2 DHA Lahore</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-2 text-golden"></i>
+                            <span>24 Hours Open</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4">
+                        <h5 class="font-semibold mb-2 text-golden">Follow Us</h5>
+                        <div class="flex space-x-4">
+                            <a href="https://www.facebook.com/share/17A1BGDUkh/" target="_blank" class="text-gray-400 hover:text-golden transition-colors">
+                                <i class="fab fa-facebook text-xl"></i>
+                            </a>
+                            <a href="https://www.instagram.com/msmtraders222?igsh=NjA2enprZGZ3am81&utm_source=ig_contact_invite" target="_blank" class="text-gray-400 hover:text-golden transition-colors">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-golden mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 MSM Traders. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cart functionality
+        let cart = [];
+        let cartCount = 0;
+
+        function addToCart(name, price, image) {
+            // Check if item already exists in cart
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+            
+            cartCount++;
+            updateCartCount();
+            updateShippingStatus();
+            showCartNotification(name);
+        }
+
+        function updateCartCount() {
+            const cartCountElement = document.getElementById('cart-count');
+            const cartCountMobileElement = document.getElementById('cart-count-mobile');
+            if (cartCountElement) {
+                cartCountElement.textContent = cartCount;
+            }
+            if (cartCountMobileElement) {
+                cartCountMobileElement.textContent = cartCount;
+            }
+        }
+
+        function updateShippingStatus() {
+            const currentTotal = getCartTotal();
+            const totalElement = document.getElementById('current-total');
+            const statusElement = document.getElementById('shipping-status');
+            
+            if (totalElement) {
+                totalElement.textContent = currentTotal.toFixed(2);
+            }
+            
+            if (statusElement) {
+                if (currentTotal >= 5000) {
+                    statusElement.innerHTML = '<span class="text-green-400 font-bold">🎉 You qualify for free shipping!</span>';
+                } else {
+                    const remaining = (5000 - currentTotal).toFixed(2);
+                    statusElement.innerHTML = `<span class="text-yellow-400">Add Rs ${remaining} more for free shipping!</span>`;
+                }
+            }
+        }
+
+        function getCartTotal() {
+            return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+
+        function showCartNotification(productName) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 bg-golden text-black px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>${productName} added to cart!</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        function toggleCart() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            // Create cart modal
+            const cartModal = document.createElement('div');
+            cartModal.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4';
+            cartModal.innerHTML = `
+                <div class="bg-gray-900 border border-golden rounded-lg p-4 sm:p-6 max-w-md w-full max-h-[80vh] overflow-y-auto">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-golden">Shopping Cart</h3>
+                        <button onclick="closeCart()" class="text-golden hover:text-yellow-300">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div id="cart-items">
+                        ${cart.map(item => `
+                            <div class="flex items-center justify-between py-3 border-b border-gray-700">
+                                <div class="flex items-center">
+                                    <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded mr-3">
+                                    <div>
+                                        <h4 class="text-golden font-semibold">${item.name}</h4>
+                                        <p class="text-gray-300 text-sm">$${item.price} x ${item.quantity}</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <button onclick="removeFromCart('${item.name}')" class="text-red-400 hover:text-red-300 mr-2">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <span class="text-golden font-bold">$${(item.price * item.quantity).toFixed(2)}</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-700">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-lg font-bold text-golden">Total: $${getCartTotal().toFixed(2)}</span>
+                        </div>
+                        <button onclick="checkout()" class="w-full golden-gradient text-black py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                            Proceed to Checkout
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(cartModal);
+        }
+
+        function closeCart() {
+            const cartModal = document.querySelector('.fixed.inset-0');
+            if (cartModal) {
+                document.body.removeChild(cartModal);
+            }
+        }
+
+        function removeFromCart(productName) {
+            const itemIndex = cart.findIndex(item => item.name === productName);
+            if (itemIndex !== -1) {
+                cartCount -= cart[itemIndex].quantity;
+                cart.splice(itemIndex, 1);
+                updateCartCount();
+                updateShippingStatus();
+                
+                // Refresh cart modal
+                closeCart();
+                if (cart.length > 0) {
+                    toggleCart();
+                }
+            }
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            alert(`Checkout initiated! Total: $${getCartTotal().toFixed(2)}\n\nItems: ${cart.map(item => `${item.name} (${item.quantity})`).join(', ')}`);
+            
+            // Clear cart after checkout
+            cart = [];
+            cartCount = 0;
+            updateCartCount();
+            updateShippingStatus();
+            closeCart();
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            updateShippingStatus();
+        });
+    </script>
+    <!-- Bottom Navigation (mobile) -->
+    <nav class="old-bottom-nav lg:hidden" style="display: none;">
+        <a id="home-nav" href="index.html" onclick="setActiveNav('home')"><i class="fas fa-home"></i>Home</a>
+        <a id="category-nav" href="javascript:void(0)" onclick="openCategoryMenu(); setActiveNav('category'); return false;"><i class="fas fa-th-large"></i>Category</a>
+        <a id="cart-nav" href="cart.html" onclick="setActiveNav('cart')"><i class="fas fa-shopping-cart"></i>Cart</a>
+        <a id="deals-nav" href="deals.html" class="active" onclick="setActiveNav('deals')"><i class="fas fa-tags"></i>Deals</a>
+    </nav>
+
+    <!-- Category Quick Menu (mobile) -->
+    <div id="category-menu" class="fixed inset-x-0 bottom-16 mx-4 bg-gray-900 border border-golden rounded-lg shadow-xl p-3 space-y-2 z-50 hidden">
+        <a href="car_care.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-golden">
+            <span><i class="fas fa-car mr-2"></i>Car Care</span>
+            <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+        <a href="microfiber_and_cleaners.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-golden">
+            <span><i class="fas fa-home mr-2"></i>House Care</span>
+            <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+        <a href="premium_perfumes.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-golden">
+            <span><i class="fas fa-spray-can mr-2"></i>Perfumes</span>
+            <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+        <a href="crockery.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-golden">
+            <span><i class="fas fa-utensils mr-2"></i>Crockery</span>
+            <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+    </div>
+
+    <script>
+        function setActiveNav(key) {
+            const links = document.querySelectorAll('.bottom-nav a');
+            links.forEach(link => link.classList.remove('active'));
+            const ids = { home: 'home-nav', category: 'category-nav', cart: 'cart-nav', deals: 'deals-nav' };
+            const active = document.getElementById(ids[key]);
+            if (active) active.classList.add('active');
+        }
+
+        function openCategoryMenu() {
+            const menu = document.getElementById('category-menu');
+            if (!menu) return;
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => { document.addEventListener('click', closeOnOutsideClick, { once: true }); }, 0);
+                } else {
+                menu.classList.add('hidden');
+            }
+        }
+
+        function closeOnOutsideClick(e) {
+            const menu = document.getElementById('category-menu');
+            const trigger = document.getElementById('category-nav');
+            if (!menu || !trigger) return;
+            if (!menu.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
+                menu.classList.add('hidden');
+            }
+        }
+        // Preserve existing toggleCart if present
+        if (typeof toggleCart !== 'function') {
+            window.toggleCart = function() {
+                alert('Your cart is empty!');
+            }
+        }
+
+        // Toggle mobile menu
+        function toggleMenu() {
+            const menu = document.getElementById('navbar-menu');
+            const hamburger = document.getElementById('hamburger');
+            if (menu && hamburger) {
+                menu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            }
+        }
+    </script>
+</body>
+</html>
+
