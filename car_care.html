@@ -3,191 +3,1124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Cart - MSM Traders</title>
+    <title>Car Care - MSM Traders</title>
+    <!-- Tailwind CSS CDN - Note: For production, install Tailwind CSS as PostCSS plugin -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#F59E0B',
+                        secondary: '#D97706',
+                        accent: '#F59E0B',
+                        dark: '#000000',
+                        gold: '#F59E0B'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Quick View Modal -->
     <style>
-        .black-gradient {
-            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+
+        /* Global responsive fixes */
+        * {
+            box-sizing: border-box;
         }
-        .golden {
+        
+        body {
+            overflow-x: hidden;
+            max-width: 100vw;
+            padding-top: 80px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .navbar {
+                min-height: 70px;
+                padding: 0.5rem 1rem;
+            }
+            
+            .navbar-container {
+                padding: 0;
+                min-height: 60px;
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+        
+        .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
+            max-width: 100%;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* Prevent horizontal scroll */
+        img, video, iframe {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Responsive Navbar */
+        .navbar {
+            background-color: #111;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0.75rem 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            min-height: 70px;
+        }
+        
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+        }
+        
+        .navbar-logo {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .navbar-logo img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 1rem;
+        }
+        
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+        }
+        
+        .navbar-menu a.active {
+            background-color: #fbbf24;
+            color: #000;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+            color: white;
+            background: none;
+            border: none;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hamburger:hover {
+            color: #fbbf24;
+        }
+        
+        /* Cart Button */
+        #cart-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        #cart-count {
+            font-size: 0.75rem;
+            font-weight: bold;
+            min-width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            overflow: hidden;
+        }
+        
+        /* Mobile menu */
+        @media (max-width: 768px) {
+            /* Ensure full width on mobile */
+            html, body {
+                width: 100%;
+                overflow-x: hidden;
+            }
+            
+            .navbar {
+                width: 100%;
+                left: 0;
+                right: 0;
+            }
+            
+            .navbar-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: #111;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+                display: none;
+                z-index: 999;
+                max-height: calc(100vh - 70px);
+                overflow-y: auto;
+                width: 100%;
+                box-sizing: border-box;
+                border-top: 3px solid #fbbf24;
+                border-bottom: 3px solid #fbbf24;
+            }
+            
+            .navbar-menu.active {
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+            
+            .navbar-menu li {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .navbar-menu a {
+                display: block;
+                padding: 1.2rem;
+                border-bottom: 1px solid #333;
+                text-align: center;
+                color: white;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 1.1rem;
+                transition: all 0.3s ease;
+                border-radius: 8px;
+                margin: 0.2rem 0;
+            }
+            
+            .navbar-menu a:last-child {
+                border-bottom: none;
+            }
+            
+            .navbar-menu a:hover {
+                background-color: #fbbf24;
+                color: #000;
+                transform: translateX(5px);
+            }
+            
+            .hamburger {
+                display: flex !important;
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 4px;
+                min-width: 40px;
+                min-height: 40px;
+                border: 2px solid #fbbf24;
+            }
+            
+            /* Hide cart button text on mobile, show only icon */
+            #cart-button span:not(#cart-count) {
+                display: none;
+            }
+            
+            #cart-button {
+                padding: 0.5rem;
+                min-width: 40px;
+                min-height: 40px;
+            }
+            
+            .hamburger:hover {
+                background-color: #f59e0b !important;
+                transform: scale(1.05);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+            }
+            
+            .hamburger:active {
+                transform: scale(0.95);
+            }
+            
+            .navbar-logo {
+                font-size: 1.25rem;
+            }
+            
+            .navbar-logo img {
+                height: 35px;
+            }
+        }
+        
+        /* Responsive text and elements */
+        @media (max-width: 768px) {
+            .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            
+            /* Prevent text overflow */
+            h1, h2, h3, h4, h5, h6, p, span, div {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+            
+            /* Responsive grids */
+            .grid {
+                gap: 0.75rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+        }
+        
+        /* Popup overlay */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Popup content */
+        .popup {
+            background: #000;
+            width: 90%;
+            max-width: 400px;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* Responsive image */
+        .popup img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        /* Popup text styles */
+        .popup h2 {
             color: #F59E0B;
+            margin: 10px 0;
         }
+
+        .popup p {
+            color: #fff;
+            margin: 5px 0;
+        }
+
+        /* Close button */
+        .close-btn {
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background: #c0392b;
+        }
+        @media (min-width: 640px) { .qv-card { max-width: 560px; } .qv-img { height: 280px; } }
+        
+        /* Hero Section Styling */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;   /* centers content */
+            align-items: center;
+            padding: 20px;
+            min-height: auto;          /* remove forced tall height */
+        }
+
+        .hero-section img {
+            margin-top: 20px;          /* small gap only */
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        
+        /* UI Optimizations */
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Enhanced focus states */
+        button:focus,
+        a:focus,
+        input:focus,
+        select:focus {
+            outline: 2px solid #fbbf24;
+            outline-offset: 2px;
+        }
+        
+        /* Improved button hover effects */
+        .btn-primary {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+        }
+        
+        /* Enhanced card hover effects */
+        .product-card {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Loading states */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        /* Improved typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        /* Better spacing */
+        .section-spacing {
+            padding: 3rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .section-spacing {
+                padding: 2rem 0;
+            }
+        }
+        
+        /* Enhanced shadows */
+        .shadow-enhanced {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .shadow-enhanced-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Improved animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Better form styling */
+        .form-input {
+            border: 2px solid #374151;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+            background: #1f2937;
+            color: white;
+        }
+        
+        .form-input:focus {
+            border-color: #fbbf24;
+            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+        }
+        
+        /* Improved accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Performance optimizations */
+        .will-change-transform {
+            will-change: transform;
+        }
+        
+        .will-change-opacity {
+            will-change: opacity;
+        }
+    </style>
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <img id="popup-img" src="" alt="Product Image" />
+            <h2 id="popup-title">Product Title</h2>
+            <p id="popup-desc">Product description</p>
+            <p id="popup-price" style="color: #F59E0B; font-weight: bold; font-size: 18px; margin: 10px 0;">Price</p>
+            <button class="add-to-cart-btn" id="addToCartBtn" style="background: #F59E0B; color: #000; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; margin: 10px 5px; cursor: pointer;">Add to Cart</button>
+            <button class="close-btn" id="closeBtn">Close</button>
+        </div>
+    </div>
+    <style>
+        /* Cart modal styles */
+        #cart-modal {
+            transition: all 0.3s ease-in-out;
+        }
+        
+        #cart-modal.show {
+            display: flex !important;
+        }
+
+        /* Mobile responsive cart modal */
+        @media (max-width: 768px) {
+            #cart-modal .bg-gray-900 {
+                margin: 0.5rem;
+                max-width: calc(100vw - 1rem);
+                max-height: calc(100vh - 1rem);
+                width: 100%;
+            }
+            
+            #cart-modal .max-h-96 {
+                max-height: 50vh;
+            }
+            
+            #cart-modal .p-4 {
+                padding: 0.75rem;
+            }
+            
+            #cart-modal .text-xl {
+                font-size: 1.125rem;
+            }
+            
+            #cart-modal .flex.gap-2 {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            #cart-modal .flex.gap-2 button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #cart-modal .bg-gray-900 {
+                margin: 0.25rem;
+                max-width: calc(100vw - 0.5rem);
+                max-height: calc(100vh - 0.5rem);
+            }
+            
+            #cart-modal .max-h-96 {
+                max-height: 45vh;
+            }
+            
+            #cart-modal .p-4 {
+                padding: 0.5rem;
+            }
+            
+            #cart-modal .text-xl {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Jazz Cash modal styles */
+        #jazzcash-modal {
+            transition: all 0.3s ease-in-out;
+        }
+        
+        #jazzcash-modal.show {
+            display: flex !important;
+        }
+        
+        /* Cart item animation */
+        .cart-item {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Hide scrollbars for horizontal scrolling */
         .scrollbar-hide {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
         }
-        
-        /* Mobile Optimizations */
-        @media (max-width: 768px) {
-            .header-logo {
-                font-size: 1.5rem;
+
+        /* Responsive Design Enhancements */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Responsive images */
+        .responsive-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Mobile-first responsive breakpoints */
+        @media (max-width: 320px) {
+            .grid {
+                gap: 0.75rem;
             }
-            .header-nav {
-                display: none;
-            }
-            .search-bar {
-                width: 100%;
-                margin: 0.5rem 0;
-            }
-            .search-input {
-                font-size: 16px;
-                padding: 0.75rem;
-            }
-            .cart-item {
-                padding: 1rem;
-                margin-bottom: 1rem;
-            }
-            .cart-item-image {
-                width: 80px;
-                height: 80px;
-            }
-            .cart-item-details {
-                flex: 1;
-                margin-left: 1rem;
-            }
-            .cart-item-name {
-                font-size: 1rem;
-                margin-bottom: 0.5rem;
-            }
-            .cart-item-price {
-                font-size: 1.125rem;
-            }
-            .quantity-controls {
-                margin-top: 0.5rem;
-            }
-            .quantity-btn {
-                width: 32px;
-                height: 32px;
-                font-size: 1rem;
-            }
-            .quantity-input {
-                width: 50px;
-                height: 32px;
-                font-size: 1rem;
+            .product-card {
+                min-height: 200px;
             }
         }
+
+        @media (min-width: 321px) and (max-width: 480px) {
+            .grid {
+                gap: 1rem;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .grid {
+                gap: 1.25rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .grid {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1025px) and (max-width: 1440px) {
+            .grid {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1441px) {
+            .grid {
+                gap: 2rem;
+            }
+        }
+
+        /* Touch targets for mobile */
+        @media (max-width: 768px) {
+            .product-card {
+                min-height: 44px;
+                touch-action: manipulation;
+            }
+            
+            button, .clickable {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+
+        /* Product card image area */
+        .product-card .image-container {
+            width: 100%;
+            height: 250px;          /* desktop height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;       /* hides extra image parts */
+            background: #000;       /* black background */
+            border-radius: 8px;     /* optional: rounded edges */
+        }
+
+        /* Product images */
+        .product-card .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;    /* shows full product without stretching */
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .product-card .image-container {
+                height: 150px;        /* smaller image area for mobile */
+            }
+        }
+
+        /* Product Grid Layout */
+        .product-grid {
+            display: grid;
+            gap: 15px; /* space between cards */
+            grid-template-columns: repeat(5, 1fr); /* Desktop: 5 per row */
+        }
+
+        .product-card {
+            background: #1f2937; /* dark gray background */
+            border-radius: 8px;
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #374151; /* subtle border */
+        }
+
+        /* Mobile: 2 per row */
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
     </style>
 </head>
-<body class="bg-black text-white">
-    <!-- Header -->
-    <nav class="black-gradient shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center">
-                    <div>
-                        <a href="index.html" class="text-2xl font-bold golden header-logo">MSM Traders</a>
-                        <p class="text-xs text-yellow-300 uppercase tracking-wide">CLICK.SHOP.SMILE</p>
-                    </div>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="index.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a>
-                        <a href="car_care.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Car Care</a>
-                        <a href="microfiber_and_cleaners.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">House Care</a>
-                        <a href="premium_perfumes.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Premium Perfumes</a>
-                        <a href="crockery.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Crockery</a>
-                        <a href="laptops.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Laptops</a>
-                        <a href="deals.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Deals</a>
-                        <a href="contact.html" class="text-gray-300 hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact</a>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <button class="text-gray-300 hover:text-yellow-400 p-2 rounded-lg hover:bg-gray-800 transition duration-200">
-                        <i class="fas fa-search text-xl"></i>
+<body class="bg-black">
+    <!-- Responsive Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="MSM TRADERS LOGO.jpeg" alt="MSM Traders Logo">
+                <span>MSM TRADERS</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <ul class="navbar-menu" id="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="car_care.html" class="active">Car Care</a></li>
+                <li><a href="microfiber_and_cleaners.html">Microfiber & Cleaners</a></li>
+                <li><a href="premium_perfumes.html">Premium Perfumes</a></li>
+                <li><a href="crockery.html">Crockery</a></li>
+                <li><a href="special_offers.html">Special Offers</a></li>
+                <li><a href="laptops.html">Laptop Deals</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <!-- Cart Button -->
+            <button id="cart-button" class="relative bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-2 rounded-lg transition duration-200 flex items-center gap-1.5">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Cart</span>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
                     </button>
-                    <a href="cart.html" class="text-yellow-400 p-2 rounded-lg hover:bg-gray-800 transition duration-200 relative">
-                        <i class="fas fa-shopping-cart text-xl"></i>
-                        <span id="cart-count" class="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
-                    </a>
-                </div>
-            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="hamburger" id="hamburger">
+                ☰
+                    </button>
         </div>
     </nav>
 
-    <!-- Cart Content -->
-    <div class="max-w-4xl mx-auto px-4 py-8">
-        <div class="flex items-center justify-between mb-8">
-            <h1 class="text-3xl font-bold golden">Shopping Cart</h1>
-            <a href="index.html" class="text-yellow-400 hover:text-yellow-300 transition duration-200">
-                <i class="fas fa-arrow-left mr-2"></i>Continue Shopping
-            </a>
-        </div>
-
-        <!-- Cart Items -->
-        <div id="cart-items" class="space-y-4 mb-8">
-            <!-- Cart items will be dynamically loaded here -->
-        </div>
-
-        <!-- Empty Cart Message -->
-        <div id="empty-cart" class="text-center py-12 hidden">
-            <i class="fas fa-shopping-cart text-6xl text-gray-600 mb-4"></i>
-            <h2 class="text-2xl font-bold text-gray-400 mb-2">Your cart is empty</h2>
-            <p class="text-gray-500 mb-6">Add some products to get started!</p>
-            <a href="index.html" class="bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition duration-200">
-                Start Shopping
-            </a>
-        </div>
-
-        <!-- Cart Summary -->
-        <div id="cart-summary" class="bg-gray-900 rounded-lg p-6 border border-yellow-400 hidden">
-            <div class="flex justify-between items-center mb-4">
-                <span class="text-xl font-semibold golden">Total Items:</span>
-                <span id="total-items" class="text-xl font-bold golden">0</span>
-            </div>
-            <div class="flex justify-between items-center mb-6">
-                <span class="text-xl font-semibold golden">Total Amount:</span>
-                <span id="total-amount" class="text-2xl font-bold golden">₨0.00</span>
-            </div>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <button onclick="clearCart()" class="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition duration-200">
-                    <i class="fas fa-trash mr-2"></i>Clear Cart
-                </button>
-                <button onclick="checkout()" class="bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition duration-200 flex-1">
-                    <i class="fas fa-whatsapp mr-2"></i>Proceed to Checkout
-                </button>
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-500 max-h-[90vh] sm:max-h-[80vh] overflow-hidden flex flex-col">
+                <!-- Cart Header -->
+                <div class="flex items-center justify-between p-3 sm:p-4 border-b border-yellow-500 flex-shrink-0">
+                    <h3 class="text-lg sm:text-xl font-bold text-yellow-500">Shopping Cart</h3>
+                    <button id="close-cart" class="text-gray-400 hover:text-yellow-500 text-xl sm:text-2xl font-bold">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Cart Items -->
+                <div id="cart-items" class="flex-1 overflow-y-auto p-3 sm:p-4">
+                    <!-- Cart items will be dynamically added here -->
+                    <div id="empty-cart" class="text-center py-8">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">Your cart is empty</p>
+                    </div>
+                </div>
+                
+                <!-- Cart Footer -->
+                <div class="border-t border-yellow-500 p-3 sm:p-4 flex-shrink-0">
+                    <div class="flex justify-between items-center mb-3 sm:mb-4">
+                        <span class="text-base sm:text-lg font-semibold text-yellow-500">Total:</span>
+                        <span id="cart-total" class="text-lg sm:text-xl font-bold text-yellow-500">$0.00</span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <button id="clear-cart" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base">
+                            Clear Cart
+                        </button>
+                        <button id="checkout-whatsapp" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-1 sm:mr-2"></i>
+                            Order via WhatsApp
+                        </button>
+                        <button id="checkout-jazzcash" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base flex items-center justify-center">
+                            <i class="fas fa-credit-card mr-1 sm:mr-2"></i>
+                            Pay with Jazz Cash
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Jazz Cash Payment Modal -->
+    <div id="jazzcash-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-sm sm:max-w-md mx-auto border border-yellow-500">
+                <!-- Payment Header -->
+                <div class="flex items-center justify-between p-4 border-b border-yellow-500">
+                    <h3 class="text-xl font-bold text-yellow-500">Jazz Cash Payment</h3>
+                    <button id="close-jazzcash" class="text-gray-400 hover:text-yellow-500 text-2xl font-bold">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Payment Form -->
+                <div class="p-4">
+                    <div class="mb-4">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="bg-orange-500 text-white rounded-full p-3">
+                                <i class="fas fa-credit-card text-2xl"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-semibold text-yellow-500 text-center mb-2">Secure Payment</h4>
+                        <p class="text-gray-400 text-sm text-center mb-4">Complete your purchase securely with Jazz Cash</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-yellow-500 text-sm font-medium mb-2">Order Total</label>
+                            <div class="bg-gray-800 rounded-lg p-3 border border-gray-700">
+                                <span id="jazzcash-total" class="text-2xl font-bold text-yellow-500">$0.00</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-yellow-500 text-sm font-medium mb-2">Jazz Cash Number</label>
+                            <input type="tel" id="jazzcash-number" placeholder="03XXXXXXXXX" 
+                                   class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-yellow-500 text-sm font-medium mb-2">Transaction ID (Optional)</label>
+                            <input type="text" id="transaction-id" placeholder="Enter transaction ID after payment" 
+                                   class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500">
+                        </div>
+                        
+                        <div class="bg-gray-800 rounded-lg p-3 border border-gray-700">
+                            <h5 class="text-yellow-500 font-semibold mb-2">Payment Instructions:</h5>
+                            <ol class="text-gray-300 text-xs sm:text-sm space-y-1">
+                                <li>1. Send payment to: <span class="text-yellow-500 font-bold">+923258573925</span></li>
+                                <li>2. Use your order total as amount</li>
+                                <li>3. Enter your Jazz Cash number above</li>
+                                <li>4. Add transaction ID (optional)</li>
+                                <li>5. Click "Confirm Payment"</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Payment Footer -->
+                <div class="border-t border-yellow-500 p-4">
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <button id="cancel-jazzcash" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm">
+                            Cancel
+                        </button>
+                        <button id="confirm-jazzcash" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center">
+                            <i class="fas fa-check mr-2"></i>
+                            Confirm Payment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Header with Categories Sidebar -->
+    <div class="bg-gradient-to-r from-gray-900 via-black to-gray-900 py-16 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Categories Sidebar - Desktop Only -->
+                <div class="hidden lg:block lg:w-1/4">
+                    <div class="bg-gray-900 border border-yellow-500 rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-yellow-500 mb-6 text-center">Shop by Category</h3>
+                        <ul class="space-y-3">
+                            <li>
+                                <a href="car_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-500/50 rounded-lg hover:bg-yellow-500 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-car text-yellow-500 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-500 group-hover:text-black">Car Care</span>
+                </div>
+                                    <i class="fas fa-chevron-right text-yellow-500 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="microfiber_and_cleaners.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-500/50 rounded-lg hover:bg-yellow-500 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-home text-yellow-500 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-500 group-hover:text-black">Microfiber & Cleaners</span>
+                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-500 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="premium_perfumes.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-500/50 rounded-lg hover:bg-yellow-500 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-spray-can text-yellow-500 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-500 group-hover:text-black">Premium Perfumes</span>
+                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-500 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="crockery.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-500/50 rounded-lg hover:bg-yellow-500 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-utensils text-yellow-500 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-500 group-hover:text-black">Crockery</span>
+                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-500 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="laptops.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-500/50 rounded-lg hover:bg-yellow-500 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-laptop text-yellow-500 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-500 group-hover:text-black">Laptops</span>
+                </div>
+                                    <i class="fas fa-chevron-right text-yellow-500 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Hero Content -->
+                <div class="flex-1">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <!-- Text Content -->
+                        <div class="text-center lg:text-left">
+                            <h1 class="text-4xl md:text-6xl font-bold text-yellow-500 mb-6">Car Care Collection</h1>
+                            <p class="text-xl md:text-2xl text-gray-300 mb-8">Professional car care products for every need. From cleaning to protection, we have everything to keep your vehicle looking and performing its best.</p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                                <a href="#products" class="bg-yellow-500 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition duration-300">Shop Now</a>
+                                <a href="contact.html" class="border-2 border-yellow-500 text-yellow-500 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 hover:text-black transition duration-300">Contact Us</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Hero Image -->
+                        <div class="relative">
+                            <div class="relative overflow-hidden rounded-2xl shadow-2xl">
+                                <img src="category imges/car_care_image.jpg" 
+                                     alt="Car Care Products" 
+                                     class="w-full h-96 object-cover object-center transform hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 right-4">
+                                    <div class="bg-yellow-500/90 backdrop-blur-sm rounded-lg p-4">
+                                        <h3 class="text-lg font-bold text-black mb-2">Professional Car Care</h3>
+                                        <p class="text-sm text-black/80">Premium products for every vehicle</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search and Filters -->
+    <div class="bg-gray-900 border-b border-yellow-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-1">
+                    <div class="relative">
+                        <input type="text" id="searchInput" placeholder="Search car care products..." class="w-full pl-10 pr-4 py-3 bg-gray-800 border border-yellow-500 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <i class="fas fa-search absolute left-3 top-3 text-yellow-500"></i>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <select id="categoryFilter" class="bg-gray-800 border border-yellow-500 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <option value="">All Categories</option>
+                        <option value="polish and shinners">Polish & Shiners</option>
+                        <option value="protectant sprays">Protectant Sprays</option>
+                        <option value="spray paints">Spray Paints</option>
+                        <option value="wash & wax">Wash & Wax</option>
+                        <option value="cleaners">Cleaners</option>                        <option value="lubricants">Lubricants</option>
+                        </select>
+                    <select id="priceFilter" class="bg-gray-800 border border-yellow-500 rounded-md px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <option value="">All Prices</option>
+                        <option value="0-25">$0 - $25</option>
+                        <option value="25-50">$25 - $50</option>
+                        <option value="50-100">$50 - $100</option>
+                        <option value="100+">$100+</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>            <!-- Category Cards Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                <!-- Polish & Shiners Category -->
+                <div class="text-center" onclick="filterByCategory('polish and shinners')">
+                    <img src="CAR_CARE CATEGORY/POLISH & SHINNER.jfif" alt="Polish & Shiners" class="w-full h-24 object-cover rounded-lg cursor-pointer">
+                    <p class="text-white text-sm mt-2 font-medium">Polish & Shiners</p>
+    </div>
+
+                <!-- Protectant Sprays Category -->
+                <div class="text-center" onclick="filterByCategory('protectant sprays')">
+                    <img src="CAR_CARE CATEGORY/CAR PROTECTANT.jfif" alt="Protectant Sprays" class="w-full h-24 object-cover rounded-lg cursor-pointer">
+                    <p class="text-white text-sm mt-2 font-medium">Protectant Sprays</p>
+            </div>
+
+                <!-- Spray Paints Category -->
+                <div class="text-center" onclick="filterByCategory('spray paints')">
+                    <img src="CAR_CARE CATEGORY/SPRAY PAINTS.jfif" alt="Spray Paints" class="w-full h-24 object-cover rounded-lg cursor-pointer">
+                    <p class="text-white text-sm mt-2 font-medium">Spray Paints</p>
+                </div>
+
+                <!-- Wash & Wax Category -->
+                <div class="text-center" onclick="filterByCategory('wash & wax')">
+                    <img src="CAR_CARE CATEGORY/WASH & WAX.jfif" alt="Wash & Wax" class="w-full h-24 object-cover rounded-lg cursor-pointer">
+                    <p class="text-white text-sm mt-2 font-medium">Wash & Wax</p>
+    </div>
+
+                <!-- Cleaners Category -->
+                <div class="text-center" onclick="filterByCategory('cleaners')">
+                    <img src="CAR_CARE CATEGORY/CLEANNERS.jfif" alt="Cleaners" class="w-full h-24 object-cover rounded-lg cursor-pointer">
+                    <p class="text-white text-sm mt-2 font-medium">Cleaners</p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <div class="bg-black py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-yellow-500 mb-4">Featured Car Care Products</h2>
+                <p class="text-lg text-gray-300">Discover our premium selection of professional car care solutions</p>
+            </div>
+            <!-- Loading State -->
+            <div id="loadingState" class="text-center py-12">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-yellow-500"></div>
+                <p class="mt-4 text-gray-300">Loading products...</p>
+            </div>
+
+        <!-- Products Grid -->
+        <div id="productsContainer" class="hidden">
+            <div id="productsGrid" class="product-grid">
+                <!-- Products will be loaded here -->
+            </div>
+            
+            <!-- No Products Found -->
+            <div id="noProducts" class="hidden text-center py-12">
+                <i class="fas fa-search text-6xl text-yellow-500 mb-4"></i>
+                <h3 class="text-xl font-semibold text-yellow-500 mb-2">No products found</h3>
+                <p class="text-gray-300">Try adjusting your search or filter criteria</p>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination" class="hidden mt-12 flex justify-center">
+            <nav class="flex items-center space-x-2">
+                <button id="prevPage" class="px-4 py-2 bg-gray-800 border border-yellow-500 rounded-md text-sm font-medium text-yellow-500 hover:bg-yellow-500 hover:text-black transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Previous
+                </button>
+                <div id="pageNumbers" class="flex space-x-1">
+                    <!-- Page numbers will be generated here -->
+                </div>
+                <button id="nextPage" class="px-4 py-2 bg-gray-800 border border-yellow-500 rounded-md text-sm font-medium text-yellow-500 hover:bg-yellow-500 hover:text-black transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Next
+                </button>
+            </nav>
+        </div>
+    </div>
+
     <!-- Footer -->
-    <footer class="black-gradient border-t border-gray-800 py-8 mt-16">
+    <footer class="bg-gray-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold golden mb-4">MSM Traders</h3>
-                    <p class="text-gray-400 mb-4">Your trusted partner for quality products and exceptional service.</p>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="bg-black text-yellow-500 rounded-lg p-2 relative">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <i class="fas fa-star text-sm absolute top-0 right-0 transform translate-x-1 -translate-y-1"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-yellow-500">MSM Traders</h3>
+                            <p class="text-xs text-gray-400 uppercase tracking-wide">CLICK.SHOP.SMILE</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Your trusted partner for quality products at great prices.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-200">
-                            <i class="fab fa-facebook text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-200">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-200">
-                            <i class="fab fa-whatsapp text-xl"></i>
-                        </a>
+                        <a href="https://www.facebook.com/share/17A1BGDUkh/" target="_blank" class="text-gray-400 hover:text-yellow-500 transition-colors"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="https://www.instagram.com/msmtraders222?igsh=NjA2enprZGZ3am81&utm_source=ig_contact_invite" target="_blank" class="text-gray-400 hover:text-yellow-500 transition-colors"><i class="fab fa-instagram text-xl"></i></a>
                     </div>
                 </div>
                 <div>
-                    <h4 class="text-lg font-semibold golden mb-4">Quick Links</h4>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-400 hover:text-yellow-400 transition duration-200">Home</a></li>
-                        <li><a href="car_care.html" class="text-gray-400 hover:text-yellow-400 transition duration-200">Car Care</a></li>
-                        <li><a href="microfiber_and_cleaners.html" class="text-gray-400 hover:text-yellow-400 transition duration-200">House Care</a></li>
-                        <li><a href="premium_perfumes.html" class="text-gray-400 hover:text-yellow-400 transition duration-200">Premium Perfumes</a></li>
+                        <li><a href="laptops.html" class="text-gray-400 hover:text-white">Laptops</a></li>
+                        <li><a href="electronics.html" class="text-gray-400 hover:text-white">Electronics</a></li>
+                        <li><a href="premium_perfumes.html" class="text-gray-400 hover:text-white">Premium Perfumes</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-lg font-semibold golden mb-4">Contact Info</h4>
-                    <div class="space-y-2 text-gray-400">
-                        <p><i class="fas fa-phone mr-2"></i>+923258573925</p>
-                        <p><i class="fas fa-map-marker-alt mr-2"></i>Phase 2 DHA Lahore</p>
-                        <p><i class="fas fa-envelope mr-2"></i>info@msmtraders.com</p>
-                    </div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-phone mr-2"></i>+923258573925</li>
+                        <li><i class="fas fa-envelope mr-2"></i>msmtrader222@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>Phase 2 DHA Lahore</li>
+                    </ul>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
@@ -197,68 +1130,1379 @@
     </footer>
 
     <script>
-        // Cart functionality
+        let allProducts = [];
+        let filteredProducts = [];
+        let currentPage = 1;
+        const productsPerPage = 12;
+        let currentView = 'grid';
+
+        // Sample products for all categories
+        const sampleProducts = [
+            // Polish & Shiners (curated)
+            { id: 1, name: "Black Gold Tire Shine - 680ML", description: "High shine, dries fast, long lasting. NET: 680ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/black and gold tire shine.jpeg", price: 2000 },
+            { id: 2, name: "AIM Tire Gel - 500ML", description: "Moistening, lustrous, durable. NET: 500ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/aim tire gel 500ml.jpeg", price: 750 },
+            { id: 3, name: "Leather & Tyre Wax (Lemon) - 300ML", description: "Leather & Tyre Wax. NET: 300ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/leather and tyre wax lemon.jpeg", price: 250 },
+            { id: 4, name: "Leather & Tyre Wax (Rose) - 300ML", description: "Leather & Tyre Wax (Rose). NET: 300ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/leather and tyre wax.jpeg", price: 250 },
+            { id: 5, name: "Scratch Out Liquid - 207ML", description: "Fine scratch + swirl remover. NET: 207ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/scratch out liquid.jpeg", price: 1500 },
+            { id: 6, name: "Scratch Out Paste - 227G", description: "Paste polishing compound. NET: 227G", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/scratchout paste.jpeg", price: 1600 },
+            { id: 7, name: "AIM Furniture Polish - 550ML", description: "Leather & Tyre Wax. NET: 550ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/aim furtinure polish.jpeg", price: 600 },
+            { id: 8, name: "AIM Hard Wax - 200GM", description: "Cleans, shines, protects. 200GM", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/aim had wax.jpeg", price: 900 },
+            // Protectant Sprays (curated)
+            {
+                id: 11,
+                name: "PROTECTANT SPRAY",
+                description: "Cleans, shines & protects. NET: 680ML",
+                category: "protectant sprays",
+                image_url: "CAR PROCTING SPRAYS/f1-120 formulla 1 protectant spray.jpeg",
+                price: 1800
+            },
+            {
+                id: 12,
+                name: "PROTECTANT SPRAY (CHERRY)",
+                description: "Shines, protects & freshens. Cherry fragrance. NET: 295ML",
+                category: "protectant sprays",
+                image_url: "CAR PROCTING SPRAYS/formulla 1 protectant spray 295ml.jpeg",
+                price: 1200
+            },
+            {
+                id: 13,
+                name: "PROTECTANT SPRAY (CITRUS)",
+                description: "Shines, protects & freshens. Citrus fragrance. NET: 295ML",
+                category: "protectant sprays",
+                image_url: "CAR PROCTING SPRAYS/protectant spray 295ml.jpeg",
+                price: 1200
+            },
+            {
+                id: 14,
+                name: "PROTECTANT SPRAY (NEW CAR)",
+                description: "Shines, protects & freshens. New car fragrance. NET: 295ML",
+                category: "protectant sprays",
+                image_url: "CAR PROCTING SPRAYS/formulla 1 protectant spray f1-123.jpeg",
+                price: 1200
+            },
+            {
+                id: 15,
+                name: "PROTECTANT SPRAY",
+                description: "Shines, protects & freshens. NET: 295ML",
+                category: "protectant sprays",
+                image_url: "CAR PROCTING SPRAYS/formula 1 protectant spray.jpeg",
+                price: 1200
+            },
+            {
+                id: 16,
+                name: "PROTECTANT SPRAY (VANILLA)",
+                description: "Shines, protects & freshens. Vanilla fragrance. NET: 295ML",
+                category: "protectant sprays",
+                image_url: "CAR PROCTING SPRAYS/protectant spray 295ml.jpeg",
+                price: 1200
+            },
+            // Spray Paints
+            {
+                id: 17,
+                name: "AIM SPRAY PAINT",
+                description: "Professional automotive spray paint A-142. High-quality finish for all surfaces.",
+                category: "spray paints",
+                image_url: "CAR SPRAY PAINTS/A-142 AIM SPRAY PAINTS.jpeg",
+                price: 600
+            },
+            {
+                id: 18,
+                name: "AIM SPRAY PAINT",
+                description: "Red automotive spray paint A-143. Perfect color match for touch-ups.",
+                category: "spray paints",
+                image_url: "CAR SPRAY PAINTS/A-143 AIM SPRAY  PAINT RED.jpeg",
+                price: 600
+            },
+            {
+                id: 19,
+                name: "AIM SPRAY PAINT",
+                description: "Professional spray paint A-145. Durable finish for automotive applications.",
+                category: "spray paints",
+                image_url: "CAR SPRAY PAINTS/A-145 AIM SPRAY PAINT.jpeg",
+                price: 600
+            },
+            {
+                id: 20,
+                name: "AIM SPRAY PAINT",
+                description: "High-quality spray paint A-146. Excellent coverage and adhesion.",
+                category: "spray paints",
+                image_url: "CAR SPRAY PAINTS/A-146 AIM SPRAY PAINT.jpeg",
+                price: 600
+            },
+            {
+                id: 21,
+                name: "AIM SPRAY PAINT",
+                description: "Professional spray paint A-147. Long-lasting color and protection.",
+                category: "spray paints",
+                image_url: "CAR SPRAY PAINTS/A-147 AIM SPRAY PAINTS.jpeg",
+                price: 600
+            },
+            {
+                id: 22,
+                name: "AIM SPRAY PAINT",
+                description: "Automotive spray paint A-148. Perfect for bodywork and touch-ups.",
+                category: "spray paints",
+                image_url: "CAR SPRAY PAINTS/A-148 AIM SPARY PAINT.jpeg",
+                price: 600
+            },
+            {
+                id: 23,
+                name: "AIM SPRAY PAINT",
+                description: "Professional spray paint A-150. High-quality automotive finish.",
+                category: "spray paints",
+                image_url: "CAR SPRAY PAINTS/A-150 SPRAY PAINT.jpeg",
+                price: 600
+            },
+            {
+                id: 24,
+                name: "AIM SPRAY PAINT",
+                description: "Automotive spray paint A-151. Excellent color retention and durability.",
+                category: "spray paints",
+                image_url: "CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 600
+            },
+            {
+                id: 25,
+                name: "AIM SPRAY PAINT",
+                description: "Professional spray paint A-152. Perfect for automotive refinishing.",
+                category: "spray paints",
+                image_url: "CAR SPRAY PAINTS/A-152 AIM SPRAY PAINT.jpeg",
+                price: 600
+            },
+            {
+                id: 26,
+                name: "AIM SPRAY PAINT",
+                description: "High-quality spray paint A-153. Superior coverage and finish.",
+                category: "spray paints",
+                image_url: "CAR SPRAY PAINTS/A-153 AIM SPRAY PAINT.jpeg",
+                price: 600
+            },
+            {
+                id: 27,
+                name: "AIM SPRAY PAINT",
+                description: "Professional spray paint A-154. Long-lasting automotive finish.",
+                category: "spray paints",
+                image_url: "CAR SPRAY PAINTS/A-154 SPRAY PAINT.jpeg",
+                price: 600
+            },
+            {
+                id: 28,
+                name: "AIM SPRAY PAINT",
+                description: "Green automotive spray paint A-141. Perfect color match for green vehicles.",
+                category: "spray paints",
+                image_url: "CAR SPRAY PAINTS/AIM SPRAY PAINT A-141 GREEN.jpeg",
+                price: 600
+            },
+            {
+                id: 29,
+                name: "AIM SPRAY PAINT A-144",
+                description: "Professional spray paint A-144. High-quality automotive finish.",
+                category: "spray paints",
+                image_url: "CAR SPRAY PAINTS/AIM SPRAY PAINT A-144.jpeg",
+                price: 600
+            },
+            {
+                id: 30,
+                name: "AIM SPRAY PAINT A-149 YELLOW",
+                description: "Yellow automotive spray paint A-149. Bright, vibrant yellow finish.",
+                category: "spray paints",
+                image_url: "CAR SPRAY PAINTS/AIM SPRAY PAINT A-149 YELLOW.jpeg",
+                price: 600
+            },
+            {
+                id: 31,
+                name: "AIM SPRAY PAINT A-155 GRAY",
+                description: "Gray automotive spray paint A-155. Professional gray finish for vehicles.",
+                category: "spray paints",
+                image_url: "CAR SPRAY PAINTS/AIM SPRAY PAINT GRAY A-155.jpeg",
+                price: 600
+            },
+            // Wash & Wax
+            {
+                id: 37,
+                name: "LEATHER AND TYRE WAX",
+                description: "Premium leather and tire wax A-113. Conditions and protects with long-lasting shine.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/A-113 LEATHER AND TYRE WAX.jpeg",
+                price: 250
+            },
+            {
+                id: 38,
+                name: "LEATHER AND TYRE WAX",
+                description: "Professional leather and tire wax A-115. Advanced protection formula.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/A-115 LEATHER AND TYRE WAX.jpeg",
+                price: 250
+            },
+            {
+                id: 39,
+                name: "LEATHER AND TYRE WAX",
+                description: "High-quality leather and tire wax A-117. Superior conditioning and protection.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/A-117 LEATHER AND TYRE WAX.jpeg",
+                price: 250
+            },
+            {
+                id: 40,
+                name: "LEATHER AND TYRE WAX",
+                description: "Premium leather and tire wax A-118. Long-lasting protection and shine.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/A-118 LEATHER AND TYPRE WAX.jpeg",
+                price: 250  
+            },
+            {
+                id: 41,
+                name: "LEATHER AND TYRE WAX",
+                description: "Professional leather and tire wax A-119. Advanced formula for superior results.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/A-119 LEATHER AND TYPRE WAX.jpeg",
+                price: 250
+            },
+            {
+                id: 42,
+                name: "LEATHER AND TYRE WAX",
+                description: "High-performance leather and tire wax A-120. Premium protection and conditioning.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/A-120 LEATHER AND TYRE WAX.jpeg",
+                price: 250
+            },
+            {
+                id: 43,
+                name: "LEATHER TYRE WAX",
+                description: "Professional leather tire wax A-121. Superior shine and protection.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/A-121 LEATHER TYRE WAX.jpeg",
+                price: 250
+            },
+            {
+                id: 44,
+                name: "AW WASH & WAX",
+                description: "Professional wash and wax AW-102. Cleans and protects in one step.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/AW-102 AW WASH & WAX.jpeg",
+                price: 750
+            },
+            {
+                id: 45,
+                name: "AW WASH & WAX",
+                description: "High-quality wash and wax AW-103. Advanced cleaning and protection formula.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/AW-103 AW WASH & WAX.jpeg",
+                price: 750
+            },
+            {
+                id: 46,
+                name: "AW WASH & WAX",
+                description: "Premium wash and wax AW-104. Superior cleaning and long-lasting protection.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/AW-104 AW WASH & WAX.jpeg",
+                price: 750
+            },
+            {
+                id: 47,
+                name: "CARNAUBA WASH & WAX",
+                description: "Carnauba wash and wax F1-101. Natural carnauba wax protection while washing.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-101 CARNAUBA WASH &WAX.jpeg",
+                price: 1250
+            },
+            {
+                id: 48,
+                name: "CARNAUBA WASH & WAX",
+                description: "Premium carnauba wash and wax F1-102. High-performance natural protection.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-102 CARNAUBA WASH & WAX.jpeg",
+                price: 2000
+            },
+            {
+                id: 49,
+                name: "CARNAUBA WASH & WAX",
+                description: "Professional carnauba wash and wax F1-103. Superior cleaning and protection.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-103 CARNAUBA WASH & WAX.jpeg",
+                price: 3250
+            },
+            {
+                id: 50,
+                name: "CARNAUBA LIQUID WAX",
+                description: "Carnauba liquid wax F1-104. Easy-to-use liquid wax with natural protection.",
+                price: 1600,
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-104 CARNAUBA LIQUID WAX.jpeg"
+            },
+            {
+                id: 51,
+                name: "CARNAUBA WAX PASTE",
+                description: "Carnauba wax paste F1-106. Traditional paste wax for superior protection.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-106 CARNAUBA WAX PASTE.jpeg",
+                price: 1500
+            },
+            {
+                id: 52,
+                name: "CARNAUBA WAX PASTE",
+                description: "Premium carnauba wax paste F1-107. High-quality paste wax for maximum protection.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-107 CARNAUBA WAX PASTE.jpeg",
+                price: 2000
+            },
+            {
+                id: 53,
+                name: "CERAMIC LIQUID WAX",
+                description: "Ceramic liquid wax F1-113. Advanced ceramic technology for superior protection.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-113 CERAMIC LIQUID WAX.jpeg",
+                price: 250
+            },
+            {
+                id: 54,
+                name: "CERAMIC SPRAY WAX",
+                description: "Ceramic spray wax F1-114. Easy-to-use ceramic protection in spray form.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-114 CERAMIC SPRAY WAX.jpeg",
+                price: 2000
+            },
+            {
+                id: 55,
+                name: "CERAMIC WASH & WAX",
+                description: "Ceramic wash and wax F1-115. Advanced ceramic protection while washing.",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-115 CERAMIC WASH & WAX.jpeg",
+                price: 2000
+            },
+            // Wash Shampoos
+            {
+                id: 56,
+                name: "AIM WASH & SHAMPOO",
+                description: "Professional wash and shampoo AW-157. Cleans and shines all painted surfaces. 1 LTR.",
+                category: "wash shampoos",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 250
+            },
+            // Car Wax
+            {
+                id: 57,
+                name: "LEATHER AND TYRE WAX",
+                description: "Premium leather and tire wax A-113. Conditions and protects with long-lasting shine.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 250
+            },
+            {
+                id: 58,
+                name: "LEATHER AND TYRE WAX",
+                description: "Professional leather and tire wax A-115. Advanced protection formula.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 250
+            },
+            {
+                id: 59,
+                name: "LEATHER AND TYRE WAX",
+                description: "High-quality leather and tire wax A-117. Superior conditioning and protection.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 250
+            },
+            {
+                id: 60,
+                name: "LEATHER AND TYRE WAX",
+                description: "Premium leather and tire wax A-118. Long-lasting protection and shine.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 250
+            },
+            {
+                id: 61,
+                name: "LEATHER AND TYRE WAX",
+                description: "Professional leather and tire wax A-119. Advanced formula for superior results.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 250
+            },
+            {
+                id: 62,
+                name: "LEATHER AND TYRE WAX",
+                description: "High-performance leather and tire wax A-120. Premium protection and conditioning.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 250
+            },
+            {
+                id: 63,
+                name: "LEATHER TYRE WAX",
+                description: "Professional leather tire wax A-121. Superior shine and protection.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 250
+            },
+            {
+                id: 64,
+                name: "AW WASH & WAX",
+                description: "Professional wash and wax AW-102. Cleans and protects in one step.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 750
+            },
+            {
+                id: 65,
+                name: "AW WASH & WAX",
+                description: "High-quality wash and wax AW-103. Advanced cleaning and protection formula.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 750
+            },
+            {
+                id: 66,
+                name: "AW WASH & WAX",
+                description: "Premium wash and wax AW-104. Superior cleaning and long-lasting protection.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 1250
+            },
+            {
+                id: 67,
+                name: "CARNAUBA WASH & WAX",
+                description: "Carnauba wash and wax F1-101. Natural carnauba wax protection while washing.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 1250
+            },
+            {
+                id: 68,
+                name: "CARNAUBA WASH & WAX",
+                description: "Premium carnauba wash and wax F1-102. High-performance natural protection.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 2000
+            },
+            {
+                id: 69,
+                name: "CARNAUBA WASH & WAX",
+                description: "Professional carnauba wash and wax F1-103. Superior cleaning and protection.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 1250
+            },
+            {
+                id: 70,
+                name: "CARNAUBA LIQUID WAX",
+                description: "Carnauba liquid wax F1-104. Easy-to-use liquid wax with natural protection.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 1500
+            },
+            {
+                id: 71,
+                name: "CARNAUBA WAX PASTE",
+                description: "Carnauba wax paste F1-106. Traditional paste wax for superior protection.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 1500
+            },
+            {
+                id: 72,
+                name: "CARNAUBA WAX PASTE",
+                description: "Premium carnauba wax paste F1-107. High-quality paste wax for maximum protection.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 1500
+            },
+            {
+                id: 73,
+                name: "CERAMIC LIQUID WAX",
+                description: "Ceramic liquid wax F1-113. Advanced ceramic technology for superior protection.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 2000
+            },
+            {
+                id: 74,
+                name: "CERAMIC SPRAY WAX",
+                description: "Ceramic spray wax F1-114. Easy-to-use ceramic protection in spray form.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 2000
+            },
+            {
+                id: 75,
+                name: "CERAMIC WASH & WAX",
+                description: "Ceramic wash and wax F1-115. Advanced ceramic protection while washing.",
+                category: "car wax",
+                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
+                price: 2000
+            },
+            // Cleaners
+            {
+                id: 76,
+                name: "INJECTOR CLEANER",
+                description: "Professional injector cleaner A-109. Cleans fuel injectors for optimal performance.",
+                price: 400,
+                category: "cleaners",
+                image_url: "CLEANERS/A-109 INJECTOR CLEANER.jpeg"
+            },
+            {
+                id: 77,
+                name: "INJECTOR CLEANER",
+                description: "High-quality injector cleaner A-110. Advanced formula for fuel system cleaning.",
+                price: 400,
+                category: "cleaners",
+                image_url: "CLEANERS/A-110 INJECTOR CLEANER.jpeg"
+            },
+            {
+                id: 78,
+                name: "INJECTOR CLEANER",
+                description: "Premium injector cleaner A-111. Professional fuel system maintenance.",
+                price: 400,
+                category: "cleaners",
+                image_url: "CLEANERS/A-111 INJECTOR CLEANER.jpeg"
+            },
+            {
+                id: 79,
+                name: "AIM CARB CLEANER",
+                description: "Professional carburetor cleaner A-112. Removes deposits and restores performance.",
+                price: 750,
+                category: "cleaners",
+                image_url: "CLEANERS/A-112 AIM CARB CLEANER.jpeg"
+            },
+            {
+                id: 80,
+                name: "AIM ANTI-RUST",
+                description: "Anti-rust protection A-123. Prevents corrosion and protects metal surfaces.",
+                price: 750,
+                category: "cleaners",
+                image_url: "CLEANERS/A-123 AIM ANTI-RUST.jpeg"
+            },
+            {
+                id: 81,
+                name: "AIM ANTI-RUST",
+                description: "Premium anti-rust protection A-124. Advanced corrosion prevention formula.",
+                price: 250,
+                category: "cleaners",
+                image_url: "CLEANERS/A-124 AIM ANTI-RUST.jpeg"
+            },
+            {
+                id: 82,
+                name: "AIM ENGINE CLEANER",
+                description: "Professional engine cleaner A-125. Removes grease and grime from engine surfaces.",
+                price: 700,
+                category: "cleaners",
+                image_url: "CLEANERS/A-125 AIM ENGINE CLEANER.jpeg"
+            },
+            {
+                id: 83,
+                name: "AIM TIRE FOAM",
+                description: "Tire foam cleaner A-126. Cleans and shines tires with foaming action.",
+                price: 450,
+                category: "cleaners",
+                image_url: "CLEANERS/A-126 AIM TIRE FOAM.jpeg"
+            },
+            {
+                id: 84,
+                name: "AIM TIRE FOAM",
+                description: "Premium tire foam cleaner A-127. Advanced foaming formula for superior cleaning.",
+                price: 250,
+                category: "cleaners",
+                image_url: "CLEANERS/A-127 AIM TIRE FOAM.jpeg"
+            },
+            {
+                id: 85,
+                name: " AIM FOAMY CLEANER",
+                description: "Foamy cleaner A-128. Versatile cleaning solution for multiple surfaces.",
+                price: 700,
+                category: "cleaners",
+                image_url: "CLEANERS/A-128 AIM FOAMY CLEANER.jpeg"
+            },
+            {
+                id: 86,
+                name: "AIM FOAMY CLEANER",
+                description: "Premium foamy cleaner A-129. Advanced foaming technology for deep cleaning.",
+                price: 550,
+                category: "cleaners",
+                image_url: "CLEANERS/A-129 AIM FOAMY CLEANER.jpeg"
+            },
+            {
+                id: 87,
+                name: "AIM GLASS CLEANER",
+                description: "Professional glass cleaner A-131. Streak-free cleaning for all glass surfaces.",
+                price: 350,
+                category: "cleaners",
+                image_url: "CLEANERS/A-131 AIM GLASS CLEANER.jpeg"
+            },
+            {
+                id: 88,
+                name: "AIM WIND SCREEN WASHER",
+                description: "Wind screen washer fluid A-132. Cleans and prevents freezing in cold weather.",
+                price: 750,
+                category: "cleaners",
+                image_url: "CLEANERS/A-132 AIM WIND SCREEN WASHER.jpeg"
+            },
+            {
+                id: 89,
+                name: "AIM LEATHER CLEANER",
+                description: "Professional leather cleaner A-133. Cleans and conditions leather surfaces.",
+                price: 1000,
+                category: "cleaners",
+                image_url: "CLEANERS/A-133 AIM LEATHER CLEANER.jpeg"
+            },
+            {
+                id: 90,
+                name: "AIM FUEL INJECTOR CLEANER",
+                description: "Fuel injector cleaner A-135. Advanced formula for fuel system maintenance.",
+                price: 750,
+                category: "cleaners",
+                image_url: "CLEANERS/A-135 AIM FUEL INJECTOR CLEANER.jpeg"
+            },
+            {
+                id: 91,
+                name: "AIM CATALYTIC SYSTEM CLEANER",
+                description: "Catalytic system cleaner A-136. Cleans and maintains catalytic converter performance.",
+                price: 750,
+                category: "cleaners",
+                image_url: "CLEANERS/A-136 AIM CATALYIC SYSTEM CLEANER.jpeg"
+            },
+            {
+                id: 92,
+                name: "AIM CATALYTIC SYSTEM CLEANER",
+                description: "Premium catalytic system cleaner A-136. Advanced cleaning for emission systems.",
+                price: 750,
+                category: "cleaners",
+                image_url: "CLEANERS/A-136-AIM-CATALYIC-SYSTEM-CLEANER.jpeg"
+            },
+            // Radiator Coolers
+            {
+                id: 98,
+                name: "AIM RADIATOR COOLANT",
+                description: "Professional radiator coolant A-102. Prevents overheating and corrosion.",
+                price: "800",
+                category: "radiator coolers",
+                image_url: "RADIATOR COOLER/A-102 AIM RADIATOR COOLANT.jpeg"
+            },
+            {
+                id: 99,
+                name: "AIM RADIATOR COOLANT",
+                description: "High-quality radiator coolant A-103. Advanced cooling system protection.",
+                price: "800",
+                category: "radiator coolers",
+                image_url: "RADIATOR COOLER/A-103 AIM RADIATOR COOLANT.jpeg"
+            },
+            {
+                id: 100,
+                name: "AIM ANTIFREEZE + COOLANT",
+                description: "Antifreeze and coolant A-104. Prevents freezing and provides cooling protection.",
+                price: "1499",
+                category: "radiator coolers",
+                image_url: "RADIATOR COOLER/A-104 AIM ANTIFREEZER +COOLANT.jpeg"
+            },
+            {
+                id: 101,
+                name: "AIM RADIATOR COOLANT",
+                description: "Premium radiator coolant A-105. Professional cooling system maintenance.",
+                price: "800",
+                category: "radiator coolers",
+                image_url: "RADIATOR COOLER/A-105 AIM RADIATOR COOLANT.jpeg"
+            },
+            {
+                id: 102,
+                name: "AIM RADIATOR COOLANT",
+                description: "Advanced radiator coolant A-106. Superior cooling and protection formula.",
+                price: "800",
+                category: "radiator coolers",
+                image_url: "RADIATOR COOLER/A-106 AIM RADIATOR COOLANT.jpeg"
+            },
+            {
+                id: 103,
+                name: "AIM RADIATOR COOLANT",
+                description: "Professional radiator coolant A-107. High-performance cooling system protection.",
+                price: "800",
+                category: "radiator coolers",
+                image_url: "RADIATOR COOLER/A-107 AIM RADIATOR COOLANT.jpeg"
+            },
+            {
+                id: 104,
+                name: "AIM RADIATOR COOLANT",
+                description: "Premium radiator coolant A-108. Advanced formula for optimal engine cooling.",
+                price: "800",
+                category: "radiator coolers",
+                image_url: "RADIATOR COOLER/A-108 AIM RADIATOR COOLANT.jpeg"
+            },
+            // Car Wash & Wax (Additional Products)
+            {
+                id: 105,
+                name: "LEATHER AND TYRE WAX 300ml",
+                description: "Premium leather and tire wax A-113. Conditions and protects with long-lasting shine.",
+                price: 250,
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/A-113 LEATHER AND TYRE WAX.jpeg"
+            },
+            {
+                id: 106,
+                name: "LEATHER AND TYRE WAX 300ml",
+                description: "Professional leather and tire wax A-115. Advanced protection formula.",
+                price: 250,
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/A-115 LEATHER AND TYRE WAX.jpeg"
+            },
+            {
+                id: 107,
+                name: "LEATHER AND TYRE WAX 300ml",
+                description: "High-quality leather and tire wax A-117. Superior conditioning and protection.",
+                price: 250,
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/A-117 LEATHER AND TYRE WAX.jpeg"
+            },
+            {
+                id: 108,
+                name: "LEATHER AND TYRE WAX 300ml",
+                description: "Premium leather and tire wax A-118. Long-lasting protection and shine.",
+                price: 250,
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/A-118 LEATHER AND TYPRE WAX.jpeg"
+            },
+            {
+                id: 109,
+                name: "LEATHER AND TYRE WAX",
+                description: "Professional leather and tire wax A-119. Advanced formula for superior results.",
+                price: 250,
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/A-119 LEATHER AND TYPRE WAX.jpeg"
+            },
+            {
+                id: 110,
+                name: "LEATHER AND TYRE WAX",
+                description: "High-performance leather and tire wax A-120. Premium protection and conditioning.",
+                price: 250,
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/A-120 LEATHER AND TYRE WAX.jpeg"
+            },
+            {
+                id: 111,
+                name: "LEATHER TYRE WAX 450ml",
+                description: "Professional leather tire wax A-121. Superior shine and protection.",
+                price: 500,
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/A-121 LEATHER TYRE WAX.jpeg"
+            },
+            {
+                id: 112,
+                name: "AW WASH & WAX",
+                description: "Professional wash and wax AW-102. Cleans and protects in one step.",
+                price: "1999",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/AW-102 AW WASH & WAX.jpeg"
+            },
+            {
+                id: 113,
+                name: "AW WASH & WAX",
+                description: "High-quality wash and wax AW-103. Advanced cleaning and protection formula.",
+                price: "1999",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/AW-103 AW WASH & WAX.jpeg"
+            },
+            {
+                id: 114,
+                name: "AW WASH & WAX",
+                description: "Premium wash and wax AW-104. Superior cleaning and long-lasting protection.",
+                price: "1999",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/AW-104 AW WASH & WAX.jpeg"
+            },
+            {
+                id: 115,
+                name: "F1-101 CARNAUBA WASH & WAX",
+                description: "Carnauba wash and wax F1-101. Natural carnauba wax protection while washing.",
+                price: "2299",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-101 CARNAUBA WASH &WAX.jpeg"
+            },
+            {
+                id: 116,
+                name: "F1-102 CARNAUBA WASH & WAX",
+                description: "Premium carnauba wash and wax F1-102. High-performance natural protection.",
+                price: "2299",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-102 CARNAUBA WASH & WAX.jpeg"
+            },
+            {
+                id: 117,
+                name: "F1-103 CARNAUBA WASH & WAX",
+                description: "Professional carnauba wash and wax F1-103. Superior cleaning and protection.",
+                price: "2299",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-103 CARNAUBA WASH&WAX.jpeg"
+            },
+            {
+                id: 118,
+                name: "F1-104 CARNAUBA LIQUID WAX",
+                description: "Carnauba liquid wax F1-104. Easy-to-use liquid wax with natural protection.",
+                price: "2499",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-104 CARNAUBA LIQUID WAX.jpeg"
+            },
+            {
+                id: 119,
+                name: "F1-106 CARNAUBA WAX PASTE",
+                description: "Carnauba wax paste F1-106. Traditional paste wax for superior protection.",
+                price: "2699",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-106 CARNABUNA WAX PASTE.jpeg"
+            },
+            {
+                id: 120,
+                name: "F1-107 CARNAUBA WAX PASTE",
+                description: "Premium carnauba wax paste F1-107. High-quality paste wax for maximum protection.",
+                price: "2699",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-107 CARNAUBA WAX PASTE.jpeg"
+            },
+            {
+                id: 121,
+                name: "F1-113 CERAMIC LIQUID WAX",
+                description: "Ceramic liquid wax F1-113. Advanced ceramic technology for superior protection.",
+                price: "2999",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-113 CERAMIC LIQUID WAX.jpeg"
+            },
+            {
+                id: 122,
+                name: "F1-114 CERAMIC SPRAY WAX",
+                description: "Ceramic spray wax F1-114. Easy-to-use ceramic protection in spray form.",
+                price: "2799",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/F1-114 CERAMIC SPRAY WAX.jpeg"
+            },
+            {
+                id: 123,
+                name: "F1-115 CERAMIC WASH & WAX",
+                description: "Ceramic wash and wax F1-115. Advanced ceramic protection while washing.",
+                price: "2899",
+                category: "wash & wax",
+                image_url: "CAR WASH & WAX/FI-115 CERAMIC WASH&WAX.jpeg"
+            },
+            // Car Wash Shampoos
+            {
+                id: 124,
+                name: "AIM WASH & SHAMPOO",
+                description: "Professional wash and shampoo AW-157. Cleans and shines all painted surfaces. 1 LTR.",
+                price: 250,
+                category: "wash shampoos",
+                image_url: "CAR WASH SHAMPOOS/AW-157 AIM WASH & SHAMPOO.jpeg"
+            },
+            // Lubricants
+            {
+                id: 125,
+                name: "DEARGON ANTI-RUST LUBRICANT SPRAY 100ML",
+                description: "Professional anti-rust lubricant spray. Loosens rusted parts, frees sticky mechanisms, cleans and protects, drives out moisture, stops squeaks. NET 100ml.",
+                price: "899",
+                category: "lubricants",
+                image_url: "CAR LUBRICANTS/deargon-anti-rust-100ml.jpeg"
+            },
+            {
+                id: 126,
+                name: "DEARGON ANTI-RUST LUBRICANT SPRAY 220ML",
+                description: "Professional anti-rust lubricant spray with ISO9001 quality management system. Loosens rusted parts, frees sticky mechanisms, cleans and protects, drives out moisture, stops squeaks. NET 220ml.",
+                price: "1299",
+                category: "lubricants",
+                image_url: "CAR LUBRICANTS/deargon-anti-rust-220ml.jpeg"
+            },
+            {
+                id: 127,
+                
+                name: "DEARGON ANTI-RUST LUBRICANT SPRAY 450ML",
+                description: "International advanced formula anti-rust lubricant spray. Go beyond due to the high quality. Loosens rusted parts, frees sticky mechanisms, cleans and protects, drives out moisture, stops squeaks. NET 450ml.",
+                price: "",
+                category: "lubricants",
+                image_url: "CAR LUBRICANTS/deargon-anti-rust-450ml.jpeg"
+            },
+            // Car Perfumes
+        ];
+
+        // Fix image paths by removing 'products/' prefix
+        function fixImagePaths(products) {
+            return products.map(product => {
+                if (product.image_url && product.image_url.startsWith('products/')) {
+                    product.image_url = product.image_url.replace('products/', '');
+                }
+                return product;
+            });
+        }
+
+        // Load all products
+        function loadProducts() {
+            console.log('Loading products...');
+            console.log('Sample products count:', sampleProducts.length);
+            
+            // Use sample products directly (skip API for now)
+                allProducts = fixImagePaths([...sampleProducts]);
+                filteredProducts = [...allProducts];
+            
+            console.log('Total products loaded:', allProducts.length);
+            
+                displayProducts();
+                setupEventListeners();
+        }
+
+        // Display products
+        function displayProducts() {
+            console.log('Displaying products...');
+            console.log('Filtered products to display:', filteredProducts.length);
+            
+            const container = document.getElementById('productsContainer');
+            const grid = document.getElementById('productsGrid');
+            const loading = document.getElementById('loadingState');
+            const noProducts = document.getElementById('noProducts');
+            
+            console.log('Container elements found:', {
+                container: !!container,
+                grid: !!grid,
+                loading: !!loading,
+                noProducts: !!noProducts
+            });
+
+            loading.classList.add('hidden');
+            container.classList.remove('hidden');
+
+            if (filteredProducts.length === 0) {
+                grid.classList.add('hidden');
+                noProducts.classList.remove('hidden');
+                document.getElementById('pagination').classList.add('hidden');
+                return;
+            }
+
+            grid.classList.remove('hidden');
+            noProducts.classList.add('hidden');
+
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const pageProducts = filteredProducts.slice(startIndex, endIndex);
+
+            grid.innerHTML = '';
+
+            pageProducts.forEach(product => {
+                const productCard = createProductCard(product);
+                grid.innerHTML += productCard;
+            });
+
+            updatePagination();
+        }
+
+
+        // Create product card
+        function createProductCard(product) {
+            if (currentView === 'list') {
+                return `
+                    <div class="bg-black rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition duration-300 flex border border-yellow-500/50 product-card cursor-pointer">
+                        <div class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 bg-black flex items-center justify-center flex-shrink-0">
+                            ${product.image_url ? 
+                                `<img src="${product.image_url}" alt="${product.name}" class="w-full h-full object-cover" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.nextElementSibling.style.display='none';">
+                                <i class="fas fa-car text-2xl sm:text-3xl md:text-4xl text-yellow-500" style="display: none;"></i>` :
+                                `<i class="fas fa-car text-2xl sm:text-3xl md:text-4xl text-yellow-500"></i>`
+                            }
+                        </div>
+                        <div class="p-3 sm:p-4 md:p-6 flex-1">
+                            <h3 class="font-semibold text-sm sm:text-base md:text-xl mb-1 sm:mb-2 text-yellow-400">${product.name}</h3>
+                            <p class="text-yellow-500 font-bold text-sm sm:text-base">Rs ${product.price}</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                return `
+                    <div class="bg-black rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition duration-300 border border-yellow-500/50 product-card cursor-pointer">
+                        <div class="image-container">
+                            ${product.image_url ? 
+                                `<img src="${product.image_url}" alt="${product.name}" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.nextElementSibling.style.display='none';">
+                                <i class="fas fa-car text-2xl sm:text-3xl md:text-4xl text-yellow-500" style="display: none;"></i>` :
+                                `<i class="fas fa-car text-2xl sm:text-3xl md:text-4xl text-yellow-500"></i>`
+                            }
+                        </div>
+                        <div class="p-2 sm:p-3 md:p-4">
+                            <h3 class="font-semibold text-center text-yellow-400 text-xs sm:text-sm md:text-base mb-1 sm:mb-2 line-clamp-2">${product.name}</h3>
+                            <p class="text-yellow-500 font-bold text-center text-xs sm:text-sm">Rs ${product.price}</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Update pagination
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+            const pagination = document.getElementById('pagination');
+            const pageNumbers = document.getElementById('pageNumbers');
+            const prevBtn = document.getElementById('prevPage');
+            const nextBtn = document.getElementById('nextPage');
+
+            if (totalPages <= 1) {
+                pagination.classList.add('hidden');
+                return;
+            }
+
+            pagination.classList.remove('hidden');
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === totalPages;
+
+            pageNumbers.innerHTML = '';
+            for (let i = 1; i <= totalPages; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.textContent = i;
+                pageBtn.className = `px-3 py-2 border border-gray-300 rounded-md text-sm font-medium ${
+                    i === currentPage ? 'bg-primary text-white border-primary' : 'text-gray-700 hover:bg-gray-50'
+                }`;
+                pageBtn.addEventListener('click', () => {
+                    currentPage = i;
+                    displayProducts();
+                });
+                pageNumbers.appendChild(pageBtn);
+            }
+        }
+
+        // Filter products
+        function filterProducts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            const priceRange = document.getElementById('priceFilter').value;
+            
+            console.log('Filtering products with category:', category);
+
+            filteredProducts = allProducts.filter(product => {
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm) || 
+                                    (product.description && product.description.toLowerCase().includes(searchTerm));
+                
+                // Enhanced category matching for the new categories
+                let matchesCategory = true;
+                if (category) {
+                    // Check if product has a category field first
+                    if (product.category) {
+                        matchesCategory = product.category.toLowerCase() === category.toLowerCase();
+                    } else {
+                        // Fallback to name/description matching
+                        const productName = product.name.toLowerCase();
+                        const productDesc = (product.description || '').toLowerCase();
+                        
+                        switch (category) {
+                            case 'car care':
+                                matchesCategory = productName.includes('car') || productName.includes('auto') || 
+                                                productName.includes('vehicle') || productName.includes('wd-40') ||
+                                                productName.includes('formula 1') || productName.includes('wash') ||
+                                                productName.includes('wax') || productName.includes('spray') ||
+                                                productDesc.includes('car') || productDesc.includes('automotive') || 
+                                                productDesc.includes('tire') || productDesc.includes('wax') || 
+                                                productDesc.includes('cleaner') || productDesc.includes('wash') ||
+                                                productDesc.includes('protect') || productDesc.includes('shine');
+                                break;
+                            case 'electronics':
+                                matchesCategory = productName.includes('electronic') || productName.includes('gadget') ||
+                                                productName.includes('device') || productName.includes('bluetooth') ||
+                                                productName.includes('charging') || productName.includes('power bank') ||
+                                                productDesc.includes('electronic');
+                                break;
+                            case 'perfumes':
+                                matchesCategory = productName.includes('perfume') || productName.includes('fragrance') ||
+                                                productName.includes('cologne') || productName.includes('spray') ||
+                                                productDesc.includes('perfume') || productDesc.includes('fragrance');
+                                break;
+                            case 'laptops':
+                                matchesCategory = productName.includes('laptop') || productName.includes('computer') ||
+                                                productName.includes('notebook') || productName.includes('gaming') ||
+                                                productName.includes('business') || productDesc.includes('laptop');
+                                break;
+                            case 'microfiber and cleaners':
+                                matchesCategory = productName.includes('cleaner') || productName.includes('cleaning') ||
+                                                productName.includes('detergent') || productName.includes('floor') ||
+                                                productName.includes('bathroom') || productDesc.includes('clean') ||
+                                                productName.includes('microfiber') || productName.includes('towel') ||
+                                                productName.includes('cloth');
+                                break;
+                            case 'polish and shinners':
+                                matchesCategory = productName.includes('polish') || productName.includes('shine') ||
+                                                productName.includes('tire') || productName.includes('wax') ||
+                                                productName.includes('scratch') || productName.includes('gel') ||
+                                                productDesc.includes('polish') || productDesc.includes('shine') ||
+                                                productDesc.includes('tire') || productDesc.includes('wax') ||
+                                                productDesc.includes('scratch') || productDesc.includes('gel');
+                                break;
+                            case 'protectant sprays':
+                                matchesCategory = productName.includes('protectant') || productName.includes('spray') ||
+                                                productDesc.includes('protect') || productDesc.includes('shine') ||
+                                                productDesc.includes('freshen') || productDesc.includes('spray');
+                                break;
+                            case 'wash & wax':
+                                matchesCategory = productName.includes('wash') || productName.includes('wax') ||
+                                                productDesc.includes('wash') || productDesc.includes('wax') ||
+                                                productDesc.includes('clean') || productDesc.includes('shine');
+                                break;
+                            default:
+                                matchesCategory = productName.includes(category);
+                        }
+                    }
+                }
+
+                let matchesPrice = true;
+                if (priceRange) {
+                    const price = parseFloat(product.price);
+                    switch (priceRange) {
+                        case '0-25':
+                            matchesPrice = price >= 0 && price <= 25;
+                            break;
+                        case '25-50':
+                            matchesPrice = price > 25 && price <= 50;
+                            break;
+                        case '50-100':
+                            matchesPrice = price > 50 && price <= 100;
+                            break;
+                        case '100+':
+                            matchesPrice = price > 100;
+                            break;
+                    }
+                }
+
+                return matchesSearch && matchesCategory && matchesPrice;
+            });
+
+            currentPage = 1;
+            console.log('Filtered products count:', filteredProducts.length);
+            displayProducts();
+        }
+
+        // Filter by category from category cards
+        function filterByCategory(category) {
+            console.log('Filtering by category:', category);
+            document.getElementById('categoryFilter').value = category;
+            filterProducts();
+            
+            // Scroll to products section smoothly
+            const productsContainer = document.getElementById('productsContainer');
+            if (productsContainer) {
+                productsContainer.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }
+        }
+
+        // Sort products
+        function sortProducts() {
+            const sortBy = document.getElementById('sortSelect').value;
+            
+            filteredProducts.sort((a, b) => {
+                switch (sortBy) {
+                    case 'name':
+                        return a.name.localeCompare(b.name);
+                    case 'price-low':
+                        return parseFloat(a.price) - parseFloat(b.price);
+                    case 'price-high':
+                        return parseFloat(b.price) - parseFloat(a.price);
+                    default:
+                        return 0;
+                }
+            });
+
+            currentPage = 1;
+            displayProducts();
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            const searchInput = document.getElementById('searchInput');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const priceFilter = document.getElementById('priceFilter');
+            const sortSelect = document.getElementById('sortSelect');
+            const prevPage = document.getElementById('prevPage');
+            const nextPage = document.getElementById('nextPage');
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', filterProducts);
+            }
+            
+            if (categoryFilter) {
+                categoryFilter.addEventListener('change', filterProducts);
+            }
+            
+            if (priceFilter) {
+                priceFilter.addEventListener('change', filterProducts);
+            }
+            
+            if (sortSelect) {
+                sortSelect.addEventListener('change', sortProducts);
+            }
+            
+            if (prevPage) {
+                prevPage.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayProducts();
+                }
+            });
+            }
+            
+            if (nextPage) {
+                nextPage.addEventListener('click', () => {
+                const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayProducts();
+                }
+            });
+            }
+
+            const gridView = document.getElementById('gridView');
+            const listView = document.getElementById('listView');
+            
+            if (gridView) {
+                gridView.addEventListener('click', () => {
+                currentView = 'grid';
+                    gridView.classList.add('bg-primary', 'text-white');
+                    if (listView) {
+                        listView.classList.remove('bg-primary', 'text-white');
+                    }
+                displayProducts();
+            });
+            }
+
+            if (listView) {
+                listView.addEventListener('click', () => {
+                currentView = 'list';
+                    listView.classList.add('bg-primary', 'text-white');
+                    if (gridView) {
+                        gridView.classList.remove('bg-primary', 'text-white');
+                    }
+                displayProducts();
+            });
+            }
+        }
+
+        // Shopping Cart Functionality
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let cartCount = 0;
+                const whatsappNumber = '+923258573925'; // MSM Traders WhatsApp number for orders
+        const placeOrderWhatsappNumber = '+923258573925'; // WhatsApp number for placing orders
 
         // Update cart count display
         function updateCartCount() {
-            const cartCountElement = document.getElementById('cart-count');
-            if (cartCountElement) {
-                cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-                cartCountElement.textContent = cartCount;
+            const cartCount = document.getElementById('cart-count');
+            if (!cartCount) {
+                console.error('cart-count element not found!');
+                return;
             }
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            // Clear any existing content and set new count
+            cartCount.textContent = '';
+            cartCount.textContent = totalItems;
+            console.log('Cart count updated to:', totalItems);
+        }
+
+        // Update cart total
+        function updateCartTotal() {
+            const cartTotal = document.getElementById('cart-total');
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = `Rs ${total.toFixed(2)}`;
         }
 
         // Render cart items
         function renderCart() {
             const cartItems = document.getElementById('cart-items');
-            const emptyCart = document.getElementById('empty-cart');
-            const cartSummary = document.getElementById('cart-summary');
-            const totalItems = document.getElementById('total-items');
-            const totalAmount = document.getElementById('total-amount');
-
-            if (cart.length === 0) {
-                cartItems.innerHTML = '';
-                emptyCart.classList.remove('hidden');
-                cartSummary.classList.add('hidden');
+            
+            if (!cartItems) {
+                console.error('cartItems element not found!');
                 return;
             }
-
-            emptyCart.classList.add('hidden');
-            cartSummary.classList.remove('hidden');
-
-            cartItems.innerHTML = cart.map((item, index) => `
-                <div class="cart-item bg-gray-900 rounded-lg p-4 border border-gray-700 flex items-center">
-                    <img src="${item.image || 'placeholder.jpg'}" alt="${item.name}" class="cart-item-image w-20 h-20 object-cover rounded-lg">
-                    <div class="cart-item-details flex-1 ml-4">
-                        <h3 class="cart-item-name text-lg font-semibold golden">${item.name}</h3>
-                        <p class="cart-item-price text-xl font-bold golden">₨${item.price}</p>
-                        <div class="quantity-controls flex items-center space-x-2 mt-2">
-                            <button onclick="updateQuantity(${index}, 'decrease')" class="quantity-btn bg-gray-700 text-white rounded px-2 py-1 hover:bg-gray-600 transition duration-200">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <input type="number" value="${item.quantity}" min="1" class="quantity-input bg-gray-800 text-white text-center border border-gray-600 rounded px-2 py-1" onchange="setQuantity(${index}, this.value)">
-                            <button onclick="updateQuantity(${index}, 'increase')" class="quantity-btn bg-gray-700 text-white rounded px-2 py-1 hover:bg-gray-600 transition duration-200">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-300 p-2">
-                        <i class="fas fa-trash text-xl"></i>
-                    </button>
-                </div>
-            `).join('');
-
-            // Update totals
-            const totalItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const totalAmountValue = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
             
-            totalItems.textContent = totalItemsCount;
-            totalAmount.textContent = `₨${totalAmountValue.toFixed(2)}`;
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div id="empty-cart" class="text-center py-8">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">Your cart is empty</p>
+                    </div>
+                `;
+            } else {
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item bg-gray-800 rounded-lg p-3 mb-3 border border-gray-700">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-${getItemIcon(item.image)} text-yellow-500"></i>
+                </div>
+                                <div>
+                                    <h4 class="text-yellow-500 font-semibold text-sm">${item.name}</h4>
+                                    <p class="text-gray-400 text-xs">Rs ${item.price}</p>
+                    </div>
+                </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}" data-action="decrease">-</button>
+                                <span class="text-yellow-500 font-semibold text-sm w-8 text-center">${item.quantity}</span>
+                                <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}" data-action="increase">+</button>
+                                <button class="remove-item bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+            </div>
+        </div>
+    </div>
+                `).join('');
+            }
+            
+            updateCartCount();
+            updateCartTotal();
         }
 
-        // Update quantity
+        // Get icon for item type
+        function getItemIcon(imageType) {
+            const icons = {
+                'car-wax': 'car',
+                'headphones': 'headphones',
+                'cologne': 'spray-can',
+                'laptop': 'laptop'
+            };
+            return icons[imageType] || 'box';
+        }
+
+        // Add item to cart
+        function addToCart(name, price, image) {
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                const newItem = {
+                    name: name,
+                    price: parseFloat(price),
+                    image: image,
+                    quantity: 1
+                };
+                cart.push(newItem);
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+            
+            // Show cart popup when item is added
+            showCartPopup();
+            
+            // Show success message
+            showNotification('Item added to cart!', 'success');
+        }
+
+        // Show cart popup
+        function showCartPopup() {
+            const cartModal = document.getElementById('cart-modal');
+            if (cartModal) {
+                cartModal.classList.remove('hidden');
+                cartModal.classList.add('show');
+            }
+        }
+
+        // Remove item from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            showNotification('Item removed from cart!', 'info');
+        }
+
+        // Update item quantity
         function updateQuantity(index, action) {
             if (action === 'increase') {
                 cart[index].quantity += 1;
@@ -270,87 +2514,463 @@
                     return;
                 }
             }
+            
             localStorage.setItem('cart', JSON.stringify(cart));
             renderCart();
-            updateCartCount();
-        }
-
-        // Set quantity directly
-        function setQuantity(index, value) {
-            const quantity = parseInt(value);
-            if (quantity < 1) {
-                removeFromCart(index);
-                return;
-            }
-            cart[index].quantity = quantity;
-            localStorage.setItem('cart', JSON.stringify(cart));
-            renderCart();
-            updateCartCount();
-        }
-
-        // Remove item from cart
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            renderCart();
-            updateCartCount();
-            showNotification('Item removed from cart!', 'info');
         }
 
         // Clear cart
         function clearCart() {
-            if (confirm('Are you sure you want to clear your cart?')) {
-                cart = [];
-                localStorage.setItem('cart', JSON.stringify(cart));
-                renderCart();
-                updateCartCount();
-                showNotification('Cart cleared!', 'info');
-            }
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            showNotification('Cart cleared!', 'info');
         }
 
-        // Checkout via WhatsApp
-        function checkout() {
+        // Send order via WhatsApp
+        function sendWhatsAppOrder() {
             if (cart.length === 0) {
                 showNotification('Your cart is empty!', 'error');
                 return;
             }
 
-            const total = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
-            const message = `Order Summary:\n\n${cart.map(item => `${item.name} x${item.quantity} - ₨${item.price}`).join('\n')}\n\nTotal: ₨${total.toFixed(2)}`;
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            let message = `Hello! I would like to place an order:\n\n`;
             
-            const whatsappNumber = '+923258573925';
-            const whatsappMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+            cart.forEach(item => {
+                message += `â€¢ ${item.name} x${item.quantity} - Rs ${(item.price * item.quantity).toFixed(2)}\n`;
+            });
             
+            message += `\nTotal: Rs ${total.toFixed(2)}\n\nPlease confirm my order. Thank you!`;
+            
+            const whatsappUrl = `https://wa.me/${placeOrderWhatsappNumber}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
+        }
+
+        // Jazz Cash Payment Functions
+        function openJazzCashPayment() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!', 'error');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('jazzcash-total').textContent = `Rs ${total.toFixed(2)}`;
+            
+            const jazzCashModal = document.getElementById('jazzcash-modal');
+            jazzCashModal.classList.remove('hidden');
+            jazzCashModal.classList.add('show');
+        }
+        
+        function closeJazzCashPayment() {
+            const jazzCashModal = document.getElementById('jazzcash-modal');
+            jazzCashModal.classList.add('hidden');
+            jazzCashModal.classList.remove('show');
+            
+            // Reset form
+            document.getElementById('jazzcash-number').value = '';
+            document.getElementById('transaction-id').value = '';
+        }
+        
+        function confirmJazzCashPayment() {
+            const jazzCashNumber = document.getElementById('jazzcash-number').value.trim();
+            const transactionId = document.getElementById('transaction-id').value.trim();
+            
+            if (!jazzCashNumber) {
+                showNotification('Please enter your Jazz Cash number!', 'error');
+                return;
+            }
+
+            if (!isValidPhoneNumber(jazzCashNumber)) {
+                showNotification('Please enter a valid Jazz Cash number!', 'error');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Create order summary
+            let orderSummary = `Jazz Cash Payment Order:\n\n`;
+            cart.forEach(item => {
+                orderSummary += `â€¢ ${item.name} x${item.quantity} - Rs ${(item.price * item.quantity).toFixed(2)}\n`;
+            });
+            orderSummary += `\nTotal: Rs ${total.toFixed(2)}\n`;
+            orderSummary += `Jazz Cash Number: ${jazzCashNumber}\n`;
+            if (transactionId) {
+                orderSummary += `Transaction ID: ${transactionId}\n`;
+            }
+            
+            // Send order details via WhatsApp
+            const message = `Hello! I have made a Jazz Cash payment for my order:\n\n${orderSummary}\n\nPlease confirm my payment and process my order. Thank you!`;
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            showNotification('Payment submitted successfully! We will confirm your order shortly.', 'success');
+            
+            // Clear cart and close modal
+            clearCart();
+            closeJazzCashPayment();
+        }
+        
+        function isValidPhoneNumber(phone) {
+            // Pakistani phone number validation (03XXXXXXXXX format)
+            const phoneRegex = /^03\d{9}$/;
+            return phoneRegex.test(phone);
         }
 
         // Show notification
         function showNotification(message, type = 'info') {
             const notification = document.createElement('div');
-            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transition-all duration-300 ${
-                type === 'success' ? 'bg-green-600' : 
-                type === 'error' ? 'bg-red-600' : 
-                'bg-blue-600'
-            } text-white`;
-            notification.textContent = message;
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg text-white font-semibold transition-all duration-300 transform translate-x-full`;
             
+            switch(type) {
+                case 'success':
+                    notification.className += ' bg-green-600';
+                                break;
+                case 'error':
+                    notification.className += ' bg-red-600';
+                                break;
+                            default:
+                    notification.className += ' bg-blue-600';
+            }
+            
+            notification.textContent = message;
             document.body.appendChild(notification);
             
+            // Animate in
             setTimeout(() => {
-                notification.style.opacity = '0';
-                notification.style.transform = 'translateX(100%)';
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Animate out and remove
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
                 setTimeout(() => {
                     document.body.removeChild(notification);
                 }, 300);
             }, 3000);
         }
 
+        // Initialize cart functionality
+        function initializeCart() {
+            // Cart button event listener
+            const cartButton = document.getElementById('cart-button');
+            const cartModal = document.getElementById('cart-modal');
+            const closeCart = document.getElementById('close-cart');
+            const clearCartBtn = document.getElementById('clear-cart');
+            const checkoutWhatsAppBtn = document.getElementById('checkout-whatsapp');
+            
+            // Open cart modal
+            if (cartButton) {
+                cartButton.addEventListener('click', function() {
+                    cartModal.classList.remove('hidden');
+                    cartModal.classList.add('show');
+                });
+            }
+            
+            // Close cart modal
+            if (closeCart) {
+                closeCart.addEventListener('click', function() {
+                    cartModal.classList.add('hidden');
+                    cartModal.classList.remove('show');
+                });
+            }
+            
+            // Close cart modal when clicking outside
+            if (cartModal) {
+                cartModal.addEventListener('click', function(e) {
+                    if (e.target === cartModal) {
+                        cartModal.classList.add('hidden');
+                        cartModal.classList.remove('show');
+                    }
+                });
+            }
+            
+            // Clear cart
+            if (clearCartBtn) {
+                clearCartBtn.addEventListener('click', function() {
+                    clearCart();
+                });
+            }
+            
+            // Checkout via WhatsApp
+            if (checkoutWhatsAppBtn) {
+                checkoutWhatsAppBtn.addEventListener('click', function() {
+                    sendWhatsAppOrder();
+                });
+            }
+            
+            // Jazz Cash Payment Event Listeners
+            const checkoutJazzCashBtn = document.getElementById('checkout-jazzcash');
+            const jazzCashModal = document.getElementById('jazzcash-modal');
+            const closeJazzCashBtn = document.getElementById('close-jazzcash');
+            const cancelJazzCashBtn = document.getElementById('cancel-jazzcash');
+            const confirmJazzCashBtn = document.getElementById('confirm-jazzcash');
+            
+            // Open Jazz Cash payment modal
+            if (checkoutJazzCashBtn) {
+                checkoutJazzCashBtn.addEventListener('click', function() {
+                    openJazzCashPayment();
+                });
+            }
+            
+            // Close Jazz Cash payment modal
+            if (closeJazzCashBtn) {
+                closeJazzCashBtn.addEventListener('click', function() {
+                    closeJazzCashPayment();
+                });
+            }
+            
+            // Cancel Jazz Cash payment
+            if (cancelJazzCashBtn) {
+                cancelJazzCashBtn.addEventListener('click', function() {
+                    closeJazzCashPayment();
+                });
+            }
+            
+            // Confirm Jazz Cash payment
+            if (confirmJazzCashBtn) {
+                confirmJazzCashBtn.addEventListener('click', function() {
+                    confirmJazzCashPayment();
+                });
+            }
+            
+            // Close Jazz Cash modal when clicking outside
+            if (jazzCashModal) {
+                jazzCashModal.addEventListener('click', function(e) {
+                    if (e.target === jazzCashModal) {
+                        closeJazzCashPayment();
+                    }
+                });
+            }
+            
+            // Add to cart buttons
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('add-to-cart-btn')) {
+                    const name = e.target.dataset.name;
+                    const price = e.target.dataset.price;
+                    const image = e.target.dataset.image;
+                    addToCart(name, price, image);
+                }
+                
+                // Quantity buttons
+                if (e.target.classList.contains('quantity-btn')) {
+                    const index = parseInt(e.target.dataset.index);
+                    const action = e.target.dataset.action;
+                    updateQuantity(index, action);
+                }
+                
+                // Remove item buttons
+                if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
+                    const index = parseInt(e.target.dataset.index || e.target.closest('.remove-item').dataset.index);
+                    removeFromCart(index);
+                }
+            });
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            renderCart();
+            console.log('DOM Content Loaded - Initializing...');
+            loadProducts();
+            initializeCart();
             updateCartCount();
+            renderCart();
+            
+            // Debug: Check if elements exist
+            const menu = document.getElementById('navbar-menu');
+            const hamburger = document.getElementById('hamburger');
+            console.log('Menu element found:', !!menu);
+            console.log('Hamburger element found:', !!hamburger);
+            
+            // Add event listener to hamburger
+            if (hamburger) {
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Hamburger clicked via event listener');
+                    console.log('Hamburger button is working!');
+                    toggleMenu();
+                });
+                
+                // Add visual feedback on click
+                hamburger.addEventListener('mousedown', function() {
+                    this.style.transform = 'scale(0.95)';
+                });
+                
+                hamburger.addEventListener('mouseup', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            } else {
+                console.log('Hamburger element not found during initialization');
+            }
+            
+            // Close mobile menu when clicking on menu items
+            const menuItems = document.querySelectorAll('.navbar-menu a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    console.log('Menu item clicked:', this.href);
+                    const menu = document.getElementById('navbar-menu');
+                    if (menu && menu.classList.contains('active')) {
+                        // Close menu after a small delay to allow navigation
+                        setTimeout(() => {
+                            menu.classList.remove('active');
+                            const hamburger = document.getElementById('hamburger');
+                            if (hamburger) {
+                                hamburger.classList.remove('active');
+                            }
+                        }, 100);
+                    }
+                    // Allow the default navigation to proceed
+                    // Don't prevent default behavior
+                });
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                const menu = document.getElementById('navbar-menu');
+                const hamburger = document.getElementById('hamburger');
+                
+                if (menu && menu.classList.contains('active')) {
+                    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                        menu.classList.remove('active');
+                        if (hamburger) {
+                            hamburger.classList.remove('active');
+                        }
+                    }
+                }
+            });
+            
+            // Fallback: Ensure products are shown after a short delay
+            setTimeout(() => {
+                if (filteredProducts && filteredProducts.length > 0) {
+                    displayProducts();
+                } else {
+                    // Force load sample products if nothing is loaded
+                    allProducts = fixImagePaths([...sampleProducts]);
+                    filteredProducts = [...allProducts];
+                    displayProducts();
+                }
+            }, 1000);
+        });
+
+        // Toggle mobile menu
+        // Toggle mobile menu
+        function toggleMenu() {
+            console.log('toggleMenu function called');
+            const menu = document.getElementById('navbar-menu');
+            const hamburger = document.getElementById('hamburger');
+            
+            console.log('Toggle menu clicked'); // Debug log
+            console.log('Menu element:', menu);
+            console.log('Hamburger element:', hamburger);
+            
+            if (menu && hamburger) {
+                const isActive = menu.classList.contains('active');
+                console.log('Menu is currently active:', isActive);
+                
+                if (isActive) {
+                    menu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    console.log('Menu closed');
+                } else {
+                    menu.classList.add('active');
+                    hamburger.classList.add('active');
+                    console.log('Menu opened');
+                    // Temporary alert for testing
+                    setTimeout(() => {
+                        if (menu.classList.contains('active')) {
+                            console.log('Menu should be visible now');
+                        }
+                    }, 100);
+                }
+            } else {
+                console.log('Menu or hamburger not found');
+                console.log('Menu element:', menu);
+                console.log('Hamburger element:', hamburger);
+            }
+        }
+
+        // Make toggleMenu globally accessible
+        window.toggleMenu = toggleMenu;
+    </script>
+    <script>
+        // New Popup logic for car_care
+        (function(){
+            const popupOverlay = document.getElementById('popupOverlay');
+            const popupTitle = document.getElementById('popup-title');
+            const popupImg = document.getElementById('popup-img');
+            const popupDesc = document.getElementById('popup-desc');
+            const popupPrice = document.getElementById('popup-price');
+            const closeBtn = document.getElementById('closeBtn');
+            const addToCartBtn = document.getElementById('addToCartBtn');
+            let currentProduct = null;
+
+            function openProductModal(data){
+                currentProduct = data;
+                popupTitle.textContent = data.name || 'Product';
+                popupImg.src = data.image || '';
+                popupImg.alt = data.name || 'Product';
+                popupDesc.textContent = data.description || '—';
+                popupPrice.textContent = data.priceText || 'Contact for Pricing';
+                popupOverlay.style.display = 'flex';
+            }
+
+            function closePopup(){
+                popupOverlay.style.display = 'none';
+            }
+
+            closeBtn.addEventListener('click', closePopup);
+            
+            // Add to Cart button functionality
+            addToCartBtn.addEventListener('click', function() {
+                if (currentProduct) {
+                    // Extract price from priceText (remove "Rs " prefix)
+                    const price = currentProduct.priceText ? currentProduct.priceText.replace('Rs ', '') : currentProduct.price || '0';
+                    addToCart(currentProduct.name, price, currentProduct.image);
+                    closePopup();
+                }
+            });
+            
+            // Close popup when clicking outside the popup
+            popupOverlay.addEventListener('click', function(e){
+                if (e.target === popupOverlay) {
+                    closePopup();
+                }
+            });
+
+            document.addEventListener('click', function(e){
+                if (e.target.closest('button, a')) return;
+                const card = e.target.closest('.product-card, .bg-gray-900, .bg-gray-800, .bg-gradient-to-br');
+                if(!card) return;
+                
+                const imgEl = card.querySelector('img');
+                const nameEl = card.querySelector('h3');
+                
+                // Get product data from the global products array
+                const productName = nameEl ? nameEl.textContent.trim() : '';
+                const product = allProducts.find(p => p.name === productName);
+                
+                openProductModal({
+                    name: productName,
+                    image: imgEl ? imgEl.src : '',
+                    description: product ? product.description : '',
+                    priceText: product && product.price ? 'Rs ' + product.price : 'Contact for Pricing'
+                });
+            });
+        })();
+    </script>
+
+    <!-- Bottom Navigation JavaScript -->
+    <script>
+        // Close category menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const categoryMenu = document.getElementById('categoryMenu');
+            if (categoryMenu && e.target === categoryMenu) {
+                closeCategoryMenu();
+            }
         });
     </script>
 </body>
 </html>
+
+
