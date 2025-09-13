@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Premium Perfumes - MSM Traders</title>
+    <title>Microfiber & Cleaners - MSM Traders</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#F59E0B',
+                        secondary: '#D97706',
+                        accent: '#F59E0B',
+                        dark: '#000000',
+                        gold: '#F59E0B'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         /* Global responsive fixes */
         * {
@@ -41,6 +55,8 @@
             z-index: 1000;
             padding: 0.75rem 1rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .navbar-container {
@@ -97,8 +113,6 @@
             border: none;
             align-items: center;
             justify-content: center;
-            min-width: 40px;
-            min-height: 40px;
         }
         
         .hamburger:hover {
@@ -172,16 +186,11 @@
             
             .hamburger {
                 display: flex !important;
-                background-color: rgba(251, 191, 36, 0.2) !important;
+                background-color: rgba(255, 255, 255, 0.1);
                 border-radius: 4px;
                 min-width: 40px;
                 min-height: 40px;
-                border: 2px solid #fbbf24 !important;
-                color: white !important;
-                font-size: 1.2rem !important;
-                align-items: center;
-                justify-content: center;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                border: 2px solid #fbbf24;
             }
             
             /* Hide cart button text on mobile, show only icon */
@@ -204,6 +213,7 @@
             }
         }
         
+        
         /* Responsive text and elements */
         @media (max-width: 768px) {
             .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
@@ -221,6 +231,10 @@
             .grid {
                 gap: 0.75rem;
             }
+            
+            body {
+                padding-top: 70px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -229,6 +243,7 @@
                 padding-right: 0.5rem;
             }
         }
+        
         /* Responsive Design Enhancements */
         .line-clamp-2 {
             display: -webkit-box;
@@ -246,13 +261,107 @@
             object-position: center;
         }
 
+        /* Product Grid Layout */
+        .products {
+            display: grid;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        /* Desktop: 5 per row */
+        @media screen and (min-width: 1024px) {
+            .products {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        /* Mobile: 2 per row */
+        @media screen and (max-width: 768px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Product Card */
+        .product-card {
+            background: #000;        /* black background */
+            border-radius: 10px;
+            padding: 10px;           /* keep small padding only */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: auto;            /* no fixed height */
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Product card image area */
+        .product-card .image-container {
+            width: 100%;
+            height: 180px;          /* control image height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;       /* hides extra image parts */
+            background: #000;       /* black background behind image */
+            border-radius: 8px;     /* rounded edges */
+        }
+
+        /* Product images */
+        .product-card .image-container img {
+            width: 100%;
+            height: 180px;           /* control image height */
+            object-fit: contain;     /* keep full image visible */
+            background: #000;        /* black background behind image */
+            border-radius: 8px;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .product-card .image-container {
+                height: 120px;        /* smaller image area for mobile */
+            }
+            
+            .product-card .image-container img {
+                height: 120px;        /* smaller image height for mobile */
+            }
+        }
+
+        /* Product Name */
+        .product-card h3 {
+            margin: 10px 0 0 0;      /* small space below image */
+            color: #fff;
+            font-size: 14px;
+        }
+
+        /* Add a small "Click to view" indicator */
+        .product-card::after {
+            content: "Click to view details";
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #ccc;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .product-card:hover::after {
+            opacity: 1;
+        }
+
         /* Mobile-first responsive breakpoints */
         @media (max-width: 320px) {
             .grid {
                 gap: 0.75rem;
-            }
-            .product-card {
-                min-height: 200px;
             }
         }
 
@@ -288,11 +397,6 @@
 
         /* Touch targets for mobile */
         @media (max-width: 768px) {
-            .product-card {
-                min-height: 44px;
-                touch-action: manipulation;
-            }
-            
             button, .clickable {
                 min-height: 44px;
                 min-width: 44px;
@@ -326,249 +430,6 @@
         
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
-        }
-
-        /* Mobile and Desktop Optimization */
-        .header-logo {
-            font-size: 1.5rem;
-        }
-        
-        .header-nav {
-            display: none;
-        }
-        
-        .search-bar {
-            width: 100%;
-            margin: 0.5rem 0;
-        }
-        
-        .search-input {
-            font-size: 16px;
-            padding: 0.75rem;
-        }
-        
-        .hero-content {
-            padding: 1rem;
-        }
-        
-        .hero-title {
-            font-size: 2rem;
-            line-height: 1.2;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.125rem;
-        }
-        
-        .category-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            justify-content: center;
-        }
-        
-        .category-button {
-            min-width: 120px;
-            padding: 0.75rem;
-        }
-        
-        .products-grid {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-        
-        .product-card {
-            min-height: 300px;
-            padding: 1rem;
-        }
-        
-        .footer-grid {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        
-        .footer-section {
-            text-align: center;
-        }
-
-        /* Mobile-specific optimizations */
-        @media (max-width: 768px) {
-            .header-logo {
-                font-size: 1.25rem;
-            }
-            
-            .header-nav {
-                display: none;
-            }
-            
-            .search-bar {
-                width: 100%;
-                margin: 0.5rem 0;
-                order: 3;
-            }
-            
-            .search-input {
-                font-size: 16px;
-                padding: 0.75rem;
-                width: 100%;
-            }
-            
-            .hero-content {
-                padding: 0.75rem;
-                text-align: center;
-            }
-            
-            .hero-title {
-                font-size: 1.75rem;
-                line-height: 1.2;
-                margin-bottom: 0.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-                margin-bottom: 1rem;
-            }
-            
-            .category-buttons {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 0.5rem;
-                justify-content: center;
-                padding: 0.5rem;
-            }
-            
-            .category-button {
-                min-width: 100px;
-                padding: 0.5rem;
-                font-size: 0.875rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-                padding: 0.5rem;
-            }
-            
-            .product-card {
-                min-height: 250px;
-                padding: 0.75rem;
-                margin-bottom: 1rem;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                text-align: center;
-            }
-            
-            .footer-section {
-                text-align: center;
-            }
-            
-            /* Touch targets for mobile */
-            button, a {
-                min-height: 44px;
-                min-width: 44px;
-            }
-            
-            /* Mobile navigation */
-            .mobile-nav {
-                display: block;
-            }
-            
-            .desktop-nav {
-                display: none;
-            }
-        }
-
-        /* Tablet optimizations */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .header-logo {
-                font-size: 1.75rem;
-            }
-            
-            .search-bar {
-                max-width: 400px;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .category-buttons {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-        }
-
-        /* Desktop optimizations */
-        @media (min-width: 1025px) {
-            .header-logo {
-                font-size: 2rem;
-            }
-            
-            .header-nav {
-                display: flex;
-            }
-            
-            .search-bar {
-                max-width: 500px;
-            }
-            
-            .hero-title {
-                font-size: 3rem;
-            }
-            
-            .category-buttons {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1.5rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
-            }
-            
-            .footer-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        /* Product card image area */
-        .product-card .image-container {
-            width: 100%;
-            height: 250px;          /* desktop height */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;       /* hides extra image parts */
-            background: #000;       /* black background */
-            border-radius: 8px;     /* optional: rounded edges */
-        }
-
-        /* Product images */
-        .product-card .image-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;    /* shows full product without stretching */
-        }
-
-        /* Mobile responsive */
-        @media (max-width: 768px) {
-            .product-card .image-container {
-                height: 150px;        /* smaller image area for mobile */
-            }
-            
-            /* Ensure 2 products per row on mobile */
-            #products-display {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.75rem !important;
-            }
         }
         
         /* UI Optimizations */
@@ -695,1021 +556,52 @@
         .will-change-opacity {
             will-change: opacity;
         }
-        
-        /* Product Popup Modal Styles */
-        .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            padding: 16px;
-            box-sizing: border-box;
+
+        /* Category Cards Grid */
+        .category-card {
+            transition: all 0.3s ease;
         }
 
-        .popup {
-            background: #1f2937;
-            width: 90%;
-            max-width: 400px;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            box-sizing: border-box;
-            text-align: center;
-            border: 2px solid #f59e0b;
-            color: white;
+        .category-card:hover {
+            transform: translateY(-2px);
         }
 
-        .popup img {
+        .category-card img {
             width: 100%;
-            height: auto;
-            max-height: 250px;
+            height: 96px;
             object-fit: contain;
+            object-position: center;
+            background: #1f2937;
+            padding: 4px;
             border-radius: 8px;
-            background: #000;
-            margin-bottom: 16px;
+            transition: all 0.3s ease;
         }
 
-        .popup h2 {
-            color: #f59e0b;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 0 12px 0;
-        }
-
-        .popup p {
-            color: #d1d5db;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin: 0 0 16px 0;
-        }
-
-        .close-btn {
-            padding: 10px 20px;
-            background: #ef4444;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-
-        .close-btn:hover {
-            background: #dc2626;
-        }
-
-        /* Mobile responsive popup */
-        @media (max-width: 768px) {
-            .popup {
-                width: 95%;
-                max-width: 350px;
-                padding: 16px;
-                margin: 8px;
-            }
-            
-            .popup img {
-                max-height: 200px;
-            }
-            
-            .popup h2 {
-                font-size: 1.25rem;
-            }
-            
-            .popup p {
-                font-size: 0.85rem;
-            }
-            
-            .flex.gap-3 {
-                flex-direction: column;
-                gap: 8px;
-            }
-            
-            .flex.gap-3 button {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .popup {
-                width: 98%;
-                max-width: 320px;
-                padding: 12px;
-                margin: 4px;
-            }
-            
-            .popup img {
-                max-height: 180px;
-            }
-            
-            .popup h2 {
-                font-size: 1.1rem;
-            }
-            
-            .popup p {
-                font-size: 0.8rem;
-            }
+        .category-card:hover img {
+            transform: scale(1.05);
         }
     </style>
-</head>
-<body class="bg-gray-900 text-white min-h-screen">
-    <!-- Responsive Navbar -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="index.html" class="navbar-logo">
-                <img src="MSM TRADERS LOGO.jpeg" alt="MSM Traders Logo">
-                <span>MSM TRADERS</span>
-            </a>
-            
-            <!-- Desktop Menu -->
-            <ul class="navbar-menu" id="navbar-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="car_care.html">Car Care</a></li>
-                <li><a href="microfiber-cleaners.html">Microfiber & Cleaners</a></li>
-                <li><a href="premium_perfumes.html" class="active">Premium Perfumes</a></li>
-                <li><a href="crockery.html">Crockery</a></li>
-                <li><a href="laptops.html">Laptop Deals</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            
-            <!-- Cart Button -->
-            <button id="cart-button" class="relative bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-2 rounded-lg transition duration-200 flex items-center gap-1.5">
-                <i class="fas fa-shopping-cart"></i>
-                <span>Cart</span>
-                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
-            </button>
-            
-            <!-- Mobile Menu Button -->
-            <button class="hamburger" id="hamburger">
-                ☰
-            </button>
-                </div>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <!-- Hero Section with Categories Sidebar -->
-        <div class="mb-8">
-            
-            <div class="flex flex-col lg:flex-row gap-8">
-                <!-- Categories Sidebar - Desktop Only -->
-                <div class="hidden lg:block lg:w-1/4">
-                    <div class="bg-gray-900 border border-yellow-400 rounded-lg p-6">
-                        <h3 class="text-xl font-bold text-yellow-400 mb-6 text-center">Shop by Category</h3>
-                        <ul class="space-y-3">
-                            <li>
-                                <a href="car_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-car text-yellow-400 group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Car Care</span>
-                        </div>
-                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="microfiber-cleaners.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-home text-yellow-400 group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Microfiber & Cleaners</span>
-                    </div>
-                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="premium_perfumes.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-spray-can text-yellow-400 group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Premium Perfumes</span>
-                </div>
-                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="crockery.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-utensils text-yellow-400 group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Crockery</span>
-                </div>
-                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="laptops.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-laptop text-yellow-400 group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Laptops</span>
-            </div>
-                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                                </a>
-                            </li>
-                        </ul>
-            </div>
-            </div>
-
-                <!-- Hero Content -->
-                <div class="hero-content flex-1">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <!-- Text Content -->
-                    <div class="text-center lg:text-left">
-                        <h1 class="hero-title text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">Premium Perfumes & Fragrances</h1>
-                        <p class="hero-subtitle text-gray-300 text-lg">Discover our premium collection of perfumes, fragrances, and scented candles</p>
-                    </div>
-                    <!-- Hero Image -->
-                    <div class="relative">
-                        <img src="category imges/perfumes_image.jpg.jfif" 
-                             alt="Premium Perfumes Collection" 
-                             class="w-full h-96 object-cover rounded-xl shadow-2xl border-2 border-yellow-400">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div><!-- Category Buttons -->
-            <div class="flex flex-wrap justify-center gap-4 sm:gap-6 mb-8">
-                <!-- For Her -->
-                <button onclick="showCategoryProducts('for-her')" class="bg-gray-800 border-2 border-yellow-500 rounded-xl px-4 py-4 sm:px-8 sm:py-6 lg:px-10 lg:py-8 hover:bg-gray-700 hover:border-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl min-w-[120px] sm:min-w-[160px] lg:min-w-[200px]">
-                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
-                            <img src="premium perfumes/CATEGORY IMGES/FOR HER.jfif" alt="For Her" class="w-full h-full object-cover">
-                        </div>
-                        <span class="text-yellow-400 font-semibold text-sm sm:text-base lg:text-lg">For Her</span>
-                    </div>
-                </button>
-
-                <!-- For Him -->
-                <button onclick="showCategoryProducts('for-him')" class="bg-gray-800 border-2 border-yellow-500 rounded-xl px-4 py-4 sm:px-8 sm:py-6 lg:px-10 lg:py-8 hover:bg-gray-700 hover:border-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl min-w-[120px] sm:min-w-[160px] lg:min-w-[200px]">
-                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
-                            <img src="premium perfumes/CATEGORY IMGES/FOR HIM.webp" alt="For Him" class="w-full h-full object-cover">
-                        </div>
-                        <span class="text-yellow-400 font-semibold text-sm sm:text-base lg:text-lg">For Him</span>
-                    </div>
-                </button>
-
-                <!-- Scented Candles -->
-                <button onclick="showCategoryProducts('scented-candles')" class="bg-gray-800 border-2 border-yellow-500 rounded-xl px-4 py-4 sm:px-8 sm:py-6 lg:px-10 lg:py-8 hover:bg-gray-700 hover:border-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl min-w-[120px] sm:min-w-[160px] lg:min-w-[200px]">
-                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
-                            <img src="premium perfumes/CATEGORY IMGES/SECENTED CANDEL.jfif" alt="Scented Candles" class="w-full h-full object-cover">
-                        </div>
-                        <span class="text-yellow-400 font-semibold text-sm sm:text-base lg:text-lg">Scented Candles</span>
-                    </div>
-                </button>
-
-                <!-- Premium Scented Candles -->
-                <button onclick="showCategoryProducts('premium-candles')" class="bg-gray-800 border-2 border-yellow-500 rounded-xl px-4 py-4 sm:px-8 sm:py-6 lg:px-10 lg:py-8 hover:bg-gray-700 hover:border-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl min-w-[120px] sm:min-w-[160px] lg:min-w-[200px]">
-                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
-                            <img src="premium perfumes/CATEGORY IMGES/PREMIUM SCENTED CANDELS.webp" alt="Premium Scented Candles" class="w-full h-full object-cover">
-                        </div>
-                        <span class="text-yellow-400 font-semibold text-sm sm:text-base lg:text-lg">Premium Candles</span>
-                    </div>
-                        </button>
-
-                <!-- Bahoors -->
-                <button onclick="showCategoryProducts('bahoors')" class="bg-gray-800 border-2 border-yellow-500 rounded-xl px-4 py-4 sm:px-8 sm:py-6 lg:px-10 lg:py-8 hover:bg-gray-700 hover:border-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl min-w-[120px] sm:min-w-[160px] lg:min-w-[200px]">
-                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
-                            <img src="premium perfumes/BAHOORS/Bakhoor e Noor.webp" alt="Bahoors" class="w-full h-full object-cover">
-                    </div>
-                        <span class="text-yellow-400 font-semibold text-sm sm:text-base lg:text-lg">Bahoors</span>
-                    </div>
-                </button>
-
-                <!-- Car Perfumes -->
-                <button onclick="showCategoryProducts('car-perfumes')" class="bg-gray-800 border-2 border-yellow-500 rounded-xl px-4 py-4 sm:px-8 sm:py-6 lg:px-10 lg:py-8 hover:bg-gray-700 hover:border-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl min-w-[120px] sm:min-w-[160px] lg:min-w-[200px]">
-                    <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
-                            <img src="CAR_CARE CATEGORY/CAR PERFUME.jfif" alt="Car Perfumes" class="w-full h-full object-cover">
-                        </div>
-                        <span class="text-yellow-400 font-semibold text-sm sm:text-base lg:text-lg">Car Perfumes</span>
-                    </div>
+    <!-- Quick View Modal -->
+    <div id="quickview-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center p-4 z-[100]">
+        <div class="bg-gray-900 border border-yellow-400 rounded-xl shadow-2xl max-w-2xl w-full overflow-hidden">
+            <div class="flex justify-between items-center px-4 py-3 border-b border-gray-700">
+                <h3 id="qv-name" class="text-lg font-bold text-yellow-400 truncate">Product Name</h3>
+                <button id="qv-close" class="text-gray-300 hover:text-yellow-400">
+                    <i class="fas fa-times text-xl"></i>
                 </button>
             </div>
-
-            <!-- Products Display Area -->
-            <div id="products-display" class="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
-                <!-- Default message -->
-                <div class="col-span-2 lg:col-span-5 text-center py-12">
-                    <div class="w-24 h-24 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-spray-can text-gray-400 text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-300 mb-2">Select a Category</h3>
-                    <p class="text-gray-400">Choose a category above to view our premium perfume collection</p>
+            <div class="p-4 space-y-4">
+                <div class="w-full h-[250px] sm:h-[300px] flex items-center justify-center bg-gray-100 rounded-lg overflow-hidden">
+                    <img id="qv-image" src="" alt="Product" class="max-w-full max-h-full object-contain">
                 </div>
-            </div>
-
-        </main>
-    </div>
-
-    <!-- Product Popup Modal -->
-    <div class="popup-overlay" id="popupOverlay">
-        <div class="popup">
-            <img id="popupImage" src="" alt="Product Image" />
-            <h2 id="popupTitle">Product Title</h2>
-            <p id="popupDescription">Product description</p>
-            <div id="popupPrice" class="text-yellow-400 font-bold text-lg mb-4">Price</div>
-            <div class="flex gap-3">
-                <button class="close-btn" id="closeBtn">Close</button>
-                <button id="addToCartBtn" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded font-semibold">Add to Cart</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 border-t border-yellow-500 mt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-lg font-semibold text-yellow-500 mb-4">MSM Traders</h3>
-                    <p class="text-gray-300 text-sm">Your trusted partner for premium products and exceptional service.</p>
-                </div>
-                <div>
-                    <h4 class="text-md font-semibold text-yellow-500 mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="index.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Home</a></li>
-                        <li><a href="cosmetics.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Cosmetics</a></li>
-                        <li><a href="crockery.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Crockery</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-md font-semibold text-yellow-500 mb-4">Contact</h4>
-                    <div class="space-y-2 text-sm text-gray-300">
-                        <p><i class="fas fa-phone mr-2 text-yellow-500"></i>+92 325 8573925</p>
-                        <p><i class="fas fa-envelope mr-2 text-yellow-500"></i>info@msmtraders.com</p>
-                        <p><i class="fas fa-map-marker-alt mr-2 text-yellow-500"></i>Phase 2 DHA Lahore</p>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-                <p class="text-gray-400 text-sm">&copy; 2025 MSM Traders. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Product data for different categories
-        const productData = {
-            'for-her': [
-                {
-                    name: 'Emerald Compare',
-                    description: 'Luxurious emerald-inspired fragrance with fresh floral notes',
-                    price: 1949,
-                    image: 'premium perfumes/for her/Emrald_Compare.webp'
-                },
-                {
-                    name: 'Serenity Compare',
-                    description: 'Peaceful and calming scent with soft floral undertones',
-                    price: 1949,
-                    image: 'premium perfumes/for her/Serenity_compare.webp'
-                },
-                {
-                    name: 'Forever Compare',
-                    description: 'Timeless and elegant fragrance with lasting appeal',
-                    price: 1999,
-                    image: 'premium perfumes/for her/forever_compare.webp'
-                },
-                {
-                    name: 'Grace Comparison',
-                    description: 'Graceful and sophisticated scent with refined elegance',
-                    price: 1999,
-                    image: 'premium perfumes/for her/Grace_Comparision.webp'
-                }
-            ],
-            'for-him': [
-                {
-                    name: 'OV Comparison',
-                    description: 'Premium masculine fragrance with sophisticated blend of woody and citrus notes',
-                    price: 2199,
-                    image: 'premium perfumes/for Him/ov_comparision.webp'
-                },
-                {
-                    name: 'Ember Compare',
-                    description: 'Bold and intense fragrance with warm amber and spice undertones',
-                    price: 1999,
-                    image: 'premium perfumes/for Him/ember_compare.webp'
-                },
-                {
-                    name: 'Fierce',
-                    description: 'Strong and confident scent with powerful masculine appeal',
-                    price: 1999,
-                    image: 'premium perfumes/for Him/Feirce.webp'
-                },
-                {
-                    name: 'Royal Spirit',
-                    description: 'Elegant and regal fragrance with luxurious blend of oud and sandalwood',
-                    price: 1999,
-                    image: 'premium perfumes/for Him/Royal Spirit.webp'
-                }
-            ],
-            'scented-candles': [
-                {
-                    name: 'Raspberry Candle',
-                    description: 'Sweet and fruity raspberry-scented candle for a delightful ambiance',
-                    price: 650,
-                    image: 'premium perfumes/scented candels/RASBERRY.webp'
-                },
-                {
-                    name: 'Lavender Candle',
-                    description: 'Calming lavender fragrance perfect for relaxation and sleep',
-                    price: 550,
-                    image: 'premium perfumes/scented candels/LAVENDER.webp'
-                },
-                {
-                    name: 'Coffee Candle',
-                    description: 'Rich and aromatic coffee-scented candle for a cozy atmosphere',
-                    price: 650,
-                    image: 'premium perfumes/scented candels/COFFEE.webp'
-                },
-                {
-                    name: 'Vanilla Candle',
-                    description: 'Classic warm vanilla-scented candle with long-lasting fragrance',
-                    price: 550,
-                    image: 'premium perfumes/scented candels/VANIALLA.webp'
-                }
-            ],
-            'premium-candles': [
-                {
-                    name: 'Rose Candle',
-                    description: 'Luxurious rose-scented candle with premium quality and elegant design',
-                    price: 850,
-                    image: 'premium perfumes/premium scented candels/Rose candle.webp'
-                },
-                {
-                    name: 'Premium Candles Set 8',
-                    description: 'Exclusive collection of 8 premium scented candles in elegant packaging',
-                    price: 2490,
-                    image: 'premium perfumes/premium scented candels/Premium Candles 8.webp'
-                },
-                {
-                    name: 'Premium Candles Set 3',
-                    description: 'Luxury set of 3 premium scented candles with sophisticated fragrances',
-                    price: 850,
-                    image: 'premium perfumes/premium scented candels/Premium Candles 3.webp'
-                },
-                {
-                    name: 'Cloud Candle Set',
-                    description: 'Dreamy cloud-themed candle set with ethereal fragrances',
-                    price: 1399,
-                    image: 'premium perfumes/premium scented candels/Cloud Candle Set.webp'
-                },
-                {
-                    name: 'Candle Bouquet with Wax Base',
-                    description: 'Beautiful candle bouquet arrangement with decorative wax base',
-                    price: 4990,
-                    image: 'premium perfumes/premium scented candels/Candle Bouquet With wax base.webp'
-                }
-            ],
-            'bahoors': [
-                {
-                    name: 'Bakhoor e Noor',
-                    description: 'Premium Arabic incense with luminous and radiant fragrance',
-                    price: 550,
-                    image: 'premium perfumes/BAHOORS/Bakhoor e Noor.webp'
-                },
-                {
-                    name: 'Bakhoor e Abyadh',
-                    description: 'White Arabic incense with pure and clean aromatic notes',
-                    price: 550,
-                    image: 'premium perfumes/BAHOORS/Bakhoor e Abyadh.webp'
-                },
-                {
-                    name: 'Bakhur e Zayn',
-                    description: 'Beautiful Arabic incense with elegant and refined fragrance',
-                    price: 550,
-                    image: 'premium perfumes/BAHOORS/Bakhur e Zayn.webp'
-                },
-                {
-                    name: 'Bakhoor e Khas',
-                    description: 'Special Arabic incense with unique and distinctive aroma',
-                    price: 650,
-                    image: 'premium perfumes/BAHOORS/Bakhoor e Khas.webp'
-                },
-                {
-                    name: 'Bakhoor e Saba',
-                    description: 'Morning breeze Arabic incense with fresh and uplifting scent',
-                    price: 550,
-                    image: 'premium perfumes/BAHOORS/Bakhoor e Saba.webp'
-                }
-            ],
-            'car-perfumes': [
-                {
-                    name: 'AIM Air Diffuser - Arabic Oud',
-                    description: 'Premium air diffuser with authentic Arabic oud fragrance. Long-lasting scent for your home or car.',
-                    price: 1500,
-                    image: 'premium perfumes/car perfumes/aim air diffuser arabic oud.jpeg'
-                },
-                {
-                    name: 'AIM Air Diffuser - Ocean',
-                    description: 'Refreshing ocean breeze air diffuser. Creates a calming and fresh atmosphere in any space.',
-                    price: 1500,
-                    image: 'premium perfumes/car perfumes/aim air diffuser ocean.jpeg'
-                },
-                {
-                    name: 'AIM Air Diffuser - Cool Ice',
-                    description: 'Cool and invigorating ice fragrance air diffuser. Perfect for hot days and refreshing environments.',
-                    price: 1500,
-                    image: 'premium perfumes/car perfumes/aim air diffuser cool ice.jpeg'
-                },
-                {
-                    name: 'AIM Air Diffuser - Classic',
-                    description: 'Classic fragrance air diffuser with timeless scent. Elegant and sophisticated for any setting.',
-                    price: 1500,
-                    image: 'premium perfumes/car perfumes/aim air diffuser.jpeg'
-                },
-                {
-                    name: 'AIM Air Freshener - New Car',
-                    description: 'Fresh new car scent air freshener. Reminds you of that brand new car feeling every day.',
-                    price: 750,
-                    image: 'premium perfumes/car perfumes/aim air freshner new car.jpeg'
-                },
-                {
-                    name: 'AIM Air Freshener - Cool Ice',
-                    description: 'Cool ice fragrance air freshener. Provides a refreshing and cooling sensation.',
-                    price: 750,
-                    image: 'premium perfumes/car perfumes/aim air freshner cool ice.jpeg'
-                },
-                {
-                    name: 'AIM Air Freshener - Oud',
-                    description: 'Luxurious oud fragrance air freshener. Rich and exotic scent for sophisticated spaces.',
-                    price: 1100,
-                    image: 'premium perfumes/car perfumes/aim air freshner oud.jpeg'
-                },
-                {
-                    name: 'AIM Air Freshener - Cool Breeze',
-                    description: 'Gentle cool breeze air freshener. Light and refreshing scent for everyday use.',
-                    price: 650,
-                    image: 'premium perfumes/car perfumes/aimm air frshner cool breeze.jpeg'
-                },
-                {
-                    name: 'Jello Air Freshener - Lavender',
-                    description: 'Soothing lavender air freshener. Calming and relaxing fragrance for peaceful environments.',
-                    price: 650,
-                    image: 'premium perfumes/car perfumes/jello air freshner  lavender.jpeg'
-                },
-                {
-                    name: 'Jello Air Freshener - Cool Ice',
-                    description: 'Jello cool ice air freshener. Refreshing and invigorating scent for active spaces.',
-                    price: 650,
-                    image: 'premium perfumes/car perfumes/jello air freshner cool ice.jpeg'
-                },
-                {
-                    name: 'Sameli Air Freshener - Vanilla',
-                    description: 'Sweet vanilla air freshener. Warm and comforting scent for cozy environments.',
-                    price: 900,
-                    image: 'premium perfumes/car perfumes/sameli air freshner  vanilla.jpeg'
-                },
-                {
-                    name: 'Sameli Air Freshener - Cool',
-                    description: 'Sameli cool air freshener. Fresh and clean scent for modern spaces.',
-                    price: 900,
-                    image: 'premium perfumes/car perfumes/sameli air freshner cool.jpeg'
-                },
-                {
-                    name: 'XFresh Air Freshener - Ocean',
-                    description: 'XFresh ocean breeze air freshener. Natural and refreshing ocean scent.',
-                    price: 400,
-                    image: 'premium perfumes/car perfumes/xfresh air freshner  ocean.jpeg'
-                }
-            ]
-        };
-
-        function showCategoryProducts(category) {
-            console.log('Category button clicked:', category);
-            const productsDisplay = document.getElementById('products-display');
-            const products = productData[category] || [];
-            
-            // Scroll to products section smoothly
-            productsDisplay.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
-            });
-            
-            if (products.length === 0) {
-                productsDisplay.innerHTML = `
-                    <div class="col-span-2 lg:col-span-5 text-center py-12">
-                        <div class="w-24 h-24 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-spray-can text-gray-400 text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-300 mb-2">No Products Available</h3>
-                        <p class="text-gray-400">Products for this category will be added soon</p>
-                    </div>
-                `;
-                return;
-            }
-
-            productsDisplay.innerHTML = products.map(product => `
-                <div class="bg-gray-700 border border-gray-600 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1 overflow-hidden group cursor-pointer product-card" onclick="openProductModal('${product.name}', '${product.description}', ${product.price}, '${product.image}')">
-                    <div class="image-container">
-                        <img src="${product.image}" 
-                             alt="${product.name}" 
-                             loading="lazy" 
-                             decoding="async">
-                        <div class="absolute top-2 right-2 bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-bold">
-                            Premium
-                        </div>
-                    </div>
-                    <div class="p-3 text-center">
-                        <h4 class="text-sm font-bold text-yellow-400">${product.name}</h4>
-                        </div>
-                </div>
-            `).join('');
-        }
-
-        // Cart functionality
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let cartCount = 0;
-
-        function addToCart(productName, price, image = '') {
-            // Check if item already exists in cart
-            const existingItem = cart.find(item => item.name === productName);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    name: productName,
-                    price: price,
-                    image: image,
-                    quantity: 1
-                });
-            }
-            
-            // Show cart popup when item is added
-            showCartPopup();
-            
-            // Save to localStorage
-            localStorage.setItem('cart', JSON.stringify(cart));
-            
-            // Update cart count
-            cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-            updateCartCount();
-            
-            // Show notification
-            showCartNotification(`${productName} added to cart!`);
-        }
-
-        // Show cart popup
-        function showCartPopup() {
-            const cartModal = document.getElementById('cart-modal');
-            if (cartModal) {
-                cartModal.classList.remove('hidden');
-                cartModal.classList.add('show');
-            }
-        }
-
-        // Render cart items
-        function renderCart() {
-            const cartItems = document.getElementById('cart-items');
-            const cartTotal = document.getElementById('cart-total');
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p class="text-gray-400 text-center">Your cart is empty</p>';
-                cartTotal.textContent = '0 RPS';
-                return;
-            }
-            
-            cartItems.innerHTML = cart.map((item, index) => `
-                <div class="flex items-center justify-between p-2 sm:p-3 bg-gray-800 rounded-lg mb-2">
-                    <div class="flex items-center space-x-2 sm:space-x-3 flex-1 min-w-0">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gray-700 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-perfume text-yellow-400 text-sm sm:text-base"></i>
-                        </div>
-                        <div class="min-w-0 flex-1">
-                            <h4 class="text-white font-semibold text-sm sm:text-base truncate">${item.name}</h4>
-                            <p class="text-gray-400 text-xs sm:text-sm">${item.price} RPS</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-1 sm:space-x-2 flex-shrink-0">
-                        <button onclick="updateQuantity(${index}, -1)" class="bg-gray-700 hover:bg-gray-600 text-white w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-sm">-</button>
-                        <span class="text-white font-semibold w-6 sm:w-8 text-center text-sm sm:text-base">${item.quantity}</span>
-                        <button onclick="updateQuantity(${index}, 1)" class="bg-gray-700 hover:bg-gray-600 text-white w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-sm">+</button>
-                        <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-300 ml-1 sm:ml-2">
-                            <i class="fas fa-trash text-sm sm:text-base"></i>
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-            
-            const total = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
-            cartTotal.textContent = `${total.toFixed(2)} RPS`;
-        }
-
-        // Update item quantity
-        function updateQuantity(index, change) {
-            cart[index].quantity += change;
-            if (cart[index].quantity <= 0) {
-                cart.splice(index, 1);
-            }
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-            renderCart();
-        }
-
-        // Remove item from cart
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-            renderCart();
-        }
-
-        // Clear cart
-        function clearCart() {
-            cart = [];
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-            renderCart();
-        }
-
-        function updateCartCount() {
-            const cartCountElement = document.getElementById('cart-count');
-            if (cartCountElement) {
-                cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-                cartCountElement.textContent = cartCount;
-            }
-        }
-
-        function showCartNotification(message) {
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-20 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
-            notification.innerHTML = `
-                <div class="flex items-center">
-                    <i class="fas fa-shopping-cart mr-2"></i>
-                    <span>${message}</span>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Animate in
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-            
-            // Remove after 3 seconds
-            setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    if (document.body.contains(notification)) {
-                        document.body.removeChild(notification);
-                    }
-                }, 300);
-            }, 3000);
-        }
-
-        // Popup Modal functionality
-        const popupOverlay = document.getElementById('popupOverlay');
-        const popupImage = document.getElementById('popupImage');
-        const popupTitle = document.getElementById('popupTitle');
-        const popupDescription = document.getElementById('popupDescription');
-        const popupPrice = document.getElementById('popupPrice');
-        const closeBtn = document.getElementById('closeBtn');
-        const addToCartBtn = document.getElementById('addToCartBtn');
-
-        function openProductModal(name, description, price, image) {
-            console.log('Opening product modal for:', name);
-            
-            // Update popup content
-            popupImage.src = image;
-            popupImage.alt = name;
-            popupTitle.textContent = name;
-            popupDescription.textContent = description;
-            popupPrice.textContent = price + ' PKR';
-            
-            // Set up add to cart button
-            addToCartBtn.onclick = function() {
-                addToCart(name, price, image);
-                closePopup();
-            };
-            
-            // Show popup
-            popupOverlay.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
-
-        function closePopup() {
-            popupOverlay.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-
-        // Event listeners
-        closeBtn.addEventListener('click', closePopup);
-
-        // Close popup when clicking outside
-        popupOverlay.addEventListener('click', (e) => {
-            if (e.target === popupOverlay) {
-                closePopup();
-            }
-        });
-
-        // Close popup with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && popupOverlay.style.display === 'flex') {
-                closePopup();
-            }
-        });
-
-        // Ensure functions are available when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Premium Perfumes page loaded successfully');
-            console.log('Category buttons ready - click any category to view products');
-            
-            // Initialize cart count
-            cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-            updateCartCount();
-            
-            // Debug: Check if elements exist
-            const menu = document.getElementById('navbar-menu');
-            const hamburger = document.getElementById('hamburger');
-            console.log('Menu element found:', !!menu);
-            console.log('Hamburger element found:', !!hamburger);
-            
-            // Add event listener to hamburger
-            if (hamburger) {
-                hamburger.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('Hamburger clicked via event listener');
-                    toggleMenu();
-                });
-            } else {
-                console.log('Hamburger element not found during initialization');
-            }
-            
-            // Close mobile menu when clicking on menu items
-            const menuItems = document.querySelectorAll('.navbar-menu a');
-            menuItems.forEach(item => {
-                item.addEventListener('click', function(e) {
-                    console.log('Menu item clicked:', this.href);
-                    const menu = document.getElementById('navbar-menu');
-                    if (menu && menu.classList.contains('active')) {
-                        // Close menu after a small delay to allow navigation
-                        setTimeout(() => {
-                            menu.classList.remove('active');
-                            const hamburger = document.getElementById('hamburger');
-                            if (hamburger) {
-                                hamburger.classList.remove('active');
-                            }
-                        }, 100);
-                    }
-                    // Allow the default navigation to proceed
-                    // Don't prevent default behavior
-                });
-            });
-            
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(e) {
-                const menu = document.getElementById('navbar-menu');
-                const hamburger = document.getElementById('hamburger');
-                
-                if (menu && menu.classList.contains('active')) {
-                    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
-                        menu.classList.remove('active');
-                        if (hamburger) {
-                            hamburger.classList.remove('active');
-                        }
-                    }
-                }
-            });
-            
-            // Popup modal is already set up above
-
-        // Toggle mobile menu
-        // Toggle mobile menu
-        function toggleMenu() {
-            console.log('toggleMenu function called');
-            const menu = document.getElementById('navbar-menu');
-            const hamburger = document.getElementById('hamburger');
-            
-            console.log('Toggle menu clicked'); // Debug log
-            console.log('Menu element:', menu);
-            console.log('Hamburger element:', hamburger);
-            
-            if (menu && hamburger) {
-                const isActive = menu.classList.contains('active');
-                console.log('Menu is currently active:', isActive);
-                
-                if (isActive) {
-                    menu.classList.remove('active');
-                    hamburger.classList.remove('active');
-                    console.log('Menu closed');
-                } else {
-                    menu.classList.add('active');
-                    hamburger.classList.add('active');
-                    console.log('Menu opened');
-                }
-            } else {
-                console.log('Menu or hamburger not found');
-                console.log('Menu element:', menu);
-                console.log('Hamburger element:', hamburger);
-            }
-        }
-
-        // Make toggleMenu globally accessible
-        window.toggleMenu = toggleMenu;
-
-        // Initialize cart modal event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            const cartModal = document.getElementById('cart-modal');
-            const closeCart = document.getElementById('close-cart');
-            const clearCartBtn = document.getElementById('clear-cart');
-            const checkoutWhatsAppBtn = document.getElementById('checkout-whatsapp');
-            
-            // Close cart modal
-            if (closeCart) {
-                closeCart.addEventListener('click', function() {
-                    cartModal.classList.add('hidden');
-                    cartModal.classList.remove('show');
-                });
-            }
-            
-            // Close cart modal when clicking outside
-            if (cartModal) {
-                cartModal.addEventListener('click', function(e) {
-                    if (e.target === cartModal) {
-                        cartModal.classList.add('hidden');
-                        cartModal.classList.remove('show');
-                    }
-                });
-            }
-            
-            // Clear cart
-            if (clearCartBtn) {
-                clearCartBtn.addEventListener('click', clearCart);
-            }
-            
-            // Checkout via WhatsApp
-            if (checkoutWhatsAppBtn) {
-                checkoutWhatsAppBtn.addEventListener('click', function() {
-                    if (cart.length === 0) {
-                        alert('Your cart is empty!');
-                        return;
-                    }
-                    
-                    let message = '🛒 *Order Details*\n\n';
-                    cart.forEach((item, index) => {
-                        message += `${index + 1}. ${item.name}\n   Price: ${item.price} RPS\n   Quantity: ${item.quantity}\n\n`;
-                    });
-                    
-                    const total = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
-                    message += `💰 *Total: ${total.toFixed(2)} RPS*\n\n`;
-                    message += 'Please confirm this order.';
-                    
-                    const whatsappUrl = `https://wa.me/923001234567?text=${encodeURIComponent(message)}`;
-                    window.open(whatsappUrl, '_blank');
-                    
-                    // Clear cart after checkout
-                    clearCart();
-                    cartModal.classList.add('hidden');
-                    cartModal.classList.remove('show');
-                });
-            }
-            
-            // Initial render
-            renderCart();
-        });
-        });
-    </script>
-
-    <!-- Shopping Cart Modal -->
-    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
-        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
-            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-400 max-h-[90vh] sm:max-h-[80vh] overflow-hidden flex flex-col">
-                <!-- Cart Header -->
-                <div class="flex items-center justify-between p-3 sm:p-4 border-b border-yellow-400 flex-shrink-0">
-                    <h3 class="text-lg sm:text-xl font-bold text-yellow-400">Shopping Cart</h3>
-                    <button id="close-cart" class="text-yellow-400 hover:text-yellow-300 text-xl sm:text-2xl">&times;</button>
-                </div>
-                
-                <!-- Cart Items -->
-                <div id="cart-items" class="flex-1 overflow-y-auto p-3 sm:p-4">
-                    <p class="text-gray-400 text-center">Your cart is empty</p>
-                </div>
-                
-                <!-- Cart Footer -->
-                <div class="p-3 sm:p-4 border-t border-yellow-400 flex-shrink-0">
-                    <div class="flex justify-between items-center mb-3 sm:mb-4">
-                        <span class="text-base sm:text-lg font-bold text-yellow-400">Total: <span id="cart-total">0 RPS</span></span>
-                    </div>
-                    <div class="flex flex-col sm:flex-row gap-2">
-                        <button id="clear-cart" class="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg transition-colors text-sm sm:text-base">
-                            Clear Cart
-                        </button>
-                        <button id="checkout-whatsapp" class="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition-colors text-sm sm:text-base">
-                            <i class="fab fa-whatsapp mr-1 sm:mr-2"></i>Checkout
-                        </button>
-                    </div>
+                <p id="qv-desc" class="text-gray-300 text-sm leading-relaxed">Description</p>
+                <div class="flex items-center justify-between">
+                    <span id="qv-price" class="text-xl font-bold text-yellow-400">Contact for Pricing</span>
+                    <button id="qv-add" class="bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-4 py-2 rounded-lg">Add to Cart</button>
                 </div>
             </div>
         </div>
     </div>
-
     <style>
         /* Cart modal styles */
         #cart-modal {
@@ -1749,15 +641,6 @@
             #cart-modal .flex.gap-2 button {
                 width: 100%;
             }
-            
-            #cart-modal .space-x-3 {
-                gap: 0.5rem;
-            }
-            
-            #cart-modal .w-12.h-12 {
-                width: 2.5rem;
-                height: 2.5rem;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1778,18 +661,1375 @@
             #cart-modal .text-xl {
                 font-size: 1rem;
             }
+        }
+        
+        /* Jazz Cash modal styles */
+        #jazzcash-modal {
+            transition: all 0.3s ease-in-out;
+        }
+        
+        #jazzcash-modal.show {
+            display: flex !important;
+        }
+        
+        /* Cart item animation */
+        .cart-item {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <!-- Responsive Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <a href="index.html" class="navbar-logo">
+                <img src="MSM TRADERS LOGO.jpeg" alt="MSM Traders Logo">
+                <span>MSM TRADERS</span>
+            </a>
             
-            #cart-modal .space-x-3 {
-                gap: 0.375rem;
+            <!-- Desktop Menu -->
+            <ul class="navbar-menu" id="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="car_care.html">Car Care</a></li>
+                <li><a href="microfiber_and_cleaners.html" class="active">Microfiber & Cleaners</a></li>
+                <li><a href="premium_perfumes.html">Premium Perfumes</a></li>
+                <li><a href="crockery.html">Crockery</a></li>
+                <li><a href="laptops.html">Laptop Deals</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <!-- Cart Button -->
+            <button id="cart-button" class="relative bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-2 rounded-lg transition duration-200 flex items-center gap-1.5">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Cart</span>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            </button>
+            
+            <!-- Hamburger Menu -->
+            <button class="hamburger" id="hamburger">
+                ☰
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Categories Sidebar -->
+    <section class="relative bg-gradient-to-br from-black via-gray-900 to-black py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Categories Sidebar - Desktop Only -->
+                <div class="hidden lg:block lg:w-1/4">
+                    <div class="bg-gray-900 border border-yellow-400 rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-yellow-400 mb-6 text-center">Shop by Category</h3>
+                        <ul class="space-y-3">
+                            <li>
+                                <a href="car_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-car text-yellow-400 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Car Care</span>
+                        </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="microfiber_and_cleaners.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-home text-yellow-400 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Microfiber & Cleaners</span>
+                        </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="premium_perfumes.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-spray-can text-yellow-400 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Premium Perfumes</span>
+                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="crockery.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-utensils text-yellow-400 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Crockery</span>
+                </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="laptops.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-laptop text-yellow-400 group-hover:text-black text-xl"></i>
+                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Laptops</span>
+                    </div>
+                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
+                                </a>
+                            </li>
+                        </ul>
+                </div>
+                </div>
+
+                <!-- Hero Content -->
+                <div class="flex-1">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <!-- Text Content -->
+                        <div class="text-center lg:text-left">
+                <div class="mb-8">
+                    <div class="inline-block bg-yellow-400 text-black px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
+                        <span class="flex items-center">
+                            <i class="fas fa-home mr-2"></i>
+                            Premium Microfiber & Cleaners Products
+                        </span>
+                    </div>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold text-yellow-400 mb-6">Microfiber & Cleaners Collection</h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8">Keep your home clean, fresh, and beautiful with our premium microfiber and cleaning products</p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#products" class="bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition duration-300">Shop Now</a>
+                    <a href="contact.html" class="border-2 border-yellow-400 text-yellow-400 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 hover:text-black transition duration-300">Contact Us</a>
+                </div>
+            </div>
+                        <!-- Hero Image -->
+                        <div class="relative">
+                            <img src="category imges/house_care_image.jpg.jfif" 
+                                 alt="Microfiber & Cleaners Products" 
+                                 class="w-full h-96 object-cover rounded-xl shadow-2xl border-2 border-yellow-400">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Filters and Products Section -->
+    <section id="products" class="py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Filters -->
+            <div class="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
+                <div class="flex-1 max-w-md">
+                    <div class="relative">
+                        <input type="text" id="searchInput" placeholder="Search microfiber & cleaning products..." class="w-full pl-10 pr-4 py-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <select id="categoryFilter" class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-gray-800 text-white">
+                        <option value="">All Categories</option>
+                        <option value="microfiber-towel">Microfiber Towel</option>
+                        <option value="microfiber-cloth">Microfiber Cloth</option>
+                        <option value="house-cleaners">House Cleaners</option>
+                    </select>
+                    <select id="sortBy" class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-gray-800 text-white">
+                        <option value="name">Sort by Name</option>
+                        <option value="category">Sort by Category</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Category Cards Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+                <!-- All Products Category -->
+                <div class="text-center category-card" onclick="filterByCategory('')">
+                    <div class="w-full h-24 bg-gray-800 rounded-lg cursor-pointer flex items-center justify-center border-2 border-yellow-400">
+                        <i class="fas fa-th-large text-yellow-400 text-2xl"></i>
+                    </div>
+                    <p class="text-white text-sm mt-2 font-medium">All Products</p>
+                </div>
+
+                <!-- Microfiber Towel Category -->
+                <div class="text-center category-card" onclick="filterByCategory('microfiber-towel')">
+                    <img src="microfiber & cleaners/microfiber towel pack of 2.webp" alt="Microfiber Towel" class="w-full h-24 rounded-lg cursor-pointer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="w-full h-24 bg-gray-800 rounded-lg cursor-pointer flex items-center justify-center border-2 border-yellow-400" style="display: none;">
+                        <i class="fas fa-tint text-yellow-400 text-2xl"></i>
+                    </div>
+                    <p class="text-white text-sm mt-2 font-medium">Microfiber Towel</p>
+                </div>
+
+                <!-- Microfiber Cloth Category -->
+                <div class="text-center category-card" onclick="filterByCategory('microfiber-cloth')">
+                    <img src="microfiber & cleaners/microfiber cloth pack of 2.webp" alt="Microfiber Cloth" class="w-full h-24 rounded-lg cursor-pointer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="w-full h-24 bg-gray-800 rounded-lg cursor-pointer flex items-center justify-center border-2 border-yellow-400" style="display: none;">
+                        <i class="fas fa-square text-yellow-400 text-2xl"></i>
+                    </div>
+                    <p class="text-white text-sm mt-2 font-medium">Microfiber Cloth</p>
+                </div>
+
+                <!-- House Cleaners Category -->
+                <div class="text-center category-card" onclick="filterByCategory('house-cleaners')">
+                    <img src="microfiber & cleaners/aim glass cleaner.jpeg" alt="House Cleaners" class="w-full h-24 rounded-lg cursor-pointer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="w-full h-24 bg-gray-800 rounded-lg cursor-pointer flex items-center justify-center border-2 border-yellow-400" style="display: none;">
+                        <i class="fas fa-spray-can text-yellow-400 text-2xl"></i>
+                    </div>
+                    <p class="text-white text-sm mt-2 font-medium">House Cleaners</p>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="productsGrid" class="products">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-center mt-12">
+                <div class="flex space-x-2">
+                    <button id="prevPage" class="px-4 py-2 bg-gray-800 text-yellow-400 rounded-lg hover:bg-gray-700 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+                        <i class="fas fa-chevron-left mr-2"></i>Previous
+                    </button>
+                    <span id="pageInfo" class="px-4 py-2 bg-gray-800 text-yellow-400 rounded-lg">Page 1 of 1</span>
+                    <button id="nextPage" class="px-4 py-2 bg-gray-800 text-yellow-400 rounded-lg hover:bg-gray-700 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+                        Next<i class="fas fa-chevron-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-400">
+                <!-- Cart Header -->
+                <div class="flex items-center justify-between p-4 border-b border-yellow-400">
+                    <h3 class="text-xl font-bold text-yellow-400">Shopping Cart</h3>
+                    <button id="close-cart" class="text-gray-400 hover:text-yellow-400 text-2xl font-bold">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Cart Items -->
+                <div id="cart-items" class="max-h-96 overflow-y-auto p-4">
+                    <!-- Cart items will be dynamically added here -->
+                    <div id="empty-cart" class="text-center py-8">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">Your cart is empty</p>
+                    </div>
+                </div>
+                
+                <!-- Cart Footer -->
+                <div class="border-t border-yellow-400 p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-lg font-semibold text-yellow-400">Total:</span>
+                        <span id="cart-total" class="text-xl font-bold text-yellow-400">Contact for Pricing</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <button id="clear-cart" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm">
+                            Clear Cart
+                        </button>
+                        <button id="checkout-whatsapp" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Order via WhatsApp
+                        </button>
+                        <button id="checkout-cod" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center mt-2">
+                            <i class="fas fa-money-bill-wave mr-2"></i>
+                            Cash on Delivery
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cash on Delivery Modal -->
+    <div id="cod-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-sm sm:max-w-md mx-auto border border-yellow-400">
+                  <!-- COD Header -->
+                  <div class="flex items-center justify-between p-4 border-b border-yellow-400">
+                      <h3 class="text-xl font-bold text-yellow-400">Cash on Delivery</h3>
+                      <button id="close-cod" class="text-gray-400 hover:text-yellow-400 text-2xl font-bold">
+                          <i class="fas fa-times"></i>
+                      </button>
+                  </div>
+                  
+                  <!-- COD Form -->
+                  <div class="p-4">
+                      <div class="mb-4">
+                          <div class="flex items-center justify-center mb-4">
+                              <div class="bg-blue-500 text-white rounded-full p-3">
+                                  <i class="fas fa-money-bill-wave text-2xl"></i>
+                              </div>
+                          </div>
+                          <h4 class="text-lg font-semibold text-yellow-400 text-center mb-2">Pay When You Receive</h4>
+                          <p class="text-gray-400 text-sm text-center mb-4">Complete your order and pay cash when your items arrive</p>
+                      </div>
+                      
+                      <div class="space-y-4">
+                          <div>
+                              <label class="block text-yellow-400 text-sm font-medium mb-2">Order Total</label>
+                              <div class="bg-gray-800 rounded-lg p-3 border border-gray-700">
+                                  <span id="cod-total" class="text-2xl font-bold text-yellow-400">₨0.00</span>
+                              </div>
+                          </div>
+                          
+                          <div>
+                              <label class="block text-yellow-400 text-sm font-medium mb-2">Full Name *</label>
+                              <input type="text" id="cod-name" placeholder="Enter your full name" 
+                                     class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400">
+                          </div>
+                          
+                          <div>
+                              <label class="block text-yellow-400 text-sm font-medium mb-2">Phone Number *</label>
+                              <input type="tel" id="cod-phone" placeholder="03XXXXXXXXX" 
+                                     class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400">
+                          </div>
+                          
+                          <div>
+                              <label class="block text-yellow-400 text-sm font-medium mb-2">Delivery Address *</label>
+                              <textarea id="cod-address" placeholder="Enter your complete delivery address" rows="3"
+                                     class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400 resize-none"></textarea>
+                          </div>
+                          
+                          <div>
+                              <label class="block text-yellow-400 text-sm font-medium mb-2">City *</label>
+                              <input type="text" id="cod-city" placeholder="Enter your city" 
+                                     class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400">
+                          </div>
+                          
+                          <div class="bg-gray-800 rounded-lg p-3 border border-gray-700">
+                              <h5 class="text-yellow-400 font-semibold mb-2">COD Information:</h5>
+                            <ol class="text-gray-300 text-xs sm:text-sm space-y-1">
+                                  <li>• Pay cash when your order arrives</li>
+                                  <li>• No advance payment required</li>
+                                  <li>• Delivery within 2-3 business days</li>
+                                  <li>• Free delivery on orders above ₨1000</li>
+                                  <li>• Delivery charge: ₨100 for orders below ₨1000</li>
+                              </ol>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <!-- COD Footer -->
+                  <div class="border-t border-yellow-400 p-4">
+                      <div class="flex flex-col sm:flex-row gap-2">
+                          <button id="cancel-cod" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm">
+                              Cancel
+                          </button>
+                          <button id="confirm-cod" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center">
+                              <i class="fas fa-check mr-2"></i>
+                              Place COD Order
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    <script>
+        // Cart functionality v2.0 - Updated with retry logic
+        let allProducts = [];
+        let filteredProducts = [];
+        let currentPage = 1;
+        const productsPerPage = 12;
+
+        // Real microfiber & cleaners products with actual images
+        const sampleProducts = [
+            {
+                id: 1,
+                name: "AIM Anti Rust",
+                description: "Powerful anti-rust formula that prevents and removes rust from metal surfaces. Long-lasting protection.",
+                price: "420",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/aim anti rust 420 rps.jpeg"
+            },
+            {
+                id: 2,
+                name: "AIM Foamy Cleaner",
+                description: "Versatile foamy cleaner for multiple surfaces. Removes dirt, grease, and stains effectively with rich foam action.",
+                price: "750",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/aim foamy cleaner.jpeg"
+            },
+            {
+                id: 3,
+                name: "AIM Furniture Polish",
+                description: "Premium furniture polish that protects and enhances wood surfaces. Leaves a beautiful shine and protects from damage.",
+                price: "650",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/aim furniture polish.jpeg"
+            },
+            {
+                id: 4,
+                name: "AIM Glass Cleaner",
+                description: "Streak-free glass cleaner for windows, mirrors, and glass surfaces. Professional results every time.",
+                price: "650",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/aim glass cleaner.jpeg"
+            },
+            {
+                id: 5,
+                name: "AIM Leather Cleaner (Jasmine)",
+                description: "Gentle leather cleaner with jasmine fragrance. Safely cleans and conditions leather furniture and accessories.",
+                price: "800",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/aim leather cleaner jasmine.jpeg"
+            },
+            {
+                id: 6,
+                name: "AIM Leather Cleaner (Yellow)",
+                description: "Effective leather cleaner with yellow formula. Removes dirt and stains while maintaining leather quality.",
+                price: "800",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/aim leather cleaner yellow.jpeg"
+            },
+            {
+                id: 7,
+                name: "AIM Leather Cleaner",
+                description: "Professional leather cleaner for all types of leather. Cleans, conditions, and protects leather surfaces.",
+                price: "400",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/aim leather cleaner.jpeg"
+            },
+            {
+                id: 8,
+                name: "DTR Foam Cleaner",
+                description: "Heavy-duty foam cleaner for deep cleaning. Penetrates and lifts dirt from various surfaces effectively.",
+                price: "650",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/dtr foam cleaner.jpeg"
+            },
+            {
+                id: 9,
+                name: "DTR Glass Cleaner",
+                description: "Professional glass cleaner for crystal clear results. Removes fingerprints, smudges, and streaks.",
+                price: "650",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/dtr glass cleaner.jpeg"
+            },
+            {
+                id: 10,
+                name: "DTR Kitchen Cleaner",
+                description: "Specialized kitchen cleaner that removes grease, food stains, and kitchen grime. Safe for all kitchen surfaces.",
+                price: "800",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/dtr kitchen cleaner.jpeg"
+            },
+            {
+                id: 11,
+                name: "DTR Leather Cleaner",
+                description: "Advanced leather cleaner that deeply cleans and conditions leather surfaces. Restores natural beauty.",
+                price: "750",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/dtr leather cleaner.jpeg"
+            },
+            {
+                id: 12,
+                name: "DTR Scratch Out",
+                description: "Professional scratch remover for various surfaces. Effectively removes scratches and restores smooth finish.",
+                price: "900",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/dtr scratchout.jpeg"
+            },
+            {
+                id: 13,
+                name: "Electronic Cleaner",
+                description: "Safe electronic cleaner for computers, phones, and electronic devices. Removes dust and fingerprints safely.",
+                price: "500",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/electronic cleaner.jpeg"
+            },
+            {
+                id: 14,
+                name: "Formula 1 Glass Cleaner",
+                description: "Premium glass cleaner with advanced formula. Provides streak-free shine on all glass surfaces.",
+                price: "600",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/formula 1 glass cleaner.jpeg"
+            },
+            {
+                id: 15,
+                name: "Formula 1 Leather Cleaner",
+                description: "Professional leather cleaner with advanced cleaning agents. Safely removes dirt and stains from leather.",
+                price: "700",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/formula 1 leather cleaner.jpeg"
+            },
+            {
+                id: 16,
+                name: "Formula 1 Scratch Out",
+                description: "High-performance scratch remover. Effectively removes scratches from various surfaces with professional results.",
+                price: "850",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/formula 1 scratch out.jpeg"
+            },
+            {
+                id: 17,
+                name: "Formula 1 Dry Clean",
+                description: "Dry cleaning solution for delicate fabrics and surfaces. Safe and effective cleaning without water.",
+                price: "650",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/formulla 1 dry clean.jpeg"
+            },
+            {
+                id: 18,
+                name: "Leather Protectant",
+                description: "Advanced leather protectant that creates a protective barrier. Prevents damage and maintains leather quality.",
+                price: "800",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/leather protectant.jpeg"
+            },
+            {
+                id: 19,
+                name: "Sofa Cleaner",
+                description: "Specialized sofa cleaner for upholstery. Removes stains and odors while protecting fabric surfaces.",
+                price: "750",
+                category: "house-cleaners",
+                image_url: "microfiber & cleaners/sofa cleaner.jpeg"
+            },
+            {
+                id: 20,
+                name: "Microfiber Cloth (Pack of 5)",
+                description: "Premium pack of 5 microfiber cloths in assorted colors. Perfect for multi-purpose cleaning tasks.",
+                price: "400",
+                category: "microfiber-cloth",
+                image_url: "microfiber & cleaners/microfiber cloth pack of 5.jpeg"
+            },
+            {
+                id: 21,
+                name: "Microfiber Cloth (Pack of 7)",
+                description: "Value pack of 7 microfiber cloths. Ideal for comprehensive cleaning around the house.",
+                price: "500",
+                category: "microfiber-cloth",
+                image_url: "microfiber & cleaners/microfiber cloth pack of 7.jpeg"
+            },
+            {
+                id: 22,
+                name: "Microfiber Cloth (Pack of 10)",
+                description: "Bulk pack of 10 microfiber cloths. Great for professional cleaning or large households.",
+                price: "700",
+                category: "microfiber-cloth",
+                image_url: "microfiber & cleaners/microfiber cloth pack of 10.jpeg"
+            },
+            {
+                id: 23,
+                name: "Microfiber Cloth (Single Pack)",
+                description: "Single high-quality microfiber cloth. Soft, absorbent, and perfect for everyday cleaning.",
+                price: "100",
+                category: "microfiber-cloth",
+                image_url: "microfiber & cleaners/microfiber pack of 1.jpeg"
+            },
+            {
+                id: 24,
+                name: "Microfiber Cloth (Pack of 5 - Assorted)",
+                description: "Pack of 5 assorted microfiber cloths. Different colors for different cleaning tasks.",
+                price: "400",
+                category: "microfiber-cloth",
+                image_url: "microfiber & cleaners/microfiber pack of 5.jpeg"
+            },
+            {
+                id: 25,
+                name: "Microfiber Towel (Single Pack)",
+                description: "Single premium microfiber towel. Large size with superior absorbency for heavy-duty cleaning.",
+                price: "150",
+                category: "microfiber-towel",
+                image_url: "microfiber & cleaners/microfiber towel pack of 1.jpeg"
+            },
+            {
+                id: 26,
+                name: "Microfiber Towel (Pack of 7)",
+                description: "Pack of 7 microfiber towels. Perfect for car detailing and professional cleaning services.",
+                price: "800",
+                category: "microfiber-towel",
+                image_url: "microfiber & cleaners/microfiber towel pack of 7.jpeg"
+            },
+            {
+                id: 27,
+                name: "Microfiber Towel (Pack of 10)",
+                description: "Bulk pack of 10 microfiber towels. Ideal for commercial cleaning or large-scale operations.",
+                price: "1000",
+                category: "microfiber-towel",
+                image_url: "microfiber & cleaners/microfiber towel pack of 10.jpeg"
+            },
+            {
+                id: 28,
+                name: "Microfiber Towel (Pack of 3)",
+                description: "Compact pack of 3 microfiber towels. Perfect for small cleaning tasks and personal use.",
+                price: "300",
+                category: "microfiber-towel",
+                image_url: "microfiber & cleaners/microfiber towel pack od 3.jpeg"
+            },
+            {
+                id: 29,
+                name: "Microfiber Towel (Pack of 5)",
+                description: "Standard pack of 5 microfiber towels. Great value for regular cleaning and maintenance.",
+                price: "500",
+                category: "microfiber-towel",
+                image_url: "microfiber & cleaners/microfiber pack of 5.jpeg"
+            }
+        ];
+
+        // Shopping Cart Functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const whatsappNumber = '+923258573925'; // MSM Traders WhatsApp number
+
+        // Load products
+        function loadProducts() {
+            allProducts = [...sampleProducts];
+            filteredProducts = [...allProducts];
+            renderProducts();
+        }
+
+        // Render products
+        function renderProducts() {
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const productsToShow = filteredProducts.slice(startIndex, endIndex);
+            
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = '';
+            
+            productsToShow.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="image-container">
+                        <img src="${product.image_url}" alt="${product.name}" loading="lazy" decoding="async">
+                        </div>
+                    <h3>${product.name}</h3>
+                `;
+                // Attach product data for Quick View
+                productCard.dataset.name = product.name || '';
+                productCard.dataset.image = product.image_url || '';
+                productCard.dataset.price = product.price || '';
+                productCard.dataset.desc = product.description || '';
+                
+                // Add click event to open Quick View
+                productCard.addEventListener('click', function() {
+                    const dataName = this.dataset.name || '';
+                    const dataImg = this.dataset.image || '';
+                    const dataDesc = this.dataset.desc || '';
+                    const rawPrice = this.dataset.price || '';
+                    const priceText = rawPrice ? `₨${rawPrice}` : 'Contact for Pricing';
+                    
+                    openQuickView({
+                        name: dataName,
+                        image: dataImg,
+                        description: dataDesc,
+                        priceText: priceText
+                    });
+                });
+                
+                productsGrid.appendChild(productCard);
+            });
+            
+            updatePagination();
+        }
+
+        // Update pagination
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+            const pageInfo = document.getElementById('pageInfo');
+            const prevBtn = document.getElementById('prevPage');
+            const nextBtn = document.getElementById('nextPage');
+            
+            pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === totalPages;
+        }
+
+        // Filter products
+        function filterProducts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const sortBy = document.getElementById('sortBy').value;
+            
+            filteredProducts = allProducts.filter(product => {
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm) || 
+                                    product.description.toLowerCase().includes(searchTerm);
+                const matchesCategory = !categoryFilter || product.category === categoryFilter;
+                
+                return matchesSearch && matchesCategory;
+            });
+            
+            // Sort products
+            if (sortBy === 'name') {
+                filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (sortBy === 'category') {
+                filteredProducts.sort((a, b) => a.category.localeCompare(b.category));
             }
             
-            #cart-modal .w-12.h-12 {
-                width: 2rem;
-                height: 2rem;
+            currentPage = 1;
+            renderProducts();
+        }
+
+        // Filter by category from category cards
+        function filterByCategory(category) {
+            console.log('Filtering by category:', category);
+            document.getElementById('categoryFilter').value = category;
+            filterProducts();
+            
+            // Scroll to products section smoothly
+            const productsContainer = document.getElementById('productsGrid');
+            if (productsContainer) {
+                productsContainer.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start' 
+                });
             }
         }
 
-    </style>
+
+
+        // Update cart count display - Updated with retry logic
+        function updateCartCount() {
+            const cartCount = document.getElementById('cart-count');
+            if (!cartCount) {
+                console.log('cart-count element not found, retrying in 100ms...');
+                // Retry after a short delay
+                setTimeout(updateCartCount, 100);
+                return;
+            }
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            console.log('Cart count updated to:', totalItems);
+        }
+
+        // Update cart total
+        function updateCartTotal() {
+            const cartTotal = document.getElementById('cart-total');
+            if (!cartTotal) {
+                console.log('cart-total element not found, retrying...');
+                setTimeout(updateCartTotal, 100);
+                return;
+            }
+            const total = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+            cartTotal.textContent = total > 0 ? `₨${total.toFixed(2)}` : `Contact for Pricing`;
+        }
+
+        // Render cart items
+        function renderCart() {
+            const cartItems = document.getElementById('cart-items');
+            if (!cartItems) {
+                console.error('cartItems element not found!');
+                return;
+            }
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div id="empty-cart" class="text-center py-8">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">Your cart is empty</p>
+                    </div>
+                `;
+            } else {
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item bg-gray-800 rounded-lg p-3 mb-3 border border-gray-700">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-home text-yellow-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-yellow-400 font-semibold text-sm">${item.name}</h4>
+                                    <p class="text-gray-400 text-xs">₨${item.price || 'Contact for pricing'}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}" data-action="decrease">-</button>
+                                <span class="text-yellow-400 font-semibold text-sm w-8 text-center">${item.quantity}</span>
+                                <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}" data-action="increase">+</button>
+                                <button class="remove-item bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            updateCartCount();
+            updateCartTotal();
+        }
+
+        // Add item to cart
+        function addToCart(name, price, image) {
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                const newItem = {
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                };
+                cart.push(newItem);
+            }
+            
+            // Show cart popup when item is added
+            showCartPopup();
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            showNotification('Item added to cart!', 'success');
+        }
+
+        // Show cart popup
+        function showCartPopup() {
+            const cartModal = document.getElementById('cart-modal');
+            if (cartModal) {
+                cartModal.classList.remove('hidden');
+                cartModal.classList.add('show');
+            }
+        }
+
+        // Remove item from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            showNotification('Item removed from cart!', 'info');
+        }
+
+        // Update item quantity
+        function updateQuantity(index, action) {
+            if (action === 'increase') {
+                cart[index].quantity += 1;
+            } else if (action === 'decrease') {
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity -= 1;
+                } else {
+                    removeFromCart(index);
+                    return;
+                }
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        // Clear cart
+        function clearCart() {
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            showNotification('Cart cleared!', 'info');
+        }
+
+        // Send order via WhatsApp
+        function sendWhatsAppOrder() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!', 'error');
+                return;
+            }
+            
+            let message = `Hello! I would like to place an order:\n\n`;
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = parseFloat(item.price) * item.quantity;
+                total += itemTotal;
+                message += `• ${item.name} x${item.quantity} - ₨${item.price} each = ₨${itemTotal.toFixed(2)}\n`;
+            });
+            
+            message += `\nTotal: ₨${total.toFixed(2)}\n\nPlease confirm my order. Thank you!`;
+            
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Cash on Delivery Functions
+        function openCODPayment() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!', 'error');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+            document.getElementById('cod-total').textContent = total > 0 ? `₨${total.toFixed(2)}` : `Contact for Pricing`;
+            
+            // Show COD modal
+            const codModal = document.getElementById('cod-modal');
+            codModal.classList.remove('hidden');
+            codModal.classList.add('show');
+        }
+        
+        function closeCODPayment() {
+            const codModal = document.getElementById('cod-modal');
+            codModal.classList.add('hidden');
+            codModal.classList.remove('show');
+            
+            // Reset form
+            document.getElementById('cod-name').value = '';
+            document.getElementById('cod-phone').value = '';
+            document.getElementById('cod-address').value = '';
+            document.getElementById('cod-city').value = '';
+        }
+        
+        function confirmCODPayment() {
+            const name = document.getElementById('cod-name').value.trim();
+            const phone = document.getElementById('cod-phone').value.trim();
+            const address = document.getElementById('cod-address').value.trim();
+            const city = document.getElementById('cod-city').value.trim();
+            
+            // Validate required fields
+            if (!name) {
+                showNotification('Please enter your full name!', 'error');
+                return;
+            }
+            
+            if (!phone) {
+                showNotification('Please enter your phone number!', 'error');
+                return;
+            }
+            
+            if (!isValidPhoneNumber(phone)) {
+                showNotification('Please enter a valid phone number!', 'error');
+                return;
+            }
+            
+            if (!address) {
+                showNotification('Please enter your delivery address!', 'error');
+                return;
+            }
+            
+            if (!city) {
+                showNotification('Please enter your city!', 'error');
+                return;
+            }
+            
+            // Create order summary
+            let orderSummary = `Cash on Delivery Order:\n\n`;
+            cart.forEach(item => {
+                orderSummary += `• ${item.name} x${item.quantity}\n`;
+            });
+            orderSummary += `\nPlease provide pricing\n`;
+            orderSummary += `Customer Name: ${name}\n`;
+            orderSummary += `Phone Number: ${phone}\n`;
+            orderSummary += `Delivery Address: ${address}\n`;
+            orderSummary += `City: ${city}\n`;
+            orderSummary += `Payment Method: Cash on Delivery`;
+            
+            // Send order details via WhatsApp
+            const message = `Hello! I would like to place a Cash on Delivery order:\n\n${orderSummary}\n\nPlease confirm my order and arrange delivery. Thank you!`;
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            showNotification('COD order submitted successfully! We will contact you shortly to confirm delivery.', 'success');
+            
+            // Clear cart and close modal
+            clearCart();
+            closeCODPayment();
+        }
+        
+        function isValidPhoneNumber(phone) {
+            // Pakistani phone number validation (03XXXXXXXXX format)
+            const phoneRegex = /^03\d{9}$/;
+            return phoneRegex.test(phone);
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg text-white font-semibold transition-all duration-300 transform translate-x-full`;
+            
+            switch(type) {
+                case 'success':
+                    notification.className += ' bg-green-600';
+                    break;
+                case 'error':
+                    notification.className += ' bg-red-600';
+                    break;
+                default:
+                    notification.className += ' bg-blue-600';
+            }
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Animate out and remove
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Toggle mobile menu
+        function toggleMenu() {
+            console.log('toggleMenu function called');
+            const menu = document.getElementById('navbar-menu');
+            const hamburger = document.getElementById('hamburger');
+            
+            console.log('Toggle menu clicked'); // Debug log
+            console.log('Menu element:', menu);
+            console.log('Hamburger element:', hamburger);
+            
+            if (menu && hamburger) {
+                const isActive = menu.classList.contains('active');
+                console.log('Menu is currently active:', isActive);
+                
+                if (isActive) {
+                    menu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    console.log('Menu closed');
+                } else {
+                    menu.classList.add('active');
+                    hamburger.classList.add('active');
+                    console.log('Menu opened');
+                }
+            } else {
+                console.log('Menu or hamburger not found');
+                console.log('Menu element:', menu);
+                console.log('Hamburger element:', hamburger);
+            }
+        }
+
+        // Make toggleMenu globally accessible
+        window.toggleMenu = toggleMenu;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing...');
+            loadProducts();
+            
+            // Debug: Check if elements exist
+            const menu = document.getElementById('navbar-menu');
+            const hamburger = document.getElementById('hamburger');
+            console.log('Menu element found:', !!menu);
+            console.log('Hamburger element found:', !!hamburger);
+            
+            // Add event listener to hamburger
+            if (hamburger) {
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Hamburger clicked via event listener');
+                    toggleMenu();
+                });
+            } else {
+                console.log('Hamburger element not found during initialization');
+            }
+            
+            
+            // Close mobile menu when clicking on menu items
+            const menuItems = document.querySelectorAll('.navbar-menu a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    console.log('Menu item clicked:', this.href);
+                    const menu = document.getElementById('navbar-menu');
+                    if (menu && menu.classList.contains('active')) {
+                        // Close menu after a small delay to allow navigation
+                        setTimeout(() => {
+                            menu.classList.remove('active');
+                            const hamburger = document.getElementById('hamburger');
+                            if (hamburger) {
+                                hamburger.classList.remove('active');
+                            }
+                        }, 100);
+                    }
+                    // Allow the default navigation to proceed
+                    // Don't prevent default behavior
+                });
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                const menu = document.getElementById('navbar-menu');
+                const hamburger = document.getElementById('hamburger');
+                
+                if (menu && menu.classList.contains('active')) {
+                    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                        menu.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                }
+            });
+            
+            // Initialize cart with a delay to ensure DOM is fully ready
+            setTimeout(() => {
+                console.log('Initializing cart...');
+            renderCart();
+            }, 200);
+            
+            // Fallback initialization after longer delay
+            setTimeout(() => {
+                console.log('Fallback cart initialization...');
+                updateCartCount();
+            }, 500);
+            
+            // Cart button event listener
+            const cartButton = document.getElementById('cart-button');
+            const cartModal = document.getElementById('cart-modal');
+            const closeCart = document.getElementById('close-cart');
+            const clearCartBtn = document.getElementById('clear-cart');
+            const checkoutWhatsAppBtn = document.getElementById('checkout-whatsapp');
+            
+            // Open cart modal
+            if (cartButton) {
+                cartButton.addEventListener('click', function() {
+                    cartModal.classList.remove('hidden');
+                    cartModal.classList.add('show');
+                });
+            }
+            
+            // Close cart modal
+            if (closeCart) {
+                closeCart.addEventListener('click', function() {
+                    cartModal.classList.add('hidden');
+                    cartModal.classList.remove('show');
+                });
+            }
+            
+            // Close cart modal when clicking outside
+            if (cartModal) {
+                cartModal.addEventListener('click', function(e) {
+                    if (e.target === cartModal) {
+                        cartModal.classList.add('hidden');
+                        cartModal.classList.remove('show');
+                    }
+                });
+            }
+            
+            // Clear cart
+            if (clearCartBtn) {
+                clearCartBtn.addEventListener('click', function() {
+                    clearCart();
+                });
+            }
+            
+            // Checkout via WhatsApp
+            if (checkoutWhatsAppBtn) {
+                checkoutWhatsAppBtn.addEventListener('click', function() {
+                    sendWhatsAppOrder();
+                });
+            }
+            
+            // Cash on Delivery Event Listeners
+            const checkoutCODBtn = document.getElementById('checkout-cod');
+            const codModal = document.getElementById('cod-modal');
+            const closeCODBtn = document.getElementById('close-cod');
+            const cancelCODBtn = document.getElementById('cancel-cod');
+            const confirmCODBtn = document.getElementById('confirm-cod');
+            
+            // Open COD payment modal
+            if (checkoutCODBtn) {
+                checkoutCODBtn.addEventListener('click', function() {
+                    openCODPayment();
+                });
+            }
+            
+            // Close COD payment modal
+            if (closeCODBtn) {
+                closeCODBtn.addEventListener('click', function() {
+                    closeCODPayment();
+                });
+            }
+            
+            // Cancel COD payment
+            if (cancelCODBtn) {
+                cancelCODBtn.addEventListener('click', function() {
+                    closeCODPayment();
+                });
+            }
+            
+            // Confirm COD payment
+            if (confirmCODBtn) {
+                confirmCODBtn.addEventListener('click', function() {
+                    confirmCODPayment();
+                });
+            }
+            
+            // Close COD modal when clicking outside
+            if (codModal) {
+                codModal.addEventListener('click', function(e) {
+                    if (e.target === codModal) {
+                        closeCODPayment();
+                    }
+                });
+            }
+            
+            // Filter event listeners
+            document.getElementById('searchInput').addEventListener('input', filterProducts);
+            document.getElementById('categoryFilter').addEventListener('change', filterProducts);
+            document.getElementById('sortBy').addEventListener('change', filterProducts);
+            
+            // Pagination event listeners
+            document.getElementById('prevPage').addEventListener('click', function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderProducts();
+                }
+            });
+            
+            document.getElementById('nextPage').addEventListener('click', function() {
+                const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderProducts();
+                }
+            });
+            
+            // Add to cart buttons
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('add-to-cart-btn')) {
+                    const name = e.target.dataset.name;
+                    const price = e.target.dataset.price;
+                    const image = e.target.dataset.image;
+                    addToCart(name, price, image);
+                }
+                
+                // Quantity buttons
+                if (e.target.classList.contains('quantity-btn')) {
+                    const index = parseInt(e.target.dataset.index);
+                    const action = e.target.dataset.action;
+                    updateQuantity(index, action);
+                }
+                
+                // Remove item buttons
+                if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
+                    const index = parseInt(e.target.dataset.index || e.target.closest('.remove-item').dataset.index);
+                    removeFromCart(index);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Quick View helpers
+        (function() {
+            const modal = document.getElementById('quickview-modal');
+            const nameEl = document.getElementById('qv-name');
+            const imgEl = document.getElementById('qv-image');
+            const descEl = document.getElementById('qv-desc');
+            const priceEl = document.getElementById('qv-price');
+            const addBtn = document.getElementById('qv-add');
+            const closeBtn = document.getElementById('qv-close');
+
+            function parsePrice(text) {
+                if (!text) return '';
+                const match = text.replace(/[,\s]/g, '').match(/(₨|\$)?(\d+(?:\.\d+)?)/);
+                return match ? match[2] : '';
+            }
+
+            function smartAddToCart(name, price, image) {
+                try { if (typeof addToCart === 'function') { addToCart(name, price, image); return; } } catch(e) {}
+                try { if (typeof addToCart === 'function') { addToCart(name, image); return; } } catch(e) {}
+                alert('Added to cart: ' + name);
+            }
+
+            window.openQuickView = function(data) {
+                nameEl.textContent = data.name || 'Product';
+                imgEl.src = data.image || '';
+                imgEl.alt = data.name || 'Product';
+                descEl.textContent = data.description || '—';
+                priceEl.textContent = data.priceText || 'Contact for Pricing';
+                addBtn.onclick = function() {
+                    smartAddToCart(data.name || 'Product', parsePrice(data.priceText), data.image || '');
+                    modal.classList.add('hidden');
+                };
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            };
+
+            window.closeQuickView = function() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            };
+
+            closeBtn.addEventListener('click', closeQuickView);
+            modal.addEventListener('click', function(e) { if (e.target === modal) closeQuickView(); });
+
+            // Open on product card click (ignore buttons/links)
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('button, a')) return;
+                const wrapper = e.target.closest('#productsGrid > div');
+                if (!wrapper) return;
+                const dataName = wrapper.dataset.name || (wrapper.querySelector('h3') ? wrapper.querySelector('h3').textContent.trim() : '');
+                const dataImg = wrapper.dataset.image || (wrapper.querySelector('img') ? wrapper.querySelector('img').src : '');
+                const dataDesc = wrapper.dataset.desc || (wrapper.querySelector('p') ? wrapper.querySelector('p').textContent.trim() : '');
+                const rawPrice = wrapper.dataset.price || '';
+                const priceText = rawPrice ? `₨${rawPrice}` : 'Contact for Pricing';
+                openQuickView({
+                    name: dataName,
+                    image: dataImg,
+                    description: dataDesc,
+                    priceText: priceText
+                });
+            });
+        })();
+    </script>
+
+    <!-- Category Quick Menu (mobile) -->
+    <div id="category-menu" class="fixed inset-x-0 bottom-16 mx-4 bg-gray-900 border border-yellow-400 rounded-lg shadow-xl p-3 space-y-2 z-50 hidden">
+        <a href="car_care.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
+            <span><i class="fas fa-car mr-2"></i>Car Care</span>
+            <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+        <a href="microfiber_and_cleaners.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
+            <span><i class="fas fa-home mr-2"></i>Microfiber & Cleaners</span>
+            <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+        <a href="premium_perfumes.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
+            <span><i class="fas fa-spray-can mr-2"></i>Perfumes</span>
+            <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+        <a href="crockery.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
+            <span><i class="fas fa-utensils mr-2"></i>Crockery</span>
+            <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+        </div>
+
+    <script>
+
+        function openCategoryMenu() {
+            const menu = document.getElementById('category-menu');
+            if (!menu) return;
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => { document.addEventListener('click', closeOnOutsideClick, { once: true }); }, 0);
+                } else {
+                menu.classList.add('hidden');
+            }
+        }
+
+        function closeOnOutsideClick(e) {
+            const menu = document.getElementById('category-menu');
+            const trigger = document.getElementById('category-nav');
+            if (!menu || !trigger) return;
+            if (!menu.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
+                menu.classList.add('hidden');
+            }
+        }
+
+        // Provide toggleCart if not defined on this page
+        if (typeof toggleCart !== 'function') {
+            window.toggleCart = function() {
+                const cartModal = document.getElementById('cart-modal');
+                if (cartModal) {
+                    cartModal.classList.remove('hidden');
+                    cartModal.classList.add('show');
+                    return;
+                }
+                alert('Your cart is empty!');
+            }
+        }
+    </script>
 </body>
 </html>
-
