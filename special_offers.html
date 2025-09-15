@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Deals & Offers - MSM Traders</title>
+    <title>Products - MSM Traders</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
@@ -440,20 +440,8 @@
 
                 <!-- Hero Content -->
                 <div class="flex-1 text-center">
-            <h1 class="text-3xl lg:text-5xl font-bold text-golden mb-4">Special Offers</h1>
-            <p class="text-xl lg:text-2xl text-gray-300 mb-8">Don't miss out on these amazing deals!</p>
-            
-            <!-- Promotional Video -->
-            <div class="mb-8">
-                <video controls class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto rounded-lg shadow-lg" poster="">
-                    <source src="videos/WhatsApp Video 2025-09-14 at 4.04.14 AM.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <div class="flex justify-center items-center space-x-4 text-golden">
-                <i class="fas fa-clock text-2xl"></i>
-                <span class="text-lg font-semibold">Limited Time Offers</span>
-            </div>
+            <h1 class="text-3xl lg:text-5xl font-bold text-golden mb-4">Products</h1>
+            <p class="text-xl lg:text-2xl text-gray-300 mb-8">Browse our collection of quality products</p>
         </div>
             </div>
         </div>
@@ -462,20 +450,6 @@
 
 
 
-    <!-- Free Shipping Banner -->
-    <section id="free-shipping" class="py-8 golden-gradient">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="flex items-center justify-center mb-4">
-                <i class="fas fa-shipping-fast text-4xl text-black mr-4"></i>
-                <h2 class="text-3xl lg:text-4xl font-bold text-black">FREE SHIPPING</h2>
-            </div>
-            <p class="text-xl text-black mb-4">On all orders over 5000 Rs</p>
-            <div class="bg-black text-golden px-6 py-3 rounded-lg inline-block">
-                <span class="font-bold">Current cart total: $<span id="current-total">0.00</span></span>
-                <span id="shipping-status" class="ml-2"></span>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="bg-black text-white py-8 lg:py-12 border-t border-golden">
@@ -560,7 +534,6 @@
             
             cartCount++;
             updateCartCount();
-            updateShippingStatus();
             showCartNotification(name);
         }
 
@@ -575,24 +548,6 @@
             }
         }
 
-        function updateShippingStatus() {
-            const currentTotal = getCartTotal();
-            const totalElement = document.getElementById('current-total');
-            const statusElement = document.getElementById('shipping-status');
-            
-            if (totalElement) {
-                totalElement.textContent = currentTotal.toFixed(2);
-            }
-            
-            if (statusElement) {
-                if (currentTotal >= 5000) {
-                    statusElement.innerHTML = '<span class="text-green-400 font-bold">🎉 You qualify for free shipping!</span>';
-                } else {
-                    const remaining = (5000 - currentTotal).toFixed(2);
-                    statusElement.innerHTML = `<span class="text-yellow-400">Add Rs ${remaining} more for free shipping!</span>`;
-                }
-            }
-        }
 
         function getCartTotal() {
             return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -695,7 +650,6 @@
                 cartCount -= cart[itemIndex].quantity;
                 cart.splice(itemIndex, 1);
                 updateCartCount();
-                updateShippingStatus();
                 
                 // Refresh cart modal
                 closeCart();
@@ -717,14 +671,12 @@
             cart = [];
             cartCount = 0;
             updateCartCount();
-            updateShippingStatus();
             closeCart();
         }
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             updateCartCount();
-            updateShippingStatus();
         });
     </script>
     <!-- Bottom Navigation (mobile) -->
