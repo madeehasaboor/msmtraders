@@ -2560,7 +2560,8 @@
 
         // Product click handler for existing product cards
             document.addEventListener('click', function(e){
-                if (e.target.closest('button, a')) return;
+                // Don't trigger on buttons, links, or form elements
+                if (e.target.closest('button, a, input, textarea, select, form')) return;
                 const grid = e.target.closest('.grid');
                 if (!grid) return;
                 let wrapper = e.target.closest('div');
@@ -2622,78 +2623,202 @@
         // Cart functionality
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let cartCount = 0;
+        const whatsappNumber = '+923258573925'; // MSM Traders WhatsApp number
+        
+        console.log('Initial cart from localStorage:', cart);
+        console.log('Cart length on page load:', cart.length);
 
+        // Add item to cart
         function addToCart(name, price, image) {
-            console.log('Adding to cart:', { name, price, image });
+            console.log('addToCart called with:', { name, price, image });
             
-            // Check if item already exists in cart
             const existingItem = cart.find(item => item.name === name);
             
             if (existingItem) {
                 existingItem.quantity += 1;
-                console.log('Item already exists, increasing quantity to:', existingItem.quantity);
+                console.log('Updated existing item quantity:', existingItem.quantity);
             } else {
-                cart.push({
+                const newItem = {
                     name: name,
-                    price: price,
+                    price: parseFloat(price),
                     image: image,
                     quantity: 1
-                });
-                console.log('New item added to cart');
+                };
+                cart.push(newItem);
+                console.log('Added new item to cart:', newItem);
             }
+            
+            console.log('Current cart:', cart);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            console.log('Saved to localStorage:', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
             
             // Show cart popup when item is added
             showCartPopup();
             
-            // Save to localStorage
-            localStorage.setItem('cart', JSON.stringify(cart));
-            console.log('Cart saved to localStorage');
-            
-            // Update cart count
-            cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-            updateCartCount();
-            console.log('Cart count updated to:', cartCount);
-            
-            // Show notification
-            showCartNotification(`${name} added to cart!`);
+            // Show success message
+            showNotification('Item added to cart!', 'success');
         }
 
         // Show cart popup
         function showCartPopup() {
-            // Use the existing toggleCart function which creates and shows the cart modal
-            if (typeof toggleCart === 'function') {
-                toggleCart();
+            console.log('showCartPopup called');
+            const cartModal = document.getElementById('cart-modal');
+            console.log('Cart modal element:', cartModal);
+            if (cartModal) {
+                console.log('Removing hidden class and adding show class');
+                cartModal.classList.remove('hidden');
+                cartModal.classList.add('show');
+                cartModal.style.display = 'flex';
+                console.log('Cart modal classes:', cartModal.className);
+                console.log('Cart modal style display:', cartModal.style.display);
+                console.log('Cart modal computed style:', window.getComputedStyle(cartModal).display);
+            } else {
+                console.error('Cart modal element not found!');
             }
         }
 
-        function updateCartCount() {
-            const cartBadge = document.querySelector('.cart-badge');
-            console.log('Updating cart count. Badge found:', !!cartBadge, 'Count:', cartCount);
-            console.log('All cart badges found:', document.querySelectorAll('.cart-badge'));
-            console.log('Cart link found:', document.querySelector('a[href="cart.html"]'));
-            
-            if (cartBadge) {
-                cartBadge.textContent = cartCount;
-                console.log('Cart badge updated to:', cartCount);
-            } else {
-                console.error('Cart badge not found!');
-                // Try alternative selectors
-                const altBadge = document.querySelector('a[href="cart.html"] span');
-                if (altBadge) {
-                    altBadge.textContent = cartCount;
-                    console.log('Cart badge found with alternative selector and updated to:', cartCount);
+        // Hide cart popup
+        function hideCartPopup() {
+            console.log('hideCartPopup called');
+            const cartModal = document.getElementById('cart-modal');
+            if (cartModal) {
+                cartModal.classList.add('hidden');
+                cartModal.classList.remove('show');
+                cartModal.style.display = 'none';
+                console.log('Cart modal hidden');
+            }
+        }
+
+        // Remove item from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            showNotification('Item removed from cart!', 'info');
+        }
+
+        // Update item quantity
+        function updateQuantity(index, action) {
+            if (action === 'increase') {
+                cart[index].quantity += 1;
+            } else if (action === 'decrease') {
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity -= 1;
                 } else {
-                    console.error('Cart badge not found with any selector!');
+                    removeFromCart(index);
+                    return;
                 }
             }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
         }
 
-        function showCartNotification(message) {
+        // Clear cart
+        function clearCart() {
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            showNotification('Cart cleared!', 'info');
+        }
+
+        // Update cart count display
+        function updateCartCount() {
+            const cartCountElement = document.getElementById('cart-count');
+            if (!cartCountElement) {
+                console.error('cart-count element not found!');
+                return;
+            }
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            // Clear any existing content and set new count
+            cartCountElement.textContent = '';
+            cartCountElement.textContent = totalItems;
+            console.log('Cart count updated to:', totalItems);
+            console.log('Cart count element:', cartCountElement);
+        }
+
+        // Update cart total
+        function updateCartTotal() {
+            console.log('updateCartTotal called');
+            const cartTotal = document.getElementById('cart-total');
+            console.log('Cart total element:', cartTotal);
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            console.log('Calculated total:', total);
+            if (cartTotal) {
+                cartTotal.textContent = `Rs ${total.toFixed(2)}`;
+                console.log('Updated cart total display to:', cartTotal.textContent);
+            } else {
+                console.error('Cart total element not found!');
+            }
+        }
+
+        // Render cart items
+        function renderCart() {
+            console.log('renderCart called, cart length:', cart.length);
+            console.log('Current cart:', cart);
+            
+            const cartItems = document.getElementById('cart-items');
+            
+            if (!cartItems) {
+                console.error('cartItems element not found!');
+                return;
+            }
+            
+            if (cart.length === 0) {
+                console.log('Cart is empty, showing empty message');
+                cartItems.innerHTML = `
+                    <div id="empty-cart" class="text-center py-8">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">Your cart is empty</p>
+                    </div>
+                `;
+            } else {
+                console.log('Cart has items, rendering cart items');
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item bg-gray-800 rounded-lg p-3 mb-3 border border-gray-700">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-utensils text-yellow-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-yellow-500 font-semibold text-sm">${item.name}</h4>
+                                    <p class="text-gray-400 text-xs">Rs ${item.price}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}" data-action="decrease">-</button>
+                                <span class="text-yellow-500 font-semibold text-sm w-8 text-center">${item.quantity}</span>
+                                <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}" data-action="increase">+</button>
+                                <button class="remove-item bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            updateCartCount();
+            updateCartTotal();
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
             const notification = document.createElement('div');
-            notification.className = 'fixed top-20 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+            const bgColor = type === 'success' ? 'bg-green-600' : type === 'error' ? 'bg-red-600' : 'bg-blue-600';
+            const icon = type === 'success' ? 'fa-check' : type === 'error' ? 'fa-exclamation' : 'fa-info';
+            
+            notification.className = `fixed top-20 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
             notification.innerHTML = `
                 <div class="flex items-center">
-                    <i class="fas fa-shopping-cart mr-2"></i>
+                    <i class="fas ${icon} mr-2"></i>
                     <span>${message}</span>
                 </div>
             `;
@@ -2714,6 +2839,184 @@
                     }
                 }, 300);
             }, 3000);
+        }
+
+        // Phone number validation
+        function isValidPhoneNumber(phone) {
+            const phoneRegex = /^03\d{9}$/;
+            return phoneRegex.test(phone);
+        }
+
+        // Open customer information modal for WhatsApp orders
+        function sendWhatsAppOrder() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!', 'error');
+                return;
+            }
+
+            // Open customer information modal
+            const customerInfoModal = document.getElementById('customer-info-modal');
+            customerInfoModal.classList.remove('hidden');
+        }
+
+        // Send WhatsApp order with customer information
+        function sendWhatsAppOrderWithInfo() {
+            // Get customer information
+            const customerName = document.getElementById('whatsapp-customer-name').value.trim();
+            const customerPhone = document.getElementById('whatsapp-customer-phone').value.trim();
+            const customerAddress = document.getElementById('whatsapp-customer-address').value.trim();
+            
+            // Validate required fields
+            if (!customerName) {
+                showNotification('Please enter your full name!', 'error');
+                return;
+            }
+            
+            if (!customerPhone) {
+                showNotification('Please enter your phone number!', 'error');
+                return;
+            }
+            
+            if (!isValidPhoneNumber(customerPhone)) {
+                showNotification('Please enter a valid phone number!', 'error');
+                return;
+            }
+            
+            if (!customerAddress) {
+                showNotification('Please enter your complete address!', 'error');
+                return;
+            }
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            let message = `Hello! I would like to place an order:\n\n`;
+            
+            message += `Customer Information:\n`;
+            message += `Name: ${customerName}\n`;
+            message += `Phone: ${customerPhone}\n`;
+            message += `Address: ${customerAddress}\n\n`;
+            message += `Order Details:\n`;
+            
+            cart.forEach(item => {
+                message += `• ${item.name} x${item.quantity} - Rs ${(item.price * item.quantity).toFixed(2)}\n`;
+            });
+            
+            message += `\nTotal: Rs ${total.toFixed(2)}\n\nPlease confirm my order. Thank you!`;
+            
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Close modal and clear cart
+            closeCustomerInfoModal();
+            clearCart();
+        }
+
+        // Close customer information modal
+        function closeCustomerInfoModal() {
+            const customerInfoModal = document.getElementById('customer-info-modal');
+            customerInfoModal.classList.add('hidden');
+            
+            // Reset form
+            document.getElementById('whatsapp-customer-name').value = '';
+            document.getElementById('whatsapp-customer-phone').value = '';
+            document.getElementById('whatsapp-customer-address').value = '';
+        }
+
+        // Jazz Cash Payment Functions
+        function openJazzCashPayment() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!', 'error');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('jazzcash-total').textContent = `Rs ${total.toFixed(2)}`;
+            
+            const jazzCashModal = document.getElementById('jazzcash-modal');
+            jazzCashModal.classList.remove('hidden');
+            jazzCashModal.classList.add('show');
+        }
+        
+        function closeJazzCashPayment() {
+            const jazzCashModal = document.getElementById('jazzcash-modal');
+            jazzCashModal.classList.add('hidden');
+            jazzCashModal.classList.remove('show');
+            
+            // Reset form
+            document.getElementById('customer-name').value = '';
+            document.getElementById('customer-phone').value = '';
+            document.getElementById('customer-address').value = '';
+            document.getElementById('jazzcash-number').value = '';
+            document.getElementById('transaction-id').value = '';
+        }
+        
+        function confirmJazzCashPayment() {
+            // Get customer information
+            const customerName = document.getElementById('customer-name').value.trim();
+            const customerPhone = document.getElementById('customer-phone').value.trim();
+            const customerAddress = document.getElementById('customer-address').value.trim();
+            const jazzCashNumber = document.getElementById('jazzcash-number').value.trim();
+            const transactionId = document.getElementById('transaction-id').value.trim();
+            
+            // Validate required fields
+            if (!customerName) {
+                showNotification('Please enter your full name!', 'error');
+                return;
+            }
+            
+            if (!customerPhone) {
+                showNotification('Please enter your phone number!', 'error');
+                return;
+            }
+            
+            if (!isValidPhoneNumber(customerPhone)) {
+                showNotification('Please enter a valid phone number!', 'error');
+                return;
+            }
+            
+            if (!customerAddress) {
+                showNotification('Please enter your complete address!', 'error');
+                return;
+            }
+            
+            if (!jazzCashNumber) {
+                showNotification('Please enter your Jazz Cash number!', 'error');
+                return;
+            }
+
+            if (!isValidPhoneNumber(jazzCashNumber)) {
+                showNotification('Please enter a valid Jazz Cash number!', 'error');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Create order summary with customer information
+            let orderSummary = `Jazz Cash Payment Order:\n\n`;
+            orderSummary += `Customer Information:\n`;
+            orderSummary += `Name: ${customerName}\n`;
+            orderSummary += `Phone: ${customerPhone}\n`;
+            orderSummary += `Address: ${customerAddress}\n\n`;
+            orderSummary += `Order Details:\n`;
+            cart.forEach(item => {
+                orderSummary += `• ${item.name} x${item.quantity} - Rs ${(item.price * item.quantity).toFixed(2)}\n`;
+            });
+            orderSummary += `\nTotal: Rs ${total.toFixed(2)}\n`;
+            orderSummary += `Jazz Cash Number: ${jazzCashNumber}\n`;
+            if (transactionId) {
+                orderSummary += `Transaction ID: ${transactionId}\n`;
+            }
+            
+            // Send order details via WhatsApp
+            const message = `Hello! I have made a Jazz Cash payment for my order:\n\n${orderSummary}\n\nPlease confirm my payment and process my order. Thank you!`;
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            showNotification('Payment submitted successfully! We will confirm your order shortly.', 'success');
+            
+            // Close modal and clear cart
+            closeJazzCashPayment();
+            clearCart();
         }
 
         // Toggle mobile menu
@@ -2750,64 +3053,23 @@
         // Make toggleMenu globally accessible
         window.toggleMenu = toggleMenu;
         
-        function toggleCart() {
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
-            
-            // Create cart modal
-            const cartModal = document.createElement('div');
-            cartModal.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-2 sm:p-4';
-            cartModal.innerHTML = `
-                <div class="bg-gray-800 rounded-lg shadow-2xl max-w-md w-full max-h-[90vh] sm:max-h-[80vh] overflow-y-auto">
-                    <div class="flex justify-between items-center p-3 sm:p-4 border-b border-gray-700">
-                        <h3 class="text-lg sm:text-xl font-bold text-yellow-400">Shopping Cart (${cartCount} items)</h3>
-                        <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-white">
-                            <i class="fas fa-times text-lg sm:text-xl"></i>
-                        </button>
-                    </div>
-                    <div class="p-3 sm:p-4">
-                        ${cart.map(item => `
-                            <div class="flex items-center justify-between py-2 sm:py-3 border-b border-gray-700">
-                                <div class="flex items-center space-x-2 sm:space-x-3 flex-1 min-w-0">
-                                    <img src="${item.image}" alt="${item.name}" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded flex-shrink-0">
-                                    <div class="min-w-0 flex-1">
-                                        <h4 class="text-yellow-400 font-semibold text-sm sm:text-base truncate">${item.name}</h4>
-                                        <p class="text-gray-300 text-sm">Qty: ${item.quantity}</p>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-yellow-400 font-bold">₨${item.price}</p>
-                                </div>
-                            </div>
-                        `).join('')}
-                        <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-700">
-                            <div class="flex justify-between items-center mb-3 sm:mb-4">
-                                <span class="text-base sm:text-lg font-bold text-yellow-400">Total:</span>
-                                <span class="text-lg sm:text-xl font-bold text-yellow-400">₨${cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0)}</span>
-                            </div>
-                            <button onclick="checkout()" class="w-full bg-yellow-400 text-black py-2 sm:py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-colors text-sm sm:text-base">
-                                Proceed to Checkout
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            document.body.appendChild(cartModal);
-        }
-
-        function checkout() {
-            const total = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
-            const message = `Order Summary:\n\n${cart.map(item => `${item.name} x${item.quantity} - ₨${item.price}`).join('\n')}\n\nTotal: ₨${total}`;
-            
-            const whatsappNumber = '+923258573925';
-            const whatsappMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-            
-            window.open(whatsappUrl, '_blank');
-        }
+        // Make functions globally accessible
+        window.addToCart = addToCart;
+        window.removeFromCart = removeFromCart;
+        window.updateQuantity = updateQuantity;
+        window.clearCart = clearCart;
+        window.showCartPopup = showCartPopup;
+        window.hideCartPopup = hideCartPopup;
+        window.renderCart = renderCart;
+        window.updateCartCount = updateCartCount;
+        window.updateCartTotal = updateCartTotal;
+        window.showNotification = showNotification;
+        window.sendWhatsAppOrder = sendWhatsAppOrder;
+        window.sendWhatsAppOrderWithInfo = sendWhatsAppOrderWithInfo;
+        window.closeCustomerInfoModal = closeCustomerInfoModal;
+        window.openJazzCashPayment = openJazzCashPayment;
+        window.closeJazzCashPayment = closeJazzCashPayment;
+        window.confirmJazzCashPayment = confirmJazzCashPayment;
 
         // Initialize cart count on page load
         document.addEventListener('DOMContentLoaded', function() {
@@ -2838,9 +3100,132 @@
             const cartButton = document.getElementById('cart-button');
             if (cartButton) {
                 cartButton.addEventListener('click', function() {
-                    // Redirect to cart page
-                    window.location.href = 'cart.html';
+                    console.log('Cart button clicked');
+                    showCartPopup();
                 });
+            } else {
+                console.log('Cart button not found');
+            }
+            
+            // Initialize cart modal event listeners
+            const cartModal = document.getElementById('cart-modal');
+            const closeCart = document.getElementById('close-cart');
+            const clearCartBtn = document.getElementById('clear-cart');
+            const checkoutWhatsAppBtn = document.getElementById('checkout-whatsapp');
+            
+            // Close cart modal
+            if (closeCart) {
+                closeCart.addEventListener('click', function() {
+                    console.log('Close cart button clicked');
+                    hideCartPopup();
+                });
+            }
+            
+            // Close cart modal when clicking outside
+            if (cartModal) {
+                cartModal.addEventListener('click', function(e) {
+                    if (e.target === cartModal) {
+                        console.log('Clicked outside cart modal');
+                        hideCartPopup();
+                    }
+                });
+            }
+            
+            // Clear cart
+            if (clearCartBtn) {
+                clearCartBtn.addEventListener('click', clearCart);
+            }
+            
+            // Checkout via WhatsApp
+            if (checkoutWhatsAppBtn) {
+                checkoutWhatsAppBtn.addEventListener('click', sendWhatsAppOrder);
+            }
+            
+            // Jazz Cash Payment Functions
+            const checkoutJazzCashBtn = document.getElementById('checkout-jazzcash');
+            const jazzCashModal = document.getElementById('jazzcash-modal');
+            const closeJazzCash = document.getElementById('close-jazzcash');
+            const cancelJazzCash = document.getElementById('cancel-jazzcash');
+            const confirmJazzCash = document.getElementById('confirm-jazzcash');
+            
+            // Open Jazz Cash modal
+            if (checkoutJazzCashBtn) {
+                checkoutJazzCashBtn.addEventListener('click', openJazzCashPayment);
+            }
+            
+            if (closeJazzCash) {
+                closeJazzCash.addEventListener('click', closeJazzCashPayment);
+            }
+            
+            if (cancelJazzCash) {
+                cancelJazzCash.addEventListener('click', closeJazzCashPayment);
+            }
+            
+            // Confirm Jazz Cash payment
+            if (confirmJazzCash) {
+                confirmJazzCash.addEventListener('click', confirmJazzCashPayment);
+            }
+            
+            // Customer Information Modal Functions
+            const customerInfoModal = document.getElementById('customer-info-modal');
+            const closeCustomerInfo = document.getElementById('close-customer-info');
+            const cancelCustomerInfo = document.getElementById('cancel-customer-info');
+            const confirmWhatsAppOrder = document.getElementById('confirm-whatsapp-order');
+            
+            if (closeCustomerInfo) {
+                closeCustomerInfo.addEventListener('click', closeCustomerInfoModal);
+            }
+            
+            if (cancelCustomerInfo) {
+                cancelCustomerInfo.addEventListener('click', closeCustomerInfoModal);
+            }
+            
+            if (confirmWhatsAppOrder) {
+                confirmWhatsAppOrder.addEventListener('click', sendWhatsAppOrderWithInfo);
+            }
+            
+            // Close customer info modal when clicking outside
+            if (customerInfoModal) {
+                customerInfoModal.addEventListener('click', function(e) {
+                    if (e.target === customerInfoModal) {
+                        closeCustomerInfoModal();
+                    }
+                });
+            }
+            
+            // Close Jazz Cash modal when clicking outside
+            if (jazzCashModal) {
+                jazzCashModal.addEventListener('click', function(e) {
+                    if (e.target === jazzCashModal) {
+                        closeJazzCashPayment();
+                    }
+                });
+            }
+            
+            // Add event listeners for cart item interactions
+            document.addEventListener('click', function(e) {
+                // Handle quantity buttons
+                if (e.target.classList.contains('quantity-btn')) {
+                    const index = parseInt(e.target.dataset.index);
+                    const action = e.target.dataset.action;
+                    updateQuantity(index, action);
+                }
+                
+                // Handle remove item buttons
+                if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
+                    const button = e.target.classList.contains('remove-item') ? e.target : e.target.closest('.remove-item');
+                    const index = parseInt(button.dataset.index);
+                    removeFromCart(index);
+                }
+            });
+            
+            // Initial render
+            renderCart();
+            
+            // Initialize cart modal
+            if (cartModal) {
+                cartModal.classList.add('hidden');
+                cartModal.classList.remove('show');
             }
             
             // Close mobile menu when clicking on menu items
@@ -2880,24 +3265,292 @@
             });
         });
 
-        // Debug function to check cart status
-        function debugCart() {
-            console.log('Current cart:', cart);
-            console.log('Cart count:', cartCount);
-            console.log('LocalStorage cart:', localStorage.getItem('cart'));
-        }
-
-        // Test function to add a sample item
-        function testAddToCart() {
-            addToCart('Test Product', '100', 'test-image.jpg');
-        }
-
-        // Make functions globally available for testing
-        window.addToCart = addToCart;
-        window.toggleCart = toggleCart;
-        window.debugCart = debugCart;
-        window.testAddToCart = testAddToCart;
     </script>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-500 max-h-[90vh] sm:max-h-[80vh] overflow-hidden flex flex-col">
+                <!-- Cart Header -->
+                <div class="flex items-center justify-between p-3 sm:p-4 border-b border-yellow-500 flex-shrink-0">
+                    <h3 class="text-lg sm:text-xl font-bold text-yellow-500">Shopping Cart</h3>
+                    <button id="close-cart" class="text-gray-400 hover:text-yellow-500 text-xl sm:text-2xl font-bold">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Cart Items -->
+                <div id="cart-items" class="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3">
+                    <div id="empty-cart" class="text-center py-8">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">Your cart is empty</p>
+                    </div>
+                </div>
+                
+                <!-- Cart Footer -->
+                <div class="border-t border-yellow-500 p-3 sm:p-4 flex-shrink-0">
+                    <div class="flex justify-between items-center mb-3 sm:mb-4">
+                        <span class="text-base sm:text-lg font-semibold text-yellow-500">Total:</span>
+                        <span id="cart-total" class="text-lg sm:text-xl font-bold text-yellow-500">Rs 0.00</span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <button id="clear-cart" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base">
+                            Clear Cart
+                        </button>
+                        <button id="checkout-whatsapp" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-1 sm:mr-2"></i>
+                            Order via WhatsApp
+                        </button>
+                        <button id="checkout-jazzcash" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base flex items-center justify-center">
+                            <i class="fas fa-credit-card mr-1 sm:mr-2"></i>
+                            Pay with Jazz Cash
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jazz Cash Payment Modal -->
+    <div id="jazzcash-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-sm sm:max-w-md mx-auto border border-yellow-500">
+                <!-- Payment Header -->
+                <div class="flex items-center justify-between p-4 border-b border-yellow-500">
+                    <h3 class="text-xl font-bold text-yellow-500">Jazz Cash Payment</h3>
+                    <button id="close-jazzcash" class="text-gray-400 hover:text-yellow-500 text-2xl font-bold">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Payment Form -->
+                <div class="p-4">
+                    <div class="mb-4">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="bg-orange-500 text-white rounded-full p-3">
+                                <i class="fas fa-credit-card text-2xl"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-semibold text-yellow-500 text-center mb-2">Secure Payment</h4>
+                        <p class="text-gray-400 text-sm text-center mb-4">Complete your purchase securely with Jazz Cash</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-yellow-500 text-sm font-medium mb-2">Order Total</label>
+                            <div class="bg-gray-800 rounded-lg p-3 border border-gray-700">
+                                <span id="jazzcash-total" class="text-2xl font-bold text-yellow-500">Rs 0.00</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Customer Information Section -->
+                        <div class="border-t border-gray-700 pt-4">
+                            <h5 class="text-yellow-500 font-semibold mb-3">Customer Information</h5>
+                            
+                            <div class="space-y-3">
+                                <div>
+                                    <label class="block text-yellow-500 text-sm font-medium mb-2">Full Name *</label>
+                                    <input type="text" id="customer-name" placeholder="Enter your full name" 
+                                           class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-yellow-500 text-sm font-medium mb-2">Phone Number *</label>
+                                    <input type="tel" id="customer-phone" placeholder="03XXXXXXXXX" 
+                                           class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-yellow-500 text-sm font-medium mb-2">Complete Address *</label>
+                                    <textarea id="customer-address" placeholder="Enter your complete delivery address" rows="3"
+                                              class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500 resize-none" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Payment Information Section -->
+                        <div class="border-t border-gray-700 pt-4">
+                            <h5 class="text-yellow-500 font-semibold mb-3">Payment Information</h5>
+                            
+                            <div class="space-y-3">
+                                <div>
+                                    <label class="block text-yellow-500 text-sm font-medium mb-2">Jazz Cash Number *</label>
+                                    <input type="tel" id="jazzcash-number" placeholder="03XXXXXXXXX" 
+                                           class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-yellow-500 text-sm font-medium mb-2">Transaction ID (Optional)</label>
+                                    <input type="text" id="transaction-id" placeholder="Enter transaction ID after payment" 
+                                           class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-800 rounded-lg p-3 border border-gray-700">
+                            <h5 class="text-yellow-500 font-semibold mb-2">Payment Instructions:</h5>
+                            <ol class="text-gray-300 text-xs sm:text-sm space-y-1">
+                                <li>1. Send payment to: <span class="text-yellow-500 font-bold">+923258573925</span></li>
+                                <li>2. Use your order total as amount</li>
+                                <li>3. Enter your Jazz Cash number above</li>
+                                <li>4. Add transaction ID (optional)</li>
+                                <li>5. Click "Confirm Payment"</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Payment Footer -->
+                <div class="border-t border-yellow-500 p-4">
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <button id="cancel-jazzcash" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm">
+                            Cancel
+                        </button>
+                        <button id="confirm-jazzcash" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center">
+                            <i class="fas fa-check mr-2"></i>
+                            Confirm Payment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Information Modal for WhatsApp Orders -->
+    <div id="customer-info-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-500">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between p-4 border-b border-yellow-500">
+                    <h3 class="text-xl font-bold text-yellow-500">Customer Information</h3>
+                    <button id="close-customer-info" class="text-gray-400 hover:text-yellow-500 text-2xl font-bold">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Customer Information Form -->
+                <div class="p-4">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-yellow-500 text-sm font-medium mb-2">Full Name *</label>
+                            <input type="text" id="whatsapp-customer-name" placeholder="Enter your full name" 
+                                   class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-yellow-500 text-sm font-medium mb-2">Phone Number *</label>
+                            <input type="tel" id="whatsapp-customer-phone" placeholder="03XXXXXXXXX" 
+                                   class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-yellow-500 text-sm font-medium mb-2">Complete Address *</label>
+                            <textarea id="whatsapp-customer-address" placeholder="Enter your complete delivery address" rows="3"
+                                      class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500 resize-none" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modal Footer -->
+                <div class="border-t border-yellow-500 p-4">
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <button id="cancel-customer-info" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm">
+                            Cancel
+                        </button>
+                        <button id="confirm-whatsapp-order" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Send WhatsApp Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Cart modal styles */
+        #cart-modal {
+            transition: all 0.3s ease-in-out;
+        }
+        
+        #cart-modal.hidden {
+            display: none !important;
+        }
+        
+        #cart-modal.show {
+            display: flex !important;
+        }
+
+        /* Mobile responsive cart modal */
+        @media (max-width: 768px) {
+            #cart-modal .bg-gray-900 {
+                margin: 0.5rem;
+                max-width: calc(100vw - 1rem);
+                max-height: calc(100vh - 1rem);
+                width: 100%;
+            }
+            
+            #cart-modal .max-h-96 {
+                max-height: 50vh;
+            }
+            
+            #cart-modal .p-4 {
+                padding: 0.75rem;
+            }
+            
+            #cart-modal .text-xl {
+                font-size: 1.125rem;
+            }
+            
+            #cart-modal .flex.gap-2 {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            #cart-modal .flex.gap-2 button {
+                width: 100%;
+            }
+            
+            #cart-modal .space-x-3 {
+                gap: 0.5rem;
+            }
+            
+            #cart-modal .w-12.h-12 {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #cart-modal .bg-gray-900 {
+                margin: 0.25rem;
+                max-width: calc(100vw - 0.5rem);
+                max-height: calc(100vh - 0.5rem);
+            }
+            
+            #cart-modal .max-h-96 {
+                max-height: 45vh;
+            }
+            
+            #cart-modal .p-4 {
+                padding: 0.5rem;
+            }
+            
+            #cart-modal .text-xl {
+                font-size: 1rem;
+            }
+            
+            #cart-modal .space-x-3 {
+                gap: 0.375rem;
+            }
+            
+            #cart-modal .w-12.h-12 {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+    </style>
+
 </body>
 </html>
 
