@@ -759,34 +759,58 @@
         </div>
     </section>
 
-    <!-- Deals Section -->
-    <section class="py-8 lg:py-12 bg-gray-900">
+
+    <!-- Special Offers Section -->
+    <section class="py-8 lg:py-12 bg-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-2xl lg:text-3xl font-bold text-center mb-6 lg:mb-8 text-golden">Today's Deals</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-                <div class="bg-gradient-to-r from-red-600 to-red-500 border border-golden rounded-lg p-4 sm:p-6 text-white">
-                    <h3 class="text-xl sm:text-2xl font-bold mb-2">Flash Sale</h3>
-                    <p class="mb-4 text-sm sm:text-base">Up to 50% off on selected items</p>
-                    <button onclick="showFlashSale()" class="golden-gradient text-black px-3 sm:px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base inline-block text-center cursor-pointer">
-                        Shop Now
-                    </button>
+            <div class="text-center mb-8">
+                <h2 class="text-2xl lg:text-3xl font-bold text-golden mb-4">Special Offers</h2>
+                <p class="text-gray-300 text-lg">Exclusive deals and bundle offers for amazing savings</p>
+            </div>
+            
+            <!-- Special Offers Banner -->
+            <div class="text-center mb-8">
+                <img src="speacial offers.jpeg" alt="Special Offers Banner" class="mx-auto mb-6 max-w-full h-auto rounded-lg shadow-lg">
+            </div>
+            
+            <!-- Flash Sale Button -->
+            <div class="text-center">
+                <a href="./special_offers.html" class="inline-block bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 text-xl" onclick="console.log('Flash Sale button clicked - navigating to special_offers.html')">
+                    <i class="fas fa-bolt mr-2"></i>
+                    Flash Sale - View Special Deals
+                </a>
+            </div>
+            
+            <!-- Quick Preview of Deals -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <div class="bg-gray-700 rounded-lg p-6 text-center">
+                    <div class="w-16 h-16 bg-golden rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-gift text-black text-2xl"></i>
                     </div>
-                <div class="bg-gradient-to-r from-blue-600 to-blue-500 border border-golden rounded-lg p-4 sm:p-6 text-white">
-                    <h3 class="text-xl sm:text-2xl font-bold mb-2">New Arrivals</h3>
-                    <p class="mb-4 text-sm sm:text-base">Fresh products just landed</p>
-                    <button onclick="showNewArrivals()" class="golden-gradient text-black px-3 sm:px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base inline-block text-center cursor-pointer">
-                        Explore
-                    </button>
-                            </div>
-                <div class="bg-gradient-to-r from-green-600 to-green-500 border border-golden rounded-lg p-4 sm:p-6 text-white">
-                    <h3 class="text-xl sm:text-2xl font-bold mb-2">Free Shipping</h3>
-                    <p class="mb-4 text-sm sm:text-base">On orders over 5000 Rs</p>
-                    <button onclick="showShippingInfo()" class="golden-gradient text-black px-3 sm:px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base inline-block text-center cursor-pointer">
-                        Learn More
-                    </button>
+                    <h3 class="text-xl font-bold text-golden mb-2">Reed Diffusers</h3>
+                    <p class="text-gray-300 mb-4">Buy 3 for Rs 4,000 instead of Rs 4,500</p>
+                    <span class="text-green-400 font-bold">Save Rs 500!</span>
                 </div>
+                
+                <div class="bg-gray-700 rounded-lg p-6 text-center">
+                    <div class="w-16 h-16 bg-golden rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-car text-black text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-golden mb-2">Car Care Bundle</h3>
+                    <p class="text-gray-300 mb-4">Complete car care kit for Rs 3,500</p>
+                    <span class="text-green-400 font-bold">Save Rs 500!</span>
                 </div>
+                
+                <div class="bg-gray-700 rounded-lg p-6 text-center">
+                    <div class="w-16 h-16 bg-golden rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-home text-black text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-golden mb-2">Microfiber Bundle</h3>
+                    <p class="text-gray-300 mb-4">Professional cleaning towels from Rs 450</p>
+                    <span class="text-green-400 font-bold">Up to Rs 650 off!</span>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Newsletter -->
