@@ -927,6 +927,19 @@
                     </div>
                 </div>
                 
+                <!-- Customer Information Form -->
+                <div class="border-t border-yellow-400 p-4">
+                    <h4 class="text-yellow-400 font-semibold mb-3 text-sm">Customer Information</h4>
+                    <div class="space-y-2 mb-4">
+                        <input type="text" id="cart-customer-name" placeholder="Full Name *" 
+                               class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-yellow-400" required>
+                        <input type="tel" id="cart-customer-phone" placeholder="Phone Number * (03XXXXXXXXX)" 
+                               class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-yellow-400" required>
+                        <textarea id="cart-customer-address" placeholder="Complete Address *" rows="2"
+                                  class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-yellow-400 resize-none" required></textarea>
+                    </div>
+                </div>
+
                 <!-- Cart Footer -->
                 <div class="border-t border-yellow-400 p-4">
                     <div class="flex justify-between items-center mb-4">
@@ -985,20 +998,20 @@
                           
                           <div>
                               <label class="block text-yellow-400 text-sm font-medium mb-2">Full Name *</label>
-                              <input type="text" id="cod-name" placeholder="Enter your full name" 
+                              <input type="text" id="cod-customer-name" placeholder="Enter your full name" 
                                      class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400">
                           </div>
                           
                           <div>
                               <label class="block text-yellow-400 text-sm font-medium mb-2">Phone Number *</label>
-                              <input type="tel" id="cod-phone" placeholder="03XXXXXXXXX" 
+                              <input type="tel" id="cod-customer-phone" placeholder="03XXXXXXXXX" 
                                      class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400">
                           </div>
                           
                           <div>
                               <label class="block text-yellow-400 text-sm font-medium mb-2">Delivery Address *</label>
-                              <textarea id="cod-address" placeholder="Enter your complete delivery address" rows="3"
-                                     class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400 resize-none"></textarea>
+                              <textarea id="cod-customer-address" placeholder="Enter your complete delivery address" rows="3"
+                                        class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400 resize-none"></textarea>
                           </div>
                           
                           <div>
@@ -1201,7 +1214,7 @@
                 id: 20,
                 name: "Microfiber Cloth (Pack of 5)",
                 description: "Premium pack of 5 microfiber cloths in assorted colors. Perfect for multi-purpose cleaning tasks.",
-                price: "400",
+                price: "1100",
                 category: "microfiber-cloth",
                 image_url: "microfiber_and_cleaners/microfiber cloth pack of 5.jpeg"
             },
@@ -1209,7 +1222,7 @@
                 id: 21,
                 name: "Microfiber Cloth (Pack of 7)",
                 description: "Value pack of 7 microfiber cloths. Ideal for comprehensive cleaning around the house.",
-                price: "500",
+                price: "1600",
                 category: "microfiber-cloth",
                 image_url: "microfiber_and_cleaners/microfiber cloth pack of 7.jpeg"
             },
@@ -1217,7 +1230,7 @@
                 id: 22,
                 name: "Microfiber Cloth (Pack of 10)",
                 description: "Bulk pack of 10 microfiber cloths. Great for professional cleaning or large households.",
-                price: "700",
+                price: "2200",
                 category: "microfiber-cloth",
                 image_url: "microfiber_and_cleaners/microfiber cloth pack of 10.jpeg"
             },
@@ -1225,7 +1238,7 @@
                 id: 23,
                 name: "Microfiber Cloth (Single Pack)",
                 description: "Single high-quality microfiber cloth. Soft, absorbent, and perfect for everyday cleaning.",
-                price: "100",
+                price: "250",
                 category: "microfiber-cloth",
                 image_url: "microfiber_and_cleaners/microfiber pack of 1.jpeg"
             },
@@ -1233,7 +1246,7 @@
                 id: 24,
                 name: "Microfiber Cloth (Pack of 5 - Assorted)",
                 description: "Pack of 5 assorted microfiber cloths. Different colors for different cleaning tasks.",
-                price: "400",
+                price: "1100",
                 category: "microfiber-cloth",
                 image_url: "microfiber_and_cleaners/microfiber pack of 5.jpeg"
             },
@@ -1241,7 +1254,7 @@
                 id: 25,
                 name: "Microfiber Towel (Single Pack)",
                 description: "Single premium microfiber towel. Large size with superior absorbency for heavy-duty cleaning.",
-                price: "150",
+                price: "450",
                 category: "microfiber-towel",
                 image_url: "microfiber_and_cleaners/microfiber towel pack of 1.jpeg"
             },
@@ -1249,7 +1262,7 @@
                 id: 26,
                 name: "Microfiber Towel (Pack of 7)",
                 description: "Pack of 7 microfiber towels. Perfect for car detailing and professional cleaning services.",
-                price: "800",
+                price: "2500",
                 category: "microfiber-towel",
                 image_url: "microfiber_and_cleaners/microfiber towel pack of 7.jpeg"
             },
@@ -1257,7 +1270,7 @@
                 id: 27,
                 name: "Microfiber Towel (Pack of 10)",
                 description: "Bulk pack of 10 microfiber towels. Ideal for commercial cleaning or large-scale operations.",
-                price: "1000",
+                price: "3250",
                 category: "microfiber-towel",
                 image_url: "microfiber_and_cleaners/microfiber towel pack of 10.jpeg"
             },
@@ -1265,7 +1278,7 @@
                 id: 28,
                 name: "Microfiber Towel (Pack of 3)",
                 description: "Compact pack of 3 microfiber towels. Perfect for small cleaning tasks and personal use.",
-                price: "300",
+                price: "1050",
                 category: "microfiber-towel",
                 image_url: "microfiber_and_cleaners/microfiber towel pack od 3.jpeg"
             },
@@ -1273,7 +1286,7 @@
                 id: 29,
                 name: "Microfiber Towel (Pack of 5)",
                 description: "Standard pack of 5 microfiber towels. Great value for regular cleaning and maintenance.",
-                price: "500",
+                price: "1750",
                 category: "microfiber-towel",
                 image_url: "microfiber_and_cleaners/microfiber pack of 5.jpeg"
             }
@@ -1539,8 +1552,39 @@
                 showNotification('Your cart is empty!', 'error');
                 return;
             }
+
+            // Get customer information from cart form
+            const customerName = document.getElementById('cart-customer-name').value.trim();
+            const customerPhone = document.getElementById('cart-customer-phone').value.trim();
+            const customerAddress = document.getElementById('cart-customer-address').value.trim();
+
+            // Validate required fields
+            if (!customerName) {
+                showNotification('Please enter your full name!', 'error');
+                return;
+            }
             
-            let message = `Hello! I would like to place an order:\n\n`;
+            if (!customerPhone) {
+                showNotification('Please enter your phone number!', 'error');
+                return;
+            }
+            
+            if (!isValidPhoneNumber(customerPhone)) {
+                showNotification('Please enter a valid phone number!', 'error');
+                return;
+            }
+            
+            if (!customerAddress) {
+                showNotification('Please enter your complete address!', 'error');
+                return;
+            }
+            
+            let message = `*🛒 Order Details:*\n\n`;
+            message += `*Customer Information:*\n`;
+            message += `Name: ${customerName}\n`;
+            message += `Phone: ${customerPhone}\n`;
+            message += `Address: ${customerAddress}\n\n`;
+            
             let total = 0;
             
             cart.forEach(item => {
@@ -1549,10 +1593,15 @@
                 message += `• ${item.name} x${item.quantity} - ₨${item.price} each = ₨${itemTotal.toFixed(2)}\n`;
             });
             
-            message += `\nTotal: ₨${total.toFixed(2)}\n\nPlease confirm my order. Thank you!`;
+            message += `\n*Subtotal:* ₨${total.toFixed(2)}`;
+            message += `\n*Note:* ₨200 delivery charges will be added to your order.`;
+            message += `\n\nThank you for shopping with MSM Traders!`;
             
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
+            
+            // Clear cart after successful order
+            clearCart();
         }
 
         // Cash on Delivery Functions
@@ -1564,6 +1613,21 @@
             
             const total = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
             document.getElementById('cod-total').textContent = total > 0 ? `₨${total.toFixed(2)}` : `Contact for Pricing`;
+            
+            // Copy customer information from cart form to COD modal
+            const cartName = document.getElementById('cart-customer-name').value.trim();
+            const cartPhone = document.getElementById('cart-customer-phone').value.trim();
+            const cartAddress = document.getElementById('cart-customer-address').value.trim();
+            
+            if (cartName) {
+                document.getElementById('cod-customer-name').value = cartName;
+            }
+            if (cartPhone) {
+                document.getElementById('cod-customer-phone').value = cartPhone;
+            }
+            if (cartAddress) {
+                document.getElementById('cod-customer-address').value = cartAddress;
+            }
             
             // Show COD modal
             const codModal = document.getElementById('cod-modal');
@@ -1577,16 +1641,16 @@
             codModal.classList.remove('show');
             
             // Reset form
-            document.getElementById('cod-name').value = '';
-            document.getElementById('cod-phone').value = '';
-            document.getElementById('cod-address').value = '';
+            document.getElementById('cod-customer-name').value = '';
+            document.getElementById('cod-customer-phone').value = '';
+            document.getElementById('cod-customer-address').value = '';
             document.getElementById('cod-city').value = '';
         }
         
         function confirmCODPayment() {
-            const name = document.getElementById('cod-name').value.trim();
-            const phone = document.getElementById('cod-phone').value.trim();
-            const address = document.getElementById('cod-address').value.trim();
+            const name = document.getElementById('cod-customer-name').value.trim();
+            const phone = document.getElementById('cod-customer-phone').value.trim();
+            const address = document.getElementById('cod-customer-address').value.trim();
             const city = document.getElementById('cod-city').value.trim();
             
             // Validate required fields
@@ -1963,9 +2027,10 @@
             closeBtn.addEventListener('click', closeQuickView);
             modal.addEventListener('click', function(e) { if (e.target === modal) closeQuickView(); });
 
-            // Open on product card click (ignore buttons/links)
+            // Open on product card click (ignore buttons/links and form elements)
             document.addEventListener('click', function(e) {
-                if (e.target.closest('button, a')) return;
+                // Don't trigger on buttons, links, or form elements
+                if (e.target.closest('button, a, input, textarea, select, form')) return;
                 const wrapper = e.target.closest('#productsGrid > div');
                 if (!wrapper) return;
                 const dataName = wrapper.dataset.name || (wrapper.querySelector('h3') ? wrapper.querySelector('h3').textContent.trim() : '');
