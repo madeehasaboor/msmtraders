@@ -2854,9 +2854,56 @@
                 return;
             }
 
-            // Open customer information modal
-            const customerInfoModal = document.getElementById('customer-info-modal');
-            customerInfoModal.classList.remove('hidden');
+            // Get customer information from cart form
+            const customerName = document.getElementById('cart-customer-name').value.trim();
+            const customerPhone = document.getElementById('cart-customer-phone').value.trim();
+            const customerAddress = document.getElementById('cart-customer-address').value.trim();
+
+            // Validate required fields
+            if (!customerName) {
+                showNotification('Please enter your full name!', 'error');
+                return;
+            }
+            
+            if (!customerPhone) {
+                showNotification('Please enter your phone number!', 'error');
+                return;
+            }
+            
+            if (!isValidPhoneNumber(customerPhone)) {
+                showNotification('Please enter a valid phone number!', 'error');
+                return;
+            }
+            
+            if (!customerAddress) {
+                showNotification('Please enter your complete address!', 'error');
+                return;
+            }
+
+            let total = 0;
+            let message = "*🛒 Order Details:*\n\n";
+            message += `*Customer Information:*\n`;
+            message += `Name: ${customerName}\n`;
+            message += `Phone: ${customerPhone}\n`;
+            message += `Address: ${customerAddress}\n\n`;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                message += `• ${item.name} x ${item.quantity} = Rs ${itemTotal}\n`;
+            });
+
+            message += `\n*Subtotal:* Rs ${total}`;
+            message += `\n*Note:* Rs 200 delivery charges will be added to your order.`;
+            message += `\n\nThank you for shopping with MSM Traders!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const phoneNumber = "923258573925";
+            const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(url, "_blank");
+            
+            // Clear cart after successful order
+            clearCart();
         }
 
         // Send WhatsApp order with customer information
@@ -2931,6 +2978,21 @@
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             document.getElementById('jazzcash-total').textContent = `Rs ${total.toFixed(2)}`;
             
+            // Copy customer information from cart form to Jazz Cash modal
+            const cartName = document.getElementById('cart-customer-name').value.trim();
+            const cartPhone = document.getElementById('cart-customer-phone').value.trim();
+            const cartAddress = document.getElementById('cart-customer-address').value.trim();
+            
+            if (cartName) {
+                document.getElementById('jazzcash-customer-name').value = cartName;
+            }
+            if (cartPhone) {
+                document.getElementById('jazzcash-customer-phone').value = cartPhone;
+            }
+            if (cartAddress) {
+                document.getElementById('jazzcash-customer-address').value = cartAddress;
+            }
+            
             const jazzCashModal = document.getElementById('jazzcash-modal');
             jazzCashModal.classList.remove('hidden');
             jazzCashModal.classList.add('show');
@@ -2950,10 +3012,10 @@
         }
         
         function confirmJazzCashPayment() {
-            // Get customer information
-            const customerName = document.getElementById('customer-name').value.trim();
-            const customerPhone = document.getElementById('customer-phone').value.trim();
-            const customerAddress = document.getElementById('customer-address').value.trim();
+            // Get customer information from Jazz Cash modal
+            const customerName = document.getElementById('jazzcash-customer-name').value.trim();
+            const customerPhone = document.getElementById('jazzcash-customer-phone').value.trim();
+            const customerAddress = document.getElementById('jazzcash-customer-address').value.trim();
             const jazzCashNumber = document.getElementById('jazzcash-number').value.trim();
             const transactionId = document.getElementById('transaction-id').value.trim();
             
@@ -3287,6 +3349,19 @@
                     </div>
                 </div>
                 
+                <!-- Customer Information Form -->
+                <div class="border-t border-yellow-500 p-3 sm:p-4 flex-shrink-0">
+                    <h4 class="text-yellow-500 font-semibold mb-3 text-sm sm:text-base">Customer Information</h4>
+                    <div class="space-y-2 mb-4">
+                        <input type="text" id="cart-customer-name" placeholder="Full Name *" 
+                               class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-yellow-500" required>
+                        <input type="tel" id="cart-customer-phone" placeholder="Phone Number * (03XXXXXXXXX)" 
+                               class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-yellow-500" required>
+                        <textarea id="cart-customer-address" placeholder="Complete Address *" rows="2"
+                                  class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-yellow-500 resize-none" required></textarea>
+                    </div>
+                </div>
+
                 <!-- Cart Footer -->
                 <div class="border-t border-yellow-500 p-3 sm:p-4 flex-shrink-0">
                     <div class="flex justify-between items-center mb-3 sm:mb-4">
@@ -3346,23 +3421,24 @@
                         <!-- Customer Information Section -->
                         <div class="border-t border-gray-700 pt-4">
                             <h5 class="text-yellow-500 font-semibold mb-3">Customer Information</h5>
+                            <p class="text-gray-400 text-xs mb-3">Customer details will be copied from your cart form</p>
                             
                             <div class="space-y-3">
                                 <div>
                                     <label class="block text-yellow-500 text-sm font-medium mb-2">Full Name *</label>
-                                    <input type="text" id="customer-name" placeholder="Enter your full name" 
+                                    <input type="text" id="jazzcash-customer-name" placeholder="Enter your full name" 
                                            class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500" required>
                                 </div>
                                 
                                 <div>
                                     <label class="block text-yellow-500 text-sm font-medium mb-2">Phone Number *</label>
-                                    <input type="tel" id="customer-phone" placeholder="03XXXXXXXXX" 
+                                    <input type="tel" id="jazzcash-customer-phone" placeholder="03XXXXXXXXX" 
                                            class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500" required>
                                 </div>
                                 
                                 <div>
                                     <label class="block text-yellow-500 text-sm font-medium mb-2">Complete Address *</label>
-                                    <textarea id="customer-address" placeholder="Enter your complete delivery address" rows="3"
+                                    <textarea id="jazzcash-customer-address" placeholder="Enter your complete delivery address" rows="3"
                                               class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500 resize-none" required></textarea>
                                 </div>
                             </div>
