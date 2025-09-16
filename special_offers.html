@@ -19,6 +19,201 @@
                 }
             }
         }
+
+        // Deal data - moved to head for immediate availability
+        const dealData = {
+            'reed-diffusers': {
+                title: 'Reed Diffuser Bundle',
+                description: 'Reed Diffuser Bundle',
+                image: 'special deals/reed diffusers deal of 3.jpg',
+                originalPrice: 'Rs 4,500',
+                specialPrice: 'Rs 4,000',
+                delivery: 'FREE',
+                savings: 'Rs 500',
+                features: [
+                    'Choose any 3 reed diffusers from our collection',
+                    'Premium quality fragrances',
+                    'Long-lasting scent (up to 3 months)',
+                    'Elegant glass bottles with natural reeds',
+                    'Free delivery to your doorstep',
+                    'Perfect for home and office'
+                ]
+            },
+            'car-care': {
+                title: 'Car Care Bundle',
+                description: 'Complete car care solution with premium products. Everything you need to keep your vehicle looking and performing its best.',
+                image: 'special deals/car care deal.jpg',
+                originalPrice: 'Rs 4,000',
+                specialPrice: 'Rs 3,500',
+                delivery: 'Rs 200',
+                savings: 'Rs 500',
+                features: [
+                    '1 Leather Cleaner',
+                    '1 Glass Cleaner',
+                    '1 Multi Purpose Cleaner',
+                    '1 Furniture Polish',
+                    '1 Free Microfiber Cloth',
+                    'Complete car care guide'
+                ]
+            },
+            'microfiber': {
+                title: 'Microfiber Bundle',
+                description: 'High-quality microfiber cleaning products for all your cleaning needs. Professional-grade cleaning solutions.',
+                image: 'special deals/microfiber deal.jpg',
+                originalPrice: 'Rs 2,500',
+                specialPrice: 'Rs 1,599',
+                delivery: 'Rs 200',
+                savings: 'Rs 900',
+                features: [
+                    '<div class="flex justify-between items-center py-2 border-b border-gray-200"><span class="text-gray-700">Microfiber towel single</span><span class="font-bold text-green-600">Rs 450</span></div>',
+                    '<div class="flex justify-between items-center py-2 border-b border-gray-200"><span class="text-gray-700">Microfiber towel pack of 2</span><div class="text-right"><span class="font-bold text-green-600">Rs 750</span><br><span class="text-sm text-gray-500 line-through">instead of Rs 900</span></div></div>',
+                    '<div class="text-center py-2 text-gray-600 font-medium">40x30cm Super Thick</div>',
+                    '<div class="flex justify-between items-center py-2 border-b border-gray-200"><span class="text-gray-700">Microfiber towel pack of 5</span><div class="text-right"><span class="font-bold text-green-600">Rs 1,750</span><br><span class="text-sm text-gray-500 line-through">instead of Rs 2,250</span></div></div>',
+                    '<div class="flex justify-between items-center py-2 border-b border-gray-200"><span class="text-gray-700">Microfiber towel pack of 7</span><div class="text-right"><span class="font-bold text-green-600">Rs 2,500</span><br><span class="text-sm text-gray-500 line-through">instead of Rs 3,150</span></div></div>',
+                    '<div class="flex justify-between items-center py-2 border-b border-gray-200"><span class="text-gray-700">Microfiber towel pack of 10</span><div class="text-right"><span class="font-bold text-green-600">Rs 2,500</span><br><span class="text-sm text-gray-500 line-through">instead of Rs 3,150</span></div></div>',
+                    '<div class="text-center py-2 text-blue-600 font-medium">Professional-grade cleaning solutions</div>'
+                ]
+            }
+        };
+
+        // View Special Deal function - moved to head for immediate availability
+        function viewSpecialDeal(dealType) {
+            console.log('=== viewSpecialDeal DEBUG START ===');
+            console.log('Function called with dealType:', dealType);
+            console.log('Available dealData keys:', Object.keys(dealData));
+            
+            const deal = dealData[dealType];
+            if (!deal) {
+                console.error('❌ Deal not found for type:', dealType);
+                console.error('Available deals:', Object.keys(dealData));
+                alert('Deal not found. Please try again.');
+                return;
+            }
+
+            console.log('✅ Deal found:', deal);
+
+            // Wait for DOM to be ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => populateModal(deal, dealType));
+            } else {
+                populateModal(deal, dealType);
+            }
+        }
+
+        function populateModal(deal, dealType) {
+            // Populate modal with deal data
+            const titleEl = document.getElementById('deal-modal-title');
+            const descEl = document.getElementById('deal-modal-description');
+            const imgEl = document.getElementById('deal-modal-image');
+            const origPriceEl = document.getElementById('deal-original-price');
+            const specPriceEl = document.getElementById('deal-special-price');
+            const deliveryEl = document.getElementById('deal-delivery');
+            const savingsEl = document.getElementById('deal-savings');
+
+            console.log('Modal elements found:', {
+                titleEl: !!titleEl,
+                descEl: !!descEl,
+                imgEl: !!imgEl,
+                origPriceEl: !!origPriceEl,
+                specPriceEl: !!specPriceEl,
+                deliveryEl: !!deliveryEl,
+                savingsEl: !!savingsEl
+            });
+
+            // Populate modal content
+            if (titleEl) {
+                titleEl.textContent = deal.title;
+                console.log('✅ Title set:', deal.title);
+            }
+
+            if (descEl) {
+                descEl.textContent = deal.description;
+                console.log('✅ Description set:', deal.description);
+            }
+
+            if (imgEl) {
+                imgEl.src = deal.image;
+                imgEl.alt = deal.title;
+                console.log('✅ Image set:', deal.image);
+            }
+
+            if (origPriceEl) {
+                origPriceEl.textContent = deal.originalPrice;
+                console.log('✅ Original price set:', deal.originalPrice);
+            }
+
+            if (specPriceEl) {
+                specPriceEl.textContent = deal.specialPrice;
+                console.log('✅ Special price set:', deal.specialPrice);
+            }
+
+            if (deliveryEl) {
+                deliveryEl.textContent = deal.delivery;
+                console.log('✅ Delivery set:', deal.delivery);
+            }
+
+            if (savingsEl) {
+                savingsEl.textContent = deal.savings;
+                console.log('✅ Savings set:', deal.savings);
+            }
+
+            // Populate features
+            const featuresList = document.getElementById('deal-features');
+            if (featuresList) {
+                featuresList.innerHTML = '';
+                console.log('✅ Features list found, populating with:', deal.features);
+                deal.features.forEach((feature, index) => {
+                    const li = document.createElement('li');
+                    // Check if feature contains HTML (starts with <div)
+                    if (feature.startsWith('<div')) {
+                        li.innerHTML = feature;
+                    } else {
+                        li.className = 'flex items-start space-x-2';
+                        li.innerHTML = `<i class="fas fa-check text-green-500 mt-1"></i><span>${feature}</span>`;
+                    }
+                    featuresList.appendChild(li);
+                    console.log(`✅ Feature ${index + 1} added:`, feature);
+                });
+            }
+
+            // Store current deal for Add to Cart button
+            const addToCartBtn = document.getElementById('deal-add-to-cart-btn');
+            if (addToCartBtn) {
+                addToCartBtn.dataset.dealType = dealType;
+                console.log('✅ Add to Cart button found, deal type stored:', dealType);
+            }
+
+            // Show modal
+            const modal = document.getElementById('deal-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                console.log('✅ Modal shown successfully');
+                console.log('Modal classes:', modal.className);
+            } else {
+                console.error('❌ Modal element not found');
+            }
+            
+            console.log('=== viewSpecialDeal DEBUG END ===');
+        }
+
+        // Close deal modal function - moved to head for immediate availability
+        function closeDealModal() {
+            console.log('=== closeDealModal DEBUG START ===');
+            const modal = document.getElementById('deal-modal');
+            console.log('Modal element found:', !!modal);
+            if (modal) {
+                modal.classList.add('hidden');
+                console.log('✅ Modal hidden successfully');
+                console.log('Modal classes after hiding:', modal.className);
+            } else {
+                console.error('❌ Modal element not found');
+            }
+            console.log('=== closeDealModal DEBUG END ===');
+        }
+
+        // Make functions globally accessible
+        window.viewSpecialDeal = viewSpecialDeal;
+        window.closeDealModal = closeDealModal;
     </script>
     <style>
         body {
@@ -440,8 +635,10 @@
 
                 <!-- Hero Content -->
                 <div class="flex-1 text-center">
-            <h1 class="text-3xl lg:text-5xl font-bold text-golden mb-4">Products</h1>
-            <p class="text-xl lg:text-2xl text-gray-300 mb-8">Browse our collection of quality products</p>
+                    <!-- Special Offers Banner -->
+                    <img src="speacial offers.jpeg" alt="Special Offers Banner" class="mx-auto mb-6 max-w-full h-auto rounded-lg shadow-lg">
+                    <h1 class="text-3xl lg:text-5xl font-bold text-golden mb-4">Products</h1>
+                    <p class="text-xl lg:text-2xl text-gray-300 mb-8">Browse our collection of quality products</p>
         </div>
             </div>
         </div>
@@ -450,6 +647,229 @@
 
 
 
+
+    <!-- Special Deals Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Special Offers Banner -->
+            <div class="text-center mb-12">
+                <img src="speacial offers.jpeg" alt="Special Offers Banner" class="mx-auto mb-8 max-w-full h-auto rounded-lg shadow-lg">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Special Deals</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Exclusive offers and bundle deals for amazing savings</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Reed Diffusers Deal -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative">
+                        <img src="special deals/reed diffusers deal of 3.jpg" alt="Reed Diffusers Deal" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Special Deal
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Reed Diffusers Bundle</h3>
+                        <p class="text-gray-600 mb-2">Buy 3 reed diffusers of your choice</p>
+                        <div class="mb-3">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-sm text-gray-500">Original Price:</span>
+                                <span class="text-sm text-gray-500 line-through">Rs 4,500</span>
+                            </div>
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-sm text-gray-500">Special Price:</span>
+                                <span class="text-lg font-bold text-red-600">Rs 4,000</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">Delivery:</span>
+                                <span class="text-sm font-semibold text-green-600">FREE</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-golden">Save Rs 500!</span>
+                            <button class="bg-golden text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-300" onclick="viewSpecialDeal('reed-diffusers')">
+                                View Deal
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car Care Deal -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative">
+                        <img src="special deals/car care deal.jpg" alt="Car Care Deal" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Special Deal
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Car Care Bundle</h3>
+                        <p class="text-gray-600 mb-4">Complete car care solution with premium products</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-golden">Special Price</span>
+                            <button class="bg-golden text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-300" onclick="viewSpecialDeal('car-care')">
+                                View Deal
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Microfiber Deal -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative">
+                        <img src="special deals/microfiber deal.jpg" alt="Microfiber Deal" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Special Deal
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Microfiber Bundle</h3>
+                        <p class="text-gray-600 mb-4">High-quality microfiber cleaning products</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-golden">Special Price</span>
+                            <button class="bg-golden text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-300" onclick="viewSpecialDeal('microfiber')">
+                                View Deal
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Deal Modal -->
+    <div id="deal-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-white rounded-lg shadow-2xl w-full max-w-6xl mx-auto max-h-[95vh] overflow-hidden">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between p-3 sm:p-4 border-b border-gray-200">
+                    <h3 class="text-lg sm:text-2xl font-bold text-gray-900">Special Deal Details</h3>
+                    <button id="close-deal-modal" class="text-gray-400 hover:text-gray-600 text-2xl sm:text-3xl font-bold p-1" onclick="closeDealModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Modal Content -->
+                <div class="p-3 sm:p-6 overflow-y-auto max-h-[calc(95vh-80px)]">
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-8">
+                        <!-- Image Section -->
+                        <div class="space-y-4">
+                            <div class="relative">
+                                <img id="deal-modal-image" src="" alt="Deal Image" class="w-full h-48 sm:h-64 lg:h-80 xl:h-96 object-cover rounded-lg shadow-lg">
+                                <div class="absolute top-2 sm:top-4 left-2 sm:left-4 bg-red-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
+                                    Special Deal
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Details Section -->
+                        <div class="space-y-4 sm:space-y-6">
+                            <div>
+                                <h4 id="deal-modal-title" class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-4"></h4>
+                                <p id="deal-modal-description" class="text-sm sm:text-base lg:text-lg text-gray-600 mb-4 sm:mb-6"></p>
+                            </div>
+                            
+                            <!-- Pricing Section -->
+                            <div class="bg-gray-50 rounded-lg p-4 sm:p-6">
+                                <h5 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Pricing Details</h5>
+                                <div class="space-y-2 sm:space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm sm:text-base text-gray-600">Original Price:</span>
+                                        <span id="deal-original-price" class="text-sm sm:text-lg text-gray-500 line-through"></span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm sm:text-base text-gray-600">Special Price:</span>
+                                        <span id="deal-special-price" class="text-lg sm:text-2xl font-bold text-red-600"></span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm sm:text-base text-gray-600">Delivery:</span>
+                                        <span id="deal-delivery" class="text-sm sm:text-lg font-semibold text-green-600"></span>
+                                    </div>
+                                    <hr class="my-2 sm:my-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-base sm:text-xl font-bold text-gray-900">You Save:</span>
+                                        <span id="deal-savings" class="text-lg sm:text-2xl font-bold text-golden"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Features Section -->
+                            <div class="bg-blue-50 rounded-lg p-4 sm:p-6">
+                                <h5 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">What's Included</h5>
+                                <ul id="deal-features" class="space-y-1 sm:space-y-2 text-sm sm:text-base text-gray-700">
+                                    <!-- Features will be populated by JavaScript -->
+                                </ul>
+                            </div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                                <button id="deal-add-to-cart-btn" class="flex-1 bg-golden hover:bg-yellow-600 text-black px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition duration-300 flex items-center justify-center text-sm sm:text-base" onclick="handleAddToCartFromModal()">
+                                    <i class="fas fa-shopping-cart mr-2"></i>
+                                    Add to Cart
+                                </button>
+                                <button id="deal-close-btn" class="flex-1 bg-gray-600 hover:bg-gray-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition duration-300 text-sm sm:text-base" onclick="closeDealModal()">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-500 max-h-[90vh] sm:max-h-[80vh] overflow-hidden flex flex-col">
+                <!-- Cart Header -->
+                <div class="flex items-center justify-between p-3 sm:p-4 border-b border-yellow-500 flex-shrink-0">
+                    <h3 class="text-lg sm:text-xl font-bold text-yellow-500">Shopping Cart</h3>
+                    <button id="close-cart" class="text-gray-400 hover:text-yellow-500 text-xl sm:text-2xl font-bold">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Cart Items -->
+                <div id="cart-items" class="flex-1 overflow-y-auto p-3 sm:p-4">
+                    <!-- Cart items will be dynamically added here -->
+                    <div id="empty-cart" class="text-center py-8">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">Your cart is empty</p>
+                    </div>
+                </div>
+                
+                <!-- Customer Information Form -->
+                <div class="border-t border-yellow-500 p-3 sm:p-4 flex-shrink-0">
+                    <h4 class="text-yellow-500 font-semibold mb-3 text-sm sm:text-base">Customer Information</h4>
+                    <div class="space-y-2 mb-4">
+                        <input type="text" id="cart-customer-name" placeholder="Full Name *" 
+                               class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-yellow-500" required>
+                        <input type="tel" id="cart-customer-phone" placeholder="Phone Number * (03XXXXXXXXX)" 
+                               class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-yellow-500" required>
+                        <textarea id="cart-customer-address" placeholder="Complete Address *" rows="2"
+                                  class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-yellow-500 resize-none" required></textarea>
+                    </div>
+                </div>
+                
+                <!-- Cart Footer -->
+                <div class="border-t border-yellow-500 p-3 sm:p-4 flex-shrink-0">
+                    <div class="flex justify-between items-center mb-3 sm:mb-4">
+                        <span class="text-base sm:text-lg font-semibold text-yellow-500">Total:</span>
+                        <span id="cart-total" class="text-lg sm:text-xl font-bold text-yellow-500">Rs 0.00</span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <button id="clear-cart" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base">
+                            Clear Cart
+                        </button>
+                        <button id="checkout-whatsapp" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-1 sm:mr-2"></i>
+                            Order via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-black text-white py-8 lg:py-12 border-t border-golden">
@@ -674,9 +1094,226 @@
             closeCart();
         }
 
+        // Deal data and viewSpecialDeal function moved to head section for immediate availability
+
+        // Close deal modal function moved to head section for immediate availability
+
+        // Cart functionality (moved from later script section)
+        let cart = [];
+
+        // Safe number formatting function
+        function safeFormatNumber(num, decimals = 2) {
+            if (isNaN(num) || !isFinite(num)) {
+                return '0.00';
+            }
+            return num.toFixed(decimals);
+        }
+
+        // Format price function
+        function formatPrice(price) {
+            if (!price || price === null || price === undefined) return 0;
+            let numeric = price.toString().replace(/[^\d.-]/g, "");
+            let result = Number(numeric);
+            if (isNaN(result) || !isFinite(result)) {
+                return 0;
+            }
+            return result;
+        }
+
+        // Add to cart function
+        function addToCart(productName, price, image) {
+            const validPrice = formatPrice(price);
+            if (!productName || validPrice <= 0) {
+                console.warn('Invalid product data:', productName, price);
+                return;
+            }
+
+            const product = {
+                id: Date.now(),
+                name: productName,
+                price: validPrice,
+                image: image || 'box'
+            };
+
+            const existing = cart.find(item => item.name === product.name);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            showCartPopup();
+            showNotification('Item added to cart!', 'success');
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transition-all duration-300 ${
+                type === 'success' ? 'bg-green-600 text-white' :
+                type === 'error' ? 'bg-red-600 text-white' :
+                'bg-blue-600 text-white'
+            }`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Show cart popup
+        function showCartPopup() {
+            const cartModal = document.getElementById('cart-modal');
+            if (cartModal) {
+                cartModal.classList.remove('hidden');
+            }
+        }
+
+        // Update cart UI
+        function updateCartUI() {
+            const cartList = document.getElementById("cart-items");
+            const totalElement = document.getElementById("cart-total");
+            const emptyCart = document.getElementById("empty-cart");
+
+            if (!cartList || !totalElement) {
+                console.error("Cart elements not found");
+                return;
+            }
+            
+            cartList.innerHTML = "";
+            let total = 0;
+
+            if (cart.length === 0) {
+                if (emptyCart) {
+                    cartList.appendChild(emptyCart);
+                }
+                totalElement.textContent = "Rs 0.00";
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                const cartItem = document.createElement("div");
+                cartItem.className = "cart-item bg-gray-800 rounded-lg p-3 mb-3 border border-gray-700";
+                
+                cartItem.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-${getItemIcon(item.image)} text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-yellow-500 font-semibold text-sm">${item.name}</h4>
+                                <p class="text-gray-400 text-xs">Rs ${item.price}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                    data-index="${index}" data-action="decrease">-</button>
+                            <span class="text-yellow-500 font-semibold text-sm w-8 text-center">${item.quantity}</span>
+                            <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                    data-index="${index}" data-action="increase">+</button>
+                            <button class="remove-item bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded text-xs font-bold" 
+                                    data-index="${index}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            
+                cartList.appendChild(cartItem);
+            });
+
+            totalElement.textContent = `Rs ${total}`;
+        }
+
+        // Get icon for item type
+        function getItemIcon(imageType) {
+            const icons = {
+                'special-deal': 'gift',
+                'car-wax': 'car',
+                'headphones': 'headphones',
+                'cologne': 'spray-can',
+                'laptop': 'laptop'
+            };
+            return icons[imageType] || 'box';
+        }
+
+        // Make functions globally accessible
+        window.viewSpecialDeal = viewSpecialDeal;
+        window.addDealToCart = addDealToCart;
+        window.handleAddToCartFromModal = handleAddToCartFromModal;
+        window.closeDealModal = closeDealModal;
+        window.addToCart = addToCart;
+        window.updateCartUI = updateCartUI;
+        window.showCartPopup = showCartPopup;
+        window.showNotification = showNotification;
+
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('=== PAGE LOAD DEBUG ===');
+            console.log('DOM Content Loaded');
+            console.log('Available functions:', {
+                viewSpecialDeal: typeof viewSpecialDeal,
+                addDealToCart: typeof addDealToCart,
+                handleAddToCartFromModal: typeof handleAddToCartFromModal,
+                closeDealModal: typeof closeDealModal
+            });
+            
             updateCartCount();
+            
+            // Add event listeners for modal close functionality
+            const closeDealModalBtn = document.getElementById('close-deal-modal');
+            const dealCloseBtn = document.getElementById('deal-close-btn');
+            const dealModal = document.getElementById('deal-modal');
+            
+            console.log('Modal elements found:', {
+                closeDealModalBtn: !!closeDealModalBtn,
+                dealCloseBtn: !!dealCloseBtn,
+                dealModal: !!dealModal
+            });
+            
+            if (closeDealModalBtn) {
+                closeDealModalBtn.addEventListener('click', function() {
+                    console.log('Close modal button clicked');
+                    closeDealModal();
+                });
+            }
+            
+            if (dealCloseBtn) {
+                dealCloseBtn.addEventListener('click', function() {
+                    console.log('Deal close button clicked');
+                    closeDealModal();
+                });
+            }
+            
+            // Close modal when clicking outside
+            if (dealModal) {
+                dealModal.addEventListener('click', function(e) {
+                    if (e.target === dealModal) {
+                        console.log('Modal background clicked');
+                        closeDealModal();
+                    }
+                });
+            }
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const modal = document.getElementById('deal-modal');
+                    if (modal && !modal.classList.contains('hidden')) {
+                        console.log('Escape key pressed, closing modal');
+                        closeDealModal();
+                    }
+                }
+            });
+            
+            console.log('=== PAGE LOAD DEBUG END ===');
         });
     </script>
     <!-- Bottom Navigation (mobile) -->
@@ -751,6 +1388,415 @@
                 hamburger.classList.toggle('active');
             }
         }
+
+        // Cart functionality
+        let cart = [];
+
+        // Safe number formatting function
+        function safeFormatNumber(num, decimals = 2) {
+            if (isNaN(num) || !isFinite(num)) {
+                return '0.00';
+            }
+            return num.toFixed(decimals);
+        }
+
+        // Format price function
+        function formatPrice(price) {
+            if (!price || price === null || price === undefined) return 0;
+            let numeric = price.toString().replace(/[^\d.-]/g, "");
+            let result = Number(numeric);
+            if (isNaN(result) || !isFinite(result)) {
+                return 0;
+            }
+            return result;
+        }
+
+        // Add to cart function
+        function addToCart(productName, price, image) {
+            const validPrice = formatPrice(price);
+            if (!productName || validPrice <= 0) {
+                console.warn('Invalid product data:', productName, price);
+                return;
+            }
+
+            const product = {
+                id: Date.now(),
+                name: productName,
+                price: validPrice,
+                image: image || 'box'
+            };
+
+            const existing = cart.find(item => item.name === product.name);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            showCartPopup();
+            showNotification('Item added to cart!', 'success');
+        }
+
+        // Update cart UI
+        function updateCartUI() {
+            const cartList = document.getElementById("cart-items");
+            const totalElement = document.getElementById("cart-total");
+            const emptyCart = document.getElementById("empty-cart");
+
+            if (!cartList || !totalElement) {
+                console.error("Cart elements not found");
+                return;
+            }
+            
+            cartList.innerHTML = "";
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartList.appendChild(emptyCart);
+                totalElement.textContent = "Rs 0.00";
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                const cartItem = document.createElement("div");
+                cartItem.className = "cart-item bg-gray-800 rounded-lg p-3 mb-3 border border-gray-700";
+                
+                cartItem.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-${getItemIcon(item.image)} text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-yellow-500 font-semibold text-sm">${item.name}</h4>
+                                <p class="text-gray-400 text-xs">Rs ${item.price}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                    data-index="${index}" data-action="decrease">-</button>
+                            <span class="text-yellow-500 font-semibold text-sm w-8 text-center">${item.quantity}</span>
+                            <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                    data-index="${index}" data-action="increase">+</button>
+                            <button class="remove-item bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded text-xs font-bold" 
+                                    data-index="${index}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            
+                cartList.appendChild(cartItem);
+            });
+
+            totalElement.textContent = `Rs ${total}`;
+        }
+
+        // Get icon for item type
+        function getItemIcon(imageType) {
+            const icons = {
+                'special-deal': 'gift',
+                'car-wax': 'car',
+                'headphones': 'headphones',
+                'cologne': 'spray-can',
+                'laptop': 'laptop'
+            };
+            return icons[imageType] || 'box';
+        }
+
+        // Show cart popup
+        function showCartPopup() {
+            const cartModal = document.getElementById('cart-modal');
+            if (cartModal) {
+                cartModal.classList.remove('hidden');
+            }
+        }
+
+        // Hide cart popup
+        function hideCartPopup() {
+            const cartModal = document.getElementById('cart-modal');
+            if (cartModal) {
+                cartModal.classList.add('hidden');
+            }
+        }
+
+        // Update quantity
+        function updateQuantity(index, action) {
+            if (index >= 0 && index < cart.length) {
+                if (action === 'increase') {
+                    cart[index].quantity += 1;
+                } else if (action === 'decrease') {
+                    if (cart[index].quantity > 1) {
+                        cart[index].quantity -= 1;
+                    } else {
+                        cart.splice(index, 1);
+                    }
+                }
+                updateCartUI();
+            }
+        }
+
+        // Remove item from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        // Clear cart
+        function clearCart() {
+            cart = [];
+            updateCartUI();
+            showNotification('Cart cleared!', 'success');
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transition-all duration-300 ${
+                type === 'success' ? 'bg-green-600 text-white' :
+                type === 'error' ? 'bg-red-600 text-white' :
+                'bg-blue-600 text-white'
+            }`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Validate phone number
+        function isValidPhoneNumber(phone) {
+            const phoneRegex = /^(\+92|0)?[0-9]{10}$/;
+            return phoneRegex.test(phone.replace(/\s/g, ''));
+        }
+
+        // Send WhatsApp order
+        function sendWhatsAppOrder() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!', 'error');
+                return;
+            }
+
+            // Get customer information from cart form
+            const customerName = document.getElementById('cart-customer-name').value.trim();
+            const customerPhone = document.getElementById('cart-customer-phone').value.trim();
+            const customerAddress = document.getElementById('cart-customer-address').value.trim();
+
+            // Validate required fields
+            if (!customerName) {
+                showNotification('Please enter your full name!', 'error');
+                return;
+            }
+            
+            if (!customerPhone) {
+                showNotification('Please enter your phone number!', 'error');
+                return;
+            }
+            
+            if (!isValidPhoneNumber(customerPhone)) {
+                showNotification('Please enter a valid phone number!', 'error');
+                return;
+            }
+            
+            if (!customerAddress) {
+                showNotification('Please enter your complete address!', 'error');
+                return;
+            }
+
+            let total = 0;
+            let message = "*🛒 Order Details:*\n\n";
+            message += `*Customer Information:*\n`;
+            message += `Name: ${customerName}\n`;
+            message += `Phone: ${customerPhone}\n`;
+            message += `Address: ${customerAddress}\n\n`;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                message += `• ${item.name} x ${item.quantity} = Rs ${itemTotal}\n`;
+            });
+
+            message += `\n*Subtotal:* Rs ${total}`;
+            message += `\n*Note:* Rs 200 delivery charges will be added to your order.`;
+            message += `\n\nThank you for shopping with MSM Traders!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const phoneNumber = "923258573925";
+            const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(url, "_blank");
+            
+            // Clear cart after successful order
+            clearCart();
+        }
+
+        // Functions are now defined in the first script section
+
+        // Handle Add to Cart button click from modal
+        function handleAddToCartFromModal() {
+            console.log('=== handleAddToCartFromModal DEBUG START ===');
+            const addToCartBtn = document.getElementById('deal-add-to-cart-btn');
+            console.log('Add to Cart button found:', !!addToCartBtn);
+            
+            if (addToCartBtn) {
+                console.log('Button dataset:', addToCartBtn.dataset);
+                console.log('Deal type from dataset:', addToCartBtn.dataset.dealType);
+            }
+            
+            if (addToCartBtn && addToCartBtn.dataset.dealType) {
+                console.log('✅ Calling addDealToCart with:', addToCartBtn.dataset.dealType);
+                addDealToCart(addToCartBtn.dataset.dealType);
+            } else {
+                console.error('❌ Deal type not found on button');
+                console.error('Button element:', addToCartBtn);
+                console.error('Button dataset:', addToCartBtn ? addToCartBtn.dataset : 'Button not found');
+                showNotification('Error: Deal type not found', 'error');
+            }
+            console.log('=== handleAddToCartFromModal DEBUG END ===');
+        }
+
+        // Add special deal to cart
+        function addDealToCart(dealType) {
+            console.log('addDealToCart called with:', dealType);
+            const deal = dealData[dealType];
+            if (!deal) {
+                console.error('Deal not found for type:', dealType);
+                return;
+            }
+
+            // Extract price from special price string
+            const priceMatch = deal.specialPrice.match(/Rs\s*([\d,]+)/);
+            const price = priceMatch ? parseFloat(priceMatch[1].replace(/,/g, '')) : 0;
+
+            console.log('Adding to cart:', deal.title, price);
+
+            // Add deal to cart
+            addToCart(deal.title, price, 'special-deal');
+            closeDealModal();
+        }
+
+        // Send WhatsApp order from modal (legacy function - keeping for compatibility)
+        function sendDealWhatsApp(dealType) {
+            const deal = dealData[dealType];
+            if (!deal) return;
+
+            const encodedMessage = encodeURIComponent(deal.whatsappMessage);
+            const phoneNumber = '923258573925';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+            closeDealModal();
+        }
+
+        // Initialize modal event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Close modal buttons
+            const closeModalBtn = document.getElementById('close-deal-modal');
+            const closeBtn = document.getElementById('deal-close-btn');
+            const modal = document.getElementById('deal-modal');
+            const addToCartBtn = document.getElementById('deal-add-to-cart-btn');
+
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeDealModal);
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeDealModal);
+            }
+
+            if (addToCartBtn) {
+                addToCartBtn.addEventListener('click', function() {
+                    const dealType = this.dataset.dealType;
+                    if (dealType) {
+                        addDealToCart(dealType);
+                    }
+                });
+            }
+
+            // Close modal when clicking outside
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeDealModal();
+                    }
+                });
+            }
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeDealModal();
+                }
+            });
+
+            // Cart functionality event listeners
+            const cartModal = document.getElementById('cart-modal');
+            const closeCart = document.getElementById('close-cart');
+            const clearCartBtn = document.getElementById('clear-cart');
+            const checkoutWhatsAppBtn = document.getElementById('checkout-whatsapp');
+
+            // Close cart modal
+            if (closeCart) {
+                closeCart.addEventListener('click', hideCartPopup);
+            }
+
+            // Close cart modal when clicking outside
+            if (cartModal) {
+                cartModal.addEventListener('click', function(e) {
+                    if (e.target === cartModal) {
+                        hideCartPopup();
+                    }
+                });
+            }
+
+            // Clear cart
+            if (clearCartBtn) {
+                clearCartBtn.addEventListener('click', clearCart);
+            }
+
+            // Checkout via WhatsApp
+            if (checkoutWhatsAppBtn) {
+                checkoutWhatsAppBtn.addEventListener('click', sendWhatsAppOrder);
+            }
+
+            // Add event listeners for cart item interactions
+            document.addEventListener('click', function(e) {
+                // Handle quantity buttons
+                if (e.target.classList.contains('quantity-btn')) {
+                    const index = parseInt(e.target.dataset.index);
+                    const action = e.target.dataset.action;
+                    updateQuantity(index, action);
+                }
+                
+                // Handle remove item buttons
+                if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
+                    const button = e.target.classList.contains('remove-item') ? e.target : e.target.closest('.remove-item');
+                    const index = parseInt(button.dataset.index);
+                    removeFromCart(index);
+                }
+            });
+
+            // Initial cart UI update
+            updateCartUI();
+        });
+
+        // Make functions globally accessible
+        window.viewSpecialDeal = viewSpecialDeal;
+        window.addDealToCart = addDealToCart;
+        window.closeDealModal = closeDealModal;
+        window.addToCart = addToCart;
+        window.updateCartUI = updateCartUI;
+        window.showCartPopup = showCartPopup;
+        window.hideCartPopup = hideCartPopup;
+        window.updateQuantity = updateQuantity;
+        window.removeFromCart = removeFromCart;
+        window.clearCart = clearCart;
+        window.sendWhatsAppOrder = sendWhatsAppOrder;
+        window.showNotification = showNotification;
     </script>
 </body>
 </html>
