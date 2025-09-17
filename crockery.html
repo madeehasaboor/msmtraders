@@ -926,19 +926,33 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
-        /* Price styling */
+        /* Price styling - Refreshed */
         .product-card .price {
-            color: #10b981;
-            font-weight: bold;
-            font-size: 1.125rem;
-            margin-top: 0.25rem;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            color: #fbbf24;
+            font-weight: 800;
+            font-size: 1.25rem;
+            margin-top: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            transition: all 0.3s ease;
         }
 
         .product-card:hover .price {
-            color: #34d399;
-            transform: scale(1.05);
-            transition: all 0.3s ease;
+            color: #ffffff;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: unset;
+            -webkit-text-fill-color: unset;
+            background-clip: unset;
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+            border-color: #fbbf24;
         }
         
         /* Loading states */
@@ -1434,7 +1448,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Luxurious Two-Tiered Golden Cake Stand</h3>
-                        
+                        <p class="price">Rs 2,500</p>
                         
                     </div>
 
@@ -1449,7 +1463,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Three-Tiered Golden Cake Stand</h3>
-                        
+                        <p class="price">Rs 3,200</p>
                         
                     </div>
 
@@ -1464,7 +1478,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Royal Alba Bone China Cake Stand (3-Tier)</h3>
-                        
+                        <p class="price">Rs 2,800</p>
                         
                     </div>
 
@@ -1479,7 +1493,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Royal Albert Floral Cake Stand (3-Tier)</h3>
-                        
+                        <p class="price">Rs 3,500</p>
                         
                     </div>
                 </div>
@@ -1505,7 +1519,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Premium Glass Water Pitcher Set with Golden Handles</h3>
-                        
+                        <p class="price">Rs 1,800</p>
                         
                     </div>
 
@@ -1520,7 +1534,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Elegant Glass Water Pitcher with Tumblers</h3>
-                        
+                        <p class="price">Rs 2,200</p>
                         
                     </div>
                 </div>
@@ -1546,7 +1560,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">All-in-One Utensil Caddy</h3>
-                        
+                        <p class="price">Rs 1,200</p>
                         
                     </div>
 
@@ -1561,7 +1575,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Kitchen Utensil Holder with 2 Cups</h3>
-                        
+                        <p class="price">Rs 1,500</p>
                         
                     </div>
 
@@ -1576,7 +1590,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Kitchen Organizer Cutlery Storage</h3>
-                        
+                        <p class="price">Rs 1,800</p>
                         
                     </div>
 
@@ -1591,7 +1605,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Golden Utensil Caddy</h3>
-                        
+                        <p class="price">Rs 1,600</p>
                         
                     </div>
 
@@ -1607,6 +1621,7 @@
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Elegant Gold Dinnerware Set (For 6)</h3>
                         <p class="text-gray-400 text-sm mb-3">Luxurious gold dinnerware set with elegant design, perfect for formal dining occasions and special events</p>
+                        <p class="price">Rs 4,500</p>
                         
                     </div>
 
@@ -1622,6 +1637,7 @@
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Gold Flatware Set</h3>
                         <p class="text-gray-400 text-sm mb-3">Premium gold flatware set with elegant design and luxurious finish, perfect for sophisticated dining experiences</p>
+                        <p class="price">Rs 3,200</p>
                         
                     </div>
                 </div>
@@ -1647,7 +1663,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Floral Design Insulated Food Container</h3>
-                        
+                        <p class="price">Rs 2,800</p>
                         
                     </div>
 
@@ -1662,7 +1678,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Red Serving Dishes Set (3-Piece)</h3>
-                        
+                        <p class="price">Rs 3,500</p>
                         
                     </div>
 
@@ -1677,7 +1693,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Stainless Steel Rotating Spice Rack (12 Jars)</h3>
-                        
+                        <p class="price">Rs 4,200</p>
                         
                     </div>
 
@@ -1692,7 +1708,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Premium Kitchen Storage Container Set</h3>
-                        
+                        <p class="price">Rs 2,500</p>
                         
                     </div>
 
@@ -1707,7 +1723,7 @@
                             </div>
                         </div>
                         <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Professional Stainless Steel Cookware Set (12-Piece)</h3>
-                        
+                        <p class="price">Rs 8,500</p>
                         
                         </div>
                     </div>
@@ -1741,6 +1757,7 @@
                             </div>
                             <div class="text-center mt-2">
                                 <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Flip Lid Bottle - Black</h3>
+                                <p class="price">Rs 1,200</p>
                             </div>
                         </div>
 
@@ -1758,6 +1775,7 @@
                             </div>
                             <div class="text-center mt-2">
                                 <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Flip Lid Bottle - White</h3>
+                                <p class="price">Rs 1,200</p>
                             </div>
                         </div>
 
@@ -1775,6 +1793,7 @@
                             </div>
                             <div class="text-center mt-2">
                                 <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Flip Lid Bottle - Silver</h3>
+                                <p class="price">Rs 1,200</p>
                             </div>
                         </div>
 
@@ -1792,6 +1811,7 @@
                             </div>
                             <div class="text-center mt-2">
                                 <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Flip Lid Bottle - Baby Pink</h3>
+                                <p class="price">Rs 1,200</p>
                             </div>
                         </div>
 
@@ -1809,6 +1829,7 @@
                             </div>
                             <div class="text-center mt-2">
                                 <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Flip Lid Bottle - Blue</h3>
+                                <p class="price">Rs 1,200</p>
                             </div>
                         </div>
                     </div>
@@ -1835,6 +1856,7 @@
                             </div>
                             <div class="text-center mt-2">
                                 <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Screw Lid Bottle - Black</h3>
+                                <p class="price">Rs 1,500</p>
                             </div>
                         </div>
 
@@ -1852,6 +1874,7 @@
                             </div>
                             <div class="text-center mt-2">
                                 <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Screw Lid Bottle - Blue</h3>
+                                <p class="price">Rs 1,500</p>
                             </div>
                         </div>
 
@@ -1869,6 +1892,7 @@
                             </div>
                             <div class="text-center mt-2">
                                 <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Screw Lid Bottle - Pink</h3>
+                                <p class="price">Rs 1,500</p>
                             </div>
                         </div>
 
@@ -1886,6 +1910,7 @@
                             </div>
                             <div class="text-center mt-2">
                                 <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Screw Lid Bottle - Silver</h3>
+                                <p class="price">Rs 1,500</p>
                             </div>
                         </div>
 
@@ -1903,6 +1928,7 @@
                             </div>
                             <div class="text-center mt-2">
                                 <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Screw Lid Bottle - Silver White</h3>
+                                <p class="price">Rs 1,500</p>
                             </div>
                         </div>
                     </div>
@@ -1929,6 +1955,7 @@
                             </div>
                             <div class="text-center mt-2">
                                 <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Chug Lid Bottle - Black</h3>
+                                <p class="price">Rs 1,800</p>
                             </div>
                         </div>
 
@@ -1946,6 +1973,7 @@
                             </div>
                             <div class="text-center mt-2">
                                 <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Chug Lid Bottle - Navy Blue</h3>
+                                <p class="price">Rs 1,800</p>
                             </div>
                         </div>
 
@@ -1963,6 +1991,7 @@
                             </div>
                             <div class="text-center mt-2">
                                 <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Chug Lid Bottle - Sky Blue</h3>
+                                <p class="price">Rs 1,800</p>
                             </div>
                         </div>
 
@@ -1980,6 +2009,7 @@
                             </div>
                             <div class="text-center mt-2">
                                 <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Chug Lid Bottle - Silver</h3>
+                                <p class="price">Rs 1,800</p>
                             </div>
                         </div>
 
@@ -1997,6 +2027,7 @@
                             </div>
                             <div class="text-center mt-2">
                                 <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Chug Lid Bottle - White</h3>
+                                <p class="price">Rs 1,800</p>
                             </div>
                         </div>
                     </div>
@@ -2628,9 +2659,29 @@
         console.log('Initial cart from localStorage:', cart);
         console.log('Cart length on page load:', cart.length);
 
+        // Helper function to parse price correctly
+        function parsePrice(priceString) {
+            if (!priceString) return 0;
+            
+            // Remove "Rs", spaces, and commas, then parse as float
+            const cleanPrice = priceString.toString()
+                .replace(/Rs\s*/gi, '')
+                .replace(/,/g, '')
+                .replace(/\s+/g, '')
+                .trim();
+            
+            const parsedPrice = parseFloat(cleanPrice);
+            console.log(`Price parsing: "${priceString}" -> "${cleanPrice}" -> ${parsedPrice}`);
+            
+            return isNaN(parsedPrice) ? 0 : parsedPrice;
+        }
+
         // Add item to cart
         function addToCart(name, price, image) {
             console.log('addToCart called with:', { name, price, image });
+            
+            const parsedPrice = parsePrice(price);
+            console.log('Parsed price:', parsedPrice);
             
             const existingItem = cart.find(item => item.name === name);
             
@@ -2640,7 +2691,7 @@
             } else {
                 const newItem = {
                     name: name,
-                    price: parseFloat(price),
+                    price: parsedPrice,
                     image: image,
                     quantity: 1
                 };
@@ -2745,10 +2796,19 @@
             console.log('updateCartTotal called');
             const cartTotal = document.getElementById('cart-total');
             console.log('Cart total element:', cartTotal);
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            const total = cart.reduce((sum, item) => {
+                const itemPrice = parsePrice(item.price) || 0;
+                const itemQuantity = parseInt(item.quantity) || 0;
+                const itemTotal = itemPrice * itemQuantity;
+                console.log(`Item: ${item.name}, Price: ${itemPrice}, Quantity: ${itemQuantity}, Total: ${itemTotal}`);
+                return sum + itemTotal;
+            }, 0);
+            
             console.log('Calculated total:', total);
             if (cartTotal) {
-                cartTotal.textContent = `Rs ${total.toFixed(2)}`;
+                const formattedTotal = isNaN(total) ? 0 : total;
+                cartTotal.textContent = `Rs ${formattedTotal.toFixed(2)}`;
                 console.log('Updated cart total display to:', cartTotal.textContent);
             } else {
                 console.error('Cart total element not found!');
@@ -2786,7 +2846,7 @@
                                 </div>
                                 <div>
                                     <h4 class="text-yellow-500 font-semibold text-sm">${item.name}</h4>
-                                    <p class="text-gray-400 text-xs">Rs ${item.price}</p>
+                                    <p class="text-gray-400 text-xs">Rs ${parsePrice(item.price).toFixed(2)}</p>
                                 </div>
                             </div>
                             <div class="flex items-center space-x-2">
@@ -3122,6 +3182,62 @@
         window.clearCart = clearCart;
         window.showCartPopup = showCartPopup;
         window.hideCartPopup = hideCartPopup;
+        
+        // Test function to verify cart is working
+        window.testCart = function() {
+            console.log('Testing cart functionality...');
+            console.log('Cart array:', cart);
+            console.log('Cart count:', cartCount);
+            addToCart('Test Product', 100, 'test-image');
+            console.log('Test product added to cart');
+        };
+        
+        // Function to refresh price display
+        window.refreshPrices = function() {
+            console.log('Refreshing price display...');
+            const priceElements = document.querySelectorAll('.price');
+            priceElements.forEach((priceEl, index) => {
+                // Add a subtle animation to refresh the display
+                priceEl.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    priceEl.style.transform = 'scale(1)';
+                }, 100);
+                console.log(`Price ${index + 1}: ${priceEl.textContent}`);
+            });
+            console.log(`Refreshed ${priceElements.length} price elements`);
+        };
+        
+        // Function to fix cart NaN issues
+        window.fixCartNaN = function() {
+            console.log('Fixing cart NaN issues...');
+            let hasIssues = false;
+            
+            // Check and fix existing cart items
+            cart.forEach((item, index) => {
+                if (isNaN(item.price) || item.price === null || item.price === undefined) {
+                    console.log(`Fixing item ${index}: ${item.name} with invalid price: ${item.price}`);
+                    item.price = 0;
+                    hasIssues = true;
+                }
+                if (isNaN(item.quantity) || item.quantity === null || item.quantity === undefined) {
+                    console.log(`Fixing item ${index}: ${item.name} with invalid quantity: ${item.quantity}`);
+                    item.quantity = 1;
+                    hasIssues = true;
+                }
+            });
+            
+            if (hasIssues) {
+                localStorage.setItem('cart', JSON.stringify(cart));
+                console.log('Cart fixed and saved to localStorage');
+            }
+            
+            // Refresh cart display
+            renderCart();
+            updateCartTotal();
+            updateCartCount();
+            
+            console.log('Cart NaN fix completed');
+        };
         window.renderCart = renderCart;
         window.updateCartCount = updateCartCount;
         window.updateCartTotal = updateCartTotal;
