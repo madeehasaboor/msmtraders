@@ -2441,95 +2441,95 @@
                     desc: 'Professional 12-piece stainless steel cookware set with superior heat distribution and durability'
                 },
                 'BLU Flip Lid Bottle - Black': {
-                    price: '3,000',
+                    price: '3,500',
                     desc: 'Premium 18oz flip lid bottle in black with advanced insulation technology and flip lid design'
                 },
                 'BLU Flip Lid Bottle - White': {
-                    price: '3,000',
+                    price: '3,500',
                     desc: 'Premium 18oz flip lid bottle in white with advanced insulation technology and flip lid design'
                 },
                 'BLU Flip Lid Bottle - Silver': {
-                    price: '3,000',
+                    price: '3,500',
                     desc: 'Premium 18oz flip lid bottle in silver with advanced insulation technology and flip lid design'
                 },
                 'BLU Flip Lid Bottle - Baby Pink': {
-                    price: '3,000',
+                    price: '3,500',
                     desc: 'Premium 18oz flip lid bottle in baby pink with advanced insulation technology and flip lid design'
                 },
                 'BLU Flip Lid Bottle - Blue': {
-                    price: '3,000',
+                    price: '3,500',
                     desc: 'Premium 18oz flip lid bottle in blue with advanced insulation technology and flip lid design'
                 },
                 'BLU Screw Lid Bottle - Black': {
-                    price: '3,300',
+                    price: '3,800',
                     desc: 'Premium 24oz screw lid bottle in black with advanced insulation technology and secure screw cap design'
                 },
                 'BLU Screw Lid Bottle - Blue': {
-                    price: '3,300',
+                    price: '3,800',
                     desc: 'Premium 24oz screw lid bottle in blue with advanced insulation technology and secure screw cap design'
                 },
                 'BLU Screw Lid Bottle - Pink': {
-                    price: '3,300',
+                    price: '3,800',
                     desc: 'Premium 24oz screw lid bottle in pink with advanced insulation technology and secure screw cap design'
                 },
                 'BLU Screw Lid Bottle - Silver': {
-                    price: '3,300',
+                    price: '3,800',
                     desc: 'Premium 24oz screw lid bottle in silver with advanced insulation technology and secure screw cap design'
                 },
                 'BLU Screw Lid Bottle - Silver White': {
-                    price: '3,300',
+                    price: '3,800',
                     desc: 'Premium 24oz screw lid bottle in silver white with advanced insulation technology and secure screw cap design'
                 },
                 'BLU Chug Lid Bottle - Black': {
-                    price: '3,500',
+                    price: '4,300',
                     desc: 'Premium chug lid bottle in black with advanced insulation technology and convenient chug lid design for easy drinking'
                 },
                 'BLU Chug Lid Bottle - Navy Blue': {
-                    price: '3,500',
+                    price: '4,300',
                     desc: 'Premium chug lid bottle in navy blue with advanced insulation technology and convenient chug lid design for easy drinking'
                 },
                 'BLU Chug Lid Bottle - Sky Blue': {
-                    price: '3,500',
+                    price: '4,300',
                     desc: 'Premium chug lid bottle in sky blue with advanced insulation technology and convenient chug lid design for easy drinking'
                 },
                 'BLU Chug Lid Bottle - Silver': {
-                    price: '3,500',
+                    price: '4,300',
                     desc: 'Premium chug lid bottle in silver with advanced insulation technology and convenient chug lid design for easy drinking'
                 },
                 'BLU Chug Lid Bottle - White': {
-                    price: '3,500',
+                    price: '4,300',
                     desc: 'Premium chug lid bottle in white with advanced insulation technology and convenient chug lid design for easy drinking'
                 },
             'BLU Tumbler 30 OZ - Black': {
-                price: '4,000',
+                price: '4,500',
                 desc: 'Premium 30oz stainless steel tumbler in black with advanced insulation technology for hot and cold beverages'
             },
             'BLU Tumbler 30 OZ - Pink': {
-                price: '4,000',
+                price: '4,500',
                 desc: 'Premium 30oz stainless steel tumbler in pink with advanced insulation technology for hot and cold beverages'
             },
             'BLU Tumbler 30 OZ - Red': {
-                price: '4,000',
+                price: '4,500',
                 desc: 'Premium 30oz stainless steel tumbler in red with advanced insulation technology for hot and cold beverages'
             },
             'BLU Tumbler 30 OZ - White': {
-                price: '4,000',
+                price: '4,500',
                 desc: 'Premium 30oz stainless steel tumbler in white with advanced insulation technology for hot and cold beverages'
             },
             'BLU Tumbler 40 OZ - Black': {
-                price: '5,000',
+                price: '5,500',
                 desc: 'Premium 40oz stainless steel tumbler in black with advanced insulation technology for hot and cold beverages'
             },
             'BLU Tumbler 40 OZ - Pink': {
-                price: '5,000',
+                price: '5,500',
                 desc: 'Premium 40oz stainless steel tumbler in pink with advanced insulation technology for hot and cold beverages'
             },
             'BLU Tumbler 40 OZ - Purple': {
-                price: '5,000',
+                price: '5,500',
                 desc: 'Premium 40oz stainless steel tumbler in purple with advanced insulation technology for hot and cold beverages'
             },
             'BLU Tumbler 40 OZ - White': {
-                price: '5,000',
+                price: '5,500',
                 desc: 'Premium 40oz stainless steel tumbler in white with advanced insulation technology for hot and cold beverages'
             },
             '7 in 1 Kitchen Masala Rack Wall-mounted Spice Rack': {
@@ -2543,6 +2543,47 @@
             };
 
             function parsePrice(text){ if(!text) return ''; const m=text.replace(/[,\sâ‚¨$]/g,'').match(/(\d+(?:\.\d+)?)/); return m?m[1]:''; }
+
+            // Ensure BLU bottle/tumbler prices are visible on cards
+            function injectBluPrices(){
+                const bluMap = {
+                    'BLU Flip Lid Bottle - Black': '3,500',
+                    'BLU Flip Lid Bottle - White': '3,500',
+                    'BLU Flip Lid Bottle - Silver': '3,500',
+                    'BLU Flip Lid Bottle - Baby Pink': '3,500',
+                    'BLU Flip Lid Bottle - Blue': '3,500',
+                    'BLU Screw Lid Bottle - Black': '3,800',
+                    'BLU Screw Lid Bottle - Blue': '3,800',
+                    'BLU Screw Lid Bottle - Pink': '3,800',
+                    'BLU Screw Lid Bottle - Silver': '3,800',
+                    'BLU Screw Lid Bottle - Silver White': '3,800',
+                    'BLU Chug Lid Bottle - Black': '4,300',
+                    'BLU Chug Lid Bottle - Navy Blue': '4,300',
+                    'BLU Chug Lid Bottle - Sky Blue': '4,300',
+                    'BLU Chug Lid Bottle - Silver': '4,300',
+                    'BLU Chug Lid Bottle - White': '4,300',
+                    'BLU Tumbler 30 OZ - Black': '4,500',
+                    'BLU Tumbler 30 OZ - Pink': '4,500',
+                    'BLU Tumbler 30 OZ - Red': '4,500',
+                    'BLU Tumbler 30 OZ - White': '4,500',
+                    'BLU Tumbler 40 OZ - Black': '5,500',
+                    'BLU Tumbler 40 OZ - Pink': '5,500',
+                    'BLU Tumbler 40 OZ - Purple': '5,500',
+                    'BLU Tumbler 40 OZ - White': '5,500'
+                };
+                document.querySelectorAll('.product-card h3').forEach(h => {
+                    const name = h.textContent.trim();
+                    const price = bluMap[name];
+                    if(!price) return;
+                    let priceEl = h.parentElement.querySelector('.price');
+                    if(!priceEl){
+                        priceEl = document.createElement('p');
+                        priceEl.className = 'price';
+                        h.insertAdjacentElement('afterend', priceEl);
+                    }
+                    priceEl.textContent = `Rs ${price}`;
+                });
+            }
             function smartAdd(name, priceVal, image){ 
                 addToCart(name, priceVal || '', image || ''); 
             }
@@ -2555,7 +2596,7 @@
             popupImage.alt = name;
             popupTitle.textContent = name;
             popupDescription.textContent = description;
-            popupPrice.textContent = price + ' RPS';
+            popupPrice.textContent = `Rs ${parsePrice(price) || price}`;
             
             // Set up add to cart button
             addToCartBtn.onclick = function() {
@@ -3256,6 +3297,9 @@
             cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
             updateCartCount();
             console.log('Cart initialized with', cartCount, 'items');
+
+            // Inject BLU prices after DOM ready
+            try { injectBluPrices(); } catch(e) { console.warn('injectBluPrices unavailable', e); }
             
             // Debug: Check if elements exist
             const menu = document.getElementById('navbar-menu');
