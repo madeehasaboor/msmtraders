@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Bedcovers - MSM Traders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#fbbf24',
+                        secondary: '#000000',
+                        golden: '#fbbf24',
+                        dark: '#000000',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .black-gradient {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+        }
+        .golden-gradient {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        }
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1f2937; /* bg-gray-800 */
+            border-radius: 0.75rem; /* match rounded-xl on images */
+        }
+        .price {
+            color: #fbbf24;
+            font-weight: 800;
+            font-size: 1.25rem;
+            margin-top: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            transition: all 0.3s ease;
+        }
+        .product-card:hover .price {
+            color: #ffffff;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: unset;
+            -webkit-text-fill-color: unset;
+            background-clip: unset;
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+            border-color: #fbbf24;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="bg-black border-b border-golden sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="MSM TRADERS LOGO.jpeg" alt="MSM Traders" class="h-8 w-8 rounded">
+                        <span class="text-xl font-bold text-golden">MSM TRADERS</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-golden transition-colors">Home</a>
+                    <a href="car_care.html" class="text-gray-300 hover:text-golden transition-colors">Car Care</a>
+                    <a href="premium_perfumes.html" class="text-gray-300 hover:text-golden transition-colors">Perfumes</a>
+                    <a href="crockery.html" class="text-gray-300 hover:text-golden transition-colors">Crockery</a>
+                    <a href="microfiber_and_cleaners.html" class="text-gray-300 hover:text-golden transition-colors">Cleaners</a>
+                    <a href="laptops.html" class="text-gray-300 hover:text-golden transition-colors">Laptops</a>
+                    <a href="special_offers.html" class="text-golden font-semibold">Special Offers</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="cart-btn" class="relative bg-golden text-black px-4 py-2 rounded-lg hover:bg-yellow-500 transition-colors">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="black-gradient py-8 lg:py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <img src="bedding category/banner.jpeg" alt="Bedding Category Banner" class="mx-auto mb-6 max-w-full h-auto rounded-lg shadow-lg">
+            <h1 class="text-4xl lg:text-6xl font-bold text-golden mb-2">Premium Bedcovers</h1>
+            <p class="text-lg lg:text-2xl text-gray-300">Luxurious and comfortable bedcovers for every bedroom</p>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-16 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-golden mb-12 text-center">Shop by Category</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Cotton -->
+                <a href="#cotton" class="group block bg-gray-900 border border-golden/40 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-500/20 transition-all duration-300">
+                    <div class="h-28 sm:h-32 md:h-36 lg:h-40 overflow-hidden">
+                        <img src="bedding category/cotton bedsheet.jpeg" alt="Cotton Bedsheet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-3 text-center">
+                        <h3 class="text-sm sm:text-base font-semibold text-golden">Cotton</h3>
+                        <p class="text-xs text-gray-400">Soft & Breathable</p>
+                    </div>
+                </a>
+
+                <!-- Silk -->
+                <a href="#silk" class="group block bg-gray-900 border border-golden/40 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-500/20 transition-all duration-300">
+                    <div class="h-28 sm:h-32 md:h-36 lg:h-40 overflow-hidden">
+                        <img src="bedding category/silk sheets.jpeg" alt="Silk Sheets" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-3 text-center">
+                        <h3 class="text-sm sm:text-base font-semibold text-golden">Silk</h3>
+                        <p class="text-xs text-gray-400">Luxury & Elegant</p>
+                    </div>
+                </a>
+
+                <!-- Polyester -->
+                <a href="#polyester" class="group block bg-gray-900 border border-golden/40 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-500/20 transition-all duration-300">
+                    <div class="h-28 sm:h-32 md:h-36 lg:h-40 overflow-hidden">
+                        <img src="bedding category/polyster sheet.jpeg" alt="Polyester Sheets" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-3 text-center">
+                        <h3 class="text-sm sm:text-base font-semibold text-golden">Polyester</h3>
+                        <p class="text-xs text-gray-400">Durable & Easy Care</p>
+                    </div>
+                </a>
+
+                <!-- Linen -->
+                <a href="#linen" class="group block bg-gray-900 border border-golden/40 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-500/20 transition-all duration-300">
+                    <div class="h-28 sm:h-32 md:h-36 lg:h-40 overflow-hidden">
+                        <img src="bedding category/linen sheets.jpeg" alt="Linen Sheets" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="p-3 text-center">
+                        <h3 class="text-sm sm:text-base font-semibold text-golden">Linen</h3>
+                        <p class="text-xs text-gray-400">Natural & Fresh</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cotton Bedcovers Section -->
+    <section id="cotton" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">Cotton Bedcovers Collection</h2>
+                <p class="text-gray-600 text-lg">Soft, breathable, and comfortable cotton bedcovers for all seasons</p>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 products-grid">
+                <!-- MUSTRAD AND WHITE COTTON KING SIZE BEDSHEET -->
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                    <div class="image-container">
+                        <img src="BEDDING/MUSTRAD AND WHITE COTTON KING SIZE BEDSHEET.jpg" alt="Mustard and White Cotton King Size Bedsheet" class="max-w-full max-h-full object-contain rounded-xl">
+                        <div class="absolute top-2 right-2 bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-bold">King Size</div>
+                    </div>
+                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Mustard & White Cotton Bedsheet (King)</h3>
+                    <p class="price">Rs 3,200</p>
+                </div>
+
+                <!-- SKY BLUE N BLACK COTTON KING SIZE BEDSHEETS -->
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                    <div class="image-container">
+                        <img src="BEDDING/SKY BLUE N BLACK COTTON KING SIZE BEDSHEETS.jpg" alt="Sky Blue & Black Cotton King Size Bedsheets" class="max-w-full max-h-full object-contain rounded-xl">
+                        <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">King Size</div>
+                    </div>
+                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Sky Blue & Black Cotton Bedsheets (King)</h3>
+                    <p class="price">Rs 3,200</p>
+                </div>
+
+                <!-- RED N WHITE COTTON KING SIZE BEDSHEET -->
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                    <div class="image-container">
+                        <img src="BEDDING/RED N WHITE COTTON KING SIZE BEDSHEET.jpg" alt="Red & White Cotton King Size Bedsheet" class="max-w-full max-h-full object-contain rounded-xl">
+                        <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">King Size</div>
+                    </div>
+                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Red & White Cotton Bedsheet (King)</h3>
+                    <p class="price">Rs 3,200</p>
+                </div>
+
+                <!-- GREEN AND WHITE COTTON KING SIZE BED SHEET -->
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                    <div class="image-container">
+                        <img src="BEDDING/GREEN AND WHITE COTTON KING SIZE BED SHEET.jpg" alt="Green & White Cotton King Size Bedsheet" class="max-w-full max-h-full object-contain rounded-xl">
+                        <div class="absolute top-2 right-2 bg-green-600 text-white px-2 py-1 rounded-full text-xs font-bold">King Size</div>
+                    </div>
+                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Green & White Cotton Bedsheet (King)</h3>
+                    <p class="price">Rs 3,200</p>
+                </div>
+
+                <!-- WHITE AND BROWN COTTON KING SIZE BEDSHEET -->
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                    <div class="image-container">
+                        <img src="BEDDING/WHITE AND BROWN COTTON KING SIZE BEDSHEET.jpg" alt="White & Brown Cotton King Size Bedsheet" class="max-w-full max-h-full object-contain rounded-xl">
+                        <div class="absolute top-2 right-2 bg-amber-600 text-white px-2 py-1 rounded-full text-xs font-bold">King Size</div>
+                    </div>
+                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">White & Brown Cotton Bedsheet (King)</h3>
+                    <p class="price">Rs 3,200</p>
+                </div>
+
+                <!-- SKY BLUE COTTON KING SIZE BEDSHEET -->
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                    <div class="image-container">
+                        <img src="BEDDING/SKY BLUE COTTON KING SIZE BEDSHEET.jpg" alt="Sky Blue Cotton King Size Bedsheet" class="max-w-full max-h-full object-contain rounded-xl">
+                        <div class="absolute top-2 right-2 bg-sky-500 text-white px-2 py-1 rounded-full text-xs font-bold">King Size</div>
+                    </div>
+                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Sky Blue Cotton Bedsheet (King)</h3>
+                    <p class="price">Rs 3,200</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Silk Bedcovers Section -->
+    <section id="silk" class="py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">Silk Bedcovers Collection</h2>
+                <p class="text-gray-300 text-lg">Luxurious silk bedcovers for the ultimate comfort and elegance</p>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 products-grid">
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/300x200/fbbf24/000000?text=Silk+Bedcover+1" alt="Pure Silk Bedcover" class="w-full h-full object-cover rounded-xl">
+                        <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-bold">Pure Silk</div>
+                    </div>
+                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Pure Silk Bedcover</h3>
+                    <p class="price">Rs 5,500</p>
+                </div>
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/300x200/fbbf24/000000?text=Silk+Bedcover+2" alt="Silk Satin Bedcover" class="w-full h-full object-cover rounded-xl">
+                        <div class="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-bold">Satin</div>
+                    </div>
+                    <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Silk Satin Bedcover</h3>
+                    <p class="price">Rs 4,200</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-gray-800 rounded-lg max-w-md w-full max-h-[80vh] overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-golden">Shopping Cart</h3>
+                        <button id="close-cart" class="text-gray-400 hover:text-white">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div id="cart-items" class="space-y-4 mb-6">
+                        <!-- Cart items will be populated here -->
+                    </div>
+                    <div class="border-t border-gray-700 pt-4">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-lg font-semibold text-white">Total:</span>
+                            <span id="cart-total" class="text-xl font-bold text-golden">Rs 0.00</span>
+                        </div>
+                        <div class="space-y-3">
+                            <input type="text" id="cart-customer-name" placeholder="Full Name" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-golden">
+                            <input type="tel" id="cart-customer-phone" placeholder="Phone Number" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-golden">
+                            <textarea id="cart-customer-address" placeholder="Complete Address" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-golden h-20 resize-none"></textarea>
+                        </div>
+                        <div class="flex space-x-3 mt-4">
+                            <button id="whatsapp-order" class="flex-1 bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors">
+                                <i class="fab fa-whatsapp mr-2"></i>Order via WhatsApp
+                            </button>
+                            <button id="jazzcash-payment" class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
+                                <i class="fas fa-credit-card mr-2"></i>Jazz Cash
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-gray-800 rounded-lg max-w-2xl w-full overflow-hidden">
+                <div class="flex justify-between items-center p-4 border-b border-gray-700">
+                    <h3 id="modal-product-title" class="text-xl font-bold text-golden">Product Details</h3>
+                    <button id="close-product-modal" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-900 rounded-lg flex items-center justify-center h-64 md:h-80">
+                        <img id="modal-product-image" src="" alt="Product Image" class="max-w-full max-h-full object-contain rounded-lg">
+                    </div>
+                    <div>
+                        <p id="modal-product-price" class="text-2xl font-bold text-golden mb-4">Rs 0.00</p>
+                        <div class="space-y-2 text-gray-300 text-sm mb-6">
+                            <p>Premium quality fabric • King size fit</p>
+                            <p>Soft, breathable and comfortable</p>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button id="modal-add-to-cart" class="flex-1 bg-golden text-black py-2 px-4 rounded-lg font-semibold hover:bg-yellow-500 transition-colors">
+                                <i class="fas fa-cart-plus mr-2"></i>Add to Cart
+                            </button>
+                            <button id="modal-buy-now" class="flex-1 bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                                <i class="fab fa-whatsapp mr-2"></i>Buy via WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jazz Cash Payment Modal -->
+    <div id="jazzcash-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-gray-800 rounded-lg max-w-md w-full">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-golden">Jazz Cash Payment</h3>
+                        <button id="close-jazzcash" class="text-gray-400 hover:text-white">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="space-y-4">
+                        <input type="text" id="jazzcash-customer-name" placeholder="Full Name" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-golden">
+                        <input type="tel" id="jazzcash-customer-phone" placeholder="Phone Number" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-golden">
+                        <textarea id="jazzcash-customer-address" placeholder="Complete Address" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-golden h-20 resize-none"></textarea>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-semibold text-white">Total Amount:</span>
+                            <span id="jazzcash-total" class="text-xl font-bold text-golden">Rs 0.00</span>
+                        </div>
+                        <button id="confirm-jazzcash" class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-credit-card mr-2"></i>Confirm Jazz Cash Payment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-8 lg:py-12 border-t border-golden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-golden">MSM TRADERS</h3>
+                    <p class="text-gray-400">Your trusted partner for premium products and exceptional service.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 text-golden">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-golden">About Us</a></li>
+                        <li><a href="#" class="hover:text-golden">Contact</a></li>
+                        <li><a href="#" class="hover:text-golden">Shipping</a></li>
+                        <li><a href="#" class="hover:text-golden">Returns</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 text-golden">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-golden"></i>
+                            <span>+923258573925</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-golden"></i>
+                            <span>Phase 2 DHA Lahore</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-2 text-golden"></i>
+                            <span>24 Hours Open</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-golden mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 MSM Traders. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartCount = 0;
+        const whatsappNumber = '+923258573925';
+
+        // Helper function to parse price correctly
+        function parsePrice(priceString) {
+            if (!priceString) return 0;
+            const cleanPrice = priceString.toString()
+                .replace(/Rs\s*/gi, '')
+                .replace(/,/g, '')
+                .replace(/\s+/g, '')
+                .trim();
+            const parsedPrice = parseFloat(cleanPrice);
+            return isNaN(parsedPrice) ? 0 : parsedPrice;
+        }
+
+        // Add item to cart
+        function addToCart(name, price, image) {
+            const parsedPrice = parsePrice(price);
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                const newItem = {
+                    name: name,
+                    price: parsedPrice,
+                    image: image,
+                    quantity: 1
+                };
+                cart.push(newItem);
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            showNotification(`${name} added to cart!`, 'success');
+        }
+
+        // Update cart count
+        function updateCartCount() {
+            cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').textContent = cartCount;
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg ${
+                type === 'success' ? 'bg-green-600' : 
+                type === 'error' ? 'bg-red-600' : 'bg-blue-600'
+            } text-white`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Show cart modal
+        function showCartPopup() {
+            renderCart();
+            updateCartTotal();
+            document.getElementById('cart-modal').classList.remove('hidden');
+        }
+
+        // Update cart total
+        function updateCartTotal() {
+            const cartTotal = document.getElementById('cart-total');
+            const total = cart.reduce((sum, item) => {
+                const itemPrice = parsePrice(item.price) || 0;
+                const itemQuantity = parseInt(item.quantity) || 0;
+                return sum + (itemPrice * itemQuantity);
+            }, 0);
+            
+            if (cartTotal) {
+                const formattedTotal = isNaN(total) ? 0 : total;
+                cartTotal.textContent = `Rs ${formattedTotal.toFixed(2)}`;
+            }
+        }
+
+        // Render cart items
+        function renderCart() {
+            const cartItems = document.getElementById('cart-items');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div id="empty-cart" class="text-center py-8">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">Your cart is empty</p>
+                    </div>
+                `;
+            } else {
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item bg-gray-700 rounded-lg p-3 mb-3 border border-gray-600">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-gray-600 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-bed text-yellow-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-yellow-500 font-semibold text-sm">${item.name}</h4>
+                                    <p class="text-gray-400 text-xs">Rs ${parsePrice(item.price).toFixed(2)}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="quantity-btn bg-gray-600 hover:bg-gray-500 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}" data-action="decrease">-</button>
+                                <span class="text-yellow-500 font-semibold text-sm w-8 text-center">${item.quantity}</span>
+                                <button class="quantity-btn bg-gray-600 hover:bg-gray-500 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}" data-action="increase">+</button>
+                                <button class="remove-btn bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}">×</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Send WhatsApp order
+        function sendWhatsAppOrder() {
+            const customerName = document.getElementById('cart-customer-name').value.trim();
+            const customerPhone = document.getElementById('cart-customer-phone').value.trim();
+            const customerAddress = document.getElementById('cart-customer-address').value.trim();
+
+            if (!customerName || !customerPhone || !customerAddress) {
+                showNotification('Please fill in all customer information fields', 'error');
+                return;
+            }
+
+            if (cart.length === 0) {
+                showNotification('Your cart is empty', 'error');
+                return;
+            }
+
+            let message = `🛏️ *Bedcover Order from MSM Traders*\n\n`;
+            message += `👤 *Customer Details:*\n`;
+            message += `Name: ${customerName}\n`;
+            message += `Phone: ${customerPhone}\n`;
+            message += `Address: ${customerAddress}\n\n`;
+            message += `🛒 *Order Items:*\n`;
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                const itemTotal = parsePrice(item.price) * item.quantity;
+                total += itemTotal;
+                message += `${index + 1}. ${item.name}\n`;
+                message += `   Quantity: ${item.quantity}\n`;
+                message += `   Price: Rs ${parsePrice(item.price).toFixed(2)} each\n`;
+                message += `   Subtotal: Rs ${itemTotal.toFixed(2)}\n\n`;
+            });
+
+            message += `💰 *Total Amount: Rs ${total.toFixed(2)}*\n\n`;
+            message += `Thank you for choosing MSM Traders!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${whatsappNumber.replace('+', '')}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Open Jazz Cash payment
+        function openJazzCashPayment() {
+            const customerName = document.getElementById('cart-customer-name').value.trim();
+            const customerPhone = document.getElementById('cart-customer-phone').value.trim();
+            const customerAddress = document.getElementById('cart-customer-address').value.trim();
+
+            if (!customerName || !customerPhone || !customerAddress) {
+                showNotification('Please fill in all customer information fields', 'error');
+                return;
+            }
+
+            // Copy customer info to Jazz Cash modal
+            document.getElementById('jazzcash-customer-name').value = customerName;
+            document.getElementById('jazzcash-customer-phone').value = customerPhone;
+            document.getElementById('jazzcash-customer-address').value = customerAddress;
+
+            // Update total in Jazz Cash modal
+            const total = cart.reduce((sum, item) => {
+                const itemPrice = parsePrice(item.price) || 0;
+                const itemQuantity = parseInt(item.quantity) || 0;
+                return sum + (itemPrice * itemQuantity);
+            }, 0);
+            document.getElementById('jazzcash-total').textContent = `Rs ${total.toFixed(2)}`;
+
+            // Show Jazz Cash modal
+            document.getElementById('jazzcash-modal').classList.remove('hidden');
+        }
+
+        // Confirm Jazz Cash payment
+        function confirmJazzCashPayment() {
+            const customerName = document.getElementById('jazzcash-customer-name').value.trim();
+            const customerPhone = document.getElementById('jazzcash-customer-phone').value.trim();
+            const customerAddress = document.getElementById('jazzcash-customer-address').value.trim();
+
+            if (!customerName || !customerPhone || !customerAddress) {
+                showNotification('Please fill in all customer information fields', 'error');
+                return;
+            }
+
+            showNotification('Jazz Cash payment confirmed! Order will be processed.', 'success');
+            document.getElementById('jazzcash-modal').classList.add('hidden');
+            document.getElementById('cart-modal').classList.add('hidden');
+            
+            // Clear cart
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+
+            // Cart button
+            document.getElementById('cart-btn').addEventListener('click', showCartPopup);
+
+            // Close cart modal
+            document.getElementById('close-cart').addEventListener('click', function() {
+                document.getElementById('cart-modal').classList.add('hidden');
+            });
+
+            // Close Jazz Cash modal
+            document.getElementById('close-jazzcash').addEventListener('click', function() {
+                document.getElementById('jazzcash-modal').classList.add('hidden');
+            });
+
+            // WhatsApp order
+            document.getElementById('whatsapp-order').addEventListener('click', sendWhatsAppOrder);
+
+            // Jazz Cash payment
+            document.getElementById('jazzcash-payment').addEventListener('click', openJazzCashPayment);
+
+            // Confirm Jazz Cash
+            document.getElementById('confirm-jazzcash').addEventListener('click', confirmJazzCashPayment);
+
+            // Cart item interactions
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('quantity-btn')) {
+                    const index = parseInt(e.target.dataset.index);
+                    const action = e.target.dataset.action;
+                    
+                    if (action === 'increase') {
+                        cart[index].quantity += 1;
+                    } else if (action === 'decrease') {
+                        cart[index].quantity -= 1;
+                        if (cart[index].quantity <= 0) {
+                            cart.splice(index, 1);
+                        }
+                    }
+                    
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                    renderCart();
+                    updateCartTotal();
+                }
+                
+                if (e.target.classList.contains('remove-btn')) {
+                    const index = parseInt(e.target.dataset.index);
+                    cart.splice(index, 1);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                    renderCart();
+                    updateCartTotal();
+                }
+            });
+
+            // Product quick view on card click
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const name = this.querySelector('h3') ? this.querySelector('h3').textContent : 'Product';
+                    const price = this.querySelector('.price') ? this.querySelector('.price').textContent : 'Rs 0';
+                    const imgEl = this.querySelector('img');
+                    const image = imgEl ? imgEl.src : '';
+
+                    openProductModal({ name, price, image });
+                });
+            });
+
+            // Close product modal
+            document.getElementById('close-product-modal').addEventListener('click', closeProductModal);
+            document.getElementById('product-modal').addEventListener('click', function(e){
+                if (e.target === this) closeProductModal();
+            });
+        });
+
+        // Open product quick view modal
+        function openProductModal(product) {
+            const titleEl = document.getElementById('modal-product-title');
+            const priceEl = document.getElementById('modal-product-price');
+            const imageEl = document.getElementById('modal-product-image');
+            const addBtn = document.getElementById('modal-add-to-cart');
+            const buyBtn = document.getElementById('modal-buy-now');
+
+            titleEl.textContent = product.name || 'Product Details';
+            priceEl.textContent = product.price || 'Rs 0.00';
+            imageEl.src = product.image || '';
+            imageEl.alt = product.name || 'Product Image';
+
+            addBtn.onclick = function() {
+                addToCart(product.name, product.price, product.image);
+                closeProductModal();
+            };
+
+            buyBtn.onclick = function() {
+                // Prefill cart with one item and open cart for WhatsApp order
+                addToCart(product.name, product.price, product.image);
+                closeProductModal();
+                showCartPopup();
+            };
+
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        // Make functions globally accessible
+        window.addToCart = addToCart;
+        window.showCartPopup = showCartPopup;
+        window.updateCartCount = updateCartCount;
+        window.updateCartTotal = updateCartTotal;
+        window.showNotification = showNotification;
+        window.sendWhatsAppOrder = sendWhatsAppOrder;
+        window.openJazzCashPayment = openJazzCashPayment;
+        window.confirmJazzCashPayment = confirmJazzCashPayment;
+    </script>
+</body>
+</html>
