@@ -59,6 +59,7 @@
         .product-card .text-gray-300 {
             color: #ffffff !important;
         }
+
         
         .product-card:hover {
             transform: translateY(-8px) scale(1.02);
@@ -149,26 +150,6 @@
             }
         }
         
-        /* Category Cards Enhanced Responsiveness */
-        .category-grid {
-            display: grid;
-            gap: 1.5rem;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        }
-        
-        @media (max-width: 768px) {
-            .category-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 1rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .category-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.75rem;
-            }
-        }
         
         /* Enhanced Typography Responsiveness */
         @media (max-width: 768px) {
@@ -619,82 +600,162 @@
     </div>
 
     <!-- Categories Section -->
-    <section id="categories" class="section-padding bg-black">
-        <div class="max-w-7xl mx-auto container-padding">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl lg:text-4xl font-bold text-golden mb-4">Home Decor Categories</h2>
-                <p class="text-gray-300 text-lg">Discover our curated collection of home decor essentials</p>
+    <section id="categories" class="py-16 bg-gradient-to-br from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 bg-clip-text text-transparent mb-6">
+                    Home Decor Categories
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Discover our curated collection of premium home decor essentials that transform your living space
+                </p>
             </div>
-            
-            <div class="category-grid">
-                <!-- Candle Stands Category -->
-                <div class="category-card bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="scrollToSection('candle-stands')">
-                    <div class="relative">
-                        <img src="HOME DECOR CATEGORY/CATEGORY IMAG/CANDEL STANDS.jpg" 
+
+            <!-- Categories Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+                <!-- Candle Stands -->
+                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-2xl hover:shadow-amber-500/20 transition-all duration-500 transform hover:-translate-y-4 hover:scale-105 cursor-pointer" onclick="scrollToSection('candle-stands')">
+                    <div class="aspect-square relative overflow-hidden">
+                        <img src="category_images/CANDEL STANDS.jpg" 
                              alt="Candle Stands" 
-                             class="w-full h-32 object-cover">
-                        <div class="absolute inset-0 bg-black bg-opacity-30 hover:bg-opacity-20 transition duration-300"></div>
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-4 right-4 bg-amber-500 text-black px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                            Elegant
+                        </div>
                     </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-white font-semibold text-lg mb-2">Candle Stands</h3>
-                        <p class="text-gray-400 text-sm">Elegant candle holders</p>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
+                            Candle Stands
+                        </h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Premium candle holders and elegant stands
+                        </p>
+                        <div class="flex items-center text-amber-400 font-semibold">
+                            <span>Explore Collection</span>
+                            <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Lights Category -->
-                <div class="category-card bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="scrollToSection('lights')">
-                    <div class="relative">
-                        <img src="HOME DECOR CATEGORY/CATEGORY IMAG/LIGHTS.jpg" 
+                <!-- Lights -->
+                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-2xl hover:shadow-yellow-500/20 transition-all duration-500 transform hover:-translate-y-4 hover:scale-105 cursor-pointer" onclick="scrollToSection('lights')">
+                    <div class="aspect-square relative overflow-hidden">
+                        <img src="category_images/LIGHTS.jpg" 
                              alt="Lights" 
-                             class="w-full h-32 object-cover">
-                        <div class="absolute inset-0 bg-black bg-opacity-30 hover:bg-opacity-20 transition duration-300"></div>
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-4 right-4 bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                            Modern
+                        </div>
                     </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-white font-semibold text-lg mb-2">Lights</h3>
-                        <p class="text-gray-400 text-sm">LED & decorative lighting</p>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-yellow-400 transition-colors">
+                            Lighting
+                        </h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            LED lights and decorative lighting solutions
+                        </p>
+                        <div class="flex items-center text-yellow-400 font-semibold">
+                            <span>Explore Collection</span>
+                            <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Dustbins Category -->
-                <div class="category-card bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="scrollToSection('dustbins')">
-                    <div class="relative">
-                        <img src="HOME DECOR CATEGORY/CATEGORY IMAG/DUSTBIN.jpg" 
+                <!-- Dustbins -->
+                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 transform hover:-translate-y-4 hover:scale-105 cursor-pointer" onclick="scrollToSection('dustbins')">
+                    <div class="aspect-square relative overflow-hidden">
+                        <img src="category_images/DUSTBIN.jpg" 
                              alt="Dustbins" 
-                             class="w-full h-32 object-cover">
-                        <div class="absolute inset-0 bg-black bg-opacity-30 hover:bg-opacity-20 transition duration-300"></div>
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                            Premium
+                        </div>
                     </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-white font-semibold text-lg mb-2">Dustbins</h3>
-                        <p class="text-gray-400 text-sm">Stainless steel bins</p>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                            Dustbins
+                        </h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Stainless steel and premium waste bins
+                        </p>
+                        <div class="flex items-center text-blue-400 font-semibold">
+                            <span>Explore Collection</span>
+                            <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Tissue Boxes Category -->
-                <div class="category-card bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="scrollToSection('tissue-boxes')">
-                    <div class="relative">
-                        <img src="HOME DECOR CATEGORY/CATEGORY IMAG/Tissue Box Cover & Dispenser.jpg" 
+                <!-- Tissue Boxes -->
+                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-2xl hover:shadow-purple-500/20 transition-all duration-500 transform hover:-translate-y-4 hover:scale-105 cursor-pointer" onclick="scrollToSection('tissue-boxes')">
+                    <div class="aspect-square relative overflow-hidden">
+                        <img src="category_images/Tissue Box Cover & Dispenser.jpg" 
                              alt="Tissue Boxes" 
-                             class="w-full h-32 object-cover">
-                        <div class="absolute inset-0 bg-black bg-opacity-30 hover:bg-opacity-20 transition duration-300"></div>
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                            Luxury
+                        </div>
                     </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-white font-semibold text-lg mb-2">Tissue Boxes</h3>
-                        <p class="text-gray-400 text-sm">Decorative holders</p>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">
+                            Tissue Boxes
+                        </h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Decorative holders and dispensers
+                        </p>
+                        <div class="flex items-center text-purple-400 font-semibold">
+                            <span>Explore Collection</span>
+                            <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Trolleys Category -->
-                <div class="category-card bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="scrollToSection('trolleys')">
-                    <div class="relative">
-                        <img src="HOME DECOR CATEGORY/CATEGORY IMAG/TROLLYS.jpeg" 
+                <!-- Trolleys -->
+                <div class="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-2xl hover:shadow-green-500/20 transition-all duration-500 transform hover:-translate-y-4 hover:scale-105 cursor-pointer" onclick="scrollToSection('trolleys')">
+                    <div class="aspect-square relative overflow-hidden">
+                        <img src="category_images/TROLLYS.jpeg" 
                              alt="Trolleys" 
-                             class="w-full h-32 object-cover">
-                        <div class="absolute inset-0 bg-black bg-opacity-30 hover:bg-opacity-20 transition duration-300"></div>
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute top-4 right-4 bg-green-500 text-black px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                            Storage
+                        </div>
                     </div>
-                    <div class="p-4 text-center">
-                        <h3 class="text-white font-semibold text-lg mb-2">Trolleys</h3>
-                        <p class="text-gray-400 text-sm">Storage & kitchen carts</p>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">
+                            Trolleys
+                        </h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Kitchen carts and storage solutions
+                        </p>
+                        <div class="flex items-center text-green-400 font-semibold">
+                            <span>Explore Collection</span>
+                            <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Bottom CTA -->
+            <div class="text-center mt-16">
+                <div class="inline-flex items-center space-x-4">
+                    <div class="h-px bg-gradient-to-r from-transparent via-amber-500 to-transparent w-24"></div>
+                    <span class="text-amber-400 font-semibold text-lg">Premium Quality • Fast Delivery • 24/7 Support</span>
+                    <div class="h-px bg-gradient-to-r from-transparent via-amber-500 to-transparent w-24"></div>
                 </div>
             </div>
         </div>
@@ -785,9 +846,6 @@
                             <img src="HOME DECOR CATEGORY/LIGHTS/10 LED LIGHTS BATTERY OPPERATED.jpg" 
                                  alt="10 LED Lights Battery Operated" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Battery
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">10 LED Lights Battery Operated</h3>
@@ -808,9 +866,6 @@
                             <img src="HOME DECOR CATEGORY/LIGHTS/Multi-Cage Diamond Chandelier.jpg" 
                                  alt="Multi-Cage Diamond Chandelier" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Luxury
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Multi-Cage Diamond Chandelier</h3>
@@ -831,9 +886,6 @@
                             <img src="HOME DECOR CATEGORY/LIGHTS/Creative Cage Chandelier.jpg" 
                                  alt="Creative Cage Chandelier" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Creative
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Creative Cage Chandelier</h3>
@@ -854,9 +906,6 @@
                             <img src="HOME DECOR CATEGORY/LIGHTS/Retro Cage Pendant Light – Black.jpg" 
                                  alt="Retro Cage Pendant Light – Black" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Retro
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Retro Cage Pendant Light</h3>
@@ -877,9 +926,6 @@
                             <img src="HOME DECOR CATEGORY/LIGHTS/Geometric Pendant Light.jpg" 
                                  alt="Geometric Pendant Light" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-teal-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Modern
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Geometric Pendant Light</h3>
@@ -900,9 +946,6 @@
                             <img src="HOME DECOR CATEGORY/LIGHTS/Modern Iron Pendant Light.jpg" 
                                  alt="Modern Iron Pendant Light" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-gray-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Iron
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Modern Iron Pendant Light</h3>
@@ -923,9 +966,6 @@
                             <img src="HOME DECOR CATEGORY/LIGHTS/LED Water Drops Outdoor Garden.jpg" 
                                  alt="LED Water Drops Outdoor Garden" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-cyan-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Outdoor
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">LED Water Drops Outdoor Garden</h3>
@@ -946,9 +986,6 @@
                             <img src="HOME DECOR CATEGORY/LIGHTS/MOON LIGHTS.jpg" 
                                  alt="Moon Lights" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-indigo-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Moon
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Moon Lights</h3>
@@ -969,9 +1006,6 @@
                             <img src="HOME DECOR CATEGORY/LIGHTS/LED Candle Long Pole.webp" 
                                  alt="LED Candle Long Pole" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                LED
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">LED Candle Long Pole</h3>
@@ -1001,9 +1035,6 @@
                             <img src="HOME DECOR CATEGORY/DUSTBINS/Homeatic Grace Pedal Bin Stainless Steel Soft Close 5 Liters.jpg" 
                                  alt="Homeatic Grace Pedal Bin Stainless Steel Soft Close 5 Liters" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Soft Close
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Homeatic Grace Pedal Bin 5L</h3>
@@ -1024,9 +1055,6 @@
                             <img src="HOME DECOR CATEGORY/DUSTBINS/Homeatic Grace Pedal Bin Stainless.jpg" 
                                  alt="Homeatic Grace Pedal Bin Stainless" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-gray-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Stainless
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Homeatic Grace Pedal Bin</h3>
@@ -1047,9 +1075,6 @@
                             <img src="HOME DECOR CATEGORY/DUSTBINS/Pedal bin 7Ltr Stainless Steel Dustbin.jpg" 
                                  alt="Pedal bin 7Ltr Stainless Steel Dustbin" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                7L
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Pedal Bin 7L Stainless Steel</h3>
@@ -1070,9 +1095,6 @@
                             <img src="HOME DECOR CATEGORY/DUSTBINS/Pedal bin 12Ltr Stainless Steel Dustbin.jpg" 
                                  alt="Pedal bin 12Ltr Stainless Steel Dustbin" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                12L
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Pedal Bin 12L Stainless Steel</h3>
@@ -1093,9 +1115,6 @@
                             <img src="HOME DECOR CATEGORY/DUSTBINS/Pedal bin 20Ltr Stainless Stee.jpg" 
                                  alt="Pedal bin 20Ltr Stainless Steel" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                20L
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Pedal Bin 20L Stainless Steel</h3>
@@ -1116,9 +1135,6 @@
                             <img src="HOME DECOR CATEGORY/DUSTBINS/Metal Waste Paper Dustbin Small.jpg" 
                                  alt="Metal Waste Paper Dustbin Small" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-teal-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Small
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Metal Waste Paper Dustbin Small</h3>
@@ -1139,9 +1155,6 @@
                             <img src="HOME DECOR CATEGORY/DUSTBINS/Metal Waste Paper Dustbin Medium.jpg" 
                                  alt="Metal Waste Paper Dustbin Medium" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Medium
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Metal Waste Paper Dustbin Medium</h3>
@@ -1162,9 +1175,6 @@
                             <img src="HOME DECOR CATEGORY/DUSTBINS/Metal Waste Paper Dustbin Large.jpg" 
                                  alt="Metal Waste Paper Dustbin Large" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Large
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Metal Waste Paper Dustbin Large</h3>
@@ -1185,9 +1195,6 @@
                             <img src="HOME DECOR CATEGORY/DUSTBINS/Pedal bin 8Ltr Stainless Steel.jpg" 
                                  alt="Pedal bin 8Ltr Stainless Steel" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-indigo-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                8L
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Pedal Bin 8L Stainless Steel</h3>
@@ -1208,9 +1215,6 @@
                             <img src="HOME DECOR CATEGORY/DUSTBINS/Pedal bin 5Ltr Stainlesteel.jpg" 
                                  alt="Pedal bin 5Ltr Stainless Steel" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-cyan-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                5L
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Pedal Bin 5L Stainless Steel</h3>
@@ -1231,9 +1235,6 @@
                             <img src="HOME DECOR CATEGORY/DUSTBINS/Appollo Fresh Hut Bin Swing Top.jpeg" 
                                  alt="Appollo Fresh Hut Bin Swing Top" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Swing Top
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Appollo Fresh Hut Bin</h3>
@@ -1254,9 +1255,6 @@
                             <img src="HOME DECOR CATEGORY/DUSTBINS/Pedal bin 12Ltr Stainless Steel.jpg" 
                                  alt="Pedal bin 12Ltr Stainless Steel" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-emerald-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                12L
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Pedal Bin 12L Stainless Steel</h3>
@@ -1286,9 +1284,6 @@
                             <img src="HOME DECOR CATEGORY/tissue boxes/Royal Silver fancy Tissue Box Holder.jpg" 
                                  alt="Royal Silver Fancy Tissue Box Holder" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-gray-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Silver
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Royal Silver Fancy Tissue Box</h3>
@@ -1309,9 +1304,6 @@
                             <img src="HOME DECOR CATEGORY/tissue boxes/3 in 1 Kitchen Roll Dispenser.jpeg" 
                                  alt="3 in 1 Kitchen Roll Dispenser" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                3 in 1
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">3 in 1 Kitchen Roll Dispenser</h3>
@@ -1332,9 +1324,6 @@
                             <img src="HOME DECOR CATEGORY/tissue boxes/Kitchen & Living Room Tissue Holder.jpg" 
                                  alt="Kitchen & Living Room Tissue Holder" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Multi-Room
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Kitchen & Living Room Tissue Holder</h3>
@@ -1355,9 +1344,6 @@
                             <img src="HOME DECOR CATEGORY/tissue boxes/Tissue Box Holder Tissue Box.jpg" 
                                  alt="Tissue Box Holder" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Classic
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Tissue Box Holder</h3>
@@ -1378,9 +1364,6 @@
                             <img src="HOME DECOR CATEGORY/tissue boxes/Tissue Box Cover & Dispenser.jpg" 
                                  alt="Tissue Box Cover & Dispenser" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Cover
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Tissue Box Cover & Dispenser</h3>
@@ -1410,9 +1393,6 @@
                             <img src="HOME DECOR CATEGORY/trollys/5-Tier Rotating Baskets Kitchen.webp" 
                                  alt="5-Tier Rotating Baskets Kitchen" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                5-Tier
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">5-Tier Rotating Baskets Kitchen</h3>
@@ -1433,9 +1413,6 @@
                             <img src="HOME DECOR CATEGORY/trollys/Beechwood Folding 2 Shelf Trolley.jpeg" 
                                  alt="Beechwood Folding 2 Shelf Trolley" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-amber-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Folding
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">Beechwood Folding 2 Shelf Trolley</h3>
@@ -1456,9 +1433,6 @@
                             <img src="HOME DECOR CATEGORY/trollys/3 Layers Multipurpose Storage Rack.jpg" 
                                  alt="3 Layers Multipurpose Storage Rack" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                3 Layers
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">3 Layers Multipurpose Storage Rack</h3>
@@ -1479,9 +1453,6 @@
                             <img src="HOME DECOR CATEGORY/trollys/4 Layers Multipurpose Storage Rack.jpg" 
                                  alt="4 Layers Multipurpose Storage Rack" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                4 Layers
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">4 Layers Multipurpose Storage Rack</h3>
@@ -1502,9 +1473,6 @@
                             <img src="HOME DECOR CATEGORY/trollys/5 Layers Multipurpose Storage Rack.jpg" 
                                  alt="5 Layers Multipurpose Storage Rack" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                5 Layers
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">5 Layers Multipurpose Storage Rack</h3>
@@ -1525,9 +1493,6 @@
                             <img src="HOME DECOR CATEGORY/trollys/3 Tier Square Kitchen Cart- Black.jpeg" 
                                  alt="3 Tier Square Kitchen Cart - Black" 
                                  class="w-full h-48 object-cover">
-                            <div class="absolute top-2 right-2 bg-gray-800 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                Black
-                            </div>
                         </div>
                         <div class="p-4">
                             <h3 class="text-white font-semibold text-lg mb-2">3 Tier Square Kitchen Cart</h3>
@@ -1782,6 +1747,7 @@
     </div>
 
     <script>
+
         // Force refresh to clear cache
         if (performance.navigation.type === 1) {
             // Page was refreshed, clear any cached styles
