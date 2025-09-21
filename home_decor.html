@@ -1,0 +1,2481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Decor - MSM Traders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        .golden { color: #F59E0B !important; }
+        .bg-golden { background-color: #F59E0B !important; }
+        .border-golden { border-color: #F59E0B !important; }
+        .hover\:bg-golden:hover { background-color: #F59E0B !important; }
+        .hover\:text-golden:hover { color: #F59E0B !important; }
+        .hover\:border-golden:hover { border-color: #F59E0B !important; }
+        
+        /* Force black theme */
+        body { background-color: #000000 !important; }
+        .bg-black { background-color: #000000 !important; }
+        .bg-gray-800 { background-color: #000000 !important; }
+        .bg-gray-900 { background-color: #000000 !important; }
+        
+        /* Debug: Add a visible indicator that theme is applied */
+        body::before {
+            content: "BLACK THEME ACTIVE";
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #F59E0B;
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 9999;
+            opacity: 0.8;
+        }
+        
+        /* Enhanced Product Card Styling */
+        .product-card {
+            background: #f5f5f5;
+            border-radius: 8px;
+            text-align: center;
+            padding: 15px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Product card image area - Enhanced responsive design */
+        .product-card .image-container {
+            width: 100%;
+            height: 280px;          /* Increased desktop height for better visibility */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        /* Product images with enhanced styling */
+        .product-card .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover .image-container img {
+            transform: scale(1.05);
+        }
+
+        /* Enhanced Mobile Responsive Design */
+        @media (max-width: 1024px) {
+            .product-card .image-container {
+                height: 220px;        /* Tablet height */
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .product-card .image-container {
+                height: 180px;        /* Mobile height */
+            }
+            
+            .product-card:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-card .image-container {
+                height: 160px;        /* Small mobile height */
+            }
+        }
+        
+        /* Enhanced Grid Responsiveness */
+        .products-grid {
+            display: grid;
+            gap: 15px; /* space between cards */
+            grid-template-columns: repeat(5, 1fr); /* Desktop: 5 per row */
+        }
+        
+        /* Mobile: 2 per row */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Category Cards Enhanced Responsiveness */
+        .category-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        
+        @media (max-width: 768px) {
+            .category-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+        }
+        
+        /* Enhanced Typography Responsiveness */
+        @media (max-width: 768px) {
+            .text-3xl {
+                font-size: 1.875rem;
+                line-height: 2.25rem;
+            }
+            
+            .text-2xl {
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
+            
+            .text-xl {
+                font-size: 1.25rem;
+                line-height: 1.75rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .text-3xl {
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
+            
+            .text-2xl {
+                font-size: 1.25rem;
+                line-height: 1.75rem;
+            }
+        }
+        
+        /* Enhanced Button Responsiveness */
+        .btn-responsive {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            min-height: 44px; /* Touch-friendly */
+        }
+        
+        @media (max-width: 768px) {
+            .btn-responsive {
+                padding: 0.625rem 1.25rem;
+                font-size: 0.875rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .btn-responsive {
+                padding: 0.5rem 1rem;
+                font-size: 0.8125rem;
+                min-height: 40px;
+            }
+        }
+        
+        /* Enhanced Spacing for Mobile */
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 2rem 0;
+            }
+            
+            .container-padding {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .section-padding {
+                padding: 1.5rem 0;
+            }
+            
+            .container-padding {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+        }
+        
+        /* Enhanced Navigation for Mobile */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
+            
+            .navbar .text-2xl {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Enhanced Modal Responsiveness */
+        .modal-responsive {
+            margin: 1rem;
+            max-width: calc(100vw - 2rem);
+            max-height: calc(100vh - 2rem);
+        }
+        
+        @media (max-width: 768px) {
+            .modal-responsive {
+                margin: 0.5rem;
+                max-width: calc(100vw - 1rem);
+                max-height: calc(100vh - 1rem);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .modal-responsive {
+                margin: 0.25rem;
+                max-width: calc(100vw - 0.5rem);
+                max-height: calc(100vh - 0.5rem);
+            }
+        }
+        
+        /* Enhanced Touch Interactions */
+        .touch-target {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Enhanced Focus States for Accessibility */
+        button:focus,
+        a:focus,
+        input:focus {
+            outline: 2px solid #FFD700;
+            outline-offset: 2px;
+        }
+        
+        /* Performance Optimizations */
+        .will-change-transform {
+            will-change: transform;
+        }
+        
+        .will-change-opacity {
+            will-change: opacity;
+        }
+        
+        /* Enhanced Loading States */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        /* Enhanced Shadows */
+        .shadow-enhanced {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .shadow-enhanced-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Cart modal styles */
+        #cart-modal {
+            transition: all 0.3s ease-in-out;
+        }
+        
+        #cart-modal.hidden {
+            display: none !important;
+        }
+        
+        #cart-modal.show {
+            display: flex !important;
+        }
+
+        /* Mobile responsive cart modal */
+        @media (max-width: 768px) {
+            #cart-modal .bg-gray-900 {
+                margin: 0.5rem;
+                max-width: calc(100vw - 1rem);
+                max-height: calc(100vh - 1rem);
+                width: 100%;
+            }
+            
+            #cart-modal .max-h-96 {
+                max-height: 50vh;
+            }
+            
+            #cart-modal .p-4 {
+                padding: 0.75rem;
+            }
+            
+            #cart-modal .text-xl {
+                font-size: 1.125rem;
+            }
+            
+            #cart-modal .flex.gap-2 {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            #cart-modal .flex.gap-2 button {
+                width: 100%;
+            }
+            
+            #cart-modal .space-x-3 {
+                gap: 0.5rem;
+            }
+            
+            #cart-modal .w-12.h-12 {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #cart-modal .bg-gray-900 {
+                margin: 0.25rem;
+                max-width: calc(100vw - 0.5rem);
+                max-height: calc(100vh - 0.5rem);
+            }
+            
+            #cart-modal .max-h-96 {
+                max-height: 45vh;
+            }
+            
+            #cart-modal .p-4 {
+                padding: 0.5rem;
+            }
+            
+            #cart-modal .text-xl {
+                font-size: 1rem;
+            }
+            
+            #cart-modal .space-x-3 {
+                gap: 0.375rem;
+            }
+            
+            #cart-modal .w-12.h-12 {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        
+        .price {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .price:hover {
+            background: linear-gradient(135deg, #FFA500, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-black text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="navbar bg-black border-b border-yellow-500 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto container-padding">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-golden hover:text-yellow-300 transition-colors">
+                        MSM Traders
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-golden transition-colors">Home</a>
+                    <a href="crockery.html" class="text-gray-300 hover:text-golden transition-colors">Crockery</a>
+                    <a href="premium_perfumes.html" class="text-gray-300 hover:text-golden transition-colors">Premium Perfumes</a>
+                    <a href="microfiber_and_cleaners.html" class="text-gray-300 hover:text-golden transition-colors">Microfiber & Cleaners</a>
+                    <a href="car_care.html" class="text-gray-300 hover:text-golden transition-colors">Car Care</a>
+                    <a href="laptops.html" class="text-gray-300 hover:text-golden transition-colors">Laptops</a>
+                    <a href="bedcovers.html" class="text-gray-300 hover:text-golden transition-colors">Bedding</a>
+                    <a href="home_decor.html" class="text-golden font-semibold">Home Decor</a>
+                    <a href="special_offers.html" class="text-gray-300 hover:text-golden transition-colors">Special Offers</a>
+                    <a href="cart.html" class="text-gray-300 hover:text-golden transition-colors">
+                        <i class="fas fa-shopping-cart"></i> Cart
+                    </a>
+                    <a href="contact.html" class="text-gray-300 hover:text-golden transition-colors">Contact</a>
+                </div>
+                
+                <!-- Mobile menu buttons -->
+                <div class="md:hidden flex items-center space-x-2">
+                    <button id="category-menu-btn" class="bg-golden text-black px-3 py-2 rounded-lg hover:bg-yellow-500 transition-colors">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                    <button id="hamburger" class="text-gray-300 hover:text-golden focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="navbar-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black border-t border-gray-700">
+                    <a href="index.html" class="block px-3 py-2 text-gray-300 hover:text-golden transition-colors">Home</a>
+                    <a href="crockery.html" class="block px-3 py-2 text-gray-300 hover:text-golden transition-colors">Crockery</a>
+                    <a href="premium_perfumes.html" class="block px-3 py-2 text-gray-300 hover:text-golden transition-colors">Premium Perfumes</a>
+                    <a href="microfiber_and_cleaners.html" class="block px-3 py-2 text-gray-300 hover:text-golden transition-colors">Microfiber & Cleaners</a>
+                    <a href="car_care.html" class="block px-3 py-2 text-gray-300 hover:text-golden transition-colors">Car Care</a>
+                    <a href="laptops.html" class="block px-3 py-2 text-gray-300 hover:text-golden transition-colors">Laptops</a>
+                    <a href="bedcovers.html" class="block px-3 py-2 text-gray-300 hover:text-golden transition-colors">Bedding</a>
+                    <a href="home_decor.html" class="block px-3 py-2 text-golden font-semibold">Home Decor</a>
+                    <a href="special_offers.html" class="block px-3 py-2 text-gray-300 hover:text-golden transition-colors">Special Offers</a>
+                    <a href="cart.html" class="block px-3 py-2 text-gray-300 hover:text-golden transition-colors">
+                        <i class="fas fa-shopping-cart"></i> Cart
+                    </a>
+                    <a href="contact.html" class="block px-3 py-2 text-gray-300 hover:text-golden transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Sidebar -->
+    <section class="relative bg-gradient-to-r from-gray-800 to-gray-900 section-padding">
+        <div class="max-w-7xl mx-auto container-padding">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Vertical Category Sidebar -->
+                <div class="w-full lg:w-80 flex-shrink-0 order-2 lg:order-1 hidden md:block">
+                    <div class="bg-black border border-golden rounded-xl p-6">
+                        <h2 class="text-2xl font-bold text-golden mb-6 text-center">Shop by Category</h2>
+                        <div class="space-y-3">
+                            <!-- Car Care -->
+                            <a href="car_care.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group">
+                                <h3 class="text-white font-semibold group-hover:text-golden">Car Care</h3>
+                                <p class="text-gray-400 text-sm">Professional cleaning products</p>
+                            </a>
+                            
+                            <!-- Microfiber & Cleaners -->
+                            <a href="microfiber_and_cleaners.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group">
+                                <h3 class="text-white font-semibold group-hover:text-golden">Microfiber & Cleaners</h3>
+                                <p class="text-gray-400 text-sm">Essential cleaning supplies</p>
+                            </a>
+                            
+                            <!-- Premium Perfumes -->
+                            <a href="premium_perfumes.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group">
+                                <h3 class="text-white font-semibold group-hover:text-golden">Premium Perfumes</h3>
+                                <p class="text-gray-400 text-sm">Fragrances & scented candles</p>
+                            </a>
+                            
+                            <!-- Crockery -->
+                            <a href="crockery.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group">
+                                <h3 class="text-white font-semibold group-hover:text-golden">Crockery</h3>
+                                <p class="text-gray-400 text-sm">Elegant dinnerware</p>
+                            </a>
+                            
+                            <!-- Laptops -->
+                            <a href="laptops.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group">
+                                <h3 class="text-white font-semibold group-hover:text-golden">Laptops</h3>
+                                <p class="text-gray-400 text-sm">High-performance laptops</p>
+                            </a>
+                            
+                            <!-- Bedding -->
+                            <a href="bedcovers.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group">
+                                <h3 class="text-white font-semibold group-hover:text-golden">Bedding</h3>
+                                <p class="text-gray-400 text-sm">Premium bedcovers & sheets</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Banner Content -->
+                <div class="flex-1 text-center lg:text-left order-1 lg:order-2">
+                    <!-- Banner Image -->
+                    <div class="mb-8">
+                        <img src="HOME DECOR CATEGORY/BANNER.jpeg" alt="Elegant Home Decor Banner" class="mx-auto lg:mx-0 mb-8 max-w-full h-auto rounded-lg shadow-2xl">
+                    </div>
+                    
+                    <div>
+                        <h1 class="text-4xl lg:text-6xl font-bold text-golden mb-6">
+                            Home Decor Collection
+                        </h1>
+                        <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto lg:mx-0">
+                            Transform your living space with our exquisite collection of home decor items. From elegant wall art to stylish accessories, create the perfect ambiance for your home.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="#categories" class="bg-golden hover:bg-yellow-600 text-black px-8 py-3 rounded-lg font-semibold transition duration-300">
+                                Explore Categories
+                            </a>
+                            <a href="#featured" class="border-2 border-golden text-golden hover:bg-golden hover:text-black px-8 py-3 rounded-lg font-semibold transition duration-300">
+                                View Featured Items
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Category Menu -->
+    <div id="mobile-category-menu" class="md:hidden hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+        <div class="fixed top-0 left-0 h-full w-80 bg-black border-r border-golden transform -translate-x-full transition-transform duration-300" id="category-sidebar">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-golden">Shop by Category</h2>
+                    <button id="close-category-menu" class="text-gray-400 hover:text-golden text-2xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="space-y-3">
+                    <!-- Car Care -->
+                    <a href="car_care.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group" onclick="closeMobileCategoryMenu()">
+                        <h3 class="text-white font-semibold group-hover:text-golden">Car Care</h3>
+                        <p class="text-gray-400 text-sm">Professional cleaning products</p>
+                    </a>
+                    
+                    <!-- Microfiber & Cleaners -->
+                    <a href="microfiber_and_cleaners.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group" onclick="closeMobileCategoryMenu()">
+                        <h3 class="text-white font-semibold group-hover:text-golden">Microfiber & Cleaners</h3>
+                        <p class="text-gray-400 text-sm">Essential cleaning supplies</p>
+                    </a>
+                    
+                    <!-- Premium Perfumes -->
+                    <a href="premium_perfumes.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group" onclick="closeMobileCategoryMenu()">
+                        <h3 class="text-white font-semibold group-hover:text-golden">Premium Perfumes</h3>
+                        <p class="text-gray-400 text-sm">Fragrances & scented candles</p>
+                    </a>
+                    
+                    <!-- Crockery -->
+                    <a href="crockery.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group" onclick="closeMobileCategoryMenu()">
+                        <h3 class="text-white font-semibold group-hover:text-golden">Crockery</h3>
+                        <p class="text-gray-400 text-sm">Elegant dinnerware</p>
+                    </a>
+                    
+                    <!-- Laptops -->
+                    <a href="laptops.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group" onclick="closeMobileCategoryMenu()">
+                        <h3 class="text-white font-semibold group-hover:text-golden">Laptops</h3>
+                        <p class="text-gray-400 text-sm">High-performance laptops</p>
+                    </a>
+                    
+                    <!-- Bedding -->
+                    <a href="bedcovers.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group" onclick="closeMobileCategoryMenu()">
+                        <h3 class="text-white font-semibold group-hover:text-golden">Bedding</h3>
+                        <p class="text-gray-400 text-sm">Premium bedcovers & sheets</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Section -->
+    <section id="categories" class="section-padding bg-black">
+        <div class="max-w-7xl mx-auto container-padding">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold text-golden mb-4">Home Decor Categories</h2>
+                <p class="text-gray-300 text-lg">Discover our curated collection of home decor essentials</p>
+            </div>
+            
+            <div class="category-grid">
+                <!-- Candle Stands Category -->
+                <div class="category-card bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="scrollToSection('candle-stands')">
+                    <div class="relative">
+                        <img src="HOME DECOR CATEGORY/CATEGORY IMAG/CANDEL STANDS.jpg" 
+                             alt="Candle Stands" 
+                             class="w-full h-32 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 hover:bg-opacity-20 transition duration-300"></div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="text-white font-semibold text-lg mb-2">Candle Stands</h3>
+                        <p class="text-gray-400 text-sm">Elegant candle holders</p>
+                    </div>
+                </div>
+
+                <!-- Lights Category -->
+                <div class="category-card bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="scrollToSection('lights')">
+                    <div class="relative">
+                        <img src="HOME DECOR CATEGORY/CATEGORY IMAG/LIGHTS.jpg" 
+                             alt="Lights" 
+                             class="w-full h-32 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 hover:bg-opacity-20 transition duration-300"></div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="text-white font-semibold text-lg mb-2">Lights</h3>
+                        <p class="text-gray-400 text-sm">LED & decorative lighting</p>
+                    </div>
+                </div>
+
+                <!-- Dustbins Category -->
+                <div class="category-card bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="scrollToSection('dustbins')">
+                    <div class="relative">
+                        <img src="HOME DECOR CATEGORY/CATEGORY IMAG/DUSTBIN.jpg" 
+                             alt="Dustbins" 
+                             class="w-full h-32 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 hover:bg-opacity-20 transition duration-300"></div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="text-white font-semibold text-lg mb-2">Dustbins</h3>
+                        <p class="text-gray-400 text-sm">Stainless steel bins</p>
+                    </div>
+                </div>
+
+                <!-- Tissue Boxes Category -->
+                <div class="category-card bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="scrollToSection('tissue-boxes')">
+                    <div class="relative">
+                        <img src="HOME DECOR CATEGORY/CATEGORY IMAG/Tissue Box Cover & Dispenser.jpg" 
+                             alt="Tissue Boxes" 
+                             class="w-full h-32 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 hover:bg-opacity-20 transition duration-300"></div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="text-white font-semibold text-lg mb-2">Tissue Boxes</h3>
+                        <p class="text-gray-400 text-sm">Decorative holders</p>
+                    </div>
+                </div>
+
+                <!-- Trolleys Category -->
+                <div class="category-card bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="scrollToSection('trolleys')">
+                    <div class="relative">
+                        <img src="HOME DECOR CATEGORY/CATEGORY IMAG/TROLLYS.jpeg" 
+                             alt="Trolleys" 
+                             class="w-full h-32 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 hover:bg-opacity-20 transition duration-300"></div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="text-white font-semibold text-lg mb-2">Trolleys</h3>
+                        <p class="text-gray-400 text-sm">Storage & kitchen carts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="featured" class="section-padding bg-gray-900">
+        <div class="max-w-7xl mx-auto container-padding">
+
+            <!-- Candle Stands Category -->
+            <div id="candle-stands" class="mt-16">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent mb-4">Candle Stands Collection</h2>
+                    <p class="text-gray-300 text-lg">Elegant candle holders and stands to create the perfect ambiance</p>
+                </div>
+                
+                <div class="products-grid">
+                    <!-- French Gold Candle Holders -->
+                    <div class="product-card">
+                        <div class="image-container">
+                            <img src="HOME DECOR CATEGORY/CANDLE STANDS/French Gold Candle Holders – Set of 3.jpg" 
+                                 alt="French Gold Candle Holders – Set of 3">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">French Gold Candle Holders</h3>
+                            <p class="text-gray-400 text-sm mb-3">Set of 3 elegant gold candle holders</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 2650</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('French Gold Candle Holders', 'Rs 2650', 'HOME DECOR CATEGORY/CANDLE STANDS/French Gold Candle Holders – Set of 3.jpg', 'Set of 3 elegant gold candle holders')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Golden Candle Holders -->
+                    <div class="product-card">
+                        <div class="image-container">
+                            <img src="HOME DECOR CATEGORY/CANDLE STANDS/Golden Candle Holders – Set of 3.jpg" 
+                                 alt="Golden Candle Holders – Set of 3">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Golden Candle Holders</h3>
+                            <p class="text-gray-400 text-sm mb-3">Set of 3 premium golden candle holders</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 2650</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Golden Candle Holders', 'Rs 2650', 'HOME DECOR CATEGORY/CANDLE STANDS/Golden Candle Holders – Set of 3.jpg', 'Set of 3 premium golden candle holders')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modern Black Candle Holders -->
+                    <div class="product-card">
+                        <div class="image-container">
+                            <img src="HOME DECOR CATEGORY/CANDLE STANDS/Modern Black Candle Holders – Set of 3.jpg" 
+                                 alt="Modern Black Candle Holders – Set of 3">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Modern Black Candle Holders</h3>
+                            <p class="text-gray-400 text-sm mb-3">Set of 3 sleek black candle holders</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 2650</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Modern Black Candle Holders', 'Rs 2650', 'HOME DECOR CATEGORY/CANDLE STANDS/Modern Black Candle Holders – Set of 3.jpg', 'Set of 3 sleek black candle holders')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Lights Category -->
+            <div id="lights" class="mt-16">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">Lights Collection</h2>
+                </div>
+                
+                <div class="products-grid">
+                    <!-- 10 LED Lights Battery Operated -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/LIGHTS/10 LED LIGHTS BATTERY OPPERATED.jpg" 
+                                 alt="10 LED Lights Battery Operated" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Battery
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">10 LED Lights Battery Operated</h3>
+                            <p class="text-gray-400 text-sm mb-3">Portable LED lights with battery operation</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 2400</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('10 LED Lights Battery Operated', 'Rs 1,299', 'HOME DECOR CATEGORY/LIGHTS/10 LED LIGHTS BATTERY OPPERATED.jpg', 'Portable LED lights with battery operation')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Multi-Cage Diamond Chandelier -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/LIGHTS/Multi-Cage Diamond Chandelier.jpg" 
+                                 alt="Multi-Cage Diamond Chandelier" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Luxury
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Multi-Cage Diamond Chandelier</h3>
+                            <p class="text-gray-400 text-sm mb-3">Elegant multi-cage diamond chandelier</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 3750</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Multi-Cage Diamond Chandelier', 'Rs 4,999', 'HOME DECOR CATEGORY/LIGHTS/Multi-Cage Diamond Chandelier.jpg', 'Elegant multi-cage diamond chandelier')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Creative Cage Chandelier -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/LIGHTS/Creative Cage Chandelier.jpg" 
+                                 alt="Creative Cage Chandelier" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Creative
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Creative Cage Chandelier</h3>
+                            <p class="text-gray-400 text-sm mb-3">Unique creative cage design chandelier</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 3,299</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Creative Cage Chandelier', 'Rs 7500', 'HOME DECOR CATEGORY/LIGHTS/Creative Cage Chandelier.jpg', 'Unique creative cage design chandelier')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Retro Cage Pendant Light -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/LIGHTS/Retro Cage Pendant Light – Black.jpg" 
+                                 alt="Retro Cage Pendant Light – Black" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Retro
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Retro Cage Pendant Light</h3>
+                            <p class="text-gray-400 text-sm mb-3">Black retro cage pendant light</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 2,199</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Retro Cage Pendant Light', 'Rs 3750', 'HOME DECOR CATEGORY/LIGHTS/Retro Cage Pendant Light – Black.jpg', 'Black retro cage pendant light')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Geometric Pendant Light -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/LIGHTS/Geometric Pendant Light.jpg" 
+                                 alt="Geometric Pendant Light" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-teal-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Modern
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Geometric Pendant Light</h3>
+                            <p class="text-gray-400 text-sm mb-3">Contemporary geometric pendant light</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 7500</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Geometric Pendant Light', 'Rs 2,499', 'HOME DECOR CATEGORY/LIGHTS/Geometric Pendant Light.jpg', 'Contemporary geometric pendant light')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modern Iron Pendant Light -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/LIGHTS/Modern Iron Pendant Light.jpg" 
+                                 alt="Modern Iron Pendant Light" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-gray-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Iron
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Modern Iron Pendant Light</h3>
+                            <p class="text-gray-400 text-sm mb-3">Sleek modern iron pendant light</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 7500</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Modern Iron Pendant Light', 'Rs 1,899', 'HOME DECOR CATEGORY/LIGHTS/Modern Iron Pendant Light.jpg', 'Sleek modern iron pendant light')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LED Water Drops Outdoor Garden -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/LIGHTS/LED Water Drops Outdoor Garden.jpg" 
+                                 alt="LED Water Drops Outdoor Garden" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-cyan-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Outdoor
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">LED Water Drops Outdoor Garden</h3>
+                            <p class="text-gray-400 text-sm mb-3">LED water drop lights for outdoor garden</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 850</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('LED Water Drops Outdoor Garden', 'Rs 1,599', 'HOME DECOR CATEGORY/LIGHTS/LED Water Drops Outdoor Garden.jpg', 'LED water drop lights for outdoor garden')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Moon Lights -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/LIGHTS/MOON LIGHTS.jpg" 
+                                 alt="Moon Lights" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-indigo-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Moon
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Moon Lights</h3>
+                            <p class="text-gray-400 text-sm mb-3">Decorative moon-shaped LED lights</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 4200</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Moon Lights', 'Rs 4200', 'HOME DECOR CATEGORY/LIGHTS/MOON LIGHTS.jpg', 'Decorative moon-shaped LED lights')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LED Candle Long Pole -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/LIGHTS/LED Candle Long Pole.webp" 
+                                 alt="LED Candle Long Pole" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                LED
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">LED Candle Long Pole</h3>
+                            <p class="text-gray-400 text-sm mb-3">LED candle with long pole design</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 1,799</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('LED Candle Long Pole', 'Rs 2400', 'HOME DECOR CATEGORY/LIGHTS/LED Candle Long Pole.webp', 'LED candle with long pole design')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dustbins Category -->
+            <div id="dustbins" class="mt-16">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold bg-gradient-to-r from-gray-400 to-gray-600 bg-clip-text text-transparent mb-4">Dustbins Collection</h2>
+                </div>
+                
+                <div class="products-grid">
+                    <!-- Homeatic Grace Pedal Bin Stainless Steel Soft Close 5 Liters -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/DUSTBINS/Homeatic Grace Pedal Bin Stainless Steel Soft Close 5 Liters.jpg" 
+                                 alt="Homeatic Grace Pedal Bin Stainless Steel Soft Close 5 Liters" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Soft Close
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Homeatic Grace Pedal Bin 5L</h3>
+                            <p class="text-gray-400 text-sm mb-3">Stainless steel soft close pedal bin</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 5495</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Homeatic Grace Pedal Bin 5L', 'Rs 5495', 'HOME DECOR CATEGORY/DUSTBINS/Homeatic Grace Pedal Bin Stainless Steel Soft Close 5 Liters.jpg', 'Stainless steel soft close pedal bin')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Homeatic Grace Pedal Bin Stainless -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/DUSTBINS/Homeatic Grace Pedal Bin Stainless.jpg" 
+                                 alt="Homeatic Grace Pedal Bin Stainless" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-gray-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Stainless
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Homeatic Grace Pedal Bin</h3>
+                            <p class="text-gray-400 text-sm mb-3">Stainless steel pedal bin</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 7950</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Homeatic Grace Pedal Bin', 'Rs 7950', 'HOME DECOR CATEGORY/DUSTBINS/Homeatic Grace Pedal Bin Stainless.jpg', 'Stainless steel pedal bin')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pedal bin 7Ltr Stainless Steel Dustbin -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/DUSTBINS/Pedal bin 7Ltr Stainless Steel Dustbin.jpg" 
+                                 alt="Pedal bin 7Ltr Stainless Steel Dustbin" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                7L
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Pedal Bin 7L Stainless Steel</h3>
+                            <p class="text-gray-400 text-sm mb-3">7 liter stainless steel pedal dustbin</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 4350</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Pedal Bin 7L Stainless Steel', 'Rs 4350', 'HOME DECOR CATEGORY/DUSTBINS/Pedal bin 7Ltr Stainless Steel Dustbin.jpg', '7 liter stainless steel pedal dustbin')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pedal bin 12Ltr Stainless Steel Dustbin -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/DUSTBINS/Pedal bin 12Ltr Stainless Steel Dustbin.jpg" 
+                                 alt="Pedal bin 12Ltr Stainless Steel Dustbin" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                12L
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Pedal Bin 12L Stainless Steel</h3>
+                            <p class="text-gray-400 text-sm mb-3">12 liter stainless steel pedal dustbin</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 5500</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Pedal Bin 12L Stainless Steel', 'Rs 5500', 'HOME DECOR CATEGORY/DUSTBINS/Pedal bin 12Ltr Stainless Steel Dustbin.jpg', '12 liter stainless steel pedal dustbin')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pedal bin 20Ltr Stainless Steel -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/DUSTBINS/Pedal bin 20Ltr Stainless Stee.jpg" 
+                                 alt="Pedal bin 20Ltr Stainless Steel" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                20L
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Pedal Bin 20L Stainless Steel</h3>
+                            <p class="text-gray-400 text-sm mb-3">20 liter stainless steel pedal dustbin</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 7950</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Pedal Bin 20L Stainless Steel', 'Rs 7950', 'HOME DECOR CATEGORY/DUSTBINS/Pedal bin 20Ltr Stainless Stee.jpg', '20 liter stainless steel pedal dustbin')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Metal Waste Paper Dustbin Small -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/DUSTBINS/Metal Waste Paper Dustbin Small.jpg" 
+                                 alt="Metal Waste Paper Dustbin Small" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-teal-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Small
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Metal Waste Paper Dustbin Small</h3>
+                            <p class="text-gray-400 text-sm mb-3">Small metal waste paper dustbin</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 990</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Metal Waste Paper Dustbin Small', 'Rs 990', 'HOME DECOR CATEGORY/DUSTBINS/Metal Waste Paper Dustbin Small.jpg', 'Small metal waste paper dustbin')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Metal Waste Paper Dustbin Medium -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/DUSTBINS/Metal Waste Paper Dustbin Medium.jpg" 
+                                 alt="Metal Waste Paper Dustbin Medium" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-yellow-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Medium
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Metal Waste Paper Dustbin Medium</h3>
+                            <p class="text-gray-400 text-sm mb-3">Medium metal waste paper dustbin</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 1250</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Metal Waste Paper Dustbin Medium', 'Rs 1250', 'HOME DECOR CATEGORY/DUSTBINS/Metal Waste Paper Dustbin Medium.jpg', 'Medium metal waste paper dustbin')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Metal Waste Paper Dustbin Large -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/DUSTBINS/Metal Waste Paper Dustbin Large.jpg" 
+                                 alt="Metal Waste Paper Dustbin Large" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Large
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Metal Waste Paper Dustbin Large</h3>
+                            <p class="text-gray-400 text-sm mb-3">Large metal waste paper dustbin</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 1,499</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Metal Waste Paper Dustbin Large', 'Rs 1,499', 'HOME DECOR CATEGORY/DUSTBINS/Metal Waste Paper Dustbin Large.jpg', 'Large metal waste paper dustbin')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pedal bin 8Ltr Stainless Steel -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/DUSTBINS/Pedal bin 8Ltr Stainless Steel.jpg" 
+                                 alt="Pedal bin 8Ltr Stainless Steel" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-indigo-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                8L
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Pedal Bin 8L Stainless Steel</h3>
+                            <p class="text-gray-400 text-sm mb-3">8 liter stainless steel pedal dustbin</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 7300</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Pedal Bin 8L Stainless Steel', 'Rs 7300', 'HOME DECOR CATEGORY/DUSTBINS/Pedal bin 8Ltr Stainless Steel.jpg', '8 liter stainless steel pedal dustbin')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pedal bin 5Ltr Stainless Steel -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/DUSTBINS/Pedal bin 5Ltr Stainlesteel.jpg" 
+                                 alt="Pedal bin 5Ltr Stainless Steel" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-cyan-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                5L
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Pedal Bin 5L Stainless Steel</h3>
+                            <p class="text-gray-400 text-sm mb-3">5 liter stainless steel pedal dustbin</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 5500</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Pedal Bin 5L Stainless Steel', 'Rs 5500', 'HOME DECOR CATEGORY/DUSTBINS/Pedal bin 5Ltr Stainlesteel.jpg', '5 liter stainless steel pedal dustbin')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Appollo Fresh Hut Bin Swing Top -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/DUSTBINS/Appollo Fresh Hut Bin Swing Top.jpeg" 
+                                 alt="Appollo Fresh Hut Bin Swing Top" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Swing Top
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Appollo Fresh Hut Bin</h3>
+                            <p class="text-gray-400 text-sm mb-3">Swing top fresh hut bin</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 1,299</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Appollo Fresh Hut Bin', 'Rs 1050', 'HOME DECOR CATEGORY/DUSTBINS/Appollo Fresh Hut Bin Swing Top.jpeg', 'Swing top fresh hut bin')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pedal bin 12Ltr Stainless Steel -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/DUSTBINS/Pedal bin 12Ltr Stainless Steel.jpg" 
+                                 alt="Pedal bin 12Ltr Stainless Steel" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-emerald-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                12L
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Pedal Bin 12L Stainless Steel</h3>
+                            <p class="text-gray-400 text-sm mb-3">12 liter stainless steel pedal dustbin</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 8950</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Pedal Bin 12L Stainless Steel', 'Rs 8950', 'HOME DECOR CATEGORY/DUSTBINS/Pedal bin 12Ltr Stainless Steel.jpg', '12 liter stainless steel pedal dustbin')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tissue Boxes Category -->
+            <div id="tissue-boxes" class="mt-16">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold bg-gradient-to-r from-rose-400 to-rose-600 bg-clip-text text-transparent mb-4">Tissue Boxes Collection</h2>
+                </div>
+                
+                <div class="products-grid">
+                    <!-- Royal Silver Fancy Tissue Box Holder -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/tissue boxes/Royal Silver fancy Tissue Box Holder.jpg" 
+                                 alt="Royal Silver Fancy Tissue Box Holder" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-gray-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Silver
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Royal Silver Fancy Tissue Box</h3>
+                            <p class="text-gray-400 text-sm mb-3">Elegant silver tissue box holder</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 4150</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Royal Silver Fancy Tissue Box', 'Rs 4150', 'HOME DECOR CATEGORY/tissue boxes/Royal Silver fancy Tissue Box Holder.jpg', 'Elegant silver tissue box holder')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 in 1 Kitchen Roll Dispenser -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/tissue boxes/3 in 1 Kitchen Roll Dispenser.jpeg" 
+                                 alt="3 in 1 Kitchen Roll Dispenser" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                3 in 1
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">3 in 1 Kitchen Roll Dispenser</h3>
+                            <p class="text-gray-400 text-sm mb-3">Multi-purpose kitchen roll dispenser</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 2450</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('3 in 1 Kitchen Roll Dispenser', 'Rs 2450', 'HOME DECOR CATEGORY/tissue boxes/3 in 1 Kitchen Roll Dispenser.jpeg', 'Multi-purpose kitchen roll dispenser')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kitchen & Living Room Tissue Holder -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/tissue boxes/Kitchen & Living Room Tissue Holder.jpg" 
+                                 alt="Kitchen & Living Room Tissue Holder" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Multi-Room
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Kitchen & Living Room Tissue Holder</h3>
+                            <p class="text-gray-400 text-sm mb-3">Versatile tissue holder for multiple rooms</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 2990</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Kitchen & Living Room Tissue Holder', 'Rs 2990', 'HOME DECOR CATEGORY/tissue boxes/Kitchen & Living Room Tissue Holder.jpg', 'Versatile tissue holder for multiple rooms')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tissue Box Holder -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/tissue boxes/Tissue Box Holder Tissue Box.jpg" 
+                                 alt="Tissue Box Holder" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Classic
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Tissue Box Holder</h3>
+                            <p class="text-gray-400 text-sm mb-3">Classic tissue box holder design</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 999</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Tissue Box Holder', 'Rs 2990', 'HOME DECOR CATEGORY/tissue boxes/Tissue Box Holder Tissue Box.jpg', 'Classic tissue box holder design')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tissue Box Cover & Dispenser -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/tissue boxes/Tissue Box Cover & Dispenser.jpg" 
+                                 alt="Tissue Box Cover & Dispenser" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Cover
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Tissue Box Cover & Dispenser</h3>
+                            <p class="text-gray-400 text-sm mb-3">Decorative tissue box cover with dispenser</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 2990</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Tissue Box Cover & Dispenser', 'Rs 2990', 'HOME DECOR CATEGORY/tissue boxes/Tissue Box Cover & Dispenser.jpg', 'Decorative tissue box cover with dispenser')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trolleys Category -->
+            <div id="trolleys" class="mt-16">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-emerald-600 bg-clip-text text-transparent mb-4">Trolleys Collection</h2>
+                </div>
+                
+                <div class="products-grid">
+                    <!-- 5-Tier Rotating Baskets Kitchen -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/trollys/5-Tier Rotating Baskets Kitchen.webp" 
+                                 alt="5-Tier Rotating Baskets Kitchen" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                5-Tier
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">5-Tier Rotating Baskets Kitchen</h3>
+                            <p class="text-gray-400 text-sm mb-3">Rotating kitchen storage baskets</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 11500</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('5-Tier Rotating Baskets Kitchen', 'Rs 11500', 'HOME DECOR CATEGORY/trollys/5-Tier Rotating Baskets Kitchen.webp', 'Rotating kitchen storage baskets')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Beechwood Folding 2 Shelf Trolley -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/trollys/Beechwood Folding 2 Shelf Trolley.jpeg" 
+                                 alt="Beechwood Folding 2 Shelf Trolley" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-amber-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Folding
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">Beechwood Folding 2 Shelf Trolley</h3>
+                            <p class="text-gray-400 text-sm mb-3">Folding beechwood trolley with 2 shelves</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 10950</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('Beechwood Folding 2 Shelf Trolley', 'Rs 10950', 'HOME DECOR CATEGORY/trollys/Beechwood Folding 2 Shelf Trolley.jpeg', 'Folding beechwood trolley with 2 shelves')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 Layers Multipurpose Storage Rack -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/trollys/3 Layers Multipurpose Storage Rack.jpg" 
+                                 alt="3 Layers Multipurpose Storage Rack" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                3 Layers
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">3 Layers Multipurpose Storage Rack</h3>
+                            <p class="text-gray-400 text-sm mb-3">3-layer multipurpose storage rack</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 8500</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('3 Layers Multipurpose Storage Rack', 'Rs 8500', 'HOME DECOR CATEGORY/trollys/3 Layers Multipurpose Storage Rack.jpg', '3-layer multipurpose storage rack')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4 Layers Multipurpose Storage Rack -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/trollys/4 Layers Multipurpose Storage Rack.jpg" 
+                                 alt="4 Layers Multipurpose Storage Rack" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                4 Layers
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">4 Layers Multipurpose Storage Rack</h3>
+                            <p class="text-gray-400 text-sm mb-3">4-layer multipurpose storage rack</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 10750</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('4 Layers Multipurpose Storage Rack', 'Rs 10750', 'HOME DECOR CATEGORY/trollys/4 Layers Multipurpose Storage Rack.jpg', '4-layer multipurpose storage rack')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5 Layers Multipurpose Storage Rack -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/trollys/5 Layers Multipurpose Storage Rack.jpg" 
+                                 alt="5 Layers Multipurpose Storage Rack" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                5 Layers
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">5 Layers Multipurpose Storage Rack</h3>
+                            <p class="text-gray-400 text-sm mb-3">5-layer multipurpose storage rack</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 12950</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('5 Layers Multipurpose Storage Rack', 'Rs 12950', 'HOME DECOR CATEGORY/trollys/5 Layers Multipurpose Storage Rack.jpg', '5-layer multipurpose storage rack')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 Tier Square Kitchen Cart -->
+                    <div class="product-card">
+                        <div class="relative">
+                            <img src="HOME DECOR CATEGORY/trollys/3 Tier Square Kitchen Cart- Black.jpeg" 
+                                 alt="3 Tier Square Kitchen Cart - Black" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 bg-gray-800 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                                Black
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-white font-semibold text-lg mb-2">3 Tier Square Kitchen Cart</h3>
+                            <p class="text-gray-400 text-sm mb-3">Black 3-tier square kitchen cart</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-golden font-bold text-xl">Rs 8500</span>
+                                <button class="bg-golden text-black btn-responsive rounded-lg hover:bg-yellow-400 transition-colors font-semibold touch-target" 
+                                        onclick="showProductPopup('3 Tier Square Kitchen Cart', 'Rs 8500', 'HOME DECOR CATEGORY/trollys/3 Tier Square Kitchen Cart- Black.jpeg', 'Black 3-tier square kitchen cart')">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-yellow-500 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-yellow-500 mb-4">MSM Traders</h3>
+                    <p class="text-gray-400 text-sm">Your trusted partner for quality home decor products and exceptional service.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Home</a></li>
+                        <li><a href="crockery.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Crockery</a></li>
+                        <li><a href="premium_perfumes.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Premium Perfumes</a></li>
+                        <li><a href="home_decor.html" class="text-gray-400 hover:text-yellow-500 transition-colors">Home Decor</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><i class="fas fa-phone mr-2"></i> +92 300 123 4567</li>
+                        <li><i class="fas fa-envelope mr-2"></i> info@msmtraders.com</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> Karachi, Pakistan</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400 text-sm">&copy; 2024 MSM Traders. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-black rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-500 max-h-[90vh] sm:max-h-[80vh] overflow-hidden flex flex-col">
+                <!-- Cart Header -->
+                <div class="flex items-center justify-between p-3 sm:p-4 border-b border-yellow-500 flex-shrink-0">
+                    <h3 class="text-lg sm:text-xl font-bold text-yellow-500">Shopping Cart</h3>
+                    <button id="close-cart" class="text-gray-400 hover:text-yellow-500 text-xl sm:text-2xl font-bold">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Cart Items -->
+                <div id="cart-items" class="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3">
+                    <div id="empty-cart" class="text-center py-8">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">Your cart is empty</p>
+                    </div>
+                </div>
+                
+                <!-- Cart Footer -->
+                <div class="border-t border-yellow-500 p-3 sm:p-4 flex-shrink-0">
+                    <div class="flex justify-between items-center mb-3 sm:mb-4">
+                        <span class="text-base sm:text-lg font-semibold text-yellow-500">Total:</span>
+                        <span id="cart-total" class="text-lg sm:text-xl font-bold text-yellow-500">Rs 0.00</span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <button id="clear-cart" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base">
+                            Clear Cart
+                        </button>
+                        <button id="checkout-whatsapp" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-1 sm:mr-2"></i>
+                            Order via WhatsApp
+                        </button>
+                        <button id="checkout-jazzcash" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base flex items-center justify-center">
+                            <i class="fas fa-credit-card mr-1 sm:mr-2"></i>
+                            Pay with Jazz Cash
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Information Modal for WhatsApp Orders -->
+    <div id="customer-info-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-black rounded-lg shadow-2xl w-full max-w-sm sm:max-w-md mx-auto border border-yellow-400">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between p-4 border-b border-yellow-400">
+                    <h3 class="text-xl font-bold text-yellow-400">Customer Information</h3>
+                    <button id="close-customer-info" class="text-gray-400 hover:text-yellow-400 text-2xl font-bold">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Modal Content -->
+                <div class="p-4">
+                    <p class="text-gray-300 text-sm mb-4">Please provide your details to place the order via WhatsApp:</p>
+                    
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-yellow-400 text-sm font-medium mb-2">Full Name *</label>
+                            <input type="text" id="whatsapp-customer-name" placeholder="Enter your full name" 
+                                   class="w-full px-3 py-2 bg-black border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-yellow-400 text-sm font-medium mb-2">Phone Number *</label>
+                            <input type="tel" id="whatsapp-customer-phone" placeholder="03XXXXXXXXX" 
+                                   class="w-full px-3 py-2 bg-black border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-yellow-400 text-sm font-medium mb-2">Complete Address *</label>
+                            <textarea id="whatsapp-customer-address" placeholder="Enter your complete address" rows="3"
+                                      class="w-full px-3 py-2 bg-black border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Modal Buttons -->
+                    <div class="flex gap-2 mt-6">
+                        <button id="cancel-customer-info" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg transition duration-200">
+                            Cancel
+                        </button>
+                        <button id="confirm-whatsapp-order" class="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition duration-200">
+                            Send Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Popup Modal -->
+    <div id="product-popup-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-black rounded-lg shadow-2xl modal-responsive border border-yellow-500">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between p-4 border-b border-yellow-500">
+                    <h3 class="text-xl font-bold text-yellow-500">Product Details</h3>
+                    <button id="close-product-popup" class="text-gray-400 hover:text-yellow-500 text-2xl font-bold">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Modal Content -->
+                <div class="p-4">
+                    <!-- Product Image -->
+                    <div class="mb-4">
+                        <img id="popup-product-image" src="" alt="Product Image" 
+                             class="w-full h-48 object-contain bg-white rounded-lg">
+                    </div>
+                    
+                    <!-- Product Details -->
+                    <div class="mb-4">
+                        <h4 id="popup-product-name" class="text-lg font-bold text-white mb-2"></h4>
+                        <p id="popup-product-description" class="text-gray-300 text-sm mb-3"></p>
+                        <p id="popup-product-price" class="text-xl font-bold text-yellow-500"></p>
+                    </div>
+                    
+                    <!-- Modal Buttons -->
+                    <div class="flex gap-2">
+                        <button id="cancel-product-popup" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg transition duration-200">
+                            Cancel
+                        </button>
+                        <button id="confirm-add-to-cart" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-black py-2 px-4 rounded-lg transition duration-200 font-semibold">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jazz Cash Payment Modal -->
+    <div id="jazzcash-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-black rounded-lg shadow-2xl w-full max-w-sm sm:max-w-md mx-auto border border-orange-500">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between p-4 border-b border-orange-500">
+                    <h3 class="text-xl font-bold text-orange-500">Jazz Cash Payment</h3>
+                    <button id="close-jazzcash" class="text-gray-400 hover:text-orange-500 text-2xl font-bold">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Modal Content -->
+                <div class="p-4">
+                    <div class="text-center mb-4">
+                        <p class="text-gray-300 text-sm mb-2">Total Amount:</p>
+                        <p id="jazzcash-total" class="text-2xl font-bold text-orange-500">Rs 0.00</p>
+                    </div>
+                    
+                    <p class="text-gray-300 text-sm mb-4">Please provide your details and payment information:</p>
+                    
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-orange-500 text-sm font-medium mb-2">Full Name *</label>
+                            <input type="text" id="customer-name" placeholder="Enter your full name" 
+                                   class="w-full px-3 py-2 bg-black border border-gray-700 rounded-lg text-white focus:outline-none focus:border-orange-500" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-orange-500 text-sm font-medium mb-2">Phone Number *</label>
+                            <input type="tel" id="customer-phone" placeholder="03XXXXXXXXX" 
+                                   class="w-full px-3 py-2 bg-black border border-gray-700 rounded-lg text-white focus:outline-none focus:border-orange-500" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-orange-500 text-sm font-medium mb-2">Complete Address *</label>
+                            <textarea id="customer-address" placeholder="Enter your complete address" rows="3"
+                                      class="w-full px-3 py-2 bg-black border border-gray-700 rounded-lg text-white focus:outline-none focus:border-orange-500" required></textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-orange-500 text-sm font-medium mb-2">Jazz Cash Number *</label>
+                            <input type="tel" id="jazzcash-number" placeholder="03XXXXXXXXX" 
+                                   class="w-full px-3 py-2 bg-black border border-gray-700 rounded-lg text-white focus:outline-none focus:border-orange-500" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-orange-500 text-sm font-medium mb-2">Transaction ID (Optional)</label>
+                            <input type="text" id="transaction-id" placeholder="Enter transaction ID if available" 
+                                   class="w-full px-3 py-2 bg-black border border-gray-700 rounded-lg text-white focus:outline-none focus:border-orange-500">
+                        </div>
+                    </div>
+                    
+                    <!-- Modal Buttons -->
+                    <div class="flex gap-2 mt-6">
+                        <button id="cancel-jazzcash" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg transition duration-200">
+                            Cancel
+                        </button>
+                        <button id="confirm-jazzcash" class="flex-1 bg-orange-600 hover:bg-orange-700 text-white py-2 px-4 rounded-lg transition duration-200">
+                            Confirm Payment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Force refresh to clear cache
+        if (performance.navigation.type === 1) {
+            // Page was refreshed, clear any cached styles
+            document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+                link.href = link.href.split('?')[0] + '?v=' + Date.now();
+            });
+        }
+        
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartCount = 0;
+        const whatsappNumber = '+923258573925'; // MSM Traders WhatsApp number
+        
+        console.log('Initial cart from localStorage:', cart);
+        console.log('Cart length on page load:', cart.length);
+
+        // Add item to cart
+        function addToCart(name, price, image) {
+            console.log('addToCart called with:', { name, price, image });
+            
+            // Extract numeric value from price string (e.g., "Rs 11500" -> 11500)
+            const numericPrice = parseFloat(price.replace(/[^\d.]/g, ''));
+            console.log('Parsed price:', numericPrice);
+            
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+                console.log('Updated existing item quantity:', existingItem.quantity);
+            } else {
+                const newItem = {
+                    name: name,
+                    price: numericPrice,
+                    image: image,
+                    quantity: 1
+                };
+                cart.push(newItem);
+                console.log('Added new item to cart:', newItem);
+            }
+            
+            console.log('Current cart:', cart);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            console.log('Saved to localStorage:', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+            
+            // Show cart popup when item is added
+            showCartPopup();
+            
+            // Show success message
+            showNotification('Item added to cart!', 'success');
+        }
+
+        // Show cart popup
+        function showCartPopup() {
+            console.log('showCartPopup called');
+            const cartModal = document.getElementById('cart-modal');
+            console.log('Cart modal element:', cartModal);
+            if (cartModal) {
+                console.log('Removing hidden class and adding show class');
+                cartModal.classList.remove('hidden');
+                cartModal.classList.add('show');
+                cartModal.style.display = 'flex';
+                console.log('Cart modal classes:', cartModal.className);
+                console.log('Cart modal style display:', cartModal.style.display);
+                console.log('Cart modal computed style:', window.getComputedStyle(cartModal).display);
+            } else {
+                console.error('Cart modal element not found!');
+            }
+        }
+
+        // Hide cart popup
+        function hideCartPopup() {
+            console.log('hideCartPopup called');
+            const cartModal = document.getElementById('cart-modal');
+            if (cartModal) {
+                cartModal.classList.add('hidden');
+                cartModal.classList.remove('show');
+                cartModal.style.display = 'none';
+                console.log('Cart modal hidden');
+            }
+        }
+
+        // Remove item from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            showNotification('Item removed from cart!', 'info');
+        }
+
+        // Update item quantity
+        function updateQuantity(index, action) {
+            if (action === 'increase') {
+                cart[index].quantity += 1;
+            } else if (action === 'decrease') {
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity -= 1;
+                } else {
+                    removeFromCart(index);
+                    return;
+                }
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        // Clear cart
+        function clearCart() {
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            showNotification('Cart cleared!', 'info');
+        }
+
+        // Update cart count display
+        function updateCartCount() {
+            const cartCount = document.getElementById('cart-count');
+            if (!cartCount) {
+                console.error('cart-count element not found!');
+                return;
+            }
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            // Clear any existing content and set new count
+            cartCount.textContent = '';
+            cartCount.textContent = totalItems;
+            console.log('Cart count updated to:', totalItems);
+            console.log('Cart count element:', cartCount);
+        }
+
+        // Update cart total
+        function updateCartTotal() {
+            console.log('updateCartTotal called');
+            const cartTotal = document.getElementById('cart-total');
+            console.log('Cart total element:', cartTotal);
+            
+            const total = cart.reduce((sum, item) => {
+                const price = parseFloat(item.price) || 0;
+                const quantity = parseInt(item.quantity) || 0;
+                return sum + (price * quantity);
+            }, 0);
+            
+            console.log('Calculated total:', total);
+            if (cartTotal) {
+                cartTotal.textContent = `Rs ${total.toFixed(2)}`;
+                console.log('Updated cart total display to:', cartTotal.textContent);
+            } else {
+                console.error('Cart total element not found!');
+            }
+        }
+
+        // Render cart items
+        function renderCart() {
+            console.log('renderCart called, cart length:', cart.length);
+            console.log('Current cart:', cart);
+            
+            const cartItems = document.getElementById('cart-items');
+            
+            if (!cartItems) {
+                console.error('cartItems element not found!');
+                return;
+            }
+            
+            if (cart.length === 0) {
+                console.log('Cart is empty, showing empty message');
+                cartItems.innerHTML = `
+                    <div id="empty-cart" class="text-center py-8">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">Your cart is empty</p>
+                    </div>
+                `;
+            } else {
+                console.log('Cart has items, rendering cart items');
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item bg-black rounded-lg p-3 mb-3 border border-gray-700">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-home text-yellow-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-yellow-500 font-semibold text-sm">${item.name}</h4>
+                                    <p class="text-gray-400 text-xs">Rs ${item.price}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}" data-action="decrease">-</button>
+                                <span class="text-yellow-500 font-semibold text-sm w-8 text-center">${item.quantity}</span>
+                                <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}" data-action="increase">+</button>
+                                <button class="remove-item bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            updateCartCount();
+            updateCartTotal();
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-green-600' : type === 'error' ? 'bg-red-600' : 'bg-blue-600';
+            const icon = type === 'success' ? 'fa-check' : type === 'error' ? 'fa-exclamation' : 'fa-info';
+            
+            notification.className = `fixed top-20 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas ${icon} mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Phone number validation
+        function isValidPhoneNumber(phone) {
+            const phoneRegex = /^03\d{9}$/;
+            return phoneRegex.test(phone);
+        }
+
+        // Open customer information modal for WhatsApp orders
+        function sendWhatsAppOrder() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!', 'error');
+                return;
+            }
+
+            // Open customer information modal
+            const customerInfoModal = document.getElementById('customer-info-modal');
+            customerInfoModal.classList.remove('hidden');
+        }
+
+        // Send WhatsApp order with customer information
+        function sendWhatsAppOrderWithInfo() {
+            // Get customer information
+            const customerName = document.getElementById('whatsapp-customer-name').value.trim();
+            const customerPhone = document.getElementById('whatsapp-customer-phone').value.trim();
+            const customerAddress = document.getElementById('whatsapp-customer-address').value.trim();
+            
+            // Validate required fields
+            if (!customerName) {
+                showNotification('Please enter your full name!', 'error');
+                return;
+            }
+            
+            if (!customerPhone) {
+                showNotification('Please enter your phone number!', 'error');
+                return;
+            }
+            
+            if (!isValidPhoneNumber(customerPhone)) {
+                showNotification('Please enter a valid phone number!', 'error');
+                return;
+            }
+            
+            if (!customerAddress) {
+                showNotification('Please enter your complete address!', 'error');
+                return;
+            }
+
+            const total = cart.reduce((sum, item) => {
+                const price = parseFloat(item.price) || 0;
+                const quantity = parseInt(item.quantity) || 0;
+                return sum + (price * quantity);
+            }, 0);
+            let message = `Hello! I would like to place an order:\n\n`;
+            
+            message += `Customer Information:\n`;
+            message += `Name: ${customerName}\n`;
+            message += `Phone: ${customerPhone}\n`;
+            message += `Address: ${customerAddress}\n\n`;
+            message += `Order Details:\n`;
+            
+            cart.forEach(item => {
+                message += `• ${item.name} x${item.quantity} - Rs ${(item.price * item.quantity).toFixed(2)}\n`;
+            });
+            
+            message += `\nTotal: Rs ${total.toFixed(2)}\n\nPlease confirm my order. Thank you!`;
+            
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Close modal and clear cart
+            closeCustomerInfoModal();
+            clearCart();
+        }
+
+        // Close customer information modal
+        function closeCustomerInfoModal() {
+            const customerInfoModal = document.getElementById('customer-info-modal');
+            customerInfoModal.classList.add('hidden');
+            
+            // Reset form
+            document.getElementById('whatsapp-customer-name').value = '';
+            document.getElementById('whatsapp-customer-phone').value = '';
+            document.getElementById('whatsapp-customer-address').value = '';
+        }
+
+        // Jazz Cash Payment Functions
+        function openJazzCashPayment() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!', 'error');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => {
+                const price = parseFloat(item.price) || 0;
+                const quantity = parseInt(item.quantity) || 0;
+                return sum + (price * quantity);
+            }, 0);
+            document.getElementById('jazzcash-total').textContent = `Rs ${total.toFixed(2)}`;
+            
+            const jazzCashModal = document.getElementById('jazzcash-modal');
+            jazzCashModal.classList.remove('hidden');
+            jazzCashModal.classList.add('show');
+        }
+        
+        function closeJazzCashPayment() {
+            const jazzCashModal = document.getElementById('jazzcash-modal');
+            jazzCashModal.classList.add('hidden');
+            jazzCashModal.classList.remove('show');
+            
+            // Reset form
+            document.getElementById('customer-name').value = '';
+            document.getElementById('customer-phone').value = '';
+            document.getElementById('customer-address').value = '';
+            document.getElementById('jazzcash-number').value = '';
+            document.getElementById('transaction-id').value = '';
+        }
+        
+        function confirmJazzCashPayment() {
+            // Get customer information
+            const customerName = document.getElementById('customer-name').value.trim();
+            const customerPhone = document.getElementById('customer-phone').value.trim();
+            const customerAddress = document.getElementById('customer-address').value.trim();
+            const jazzCashNumber = document.getElementById('jazzcash-number').value.trim();
+            const transactionId = document.getElementById('transaction-id').value.trim();
+            
+            // Validate required fields
+            if (!customerName) {
+                showNotification('Please enter your full name!', 'error');
+                return;
+            }
+            
+            if (!customerPhone) {
+                showNotification('Please enter your phone number!', 'error');
+                return;
+            }
+            
+            if (!isValidPhoneNumber(customerPhone)) {
+                showNotification('Please enter a valid phone number!', 'error');
+                return;
+            }
+            
+            if (!customerAddress) {
+                showNotification('Please enter your complete address!', 'error');
+                return;
+            }
+            
+            if (!jazzCashNumber) {
+                showNotification('Please enter your Jazz Cash number!', 'error');
+                return;
+            }
+
+            if (!isValidPhoneNumber(jazzCashNumber)) {
+                showNotification('Please enter a valid Jazz Cash number!', 'error');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => {
+                const price = parseFloat(item.price) || 0;
+                const quantity = parseInt(item.quantity) || 0;
+                return sum + (price * quantity);
+            }, 0);
+            
+            // Create order summary with customer information
+            let orderSummary = `Jazz Cash Payment Order:\n\n`;
+            orderSummary += `Customer Information:\n`;
+            orderSummary += `Name: ${customerName}\n`;
+            orderSummary += `Phone: ${customerPhone}\n`;
+            orderSummary += `Address: ${customerAddress}\n\n`;
+            orderSummary += `Order Details:\n`;
+            cart.forEach(item => {
+                orderSummary += `• ${item.name} x${item.quantity} - Rs ${(item.price * item.quantity).toFixed(2)}\n`;
+            });
+            orderSummary += `\nTotal: Rs ${total.toFixed(2)}\n`;
+            orderSummary += `Jazz Cash Number: ${jazzCashNumber}\n`;
+            if (transactionId) {
+                orderSummary += `Transaction ID: ${transactionId}\n`;
+            }
+            
+            // Send order details via WhatsApp
+            const message = `Hello! I have made a Jazz Cash payment for my order:\n\n${orderSummary}\n\nPlease confirm my payment and process my order. Thank you!`;
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            showNotification('Payment submitted successfully! We will confirm your order shortly.', 'success');
+            
+            // Close modal and clear cart
+            closeJazzCashPayment();
+            clearCart();
+        }
+
+        // Product popup modal functions
+        let currentProduct = null;
+
+        function showProductPopup(name, price, image, description = '') {
+            currentProduct = { name, price, image, description };
+            
+            // Update popup content
+            document.getElementById('popup-product-image').src = image;
+            document.getElementById('popup-product-image').alt = name;
+            document.getElementById('popup-product-name').textContent = name;
+            document.getElementById('popup-product-description').textContent = description || 'Premium quality home decor item';
+            document.getElementById('popup-product-price').textContent = `Rs ${price}`;
+            
+            // Show popup
+            const popupModal = document.getElementById('product-popup-modal');
+            popupModal.classList.remove('hidden');
+            popupModal.style.display = 'flex';
+        }
+
+        function hideProductPopup() {
+            const popupModal = document.getElementById('product-popup-modal');
+            popupModal.classList.add('hidden');
+            popupModal.style.display = 'none';
+            currentProduct = null;
+        }
+
+        function confirmAddToCart() {
+            if (currentProduct) {
+                addToCart(currentProduct.name, currentProduct.price, currentProduct.image);
+                hideProductPopup();
+            }
+        }
+
+        // Make functions globally accessible
+        window.addToCart = addToCart;
+        window.removeFromCart = removeFromCart;
+        window.updateQuantity = updateQuantity;
+        window.clearCart = clearCart;
+        window.showCartPopup = showCartPopup;
+        window.hideCartPopup = hideCartPopup;
+        window.renderCart = renderCart;
+        window.updateCartCount = updateCartCount;
+        window.updateCartTotal = updateCartTotal;
+        window.showNotification = showNotification;
+        window.sendWhatsAppOrder = sendWhatsAppOrder;
+        window.sendWhatsAppOrderWithInfo = sendWhatsAppOrderWithInfo;
+        window.closeCustomerInfoModal = closeCustomerInfoModal;
+        window.openJazzCashPayment = openJazzCashPayment;
+        window.closeJazzCashPayment = closeJazzCashPayment;
+        window.confirmJazzCashPayment = confirmJazzCashPayment;
+        window.showProductPopup = showProductPopup;
+        window.hideProductPopup = hideProductPopup;
+        window.confirmAddToCart = confirmAddToCart;
+
+        // Mobile menu toggle
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const menu = document.getElementById('navbar-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Mobile Category Menu functionality
+        function openMobileCategoryMenu() {
+            const menu = document.getElementById('mobile-category-menu');
+            const sidebar = document.getElementById('category-sidebar');
+            menu.classList.remove('hidden');
+            setTimeout(() => {
+                sidebar.classList.remove('-translate-x-full');
+            }, 10);
+        }
+
+        function closeMobileCategoryMenu() {
+            const menu = document.getElementById('mobile-category-menu');
+            const sidebar = document.getElementById('category-sidebar');
+            sidebar.classList.add('-translate-x-full');
+            setTimeout(() => {
+                menu.classList.add('hidden');
+            }, 300);
+        }
+
+        // Event listeners for mobile category menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryMenuBtn = document.getElementById('category-menu-btn');
+            const closeCategoryMenuBtn = document.getElementById('close-category-menu');
+            const mobileCategoryMenu = document.getElementById('mobile-category-menu');
+
+            if (categoryMenuBtn) {
+                categoryMenuBtn.addEventListener('click', openMobileCategoryMenu);
+            }
+
+            if (closeCategoryMenuBtn) {
+                closeCategoryMenuBtn.addEventListener('click', closeMobileCategoryMenu);
+            }
+
+            // Close menu when clicking outside
+            if (mobileCategoryMenu) {
+                mobileCategoryMenu.addEventListener('click', function(e) {
+                    if (e.target === mobileCategoryMenu) {
+                        closeMobileCategoryMenu();
+                    }
+                });
+            }
+        });
+
+        // Make functions globally available
+        window.openMobileCategoryMenu = openMobileCategoryMenu;
+        window.closeMobileCategoryMenu = closeMobileCategoryMenu;
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Function to scroll to specific sections
+        function scrollToSection(sectionId) {
+            const target = document.getElementById(sectionId);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Initialize cart modal event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartModal = document.getElementById('cart-modal');
+            const closeCart = document.getElementById('close-cart');
+            const clearCartBtn = document.getElementById('clear-cart');
+            const checkoutWhatsAppBtn = document.getElementById('checkout-whatsapp');
+            
+            // Close cart modal
+            if (closeCart) {
+                closeCart.addEventListener('click', function() {
+                    console.log('Close cart button clicked');
+                    hideCartPopup();
+                });
+            }
+            
+            // Close cart modal when clicking outside
+            if (cartModal) {
+                cartModal.addEventListener('click', function(e) {
+                    if (e.target === cartModal) {
+                        console.log('Clicked outside cart modal');
+                        hideCartPopup();
+                    }
+                });
+            }
+            
+            // Clear cart
+            if (clearCartBtn) {
+                clearCartBtn.addEventListener('click', clearCart);
+            }
+            
+            // Checkout via WhatsApp
+            if (checkoutWhatsAppBtn) {
+                checkoutWhatsAppBtn.addEventListener('click', sendWhatsAppOrder);
+            }
+            
+            // Jazz Cash Payment Functions
+            const checkoutJazzCashBtn = document.getElementById('checkout-jazzcash');
+            const jazzCashModal = document.getElementById('jazzcash-modal');
+            const closeJazzCash = document.getElementById('close-jazzcash');
+            const cancelJazzCash = document.getElementById('cancel-jazzcash');
+            const confirmJazzCash = document.getElementById('confirm-jazzcash');
+            
+            // Open Jazz Cash modal
+            if (checkoutJazzCashBtn) {
+                checkoutJazzCashBtn.addEventListener('click', openJazzCashPayment);
+            }
+            
+            if (closeJazzCash) {
+                closeJazzCash.addEventListener('click', closeJazzCashPayment);
+            }
+            
+            if (cancelJazzCash) {
+                cancelJazzCash.addEventListener('click', closeJazzCashPayment);
+            }
+            
+            // Confirm Jazz Cash payment
+            if (confirmJazzCash) {
+                confirmJazzCash.addEventListener('click', confirmJazzCashPayment);
+            }
+            
+            // Customer Information Modal Functions
+            const customerInfoModal = document.getElementById('customer-info-modal');
+            const closeCustomerInfo = document.getElementById('close-customer-info');
+            const cancelCustomerInfo = document.getElementById('cancel-customer-info');
+            const confirmWhatsAppOrder = document.getElementById('confirm-whatsapp-order');
+            
+            if (closeCustomerInfo) {
+                closeCustomerInfo.addEventListener('click', closeCustomerInfoModal);
+            }
+            
+            if (cancelCustomerInfo) {
+                cancelCustomerInfo.addEventListener('click', closeCustomerInfoModal);
+            }
+            
+            if (confirmWhatsAppOrder) {
+                confirmWhatsAppOrder.addEventListener('click', sendWhatsAppOrderWithInfo);
+            }
+            
+            // Close customer info modal when clicking outside
+            if (customerInfoModal) {
+                customerInfoModal.addEventListener('click', function(e) {
+                    if (e.target === customerInfoModal) {
+                        closeCustomerInfoModal();
+                    }
+                });
+            }
+            
+            // Close Jazz Cash modal when clicking outside
+            if (jazzCashModal) {
+                jazzCashModal.addEventListener('click', function(e) {
+                    if (e.target === jazzCashModal) {
+                        closeJazzCashPayment();
+                    }
+                });
+            }
+            
+            // Product popup modal event listeners
+            const productPopupModal = document.getElementById('product-popup-modal');
+            const closeProductPopup = document.getElementById('close-product-popup');
+            const cancelProductPopup = document.getElementById('cancel-product-popup');
+            const confirmAddToCartBtn = document.getElementById('confirm-add-to-cart');
+            
+            // Close product popup
+            if (closeProductPopup) {
+                closeProductPopup.addEventListener('click', hideProductPopup);
+            }
+            
+            if (cancelProductPopup) {
+                cancelProductPopup.addEventListener('click', hideProductPopup);
+            }
+            
+            // Confirm add to cart
+            if (confirmAddToCartBtn) {
+                confirmAddToCartBtn.addEventListener('click', confirmAddToCart);
+            }
+            
+            // Close product popup when clicking outside
+            if (productPopupModal) {
+                productPopupModal.addEventListener('click', function(e) {
+                    if (e.target === productPopupModal) {
+                        hideProductPopup();
+                    }
+                });
+            }
+            
+            // Cart button functionality
+            const cartButton = document.getElementById('cart-button');
+            if (cartButton) {
+                cartButton.addEventListener('click', function() {
+                    console.log('Cart button clicked');
+                    showCartPopup();
+                });
+            } else {
+                console.log('Cart button not found');
+            }
+            
+            // Add event listeners for cart item interactions
+            document.addEventListener('click', function(e) {
+                // Handle quantity buttons
+                if (e.target.classList.contains('quantity-btn')) {
+                    const index = parseInt(e.target.dataset.index);
+                    const action = e.target.dataset.action;
+                    updateQuantity(index, action);
+                }
+                
+                // Handle remove item buttons
+                if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
+                    const button = e.target.classList.contains('remove-item') ? e.target : e.target.closest('.remove-item');
+                    const index = parseInt(button.dataset.index);
+                    removeFromCart(index);
+                }
+            });
+            
+            // Initial render
+            renderCart();
+            
+            // Initialize cart modal
+            if (cartModal) {
+                cartModal.classList.add('hidden');
+                cartModal.classList.remove('show');
+            }
+            
+            // Initialize cart count
+            cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>
