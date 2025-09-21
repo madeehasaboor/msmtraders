@@ -6,6 +6,9 @@
     <title>Bedcovers - MSM Traders</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <script>
         tailwind.config = {
             theme: {
@@ -28,10 +31,34 @@
             background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
         }
         .product-card {
+            background: #f5f5f5 !important;
+            border-radius: 8px;
+            text-align: center;
+            padding: 15px;
             transition: all 0.3s ease;
         }
         .product-card:hover {
             transform: translateY(-5px);
+        }
+        
+        /* Force black theme */
+        body { background-color: #000000 !important; }
+        .bg-black { background-color: #000000 !important; }
+        .bg-gray-800 { background-color: #000000 !important; }
+        .bg-gray-900 { background-color: #000000 !important; }
+        
+        /* Product Grid Layout */
+        .products-grid {
+            display: grid;
+            gap: 15px; /* space between cards */
+            grid-template-columns: repeat(5, 1fr); /* Desktop: 5 per row */
+        }
+        
+        /* Mobile: 2 per row */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         .image-container {
             position: relative;
@@ -72,7 +99,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="bg-black text-white">
     <!-- Navigation -->
     <nav class="bg-black border-b border-golden sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -89,10 +116,15 @@
                     <a href="premium_perfumes.html" class="text-gray-300 hover:text-golden transition-colors">Perfumes</a>
                     <a href="crockery.html" class="text-gray-300 hover:text-golden transition-colors">Crockery</a>
                     <a href="microfiber_and_cleaners.html" class="text-gray-300 hover:text-golden transition-colors">Cleaners</a>
+                    <a href="home_decor.html" class="text-gray-300 hover:text-golden transition-colors">Home Decor</a>
                     <a href="laptops.html" class="text-gray-300 hover:text-golden transition-colors">Laptops</a>
                     <a href="special_offers.html" class="text-golden font-semibold">Special Offers</a>
                 </div>
                 <div class="flex items-center space-x-4">
+                    <!-- Mobile Category Menu Button -->
+                    <button id="category-menu-btn" class="md:hidden bg-golden text-black px-3 py-2 rounded-lg hover:bg-yellow-500 transition-colors">
+                        <i class="fas fa-th-large"></i>
+                    </button>
                     <button id="cart-btn" class="relative bg-golden text-black px-4 py-2 rounded-lg hover:bg-yellow-500 transition-colors">
                         <i class="fas fa-shopping-cart"></i>
                         <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
@@ -102,19 +134,119 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Sidebar -->
     <section class="black-gradient py-8 lg:py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <img src="bedding category/banner.jpeg" alt="Bedding Category Banner" class="mx-auto mb-6 max-w-full h-auto rounded-lg shadow-lg">
-            <h1 class="text-4xl lg:text-6xl font-bold text-golden mb-2">Premium Bedcovers</h1>
-            <p class="text-lg lg:text-2xl text-gray-300">Luxurious and comfortable bedcovers for every bedroom</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Vertical Category Sidebar -->
+                <div class="w-full lg:w-80 flex-shrink-0 order-2 lg:order-1 hidden md:block">
+                    <div class="bg-black border border-golden rounded-xl p-6">
+                        <h2 class="text-2xl font-bold text-golden mb-6 text-center">Shop by Category</h2>
+                        <div class="space-y-3">
+                            <!-- Car Care -->
+                            <a href="car_care.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group">
+                                <h3 class="text-white font-semibold group-hover:text-golden">Car Care</h3>
+                                <p class="text-gray-400 text-sm">Professional cleaning products</p>
+                            </a>
+                            
+                            <!-- Microfiber & Cleaners -->
+                            <a href="microfiber_and_cleaners.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group">
+                                <h3 class="text-white font-semibold group-hover:text-golden">Microfiber & Cleaners</h3>
+                                <p class="text-gray-400 text-sm">Essential cleaning supplies</p>
+                            </a>
+                            
+                            <!-- Premium Perfumes -->
+                            <a href="premium_perfumes.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group">
+                                <h3 class="text-white font-semibold group-hover:text-golden">Premium Perfumes</h3>
+                                <p class="text-gray-400 text-sm">Fragrances & scented candles</p>
+                            </a>
+                            
+                            <!-- Crockery -->
+                            <a href="crockery.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group">
+                                <h3 class="text-white font-semibold group-hover:text-golden">Crockery</h3>
+                                <p class="text-gray-400 text-sm">Elegant dinnerware</p>
+                            </a>
+                            
+                            <!-- Laptops -->
+                            <a href="laptops.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group">
+                                <h3 class="text-white font-semibold group-hover:text-golden">Laptops</h3>
+                                <p class="text-gray-400 text-sm">High-performance laptops</p>
+                            </a>
+                            
+                            <!-- Home Decor -->
+                            <a href="home_decor.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group">
+                                <h3 class="text-white font-semibold group-hover:text-golden">Home Decor</h3>
+                                <p class="text-gray-400 text-sm">Decorative accessories</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Banner Content -->
+                <div class="flex-1 text-center lg:text-left order-1 lg:order-2">
+                    <img src="bedding category/banner.jpeg" alt="Bedding Category Banner" class="mx-auto lg:mx-0 mb-6 max-w-full h-auto rounded-lg shadow-lg">
+                    <h1 class="text-4xl lg:text-6xl font-bold text-golden mb-2">Premium Bedcovers</h1>
+                    <p class="text-lg lg:text-2xl text-gray-300">Luxurious and comfortable bedcovers for every bedroom</p>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Mobile Category Menu -->
+    <div id="mobile-category-menu" class="md:hidden hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+        <div class="fixed top-0 left-0 h-full w-80 bg-black border-r border-golden transform -translate-x-full transition-transform duration-300" id="category-sidebar">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-golden">Shop by Category</h2>
+                    <button id="close-category-menu" class="text-gray-400 hover:text-golden text-2xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="space-y-3">
+                    <!-- Car Care -->
+                    <a href="car_care.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group" onclick="closeMobileCategoryMenu()">
+                        <h3 class="text-white font-semibold group-hover:text-golden">Car Care</h3>
+                        <p class="text-gray-400 text-sm">Professional cleaning products</p>
+                    </a>
+                    
+                    <!-- Microfiber & Cleaners -->
+                    <a href="microfiber_and_cleaners.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group" onclick="closeMobileCategoryMenu()">
+                        <h3 class="text-white font-semibold group-hover:text-golden">Microfiber & Cleaners</h3>
+                        <p class="text-gray-400 text-sm">Essential cleaning supplies</p>
+                    </a>
+                    
+                    <!-- Premium Perfumes -->
+                    <a href="premium_perfumes.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group" onclick="closeMobileCategoryMenu()">
+                        <h3 class="text-white font-semibold group-hover:text-golden">Premium Perfumes</h3>
+                        <p class="text-gray-400 text-sm">Fragrances & scented candles</p>
+                    </a>
+                    
+                    <!-- Crockery -->
+                    <a href="crockery.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group" onclick="closeMobileCategoryMenu()">
+                        <h3 class="text-white font-semibold group-hover:text-golden">Crockery</h3>
+                        <p class="text-gray-400 text-sm">Elegant dinnerware</p>
+                    </a>
+                    
+                    <!-- Laptops -->
+                    <a href="laptops.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group" onclick="closeMobileCategoryMenu()">
+                        <h3 class="text-white font-semibold group-hover:text-golden">Laptops</h3>
+                        <p class="text-gray-400 text-sm">High-performance laptops</p>
+                    </a>
+                    
+                    <!-- Home Decor -->
+                    <a href="home_decor.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group" onclick="closeMobileCategoryMenu()">
+                        <h3 class="text-white font-semibold group-hover:text-golden">Home Decor</h3>
+                        <p class="text-gray-400 text-sm">Decorative accessories</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Categories -->
-    <section class="py-16 bg-gray-800">
+    <section class="py-16 bg-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-golden mb-12 text-center">Shop by Category</h2>
+            <h2 class="text-3xl font-bold text-golden mb-12 text-center">Bedding Categories</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <!-- Cotton -->
                 <a href="#cotton" class="group block bg-gray-900 border border-golden/40 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-yellow-500/20 transition-all duration-300">
@@ -163,16 +295,17 @@
         </div>
     </section>
 
+
     <!-- Cotton Bedcovers Section -->
-    <section id="cotton" class="py-16 bg-gray-50">
+    <section id="cotton" class="py-16 bg-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-8">
                 <h2 class="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">Cotton Bedcovers Collection</h2>
-                <p class="text-gray-600 text-lg">Soft, breathable, and comfortable cotton bedcovers for all seasons</p>
+                <p class="text-gray-300 text-lg">Soft, breathable, and comfortable cotton bedcovers for all seasons</p>
             </div>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 products-grid">
                 <!-- MUSTRAD AND WHITE COTTON KING SIZE BEDSHEET -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                <div class="product-card">
                     <div class="image-container">
                         <img src="BEDDING/MUSTRAD AND WHITE COTTON KING SIZE BEDSHEET.jpg" alt="Mustard and White Cotton King Size Bedsheet" class="max-w-full max-h-full object-contain rounded-xl">
                         <div class="absolute top-2 right-2 bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-bold">King Size</div>
@@ -182,7 +315,7 @@
                 </div>
 
                 <!-- SKY BLUE N BLACK COTTON KING SIZE BEDSHEETS -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                <div class="product-card">
                     <div class="image-container">
                         <img src="BEDDING/SKY BLUE N BLACK COTTON KING SIZE BEDSHEETS.jpg" alt="Sky Blue & Black Cotton King Size Bedsheets" class="max-w-full max-h-full object-contain rounded-xl">
                         <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">King Size</div>
@@ -192,7 +325,7 @@
                 </div>
 
                 <!-- RED N WHITE COTTON KING SIZE BEDSHEET -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                <div class="product-card">
                     <div class="image-container">
                         <img src="BEDDING/RED N WHITE COTTON KING SIZE BEDSHEET.jpg" alt="Red & White Cotton King Size Bedsheet" class="max-w-full max-h-full object-contain rounded-xl">
                         <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">King Size</div>
@@ -202,7 +335,7 @@
                 </div>
 
                 <!-- GREEN AND WHITE COTTON KING SIZE BED SHEET -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                <div class="product-card">
                     <div class="image-container">
                         <img src="BEDDING/GREEN AND WHITE COTTON KING SIZE BED SHEET.jpg" alt="Green & White Cotton King Size Bedsheet" class="max-w-full max-h-full object-contain rounded-xl">
                         <div class="absolute top-2 right-2 bg-green-600 text-white px-2 py-1 rounded-full text-xs font-bold">King Size</div>
@@ -212,7 +345,7 @@
                 </div>
 
                 <!-- WHITE AND BROWN COTTON KING SIZE BEDSHEET -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                <div class="product-card">
                     <div class="image-container">
                         <img src="BEDDING/WHITE AND BROWN COTTON KING SIZE BEDSHEET.jpg" alt="White & Brown Cotton King Size Bedsheet" class="max-w-full max-h-full object-contain rounded-xl">
                         <div class="absolute top-2 right-2 bg-amber-600 text-white px-2 py-1 rounded-full text-xs font-bold">King Size</div>
@@ -222,7 +355,7 @@
                 </div>
 
                 <!-- SKY BLUE COTTON KING SIZE BEDSHEET -->
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                <div class="product-card">
                     <div class="image-container">
                         <img src="BEDDING/SKY BLUE COTTON KING SIZE BEDSHEET.jpg" alt="Sky Blue Cotton King Size Bedsheet" class="max-w-full max-h-full object-contain rounded-xl">
                         <div class="absolute top-2 right-2 bg-sky-500 text-white px-2 py-1 rounded-full text-xs font-bold">King Size</div>
@@ -242,7 +375,7 @@
                 <p class="text-gray-300 text-lg">Luxurious silk bedcovers for the ultimate comfort and elegance</p>
             </div>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 products-grid">
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                <div class="product-card">
                     <div class="image-container">
                         <img src="https://via.placeholder.com/300x200/fbbf24/000000?text=Silk+Bedcover+1" alt="Pure Silk Bedcover" class="w-full h-full object-cover rounded-xl">
                         <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-bold">Pure Silk</div>
@@ -250,7 +383,7 @@
                     <h3 class="font-bold text-white mb-2 text-lg group-hover:text-yellow-400 transition-colors">Pure Silk Bedcover</h3>
                     <p class="price">Rs 1000</p>
                 </div>
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl p-6 hover:shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 group product-card">
+                <div class="product-card">
                     <div class="image-container">
                         <img src="https://via.placeholder.com/300x200/fbbf24/000000?text=Silk+Bedcover+2" alt="Silk Satin Bedcover" class="w-full h-full object-cover rounded-xl">
                         <div class="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-bold">Satin</div>
@@ -731,6 +864,53 @@
         window.sendWhatsAppOrder = sendWhatsAppOrder;
         window.openJazzCashPayment = openJazzCashPayment;
         window.confirmJazzCashPayment = confirmJazzCashPayment;
+
+        // Mobile Category Menu functionality
+        function openMobileCategoryMenu() {
+            const menu = document.getElementById('mobile-category-menu');
+            const sidebar = document.getElementById('category-sidebar');
+            menu.classList.remove('hidden');
+            setTimeout(() => {
+                sidebar.classList.remove('-translate-x-full');
+            }, 10);
+        }
+
+        function closeMobileCategoryMenu() {
+            const menu = document.getElementById('mobile-category-menu');
+            const sidebar = document.getElementById('category-sidebar');
+            sidebar.classList.add('-translate-x-full');
+            setTimeout(() => {
+                menu.classList.add('hidden');
+            }, 300);
+        }
+
+        // Event listeners for mobile category menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryMenuBtn = document.getElementById('category-menu-btn');
+            const closeCategoryMenuBtn = document.getElementById('close-category-menu');
+            const mobileCategoryMenu = document.getElementById('mobile-category-menu');
+
+            if (categoryMenuBtn) {
+                categoryMenuBtn.addEventListener('click', openMobileCategoryMenu);
+            }
+
+            if (closeCategoryMenuBtn) {
+                closeCategoryMenuBtn.addEventListener('click', closeMobileCategoryMenu);
+            }
+
+            // Close menu when clicking outside
+            if (mobileCategoryMenu) {
+                mobileCategoryMenu.addEventListener('click', function(e) {
+                    if (e.target === mobileCategoryMenu) {
+                        closeMobileCategoryMenu();
+                    }
+                });
+            }
+        });
+
+        // Make functions globally available
+        window.openMobileCategoryMenu = openMobileCategoryMenu;
+        window.closeMobileCategoryMenu = closeMobileCategoryMenu;
     </script>
 </body>
 </html>
