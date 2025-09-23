@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-26KDY4QGMP"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-26KDY4QGMP');
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Bedcovers - MSM Traders</title>
@@ -51,11 +41,16 @@
             transform: translateY(-5px);
         }
         
-        /* Force black theme */
-        body { background-color: #000000 !important; }
-        .bg-black { background-color: #000000 !important; }
-        .bg-gray-800 { background-color: #000000 !important; }
-        .bg-gray-900 { background-color: #000000 !important; }
+        /* Light beige theme overrides */
+        html { background-color: #f5f5dc !important; }
+        body { background-color: #f5f5dc !重要; color: #2c2c2c !important; }
+        nav, .navbar, header { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017 !important; }
+        footer { background-color: #fbbf24 !important; border-top: 2px solid #d4a017 !important; color: #000 !important; }
+        /* Neutralize dark utility backgrounds */
+        .bg-black, .bg-gray-800, .bg-gray-900 { background-color: #f5f5dc !important; }
+        /* Product cards: white background, yellow outline, black text */
+        .product-card { background-color: #ffffff !important; border: 2px solid #d4a017 !important; color: #000 !important; }
+        .image-container { background-color: #fff7e6 !important; }
         
         /* Product Grid Layout */
         .products-grid {
@@ -108,10 +103,21 @@
             border-color: #fbbf24;
         }
     </style>
+    <style>
+        /* Hero section beige */
+        .black-gradient { background-color: #f5f5dc !important; background-image: none !important; }
+    </style>
+    <style>
+        /* Force all text to black across the page */
+        html, body, section, nav, footer { color: #000 !important; }
+        h1, h2, h3, h4, h5, h6, p, span, a, li, label, small, strong, em, div { color: #000 !important; }
+        /* Override common Tailwind text utility classes */
+        .text-white, .text-gray-100, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500 { color: #000 !important; }
+    </style>
 </head>
 <body class="bg-black text-white">
     <!-- Navigation -->
-    <nav class="bg-black border-b border-golden sticky top-0 z-50">
+    <nav class="bg-black border-b border-golden sticky top-0 z-50" style="background-color:#fbbf24 !important; border-bottom:2px solid #d4a017; color:#000 !important;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
@@ -542,7 +548,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-black text-white py-8 lg:py-12 border-t border-golden">
+    <footer class="bg-black text-white py-8 lg:py-12 border-t border-golden" style="background-color:#fbbf24 !important; color:#000 !important; border-top:2px solid #d4a017;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 <div>
