@@ -565,6 +565,11 @@
         /* Category Cards Grid */
         .category-card {
             transition: all 0.3s ease;
+            background-color: #ffffff !important;
+            border: 2px solid #d4a017 !important;
+            color: #000 !important;
+            border-radius: 10px;
+            padding: 8px;
         }
 
         .category-card:hover {
@@ -576,7 +581,7 @@
             height: 96px;
             object-fit: contain;
             object-position: center;
-            background: #1f2937;
+            background: #fff7e6;
             padding: 4px;
             border-radius: 8px;
             transition: all 0.3s ease;
@@ -585,6 +590,34 @@
         .category-card:hover img {
             transform: scale(1.05);
         }
+    </style>
+    <style>
+        /* Beige background */
+        html { background-color: #f5f5dc !important; }
+        body { background-color: #f5f5dc !important; }
+    </style>
+    <style>
+        /* Beige page background */
+        html { background-color: #f5f5dc !important; }
+        body { background-color: #f5f5dc !important; }
+        /* Force all text to black */
+        html, body, section, nav, footer { color: #000 !important; }
+        h1, h2, h3, h4, h5, h6, p, span, a, li, label, small, strong, em, div { color: #000 !important; }
+        /* Override common Tailwind text utility classes */
+        .text-white, .text-gray-100, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500 { color: #000 !important; }
+        /* Make product cards yellow */
+        .product-card { background-color: #ffffff !important; border: 2px solid #d4a017 !important; color: #000 !important; }
+        .product-card .image-container { background: #fff7e6 !important; }
+        .product-card h3, .product-card .price { color: #000 !important; }
+        /* Neutralize dark sections */
+        .bg-gray-900, .bg-gray-800, .bg-gray-700, .from-black, .via-gray-900, .to-black, .from-gray-900, .via-black, .to-gray-900 { background-color: #f5f5dc !important; background-image: none !important; }
+        .relative.bg-gradient-to-br { background-color: #f5f5dc !important; background-image: none !important; }
+        section, .content, .hero { background-color: #f5f5dc !important; }
+        .text-white { color: #2c2c2c !important; }
+    </style>
+    <style>
+        /* Final overrides for header to yellow */
+        nav.navbar, nav, .navbar { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017 !important; }
     </style>
     <!-- Quick View Modal -->
     <div id="quickview-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center p-4 z-[100]">
@@ -694,7 +727,7 @@
         }
     </style>
 </head>
-<body class="bg-black">
+<body>
     <!-- Responsive Navbar -->
     <nav class="navbar">
         <div class="navbar-container">
