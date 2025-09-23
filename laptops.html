@@ -3,42 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Laptops - MSM Traders</title>
+    <title>Premium Perfumes - MSM Traders</title>
+    <link rel="icon" type="image/x-icon" href="MSM TRADERS LOGO.jpeg">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#F59E0B',
-                        secondary: '#D97706',
-                        accent: '#F59E0B'
+                        primary: '#fbbf24',
+                        secondary: '#000000',
+                        golden: '#fbbf24',
+                        dark: '#000000',
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Responsive Design Enhancements */
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        /* Responsive images */
-        .responsive-img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            object-position: center;
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+            max-width: 100vw;
+            padding-top: 80px;
         }
         
-        body {
-            padding-top: 80px;
+        /* Global responsive fixes */
+        * {
+            box-sizing: border-box;
+        }
+        
+        .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
+            max-width: 100%;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        /* Prevent horizontal scroll */
+        img, video, iframe {
+            max-width: 100%;
+            height: auto;
         }
         
         /* Responsive Navbar */
@@ -99,37 +105,25 @@
         
         .hamburger {
             display: none;
-            flex-direction: column;
             cursor: pointer;
             padding: 0.5rem;
-        }
-        
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background-color: white;
-            margin: 3px 0;
-        }
-        
-        /* Cart Button */
-        #cart-button {
-            display: flex;
+            font-size: 1.5rem;
+            color: white;
+            background: none;
+            border: none;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
         }
         
-        #cart-count {
-            font-size: 0.75rem;
-            font-weight: bold;
-            min-width: 20px;
-            height: 20px;
+        .hamburger:hover {
+            color: #fbbf24;
         }
         
         /* Mobile menu */
         @media (max-width: 768px) {
             .navbar-menu {
                 position: fixed;
-                top: 80px;
+                top: 70px;
                 left: 0;
                 right: 0;
                 background-color: #111;
@@ -138,35 +132,51 @@
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
                 display: none;
                 z-index: 999;
+                max-height: calc(100vh - 70px);
+                overflow-y: auto;
+                width: 100%;
+                box-sizing: border-box;
             }
             
             .navbar-menu.active {
-                display: flex;
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+            
+            .navbar-menu li {
+                list-style: none;
+                margin: 0;
+                padding: 0;
             }
             
             .navbar-menu a {
+                display: block;
                 padding: 1rem;
                 border-bottom: 1px solid #333;
                 text-align: center;
+                color: white;
+                text-decoration: none;
+                font-weight: 500;
+                transition: background-color 0.3s ease;
             }
             
             .navbar-menu a:last-child {
                 border-bottom: none;
             }
             
+            .navbar-menu a:hover {
+                background-color: #333;
+            }
+            
             .hamburger {
-                display: flex;
-            }
-            
-            /* Hide cart button text on mobile, show only icon */
-            #cart-button span:not(#cart-count) {
-                display: none;
-            }
-            
-            #cart-button {
-                padding: 0.5rem;
+                display: flex !important;
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 4px;
                 min-width: 40px;
                 min-height: 40px;
+                border: 2px solid #fbbf24;
             }
             
             .navbar-logo {
@@ -177,120 +187,18 @@
                 height: 35px;
             }
         }
-
-        /* Mobile-first responsive breakpoints */
-        @media (max-width: 320px) {
-            .grid {
-                gap: 0.75rem;
-            }
-            .product-card {
-                min-height: 200px;
-            }
-        }
-
-        @media (min-width: 321px) and (max-width: 480px) {
-            .grid {
-                gap: 1rem;
-            }
-        }
-
-        @media (min-width: 481px) and (max-width: 768px) {
-            .grid {
-                gap: 1.25rem;
-            }
-        }
-
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .grid {
-                gap: 1.5rem;
-            }
-        }
-
-        @media (min-width: 1025px) and (max-width: 1440px) {
-            .grid {
-                gap: 1.5rem;
-            }
-        }
-
-        @media (min-width: 1441px) {
-            .grid {
-                gap: 2rem;
-            }
-        }
-
-        /* Touch targets for mobile */
-        @media (max-width: 768px) {
-            .product-card {
-                min-height: 44px;
-                touch-action: manipulation;
-            }
-            
-            button, .clickable {
-                min-height: 44px;
-                min-width: 44px;
-            }
-        }
-
-        /* Mobile navigation */
-        @media (max-width: 1024px) {
-            .mobile-menu {
-                display: block;
-            }
-            .desktop-nav {
-                display: none;
-            }
-        }
-
-        @media (min-width: 1025px) {
-            .mobile-menu {
-                display: none;
-            }
-            .desktop-nav {
-                display: flex;
-            }
-        }
-
-        /* Hide scrollbars for horizontal scrolling */
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
         
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-        
-        /* UI Optimizations */
-        
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Enhanced focus states */
-        button:focus,
-        a:focus,
-        input:focus,
-        select:focus {
-            outline: 2px solid #fbbf24;
-            outline-offset: 2px;
-        }
-        
-        /* Improved button hover effects */
-        .btn-primary {
+        .golden-gradient {
             background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            transition: all 0.3s ease;
-            transform: translateY(0);
+        }
+        .black-gradient {
+            background: linear-gradient(135deg, #000000, #1a1a1a);
         }
         
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
-        }
-        
-        /* Enhanced card hover effects */
+        /* Product Cards */
         .product-card {
+            background-color: #000000;
+            border-color: #fbbf24;
             transition: all 0.3s ease;
             transform: translateY(0);
         }
@@ -300,89 +208,61 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
         
-        /* Loading states */
-        .loading {
-            opacity: 0.6;
-            pointer-events: none;
+        /* Product Grid Layout */
+        .product-grid {
+            display: grid;
+            gap: 15px; /* space between cards */
+            grid-template-columns: repeat(5, 1fr); /* Desktop: 5 per row */
         }
-        
-        /* Improved typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            line-height: 1.2;
+
+        /* Popup overlay */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
         }
-        
-        /* Better spacing */
-        .section-spacing {
-            padding: 3rem 0;
+
+        /* Popup content */
+        .popup {
+            background: #fff;
+            width: 90%;
+            max-width: 400px;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-sizing: border-box;
+            text-align: center;
         }
-        
-        @media (max-width: 768px) {
-            .section-spacing {
-                padding: 2rem 0;
-            }
+
+        /* Responsive image */
+        .popup img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 6px;
         }
-        
-        /* Enhanced shadows */
-        .shadow-enhanced {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        
-        .shadow-enhanced-lg {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        
-        /* Improved animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .animate-fade-in-up {
-            animation: fadeInUp 0.6s ease-out;
-        }
-        
-        /* Better form styling */
-        .form-input {
-            border: 2px solid #374151;
-            border-radius: 0.5rem;
-            padding: 0.75rem 1rem;
-            transition: all 0.3s ease;
-            background: #1f2937;
+
+        /* Close button */
+        .close-btn {
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: #e74c3c;
             color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
         }
-        
-        .form-input:focus {
-            border-color: #fbbf24;
-            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
-        }
-        
-        /* Improved accessibility */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-        
-        /* Performance optimizations */
-        .will-change-transform {
-            will-change: transform;
-        }
-        
-        .will-change-opacity {
-            will-change: opacity;
+
+        .close-btn:hover {
+            background: #c0392b;
         }
 
         /* Cart modal styles */
@@ -427,33 +307,84 @@
             #cart-modal .flex.gap-2 button {
                 width: 100%;
             }
+            
+            #cart-modal .space-x-3 {
+                gap: 0.5rem;
+            }
         }
 
+        /* Product card image area */
+        .product-card .image-container {
+            width: 100%;
+            height: 250px;          /* desktop height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;       /* hides extra image parts */
+            background: #fff;       /* optional: keeps background neat */
+            border-radius: 8px;     /* optional: rounded edges */
+        }
+
+        /* Product images */
+        .product-card .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;    /* shows full product without stretching */
+        }
+
+        /* Responsive text and elements */
+        @media (max-width: 768px) {
+            .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            
+            body {
+                padding-top: 70px;
+            }
+
+            /* Mobile: 2 per row */
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-card .image-container {
+                height: 150px;        /* smaller image area for mobile */
+            }
+        }
+        
         @media (max-width: 480px) {
-            #cart-modal .bg-gray-900 {
-                margin: 0.25rem;
-                max-width: calc(100vw - 0.5rem);
-                max-height: calc(100vh - 0.5rem);
-            }
-            
-            #cart-modal .max-h-96 {
-                max-height: 45vh;
-            }
-            
-            #cart-modal .p-4 {
-                padding: 0.5rem;
-            }
-            
-            #cart-modal .text-xl {
-                font-size: 1rem;
+            .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
             }
         }
     </style>
+    <style>
+        /* Light beige theme overrides */
+        html { background-color: #f5f5dc !important; }
+        body { background-color: #f5f5dc !important; color: #2c2c2c !important; }
+        /* Header/footer yellow */
+        nav, .navbar, header { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017 !important; }
+        footer { background-color: #fbbf24 !important; border-top: 2px solid #d4a017 !important; color: #000 !important; }
+        /* Text to black */
+        html, body, section, nav, footer { color: #000 !important; }
+        h1, h2, h3, h4, h5, h6, p, span, a, li, label, small, strong, em, div { color: #000 !important; }
+        .text-white, .text-gray-100, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500 { color: #000 !important; }
+        /* Product cards yellow */
+        .product-card { background-color: #fbbf24 !important; border: 1px solid #d4a017 !important; }
+        .product-card * { color: #000 !important; }
+        .product-card .image-container { background: #fff7e6 !important; }
+        /* Neutralize dark gradients/sections if used */
+        .bg-black, .bg-gray-900, .bg-gray-800, .bg-gray-700 { background-color: #f5f5dc !important; }
+        .black-gradient { background: #fff7e6 !important; }
+    </style>
 </head>
-<body class="bg-black text-white">
+<body class="bg-black">
     <!-- Responsive Navbar -->
     <nav class="navbar">
         <div class="navbar-container">
+            <!-- Logo -->
             <a href="index.html" class="navbar-logo">
                 <img src="MSM TRADERS LOGO.jpeg" alt="MSM Traders Logo">
                 <span>MSM TRADERS</span>
@@ -463,245 +394,1161 @@
             <ul class="navbar-menu" id="navbar-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="car_care.html">Car Care</a></li>
-                <li><a href="premium_perfumes.html">Premium Perfumes</a></li>
+                <li><a href="microfiber_and_cleaners.html">Microfiber & Cleaners</a></li>
+                <li><a href="premium_perfumes.html" class="active">Premium Perfumes</a></li>
                 <li><a href="crockery.html">Crockery</a></li>
                 <li><a href="bedcovers.html">Bedding</a></li>
                 <li><a href="home_decor.html">Home Decor</a></li>
                 <li><a href="special_offers.html">Special Offers</a></li>
-                <li><a href="laptops.html" class="active">Laptop Deals</a></li>
+                <li><a href="laptops.html">Laptop Deals</a></li>
+                <li><a href="cart.html">Cart</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             
-            <!-- Cart Button -->
-            <button id="cart-button" class="relative bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-2 rounded-lg transition duration-200 flex items-center gap-1.5">
-                <i class="fas fa-shopping-cart"></i>
-                <span>Cart</span>
-                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            <!-- Hamburger Menu -->
+            <button class="hamburger" id="hamburger">
+                ☰
             </button>
-            
-            <!-- Mobile Menu Button -->
-            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <div class="bg-gradient-to-r from-gray-900 to-black py-16">
-        <div class="max-w-7xl mx-auto px-4">
+    <!-- Hero Section -->
+    <section class="black-gradient py-12 lg:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Left Sidebar Navigation (desktop) -->
+            <aside class="hidden lg:block absolute left-0 top-0 h-full">
+                <nav class="bg-gray-900 border border-golden rounded-xl p-4 w-56 shadow-xl">
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="block px-3 py-2 rounded-md hover:bg-gray-800 text-gray-200">Home</a></li>
+                        <li><a href="crockery.html" class="block px-3 py-2 rounded-md hover:bg-gray-800 text-gray-200">Crockery</a></li>
+                        <li><a href="premium_perfumes.html" class="block px-3 py-2 rounded-md bg-gray-800 text-golden font-semibold">Premium Perfumes</a></li>
+                        <li><a href="microfiber_and_cleaners.html" class="block px-3 py-2 rounded-md hover:bg-gray-800 text-gray-200">Microfiber & Cleaners</a></li>
+                        <li><a href="home_decor.html" class="block px-3 py-2 rounded-md hover:bg-gray-800 text-gray-200">Home Decor</a></li>
+                        <li><a href="bedcovers.html" class="block px-3 py-2 rounded-md hover:bg-gray-800 text-gray-200">Bedding</a></li>
+                        <li><a href="cart.html" class="block px-3 py-2 rounded-md hover:bg-gray-800 text-gray-200">Cart</a></li>
+                        <li><a href="contact.html" class="block px-3 py-2 rounded-md hover:bg-gray-800 text-gray-200">Contact</a></li>
+                    </ul>
+                    <a href="special_offers.html" class="mt-4 block text-center golden-gradient text-black font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition">Special Offers</a>
+                </nav>
+            </aside>
 
-            <div class="flex flex-col lg:flex-row gap-8">
-                <!-- Categories Sidebar - Desktop Only -->
-                <div class="hidden lg:block lg:w-1/4">
-                    <div class="bg-gray-900 border border-yellow-400 rounded-lg p-6">
-                        <h3 class="text-xl font-bold text-yellow-400 mb-6 text-center">Shop by Category</h3>
-                        <ul class="space-y-3">
-                            <li>
-                                <a href="car_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-car text-yellow-400 group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Car Care</span>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="microfiber_and_cleaners.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-home text-yellow-400 group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Microfiber & Cleaners</span>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="premium_perfumes.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-spray-can text-yellow-400 group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Premium Perfumes</span>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="crockery.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-utensils text-yellow-400 group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Crockery</span>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="laptops.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
-                                    <div class="flex items-center space-x-3">
-                                        <i class="fas fa-laptop text-yellow-400 group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-yellow-400 group-hover:text-black">Laptops</span>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
-                                </a>
-                            </li>
-                        </ul>
+            <div class="text-center lg:ml-60">
+                <h1 class="text-4xl lg:text-6xl font-bold text-golden mb-6">Premium Perfumes</h1>
+                <p class="text-xl text-gray-300 mb-8">Luxury fragrances and scented candles for every occasion</p>
+                <!-- Banner Image -->
+                <div class="mb-8">
+                    <img src="premium perfumes/banner.jfif" alt="Premium Perfumes Banner" class="w-full h-56 sm:h-72 lg:h-96 object-cover rounded-2xl shadow-2xl border-2 border-golden">
+                </div>
+                <!-- Category Buttons -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6 mb-10">
+                    <a href="#for-her" class="group bg-gray-800 border border-golden rounded-lg p-3 flex flex-col items-center hover:bg-gray-700 transition">
+                        <div class="w-16 h-16 rounded-md overflow-hidden mb-2 bg-gray-700">
+                            <img src="premium perfumes/CATEGORY IMGES/FOR HER.jfif" alt="For Her" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-golden font-semibold text-sm">For Her</span>
+                    </a>
+                    <a href="#for-him" class="group bg-gray-800 border border-golden rounded-lg p-3 flex flex-col items-center hover:bg-gray-700 transition">
+                        <div class="w-16 h-16 rounded-md overflow-hidden mb-2 bg-gray-700">
+                            <img src="premium perfumes/CATEGORY IMGES/FOR HIM.webp" alt="For Him" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-golden font-semibold text-sm">For Him</span>
+                    </a>
+                    <a href="#bahoors" class="group bg-gray-800 border border-golden rounded-lg p-3 flex flex-col items-center hover:bg-gray-700 transition">
+                        <div class="w-16 h-16 rounded-md overflow-hidden mb-2 bg-gray-700">
+                            <img src="premium perfumes/BAHOORS/Bakhoor e Noor.webp" alt="Bahoors" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-golden font-semibold text-sm">Bahoors</span>
+                    </a>
+                    <a href="#car-perfumes" class="group bg-gray-800 border border-golden rounded-lg p-3 flex flex-col items-center hover:bg-gray-700 transition">
+                        <div class="w-16 h-16 rounded-md overflow-hidden mb-2 bg-gray-700">
+                            <img src="premium perfumes/CATEGORY IMGES/reed diffuer and car perfumes.jpeg" alt="Reed diffusers and Car Perfumes" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-golden font-semibold text-sm">Reed diffusers and Car Perfumes</span>
+                    </a>
+                    <a href="#scented-candles" class="group bg-gray-800 border border-golden rounded-lg p-3 flex flex-col items-center hover:bg-gray-700 transition">
+                        <div class="w-16 h-16 rounded-md overflow-hidden mb-2 bg-gray-700">
+                            <img src="premium perfumes/CATEGORY IMGES/SECENTED CANDEL.jfif" alt="Scented Candles" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-golden font-semibold text-sm">Scented Candles</span>
+                    </a>
+                    <a href="#premium-candles" class="group bg-gray-800 border border-golden rounded-lg p-3 flex flex-col items-center hover:bg-gray-700 transition">
+                        <div class="w-16 h-16 rounded-md overflow-hidden mb-2 bg-gray-700">
+                            <img src="premium perfumes/CATEGORY IMGES/PREMIUM SCENTED CANDELS.webp" alt="Premium Candles" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-golden font-semibold text-sm">Premium Candles</span>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-                <!-- Hero Content -->
-                <div class="flex-1">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <!-- Text Content -->
-                        <div class="text-center lg:text-left">
-            <h1 class="text-4xl md:text-6xl font-bold text-yellow-400 mb-4">Laptops</h1>
-            <p class="text-xl text-yellow-400 mb-4">CLICK.SHOP.SMILE</p>
-                            <p class="text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0">Discover our premium collection of laptops for work, gaming, and everyday use. High-performance devices at unbeatable prices.</p>
-        </div>
-                        <!-- Hero Image -->
-                        <div class="relative">
-                            <img src="category imges/laptops_image.jpg.jfif" 
-                                 alt="Laptops Collection" 
-                                 class="w-full h-96 object-cover rounded-xl shadow-2xl border-2 border-yellow-400">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
-    </div>
+    <!-- For Her Section -->
+    <section id="for-her" class="py-12 lg:py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold text-golden mb-4">For Her</h2>
+                <p class="text-gray-300 text-lg">Elegant and sophisticated fragrances</p>
+            </div>
+            
+            <div class="product-grid">
+                <!-- Emerald Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/for her/Emrald_Compare.webp" 
+                                 alt="Emerald Perfume">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Emerald Perfume', 2700, 'premium perfumes/for her/Emrald_Compare.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Emerald Perfume</h3>
+                        <p class="text-gray-300 text-sm mb-4">Luxurious fragrance with floral notes</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 2,700</span>
+                            <button onclick="addToCart('Emerald Perfume', 2500, 'premium perfumes/for her/Emrald_Compare.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Forever Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/for her/forever_compare.webp" 
+                                 alt="Forever Perfume">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Forever Perfume', 2800, 'premium perfumes/for her/forever_compare.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Forever Perfume</h3>
+                        <p class="text-gray-300 text-sm mb-4">Timeless elegance in a bottle</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 2,600</span>
+                            <button onclick="addToCart('Forever Perfume', 2800, 'premium perfumes/for her/forever_compare.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grace Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/for her/Grace_Comparision.webp" 
+                                 alt="Grace Perfume">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Grace Perfume', 2200, 'premium perfumes/for her/Grace_Comparision.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Grace Perfume</h3>
+                        <p class="text-gray-300 text-sm mb-4">Sophisticated and graceful scent</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 2,700</span>
+                            <button onclick="addToCart('Grace Perfume', 2200, 'premium perfumes/for her/Grace_Comparision.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Serenity Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/for her/Serenity_compare.webp" 
+                                 alt="Serenity Perfume">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Serenity Perfume', 2600, 'premium perfumes/for her/Serenity_compare.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Serenity Perfume</h3>
+                        <p class="text-gray-300 text-sm mb-4">Calming and peaceful fragrance</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 2,600</span>
+                            <button onclick="addToCart('Serenity Perfume', 2600, 'premium perfumes/for her/Serenity_compare.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div><!-- Filters -->
-    <div class="max-w-7xl mx-auto px-4 py-8">
-        <div class="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
-            <div class="flex-1 max-w-md">
-                <div class="relative">
-                    <input type="text" id="searchInput" placeholder="Search laptops..." class="w-full pl-10 pr-4 py-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-yellow-400">
-                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+    </section>
+
+    <!-- For Him Section -->
+    <section id="for-him" class="py-12 lg:py-16 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold text-golden mb-4">For Him</h2>
+                <p class="text-gray-300 text-lg">Bold and masculine fragrances</p>
+            </div>
+            
+            <div class="product-grid">
+                <!-- Ember Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/for Him/ember_compare.webp" 
+                                 alt="Ember Perfume">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Ember Perfume', 3000, 'premium perfumes/for Him/ember_compare.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Ember Perfume</h3>
+                        <p class="text-gray-300 text-sm mb-4">Intense and captivating scent</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 2600</span>
+                            <button onclick="addToCart('Ember Perfume', 3000, 'premium perfumes/for Him/ember_compare.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fierce Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/for Him/Feirce.webp" 
+                                 alt="Fierce Perfume">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Fierce Perfume', 3200, 'premium perfumes/for Him/Feirce.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Fierce Perfume</h3>
+                        <p class="text-gray-300 text-sm mb-4">Bold and powerful fragrance</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 2700</span>
+                            <button onclick="addToCart('Fierce Perfume', 3200, 'premium perfumes/for Him/Feirce.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Royal Spirit Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/for Him/Royal Spirit.webp" 
+                                 alt="Royal Spirit Perfume">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Royal Spirit Perfume', 3500, 'premium perfumes/for Him/Royal Spirit.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Royal Spirit Perfume</h3>
+                        <p class="text-gray-300 text-sm mb-4">Regal and sophisticated scent</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 2800</span>
+                            <button onclick="addToCart('Royal Spirit Perfume', 3500, 'premium perfumes/for Him/Royal Spirit.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OV Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/for Him/ov_comparision.webp" 
+                                 alt="OV Perfume">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('OV Perfume', 2800, 'premium perfumes/for Him/ov_comparision.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">OV Perfume</h3>
+                        <p class="text-gray-300 text-sm mb-4">Modern and contemporary fragrance</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 2700</span>
+                            <button onclick="addToCart('OV Perfume', 2800, 'premium perfumes/for Him/ov_comparision.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="flex gap-4">
-                <select id="brandFilter" class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
-                    <option value="">All Brands</option>
-                    <option value="dell">Dell</option>
-                    <option value="hp">HP</option>
-                    <option value="lenovo">Lenovo</option>
-                    <option value="asus">ASUS</option>
-                    <option value="acer">Acer</option>
-                    <option value="msi">MSI</option>
-                </select>
-                <select id="priceFilter" class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
-                    <option value="">All Prices</option>
-                    <option value="0-500">$0 - $500</option>
-                    <option value="500-1000">$500 - $1000</option>
-                    <option value="1000-1500">$1000 - $1500</option>
-                    <option value="1500+">$1500+</option>
-                </select>
-                <select id="sortBy" class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
-                    <option value="name">Sort by Name</option>
-                    <option value="price-low">Price: Low to High</option>
-                    <option value="price-high">Price: High to Low</option>
-                </select>
+        </div>
+    </section>
+
+    <!-- Bahoors Section -->
+    <section id="bahoors" class="py-12 lg:py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold text-golden mb-4">Bahoors</h2>
+                <p class="text-gray-300 text-lg">Traditional Arabic incense and fragrances</p>
+            </div>
+            
+            <div class="product-grid">
+                <!-- Bakhoor e Abyadh -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/BAHOORS/Bakhoor e Abyadh.webp" 
+                                 alt="Bakhoor e Abyadh">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Bakhoor e Abyadh', 1200, 'premium perfumes/BAHOORS/Bakhoor e Abyadh.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Bakhoor e Abyadh</h3>
+                        <p class="text-gray-300 text-sm mb-4">Traditional white incense</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 750</span>
+                            <button onclick="addToCart('Bakhoor e Abyadh', 1200, 'premium perfumes/BAHOORS/Bakhoor e Abyadh.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bakhoor e Khas -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/BAHOORS/Bakhoor e Khas.webp" 
+                             alt="Bakhoor e Khas" 
+">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Bakhoor e Khas', 1500, 'premium perfumes/BAHOORS/Bakhoor e Khas.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Bakhoor e Khas</h3>
+                        <p class="text-gray-300 text-sm mb-4">Premium special incense</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 750</span>
+                            <button onclick="addToCart('Bakhoor e Khas', 1500, 'premium perfumes/BAHOORS/Bakhoor e Khas.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bakhoor e Noor -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/BAHOORS/Bakhoor e Noor.webp" 
+                             alt="Bakhoor e Noor" 
+">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Bakhoor e Noor', 1300, 'premium perfumes/BAHOORS/Bakhoor e Noor.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Bakhoor e Noor</h3>
+                        <p class="text-gray-300 text-sm mb-4">Light and luminous fragrance</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 650</span>
+                            <button onclick="addToCart('Bakhoor e Noor', 1300, 'premium perfumes/BAHOORS/Bakhoor e Noor.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bakhoor e Saba -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/BAHOORS/Bakhoor e Saba.webp" 
+                             alt="Bakhoor e Saba" 
+">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Bakhoor e Saba', 1400, 'premium perfumes/BAHOORS/Bakhoor e Saba.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Bakhoor e Saba</h3>
+                        <p class="text-gray-300 text-sm mb-4">Morning breeze fragrance</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 650</span>
+                            <button onclick="addToCart('Bakhoor e Saba', 1400, 'premium perfumes/BAHOORS/Bakhoor e Saba.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bakhur e Zayn -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/BAHOORS/Bakhur e Zayn.webp" 
+                             alt="Bakhur e Zayn" 
+">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Bakhur e Zayn', 1600, 'premium perfumes/BAHOORS/Bakhur e Zayn.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Bakhur e Zayn</h3>
+                        <p class="text-gray-300 text-sm mb-4">Beautiful and elegant incense</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 750</span>
+                            <button onclick="addToCart('Bakhur e Zayn', 1600, 'premium perfumes/BAHOORS/Bakhur e Zayn.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Products Grid -->
-        <div id="productsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <!-- Products will be loaded here -->
-        </div>
+    <!-- Car Perfumes Section -->
+    <section id="car-perfumes" class="py-12 lg:py-16 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold text-golden mb-4">Reed diffusers and Car Perfumes</h2>
+                <p class="text-gray-300 text-lg">Fresh and long-lasting car fragrances</p>
+            </div>
+            
+            <div class="product-grid">
+                <!-- Arabic Oud Car Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden" style="max-width: 280px; margin: 0 auto;">
+                    <div class="relative">
+                        <div class="image-container" style="height: 180px;">
+                            <img src="premium perfumes/reed diffusers and car perfumes/aim air diffuser arabic oud.jpeg" 
+                             alt="Arabic Oud Car Perfume" 
+ ">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <button onclick="addToWishlist('Arabic Oud Car Perfume', 800, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser arabic oud.jpeg')" 
+                                    class="bg-red-500 text-white p-1.5 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-golden mb-1">Arabic Oud Car Perfume</h3>
+                        <p class="text-gray-300 text-xs mb-3">Luxurious oud fragrance for your car</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-golden">Rs 1500</span>
+                            <button onclick="addToCart('Arabic Oud Car Perfume', 1500, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser arabic oud.jpeg')" 
+                                    class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- Pagination -->
-        <div id="pagination" class="flex justify-center items-center space-x-2 mt-8">
-            <!-- Pagination will be generated here -->
+                <!-- Cool Ice Car Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden" style="max-width: 280px; margin: 0 auto;">
+                    <div class="relative">
+                        <div class="image-container" style="height: 180px;">
+                            <img src="premium perfumes/reed diffusers and car perfumes/aim air diffuser cool ice.jpeg" 
+                             alt="Cool Ice Car Perfume" 
+ ">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <button onclick="addToWishlist('Cool Ice Car Perfume', 750, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser cool ice.jpeg')" 
+                                    class="bg-red-500 text-white p-1.5 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-golden mb-1">Cool Ice Car Perfume</h3>
+                        <p class="text-gray-300 text-xs mb-3">Refreshing cool ice fragrance</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-golden">Rs 1500</span>
+                            <button onclick="addToCart('Cool Ice Car Perfume', 1500, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser cool ice.jpeg')" 
+                                    class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ocean Car Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden" style="max-width: 280px; margin: 0 auto;">
+                    <div class="relative">
+                        <div class="image-container" style="height: 180px;">
+                            <img src="premium perfumes/reed diffusers and car perfumes/aim air diffuser ocean.jpeg" 
+                             alt="Ocean Car Perfume" 
+ ">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <button onclick="addToWishlist('Ocean Car Perfume', 700, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser ocean.jpeg')" 
+                                    class="bg-red-500 text-white p-1.5 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-golden mb-1">Ocean Car Perfume</h3>
+                        <p class="text-gray-300 text-xs mb-3">Fresh ocean breeze fragrance</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-golden">Rs 1500</span>
+                            <button onclick="addToCart('Ocean Car Perfume', 1500, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser ocean.jpeg')" 
+                                    class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lavender Car Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden" style="max-width: 280px; margin: 0 auto;">
+                    <div class="relative">
+                        <div class="image-container" style="height: 180px;">
+                            <img src="premium perfumes/reed diffusers and car perfumes/jello air freshner  lavender.jpeg" 
+                             alt="Lavender Car Perfume" 
+ ">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <button onclick="addToWishlist('Lavender Car Perfume', 650, 'premium perfumes/reed diffusers and car perfumes/jello air freshner  lavender.jpeg')" 
+                                    class="bg-red-500 text-white p-1.5 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-golden mb-1">Lavender Car Perfume</h3>
+                        <p class="text-gray-300 text-xs mb-3">Calming lavender fragrance</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-golden">Rs 650</span>
+                            <button onclick="addToCart('Lavender Car Perfume', 650, 'premium perfumes/reed diffusers and car perfumes/jello air freshner  lavender.jpeg')" 
+                                    class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jello Cool Ice Car Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden" style="max-width: 280px; margin: 0 auto;">
+                    <div class="relative">
+                        <div class="image-container" style="height: 180px;">
+                            <img src="premium perfumes/reed diffusers and car perfumes/jello air freshner cool ice.jpeg" 
+                             alt="Jello Cool Ice Car Perfume" 
+">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <button onclick="addToWishlist('Jello Cool Ice Car Perfume', 700, 'premium perfumes/reed diffusers and car perfumes/jello air freshner cool ice.jpeg')" 
+                                    class="bg-red-500 text-white p-1.5 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-golden mb-1">Jello Cool Ice Car Perfume</h3>
+                        <p class="text-gray-300 text-xs mb-3">Cool ice freshness for your car</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-golden">Rs 650</span>
+                            <button onclick="addToCart('Jello Cool Ice Car Perfume', 650, 'premium perfumes/reed diffusers and car perfumes/jello air freshner cool ice.jpeg')" 
+                                    class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Xfresh Ocean Car Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden" style="max-width: 280px; margin: 0 auto;">
+                    <div class="relative">
+                        <div class="image-container" style="height: 180px;">
+                            <img src="premium perfumes/reed diffusers and car perfumes/xfresh air freshner  ocean.jpeg" 
+                             alt="Xfresh Ocean Car Perfume" 
+">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <button onclick="addToWishlist('Xfresh Ocean Car Perfume', 700, 'premium perfumes/reed diffusers and car perfumes/xfresh air freshner  ocean.jpeg')" 
+                                    class="bg-red-500 text-white p-1.5 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-golden mb-1">Xfresh Ocean Car Perfume</h3>
+                        <p class="text-gray-300 text-xs mb-3">Ocean breeze freshness</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-golden">Rs 400</span>
+                            <button onclick="addToCart('Xfresh Ocean Car Perfume', 400, 'premium perfumes/reed diffusers and car perfumes/xfresh air freshner  ocean.jpeg')" 
+                                    class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sameli Cool Car Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden" style="max-width: 280px; margin: 0 auto;">
+                    <div class="relative">
+                        <div class="image-container" style="height: 180px;">
+                            <img src="premium perfumes/reed diffusers and car perfumes/sameli air freshner cool.jpeg" 
+                             alt="Sameli Cool Car Perfume" 
+">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <button onclick="addToWishlist('Sameli Cool Car Perfume', 650, 'premium perfumes/reed diffusers and car perfumes/sameli air freshner cool.jpeg')" 
+                                    class="bg-red-500 text-white p-1.5 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-golden mb-1">Sameli Cool Car Perfume</h3>
+                        <p class="text-gray-300 text-xs mb-3">Cool and refreshing fragrance</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-golden">Rs 900</span>
+                            <button onclick="addToCart('Sameli Cool Car Perfume', 900, 'premium perfumes/reed diffusers and car perfumes/sameli air freshner cool.jpeg')" 
+                                    class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sameli Vanilla Car Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden" style="max-width: 280px; margin: 0 auto;">
+                    <div class="relative">
+                        <div class="image-container" style="height: 180px;">
+                            <img src="premium perfumes/reed diffusers and car perfumes/sameli air freshner  vanilla.jpeg" 
+                             alt="Sameli Vanilla Car Perfume" 
+">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <button onclick="addToWishlist('Sameli Vanilla Car Perfume', 650, 'premium perfumes/reed diffusers and car perfumes/sameli air freshner  vanilla.jpeg')" 
+                                    class="bg-red-500 text-white p-1.5 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-golden mb-1">Sameli Vanilla Car Perfume</h3>
+                        <p class="text-gray-300 text-xs mb-3">Smooth vanilla scent</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-golden">Rs 900</span>
+                            <button onclick="addToCart('Sameli Vanilla Car Perfume', 900, 'premium perfumes/reed diffusers and car perfumes/sameli air freshner  vanilla.jpeg')" 
+                                    class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aimm Cool Breeze Car Perfume -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden" style="max-width: 280px; margin: 0 auto;">
+                    <div class="relative">
+                        <div class="image-container" style="height: 180px;">
+                            <img src="premium perfumes/reed diffusers and car perfumes/aimm air frshner cool breeze.jpeg" 
+                             alt="Aimm Cool Breeze Car Perfume" 
+">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <button onclick="addToWishlist('Aimm Cool Breeze Car Perfume', 700, 'premium perfumes/reed diffusers and car perfumes/aimm air frshner cool breeze.jpeg')" 
+                                    class="bg-red-500 text-white p-1.5 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-golden mb-1">Aimm Cool Breeze Car Perfume</h3>
+                        <p class="text-gray-300 text-xs mb-3">Cool breeze freshness</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-golden">Rs 650</span>
+                            <button onclick="addToCart('Aimm Cool Breeze Car Perfume', 650, 'premium perfumes/reed diffusers and car perfumes/aimm air frshner cool breeze.jpeg')" 
+                                    class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aim Oud Car Air Freshener -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden" style="max-width: 280px; margin: 0 auto;">
+                    <div class="relative">
+                        <div class="image-container" style="height: 180px;">
+                            <img src="premium perfumes/reed diffusers and car perfumes/aim air freshner oud.jpeg" 
+                             alt="Aim Oud Car Air Freshener" 
+">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <button onclick="addToWishlist('Aim Oud Car Air Freshener', 800, 'premium perfumes/reed diffusers and car perfumes/aim air freshner oud.jpeg')" 
+                                    class="bg-red-500 text-white p-1.5 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-golden mb-1">Aim Oud Car Air Freshener</h3>
+                        <p class="text-gray-300 text-xs mb-3">Rich oud aroma</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-golden">Rs 1100</span>
+                            <button onclick="addToCart('Aim Oud Car Air Freshener', 1100, 'premium perfumes/reed diffusers and car perfumes/aim air freshner oud.jpeg')" 
+                                    class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aim New Car Air Freshener -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden" style="max-width: 280px; margin: 0 auto;">
+                    <div class="relative">
+                        <div class="image-container" style="height: 180px;">
+                            <img src="premium perfumes/reed diffusers and car perfumes/aim air freshner new car.jpeg" 
+                             alt="Aim New Car Air Freshener" 
+">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <button onclick="addToWishlist('Aim New Car Air Freshener', 750, 'premium perfumes/reed diffusers and car perfumes/aim air freshner new car.jpeg')" 
+                                    class="bg-red-500 text-white p-1.5 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-golden mb-1">Aim New Car Air Freshener</h3>
+                        <p class="text-gray-300 text-xs mb-3">Classic new car scent</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-golden">Rs 750</span>
+                            <button onclick="addToCart('Aim New Car Air Freshener', 750, 'premium perfumes/reed diffusers and car perfumes/aim air freshner new car.jpeg')" 
+                                    class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aim Cool Ice Air Freshener -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden" style="max-width: 280px; margin: 0 auto;">
+                    <div class="relative">
+                        <div class="image-container" style="height: 180px;">
+                            <img src="premium perfumes/reed diffusers and car perfumes/aim air freshner cool ice.jpeg" 
+                             alt="Aim Cool Ice Air Freshener" 
+">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <button onclick="addToWishlist('Aim Cool Ice Air Freshener', 700, 'premium perfumes/reed diffusers and car perfumes/aim air freshner cool ice.jpeg')" 
+                                    class="bg-red-500 text-white p-1.5 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-golden mb-1">Aim Cool Ice Air Freshener</h3>
+                        <p class="text-gray-300 text-xs mb-3">Cool and crisp fragrance</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-golden">Rs 750</span>
+                            <button onclick="addToCart('Aim Cool Ice Air Freshener', 750, 'premium perfumes/reed diffusers and car perfumes/aim air freshner cool ice.jpeg')" 
+                                    class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aim Air Diffuser -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden" style="max-width: 280px; margin: 0 auto;">
+                    <div class="relative">
+                        <div class="image-container" style="height: 180px;">
+                            <img src="premium perfumes/reed diffusers and car perfumes/aim air diffuser.jpeg" 
+                             alt="Aim Air Diffuser" 
+">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <button onclick="addToWishlist('Aim Air Diffuser', 850, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser.jpeg')" 
+                                    class="bg-red-500 text-white p-1.5 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-golden mb-1">Aim Air Diffuser</h3>
+                        <p class="text-gray-300 text-xs mb-3">Premium car air diffuser</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-golden">Rs 1500</span>
+                            <button onclick="addToCart('Aim Air Diffuser', 1500, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser.jpeg')" 
+                                    class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aim Air Diffuser Arabic Oud (JPG) -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden" style="max-width: 280px; margin: 0 auto;">
+                    <div class="relative">
+                        <div class="image-container" style="height: 180px;">
+                            <img src="premium perfumes/reed diffusers and car perfumes/aim air diffuser arabic oud.jpg" 
+                             alt="Aim Air Diffuser Arabic Oud" 
+">
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <button onclick="addToWishlist('Aim Air Diffuser Arabic Oud', 850, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser arabic oud.jpg')" 
+                                    class="bg-red-500 text-white p-1.5 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-golden mb-1">Aim Air Diffuser Arabic Oud</h3>
+                        <p class="text-gray-300 text-xs mb-3">Arabic oud diffuer fragrance</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-golden">Rs 1500</span>
+                            <button onclick="addToCart('Aim Air Diffuser Arabic Oud', 1500, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser arabic oud.jpg')" 
+                                    class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Premium Scented Candles Section -->
+    <section id="premium-candles" class="py-12 lg:py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold text-golden mb-4">Premium Scented Candles</h2>
+                <p class="text-gray-300 text-lg">Luxury candles for ambiance and relaxation</p>
+            </div>
+            
+            <div class="product-grid">
+                <!-- Premium Scented Candles Collection -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/premium scented candels/PREMIUM SCENTED CANDELS.webp" 
+                             alt="Premium Scented Candles Collection" 
+">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Premium Scented Candles Collection', 1200, 'premium perfumes/premium scented candels/PREMIUM SCENTED CANDELS.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Premium Scented Candles Collection</h3>
+                        <p class="text-gray-300 text-sm mb-4">Luxury candle collection for every mood</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 2499</span>
+                            <button onclick="addToCart('Premium Scented Candles Collection', 1200, 'premium perfumes/premium scented candels/PREMIUM SCENTED CANDELS.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rose Candle -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/premium scented candels/Rose candle.webp" 
+                             alt="Rose Candle" 
+">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Rose Candle', 850, 'premium perfumes/premium scented candels/Rose candle.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Rose Candle</h3>
+                        <p class="text-gray-300 text-sm mb-4">Romantic rose fragrance for intimate moments</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 850</span>
+                            <button onclick="addToCart('Rose Candle', 800, 'premium perfumes/premium scented candels/Rose candle.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Premium Candles Set 8 -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/premium scented candels/Premium Candles 8.webp" 
+                             alt="Premium Candles Set 8" 
+">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Premium Candles Set 8', 1500, 'premium perfumes/premium scented candels/Premium Candles 8.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Premium Candles Set 8</h3>
+                        <p class="text-gray-300 text-sm mb-4">8-piece premium candle collection</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 2499</span>
+                            <button onclick="addToCart('Premium Candles Set 8', 1500, 'premium perfumes/premium scented candels/Premium Candles 8.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Premium Candles Set 3 -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/premium scented candels/Premium Candles 3.webp" 
+                             alt="Premium Candles Set 3" 
+">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Premium Candles Set 3', 900, 'premium perfumes/premium scented candels/Premium Candles 3.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Premium Candles Set 3</h3>
+                        <p class="text-gray-300 text-sm mb-4">3-piece elegant candle set</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 850</span>
+                            <button onclick="addToCart('Premium Candles Set 3', 900, 'premium perfumes/premium scented candels/Premium Candles 3.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud Candle Set -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/premium scented candels/Cloud Candle Set.webp" 
+                             alt="Cloud Candle Set" 
+">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Cloud Candle Set', 1100, 'premium perfumes/premium scented candels/Cloud Candle Set.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Cloud Candle Set</h3>
+                        <p class="text-gray-300 text-sm mb-4">Dreamy cloud-shaped candle collection</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 1399</span>
+                            <button onclick="addToCart('Cloud Candle Set', 1399, 'premium perfumes/premium scented candels/Cloud Candle Set.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Candle Bouquet With Wax Base -->
+                <div class="product-card bg-gray-800 border border-golden rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="image-container">
+                            <img src="premium perfumes/premium scented candels/Candle Bouquet With wax base.webp" 
+                             alt="Candle Bouquet With Wax Base" 
+">
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="addToWishlist('Candle Bouquet With Wax Base', 1800, 'premium perfumes/premium scented candels/Candle Bouquet With wax base.webp')" 
+                                    class="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-golden mb-2">Candle Bouquet With Wax Base</h3>
+                        <p class="text-gray-300 text-sm mb-4">Beautiful candle bouquet with decorative wax base</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-golden">Rs 4499</span>
+                            <button onclick="addToCart('Candle Bouquet With Wax Base', 1800, 'premium perfumes/premium scented candels/Candle Bouquet With wax base.webp')" 
+                                    class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-12">
-        <div class="max-w-7xl mx-auto px-4">
+    <footer class="bg-gray-900 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <div class="bg-yellow-400 text-black rounded-full w-8 h-8 flex items-center justify-center">
-                            <i class="fas fa-shopping-cart"></i>
-                            <i class="fas fa-star text-xs absolute -top-1 -right-1"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-yellow-400">MSM Traders</h3>
+                <!-- Company Info -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="MSM TRADERS LOGO.jpeg" alt="MSM Traders Logo" class="h-12 w-auto mr-3">
+                        <h3 class="text-2xl font-bold text-golden">MSM TRADERS</h3>
                     </div>
-                    <p class="text-sm">CLICK.SHOP.SMILE</p>
-                </div>
-                <div>
-                    <h4 class="text-yellow-400 font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="hover:text-yellow-400 transition duration-300">Home</a></li>
-                        <li><a href="car_care.html" class="hover:text-yellow-400 transition duration-300">Car Care</a></li>
-                        <li><a href="microfiber_and_cleaners.html" class="hover:text-yellow-400 transition duration-300">Microfiber & Cleaners</a></li>
-                        <li><a href="laptops.html" class="hover:text-yellow-400 transition duration-300">Laptops</a></li>
-                        <li><a href="electronics.html" class="hover:text-yellow-400 transition duration-300">Electronics</a></li>
-                        <li><a href="premium_perfumes.html" class="hover:text-yellow-400 transition duration-300">Premium Perfumes</a></li>
-                        <li><a href="sale.html" class="hover:text-yellow-400 transition duration-300">Sale</a></li>
-                        <li><a href="contact.html" class="hover:text-yellow-400 transition duration-300">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-yellow-400 font-semibold mb-4">Contact Info</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><i class="fas fa-phone text-yellow-400 mr-2"></i>+923258573925</li>
-                        <li><i class="fas fa-envelope text-yellow-400 mr-2"></i>msmtrader222@gmail.com</li>
-                        <li><i class="fas fa-map-marker-alt text-yellow-400 mr-2"></i>Phase 2 DHA Lahore</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-yellow-400 font-semibold mb-4">Follow Us</h4>
+                    <p class="text-gray-300 mb-4">Your trusted partner for premium products and exceptional service. We bring you the finest quality items at competitive prices.</p>
                     <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/share/17A1BGDUkh/" target="_blank" class="text-gray-400 hover:text-yellow-400 transition duration-300"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/msmtraders222?igsh=NjA2enprZGZ3am81&utm_source=ig_contact_invite" target="_blank" class="text-gray-400 hover:text-yellow-400 transition duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com/" target="_blank" rel="noopener" class="text-gray-400 hover:text-golden transition-colors">
+                             <i class="fab fa-facebook-f text-xl"></i>
+                         </a>
+                        <a href="https://instagram.com/" target="_blank" rel="noopener" class="text-gray-400 hover:text-golden transition-colors">
+                             <i class="fab fa-instagram text-xl"></i>
+                         </a>
+                        <a href="https://wa.me/923258573925" target="_blank" rel="noopener" class="text-gray-400 hover:text-golden transition-colors">
+                             <i class="fab fa-whatsapp text-xl"></i>
+                         </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold text-golden mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-golden transition-colors">Home</a></li>
+                        <li><a href="car_care.html" class="text-gray-300 hover:text-golden transition-colors">Car Care</a></li>
+                        <li><a href="premium_perfumes.html" class="text-gray-300 hover:text-golden transition-colors">Premium Perfumes</a></li>
+                        <li><a href="crockery.html" class="text-gray-300 hover:text-golden transition-colors">Crockery</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-golden transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold text-golden mb-4">Contact Info</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p><i class="fas fa-phone mr-2 text-golden"></i> +92 325 8573925</p>
+                        <p><i class="fas fa-envelope mr-2 text-golden"></i> msmtraders222@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt mr-2 text-golden"></i> DHA Phase 2, Lahore</p>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm">
-                <p>&copy; 2024 MSM Traders. All rights reserved. CLICK.SHOP.SMILE</p>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 MSM Traders. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <img id="popupImage" src="" alt="Product Image" />
+            <h2 id="popupTitle">Product Title</h2>
+            <p id="popupDescription">Product description</p>
+            <p id="popupPrice" style="font-weight: bold; color: #fbbf24; font-size: 1.2em; margin: 10px 0;"></p>
+            <button class="close-btn" id="closeBtn">Close</button>
+        </div>
+    </div>
+
     <!-- Shopping Cart Modal -->
     <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
         <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
-            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-400 max-h-[90vh] sm:max-h-[80vh] overflow-hidden flex flex-col">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-500 max-h-[90vh] sm:max-h-[80vh] overflow-hidden flex flex-col">
                 <!-- Cart Header -->
-                <div class="flex items-center justify-between p-3 sm:p-4 border-b border-yellow-400 flex-shrink-0">
-                    <h3 class="text-lg sm:text-xl font-bold text-yellow-400">Shopping Cart</h3>
-                    <button id="close-cart" class="text-gray-400 hover:text-yellow-400 text-xl sm:text-2xl font-bold">
+                <div class="flex items-center justify-between p-3 sm:p-4 border-b border-yellow-500 flex-shrink-0">
+                    <h3 class="text-lg sm:text-xl font-bold text-yellow-500">Shopping Cart</h3>
+                    <button id="close-cart" class="text-gray-400 hover:text-yellow-500 text-xl sm:text-2xl font-bold">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
                 
                 <!-- Cart Items -->
-                <div id="cart-items" class="flex-1 overflow-y-auto p-3 sm:p-4">
-                    <!-- Cart items will be dynamically added here -->
+                <div id="cart-items" class="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3">
                     <div id="empty-cart" class="text-center py-8">
                         <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
                         <p class="text-gray-400">Your cart is empty</p>
                     </div>
                 </div>
                 
-                <!-- Customer Information Form -->
-                <div class="border-t border-yellow-400 p-3 sm:p-4 flex-shrink-0">
-                    <h4 class="text-yellow-400 font-semibold mb-3 text-sm sm:text-base">Customer Information</h4>
-                    <div class="space-y-2 mb-4">
-                        <input type="text" id="cart-customer-name" placeholder="Full Name *" 
-                               class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-yellow-400" required>
-                        <input type="tel" id="cart-customer-phone" placeholder="Phone Number * (03XXXXXXXXX)" 
-                               class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-yellow-400" required>
-                        <textarea id="cart-customer-address" placeholder="Complete Address *" rows="2"
-                                  class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-yellow-400 resize-none" required></textarea>
-                    </div>
-                </div>
-
                 <!-- Cart Footer -->
-                <div class="border-t border-yellow-400 p-3 sm:p-4 flex-shrink-0">
+                <div class="border-t border-yellow-500 p-3 sm:p-4 flex-shrink-0">
                     <div class="flex justify-between items-center mb-3 sm:mb-4">
-                        <span class="text-base sm:text-lg font-semibold text-yellow-400">Total:</span>
-                        <span id="cart-total" class="text-lg sm:text-xl font-bold text-yellow-400">Rs 0.00</span>
+                        <span class="text-base sm:text-lg font-semibold text-yellow-500">Total:</span>
+                        <span id="cart-total" class="text-lg sm:text-xl font-bold text-yellow-500">Rs 0.00</span>
                     </div>
-                    <div class="flex flex-col sm:flex-row gap-2">
+                    <div class="flex flex-col gap-2">
                         <button id="clear-cart" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base">
                             Clear Cart
                         </button>
@@ -719,104 +1566,115 @@
         </div>
     </div>
 
-    <!-- Jazz Cash Payment Modal -->
-    <div id="jazzcash-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+    <!-- Customer Information Modal for WhatsApp Orders -->
+    <div id="customer-info-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
         <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
-            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-sm sm:max-w-md mx-auto border border-yellow-500">
-                <!-- Payment Header -->
-                <div class="flex items-center justify-between p-4 border-b border-yellow-500">
-                    <h3 class="text-xl font-bold text-yellow-500">Jazz Cash Payment</h3>
-                    <button id="close-jazzcash" class="text-gray-400 hover:text-yellow-500 text-2xl font-bold">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-sm sm:max-w-md mx-auto border border-yellow-400">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between p-4 border-b border-yellow-400">
+                    <h3 class="text-xl font-bold text-yellow-400">Customer Information</h3>
+                    <button id="close-customer-info" class="text-gray-400 hover:text-yellow-400 text-2xl font-bold">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
                 
-                <!-- Payment Form -->
+                <!-- Modal Content -->
                 <div class="p-4">
-                    <div class="mb-4">
-                        <div class="flex items-center justify-center mb-4">
-                            <div class="bg-orange-500 text-white rounded-full p-3">
-                                <i class="fas fa-credit-card text-2xl"></i>
-                            </div>
+                    <p class="text-gray-300 text-sm mb-4">Please provide your details to place the order via WhatsApp:</p>
+                    
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-yellow-400 text-sm font-medium mb-2">Full Name *</label>
+                            <input type="text" id="whatsapp-customer-name" placeholder="Enter your full name" 
+                                   class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400" required>
                         </div>
-                        <h4 class="text-lg font-semibold text-yellow-500 text-center mb-2">Secure Payment</h4>
-                        <p class="text-gray-400 text-sm text-center mb-4">Complete your purchase securely with Jazz Cash</p>
+                        
+                        <div>
+                            <label class="block text-yellow-400 text-sm font-medium mb-2">Phone Number *</label>
+                            <input type="tel" id="whatsapp-customer-phone" placeholder="03XXXXXXXXX" 
+                                   class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-yellow-400 text-sm font-medium mb-2">Complete Address *</label>
+                            <textarea id="whatsapp-customer-address" placeholder="Enter your complete address" rows="3"
+                                      class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-400" required></textarea>
+                        </div>
                     </div>
                     
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-yellow-500 text-sm font-medium mb-2">Order Total</label>
-                            <div class="bg-gray-800 rounded-lg p-3 border border-gray-700">
-                                <span id="jazzcash-total" class="text-2xl font-bold text-yellow-500">Rs 0.00</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Customer Information Section -->
-                        <div class="border-t border-gray-700 pt-4">
-                            <h5 class="text-yellow-500 font-semibold mb-3">Customer Information</h5>
-                            <p class="text-gray-400 text-xs mb-3">Customer details will be copied from your cart form</p>
-                            
-                            <div class="space-y-3">
-                                <div>
-                                    <label class="block text-yellow-500 text-sm font-medium mb-2">Full Name *</label>
-                                    <input type="text" id="jazzcash-customer-name" placeholder="Enter your full name" 
-                                           class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500" required>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-yellow-500 text-sm font-medium mb-2">Phone Number *</label>
-                                    <input type="tel" id="jazzcash-customer-phone" placeholder="03XXXXXXXXX" 
-                                           class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500" required>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-yellow-500 text-sm font-medium mb-2">Complete Address *</label>
-                                    <textarea id="jazzcash-customer-address" placeholder="Enter your complete delivery address" rows="3"
-                                              class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500 resize-none" required></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Payment Information Section -->
-                        <div class="border-t border-gray-700 pt-4">
-                            <h5 class="text-yellow-500 font-semibold mb-3">Payment Information</h5>
-                            
-                            <div class="space-y-3">
-                                <div>
-                                    <label class="block text-yellow-500 text-sm font-medium mb-2">Jazz Cash Number *</label>
-                                    <input type="tel" id="jazzcash-number" placeholder="03XXXXXXXXX" 
-                                           class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500" required>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-yellow-500 text-sm font-medium mb-2">Transaction ID (Optional)</label>
-                                    <input type="text" id="transaction-id" placeholder="Enter transaction ID after payment" 
-                                           class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-gray-800 rounded-lg p-3 border border-gray-700">
-                            <h5 class="text-yellow-500 font-semibold mb-2">Payment Instructions:</h5>
-                            <ol class="text-gray-300 text-xs sm:text-sm space-y-1">
-                                <li>1. Send payment to: <span class="text-yellow-500 font-bold">+923258573925</span></li>
-                                <li>2. Use your order total as amount</li>
-                                <li>3. Enter your Jazz Cash number above</li>
-                                <li>4. Add transaction ID (optional)</li>
-                                <li>5. Click "Confirm Payment"</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Payment Footer -->
-                <div class="border-t border-yellow-500 p-4">
-                    <div class="flex flex-col sm:flex-row gap-2">
-                        <button id="cancel-jazzcash" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm">
+                    <!-- Modal Buttons -->
+                    <div class="flex gap-2 mt-6">
+                        <button id="cancel-customer-info" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg transition duration-200">
                             Cancel
                         </button>
-                        <button id="confirm-jazzcash" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center">
-                            <i class="fas fa-check mr-2"></i>
+                        <button id="confirm-whatsapp-order" class="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition duration-200">
+                            Send Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jazz Cash Payment Modal -->
+    <div id="jazzcash-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-sm sm:max-w-md mx-auto border border-orange-500">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between p-4 border-b border-orange-500">
+                    <h3 class="text-xl font-bold text-orange-500">Jazz Cash Payment</h3>
+                    <button id="close-jazzcash" class="text-gray-400 hover:text-orange-500 text-2xl font-bold">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Modal Content -->
+                <div class="p-4">
+                    <div class="text-center mb-4">
+                        <p class="text-gray-300 text-sm mb-2">Total Amount:</p>
+                        <p id="jazzcash-total" class="text-2xl font-bold text-orange-500">Rs 0.00</p>
+                    </div>
+                    
+                    <p class="text-gray-300 text-sm mb-4">Please provide your details and Jazz Cash payment information:</p>
+                    
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-orange-500 text-sm font-medium mb-2">Full Name *</label>
+                            <input type="text" id="customer-name" placeholder="Enter your full name" 
+                                   class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-orange-500" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-orange-500 text-sm font-medium mb-2">Phone Number *</label>
+                            <input type="tel" id="customer-phone" placeholder="03XXXXXXXXX" 
+                                   class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-orange-500" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-orange-500 text-sm font-medium mb-2">Complete Address *</label>
+                            <textarea id="customer-address" placeholder="Enter your complete address" rows="3"
+                                      class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-orange-500" required></textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-orange-500 text-sm font-medium mb-2">Jazz Cash Number *</label>
+                            <input type="tel" id="jazzcash-number" placeholder="03XXXXXXXXX" 
+                                   class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-orange-500" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-orange-500 text-sm font-medium mb-2">Transaction ID (Optional)</label>
+                            <input type="text" id="transaction-id" placeholder="Enter transaction ID if available" 
+                                   class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-orange-500">
+                        </div>
+                    </div>
+                    
+                    <!-- Modal Buttons -->
+                    <div class="flex gap-2 mt-6">
+                        <button id="cancel-jazzcash" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg transition duration-200">
+                            Cancel
+                        </button>
+                        <button id="confirm-jazzcash" class="flex-1 bg-orange-600 hover:bg-orange-700 text-white py-2 px-4 rounded-lg transition duration-200">
                             Confirm Payment
                         </button>
                     </div>
@@ -825,347 +1683,180 @@
         </div>
     </div>
 
-    <!-- Customer Information Modal for WhatsApp Orders -->
-    <div id="customer-info-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
-        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
-            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-500">
-                <!-- Modal Header -->
-                <div class="flex items-center justify-between p-4 border-b border-yellow-500">
-                    <h3 class="text-xl font-bold text-yellow-500">Customer Information</h3>
-                    <button id="close-customer-info" class="text-gray-400 hover:text-yellow-500 text-2xl font-bold">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                
-                <!-- Customer Information Form -->
-                <div class="p-4">
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-yellow-500 text-sm font-medium mb-2">Full Name *</label>
-                            <input type="text" id="whatsapp-customer-name" placeholder="Enter your full name" 
-                                   class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500" required>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-yellow-500 text-sm font-medium mb-2">Phone Number *</label>
-                            <input type="tel" id="whatsapp-customer-phone" placeholder="03XXXXXXXXX" 
-                                   class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500" required>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-yellow-500 text-sm font-medium mb-2">Complete Address *</label>
-                            <textarea id="whatsapp-customer-address" placeholder="Enter your complete delivery address" rows="3"
-                                      class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-yellow-500 resize-none" required></textarea>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Modal Footer -->
-                <div class="border-t border-yellow-500 p-4">
-                    <div class="flex flex-col sm:flex-row gap-2">
-                        <button id="cancel-customer-info" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm">
-                            Cancel
-                        </button>
-                        <button id="confirm-whatsapp-order" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm flex items-center justify-center">
-                            <i class="fab fa-whatsapp mr-2"></i>
-                            Send WhatsApp Order
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <!-- JavaScript -->
     <script>
-        let allProducts = [];
-        let filteredProducts = [];
-        let currentPage = 1;
-        const productsPerPage = 12;
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navbarMenu = document.getElementById('navbar-menu');
 
-        // No products for this page currently
-        const sampleProducts = [];
+        hamburger.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+        });
 
-        // Load all products
-        function loadProducts() {
-            // Use sample products directly since API is not available
-                allProducts = [...sampleProducts];
-                filteredProducts = [...allProducts];
-                displayProducts();
-                setupEventListeners();
-        }
-
-        // Display products
-        function displayProducts() {
-            const container = document.getElementById('productsContainer');
-            const startIndex = (currentPage - 1) * productsPerPage;
-            const endIndex = startIndex + productsPerPage;
-            const productsToShow = filteredProducts.slice(startIndex, endIndex);
-
-            if (productsToShow.length === 0) {
-                container.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-gray-400 text-lg">No laptop products available.</p></div>';
-                return;
-            }
-
-            container.innerHTML = productsToShow.map(product => `
-                <div class="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-700 transition duration-300 border border-yellow-400">
-                    <div class="aspect-w-16 aspect-h-9">
-                        <img src="${product.image_url}" alt="${product.name}" class="w-full h-48 object-cover">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold text-yellow-400 mb-2">${product.name}</h3>
-                        <p class="text-gray-300 text-sm mb-3">${product.description}</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-yellow-400">$${product.price}</span>
-                            <button class="add-to-cart-btn w-full sm:w-auto bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg text-base sm:text-lg transition duration-300 text-center"
-                                    data-name="${product.name}" 
-                                    data-price="${product.price}" 
-                                    data-image="laptop">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-
-            updatePagination();
-        }
-
-        // Update pagination
-        function updatePagination() {
-            const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
-            const pagination = document.getElementById('pagination');
-            
-            if (totalPages <= 1) {
-                pagination.innerHTML = '';
-                return;
-            }
-
-            let paginationHTML = '';
-            
-            // Previous button
-            if (currentPage > 1) {
-                paginationHTML += `<button onclick="changePage(${currentPage - 1})" class="px-3 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600 transition duration-300">Previous</button>`;
-            }
-
-            // Page numbers
-            for (let i = 1; i <= totalPages; i++) {
-                if (i === currentPage) {
-                    paginationHTML += `<button class="px-3 py-2 bg-yellow-400 text-black rounded-md font-semibold">${i}</button>`;
-                } else {
-                    paginationHTML += `<button onclick="changePage(${i})" class="px-3 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600 transition duration-300">${i}</button>`;
-                }
-            }
-
-            // Next button
-            if (currentPage < totalPages) {
-                paginationHTML += `<button onclick="changePage(${currentPage + 1})" class="px-3 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600 transition duration-300">Next</button>`;
-            }
-
-            pagination.innerHTML = paginationHTML;
-        }
-
-        // Change page
-        function changePage(page) {
-            currentPage = page;
-            displayProducts();
-        }
-
-        // Filter products
-        function filterProducts() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const brandFilter = document.getElementById('brandFilter').value.toLowerCase();
-            const priceFilter = document.getElementById('priceFilter').value;
-            const sortBy = document.getElementById('sortBy').value;
-
-            filteredProducts = allProducts.filter(product => {
-                const matchesSearch = product.name.toLowerCase().includes(searchTerm) || 
-                                    product.description.toLowerCase().includes(searchTerm);
-                const matchesBrand = !brandFilter || product.brand === brandFilter;
-                
-                let matchesPrice = true;
-                if (priceFilter) {
-                    const price = parseFloat(product.price);
-                    switch (priceFilter) {
-                        case '0-500':
-                            matchesPrice = price >= 0 && price <= 500;
-                            break;
-                        case '500-1000':
-                            matchesPrice = price > 500 && price <= 1000;
-                            break;
-                        case '1000-1500':
-                            matchesPrice = price > 1000 && price <= 1500;
-                            break;
-                        case '1500+':
-                            matchesPrice = price > 1500;
-                            break;
-                    }
-                }
-
-                return matchesSearch && matchesBrand && matchesPrice;
+        // Close mobile menu when clicking on a link
+        const menuLinks = document.querySelectorAll('.navbar-menu a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navbarMenu.classList.remove('active');
             });
+        });
 
-            // Sort products
-            filteredProducts.sort((a, b) => {
-                switch (sortBy) {
-                    case 'name':
-                        return a.name.localeCompare(b.name);
-                    case 'price-low':
-                        return parseFloat(a.price) - parseFloat(b.price);
-                    case 'price-high':
-                        return parseFloat(b.price) - parseFloat(a.price);
-                    default:
-                        return 0;
-                }
-            });
-
-            currentPage = 1;
-            displayProducts();
-        }
-
-        // Setup event listeners
-        function setupEventListeners() {
-            document.getElementById('searchInput').addEventListener('input', filterProducts);
-            document.getElementById('brandFilter').addEventListener('change', filterProducts);
-            document.getElementById('priceFilter').addEventListener('change', filterProducts);
-            document.getElementById('sortBy').addEventListener('change', filterProducts);
-        }
-
-        // Shopping Cart Functionality
+        // Cart functionality
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const whatsappNumber = '+923258573925'; // MSM Traders WhatsApp number
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-        // Price formatting and calculation functions
-        function formatPrice(price) {
-            // Remove "Rs" or any text, keep only numbers
-            if (!price) return 0;
-            let numeric = price.toString().replace(/[^\d.-]/g, ""); 
-            return Number(numeric) || 0;
-        }
-
-        function calculateCartItem(product, quantity) {
-            let price = formatPrice(product.price);
-            let total = price * quantity;
-
-            return {
-                ...product,
-                quantity,
-                price,
-                total,
-                displayPrice: `Rs ${price}`,
-                displayTotal: `Rs ${total}`
-            };
-        }
-
-        // Update cart count display
-        function updateCartCount() {
-            const cartCount = document.getElementById('cart-count');
-            if (!cartCount) {
-                console.error('cart-count element not found!');
-                return;
-            }
-            
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartCount.textContent = totalItems;
-        }
-
-        // Update cart total
-        function updateCartTotal() {
-            const cartTotal = document.getElementById('cart-total');
-            const total = cart.reduce((sum, item) => {
-                const price = formatPrice(item.price);
-                return sum + (price * item.quantity);
-            }, 0);
-            cartTotal.textContent = `Rs ${total.toFixed(2)}`;
-        }
-
-        // Render cart items
-        function renderCart() {
-            const cartItems = document.getElementById('cart-items');
-            if (!cartItems) {
-                console.error('cartItems element not found!');
-                return;
-            }
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = `
-                    <div id="empty-cart" class="text-center py-8">
-                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
-                        <p class="text-gray-400">Your cart is empty</p>
-                    </div>
-                `;
-            } else {
-                cartItems.innerHTML = cart.map((item, index) => `
-                    <div class="cart-item bg-gray-800 rounded-lg p-3 mb-3 border border-gray-700">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-${getItemIcon(item.image)} text-yellow-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-yellow-400 font-semibold text-sm">${item.name}</h4>
-                                    <p class="text-gray-400 text-xs">${item.displayPrice || `Rs ${item.price}`}</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
-                                        data-index="${index}" data-action="decrease">-</button>
-                                <span class="text-yellow-400 font-semibold text-sm w-8 text-center">${item.quantity}</span>
-                                <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
-                                        data-index="${index}" data-action="increase">+</button>
-                                <button class="remove-item bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded text-xs font-bold" 
-                                        data-index="${index}">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-            }
-            
-            updateCartCount();
-            updateCartTotal();
-        }
-
-        // Get icon for item type
-        function getItemIcon(imageType) {
-            const icons = {
-                'car-wax': 'car',
-                'headphones': 'headphones',
-                'cologne': 'spray-can',
-                'laptop': 'laptop'
-            };
-            return icons[imageType] || 'box';
-        }
-
-        // Add item to cart
         function addToCart(name, price, image) {
+            const item = { name, price, image, quantity: 1 };
             const existingItem = cart.find(item => item.name === name);
             
             if (existingItem) {
                 existingItem.quantity += 1;
-                // Recalculate totals for existing item
-                const updatedItem = calculateCartItem(existingItem, existingItem.quantity);
-                Object.assign(existingItem, updatedItem);
             } else {
-                const product = { name, price, image };
-                const newItem = calculateCartItem(product, 1);
-                cart.push(newItem);
+                cart.push(item);
             }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
             
             // Show cart popup when item is added
             showCartPopup();
             
-            localStorage.setItem('cart', JSON.stringify(cart));
-            renderCart();
-            showNotification('Item added to cart!', 'success');
+            // Show success message
+            showNotification(`${name} added to cart!`, 'success');
         }
+
+        function addToWishlist(name, price, image) {
+            const item = { name, price, image };
+            const existingItem = wishlist.find(item => item.name === name);
+            
+            if (!existingItem) {
+                wishlist.push(item);
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                showNotification(`${name} added to wishlist!`);
+            } else {
+                showNotification(`${name} is already in your wishlist!`);
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-green-600' : type === 'error' ? 'bg-red-600' : 'bg-blue-600';
+            const icon = type === 'success' ? 'fa-check' : type === 'error' ? 'fa-exclamation' : 'fa-info';
+            
+            notification.className = `fixed top-20 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas ${icon} mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Popup functionality
+        const popupOverlay = document.getElementById('popupOverlay');
+        const closeBtn = document.getElementById('closeBtn');
+        const popupImage = document.getElementById('popupImage');
+        const popupTitle = document.getElementById('popupTitle');
+        const popupDescription = document.getElementById('popupDescription');
+        const popupPrice = document.getElementById('popupPrice');
+
+        function showProductPopup(name, price, image, description) {
+            popupImage.src = image;
+            popupTitle.textContent = name;
+            popupDescription.textContent = description;
+            popupPrice.textContent = `Rs ${price.toLocaleString()}`;
+            popupOverlay.style.display = 'flex';
+        }
+
+        closeBtn.addEventListener('click', () => {
+            popupOverlay.style.display = 'none';
+        });
+
+        // Close popup when clicking outside the popup
+        popupOverlay.addEventListener('click', (e) => {
+            if (e.target === popupOverlay) {
+                popupOverlay.style.display = 'none';
+            }
+        });
+
+        // Add click event to product images to show popup
+        document.querySelectorAll('.product-card .image-container img').forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const title = productCard.querySelector('h3').textContent;
+                const priceText = productCard.querySelector('span').textContent;
+                const price = parseInt(priceText.replace(/[^\d]/g, ''));
+                const description = productCard.querySelector('p').textContent;
+                const imageSrc = this.src;
+                
+                showProductPopup(title, price, imageSrc, description);
+            });
+        });
+
+        // Cart functionality enhancements
+        let cartCount = 0;
+        const whatsappNumber = '+923258573925'; // MSM Traders WhatsApp number
 
         // Show cart popup
         function showCartPopup() {
+            console.log('showCartPopup called');
             const cartModal = document.getElementById('cart-modal');
+            console.log('Cart modal element:', cartModal);
             if (cartModal) {
+                console.log('Removing hidden class and adding show class');
                 cartModal.classList.remove('hidden');
                 cartModal.classList.add('show');
+                cartModal.style.display = 'flex';
+                console.log('Cart modal classes:', cartModal.className);
+                console.log('Cart modal style display:', cartModal.style.display);
+                console.log('Cart modal computed style:', window.getComputedStyle(cartModal).display);
+            } else {
+                console.error('Cart modal element not found!');
+            }
+        }
+
+        // Hide cart popup
+        function hideCartPopup() {
+            console.log('hideCartPopup called');
+            const cartModal = document.getElementById('cart-modal');
+            if (cartModal) {
+                cartModal.classList.add('hidden');
+                cartModal.classList.remove('show');
+                cartModal.style.display = 'none';
+                console.log('Cart modal hidden');
             }
         }
 
@@ -1190,10 +1881,6 @@
                 }
             }
             
-            // Recalculate totals for the updated item
-            const updatedItem = calculateCartItem(cart[index], cart[index].quantity);
-            Object.assign(cart[index], updatedItem);
-            
             localStorage.setItem('cart', JSON.stringify(cart));
             renderCart();
         }
@@ -1206,13 +1893,86 @@
             showNotification('Cart cleared!', 'info');
         }
 
-        // Hide cart popup
-        function hideCartPopup() {
-            const cartModal = document.getElementById('cart-modal');
-            if (cartModal) {
-                cartModal.classList.add('hidden');
-                cartModal.classList.remove('show');
+        // Update cart count display
+        function updateCartCount() {
+            const cartCountElement = document.getElementById('cart-count');
+            if (!cartCountElement) {
+                console.error('cart-count element not found!');
+                return;
             }
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCountElement.textContent = totalItems;
+            console.log('Cart count updated to:', totalItems);
+        }
+
+        // Update cart total
+        function updateCartTotal() {
+            console.log('updateCartTotal called');
+            const cartTotal = document.getElementById('cart-total');
+            console.log('Cart total element:', cartTotal);
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            console.log('Calculated total:', total);
+            if (cartTotal) {
+                cartTotal.textContent = `Rs ${total.toFixed(2)}`;
+                console.log('Updated cart total display to:', cartTotal.textContent);
+            } else {
+                console.error('Cart total element not found!');
+            }
+        }
+
+        // Render cart items
+        function renderCart() {
+            console.log('renderCart called, cart length:', cart.length);
+            console.log('Current cart:', cart);
+            
+            const cartItems = document.getElementById('cart-items');
+            
+            if (!cartItems) {
+                console.error('cartItems element not found!');
+                return;
+            }
+            
+            if (cart.length === 0) {
+                console.log('Cart is empty, showing empty message');
+                cartItems.innerHTML = `
+                    <div id="empty-cart" class="text-center py-8">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
+                        <p class="text-gray-400">Your cart is empty</p>
+                    </div>
+                `;
+            } else {
+                console.log('Cart has items, rendering cart items');
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item bg-gray-800 rounded-lg p-3 mb-3 border border-gray-700">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-perfume text-yellow-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-yellow-500 font-semibold text-sm">${item.name}</h4>
+                                    <p class="text-gray-400 text-xs">Rs ${item.price}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}" data-action="decrease">-</button>
+                                <span class="text-yellow-500 font-semibold text-sm w-8 text-center">${item.quantity}</span>
+                                <button class="quantity-btn bg-gray-700 hover:bg-gray-600 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}" data-action="increase">+</button>
+                                <button class="remove-item bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded text-xs font-bold" 
+                                        data-index="${index}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            updateCartCount();
+            updateCartTotal();
         }
 
         // Phone number validation
@@ -1228,56 +1988,9 @@
                 return;
             }
 
-            // Get customer information from cart form
-            const customerName = document.getElementById('cart-customer-name').value.trim();
-            const customerPhone = document.getElementById('cart-customer-phone').value.trim();
-            const customerAddress = document.getElementById('cart-customer-address').value.trim();
-
-            // Validate required fields
-            if (!customerName) {
-                showNotification('Please enter your full name!', 'error');
-                return;
-            }
-            
-            if (!customerPhone) {
-                showNotification('Please enter your phone number!', 'error');
-                return;
-            }
-            
-            if (!isValidPhoneNumber(customerPhone)) {
-                showNotification('Please enter a valid phone number!', 'error');
-                return;
-            }
-            
-            if (!customerAddress) {
-                showNotification('Please enter your complete address!', 'error');
-                return;
-            }
-
-            let total = 0;
-            let message = "*🛒 Order Details:*\n\n";
-            message += `*Customer Information:*\n`;
-            message += `Name: ${customerName}\n`;
-            message += `Phone: ${customerPhone}\n`;
-            message += `Address: ${customerAddress}\n\n`;
-
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                message += `• ${item.name} x ${item.quantity} = Rs ${itemTotal}\n`;
-            });
-
-            message += `\n*Subtotal:* Rs ${total}`;
-            message += `\n*Note:* Rs 200 delivery charges will be added to your order.`;
-            message += `\n\nThank you for shopping with MSM Traders!`;
-
-            const encodedMessage = encodeURIComponent(message);
-            const phoneNumber = "923258573925";
-            const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-            window.open(url, "_blank");
-            
-            // Clear cart after successful order
-            clearCart();
+            // Open customer information modal
+            const customerInfoModal = document.getElementById('customer-info-modal');
+            customerInfoModal.classList.remove('hidden');
         }
 
         // Send WhatsApp order with customer information
@@ -1308,10 +2021,7 @@
                 return;
             }
 
-            const total = cart.reduce((sum, item) => {
-                const price = formatPrice(item.price);
-                return sum + (price * item.quantity);
-            }, 0);
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             let message = `Hello! I would like to place an order:\n\n`;
             
             message += `Customer Information:\n`;
@@ -1321,9 +2031,7 @@
             message += `Order Details:\n`;
             
             cart.forEach(item => {
-                const price = formatPrice(item.price);
-                const itemTotal = price * item.quantity;
-                message += `• ${item.name} x${item.quantity} - Rs ${itemTotal.toFixed(2)}\n`;
+                message += `• ${item.name} x${item.quantity} - Rs ${(item.price * item.quantity).toFixed(2)}\n`;
             });
             
             message += `\nTotal: Rs ${total.toFixed(2)}\n\nPlease confirm my order. Thank you!`;
@@ -1354,26 +2062,8 @@
                 return;
             }
             
-            const total = cart.reduce((sum, item) => {
-                const price = formatPrice(item.price);
-                return sum + (price * item.quantity);
-            }, 0);
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             document.getElementById('jazzcash-total').textContent = `Rs ${total.toFixed(2)}`;
-            
-            // Copy customer information from cart form to Jazz Cash modal
-            const cartName = document.getElementById('cart-customer-name').value.trim();
-            const cartPhone = document.getElementById('cart-customer-phone').value.trim();
-            const cartAddress = document.getElementById('cart-customer-address').value.trim();
-            
-            if (cartName) {
-                document.getElementById('jazzcash-customer-name').value = cartName;
-            }
-            if (cartPhone) {
-                document.getElementById('jazzcash-customer-phone').value = cartPhone;
-            }
-            if (cartAddress) {
-                document.getElementById('jazzcash-customer-address').value = cartAddress;
-            }
             
             const jazzCashModal = document.getElementById('jazzcash-modal');
             jazzCashModal.classList.remove('hidden');
@@ -1394,10 +2084,10 @@
         }
         
         function confirmJazzCashPayment() {
-            // Get customer information from Jazz Cash modal
-            const customerName = document.getElementById('jazzcash-customer-name').value.trim();
-            const customerPhone = document.getElementById('jazzcash-customer-phone').value.trim();
-            const customerAddress = document.getElementById('jazzcash-customer-address').value.trim();
+            // Get customer information
+            const customerName = document.getElementById('customer-name').value.trim();
+            const customerPhone = document.getElementById('customer-phone').value.trim();
+            const customerAddress = document.getElementById('customer-address').value.trim();
             const jazzCashNumber = document.getElementById('jazzcash-number').value.trim();
             const transactionId = document.getElementById('transaction-id').value.trim();
             
@@ -1432,10 +2122,7 @@
                 return;
             }
             
-            const total = cart.reduce((sum, item) => {
-                const price = formatPrice(item.price);
-                return sum + (price * item.quantity);
-            }, 0);
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
             // Create order summary with customer information
             let orderSummary = `Jazz Cash Payment Order:\n\n`;
@@ -1445,9 +2132,7 @@
             orderSummary += `Address: ${customerAddress}\n\n`;
             orderSummary += `Order Details:\n`;
             cart.forEach(item => {
-                const price = formatPrice(item.price);
-                const itemTotal = price * item.quantity;
-                orderSummary += `• ${item.name} x${item.quantity} - Rs ${itemTotal.toFixed(2)}\n`;
+                orderSummary += `• ${item.name} x${item.quantity} - Rs ${(item.price * item.quantity).toFixed(2)}\n`;
             });
             orderSummary += `\nTotal: Rs ${total.toFixed(2)}\n`;
             orderSummary += `Jazz Cash Number: ${jazzCashNumber}\n`;
@@ -1468,66 +2153,43 @@
             clearCart();
         }
 
-        // Show notification
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg text-white font-semibold transition-all duration-300 transform translate-x-full`;
-            
-            switch(type) {
-                case 'success':
-                    notification.className += ' bg-green-600';
-                    break;
-                case 'error':
-                    notification.className += ' bg-red-600';
-                    break;
-                default:
-                    notification.className += ' bg-blue-600';
-            }
-            
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            // Animate in
-            setTimeout(() => {
-                notification.classList.remove('translate-x-full');
-            }, 100);
-            
-            // Animate out and remove
-            setTimeout(() => {
-                notification.classList.add('translate-x-full');
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
+        // Make functions globally accessible
+        window.addToCart = addToCart;
+        window.removeFromCart = removeFromCart;
+        window.updateQuantity = updateQuantity;
+        window.clearCart = clearCart;
+        window.showCartPopup = showCartPopup;
+        window.hideCartPopup = hideCartPopup;
+        window.renderCart = renderCart;
+        window.updateCartCount = updateCartCount;
+        window.updateCartTotal = updateCartTotal;
+        window.showNotification = showNotification;
+        window.sendWhatsAppOrder = sendWhatsAppOrder;
+        window.sendWhatsAppOrderWithInfo = sendWhatsAppOrderWithInfo;
+        window.closeCustomerInfoModal = closeCustomerInfoModal;
+        window.openJazzCashPayment = openJazzCashPayment;
+        window.closeJazzCashPayment = closeJazzCashPayment;
+        window.confirmJazzCashPayment = confirmJazzCashPayment;
 
-        // Initialize
+        // Initialize cart modal event listeners
         document.addEventListener('DOMContentLoaded', function() {
-            loadProducts();
+            console.log('Premium Perfumes page loaded successfully');
             
-            // Initialize cart
-            renderCart();
+            // Initialize cart count
+            cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            updateCartCount();
             
-            // Cart button event listener
-            const cartButton = document.getElementById('cart-button');
+            // Initialize cart modal event listeners
             const cartModal = document.getElementById('cart-modal');
             const closeCart = document.getElementById('close-cart');
             const clearCartBtn = document.getElementById('clear-cart');
             const checkoutWhatsAppBtn = document.getElementById('checkout-whatsapp');
             
-            // Open cart modal
-            if (cartButton) {
-                cartButton.addEventListener('click', function() {
-                    cartModal.classList.remove('hidden');
-                    cartModal.classList.add('show');
-                });
-            }
-            
             // Close cart modal
             if (closeCart) {
                 closeCart.addEventListener('click', function() {
-                    cartModal.classList.add('hidden');
-                    cartModal.classList.remove('show');
+                    console.log('Close cart button clicked');
+                    hideCartPopup();
                 });
             }
             
@@ -1535,24 +2197,20 @@
             if (cartModal) {
                 cartModal.addEventListener('click', function(e) {
                     if (e.target === cartModal) {
-                        cartModal.classList.add('hidden');
-                        cartModal.classList.remove('show');
+                        console.log('Clicked outside cart modal');
+                        hideCartPopup();
                     }
                 });
             }
             
             // Clear cart
             if (clearCartBtn) {
-                clearCartBtn.addEventListener('click', function() {
-                    clearCart();
-                });
+                clearCartBtn.addEventListener('click', clearCart);
             }
             
             // Checkout via WhatsApp
             if (checkoutWhatsAppBtn) {
-                checkoutWhatsAppBtn.addEventListener('click', function() {
-                    sendWhatsAppOrder();
-                });
+                checkoutWhatsAppBtn.addEventListener('click', sendWhatsAppOrder);
             }
             
             // Jazz Cash Payment Functions
@@ -1616,177 +2274,43 @@
                 });
             }
             
-            // Add to cart buttons
+            // Cart button functionality
+            const cartButton = document.getElementById('cart-button');
+            if (cartButton) {
+                cartButton.addEventListener('click', function() {
+                    console.log('Cart button clicked');
+                    showCartPopup();
+                });
+            } else {
+                console.log('Cart button not found');
+            }
+            
+            // Add event listeners for cart item interactions
             document.addEventListener('click', function(e) {
-                if (e.target.classList.contains('add-to-cart-btn')) {
-                    const name = e.target.dataset.name;
-                    const price = e.target.dataset.price;
-                    const image = e.target.dataset.image;
-                    addToCart(name, price, image);
-                }
-                
-                // Quantity buttons
+                // Handle quantity buttons
                 if (e.target.classList.contains('quantity-btn')) {
                     const index = parseInt(e.target.dataset.index);
                     const action = e.target.dataset.action;
                     updateQuantity(index, action);
                 }
                 
-                // Remove item buttons
+                // Handle remove item buttons
                 if (e.target.classList.contains('remove-item') || e.target.closest('.remove-item')) {
-                    const index = parseInt(e.target.dataset.index || e.target.closest('.remove-item').dataset.index);
+                    const button = e.target.classList.contains('remove-item') ? e.target : e.target.closest('.remove-item');
+                    const index = parseInt(button.dataset.index);
                     removeFromCart(index);
                 }
             });
-        });
-
-        // Make functions globally accessible
-        window.addToCart = addToCart;
-        window.removeFromCart = removeFromCart;
-        window.updateQuantity = updateQuantity;
-        window.clearCart = clearCart;
-        window.showCartPopup = showCartPopup;
-        window.hideCartPopup = hideCartPopup;
-        window.renderCart = renderCart;
-        window.updateCartCount = updateCartCount;
-        window.updateCartTotal = updateCartTotal;
-        window.showNotification = showNotification;
-        window.sendWhatsAppOrder = sendWhatsAppOrder;
-        window.sendWhatsAppOrderWithInfo = sendWhatsAppOrderWithInfo;
-        window.closeCustomerInfoModal = closeCustomerInfoModal;
-        window.openJazzCashPayment = openJazzCashPayment;
-        window.closeJazzCashPayment = closeJazzCashPayment;
-        window.confirmJazzCashPayment = confirmJazzCashPayment;
-        window.formatPrice = formatPrice;
-        window.calculateCartItem = calculateCartItem;
-    </script>
-
-    <!-- Bottom Navigation Styles -->
-    <style>
-        .old-bottom-nav { 
-            position: fixed; 
-            bottom: 0; 
-            left: 0; 
-            right: 0; 
-            background: #111; 
-            display: flex; 
-            justify-content: space-around; 
-            border-top: 1px solid #333; 
-            z-index: 50; 
-            padding-bottom: env(safe-area-inset-bottom); 
-        }
-        
-        /* Desktop styles */
-        .old-bottom-nav a { 
-            text-decoration: none; 
-            color: #ccc; 
-            text-align: center; 
-            font-size: 14px; 
-            padding: 15px 12px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            min-height: 44px; 
-            transition: all 0.3s ease; 
-        }
-        .old-bottom-nav a i { 
-            font-size: 24px; 
-            display: block; 
-            margin-bottom: 5px; 
-        }
-        .old-bottom-nav a.active { 
-            color: #fff; 
-        }
-        
-        /* Mobile styles */
-        @media (max-width: 768px) {
-            .old-bottom-nav {
-                padding: 12px 0;
-            }
-            .old-bottom-nav a {
-                font-size: 16px;
-                padding: 12px 8px;
-                min-height: 60px;
-                flex: 1;
-            }
-            .old-bottom-nav a i {
-                font-size: 28px;
-                margin-bottom: 6px;
-            }
-            body { 
-                padding-bottom: calc(84px + env(safe-area-inset-bottom)); 
-            }
-        }
-        
-        /* Small mobile styles */
-        @media (max-width: 480px) {
-            .old-bottom-nav a {
-                font-size: 14px;
-                padding: 10px 6px;
-                min-height: 56px;
-            }
-            .old-bottom-nav a i {
-                font-size: 26px;
-                margin-bottom: 4px;
-            }
-            body { 
-                padding-bottom: calc(76px + env(safe-area-inset-bottom)); 
-            }
-        }
-        
-        /* Desktop body padding */
-        @media (min-width: 769px) {
-            body { 
-                padding-bottom: calc(74px + env(safe-area-inset-bottom)); 
-            }
-        }
-    </style>
-
-    <!-- Bottom Navigation -->
-    <nav class="old-bottom-nav" style="display: none;">
-        <a id="home-nav" href="index.html" onclick="setActiveNav('home')"><i class="fas fa-home"></i>Home</a>
-        <a id="category-nav" href="javascript:void(0)" onclick="openCategoryMenu(); setActiveNav('category'); return false;"><i class="fas fa-th-large"></i>Category</a>
-        <a id="deals-nav" href="deals.html" onclick="setActiveNav('deals')"><i class="fas fa-tags"></i>Deals</a>
-        <a id="cart-nav" href="cart.html" onclick="setActiveNav('cart')"><i class="fas fa-shopping-cart"></i>Cart</a>
-    </nav>
-
-    <script>
-        function setActiveNav(key) {
-            const links = document.querySelectorAll('.old-bottom-nav a');
-            links.forEach(link => link.classList.remove('active'));
-            const ids = { home: 'home-nav', category: 'category-nav', cart: 'cart-nav', deals: 'deals-nav' };
-            const active = document.getElementById(ids[key]);
-            if (active) active.classList.add('active');
-        }
-
-        function openCategoryMenu() {
-            // Show category options or redirect to main page
-            window.location.href = 'index.html';
-        }
-
-        function toggleCart() {
-            // Open cart modal if available, otherwise redirect to cart page
-            const cartModal = document.getElementById('cart-modal');
+            
+            // Initial render
+            renderCart();
+            
+            // Initialize cart modal
             if (cartModal) {
-                cartModal.classList.remove('hidden');
-                cartModal.classList.add('show');
-            } else {
-                window.location.href = 'cart.html';
+                cartModal.classList.add('hidden');
+                cartModal.classList.remove('show');
             }
-        }
-
-        // Toggle mobile menu
-        function toggleMenu() {
-            const menu = document.getElementById('navbar-menu');
-            const hamburger = document.getElementById('hamburger');
-            if (menu && hamburger) {
-                menu.classList.toggle('active');
-                hamburger.classList.toggle('active');
-            }
-        }
+        });
     </script>
 </body>
 </html>
-
-
