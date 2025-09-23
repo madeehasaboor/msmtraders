@@ -626,6 +626,22 @@
         body { background-color: #f5f5dc !important; }
     </style>
 </head>
+<style>
+    /* Category menus: white bg, yellow outline, black text (desktop & mobile) */
+    .sidebar, .side-menu, #category-menu, .category-menu, .left-menu {
+        background-color: #ffffff !important;
+        border: 2px solid #d4a017 !important;
+        color: #000 !important;
+    }
+    .sidebar a, .side-menu a, #category-menu a, .category-menu a, .left-menu a {
+        background-color: #ffffff !important;
+        border: 2px solid #d4a017 !important;
+        color: #000 !important;
+        display: block;
+    }
+    .sidebar a *, .side-menu a *, #category-menu a *, .category-menu a *, .left-menu a * { color: #000 !important; }
+    #category-menu .absolute.inset-0 { background: transparent !important; opacity: 0 !important; }
+</style>
 <body>
     <!-- Responsive Navbar -->
     <nav class="navbar">
