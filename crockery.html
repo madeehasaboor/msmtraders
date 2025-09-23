@@ -784,6 +784,284 @@
         }
     </style>
     <style>
+        /* Ensure navbar and category tiles reflect theme (final override) */
+        /* Navigation bar: white background, yellow outline, black text */
+        nav.navbar { background-color: #ffffff !important; border: 2px solid #d4a017 !important; }
+        nav.navbar * { color: #000 !important; }
+        .category-buttons a.group { background-color: #ffffff !important; border: 2px solid #d4a017 !important; color: #000 !important; }
+        .category-buttons a.group * { color: #000 !important; }
+        .category-buttons a.group .absolute.inset-0 { background: transparent !important; opacity: 0 !important; }
+    </style>
+    <style>
+        /* Force ALL product cards to white bg with black text (highest precedence) */
+        .product-card {
+            background-color: #ffffff !important;
+            background-image: none !important;
+            border: 2px solid #d4a017 !important;
+            color: #000 !important;
+        }
+        .product-card h1,
+        .product-card h2,
+        .product-card h3,
+        .product-card h4,
+        .product-card h5,
+        .product-card h6,
+        .product-card p,
+        .product-card span,
+        .product-card a,
+        .product-card button,
+        .product-card .price,
+        .product-card .text-white,
+        .product-card .text-gray-100,
+        .product-card .text-gray-200,
+        .product-card .text-gray-300,
+        .product-card .text-gray-400,
+        .product-card .text-gray-500,
+        .product-card .text-yellow-400 {
+            color: #000 !important;
+            -webkit-text-fill-color: #000 !important;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+        }
+        /* Keep image areas clean */
+        .product-card .image-container,
+        .product-card .relative { background-color: #ffffff !important; }
+    </style>
+    <style>
+        /* Final overrides: beige background, yellow header/footer, black text, white cards */
+        html { background-color: #f5f5dc !important; }
+        body { background-color: #f5f5dc !important; color: #000 !important; }
+        nav, .navbar, header { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017 !important; }
+        footer { background-color: #fbbf24 !important; border-top: 2px solid #d4a017 !important; color: #000 !important; }
+        html, body, section, nav, footer { color: #000 !important; }
+        h1, h2, h3, h4, h5, h6, p, span, a, li, label, small, strong, em, div { color: #000 !important; }
+        .text-white, .text-gray-100, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500 { color: #000 !important; }
+        .card, .product-card { background-color: #ffffff !important; border: 2px solid #d4a017 !important; color: #000 !important; }
+        .product-card .image-container { background: #fff7e6 !important; }
+        /* Navigation bar container ensure yellow */
+        .navbar, .navbar * { color: #000 !important; }
+        /* Category buttons (top grid) to white with yellow outline */
+        .category-buttons .group.relative { background-color: #ffffff !important; background-image: none !important; border: 2px solid #d4a017 !important; color: #000 !important; }
+        .category-buttons .group.relative * { color: #000 !important; }
+        .category-buttons .group.relative .absolute.inset-0 { background-color: transparent !important; opacity: 0 !important; }
+    </style>
+    <style>
+        /* Strong overrides for category boxes (Crockery & Dinnerware, Cutlery, Cakes, Water Sets, etc.) */
+        .category-buttons .group,
+        .category-buttons .group.relative {
+            background-color: #ffffff !important;
+            background-image: none !important;
+            border: 2px solid #d4a017 !important;
+            color: #000 !important;
+        }
+        .category-buttons .group:hover,
+        .category-buttons .group.relative:hover {
+            background-color: #ffffff !important;
+            color: #000 !important;
+            border-color: #d4a017 !important;
+            box-shadow: none !important;
+        }
+        .category-buttons .group h3,
+        .category-buttons .group.relative h3,
+        .category-buttons .group *,
+        .category-buttons .group.relative * {
+            color: #000 !important;
+        }
+        /* Inner tile background (the small gray box behind images) */
+        .category-buttons .group .bg-gray-700,
+        .category-buttons .group.relative .bg-gray-700 {
+            background-color: #fff7e6 !important;
+        }
+        /* Remove any gradient overlays */
+        .category-buttons .group .absolute.inset-0,
+        .category-buttons .group.relative .absolute.inset-0 {
+            background: transparent !important;
+            opacity: 0 !important;
+        }
+        
+        /* Specific product cards - white background with black text */
+        .product-card:has(h3:contains("Black Non-Stick Cookware Set")),
+        .product-card:has(h3:contains("Cast Iron Pan with 7 Wells")),
+        .product-card:has(h3:contains("Cast Iron Casserole")),
+        .product-card:has(h3:contains("3 Tier Oval Porcelain Bowls Set")) {
+            background-color: #ffffff !important;
+            background-image: none !important;
+            border: 2px solid #d4a017 !important;
+            color: #000 !important;
+        }
+        .product-card:has(h3:contains("Black Non-Stick Cookware Set")) *,
+        .product-card:has(h3:contains("Cast Iron Pan with 7 Wells")) *,
+        .product-card:has(h3:contains("Cast Iron Casserole")) *,
+        .product-card:has(h3:contains("3 Tier Oval Porcelain Bowls Set")) * {
+            color: #000 !important;
+        }
+    </style>
+    <style>
+/* Background + Global Text */
+html, body {
+  background-color: #fdf6ec;
+  color: #2c2c2c;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* General Links */
+a {
+  color: #2c2c2c;
+  text-decoration: none;
+  transition: 0.3s;
+}
+a:hover {
+  color: #d4a017;
+}
+
+/* Navbar */
+nav, .navbar, header {
+  background-color: #fff !important;
+  border-bottom: 2px solid #d4a017;
+}
+nav a, .navbar a {
+  color: #2c2c2c !important;
+}
+nav a:hover, .navbar a:hover {
+  color: #d4a017 !important;
+}
+
+/* Sidebar / Left Menu */
+.sidebar, .side-menu {
+  background-color: #fff7e6 !important;
+  border: 1px solid #e5d1a4;
+}
+.sidebar a, .side-menu a {
+  color: #2c2c2c;
+}
+.sidebar a.active, .side-menu a.active {
+  background-color: #d4a017 !important;
+  color: #fff !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #d4a017 !important;
+  font-weight: 600;
+}
+
+/* Buttons */
+button, .btn, .special-offers {
+  background-color: #d4a017 !important;
+  color: #fff !important;
+  border-radius: 8px;
+  padding: 10px 20px;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
+}
+button:hover, .btn:hover, .special-offers:hover {
+  background-color: #ffcc70 !important;
+  color: #2c2c2c !important;
+}
+
+/* Product Cards */
+.card, .product-card {
+  background-color: #fff !important;
+  border: 1px solid #e5d1a4 !important;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+.card h3, .product-card h3 {
+  color: #d4a017;
+}
+.card:hover, .product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* Section Backgrounds */
+section, .hero, .content, .footer {
+  background-color: #fdf6ec !important;
+  color: #2c2c2c !important;
+}
+
+/* Footer */
+footer {
+  background-color: #fff !important;
+  border-top: 2px solid #d4a017;
+  color: #2c2c2c;
+  text-align: center;
+  padding: 20px;
+}
+footer a {
+  color: #d4a017;
+}
+footer a:hover {
+  color: #ffcc70;
+}
+/* Force all text to black */
+html, body, section, nav, footer { color: #000 !important; }
+h1, h2, h3, h4, h5, h6, p, span, a, li, label, small, strong, em, div { color: #000 !important; }
+.text-white, .text-gray-100, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500 { color: #000 !important; }
+/* Make product cards yellow */
+.card, .product-card { background-color: #ffffff !important; border: 2px solid #d4a017 !important; }
+.card h3, .product-card h3 { color: #ffffff !important; }
+/* Header and footer yellow */
+nav, .navbar, header { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017 !important; }
+footer { background-color: #fbbf24 !important; border-top: 2px solid #d4a017 !important; color: #000 !important; }
+/* Beige background on root */
+html { background-color: #f5f5dc !important; }
+body { background-color: #f5f5dc !important; }
+/* Strengthen product card + text overrides */
+.card, .product-card { background-color: #ffffff !important; color: #fff9f9 !important; border: 2px solid #d4a017 !important; }
+.card *, .product-card * { color: #f3eded !important; }
+.product-card .image-container { background: #fff7e6 !important; }
+.product-card .text-white, .card .text-white { color: #fcfcfc !important; }
+/* Essential Kitchen Items (and similar tiles) match theme */
+.group.relative.bg-gradient-to-br { background-color: #fbbf24 !important; background-image: none !important; border: 1px solid #d4a017 !important; }
+.group .bg-gray-700 { background-color: #fff7e6 !important; }
+.group h3 { color: #f7efef !important; }
+/* Specific collection tiles to yellow with black text */
+.group[href="#cutlery"],
+.group[href="#cakes"],
+.group[href="#essentials"],
+.group[href*="cookware"],
+.group[href*="cook"] {
+  background-color: #fbbf24 !important;
+  background-image: none !important;
+  border: 1px solid #d4a017 !important;
+}
+.group[href="#cutlery"] h3,
+.group[href="#cakes"] h3,
+.group[href="#essentials"] h3,
+.group[href*="cookware"] h3,
+.group[href*="cook"] h3 { color: #000 !important; }
+.group[href="#cutlery"] .bg-gray-700,
+.group[href="#cakes"] .bg-gray-700,
+.group[href="#essentials"] .bg-gray-700,
+.group[href*="cookware"] .bg-gray-700,
+.group[href*="cook"] .bg-gray-700 { background-color: #fff7e6 !important; }
+/* Category product cards: white bg with black text */
+#cutlery .product-card,
+#cakes .product-card,
+#essentials .product-card,
+[id*="cook"] .product-card,
+[id*="cookware"] .product-card {
+  background-color: #ffffff !important;
+  border: 2px solid #d4a017 !important;
+  color: #000 !important;
+}
+#cutlery .product-card *,
+#cakes .product-card *,
+#essentials .product-card *,
+[id*="cook"] .product-card *,
+[id*="cookware"] .product-card * { color: #000 !important; }
+#cutlery .product-card .image-container,
+#cakes .product-card .image-container,
+#essentials .product-card .image-container,
+[id*="cook"] .product-card .image-container,
+[id*="cookware"] .product-card .image-container { background: #ffffff !important; }
+    </style>
+    <style>
         .old-bottom-nav {
             position: fixed;
             bottom: 0;
@@ -1089,50 +1367,50 @@
                 <div class="flex flex-col lg:flex-row gap-8">
                     <!-- Categories Sidebar - Desktop Only -->
                     <div class="hidden lg:block lg:w-1/4">
-                        <div class="bg-gray-900 border border-yellow-400 rounded-lg p-6">
-                            <h3 class="text-xl font-bold text-yellow-400 mb-6 text-center">Shop by Category</h3>
+                        <div class="bg-gray-900 border border-yellow-400 rounded-lg p-6" style="background-color:#ffffff !important; border:2px solid #d4a017 !important; color:#000 !important;">
+                            <h3 class="text-xl font-bold text-yellow-400 mb-6 text-center" style="color:#000 !important;">Shop by Category</h3>
                             <ul class="space-y-3">
                                 <li>
-                                    <a href="car_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <a href="car_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group" style="background-color:#ffffff !important; border:2px solid #d4a017 !important; color:#000 !important;">
                                         <div class="flex items-center space-x-3">
-                                            <i class="fas fa-car text-yellow-400 group-hover:text-black text-xl"></i>
-                                            <span class="font-semibold text-yellow-400 group-hover:text-black">Car Care</span>
+                                            <i class="fas fa-car text-yellow-400 group-hover:text-black text-xl" style="color:#000 !important;"></i>
+                                            <span class="font-semibold text-yellow-400 group-hover:text-black" style="color:#000 !important;">Car Care</span>
                             </div>
                                         <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="microfiber_and_cleaners.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <a href="microfiber_and_cleaners.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group" style="background-color:#ffffff !important; border:2px solid #d4a017 !important; color:#000 !important;">
                                         <div class="flex items-center space-x-3">
-                                            <i class="fas fa-home text-yellow-400 group-hover:text-black text-xl"></i>
-                                            <span class="font-semibold text-yellow-400 group-hover:text-black">Microfiber & Cleaners</span>
+                                            <i class="fas fa-home text-yellow-400 group-hover:text-black text-xl" style="color:#000 !important;"></i>
+                                            <span class="font-semibold text-yellow-400 group-hover:text-black" style="color:#000 !important;">Microfiber & Cleaners</span>
                         </div>
                                         <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="premium_perfumes.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <a href="premium_perfumes.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group" style="background-color:#ffffff !important; border:2px solid #d4a017 !important; color:#000 !important;">
                                         <div class="flex items-center space-x-3">
-                                            <i class="fas fa-spray-can text-yellow-400 group-hover:text-black text-xl"></i>
-                                            <span class="font-semibold text-yellow-400 group-hover:text-black">Premium Perfumes</span>
+                                            <i class="fas fa-spray-can text-yellow-400 group-hover:text-black text-xl" style="color:#000 !important;"></i>
+                                            <span class="font-semibold text-yellow-400 group-hover:text-black" style="color:#000 !important;">Premium Perfumes</span>
                         </div>
                                         <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="crockery.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <a href="crockery.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group" style="background-color:#ffffff !important; border:2px solid #d4a017 !important; color:#000 !important;">
                                         <div class="flex items-center space-x-3">
-                                            <i class="fas fa-utensils text-yellow-400 group-hover:text-black text-xl"></i>
-                                            <span class="font-semibold text-yellow-400 group-hover:text-black">Crockery</span>
+                                            <i class="fas fa-utensils text-yellow-400 group-hover:text-black text-xl" style="color:#000 !important;"></i>
+                                            <span class="font-semibold text-yellow-400 group-hover:text-black" style="color:#000 !important;">Crockery</span>
                                         </div>
                                         <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="laptops.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group">
+                                    <a href="laptops.html" class="flex items-center justify-between p-4 bg-gray-800 border border-yellow-400/50 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 group" style="background-color:#ffffff !important; border:2px solid #d4a017 !important; color:#000 !important;">
                                         <div class="flex items-center space-x-3">
-                                            <i class="fas fa-laptop text-yellow-400 group-hover:text-black text-xl"></i>
-                                            <span class="font-semibold text-yellow-400 group-hover:text-black">Laptops</span>
+                                            <i class="fas fa-laptop text-yellow-400 group-hover:text-black text-xl" style="color:#000 !important;"></i>
+                                            <span class="font-semibold text-yellow-400 group-hover:text-black" style="color:#000 !important;">Laptops</span>
             </div>
                                         <i class="fas fa-chevron-right text-yellow-400 group-hover:text-black"></i>
                                     </a>
@@ -2392,7 +2670,7 @@
     </nav>
 
     <!-- Category Quick Menu (mobile) -->
-    <div id="category-menu" class="fixed inset-x-0 bottom-16 mx-4 bg-gray-900 border border-yellow-500 rounded-lg shadow-xl p-3 space-y-2 z-50 hidden">
+    <div id="category-menu" class="fixed inset-x-0 bottom-16 mx-4 bg-gray-900 border border-yellow-500 rounded-lg shadow-xl p-3 space-y-2 z-50 hidden" style="background:#ffffff !important; border:2px solid #d4a017 !important; color:#000 !important;">
         <a href="car_care.html" class="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800 text-yellow-400">
             <span><i class="fas fa-car mr-2"></i>Car Care</span>
             <i class="fas fa-chevron-right text-xs"></i>
