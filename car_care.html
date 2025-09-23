@@ -502,6 +502,171 @@
             will-change: opacity;
         }
     </style>
+    <style>
+        /* Light beige theme overrides (match Premium Perfumes) */
+        html { background-color: #f5f5dc !important; }
+        body { background-color: #f5f5dc !important; color: #2c2c2c !important; }
+        /* Header/footer yellow */
+        nav, .navbar, header { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017 !important; }
+        footer { background-color: #fbbf24 !important; border-top: 2px solid #d4a017 !important; color: #000 !important; }
+        /* Text to black */
+        html, body, section, nav, footer { color: #000 !important; }
+        h1, h2, h3, h4, h5, h6, p, span, a, li, label, small, strong, em, div { color: #000 !important; }
+        .text-white, .text-gray-100, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500 { color: #000 !important; }
+        /* Product cards yellow */
+        .product-card { background-color: #ffffff !important; border: 2px solid #d4a017 !important; }
+        .product-card * { color: #000 !important; }
+        .product-card .image-container { background: #fff7e6 !important; }
+        /* Neutralize dark backgrounds/gradients */
+        .bg-black, .bg-gray-900, .bg-gray-800, .bg-gray-700 { background-color: #f5f5dc !important; }
+    </style>
+    <style>
+        /* Final overrides for header to yellow */
+        nav.navbar, nav, .navbar { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017 !important; }
+    </style>
+    <style>
+/* Background + Global Text */
+html, body {
+  background-color: #fdf6ec;
+  color: #2c2c2c;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* General Links */
+a {
+  color: #2c2c2c;
+  text-decoration: none;
+  transition: 0.3s;
+}
+a:hover {
+  color: #d4a017;
+}
+
+/* Navbar */
+nav, .navbar, header {
+  background-color: #fff !important;
+  border-bottom: 2px solid #d4a017;
+}
+nav a, .navbar a {
+  color: #2c2c2c !important;
+}
+nav a:hover, .navbar a:hover {
+  color: #d4a017 !important;
+}
+
+/* Sidebar / Left Menu */
+.sidebar, .side-menu {
+  background-color: #fff7e6 !important;
+  border: 1px solid #e5d1a4;
+}
+.sidebar a, .side-menu a {
+  color: #2c2c2c;
+}
+.sidebar a.active, .side-menu a.active {
+  background-color: #d4a017 !important;
+  color: #fff !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #d4a017 !important;
+  font-weight: 600;
+}
+
+/* Buttons */
+button, .btn, .special-offers {
+  background-color: #d4a017 !important;
+  color: #fff !important;
+  border-radius: 8px;
+  padding: 10px 20px;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
+}
+button:hover, .btn:hover, .special-offers:hover {
+  background-color: #ffcc70 !important;
+  color: #2c2c2c !important;
+}
+
+/* Product Cards */
+.card, .product-card {
+  background-color: #fff !important;
+  border: 1px solid #e5d1a4 !important;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+.card h3, .product-card h3 {
+  color: #d4a017;
+}
+.card:hover, .product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* Section Backgrounds */
+section, .hero, .content, .footer {
+  background-color: #fdf6ec !important;
+  color: #2c2c2c !important;
+}
+
+/* Footer */
+footer {
+  background-color: #fff !important;
+  border-top: 2px solid #d4a017;
+  color: #2c2c2c;
+  text-align: center;
+  padding: 20px;
+}
+footer a {
+  color: #d4a017;
+}
+footer a:hover {
+  color: #ffcc70;
+}
+/* Neutralize dark utility backgrounds on this page */
+.bg-black, .bg-gray-900, .bg-gray-800, .bg-gray-700 { background-color: #fdf6ec !important; }
+/* Ensure text remains readable on light background */
+.text-white { color: #2c2c2c !important; }
+    </style>
+    <style>
+        /* === Global Light Theme Overrides (match index.html) === */
+        /* Background + Global Text */
+        html, body {
+          background-color: #f5f5dc !important;
+          color: #2c2c2c !important;
+          font-family: 'Poppins', sans-serif;
+        }
+        /* General Links */
+        a { color: #2c2c2c; text-decoration: none; transition: 0.3s; }
+        a:hover { color: #d4a017; }
+        /* Navbar/Header */
+        nav { background-color: #fbbf24; border-bottom: 2px solid #d4a017; }
+        .navbar { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017 !important; box-shadow: none; }
+        nav, .navbar, header { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017; }
+        .navbar-logo { color: #2c2c2c !important; }
+        .navbar-menu a { color: #2c2c2c !important; }
+        .navbar-menu a.active { background-color: #d4a017 !important; color: #fff !important; }
+        .hamburger { color: #2c2c2c !important; border-color: #d4a017 !important; }
+        /* Section Backgrounds */
+        section, .hero, .content, .footer { background-color: #f5f5dc !important; color: #2c2c2c !important; }
+        /* Product Cards */
+        .card, .product-card { background-color: #ffffff !important; border: 2px solid #d4a017 !important; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); transition: 0.3s; }
+        .card h3, .product-card h3 { color: #2c2c2c; }
+        .card:hover, .product-card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
+        /* Footer */
+        footer { background-color: #fbbf24 !important; border-top: 2px solid #d4a017; color: #2c2c2c; }
+        footer a { color: #d4a017; }
+        footer a:hover { color: #ffcc70; }
+        /* Force text to black where needed */
+        html, body, section, nav, footer { color: #000 !important; }
+        h1, h2, h3, h4, h5, h6, p, span, a, li, label, small, strong, em, div { color: #000 !important; }
+        /* Override common Tailwind text utility classes */
+        .text-white, .text-gray-100, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500 { color: #000 !important; }
+        /* === End Global Light Theme Overrides === */
+    </style>
     <!-- Popup Overlay -->
     <div class="popup-overlay" id="popupOverlay">
         <div class="popup">
@@ -751,7 +916,7 @@
 
     </style>
 </head>
-<body class="bg-black">
+<body>
     <!-- Responsive Navbar -->
     <nav class="navbar">
         <div class="navbar-container">
@@ -1004,8 +1169,8 @@
     </div>
 
     <!-- Page Header with Categories Sidebar -->
-    <div class="bg-gradient-to-r from-gray-900 via-black to-gray-900 py-16 relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div class="bg-gradient-to-r from-gray-900 via-black to-gray-900 py-16 relative overflow-hidden" style="background-color:#f5f5dc !important; background-image:none !important;">
+        <div class="absolute inset-0 bg-black opacity-50" style="background-color:transparent !important; opacity:0 !important;"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div class="flex flex-col lg:flex-row gap-8">
@@ -1164,7 +1329,7 @@
     </div>
 
     <!-- Products Section -->
-    <div class="bg-black py-16">
+    <div class="bg-black py-16" style="background-color:#f5f5dc !important;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-yellow-500 mb-4">Featured Car Care Products</h2>
@@ -1207,7 +1372,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
+    <footer class="bg-gray-900 text-white py-12" style="background-color:#fbbf24 !important; color:#2c2c2c !important; border-top:2px solid #d4a017;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
