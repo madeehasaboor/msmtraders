@@ -33,6 +33,9 @@
         .product-card { background: #ffffff !important; color: #000 !important; border: 2px solid #d4a017 !important; }
         .product-card .image-container { background: #fff7e6 !important; border: 2px solid #d4a017 !important; }
         .product-card h3, .product-card p, .product-card .price, .product-card .text-white, .product-card .text-gray-300 { color: #000 !important; }
+        .product-card h1, .product-card h2, .product-card h4, .product-card h5, .product-card h6, .product-card span, .product-card div, .product-card a, .product-card button, .product-card .text-yellow-400, .product-card .text-gray-100, .product-card .text-gray-200, .product-card .text-gray-400, .product-card .text-gray-500, .product-card .text-gray-600, .product-card .text-gray-700, .product-card .text-gray-800, .product-card .text-gray-900 { color: #000 !important; }
+        /* Ensure product names (h3) are specifically black */
+        .product-card h3 { color: #000 !important; font-weight: bold !important; }
         /* Category buttons styling */
         #categories .group.relative.bg-gradient-to-br {
             background-color: #ffffff !important;
@@ -156,6 +159,7 @@
         }
         
         
+
         /* Enhanced Typography Responsiveness */
         @media (max-width: 768px) {
             .text-3xl {
@@ -413,6 +417,25 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+    </style>
+    <style>
+        /* Ensure product texts are black inside product cards (titles, descriptions, prices, buttons) */
+        .products-grid .product-card h3,
+        .products-grid .product-card p,
+        .products-grid .product-card span,
+        .products-grid .product-card a,
+        .products-grid .product-card button {
+            color: #000 !important;
+            -webkit-text-fill-color: #000 !important; /* override gradient text */
+        }
+        /* Override any golden/gradient price text to solid black */
+        .products-grid .product-card .text-golden,
+        .products-grid .product-card .price {
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            -webkit-text-fill-color: #000 !important;
+            color: #000 !important;
         }
     </style>
 </head>
