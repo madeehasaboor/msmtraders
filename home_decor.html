@@ -17,11 +17,31 @@
         .hover\:text-golden:hover { color: #F59E0B !important; }
         .hover\:border-golden:hover { border-color: #F59E0B !important; }
         
-        /* Force black theme */
-        body { background-color: #000000 !important; }
-        .bg-black { background-color: #000000 !important; }
-        .bg-gray-800 { background-color: #000000 !important; }
-        .bg-gray-900 { background-color: #000000 !important; }
+        /* Light beige theme overrides */
+        html { background-color: #f5f5dc !important; }
+        body { background-color: #f5f5dc !important; color: #2c2c2c !important; }
+        /* Header/Footer */
+        nav, .navbar, header { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017 !important; }
+        footer { background-color: #fbbf24 !important; border-top: 2px solid #d4a017 !important; color: #000 !important; }
+        /* Text to black */
+        html, body, section, nav, footer { color: #000 !important; }
+        h1, h2, h3, h4, h5, h6, p, span, a, li, label, small, strong, em, div { color: #000 !important; }
+        .text-white, .text-gray-100, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500 { color: #000 !important; }
+        /* Neutralize dark utilities */
+        .bg-black, .bg-gray-800, .bg-gray-900 { background-color: #f5f5dc !important; }
+        /* Product cards: white background, yellow outline, black text */
+        .product-card { background: #ffffff !important; color: #000 !important; border: 2px solid #d4a017 !important; }
+        .product-card .image-container { background: #fff7e6 !important; border: 2px solid #d4a017 !important; }
+        .product-card h3, .product-card p, .product-card .price, .product-card .text-white, .product-card .text-gray-300 { color: #000 !important; }
+        /* Category buttons styling */
+        #categories .group.relative.bg-gradient-to-br {
+            background-color: #ffffff !important;
+            background-image: none !important;
+            border: 2px solid #d4a017 !important;
+            color: #000 !important;
+        }
+        #categories .group.relative.bg-gradient-to-br * { color: #000 !important; }
+        #categories .group.relative.bg-gradient-to-br .absolute.inset-0 { background-color: transparent !important; opacity: 0 !important; }
         
         
         /* Enhanced Product Card Styling */
@@ -458,7 +478,7 @@
     </nav>
 
     <!-- Hero Section with Sidebar -->
-    <section class="relative bg-gradient-to-r from-gray-800 to-gray-900 section-padding">
+    <section class="relative bg-gradient-to-r from-gray-800 to-gray-900 section-padding" style="background-color:#f5f5dc !important; background-image:none !important;">
         <div class="max-w-7xl mx-auto container-padding">
             <div class="flex flex-col lg:flex-row gap-8">
                 <!-- Vertical Category Sidebar -->
@@ -621,7 +641,7 @@
     </div>
 
     <!-- Categories Section -->
-    <section id="categories" class="py-16 bg-gradient-to-br from-gray-900 to-black">
+    <section id="categories" class="py-16 bg-gradient-to-br from-gray-900 to-black" style="background-color:#f5f5dc !important; background-image:none !important;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
             <div class="text-center mb-16">
