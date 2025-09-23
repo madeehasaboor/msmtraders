@@ -510,9 +510,123 @@
         html {
             scroll-behavior: smooth;
         }
+        /* --- Light Theme (Applied as requested) --- */
+        /* Background */
+        body {
+          background-color: #f5f5dc;
+          color: #2c2c2c;
+          font-family: 'Poppins', sans-serif;
+        }
+        /* Navbar */
+        nav { background-color: #fbbf24; border-bottom: 2px solid #d4a017; }
+        nav a { color: #2c2c2c; }
+        nav a:hover { color: #d4a017; }
+        /* Explicit overrides for existing dark navbar */
+        .navbar { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017 !important; box-shadow: none; }
+        .navbar-logo { color: #2c2c2c !important; }
+        .navbar-menu a { color: #2c2c2c !important; }
+        .navbar-menu a.active { background-color: #d4a017 !important; color: #fff !important; }
+        .hamburger { color: #2c2c2c !important; border-color: #d4a017 !important; }
+        /* Light hero background */
+        .black-gradient { background: #fff7e6 !important; }
+        /* Sidebar */
+        .sidebar {
+          background-color: #fff7e6;
+          border: 1px solid #e5d1a4;
+        }
+        .sidebar a {
+          color: #2c2c2c;
+        }
+        .sidebar a.active {
+          background-color: #d4a017;
+          color: #fff;
+        }
+        /* Headings */
+        h1, h2, h3 {
+          color: #d4a017;
+        }
+        /* Buttons */
+        button, .btn, .special-offers {
+          background-color: #d4a017;
+          color: #fff;
+          border-radius: 8px;
+          padding: 10px 20px;
+          transition: 0.3s;
+        }
+        button:hover, .btn:hover, .special-offers:hover {
+          background-color: #ffcc70;
+          color: #2c2c2c;
+        }
+        /* Product Cards */
+        .card {
+          background-color: #fff;
+          border: 1px solid #e5d1a4;
+          border-radius: 12px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .card h3 {
+          color: #d4a017;
+        }
+        /* --- End Light Theme --- */
+        /* === Global Light Theme Overrides (Applied) === */
+        /* Background + Global Text */
+        html, body {
+          background-color: #f5f5dc;
+          color: #2c2c2c;
+          font-family: 'Poppins', sans-serif;
+          margin: 0;
+          padding: 0;
+        }
+        /* General Links */
+        a { color: #2c2c2c; text-decoration: none; transition: 0.3s; }
+        a:hover { color: #d4a017; }
+        /* Navbar */
+        nav, .navbar, header { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017; }
+        nav a, .navbar a { color: #2c2c2c !important; }
+        nav a:hover, .navbar a:hover { color: #d4a017 !important; }
+        /* Sidebar / Left Menu */
+        .sidebar, .side-menu { background-color: #fff7e6 !important; border: 1px solid #e5d1a4; }
+        .sidebar a, .side-menu a { color: #2c2c2c; }
+        .sidebar a.active, .side-menu a.active { background-color: #d4a017 !important; color: #fff !important; }
+        /* Headings */
+        h1, h2, h3, h4, h5, h6 { color: #d4a017 !important; font-weight: 600; }
+        /* Buttons */
+        button, .btn, .special-offers { background-color: #d4a017 !important; color: #fff !important; border-radius: 8px; padding: 10px 20px; transition: 0.3s; border: none; cursor: pointer; }
+        button:hover, .btn:hover, .special-offers:hover { background-color: #ffcc70 !important; color: #2c2c2c !important; }
+        /* Product Cards: white background, yellow outline, black text */
+        .card, .product-card { background-color: #ffffff !important; border: 2px solid #d4a017 !important; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); transition: 0.3s; color: #000 !important; }
+        .card h3, .product-card h3 { color: #000 !important; }
+        /* Shop by Category cards specifically */
+        .shop-by-category .bg-gray-800,
+        .shop-by-category .bg-gray-700 { background-color: #ffffff !important; border: 2px solid #d4a017 !important; color: #000 !important; }
+        .shop-by-category .bg-gray-800 *,
+        .shop-by-category .bg-gray-700 * { color: #000 !important; }
+        .card:hover, .product-card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
+        /* Section Backgrounds */
+        section, .hero, .content, .footer { background-color: #f5f5dc !important; color: #2c2c2c !important; }
+        /* Footer */
+        footer { background-color: #fbbf24 !important; border-top: 2px solid #d4a017; color: #2c2c2c; text-align: center; padding: 20px; }
+        footer a { color: #d4a017; }
+        footer a:hover { color: #ffcc70; }
+        /* === End Global Light Theme Overrides === */
+        /* Force yellow backgrounds for card containers on this page */
+        .bg-gray-800 { background-color: #fbbf24 !important; }
+        .bg-gray-700 { background-color: #fbbf24 !important; }
+        /* === Force all text to black across the page === */
+        html, body, section, nav, footer { color: #000 !important; }
+        h1, h2, h3, h4, h5, h6, p, span, a, li, label, small, strong, em, div { color: #000 !important; }
+        .navbar-menu a.active { color: #000 !important; background-color: #d4a017 !important; }
+        .card h3, .product-card h3 { color: #000 !important; }
+        /* Override common Tailwind text utility classes */
+        .text-white, .text-gray-100, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500 { color: #000 !important; }
+        /* Slide overlay text */
+        .hero-slide-content, .hero-slide-content * { color: #000 !important; }
+        /* Ensure the root html and body background are beige */
+        html { background-color: #f5f5dc !important; }
+        body { background-color: #f5f5dc !important; }
     </style>
 </head>
-<body class="bg-black">
+<body>
     <!-- Responsive Navbar -->
     <nav class="navbar">
         <div class="navbar-container">
@@ -665,7 +779,7 @@
     </section>
 
     <!-- Shop by Category Section -->
-    <section class="py-12 lg:py-16 bg-gray-900">
+    <section class="py-12 lg:py-16 bg-gray-900 shop-by-category">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl lg:text-4xl font-bold text-golden mb-4">Shop by Category</h2>
@@ -806,7 +920,7 @@
 
 
     <!-- Special Offers Section -->
-    <section class="py-8 lg:py-12 bg-gray-800">
+    <section id="special-offers" class="py-8 lg:py-12" style="background-color:#fdf6ec; color:#2c2c2c;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8">
                 <h2 class="text-2xl lg:text-3xl font-bold text-golden mb-4">Special Offers</h2>
@@ -828,45 +942,45 @@
             
             <!-- Quick Preview of Deals -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-                <div class="bg-gray-700 rounded-lg p-6 text-center hover:bg-gray-600 transition-colors">
+                <div class="bg-white rounded-lg p-6 text-center transition-colors border border-[#e5d1a4]">
                     <div class="w-20 h-20 mx-auto mb-4 rounded-lg overflow-hidden">
                         <img src="special deals/reed diffusers deal of 3.jpg" alt="Reed Diffusers Bundle" class="w-full h-full object-cover">
                     </div>
                     <h3 class="text-xl font-bold text-golden mb-2">Reed Diffusers Bundle</h3>
-                    <p class="text-gray-300 mb-4">Buy 3 for Rs 4,000 instead of Rs 4,500</p>
-                    <span class="text-green-400 font-bold">Save Rs 500!</span>
+                    <p class="mb-4">Buy 3 for Rs 4,000 instead of Rs 4,500</p>
+                    <span class="font-bold" style="color:#16803c;">Save Rs 500!</span>
                 </div>
                 
-                <div class="bg-gray-700 rounded-lg p-6 text-center hover:bg-gray-600 transition-colors">
+                <div class="bg-white rounded-lg p-6 text-center transition-colors border border-[#e5d1a4]">
                     <div class="w-20 h-20 mx-auto mb-4 rounded-lg overflow-hidden">
                         <img src="SPECIAL OFFER CATEGORY/WASH & WAX.jfif" alt="Car Care Bundle" class="w-full h-full object-cover">
                     </div>
                     <h3 class="text-xl font-bold text-golden mb-2">Car Care Bundle</h3>
-                    <p class="text-gray-300 mb-4">Complete car care kit for Rs 3,500</p>
-                    <span class="text-green-400 font-bold">Save Rs 500!</span>
+                    <p class="mb-4">Complete car care kit for Rs 3,500</p>
+                    <span class="font-bold" style="color:#16803c;">Save Rs 500!</span>
                 </div>
                 
-                <div class="bg-gray-700 rounded-lg p-6 text-center hover:bg-gray-600 transition-colors">
+                <div class="bg-white rounded-lg p-6 text-center transition-colors border border-[#e5d1a4]">
                     <div class="w-20 h-20 mx-auto mb-4 rounded-lg overflow-hidden">
                         <img src="SPECIAL OFFER CATEGORY/MICRO FIBER TOWEL.jpeg" alt="Microfiber Bundle" class="w-full h-full object-cover">
                     </div>
                     <h3 class="text-xl font-bold text-golden mb-2">Microfiber Bundle</h3>
-                    <p class="text-gray-300 mb-4">Professional cleaning towels from Rs 450</p>
-                    <span class="text-green-400 font-bold">Up to Rs 650 off!</span>
+                    <p class="mb-4">Professional cleaning towels from Rs 450</p>
+                    <span class="font-bold" style="color:#16803c;">Up to Rs 650 off!</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Newsletter -->
-    <section class="py-8 lg:py-12 golden-gradient">
+    <section id="newsletter" class="py-8 lg:py-12" style="background-color:#fdf6ec; color:#2c2c2c;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-2xl lg:text-3xl font-bold text-black mb-4">Stay Updated</h2>
-            <p class="text-black mb-6 text-sm sm:text-base">Subscribe to our newsletter for exclusive deals and updates</p>
+            <h2 class="text-2xl lg:text-3xl font-bold text-golden mb-4">Stay Updated</h2>
+            <p class="mb-6 text-sm sm:text-base">Subscribe to our newsletter for exclusive deals and updates</p>
             <div class="max-w-md mx-auto flex flex-col sm:flex-row gap-2 sm:gap-0">
                 <input type="email" placeholder="Enter your email" 
-                       class="flex-1 px-4 py-2 rounded-lg sm:rounded-l-lg sm:rounded-r-none border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black">
-                <button class="bg-black text-golden px-6 py-2 rounded-lg sm:rounded-l-none sm:rounded-r-lg font-semibold hover:bg-gray-800 transition-colors">
+                       class="flex-1 px-4 py-2 rounded-lg sm:rounded-l-lg sm:rounded-r-none border border-[#e5d1a4] focus:outline-none focus:ring-2 focus:ring-[#d4a017]">
+                <button class="golden-gradient text-black px-6 py-2 rounded-lg sm:rounded-l-none sm:rounded-r-lg font-semibold hover:opacity-90 transition-colors">
                     Subscribe
                 </button>
                                         </div>
