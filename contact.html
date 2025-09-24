@@ -509,11 +509,72 @@
             will-change: opacity;
         }
     </style>
+    <style>
+        /* Hamburger menu beige styling */
+        .hamburger, button.hamburger, .hamburger-menu, .menu-toggle, .mobile-menu-btn, #hamburger, .navbar-toggle, .menu-button, .hamburger span, .hamburger div { 
+            background-color: #f5f5dc !important; 
+            border: 2px solid #d4a017 !important; 
+            color: #FFD700 !important; 
+        }
+        
+        /* Beige theme styling - Strong overrides */
+        html, body, body.bg-black, body.text-white { 
+            background-color: #f5f5dc !important; 
+            color: #000 !important; 
+        }
+        
+        /* Override black gradient and dark backgrounds */
+        .black-gradient, nav.black-gradient, .bg-black, .bg-gray-900, .bg-gray-800 { 
+            background-color: #f5f5dc !important; 
+            background-image: none !important; 
+            border: 2px solid #d4a017 !important; 
+            color: #000 !important; 
+        }
+        
+        /* Header and footer styling */
+        header, footer, nav, .navbar { 
+            background-color: #f5f5dc !important; 
+            border: 2px solid #d4a017 !important; 
+            color: #000 !important; 
+        }
+        
+        /* Product cards and boxes */
+        .card, .product-card, .contact-form, .box, .container, .section { 
+            background-color: #ffffff !important; 
+            border: 2px solid #d4a017 !important; 
+            color: #000 !important; 
+        }
+        
+        /* Text styling - override all text colors */
+        h1, h2, h3, h4, h5, h6, p, span, div, a, .text-white, .text-gray-300, .text-yellow-300 { 
+            color: #000 !important; 
+        }
+        
+        /* Buttons */
+        button, .btn { 
+            background-color: #d4a017 !important; 
+            border: 2px solid #d4a017 !important; 
+            color: #000 !important; 
+        }
+        
+        button:hover, .btn:hover { 
+            background-color: #f5f5dc !important; 
+            border: 2px solid #d4a017 !important; 
+            color: #000 !important; 
+        }
+        
+        /* Form elements */
+        input, textarea, select { 
+            background-color: #ffffff !important; 
+            border: 2px solid #d4a017 !important; 
+            color: #000 !important; 
+        }
+    </style>
 </head>
-<body class="bg-black">
+<body>
     <!-- Responsive Navbar -->
     <nav class="navbar">
-        <div class="navbar-container">
+        <div class="navbar-container" style="background-color:#f5f5dc !important; border:2px solid #d4a017 !important; color:#000 !important;">
             <a href="index.html" class="navbar-logo">
                 <img src="MSM TRADERS LOGO.jpeg" alt="MSM Traders Logo">
                 <span>MSM TRADERS</span>
@@ -539,17 +600,62 @@
                 <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
             </button>
             
-            <!-- Mobile Menu Button -->
-            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            
+            <!-- Mobile Category Menu Button -->
+            <button id="category-menu-btn" class="md:hidden bg-golden text-black px-3 py-2 rounded-lg hover:bg-yellow-500 transition-colors">
+                <i class="fas fa-th-large"></i>
+            </button>
         </div>
     </nav>
 
+    <!-- Mobile Category Menu -->
+    <div id="mobile-category-menu" class="md:hidden hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+        <div class="fixed top-0 left-0 h-full w-80 bg-white border-r border-yellow-500 transform -translate-x-full transition-transform duration-300" id="category-sidebar">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-black">Shop by Category</h2>
+                    <button id="close-category-menu" class="text-gray-400 hover:text-yellow-500 text-2xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <nav class="space-y-4">
+                    <a href="index.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </a>
+                    <a href="car_care.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-car mr-2"></i>Car Care
+                    </a>
+                    <a href="microfiber_and_cleaners.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-broom mr-2"></i>Microfiber & Cleaners
+                    </a>
+                    <a href="premium_perfumes.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-spray-can mr-2"></i>Premium Perfumes
+                    </a>
+                    <a href="crockery.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-utensils mr-2"></i>Crockery
+                    </a>
+                    <a href="laptops.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-laptop mr-2"></i>Laptops
+                    </a>
+                    <a href="home_decor.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-home mr-2"></i>Home Decor
+                    </a>
+                    <a href="special_offers.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-tags mr-2"></i>Special Offers
+                    </a>
+                    <a href="bedcovers.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-bed mr-2"></i>Bed Covers
+                    </a>
+                    <a href="contact.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>Contact
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+
     <!-- Page Header -->
-    <div class="bg-gradient-to-r from-black to-gray-900 text-white py-16">
+    <div class="bg-gradient-to-r from-black to-gray-900 text-white py-16" style="background-color:#f5f5dc !important; background-image:none !important; color:#000 !important;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="text-4xl md:text-5xl font-bold mb-4 text-yellow-400">Contact Us</h1>
             <p class="text-lg text-yellow-400 font-semibold mb-4">CLICK.SHOP.SMILE</p>
@@ -737,7 +843,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-black text-white py-12">
+    <footer class="bg-black text-white py-12" style="background-color:#f5f5dc !important; color:#000 !important; border:2px solid #d4a017 !important;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
