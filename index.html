@@ -630,7 +630,10 @@
         /* Ensure the root html and body background are beige */
         html { background-color: #f5f5dc !important; }
         body { background-color: #f5f5dc !important; padding-top: 80px !important; }
+        /* Hero UI optimizer (Tailwind will be used for video element) */
+        .hero-slideshow { overflow: hidden; }
     </style>
+    
 </head>
 <style>
     /* Category menus: white bg, yellow outline, black text (desktop & mobile) */
@@ -733,7 +736,7 @@
                                 <div id="banner-slideshow" class="relative h-full">
                                     <!-- Video Content -->
                                     <div class="slide active absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100">
-                                        <video src="slide show/slideshow.mp4" class="w-full h-full object-cover" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="slide show/8a3223b3-ae77-42cc-b3db-abc5a1cf8c1e.__CR0,0,2983,1845_PT0_SX970_V1___.jpg" controls disablepictureinpicture controlslist="nodownload noplaybackrate noremoteplayback">
+                                        <video src="slide show/slideshow.mp4" class="w-full h-full object-cover block bg-black" autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture controlslist="nodownload noplaybackrate noremoteplayback">
                                             <source src="slide show/slideshow.mp4" type="video/mp4">
                                             Your browser does not support the video tag.
                                         </video>
