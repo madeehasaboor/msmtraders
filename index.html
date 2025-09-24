@@ -26,7 +26,7 @@
             color: #ffffff;
             overflow-x: hidden;
             max-width: 100vw;
-            padding-top: 80px;
+            padding-top: 80px !important;
         }
         
         /* Global responsive fixes */
@@ -207,7 +207,7 @@
             }
             
             body {
-                padding-top: 70px;
+                padding-top: 80px !important;
             }
         }
         
@@ -526,7 +526,12 @@
         .navbar-logo { color: #2c2c2c !important; }
         .navbar-menu a { color: #2c2c2c !important; }
         .navbar-menu a.active { background-color: #d4a017 !important; color: #fff !important; }
-        .hamburger { color: #2c2c2c !important; border-color: #d4a017 !important; }
+        /* Hamburger menu beige styling */
+        .hamburger, button.hamburger, .hamburger-menu, .menu-toggle, .mobile-menu-btn, #hamburger, .navbar-toggle, .menu-button, .hamburger span, .hamburger div { 
+            background-color: #f5f5dc !important; 
+            border: 2px solid #d4a017 !important; 
+            color: #FFD700 !important; 
+        }
         /* Light hero background */
         .black-gradient { background: #fff7e6 !important; }
         /* Sidebar */
@@ -576,13 +581,14 @@
           font-family: 'Poppins', sans-serif;
           margin: 0;
           padding: 0;
+          padding-top: 80px !important;
         }
         /* General Links */
         a { color: #2c2c2c; text-decoration: none; transition: 0.3s; }
         a:hover { color: #d4a017; }
         /* Navbar */
-        nav, .navbar, header { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017; }
-        nav a, .navbar a { color: #2c2c2c !important; }
+        nav, .navbar, header { background-color: #f5f5dc !important; border: 2px solid #d4a017 !important; color: #000 !important; }
+        nav a, .navbar a { color: #000 !important; }
         nav a:hover, .navbar a:hover { color: #d4a017 !important; }
         /* Sidebar / Left Menu */
         .sidebar, .side-menu { background-color: #fff7e6 !important; border: 1px solid #e5d1a4; }
@@ -605,9 +611,9 @@
         /* Section Backgrounds */
         section, .hero, .content, .footer { background-color: #f5f5dc !important; color: #2c2c2c !important; }
         /* Footer */
-        footer { background-color: #fbbf24 !important; border-top: 2px solid #d4a017; color: #2c2c2c; text-align: center; padding: 20px; }
-        footer a { color: #d4a017; }
-        footer a:hover { color: #ffcc70; }
+        footer { background-color: #f5f5dc !important; border: 2px solid #d4a017 !important; color: #000 !important; text-align: center; padding: 20px; }
+        footer a { color: #000 !important; }
+        footer a:hover { color: #d4a017 !important; }
         /* === End Global Light Theme Overrides === */
         /* Force yellow backgrounds for card containers on this page */
         .bg-gray-800 { background-color: #fbbf24 !important; }
@@ -623,7 +629,7 @@
         .hero-slide-content, .hero-slide-content * { color: #000 !important; }
         /* Ensure the root html and body background are beige */
         html { background-color: #f5f5dc !important; }
-        body { background-color: #f5f5dc !important; }
+        body { background-color: #f5f5dc !important; padding-top: 80px !important; }
     </style>
 </head>
 <style>
@@ -667,13 +673,53 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             
-            <!-- Hamburger Menu -->
-            <button class="hamburger" id="hamburger">
-                ☰
+            
+            <!-- Mobile Category Menu Button -->
+            <button id="category-menu-btn" class="md:hidden bg-golden text-black px-3 py-2 rounded-lg hover:bg-yellow-500 transition-colors">
+                <i class="fas fa-th-large"></i>
             </button>
         </div>
     </nav>
 
+    <!-- Mobile Category Menu -->
+    <div id="mobile-category-menu" class="md:hidden hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+        <div class="fixed top-0 left-0 h-full w-80 bg-white border-r border-yellow-500 transform -translate-x-full transition-transform duration-300" id="category-sidebar">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-black">Shop by Category</h2>
+                    <button id="close-category-menu" class="text-gray-400 hover:text-yellow-500 text-2xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <nav class="space-y-4">
+                    <a href="car_care.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-car mr-2"></i>Car Care
+                    </a>
+                    <a href="microfiber_and_cleaners.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-broom mr-2"></i>Microfiber & Cleaners
+                    </a>
+                    <a href="premium_perfumes.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-spray-can mr-2"></i>Premium Perfumes
+                    </a>
+                    <a href="crockery.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-utensils mr-2"></i>Crockery
+                    </a>
+                    <a href="laptops.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-laptop mr-2"></i>Laptops
+                    </a>
+                    <a href="home_decor.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-home mr-2"></i>Home Decor
+                    </a>
+                    <a href="special_offers.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-tags mr-2"></i>Special Offers
+                    </a>
+                    <a href="bedcovers.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-bed mr-2"></i>Bed Covers
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Banner -->
     <section class="black-gradient hero-section">
@@ -1429,6 +1475,39 @@
         }
 
 
+        // Mobile Category Menu Functions
+        function openMobileCategoryMenu() {
+            console.log('Opening mobile category menu...');
+            const menu = document.getElementById('mobile-category-menu');
+            const sidebar = document.getElementById('category-sidebar');
+            
+            if (menu && sidebar) {
+                menu.classList.remove('hidden');
+                setTimeout(() => {
+                    sidebar.classList.remove('-translate-x-full');
+                    console.log('Mobile category menu opened');
+                }, 10);
+            } else {
+                console.log('Menu or sidebar not found');
+            }
+        }
+
+        function closeMobileCategoryMenu() {
+            console.log('Closing mobile category menu...');
+            const menu = document.getElementById('mobile-category-menu');
+            const sidebar = document.getElementById('category-sidebar');
+            
+            if (menu && sidebar) {
+                sidebar.classList.add('-translate-x-full');
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                    console.log('Mobile category menu closed');
+                }, 300);
+            } else {
+                console.log('Menu or sidebar not found');
+            }
+        }
+
         // Initialize cart and wishlist counts on page load
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM loaded, initializing...');
@@ -1452,6 +1531,50 @@
             } else {
                 console.log('Hamburger element not found during initialization');
             }
+
+            // Event listeners for mobile category menu
+            const categoryMenuBtn = document.getElementById('category-menu-btn');
+            const closeCategoryMenuBtn = document.getElementById('close-category-menu');
+            const mobileCategoryMenu = document.getElementById('mobile-category-menu');
+
+            if (categoryMenuBtn) {
+                categoryMenuBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Category menu button clicked');
+                    openMobileCategoryMenu();
+                });
+            } else {
+                console.log('Category menu button not found');
+            }
+
+            if (closeCategoryMenuBtn) {
+                closeCategoryMenuBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Close button clicked');
+                    closeMobileCategoryMenu();
+                });
+            } else {
+                console.log('Close button not found');
+            }
+
+            // Close mobile category menu when clicking outside
+            if (mobileCategoryMenu) {
+                mobileCategoryMenu.addEventListener('click', function(e) {
+                    if (e.target === mobileCategoryMenu) {
+                        closeMobileCategoryMenu();
+                    }
+                });
+            }
+
+            // Close mobile category menu when clicking on category links
+            const categoryLinks = document.querySelectorAll('#mobile-category-menu a');
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMobileCategoryMenu();
+                });
+            });
             
             // Close mobile menu when clicking on menu items
             const menuItems = document.querySelectorAll('.navbar-menu a');
