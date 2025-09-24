@@ -21,6 +21,82 @@
             }
         }
     </script>
+    
+    <!-- Product Popup Modal -->
+    <div id="product-popup-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
+            <div class="rounded-lg shadow-2xl modal-responsive border" style="background-color:#f5f5dc !important; color:#000 !important; border:2px solid #d4a017 !important;">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between p-4 border-b" style="border-color:#d4a017 !important;">
+                    <h3 class="text-xl font-bold" style="color:#000 !important;">Product Details</h3>
+                    <button id="close-product-popup" class="text-2xl font-bold" style="color:#000 !important;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Modal Content -->
+                <div class="p-4">
+                    <div class="mb-4">
+                        <img id="popup-product-image" src="" alt="Product Image" class="w-full h-48 object-contain bg-white rounded-lg">
+                    </div>
+                    <div class="mb-4">
+                        <h4 id="popup-product-name" class="text-lg font-bold mb-2" style="color:#000 !important;"></h4>
+                        <p id="popup-product-description" class="text-sm mb-3" style="color:#000 !important;"></p>
+                        <p id="popup-product-price" class="text-xl font-bold" style="color:#d4a017 !important;"></p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button id="cancel-product-popup" class="flex-1 py-2 px-4 rounded-lg transition duration-200" style="background:#e5e5e5; color:#000;">
+                            Cancel
+                        </button>
+                        <button id="confirm-add-to-cart" onclick="confirmAddToCart()" class="flex-1 py-2 px-4 rounded-lg transition duration-200 font-semibold" style="background:#d4a017; color:#000;">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    // Product popup logic
+    let currentProduct = null;
+    function showProductPopup(name, price, image, description = '') {
+        currentProduct = { name, price, image, description };
+        document.getElementById('popup-product-image').src = image;
+        document.getElementById('popup-product-image').alt = name;
+        document.getElementById('popup-product-name').textContent = name;
+        document.getElementById('popup-product-description').textContent = description || 'Premium product';
+        document.getElementById('popup-product-price').textContent = `Rs ${price}`;
+        const modal = document.getElementById('product-popup-modal');
+        modal.classList.remove('hidden');
+        modal.style.display = 'flex';
+    }
+    function hideProductPopup() {
+        const modal = document.getElementById('product-popup-modal');
+        modal.classList.add('hidden');
+        modal.style.display = 'none';
+        currentProduct = null;
+    }
+    function confirmAddToCart() {
+        if (currentProduct) {
+            addToCart(currentProduct.name, currentProduct.price, currentProduct.image);
+            hideProductPopup();
+        }
+    }
+    // Wire buttons
+    document.addEventListener('DOMContentLoaded', function(){
+        const closeBtn = document.getElementById('close-product-popup');
+        const cancelBtn = document.getElementById('cancel-product-popup');
+        const modal = document.getElementById('product-popup-modal');
+        if(closeBtn) closeBtn.addEventListener('click', hideProductPopup);
+        if(cancelBtn) cancelBtn.addEventListener('click', hideProductPopup);
+        if(modal) modal.addEventListener('click', function(e){ if(e.target===modal) hideProductPopup(); });
+    });
+    // Expose for inline usage
+    window.showProductPopup = showProductPopup;
+    window.hideProductPopup = hideProductPopup;
+    window.confirmAddToCart = confirmAddToCart;
+    </script>
     <style>
         body {
             background-color: #000000;
@@ -563,7 +639,7 @@
                         <p class="text-gray-300 text-sm mb-4">Luxurious fragrance with floral notes</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 2,700</span>
-                            <button onclick="addToCart('Emerald Perfume', 2500, 'premium perfumes/for her/Emrald_Compare.webp')" 
+                            <button type="button" onclick="showProductPopup('Emerald Perfume', 2500, 'premium perfumes/for her/Emrald_Compare.webp', 'Luxurious fragrance with floral notes')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -590,7 +666,7 @@
                         <p class="text-gray-300 text-sm mb-4">Timeless elegance in a bottle</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 2,600</span>
-                            <button onclick="addToCart('Forever Perfume', 2800, 'premium perfumes/for her/forever_compare.webp')" 
+                            <button type="button" onclick="showProductPopup('Forever Perfume', 2800, 'premium perfumes/for her/forever_compare.webp', 'Timeless elegance in a bottle')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -617,7 +693,7 @@
                         <p class="text-gray-300 text-sm mb-4">Sophisticated and graceful scent</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 2,700</span>
-                            <button onclick="addToCart('Grace Perfume', 2200, 'premium perfumes/for her/Grace_Comparision.webp')" 
+                            <button type="button" onclick="showProductPopup('Grace Perfume', 2200, 'premium perfumes/for her/Grace_Comparision.webp', 'Sophisticated and graceful scent')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -644,7 +720,7 @@
                         <p class="text-gray-300 text-sm mb-4">Calming and peaceful fragrance</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 2,600</span>
-                            <button onclick="addToCart('Serenity Perfume', 2600, 'premium perfumes/for her/Serenity_compare.webp')" 
+                            <button type="button" onclick="showProductPopup('Serenity Perfume', 2600, 'premium perfumes/for her/Serenity_compare.webp', 'Calming and peaceful fragrance')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -683,7 +759,7 @@
                         <p class="text-gray-300 text-sm mb-4">Intense and captivating scent</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 2600</span>
-                            <button onclick="addToCart('Ember Perfume', 3000, 'premium perfumes/for Him/ember_compare.webp')" 
+                            <button type="button" onclick="showProductPopup('Ember Perfume', 3000, 'premium perfumes/for Him/ember_compare.webp', 'Intense and captivating scent')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -710,7 +786,7 @@
                         <p class="text-gray-300 text-sm mb-4">Bold and powerful fragrance</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 2700</span>
-                            <button onclick="addToCart('Fierce Perfume', 3200, 'premium perfumes/for Him/Feirce.webp')" 
+                            <button type="button" onclick="showProductPopup('Fierce Perfume', 3200, 'premium perfumes/for Him/Feirce.webp', 'Bold and powerful fragrance')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -737,7 +813,7 @@
                         <p class="text-gray-300 text-sm mb-4">Regal and sophisticated scent</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 2800</span>
-                            <button onclick="addToCart('Royal Spirit Perfume', 3500, 'premium perfumes/for Him/Royal Spirit.webp')" 
+                            <button type="button" onclick="showProductPopup('Royal Spirit Perfume', 3500, 'premium perfumes/for Him/Royal Spirit.webp', 'Regal and sophisticated scent')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -764,7 +840,7 @@
                         <p class="text-gray-300 text-sm mb-4">Modern and contemporary fragrance</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 2700</span>
-                            <button onclick="addToCart('OV Perfume', 2800, 'premium perfumes/for Him/ov_comparision.webp')" 
+                            <button type="button" onclick="showProductPopup('OV Perfume', 2800, 'premium perfumes/for Him/ov_comparision.webp', 'Modern and contemporary fragrance')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -803,7 +879,7 @@
                         <p class="text-gray-300 text-sm mb-4">Traditional white incense</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 750</span>
-                            <button onclick="addToCart('Bakhoor e Abyadh', 1200, 'premium perfumes/BAHOORS/Bakhoor e Abyadh.webp')" 
+                            <button type="button" onclick="showProductPopup('Bakhoor e Abyadh', 1200, 'premium perfumes/BAHOORS/Bakhoor e Abyadh.webp', 'Traditional white incense')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -831,7 +907,7 @@
                         <p class="text-gray-300 text-sm mb-4">Premium special incense</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 750</span>
-                            <button onclick="addToCart('Bakhoor e Khas', 1500, 'premium perfumes/BAHOORS/Bakhoor e Khas.webp')" 
+                            <button type="button" onclick="showProductPopup('Bakhoor e Khas', 1500, 'premium perfumes/BAHOORS/Bakhoor e Khas.webp', 'Premium special incense')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -859,7 +935,7 @@
                         <p class="text-gray-300 text-sm mb-4">Light and luminous fragrance</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 650</span>
-                            <button onclick="addToCart('Bakhoor e Noor', 1300, 'premium perfumes/BAHOORS/Bakhoor e Noor.webp')" 
+                            <button type="button" onclick="showProductPopup('Bakhoor e Noor', 1300, 'premium perfumes/BAHOORS/Bakhoor e Noor.webp', 'Light and luminous fragrance')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -887,7 +963,7 @@
                         <p class="text-gray-300 text-sm mb-4">Morning breeze fragrance</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 650</span>
-                            <button onclick="addToCart('Bakhoor e Saba', 1400, 'premium perfumes/BAHOORS/Bakhoor e Saba.webp')" 
+                            <button type="button" onclick="showProductPopup('Bakhoor e Saba', 1400, 'premium perfumes/BAHOORS/Bakhoor e Saba.webp', 'Morning breeze fragrance')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -915,7 +991,7 @@
                         <p class="text-gray-300 text-sm mb-4">Beautiful and elegant incense</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 750</span>
-                            <button onclick="addToCart('Bakhur e Zayn', 1600, 'premium perfumes/BAHOORS/Bakhur e Zayn.webp')" 
+                            <button type="button" onclick="showProductPopup('Bakhur e Zayn', 1600, 'premium perfumes/BAHOORS/Bakhur e Zayn.webp', 'Beautiful and elegant incense')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -955,7 +1031,7 @@
                         <p class="text-gray-300 text-xs mb-3">Luxurious oud fragrance for your car</p>
                         <div class="flex justify-between items-center">
                             <span class="text-lg font-bold text-golden">Rs 1500</span>
-                            <button onclick="addToCart('Arabic Oud Car Perfume', 1500, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser arabic oud.jpeg')" 
+                            <button type="button" onclick="showProductPopup('Arabic Oud Car Perfume', 1500, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser arabic oud.jpeg', 'Luxurious oud fragrance for your car')" 
                                     class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -983,7 +1059,7 @@
                         <p class="text-gray-300 text-xs mb-3">Refreshing cool ice fragrance</p>
                         <div class="flex justify-between items-center">
                             <span class="text-lg font-bold text-golden">Rs 1500</span>
-                            <button onclick="addToCart('Cool Ice Car Perfume', 1500, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser cool ice.jpeg')" 
+                            <button type="button" onclick="showProductPopup('Cool Ice Car Perfume', 1500, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser cool ice.jpeg', 'Refreshing cool ice fragrance')" 
                                     class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1011,7 +1087,7 @@
                         <p class="text-gray-300 text-xs mb-3">Fresh ocean breeze fragrance</p>
                         <div class="flex justify-between items-center">
                             <span class="text-lg font-bold text-golden">Rs 1500</span>
-                            <button onclick="addToCart('Ocean Car Perfume', 1500, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser ocean.jpeg')" 
+                            <button type="button" onclick="showProductPopup('Ocean Car Perfume', 1500, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser ocean.jpeg', 'Fresh ocean breeze fragrance')" 
                                     class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1039,7 +1115,7 @@
                         <p class="text-gray-300 text-xs mb-3">Calming lavender fragrance</p>
                         <div class="flex justify-between items-center">
                             <span class="text-lg font-bold text-golden">Rs 650</span>
-                            <button onclick="addToCart('Lavender Car Perfume', 650, 'premium perfumes/reed diffusers and car perfumes/jello air freshner  lavender.jpeg')" 
+                            <button type="button" onclick="showProductPopup('Lavender Car Perfume', 650, 'premium perfumes/reed diffusers and car perfumes/jello air freshner  lavender.jpeg', 'Calming lavender fragrance')" 
                                     class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1067,7 +1143,7 @@
                         <p class="text-gray-300 text-xs mb-3">Cool ice freshness for your car</p>
                         <div class="flex justify-between items-center">
                             <span class="text-lg font-bold text-golden">Rs 650</span>
-                            <button onclick="addToCart('Jello Cool Ice Car Perfume', 650, 'premium perfumes/reed diffusers and car perfumes/jello air freshner cool ice.jpeg')" 
+                            <button type="button" onclick="showProductPopup('Jello Cool Ice Car Perfume', 650, 'premium perfumes/reed diffusers and car perfumes/jello air freshner cool ice.jpeg', 'Cool ice freshness for your car')" 
                                     class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1095,7 +1171,7 @@
                         <p class="text-gray-300 text-xs mb-3">Ocean breeze freshness</p>
                         <div class="flex justify-between items-center">
                             <span class="text-lg font-bold text-golden">Rs 400</span>
-                            <button onclick="addToCart('Xfresh Ocean Car Perfume', 400, 'premium perfumes/reed diffusers and car perfumes/xfresh air freshner  ocean.jpeg')" 
+                            <button type="button" onclick="showProductPopup('Xfresh Ocean Car Perfume', 400, 'premium perfumes/reed diffusers and car perfumes/xfresh air freshner  ocean.jpeg', 'Ocean breeze freshness')" 
                                     class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1123,7 +1199,7 @@
                         <p class="text-gray-300 text-xs mb-3">Cool and refreshing fragrance</p>
                         <div class="flex justify-between items-center">
                             <span class="text-lg font-bold text-golden">Rs 900</span>
-                            <button onclick="addToCart('Sameli Cool Car Perfume', 900, 'premium perfumes/reed diffusers and car perfumes/sameli air freshner cool.jpeg')" 
+                            <button type="button" onclick="showProductPopup('Sameli Cool Car Perfume', 900, 'premium perfumes/reed diffusers and car perfumes/sameli air freshner cool.jpeg', 'Cool and refreshing fragrance')" 
                                     class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1151,7 +1227,7 @@
                         <p class="text-gray-300 text-xs mb-3">Smooth vanilla scent</p>
                         <div class="flex justify-between items-center">
                             <span class="text-lg font-bold text-golden">Rs 900</span>
-                            <button onclick="addToCart('Sameli Vanilla Car Perfume', 900, 'premium perfumes/reed diffusers and car perfumes/sameli air freshner  vanilla.jpeg')" 
+                            <button type="button" onclick="showProductPopup('Sameli Vanilla Car Perfume', 900, 'premium perfumes/reed diffusers and car perfumes/sameli air freshner  vanilla.jpeg', 'Vanilla fragrance')" 
                                     class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1179,7 +1255,7 @@
                         <p class="text-gray-300 text-xs mb-3">Cool breeze freshness</p>
                         <div class="flex justify-between items-center">
                             <span class="text-lg font-bold text-golden">Rs 650</span>
-                            <button onclick="addToCart('Aimm Cool Breeze Car Perfume', 650, 'premium perfumes/reed diffusers and car perfumes/aimm air frshner cool breeze.jpeg')" 
+                            <button type="button" onclick="showProductPopup('Aimm Cool Breeze Car Perfume', 650, 'premium perfumes/reed diffusers and car perfumes/aimm air frshner cool breeze.jpeg', 'Cool breeze scent')" 
                                     class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1207,7 +1283,7 @@
                         <p class="text-gray-300 text-xs mb-3">Rich oud aroma</p>
                         <div class="flex justify-between items-center">
                             <span class="text-lg font-bold text-golden">Rs 1100</span>
-                            <button onclick="addToCart('Aim Oud Car Air Freshener', 1100, 'premium perfumes/reed diffusers and car perfumes/aim air freshner oud.jpeg')" 
+                            <button type="button" onclick="showProductPopup('Aim Oud Car Air Freshener', 1100, 'premium perfumes/reed diffusers and car perfumes/aim air freshner oud.jpeg', 'Oud fragrance')" 
                                     class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1235,7 +1311,7 @@
                         <p class="text-gray-300 text-xs mb-3">Classic new car scent</p>
                         <div class="flex justify-between items-center">
                             <span class="text-lg font-bold text-golden">Rs 750</span>
-                            <button onclick="addToCart('Aim New Car Air Freshener', 750, 'premium perfumes/reed diffusers and car perfumes/aim air freshner new car.jpeg')" 
+                            <button type="button" onclick="showProductPopup('Aim New Car Air Freshener', 750, 'premium perfumes/reed diffusers and car perfumes/aim air freshner new car.jpeg', 'New car scent')" 
                                     class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1263,7 +1339,7 @@
                         <p class="text-gray-300 text-xs mb-3">Cool and crisp fragrance</p>
                         <div class="flex justify-between items-center">
                             <span class="text-lg font-bold text-golden">Rs 750</span>
-                            <button onclick="addToCart('Aim Cool Ice Air Freshener', 750, 'premium perfumes/reed diffusers and car perfumes/aim air freshner cool ice.jpeg')" 
+                            <button type="button" onclick="showProductPopup('Aim Cool Ice Air Freshener', 750, 'premium perfumes/reed diffusers and car perfumes/aim air freshner cool ice.jpeg', 'Cool ice scent')" 
                                     class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1291,7 +1367,7 @@
                         <p class="text-gray-300 text-xs mb-3">Premium car air diffuser</p>
                         <div class="flex justify-between items-center">
                             <span class="text-lg font-bold text-golden">Rs 1500</span>
-                            <button onclick="addToCart('Aim Air Diffuser', 1500, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser.jpeg')" 
+                            <button type="button" onclick="showProductPopup('Aim Air Diffuser', 1500, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser.jpeg', 'Premium car diffuser')" 
                                     class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1319,7 +1395,7 @@
                         <p class="text-gray-300 text-xs mb-3">Arabic oud diffuer fragrance</p>
                         <div class="flex justify-between items-center">
                             <span class="text-lg font-bold text-golden">Rs 1500</span>
-                            <button onclick="addToCart('Aim Air Diffuser Arabic Oud', 1500, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser arabic oud.jpg')" 
+                            <button type="button" onclick="showProductPopup('Aim Air Diffuser Arabic Oud', 1500, 'premium perfumes/reed diffusers and car perfumes/aim air diffuser arabic oud.jpg', 'Arabic oud diffuser')" 
                                     class="golden-gradient text-black px-3 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1360,7 +1436,7 @@
                         <p class="text-gray-300 text-sm mb-4">Luxury candle collection for every mood</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 2499</span>
-                            <button onclick="addToCart('Premium Scented Candles Collection', 1200, 'premium perfumes/premium scented candels/PREMIUM SCENTED CANDELS.webp')" 
+                            <button type="button" onclick="showProductPopup('Premium Scented Candles Collection', 1200, 'premium perfumes/premium scented candels/PREMIUM SCENTED CANDELS.webp', 'Premium scented candles')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1388,7 +1464,7 @@
                         <p class="text-gray-300 text-sm mb-4">Romantic rose fragrance for intimate moments</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 850</span>
-                            <button onclick="addToCart('Rose Candle', 800, 'premium perfumes/premium scented candels/Rose candle.webp')" 
+                            <button type="button" onclick="showProductPopup('Rose Candle', 800, 'premium perfumes/premium scented candels/Rose candle.webp', 'Rose fragrance candle')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1416,7 +1492,7 @@
                         <p class="text-gray-300 text-sm mb-4">8-piece premium candle collection</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 2499</span>
-                            <button onclick="addToCart('Premium Candles Set 8', 1500, 'premium perfumes/premium scented candels/Premium Candles 8.webp')" 
+                            <button type="button" onclick="showProductPopup('Premium Candles Set 8', 1500, 'premium perfumes/premium scented candels/Premium Candles 8.webp', 'Set of 8 candles')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1444,7 +1520,7 @@
                         <p class="text-gray-300 text-sm mb-4">3-piece elegant candle set</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 850</span>
-                            <button onclick="addToCart('Premium Candles Set 3', 900, 'premium perfumes/premium scented candels/Premium Candles 3.webp')" 
+                            <button type="button" onclick="showProductPopup('Premium Candles Set 3', 900, 'premium perfumes/premium scented candels/Premium Candles 3.webp', 'Set of 3 candles')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1472,7 +1548,7 @@
                         <p class="text-gray-300 text-sm mb-4">Dreamy cloud-shaped candle collection</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 1399</span>
-                            <button onclick="addToCart('Cloud Candle Set', 1399, 'premium perfumes/premium scented candels/Cloud Candle Set.webp')" 
+                            <button type="button" onclick="showProductPopup('Cloud Candle Set', 1399, 'premium perfumes/premium scented candels/Cloud Candle Set.webp', 'Cloud candle set')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1500,7 +1576,7 @@
                         <p class="text-gray-300 text-sm mb-4">Beautiful candle bouquet with decorative wax base</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 4499</span>
-                            <button onclick="addToCart('Candle Bouquet With Wax Base', 1800, 'premium perfumes/premium scented candels/Candle Bouquet With wax base.webp')" 
+                            <button type="button" onclick="showProductPopup('Candle Bouquet With Wax Base', 1800, 'premium perfumes/premium scented candels/Candle Bouquet With wax base.webp', 'Candle bouquet with wax base')"
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1862,6 +1938,9 @@
             showNotification(`${name} added to cart!`, 'success');
         }
 
+        // Expose addToCart globally so inline onclick works
+        window.addToCart = addToCart;
+
         function addToWishlist(name, price, image) {
             const item = { name, price, image };
             const existingItem = wishlist.find(item => item.name === name);
@@ -1928,7 +2007,7 @@
         const popupDescription = document.getElementById('popupDescription');
         const popupPrice = document.getElementById('popupPrice');
 
-        function showProductPopup(name, price, image, description) {
+        function showLegacyProductPopup(name, price, image, description) {
             popupImage.src = image;
             popupTitle.textContent = name;
             popupDescription.textContent = description;
@@ -1958,7 +2037,7 @@
                 const description = productCard.querySelector('p').textContent;
                 const imageSrc = this.src;
                 
-                showProductPopup(title, price, imageSrc, description);
+                showLegacyProductPopup(title, price, imageSrc, description);
             });
         });
 
