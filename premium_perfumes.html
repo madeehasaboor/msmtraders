@@ -45,10 +45,10 @@
                         <p id="popup-product-price" class="text-xl font-bold" style="color:#d4a017 !important;"></p>
                     </div>
                     <div class="flex gap-2">
-                        <button id="cancel-product-popup" class="flex-1 py-2 px-4 rounded-lg transition duration-200" style="background:#e5e5e5; color:#000;">
+                        <button id="cancel-product-popup" type="button" class="flex-1 py-2 px-4 rounded-lg transition duration-200" style="background:#e5e5e5; color:#000;">
                             Cancel
                         </button>
-                        <button id="confirm-add-to-cart" onclick="confirmAddToCart()" class="flex-1 py-2 px-4 rounded-lg transition duration-200 font-semibold" style="background:#d4a017; color:#000;">
+                        <button id="confirm-add-to-cart" type="button" onclick="confirmAddToCart()" class="flex-1 py-2 px-4 rounded-lg transition duration-200 font-semibold" style="background:#d4a017; color:#000;">
                             Add to Cart
                         </button>
                     </div>
@@ -60,13 +60,37 @@
     <script>
     // Product popup logic
     let currentProduct = null;
+    // Initialize cart early to avoid reference errors
+    window.cart = JSON.parse(localStorage.getItem('cart')) || [];
     function showProductPopup(name, price, image, description = '') {
-        currentProduct = { name, price, image, description };
+        // Prefer grabbing the exact visible price from the product card near the clicked button
+        let priceText = '';
+        // Try to use the inline event's currentTarget (the clicked button)
+        const btnEl = (typeof event !== 'undefined' && event) ? (event.currentTarget || event.target) : null;
+        if (btnEl) {
+            const card = btnEl.closest('.product-card');
+            if (card) {
+                // look for the price span inside the action row
+                const actionRow = btnEl.closest('.flex');
+                const spanInRow = actionRow ? actionRow.querySelector('span') : null;
+                const spanInCard = spanInRow || card.querySelector('span');
+                if (spanInCard && spanInCard.textContent) {
+                    priceText = spanInCard.textContent.trim();
+                }
+            }
+        }
+        if (!priceText) {
+            // Fallback to provided price argument
+            priceText = typeof price === 'number' ? `Rs ${price}` : String(price || 'Rs 0');
+        }
+        const numericPrice = parseFloat(priceText.replace(/[^\d.]/g, '')) || 0;
+
+        currentProduct = { name, price: numericPrice, image, description };
         document.getElementById('popup-product-image').src = image;
         document.getElementById('popup-product-image').alt = name;
         document.getElementById('popup-product-name').textContent = name;
         document.getElementById('popup-product-description').textContent = description || 'Premium product';
-        document.getElementById('popup-product-price').textContent = `Rs ${price}`;
+        document.getElementById('popup-product-price').textContent = priceText;
         const modal = document.getElementById('product-popup-modal');
         modal.classList.remove('hidden');
         modal.style.display = 'flex';
@@ -78,9 +102,18 @@
         currentProduct = null;
     }
     function confirmAddToCart() {
+        console.log('confirmAddToCart called, currentProduct:', currentProduct);
         if (currentProduct) {
-            addToCart(currentProduct.name, currentProduct.price, currentProduct.image);
+            console.log('Calling addToCart with:', currentProduct.name, currentProduct.price, currentProduct.image);
+            // Call the main addToCart function directly
+            if (typeof window.addToCart === 'function') {
+                window.addToCart(currentProduct.name, currentProduct.price, currentProduct.image);
+            } else {
+                console.error('addToCart function not found');
+            }
             hideProductPopup();
+        } else {
+            console.log('No currentProduct found');
         }
     }
     // Wire buttons
@@ -639,7 +672,7 @@
                         <p class="text-gray-300 text-sm mb-4">Luxurious fragrance with floral notes</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 2,700</span>
-                            <button type="button" onclick="showProductPopup('Emerald Perfume', 2500, 'premium perfumes/for her/Emrald_Compare.webp', 'Luxurious fragrance with floral notes')" 
+                            <button type="button" onclick="showProductPopup('Emerald Perfume', 2700, 'premium perfumes/for her/Emrald_Compare.webp', 'Luxurious fragrance with floral notes')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -759,7 +792,7 @@
                         <p class="text-gray-300 text-sm mb-4">Intense and captivating scent</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 2600</span>
-                            <button type="button" onclick="showProductPopup('Ember Perfume', 3000, 'premium perfumes/for Him/ember_compare.webp', 'Intense and captivating scent')" 
+                            <button type="button" onclick="showProductPopup('Ember Perfume', 2600, 'premium perfumes/for Him/ember_compare.webp', 'Intense and captivating scent')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -786,7 +819,7 @@
                         <p class="text-gray-300 text-sm mb-4">Bold and powerful fragrance</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 2700</span>
-                            <button type="button" onclick="showProductPopup('Fierce Perfume', 3200, 'premium perfumes/for Him/Feirce.webp', 'Bold and powerful fragrance')" 
+                            <button type="button" onclick="showProductPopup('Fierce Perfume', 2700, 'premium perfumes/for Him/Feirce.webp', 'Bold and powerful fragrance')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -813,7 +846,7 @@
                         <p class="text-gray-300 text-sm mb-4">Regal and sophisticated scent</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 2800</span>
-                            <button type="button" onclick="showProductPopup('Royal Spirit Perfume', 3500, 'premium perfumes/for Him/Royal Spirit.webp', 'Regal and sophisticated scent')" 
+                            <button type="button" onclick="showProductPopup('Royal Spirit Perfume', 2800, 'premium perfumes/for Him/Royal Spirit.webp', 'Regal and sophisticated scent')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -840,7 +873,7 @@
                         <p class="text-gray-300 text-sm mb-4">Modern and contemporary fragrance</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 2700</span>
-                            <button type="button" onclick="showProductPopup('OV Perfume', 2800, 'premium perfumes/for Him/ov_comparision.webp', 'Modern and contemporary fragrance')" 
+                            <button type="button" onclick="showProductPopup('OV Perfume', 2700, 'premium perfumes/for Him/ov_comparision.webp', 'Modern and contemporary fragrance')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -879,7 +912,7 @@
                         <p class="text-gray-300 text-sm mb-4">Traditional white incense</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 750</span>
-                            <button type="button" onclick="showProductPopup('Bakhoor e Abyadh', 1200, 'premium perfumes/BAHOORS/Bakhoor e Abyadh.webp', 'Traditional white incense')" 
+                            <button type="button" onclick="showProductPopup('Bakhoor e Abyadh', 750, 'premium perfumes/BAHOORS/Bakhoor e Abyadh.webp', 'Traditional white incense')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -907,7 +940,7 @@
                         <p class="text-gray-300 text-sm mb-4">Premium special incense</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 750</span>
-                            <button type="button" onclick="showProductPopup('Bakhoor e Khas', 1500, 'premium perfumes/BAHOORS/Bakhoor e Khas.webp', 'Premium special incense')" 
+                            <button type="button" onclick="showProductPopup('Bakhoor e Khas', 750, 'premium perfumes/BAHOORS/Bakhoor e Khas.webp', 'Premium special incense')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -935,7 +968,7 @@
                         <p class="text-gray-300 text-sm mb-4">Light and luminous fragrance</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 650</span>
-                            <button type="button" onclick="showProductPopup('Bakhoor e Noor', 1300, 'premium perfumes/BAHOORS/Bakhoor e Noor.webp', 'Light and luminous fragrance')" 
+                            <button type="button" onclick="showProductPopup('Bakhoor e Noor', 650, 'premium perfumes/BAHOORS/Bakhoor e Noor.webp', 'Light and luminous fragrance')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -963,7 +996,7 @@
                         <p class="text-gray-300 text-sm mb-4">Morning breeze fragrance</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 650</span>
-                            <button type="button" onclick="showProductPopup('Bakhoor e Saba', 1400, 'premium perfumes/BAHOORS/Bakhoor e Saba.webp', 'Morning breeze fragrance')" 
+                            <button type="button" onclick="showProductPopup('Bakhoor e Saba', 650, 'premium perfumes/BAHOORS/Bakhoor e Saba.webp', 'Morning breeze fragrance')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -991,7 +1024,7 @@
                         <p class="text-gray-300 text-sm mb-4">Beautiful and elegant incense</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-golden">Rs 750</span>
-                            <button type="button" onclick="showProductPopup('Bakhur e Zayn', 1600, 'premium perfumes/BAHOORS/Bakhur e Zayn.webp', 'Beautiful and elegant incense')" 
+                            <button type="button" onclick="showProductPopup('Bakhur e Zayn', 750, 'premium perfumes/BAHOORS/Bakhur e Zayn.webp', 'Beautiful and elegant incense')" 
                                     class="golden-gradient text-black px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                 Add to Cart
                             </button>
@@ -1855,9 +1888,11 @@
         const hamburger = document.getElementById('hamburger');
         const navbarMenu = document.getElementById('navbar-menu');
 
-        hamburger.addEventListener('click', () => {
-            navbarMenu.classList.toggle('active');
-        });
+        if (hamburger && navbarMenu) {
+            hamburger.addEventListener('click', () => {
+                navbarMenu.classList.toggle('active');
+            });
+        }
 
         // Close mobile menu when clicking on a link
         const menuLinks = document.querySelectorAll('.navbar-menu a');
@@ -1913,21 +1948,27 @@
             });
         });
 
-        // Cart functionality
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        // Cart functionality (cart already initialized above)
         let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
         function addToCart(name, price, image) {
+            if (!window.cart) {
+                try {
+                    window.cart = JSON.parse(localStorage.getItem('cart') || '[]');
+                } catch (e) {
+                    window.cart = [];
+                }
+            }
             const item = { name, price, image, quantity: 1 };
-            const existingItem = cart.find(item => item.name === name);
+            const existingItem = window.cart.find(item => item.name === name);
             
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                cart.push(item);
+                window.cart.push(item);
             }
             
-            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('cart', JSON.stringify(window.cart));
             updateCartCount();
             renderCart();
             
@@ -2077,8 +2118,8 @@
 
         // Remove item from cart
         function removeFromCart(index) {
-            cart.splice(index, 1);
-            localStorage.setItem('cart', JSON.stringify(cart));
+            window.cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(window.cart));
             renderCart();
             showNotification('Item removed from cart!', 'info');
         }
@@ -2086,24 +2127,24 @@
         // Update item quantity
         function updateQuantity(index, action) {
             if (action === 'increase') {
-                cart[index].quantity += 1;
+                window.cart[index].quantity += 1;
             } else if (action === 'decrease') {
-                if (cart[index].quantity > 1) {
-                    cart[index].quantity -= 1;
+                if (window.cart[index].quantity > 1) {
+                    window.cart[index].quantity -= 1;
                 } else {
                     removeFromCart(index);
                     return;
                 }
             }
             
-            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('cart', JSON.stringify(window.cart));
             renderCart();
         }
 
         // Clear cart
         function clearCart() {
-            cart = [];
-            localStorage.setItem('cart', JSON.stringify(cart));
+            window.cart = [];
+            localStorage.setItem('cart', JSON.stringify(window.cart));
             renderCart();
             showNotification('Cart cleared!', 'info');
         }
@@ -2116,7 +2157,7 @@
                 return;
             }
             
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalItems = window.cart.reduce((sum, item) => sum + item.quantity, 0);
             cartCountElement.textContent = totalItems;
             console.log('Cart count updated to:', totalItems);
         }
@@ -2126,7 +2167,7 @@
             console.log('updateCartTotal called');
             const cartTotal = document.getElementById('cart-total');
             console.log('Cart total element:', cartTotal);
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = window.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             console.log('Calculated total:', total);
             if (cartTotal) {
                 cartTotal.textContent = `Rs ${total.toFixed(2)}`;
@@ -2138,8 +2179,8 @@
 
         // Render cart items
         function renderCart() {
-            console.log('renderCart called, cart length:', cart.length);
-            console.log('Current cart:', cart);
+            console.log('renderCart called, cart length:', window.cart.length);
+            console.log('Current cart:', window.cart);
             
             const cartItems = document.getElementById('cart-items');
             
@@ -2148,7 +2189,7 @@
                 return;
             }
             
-            if (cart.length === 0) {
+            if (window.cart.length === 0) {
                 console.log('Cart is empty, showing empty message');
                 cartItems.innerHTML = `
                     <div id="empty-cart" class="text-center py-8">
@@ -2158,7 +2199,7 @@
                 `;
             } else {
                 console.log('Cart has items, rendering cart items');
-                cartItems.innerHTML = cart.map((item, index) => `
+                cartItems.innerHTML = window.cart.map((item, index) => `
                     <div class="cart-item bg-gray-800 rounded-lg p-3 mb-3 border border-gray-700">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-3">
@@ -2198,7 +2239,7 @@
 
         // Open customer information modal for WhatsApp orders
         function sendWhatsAppOrder() {
-            if (cart.length === 0) {
+            if (window.cart.length === 0) {
                 showNotification('Your cart is empty!', 'error');
                 return;
             }
@@ -2236,7 +2277,7 @@
                 return;
             }
 
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = window.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             let message = `Hello! I would like to place an order:\n\n`;
             
             message += `Customer Information:\n`;
@@ -2245,7 +2286,7 @@
             message += `Address: ${customerAddress}\n\n`;
             message += `Order Details:\n`;
             
-            cart.forEach(item => {
+            window.cart.forEach(item => {
                 message += `• ${item.name} x${item.quantity} - Rs ${(item.price * item.quantity).toFixed(2)}\n`;
             });
             
@@ -2272,12 +2313,12 @@
 
         // Jazz Cash Payment Functions
         function openJazzCashPayment() {
-            if (cart.length === 0) {
+            if (window.cart.length === 0) {
                 showNotification('Your cart is empty!', 'error');
                 return;
             }
             
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = window.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             document.getElementById('jazzcash-total').textContent = `Rs ${total.toFixed(2)}`;
             
             const jazzCashModal = document.getElementById('jazzcash-modal');
@@ -2337,7 +2378,7 @@
                 return;
             }
             
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = window.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
             // Create order summary with customer information
             let orderSummary = `Jazz Cash Payment Order:\n\n`;
@@ -2346,7 +2387,7 @@
             orderSummary += `Phone: ${customerPhone}\n`;
             orderSummary += `Address: ${customerAddress}\n\n`;
             orderSummary += `Order Details:\n`;
-            cart.forEach(item => {
+            window.cart.forEach(item => {
                 orderSummary += `• ${item.name} x${item.quantity} - Rs ${(item.price * item.quantity).toFixed(2)}\n`;
             });
             orderSummary += `\nTotal: Rs ${total.toFixed(2)}\n`;
@@ -2391,7 +2432,7 @@
             console.log('Premium Perfumes page loaded successfully');
             
             // Initialize cart count
-            cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount = window.cart.reduce((sum, item) => sum + item.quantity, 0);
             updateCartCount();
             
             // Initialize cart modal event listeners
