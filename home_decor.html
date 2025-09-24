@@ -17,12 +17,18 @@
         .hover\:text-golden:hover { color: #F59E0B !important; }
         .hover\:border-golden:hover { border-color: #F59E0B !important; }
         
+        /* Hamburger menu beige styling */
+        .hamburger, button.hamburger, .hamburger-menu, .menu-toggle, .mobile-menu-btn, #hamburger, .navbar-toggle, .menu-button, .hamburger span, .hamburger div { 
+            background-color: #f5f5dc !important; 
+            border: 2px solid #d4a017 !important; 
+            color: #FFD700 !important; 
+        }
         /* Light beige theme overrides */
         html { background-color: #f5f5dc !important; }
         body { background-color: #f5f5dc !important; color: #2c2c2c !important; }
         /* Header/Footer */
-        nav, .navbar, header { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017 !important; }
-        footer { background-color: #fbbf24 !important; border-top: 2px solid #d4a017 !important; color: #000 !important; }
+        nav, .navbar, header { background-color: #f5f5dc !important; border: 2px solid #d4a017 !important; color: #000 !important; }
+        footer { background-color: #f5f5dc !important; border: 2px solid #d4a017 !important; color: #000 !important; }
         /* Text to black */
         html, body, section, nav, footer { color: #000 !important; }
         h1, h2, h3, h4, h5, h6, p, span, a, li, label, small, strong, em, div { color: #000 !important; }
@@ -488,9 +494,6 @@
                 <div class="md:hidden flex items-center space-x-2">
                     <button id="category-menu-btn" class="bg-golden text-black px-3 py-2 rounded-lg hover:bg-yellow-500 transition-colors">
                         <i class="fas fa-th-large"></i>
-                    </button>
-                    <button id="hamburger" class="text-gray-300 hover:text-golden focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
