@@ -413,7 +413,7 @@
             
             
             <!-- Mobile Category Menu Button -->
-            <button id="category-menu-btn" class="md:hidden bg-golden text-black px-3 py-2 rounded-lg hover:bg-yellow-500 transition-colors">
+            <button id="category-menu-btn" class="md:hidden bg-golden text-black px-3 py-2 rounded-lg hover:bg-yellow-500 transition-colors" onclick="openMobileCategoryMenu()">
                 <i class="fas fa-th-large"></i>
             </button>
         </div>
@@ -421,11 +421,11 @@
 
     <!-- Mobile Category Menu -->
     <div id="mobile-category-menu" class="md:hidden hidden fixed inset-0 bg-black bg-opacity-50 z-50">
-        <div class="fixed top-0 left-0 h-full w-80 bg-white border-r border-yellow-500 transform -translate-x-full transition-transform duration-300" id="category-sidebar">
+        <div class="fixed top-0 left-0 h-full w-80 bg-white border-r border-yellow-500 transform -translate-x-full transition-transform duration-300 overflow-y-auto" id="category-sidebar">
             <div class="p-6">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-2xl font-bold text-black">Shop by Category</h2>
-                    <button id="close-category-menu" class="text-gray-400 hover:text-yellow-500 text-2xl">
+                    <button id="close-category-menu" class="text-gray-400 hover:text-yellow-500 text-2xl" onclick="closeMobileCategoryMenu()">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
@@ -1771,6 +1771,10 @@
             }
         }
 
+        // Make functions globally available
+        window.openMobileCategoryMenu = openMobileCategoryMenu;
+        window.closeMobileCategoryMenu = closeMobileCategoryMenu;
+
         // Mobile menu toggle
         const hamburger = document.getElementById('hamburger');
         const navbarMenu = document.getElementById('navbar-menu');
@@ -1788,46 +1792,48 @@
         });
 
         // Event listeners for mobile category menu
-        const categoryMenuBtn = document.getElementById('category-menu-btn');
-        const closeCategoryMenuBtn = document.getElementById('close-category-menu');
-        const mobileCategoryMenu = document.getElementById('mobile-category-menu');
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryMenuBtn = document.getElementById('category-menu-btn');
+            const closeCategoryMenuBtn = document.getElementById('close-category-menu');
+            const mobileCategoryMenu = document.getElementById('mobile-category-menu');
 
-        if (categoryMenuBtn) {
-            categoryMenuBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('Category menu button clicked');
-                openMobileCategoryMenu();
-            });
-        } else {
-            console.log('Category menu button not found');
-        }
+            if (categoryMenuBtn) {
+                categoryMenuBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Category menu button clicked');
+                    openMobileCategoryMenu();
+                });
+            } else {
+                console.log('Category menu button not found');
+            }
 
-        if (closeCategoryMenuBtn) {
-            closeCategoryMenuBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('Close button clicked');
-                closeMobileCategoryMenu();
-            });
-        } else {
-            console.log('Close button not found');
-        }
-
-        // Close mobile category menu when clicking outside
-        if (mobileCategoryMenu) {
-            mobileCategoryMenu.addEventListener('click', function(e) {
-                if (e.target === mobileCategoryMenu) {
+            if (closeCategoryMenuBtn) {
+                closeCategoryMenuBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Close button clicked');
                     closeMobileCategoryMenu();
-                }
-            });
-        }
+                });
+            } else {
+                console.log('Close button not found');
+            }
 
-        // Close mobile category menu when clicking on category links
-        const categoryLinks = document.querySelectorAll('#mobile-category-menu a');
-        categoryLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                closeMobileCategoryMenu();
+            // Close mobile category menu when clicking outside
+            if (mobileCategoryMenu) {
+                mobileCategoryMenu.addEventListener('click', function(e) {
+                    if (e.target === mobileCategoryMenu) {
+                        closeMobileCategoryMenu();
+                    }
+                });
+            }
+
+            // Close mobile category menu when clicking on category links
+            const categoryLinks = document.querySelectorAll('#mobile-category-menu a');
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMobileCategoryMenu();
+                });
             });
         });
 
