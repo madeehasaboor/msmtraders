@@ -492,7 +492,7 @@
                 
                 <!-- Mobile menu buttons -->
                 <div class="md:hidden flex items-center space-x-2">
-                    <button id="category-menu-btn" class="bg-golden text-black px-3 py-2 rounded-lg hover:bg-yellow-500 transition-colors">
+                    <button id="category-menu-btn" class="bg-golden text-black px-3 py-2 rounded-lg hover:bg-yellow-500 transition-colors" onclick="openMobileCategoryMenu()">
                         <i class="fas fa-th-large"></i>
                     </button>
                 </div>
@@ -615,20 +615,46 @@
 
     <!-- Mobile Category Menu -->
     <div id="mobile-category-menu" class="md:hidden hidden fixed inset-0 bg-black bg-opacity-50 z-50">
-        <div class="fixed top-0 left-0 h-full w-80 bg-black border-r border-golden transform -translate-x-full transition-transform duration-300" id="category-sidebar">
+        <div class="fixed top-0 left-0 h-full w-80 bg-white border-r border-yellow-500 transform -translate-x-full transition-transform duration-300 overflow-y-auto" id="category-sidebar">
             <div class="p-6">
                 <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-2xl font-bold text-golden">Shop by Category</h2>
-                    <button id="close-category-menu" class="text-gray-400 hover:text-golden text-2xl">
+                    <h2 class="text-2xl font-bold text-black">Shop by Category</h2>
+                    <button id="close-category-menu" class="text-gray-400 hover:text-yellow-500 text-2xl" onclick="closeMobileCategoryMenu()">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
-                <div class="space-y-3">
-                    <!-- Car Care -->
-                    <a href="car_care.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group" onclick="closeMobileCategoryMenu()">
-                        <h3 class="text-white font-semibold group-hover:text-golden">Car Care</h3>
-                        <p class="text-gray-400 text-sm">Professional cleaning products</p>
+                <nav class="space-y-4">
+                    <a href="index.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-home mr-2"></i>Home
                     </a>
+                    <a href="car_care.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-car mr-2"></i>Car Care
+                    </a>
+                    <a href="microfiber_and_cleaners.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-broom mr-2"></i>Microfiber & Cleaners
+                    </a>
+                    <a href="premium_perfumes.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-spray-can mr-2"></i>Premium Perfumes
+                    </a>
+                    <a href="crockery.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-utensils mr-2"></i>Crockery
+                    </a>
+                    <a href="laptops.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-laptop mr-2"></i>Laptops
+                    </a>
+                    <a href="home_decor.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-home mr-2"></i>Home Decor
+                    </a>
+                    <a href="special_offers.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-tags mr-2"></i>Special Offers
+                    </a>
+                    <a href="bedcovers.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-bed mr-2"></i>Bed Covers
+                    </a>
+                    <a href="contact.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>Contact
+                    </a>
+                </nav>
                     
                     <!-- Microfiber & Cleaners -->
                     <a href="microfiber_and_cleaners.html" class="block p-3 rounded-lg hover:bg-gray-800 transition-colors group" onclick="closeMobileCategoryMenu()">
@@ -2322,22 +2348,40 @@
 
         // Mobile Category Menu functionality
         function openMobileCategoryMenu() {
+            console.log('Opening mobile category menu...');
             const menu = document.getElementById('mobile-category-menu');
             const sidebar = document.getElementById('category-sidebar');
-            menu.classList.remove('hidden');
-            setTimeout(() => {
-                sidebar.classList.remove('-translate-x-full');
-            }, 10);
+            
+            if (menu && sidebar) {
+                menu.classList.remove('hidden');
+                setTimeout(() => {
+                    sidebar.classList.remove('-translate-x-full');
+                    console.log('Mobile category menu opened');
+                }, 10);
+            } else {
+                console.log('Menu or sidebar not found');
+            }
         }
 
         function closeMobileCategoryMenu() {
+            console.log('Closing mobile category menu...');
             const menu = document.getElementById('mobile-category-menu');
             const sidebar = document.getElementById('category-sidebar');
-            sidebar.classList.add('-translate-x-full');
-            setTimeout(() => {
-                menu.classList.add('hidden');
-            }, 300);
+            
+            if (menu && sidebar) {
+                sidebar.classList.add('-translate-x-full');
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                    console.log('Mobile category menu closed');
+                }, 300);
+            } else {
+                console.log('Menu or sidebar not found');
+            }
         }
+
+        // Make functions globally available
+        window.openMobileCategoryMenu = openMobileCategoryMenu;
+        window.closeMobileCategoryMenu = closeMobileCategoryMenu;
 
         // Event listeners for mobile category menu
         document.addEventListener('DOMContentLoaded', function() {
