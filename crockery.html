@@ -1345,7 +1345,7 @@ body { background-color: #f5f5dc !important; }
             </ul>
             
             <!-- Cart Button -->
-            <button id="cart-button" class="relative bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-2 rounded-lg transition duration-200 flex items-center gap-1.5">
+            <button id="cart-button" class="relative text-black px-3 py-2 rounded-lg transition duration-200 flex items-center gap-1.5" style="background-color:#f5f5dc !important; border:2px solid #d4a017 !important;">
                 <i class="fas fa-shopping-cart"></i>
                 <span>Cart</span>
                 <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
@@ -1353,7 +1353,7 @@ body { background-color: #f5f5dc !important; }
             
             
             <!-- Mobile Category Menu Button -->
-            <button id="category-menu-btn" class="md:hidden bg-golden text-black px-3 py-2 rounded-lg hover:bg-yellow-500 transition-colors">
+            <button id="category-menu-btn" class="md:hidden text-black px-3 py-2 rounded-lg transition-colors" style="background-color:#f5f5dc !important; border:2px solid #d4a017 !important;">
                 <i class="fas fa-th-large"></i>
             </button>
                             </div>
@@ -1370,34 +1370,34 @@ body { background-color: #f5f5dc !important; }
                     </button>
                 </div>
                 <nav class="space-y-4">
-                    <a href="index.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                    <a href="index.html" class="block p-3 text-black rounded-lg transition-colors" style="background-color:#f5f5dc !important; border:2px solid #d4a017 !important;">
                         <i class="fas fa-home mr-2"></i>Home
                     </a>
-                    <a href="car_care.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                    <a href="car_care.html" class="block p-3 text-black rounded-lg transition-colors" style="background-color:#f5f5dc !important; border:2px solid #d4a017 !important;">
                         <i class="fas fa-car mr-2"></i>Car Care
                     </a>
-                    <a href="microfiber_and_cleaners.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                    <a href="microfiber_and_cleaners.html" class="block p-3 text-black rounded-lg transition-colors" style="background-color:#f5f5dc !important; border:2px solid #d4a017 !important;">
                         <i class="fas fa-broom mr-2"></i>Microfiber & Cleaners
                     </a>
-                    <a href="premium_perfumes.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                    <a href="premium_perfumes.html" class="block p-3 text-black rounded-lg transition-colors" style="background-color:#f5f5dc !important; border:2px solid #d4a017 !important;">
                         <i class="fas fa-spray-can mr-2"></i>Premium Perfumes
                     </a>
-                    <a href="crockery.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                    <a href="crockery.html" class="block p-3 text-black rounded-lg transition-colors" style="background-color:#f5f5dc !important; border:2px solid #d4a017 !important;">
                         <i class="fas fa-utensils mr-2"></i>Crockery
                     </a>
-                    <a href="laptops.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                    <a href="laptops.html" class="block p-3 text-black rounded-lg transition-colors" style="background-color:#f5f5dc !important; border:2px solid #d4a017 !important;">
                         <i class="fas fa-laptop mr-2"></i>Laptops
                     </a>
-                    <a href="home_decor.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                    <a href="home_decor.html" class="block p-3 text-black rounded-lg transition-colors" style="background-color:#f5f5dc !important; border:2px solid #d4a017 !important;">
                         <i class="fas fa-home mr-2"></i>Home Decor
                     </a>
-                    <a href="special_offers.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                    <a href="special_offers.html" class="block p-3 text-black rounded-lg transition-colors" style="background-color:#f5f5dc !important; border:2px solid #d4a017 !important;">
                         <i class="fas fa-tags mr-2"></i>Special Offers
                     </a>
-                    <a href="bedcovers.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                    <a href="bedcovers.html" class="block p-3 text-black rounded-lg transition-colors" style="background-color:#f5f5dc !important; border:2px solid #d4a017 !important;">
                         <i class="fas fa-bed mr-2"></i>Bed Covers
                     </a>
-                    <a href="contact.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                    <a href="contact.html" class="block p-3 text-black rounded-lg transition-colors" style="background-color:#f5f5dc !important; border:2px solid #d4a017 !important;">
                         <i class="fas fa-envelope mr-2"></i>Contact
                     </a>
                 </nav>
@@ -4304,6 +4304,44 @@ body { background-color: #f5f5dc !important; }
         #cart-modal .cart-item .bg-red-700 {
             background-color: #b91c1c !important;
             color: #fff !important;
+        }
+        
+        /* Category buttons beige theme */
+        .category-buttons .group,
+        .category-buttons .group.relative,
+        .category-buttons a.group {
+            background-color: #f5f5dc !important;
+            border: 2px solid #d4a017 !important;
+            color: #000 !important;
+        }
+        
+        .category-buttons .group:hover,
+        .category-buttons .group.relative:hover,
+        .category-buttons a.group:hover {
+            background-color: #f5f5dc !important;
+            border-color: #d4a017 !important;
+            color: #000 !important;
+        }
+        
+        .category-buttons .group *,
+        .category-buttons .group.relative *,
+        .category-buttons a.group * {
+            color: #000 !important;
+        }
+        
+        /* Mobile category menu buttons beige theme */
+        #category-sidebar a,
+        #category-sidebar .block {
+            background-color: #f5f5dc !important;
+            border: 2px solid #d4a017 !important;
+            color: #000 !important;
+        }
+        
+        #category-sidebar a:hover,
+        #category-sidebar .block:hover {
+            background-color: #f5f5dc !important;
+            border-color: #d4a017 !important;
+            color: #000 !important;
         }
 
         /* Mobile responsive cart modal */
