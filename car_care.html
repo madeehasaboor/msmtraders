@@ -507,8 +507,8 @@
         html { background-color: #f5f5dc !important; }
         body { background-color: #f5f5dc !important; color: #2c2c2c !important; }
         /* Header/footer yellow */
-        nav, .navbar, header { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017 !important; }
-        footer { background-color: #fbbf24 !important; border-top: 2px solid #d4a017 !important; color: #000 !important; }
+        nav, .navbar, header { background-color: #f5f5dc !important; border: 2px solid #f0ede5 !important; color: #000 !important; }
+        footer { background-color: #f5f5dc !important; border: 2px solid #d4a017 !important; color: #000 !important; }
         /* Text to black */
         html, body, section, nav, footer { color: #000 !important; }
         h1, h2, h3, h4, h5, h6, p, span, a, li, label, small, strong, em, div { color: #000 !important; }
@@ -522,7 +522,7 @@
     </style>
     <style>
         /* Final overrides for header to yellow */
-        nav.navbar, nav, .navbar { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017 !important; }
+        nav.navbar, nav, .navbar { background-color: #f5f5dc !important; border: 2px solid #d4a017 !important; }
     </style>
     <style>
 /* Background + Global Text */
@@ -641,15 +641,20 @@ footer a:hover {
         }
         /* General Links */
         a { color: #2c2c2c; text-decoration: none; transition: 0.3s; }
-        a:hover { color: #d4a017; }
+        a:hover { color: #f8f7f4; }
         /* Navbar/Header */
-        nav { background-color: #fbbf24; border-bottom: 2px solid #d4a017; }
-        .navbar { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017 !important; box-shadow: none; }
-        nav, .navbar, header { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017; }
+        nav { background-color: #f5f5dc !important; border: 2px solid #d4a017 !important; }
+        .navbar { background-color: #f5f5dc !important; border: 2px solid #d4a017 !important; box-shadow: none; }
+        nav, .navbar, header { background-color: #f5f5dc !important; border: 2px solid #d4a017 !important; color: #000 !important; }
         .navbar-logo { color: #2c2c2c !important; }
         .navbar-menu a { color: #2c2c2c !important; }
         .navbar-menu a.active { background-color: #d4a017 !important; color: #fff !important; }
-        .hamburger { color: #2c2c2c !important; border-color: #d4a017 !important; }
+        /* Hamburger menu beige styling */
+        .hamburger, button.hamburger, .hamburger-menu, .menu-toggle, .mobile-menu-btn, #hamburger, .navbar-toggle, .menu-button, .hamburger span, .hamburger div { 
+            background-color: #f5f5dc !important; 
+            border: 2px solid #d4a017 !important; 
+            color: #FFD700 !important; 
+        }
         /* Section Backgrounds */
         section, .hero, .content, .footer { background-color: #f5f5dc !important; color: #2c2c2c !important; }
         /* Product Cards */
@@ -657,9 +662,9 @@ footer a:hover {
         .card h3, .product-card h3 { color: #2c2c2c; }
         .card:hover, .product-card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
         /* Footer */
-        footer { background-color: #fbbf24 !important; border-top: 2px solid #d4a017; color: #2c2c2c; }
+        footer { background-color: #fbbe242a !important; border: 2px solid #d4a017 !important; color: #2c2c2c; }
         footer a { color: #d4a017; }
-        footer a:hover { color: #ffcc70; }
+        footer a:hover { color: #eeebe7; }
         /* Force text to black where needed */
         html, body, section, nav, footer { color: #000 !important; }
         h1, h2, h3, h4, h5, h6, p, span, a, li, label, small, strong, em, div { color: #000 !important; }
@@ -919,7 +924,7 @@ footer a:hover {
 <body>
     <!-- Responsive Navbar -->
     <nav class="navbar">
-        <div class="navbar-container">
+        <div class="navbar-container" style="background-color:#f5f5dc !important; border:2px solid #d4a017 !important; color:#000 !important;">
             <a href="index.html" class="navbar-logo">
                 <img src="MSM TRADERS LOGO.jpeg" alt="MSM Traders Logo">
                 <span>MSM TRADERS</span>
@@ -946,12 +951,59 @@ footer a:hover {
                 <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
                     </button>
             
-            <!-- Mobile Menu Button -->
-            <button class="hamburger" id="hamburger">
-                ☰
-                    </button>
+            
+            <!-- Mobile Category Menu Button -->
+            <button id="category-menu-btn" class="md:hidden bg-golden text-black px-3 py-2 rounded-lg hover:bg-yellow-500 transition-colors">
+                <i class="fas fa-th-large"></i>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Category Menu -->
+    <div id="mobile-category-menu" class="md:hidden hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+        <div class="fixed top-0 left-0 h-full w-80 bg-white border-r border-yellow-500 transform -translate-x-full transition-transform duration-300" id="category-sidebar">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-black">Shop by Category</h2>
+                    <button id="close-category-menu" class="text-gray-400 hover:text-yellow-500 text-2xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <nav class="space-y-4">
+                    <a href="index.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </a>
+                    <a href="car_care.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-car mr-2"></i>Car Care
+                    </a>
+                    <a href="microfiber_and_cleaners.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-broom mr-2"></i>Microfiber & Cleaners
+                    </a>
+                    <a href="premium_perfumes.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-spray-can mr-2"></i>Premium Perfumes
+                    </a>
+                    <a href="crockery.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-utensils mr-2"></i>Crockery
+                    </a>
+                    <a href="laptops.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-laptop mr-2"></i>Laptops
+                    </a>
+                    <a href="home_decor.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-home mr-2"></i>Home Decor
+                    </a>
+                    <a href="special_offers.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-tags mr-2"></i>Special Offers
+                    </a>
+                    <a href="bedcovers.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-bed mr-2"></i>Bed Covers
+                    </a>
+                    <a href="contact.html" class="block p-3 bg-white border-2 border-yellow-500 text-black rounded-lg hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>Contact
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
 
     <!-- Shopping Cart Modal -->
     <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
@@ -1372,7 +1424,7 @@ footer a:hover {
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12" style="background-color:#fbbf24 !important; color:#2c2c2c !important; border-top:2px solid #d4a017;">
+    <footer class="bg-gray-900 text-white py-12" style="background-color:#f5f5dc !important; color:#000 !important; border:2px solid #d4a017 !important;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
@@ -3224,6 +3276,39 @@ footer a:hover {
             });
         }
 
+        // Mobile Category Menu Functions
+        function openMobileCategoryMenu() {
+            console.log('Opening mobile category menu...');
+            const menu = document.getElementById('mobile-category-menu');
+            const sidebar = document.getElementById('category-sidebar');
+            
+            if (menu && sidebar) {
+                menu.classList.remove('hidden');
+                setTimeout(() => {
+                    sidebar.classList.remove('-translate-x-full');
+                    console.log('Mobile category menu opened');
+                }, 10);
+            } else {
+                console.log('Menu or sidebar not found');
+            }
+        }
+
+        function closeMobileCategoryMenu() {
+            console.log('Closing mobile category menu...');
+            const menu = document.getElementById('mobile-category-menu');
+            const sidebar = document.getElementById('category-sidebar');
+            
+            if (menu && sidebar) {
+                sidebar.classList.add('-translate-x-full');
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                    console.log('Mobile category menu closed');
+                }, 300);
+            } else {
+                console.log('Menu or sidebar not found');
+            }
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM Content Loaded - Initializing...');
@@ -3259,6 +3344,50 @@ footer a:hover {
             } else {
                 console.log('Hamburger element not found during initialization');
             }
+
+            // Event listeners for mobile category menu
+            const categoryMenuBtn = document.getElementById('category-menu-btn');
+            const closeCategoryMenuBtn = document.getElementById('close-category-menu');
+            const mobileCategoryMenu = document.getElementById('mobile-category-menu');
+
+            if (categoryMenuBtn) {
+                categoryMenuBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Category menu button clicked');
+                    openMobileCategoryMenu();
+                });
+            } else {
+                console.log('Category menu button not found');
+            }
+
+            if (closeCategoryMenuBtn) {
+                closeCategoryMenuBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Close button clicked');
+                    closeMobileCategoryMenu();
+                });
+            } else {
+                console.log('Close button not found');
+            }
+
+            // Close mobile category menu when clicking outside
+            if (mobileCategoryMenu) {
+                mobileCategoryMenu.addEventListener('click', function(e) {
+                    if (e.target === mobileCategoryMenu) {
+                        closeMobileCategoryMenu();
+                    }
+                });
+            }
+
+            // Close mobile category menu when clicking on category links
+            const categoryLinks = document.querySelectorAll('#mobile-category-menu a');
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMobileCategoryMenu();
+                });
+            });
             
             // Close mobile menu when clicking on menu items
             const menuItems = document.querySelectorAll('.navbar-menu a');
