@@ -1007,21 +1007,21 @@ footer a:hover {
     <!-- Shopping Cart Modal -->
     <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
         <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
-            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-500 max-h-[90vh] sm:max-h-[80vh] overflow-hidden flex flex-col">
+            <div class="rounded-lg shadow-2xl w-full max-w-md mx-auto border max-h-[90vh] sm:max-h-[80vh] overflow-hidden flex flex-col" style="background-color:#f5f5dc !important; color:#000 !important; border:2px solid #d4a017 !important;">
                 <!-- Cart Header -->
-                <div class="flex items-center justify-between p-3 sm:p-4 border-b border-yellow-500 flex-shrink-0">
-                    <h3 class="text-lg sm:text-xl font-bold text-yellow-500">Shopping Cart</h3>
-                    <button id="close-cart" class="text-gray-400 hover:text-yellow-500 text-xl sm:text-2xl font-bold">
+                <div class="flex items-center justify-between p-3 sm:p-4 border-b flex-shrink-0" style="border-color:#d4a017 !important;">
+                    <h3 class="text-lg sm:text-xl font-bold" style="color:#000 !important;">Shopping Cart</h3>
+                    <button id="close-cart" class="text-xl sm:text-2xl font-bold" style="color:#000 !important;">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
                 
                 <!-- Cart Items -->
-                <div id="cart-items" class="flex-1 overflow-y-auto p-3 sm:p-4">
+                <div id="cart-items" class="flex-1 overflow-y-auto p-3 sm:p-4" style="background-color:#f5f5dc !important; color:#000 !important;">
                     <!-- Cart items will be dynamically added here -->
                     <div id="empty-cart" class="text-center py-8">
-                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
-                        <p class="text-gray-400">Your cart is empty</p>
+                        <i class="fas fa-shopping-cart text-4xl mb-4" style="color:#d4a017 !important;"></i>
+                        <p style="color:#000 !important;">Your cart is empty</p>
                     </div>
                 </div>
                 
@@ -1476,14 +1476,14 @@ footer a:hover {
         // Sample products for all categories
         const sampleProducts = [
             // Polish & Shiners (curated)
-            { id: 1, name: "Black Gold Tire Shine - 680ML", description: "High shine, dries fast, long lasting. NET: 680ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/black and gold tire shine.jpeg", price: 2000 },
-            { id: 2, name: "AIM Tire Gel - 500ML", description: "Moistening, lustrous, durable. NET: 500ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/aim tire gel 500ml.jpeg", price: 750 },
-            { id: 3, name: "Leather & Tyre Wax (Lemon) - 300ML", description: "Leather & Tyre Wax. NET: 300ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/leather and tyre wax lemon.jpeg", price: 250 },
-            { id: 4, name: "Leather & Tyre Wax (Rose) - 300ML", description: "Leather & Tyre Wax (Rose). NET: 300ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/leather and tyre wax.jpeg", price: 250 },
+            { id: 1, name: "Black Gold Tire Shine - 680ML", description: "High shine, dries fast, long lasting. NET: 680ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/black and gold tire shine.jpeg", price: 2520 },
+            { id: 2, name: "AIM Tire Gel - 500ML", description: "Moistening, lustrous, durable. NET: 500ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/aim tire gel 500ml.jpeg", price: 600 },
+            { id: 3, name: "Leather & Tyre Wax (Lemon) - 300ML", description: "Leather & Tyre Wax. NET: 300ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/leather and tyre wax lemon.jpeg", price: 450 },
+            { id: 4, name: "Leather & Tyre Wax (Rose) - 300ML", description: "Leather & Tyre Wax (Rose). NET: 300ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/leather and tyre wax.jpeg", price: 450},
             { id: 5, name: "Scratch Out Liquid - 207ML", description: "Fine scratch + swirl remover. NET: 207ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/scratch out liquid.jpeg", price: 1500 },
-            { id: 6, name: "Scratch Out Paste - 227G", description: "Paste polishing compound. NET: 227G", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/scratchout paste.jpeg", price: 1600 },
-            { id: 7, name: "AIM Furniture Polish - 550ML", description: "Leather & Tyre Wax. NET: 550ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/aim furtinure polish.jpeg", price: 600 },
-            { id: 8, name: "AIM Hard Wax - 200GM", description: "Cleans, shines, protects. 200GM", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/aim had wax.jpeg", price: 900 },
+            { id: 6, name: "Scratch Out Paste - 227G", description: "Paste polishing compound. NET: 227G", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/scratchout paste.jpeg", price: 1800 },
+            { id: 7, name: "AIM Furniture Polish - 550ML", description: "Leather & Tyre Wax. NET: 550ML", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/aim furtinure polish.jpeg", price: 500 },
+            { id: 8, name: "AIM Hard Wax - 200GM", description: "Cleans, shines, protects. 200GM", category: "polish and shinners", image_url: "CAR POLISH & SHINNERS/aim had wax.jpeg", price: 950 },
             // Protectant Sprays (curated)
             {
                 id: 11,
@@ -1491,7 +1491,7 @@ footer a:hover {
                 description: "Cleans, shines & protects. NET: 680ML",
                 category: "protectant sprays",
                 image_url: "CAR PROCTING SPRAYS/f1-120 formulla 1 protectant spray.jpeg",
-                price: 1800
+                price: 2170
             },
             {
                 id: 12,
@@ -1499,7 +1499,7 @@ footer a:hover {
                 description: "Shines, protects & freshens. Cherry fragrance. NET: 295ML",
                 category: "protectant sprays",
                 image_url: "CAR PROCTING SPRAYS/formulla 1 protectant spray 295ml.jpeg",
-                price: 1200
+                price: 1400
             },
             {
                 id: 13,
@@ -1507,7 +1507,7 @@ footer a:hover {
                 description: "Shines, protects & freshens. Citrus fragrance. NET: 295ML",
                 category: "protectant sprays",
                 image_url: "CAR PROCTING SPRAYS/protectant spray 295ml.jpeg",
-                price: 1200
+                price: 1400
             },
             {
                 id: 14,
@@ -1515,7 +1515,7 @@ footer a:hover {
                 description: "Shines, protects & freshens. New car fragrance. NET: 295ML",
                 category: "protectant sprays",
                 image_url: "CAR PROCTING SPRAYS/formulla 1 protectant spray f1-123.jpeg",
-                price: 1200
+                price: 1400
             },
             {
                 id: 15,
@@ -1523,7 +1523,7 @@ footer a:hover {
                 description: "Shines, protects & freshens. NET: 295ML",
                 category: "protectant sprays",
                 image_url: "CAR PROCTING SPRAYS/formula 1 protectant spray.jpeg",
-                price: 1800
+                price: 1400
             },
             {
                 id: 16,
@@ -1531,7 +1531,7 @@ footer a:hover {
                 description: "Shines, protects & freshens. Vanilla fragrance. NET: 295ML",
                 category: "protectant sprays",
                 image_url: "CAR PROCTING SPRAYS/protectant spray 295ml.jpeg",
-                price: 1200
+                price: 1400
             },
             // Spray Paints
             {
@@ -1540,7 +1540,7 @@ footer a:hover {
                 description: "Professional automotive spray paint A-142. High-quality finish for all surfaces.",
                 category: "spray paints",
                 image_url: "CAR SPRAY PAINTS/A-142 AIM SPRAY PAINTS.jpeg",
-                price: 600
+                price: 450
             },
             {
                 id: 18,
@@ -1548,7 +1548,7 @@ footer a:hover {
                 description: "Red automotive spray paint A-143. Perfect color match for touch-ups.",
                 category: "spray paints",
                 image_url: "CAR SPRAY PAINTS/A-143 AIM SPRAY  PAINT RED.jpeg",
-                price: 600
+                price: 450
             },
             {
                 id: 19,
@@ -1556,7 +1556,7 @@ footer a:hover {
                 description: "Professional spray paint A-145. Durable finish for automotive applications.",
                 category: "spray paints",
                 image_url: "CAR SPRAY PAINTS/A-145 AIM SPRAY PAINT.jpeg",
-                price: 600
+                price: 450
             },
             {
                 id: 20,
@@ -1564,7 +1564,7 @@ footer a:hover {
                 description: "High-quality spray paint A-146. Excellent coverage and adhesion.",
                 category: "spray paints",
                 image_url: "CAR SPRAY PAINTS/A-146 AIM SPRAY PAINT.jpeg",
-                price: 600
+                price: 450
             },
             {
                 id: 21,
@@ -1572,7 +1572,7 @@ footer a:hover {
                 description: "Professional spray paint A-147. Long-lasting color and protection.",
                 category: "spray paints",
                 image_url: "CAR SPRAY PAINTS/A-147 AIM SPRAY PAINTS.jpeg",
-                price: 600
+                price: 450
             },
             {
                 id: 22,
@@ -1580,7 +1580,7 @@ footer a:hover {
                 description: "Automotive spray paint A-148. Perfect for bodywork and touch-ups.",
                 category: "spray paints",
                 image_url: "CAR SPRAY PAINTS/A-148 AIM SPARY PAINT.jpeg",
-                price: 600
+                price: 450
             },
             {
                 id: 23,
@@ -1588,7 +1588,7 @@ footer a:hover {
                 description: "Professional spray paint A-150. High-quality automotive finish.",
                 category: "spray paints",
                 image_url: "CAR SPRAY PAINTS/A-150 SPRAY PAINT.jpeg",
-                price: 600
+                price: 450
             },
             {
                 id: 24,
@@ -1596,7 +1596,7 @@ footer a:hover {
                 description: "Automotive spray paint A-151. Excellent color retention and durability.",
                 category: "spray paints",
                 image_url: "CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 600
+                price: 450
             },
             {
                 id: 25,
@@ -1604,7 +1604,7 @@ footer a:hover {
                 description: "Professional spray paint A-152. Perfect for automotive refinishing.",
                 category: "spray paints",
                 image_url: "CAR SPRAY PAINTS/A-152 AIM SPRAY PAINT.jpeg",
-                price: 600
+                price: 450
             },
             {
                 id: 26,
@@ -1612,7 +1612,7 @@ footer a:hover {
                 description: "High-quality spray paint A-153. Superior coverage and finish.",
                 category: "spray paints",
                 image_url: "CAR SPRAY PAINTS/A-153 AIM SPRAY PAINT.jpeg",
-                price: 600
+                price: 450
             },
             {
                 id: 27,
@@ -1620,7 +1620,7 @@ footer a:hover {
                 description: "Professional spray paint A-154. Long-lasting automotive finish.",
                 category: "spray paints",
                 image_url: "CAR SPRAY PAINTS/A-154 SPRAY PAINT.jpeg",
-                price: 600
+                price: 450
             },
             {
                 id: 28,
@@ -1628,7 +1628,7 @@ footer a:hover {
                 description: "Green automotive spray paint A-141. Perfect color match for green vehicles.",
                 category: "spray paints",
                 image_url: "CAR SPRAY PAINTS/AIM SPRAY PAINT A-141 GREEN.jpeg",
-                price: 600
+                price: 450
             },
             {
                 id: 29,
@@ -1636,7 +1636,7 @@ footer a:hover {
                 description: "Professional spray paint A-144. High-quality automotive finish.",
                 category: "spray paints",
                 image_url: "CAR SPRAY PAINTS/AIM SPRAY PAINT A-144.jpeg",
-                price: 600
+                price: 450
             },
             {
                 id: 30,
@@ -1644,7 +1644,7 @@ footer a:hover {
                 description: "Yellow automotive spray paint A-149. Bright, vibrant yellow finish.",
                 category: "spray paints",
                 image_url: "CAR SPRAY PAINTS/AIM SPRAY PAINT A-149 YELLOW.jpeg",
-                price: 600
+                price: 450
             },
             {
                 id: 31,
@@ -1652,72 +1652,72 @@ footer a:hover {
                 description: "Gray automotive spray paint A-155. Professional gray finish for vehicles.",
                 category: "spray paints",
                 image_url: "CAR SPRAY PAINTS/AIM SPRAY PAINT GRAY A-155.jpeg",
-                price: 600
+                price: 450
             },
             // Wash & Wax
             {
                 id: 37,
-                name: "LEATHER AND TYRE WAX",
+                name: "LEATHER AND TYRE WAX 300ml",
                 description: "Premium leather and tire wax A-113. Conditions and protects with long-lasting shine.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/A-113 LEATHER AND TYRE WAX.jpeg",
-                price: 250
+                price: 450
             },
             {
                 id: 38,
-                name: "LEATHER AND TYRE WAX",
+                name: "LEATHER AND TYRE WAX 300ml",
                 description: "Professional leather and tire wax A-115. Advanced protection formula.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/A-115 LEATHER AND TYRE WAX.jpeg",
-                price: 250
+                price: 450
             },
             {
                 id: 39,
-                name: "LEATHER AND TYRE WAX",
+                name: "LEATHER AND TYRE WAX 300ml",
                 description: "High-quality leather and tire wax A-117. Superior conditioning and protection.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/A-117 LEATHER AND TYRE WAX.jpeg",
-                price: 250
+                price: 450
             },
             {
                 id: 40,
-                name: "LEATHER AND TYRE WAX",
+                name: "LEATHER AND TYRE WAX 300ml",
                 description: "Premium leather and tire wax A-118. Long-lasting protection and shine.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/A-118 LEATHER AND TYPRE WAX.jpeg",
-                price: 250  
+                price: 450
             },
             {
                 id: 41,
-                name: "LEATHER AND TYRE WAX",
+                name: "LEATHER AND TYRE WAX 300ml",
                 description: "Professional leather and tire wax A-119. Advanced formula for superior results.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/A-119 LEATHER AND TYPRE WAX.jpeg",
-                price: 250
+                price: 450
             },
             {
                 id: 42,
-                name: "LEATHER AND TYRE WAX",
+                name: "LEATHER AND TYRE WAX 3ooml",
                 description: "High-performance leather and tire wax A-120. Premium protection and conditioning.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/A-120 LEATHER AND TYRE WAX.jpeg",
-                price: 250
+                price: 450
             },
             {
                 id: 43,
-                name: "LEATHER TYRE WAX",
+                name: "LEATHER TYRE WAX 300ml",
                 description: "Professional leather tire wax A-121. Superior shine and protection.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/A-121 LEATHER TYRE WAX.jpeg",
-                price: 250
+                price: 450
             },
             {
                 id: 44,
-                name: "AW WASH & WAX",
+                name: "AW WASH & WAX 300ml",
                 description: "Professional wash and wax AW-102. Cleans and protects in one step.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/AW-102 AW WASH & WAX.jpeg",
-                price: 750
+                price: 450
             },
             {
                 id: 45,
@@ -1725,7 +1725,7 @@ footer a:hover {
                 description: "High-quality wash and wax AW-103. Advanced cleaning and protection formula.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/AW-103 AW WASH & WAX.jpeg",
-                price: 750
+                price: 460
             },
             {
                 id: 46,
@@ -1733,145 +1733,101 @@ footer a:hover {
                 description: "Premium wash and wax AW-104. Superior cleaning and long-lasting protection.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/AW-104 AW WASH & WAX.jpeg",
-                price: 750
+                price: 460
             },
             {
                 id: 47,
-                name: "CARNAUBA WASH & WAX",
+                name: "CARNAUBA WASH & WAX 475ml",
                 description: "Carnauba wash and wax F1-101. Natural carnauba wax protection while washing.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/F1-101 CARNAUBA WASH &WAX.jpeg",
-                price: 1250
+                price: 1300
             },
             {
                 id: 48,
-                name: "CARNAUBA WASH & WAX",
+                name: "CARNAUBA WASH & WAX 946ml",
                 description: "Premium carnauba wash and wax F1-102. High-performance natural protection.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/F1-102 CARNAUBA WASH & WAX.jpeg",
-                price: 2000
+                price: 1900
             },
-            {
-                id: 49,
-                name: "CARNAUBA WASH & WAX",
-                description: "Professional carnauba wash and wax F1-103. Superior cleaning and protection.",
-                category: "wash & wax",
-                image_url: "CAR WASH & WAX/F1-103 CARNAUBA WASH & WAX.jpeg",
-                price: 3250
-            },
+          
             {
                 id: 50,
-                name: "CARNAUBA LIQUID WAX",
+                name: "CARNAUBA LIQUID WAX 946ml",
                 description: "Carnauba liquid wax F1-104. Easy-to-use liquid wax with natural protection.",
-                price: 1600,
+                price: 1900,
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/F1-104 CARNAUBA LIQUID WAX.jpeg"
             },
-            {
-                id: 51,
-                name: "CARNAUBA WAX PASTE",
-                description: "Carnauba wax paste F1-106. Traditional paste wax for superior protection.",
-                category: "wash & wax",
-                image_url: "CAR WASH & WAX/F1-106 CARNAUBA WAX PASTE.jpeg",
-                price: 1500
-            },
+           
             {
                 id: 52,
-                name: "CARNAUBA WAX PASTE",
+                name: "CARNAUBA WAX PASTE 120oz",
                 description: "Premium carnauba wax paste F1-107. High-quality paste wax for maximum protection.",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/F1-107 CARNAUBA WAX PASTE.jpeg",
-                price: 2000
+                price: 1850
             },
-            {
-                id: 53,
-                name: "CERAMIC LIQUID WAX",
-                description: "Ceramic liquid wax F1-113. Advanced ceramic technology for superior protection.",
-                category: "wash & wax",
-                image_url: "CAR WASH & WAX/F1-113 CERAMIC LIQUID WAX.jpeg",
-                price: 250
-            },
-            {
-                id: 54,
-                name: "CERAMIC SPRAY WAX",
-                description: "Ceramic spray wax F1-114. Easy-to-use ceramic protection in spray form.",
-                category: "wash & wax",
-                image_url: "CAR WASH & WAX/F1-114 CERAMIC SPRAY WAX.jpeg",
-                price: 2000
-            },
-            {
-                id: 55,
-                name: "CERAMIC WASH & WAX",
-                description: "Ceramic wash and wax F1-115. Advanced ceramic protection while washing.",
-                category: "wash & wax",
-                image_url: "CAR WASH & WAX/F1-115 CERAMIC WASH & WAX.jpeg",
-                price: 2000
-            },
+          
             // Wash Shampoos
-            {
-                id: 56,
-                name: "AIM WASH & SHAMPOO",
-                description: "Professional wash and shampoo AW-157. Cleans and shines all painted surfaces. 1 LTR.",
-                category: "wash shampoos",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 250
-            },
+           
             // Car Wax
             {
                 id: 57,
-                name: "LEATHER AND TYRE WAX",
+                name: "LEATHER AND TYRE WAX 300ml",
                 description: "Premium leather and tire wax A-113. Conditions and protects with long-lasting shine.",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 250
+                price: 450
             },
             {
                 id: 58,
-                name: "LEATHER AND TYRE WAX",
+                name: "LEATHER AND TYRE WAX 300ml",
                 description: "Professional leather and tire wax A-115. Advanced protection formula.",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 250
+                price: 450
             },
             {
                 id: 59,
-                name: "LEATHER AND TYRE WAX",
+                name: "LEATHER AND TYRE WAX 300ml",
                 description: "High-quality leather and tire wax A-117. Superior conditioning and protection.",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 250
+                price: 450
             },
             {
                 id: 60,
-                name: "LEATHER AND TYRE WAX",
+                name: "LEATHER AND TYRE WAX 300ml",
                 description: "Premium leather and tire wax A-118. Long-lasting protection and shine.",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 250
+                price: 450
             },
             {
                 id: 61,
-                name: "LEATHER AND TYRE WAX",
+                name: "LEATHER AND TYRE WAX 300ml",
                 description: "Professional leather and tire wax A-119. Advanced formula for superior results.",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 250
+                price: 450
             },
             {
                 id: 62,
-                name: "LEATHER AND TYRE WAX",
+                name: "LEATHER AND TYRE WAX 300ml",
                 description: "High-performance leather and tire wax A-120. Premium protection and conditioning.",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 250
+                price: 450
             },
             {
                 id: 63,
-                name: "LEATHER TYRE WAX",
+                name: "LEATHER TYRE WAX 300ml",
                 description: "Professional leather tire wax A-121. Superior shine and protection.",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 250
+                price: 450
             },
             {
                 id: 64,
@@ -1879,7 +1835,7 @@ footer a:hover {
                 description: "Professional wash and wax AW-102. Cleans and protects in one step.",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 750
+                price: 460
             },
             {
                 id: 65,
@@ -1887,7 +1843,7 @@ footer a:hover {
                 description: "High-quality wash and wax AW-103. Advanced cleaning and protection formula.",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 750
+                price: 460
             },
             {
                 id: 66,
@@ -1895,23 +1851,23 @@ footer a:hover {
                 description: "Premium wash and wax AW-104. Superior cleaning and long-lasting protection.",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 1250
+                price: 460
             },
             {
                 id: 67,
-                name: "CARNAUBA WASH & WAX",
+                name: "CARNAUBA WASH & WAX 475ml",
                 description: "Carnauba wash and wax F1-101. Natural carnauba wax protection while washing.",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 1250
+                price: 1450
             },
             {
                 id: 68,
-                name: "CARNAUBA WASH & WAX",
+                name: "CARNAUBA WASH & WAX 475ml",
                 description: "Premium carnauba wash and wax F1-102. High-performance natural protection.",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 2000
+                price: 1450
             },
             {
                 id: 69,
@@ -1919,360 +1875,178 @@ footer a:hover {
                 description: "Professional carnauba wash and wax F1-103. Superior cleaning and protection.",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 1250
+                price: 1450
             },
-            {
-                id: 70,
-                name: "CARNAUBA LIQUID WAX",
-                description: "Carnauba liquid wax F1-104. Easy-to-use liquid wax with natural protection.",
-                category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 1500
-            },
-            {
-                id: 71,
-                name: "CARNAUBA WAX PASTE",
-                description: "Carnauba wax paste F1-106. Traditional paste wax for superior protection.",
-                category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 1500
-            },
+           
             {
                 id: 72,
-                name: "CARNAUBA WAX PASTE",
+                name: "CARNAUBA WAX PASTE 120oz",
                 description: "Premium carnauba wax paste F1-107. High-quality paste wax for maximum protection.",
                 category: "car wax",
                 image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 1500
+                price: 1850
             },
-            {
-                id: 73,
-                name: "CERAMIC LIQUID WAX",
-                description: "Ceramic liquid wax F1-113. Advanced ceramic technology for superior protection.",
-                category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 2000
-            },
-            {
-                id: 74,
-                name: "CERAMIC SPRAY WAX",
-                description: "Ceramic spray wax F1-114. Easy-to-use ceramic protection in spray form.",
-                category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 2000
-            },
-            {
-                id: 75,
-                name: "CERAMIC WASH & WAX",
-                description: "Ceramic wash and wax F1-115. Advanced ceramic protection while washing.",
-                category: "car wax",
-                image_url: "products/CAR SPRAY PAINTS/A-151 AIM SPRAY PAINT.jpeg",
-                price: 2000
-            },
+           
+            
             // Cleaners
-            {
-                id: 76,
-                name: "INJECTOR CLEANER",
-                description: "Professional injector cleaner A-109. Cleans fuel injectors for optimal performance.",
-                price: 400,
-                category: "cleaners",
-                image_url: "CLEANERS/A-109 INJECTOR CLEANER.jpeg"
-            },
-            {
-                id: 77,
-                name: "INJECTOR CLEANER",
-                description: "High-quality injector cleaner A-110. Advanced formula for fuel system cleaning.",
-                price: 400,
-                category: "cleaners",
-                image_url: "CLEANERS/A-110 INJECTOR CLEANER.jpeg"
-            },
-            {
-                id: 78,
-                name: "INJECTOR CLEANER",
-                description: "Premium injector cleaner A-111. Professional fuel system maintenance.",
-                price: 400,
-                category: "cleaners",
-                image_url: "CLEANERS/A-111 INJECTOR CLEANER.jpeg"
-            },
+        
             {
                 id: 79,
                 name: "AIM CARB CLEANER",
                 description: "Professional carburetor cleaner A-112. Removes deposits and restores performance.",
-                price: 750,
+                price: 500,
                 category: "cleaners",
                 image_url: "CLEANERS/A-112 AIM CARB CLEANER.jpeg"
             },
             {
                 id: 80,
-                name: "AIM ANTI-RUST",
+                name: "AIM ANTI-RUST 220ml",
                 description: "Anti-rust protection A-123. Prevents corrosion and protects metal surfaces.",
-                price: 750,
+                price: 450,
                 category: "cleaners",
                 image_url: "CLEANERS/A-123 AIM ANTI-RUST.jpeg"
             },
             {
                 id: 81,
-                name: "AIM ANTI-RUST",
+                name: "AIM ANTI-RUST 100ml",
                 description: "Premium anti-rust protection A-124. Advanced corrosion prevention formula.",
-                price: 250,
+                price: 300,
                 category: "cleaners",
                 image_url: "CLEANERS/A-124 AIM ANTI-RUST.jpeg"
             },
             {
                 id: 82,
-                name: "AIM ENGINE CLEANER",
+                name: "AIM ENGINE CLEANER 650ml",
                 description: "Professional engine cleaner A-125. Removes grease and grime from engine surfaces.",
-                price: 700,
+                price: 500,
                 category: "cleaners",
                 image_url: "CLEANERS/A-125 AIM ENGINE CLEANER.jpeg"
             },
             {
                 id: 83,
-                name: "AIM TIRE FOAM",
+                name: "AIM TIRE FOAM 650ml",
                 description: "Tire foam cleaner A-126. Cleans and shines tires with foaming action.",
-                price: 450,
+                price: 500,
                 category: "cleaners",
                 image_url: "CLEANERS/A-126 AIM TIRE FOAM.jpeg"
             },
             {
                 id: 84,
-                name: "AIM TIRE FOAM",
+                name: "AIM TIRE FOAM 450ml",
                 description: "Premium tire foam cleaner A-127. Advanced foaming formula for superior cleaning.",
-                price: 250,
+                price: 420,
                 category: "cleaners",
                 image_url: "CLEANERS/A-127 AIM TIRE FOAM.jpeg"
             },
             {
                 id: 85,
-                name: " AIM FOAMY CLEANER",
+                name: " AIM FOAMY CLEANER 650ml",
                 description: "Foamy cleaner A-128. Versatile cleaning solution for multiple surfaces.",
-                price: 700,
+                price: 500,
                 category: "cleaners",
                 image_url: "CLEANERS/A-128 AIM FOAMY CLEANER.jpeg"
             },
             {
                 id: 86,
-                name: "AIM FOAMY CLEANER",
+                name: "AIM FOAMY CLEANER 450ml",
                 description: "Premium foamy cleaner A-129. Advanced foaming technology for deep cleaning.",
-                price: 550,
+                price: 400,
                 category: "cleaners",
                 image_url: "CLEANERS/A-129 AIM FOAMY CLEANER.jpeg"
             },
             {
                 id: 87,
-                name: "AIM GLASS CLEANER",
+                name: "AIM GLASS CLEANER 500ml",
                 description: "Professional glass cleaner A-131. Streak-free cleaning for all glass surfaces.",
-                price: 350,
+                price: 500,
                 category: "cleaners",
                 image_url: "CLEANERS/A-131 AIM GLASS CLEANER.jpeg"
             },
             {
                 id: 88,
-                name: "AIM WIND SCREEN WASHER",
+                name: "AIM WIND SCREEN WASHER 65ml",
                 description: "Wind screen washer fluid A-132. Cleans and prevents freezing in cold weather.",
-                price: 750,
+                price: 630,
                 category: "cleaners",
                 image_url: "CLEANERS/A-132 AIM WIND SCREEN WASHER.jpeg"
             },
             {
                 id: 89,
-                name: "AIM LEATHER CLEANER",
+                name: "AIM LEATHER CLEANER 650ml",
                 description: "Professional leather cleaner A-133. Cleans and conditions leather surfaces.",
-                price: 1000,
+                price: 650,
                 category: "cleaners",
                 image_url: "CLEANERS/A-133 AIM LEATHER CLEANER.jpeg"
             },
-            {
-                id: 90,
-                name: "AIM FUEL INJECTOR CLEANER",
-                description: "Fuel injector cleaner A-135. Advanced formula for fuel system maintenance.",
-                price: 750,
-                category: "cleaners",
-                image_url: "CLEANERS/A-135 AIM FUEL INJECTOR CLEANER.jpeg"
-            },
-            {
-                id: 91,
-                name: "AIM CATALYTIC SYSTEM CLEANER",
-                description: "Catalytic system cleaner A-136. Cleans and maintains catalytic converter performance.",
-                price: 750,
-                category: "cleaners",
-                image_url: "CLEANERS/A-136 AIM CATALYIC SYSTEM CLEANER.jpeg"
-            },
-            {
-                id: 92,
-                name: "AIM CATALYTIC SYSTEM CLEANER",
-                description: "Premium catalytic system cleaner A-136. Advanced cleaning for emission systems.",
-                price: 750,
-                category: "cleaners",
-                image_url: "CLEANERS/A-136-AIM-CATALYIC-SYSTEM-CLEANER.jpeg"
-            },
+           
+           
             // Radiator Coolers
             {
                 id: 98,
-                name: "AIM RADIATOR COOLANT",
+                name: "AIM RADIATOR COOLANT small bottle",
                 description: "Professional radiator coolant A-102. Prevents overheating and corrosion.",
-                price: "800",
+                price: "250",
                 category: "radiator coolers",
                 image_url: "RADIATOR COOLER/A-102 AIM RADIATOR COOLANT.jpeg"
             },
-            {
-                id: 99,
-                name: "AIM RADIATOR COOLANT",
-                description: "High-quality radiator coolant A-103. Advanced cooling system protection.",
-                price: "800",
-                category: "radiator coolers",
-                image_url: "RADIATOR COOLER/A-103 AIM RADIATOR COOLANT.jpeg"
-            },
-            {
-                id: 100,
-                name: "AIM ANTIFREEZE + COOLANT",
-                description: "Antifreeze and coolant A-104. Prevents freezing and provides cooling protection.",
-                price: "1499",
-                category: "radiator coolers",
-                image_url: "RADIATOR COOLER/A-104 AIM ANTIFREEZER +COOLANT.jpeg"
-            },
-            {
-                id: 101,
-                name: "AIM RADIATOR COOLANT",
-                description: "Premium radiator coolant A-105. Professional cooling system maintenance.",
-                price: "800",
-                category: "radiator coolers",
-                image_url: "RADIATOR COOLER/A-105 AIM RADIATOR COOLANT.jpeg"
-            },
-            {
-                id: 102,
-                name: "AIM RADIATOR COOLANT",
-                description: "Advanced radiator coolant A-106. Superior cooling and protection formula.",
-                price: "800",
-                category: "radiator coolers",
-                image_url: "RADIATOR COOLER/A-106 AIM RADIATOR COOLANT.jpeg"
-            },
-            {
-                id: 103,
-                name: "AIM RADIATOR COOLANT",
-                description: "Professional radiator coolant A-107. High-performance cooling system protection.",
-                price: "800",
-                category: "radiator coolers",
-                image_url: "RADIATOR COOLER/A-107 AIM RADIATOR COOLANT.jpeg"
-            },
-            {
-                id: 104,
-                name: "AIM RADIATOR COOLANT",
-                description: "Premium radiator coolant A-108. Advanced formula for optimal engine cooling.",
-                price: "800",
-                category: "radiator coolers",
-                image_url: "RADIATOR COOLER/A-108 AIM RADIATOR COOLANT.jpeg"
-            },
+        
+    
             // Car Wash & Wax (Additional Products)
-            {
-                id: 105,
-                name: "LEATHER AND TYRE WAX 300ml",
-                description: "Premium leather and tire wax A-113. Conditions and protects with long-lasting shine.",
-                price: 250,
-                category: "wash & wax",
-                image_url: "CAR WASH & WAX/A-113 LEATHER AND TYRE WAX.jpeg"
-            },
-            {
-                id: 106,
-                name: "LEATHER AND TYRE WAX 300ml",
-                description: "Professional leather and tire wax A-115. Advanced protection formula.",
-                price: 250,
-                category: "wash & wax",
-                image_url: "CAR WASH & WAX/A-115 LEATHER AND TYRE WAX.jpeg"
-            },
-            {
-                id: 107,
-                name: "LEATHER AND TYRE WAX 300ml",
-                description: "High-quality leather and tire wax A-117. Superior conditioning and protection.",
-                price: 250,
-                category: "wash & wax",
-                image_url: "CAR WASH & WAX/A-117 LEATHER AND TYRE WAX.jpeg"
-            },
-            {
-                id: 108,
-                name: "LEATHER AND TYRE WAX 300ml",
-                description: "Premium leather and tire wax A-118. Long-lasting protection and shine.",
-                price: 250,
-                category: "wash & wax",
-                image_url: "CAR WASH & WAX/A-118 LEATHER AND TYPRE WAX.jpeg"
-            },
-            {
-                id: 109,
-                name: "LEATHER AND TYRE WAX",
-                description: "Professional leather and tire wax A-119. Advanced formula for superior results.",
-                price: 250,
-                category: "wash & wax",
-                image_url: "CAR WASH & WAX/A-119 LEATHER AND TYPRE WAX.jpeg"
-            },
-            {
-                id: 110,
-                name: "LEATHER AND TYRE WAX",
-                description: "High-performance leather and tire wax A-120. Premium protection and conditioning.",
-                price: 250,
-                category: "wash & wax",
-                image_url: "CAR WASH & WAX/A-120 LEATHER AND TYRE WAX.jpeg"
-            },
-            {
-                id: 111,
-                name: "LEATHER TYRE WAX 450ml",
-                description: "Professional leather tire wax A-121. Superior shine and protection.",
-                price: 500,
-                category: "wash & wax",
-                image_url: "CAR WASH & WAX/A-121 LEATHER TYRE WAX.jpeg"
-            },
+          
+          
             {
                 id: 112,
-                name: "AW WASH & WAX",
+                name: "AW WASH & WAX 473ml",
                 description: "Professional wash and wax AW-102. Cleans and protects in one step.",
-                price: "1999",
+                price: "475",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/AW-102 AW WASH & WAX.jpeg"
             },
             {
                 id: 113,
-                name: "AW WASH & WAX",
+                name: "AW WASH & WAX 473ml",
                 description: "High-quality wash and wax AW-103. Advanced cleaning and protection formula.",
-                price: "1999",
+                price: "475",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/AW-103 AW WASH & WAX.jpeg"
             },
             {
                 id: 114,
-                name: "AW WASH & WAX",
+                name: "AW WASH & WAX 473ml",
                 description: "Premium wash and wax AW-104. Superior cleaning and long-lasting protection.",
-                price: "1999",
+                price: "475",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/AW-104 AW WASH & WAX.jpeg"
             },
             {
                 id: 115,
-                name: "F1-101 CARNAUBA WASH & WAX",
+                name: "CARNAUBA WASH & WAX 1.9 liter",
                 description: "Carnauba wash and wax F1-101. Natural carnauba wax protection while washing.",
-                price: "2299",
+                price: "3500",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/F1-101 CARNAUBA WASH &WAX.jpeg"
             },
             {
                 id: 116,
-                name: "F1-102 CARNAUBA WASH & WAX",
+                name: "F1-102 CARNAUBA WASH & WAX 1.9 liter",
                 description: "Premium carnauba wash and wax F1-102. High-performance natural protection.",
-                price: "2299",
+                price: "3500",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/F1-102 CARNAUBA WASH & WAX.jpeg"
             },
             {
                 id: 117,
-                name: "F1-103 CARNAUBA WASH & WAX",
+                name: "F1-103 CARNAUBA WASH & WAX 1.9 liter",
                 description: "Professional carnauba wash and wax F1-103. Superior cleaning and protection.",
-                price: "2299",
+                price: "3500",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/F1-103 CARNAUBA WASH&WAX.jpeg"
             },
             {
                 id: 118,
-                name: "F1-104 CARNAUBA LIQUID WAX",
+                name: "F1-104 CARNAUBA LIQUID WAX 1.9 liter ",
                 description: "Carnauba liquid wax F1-104. Easy-to-use liquid wax with natural protection.",
-                price: "2499",
+                price: "3500",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/F1-104 CARNAUBA LIQUID WAX.jpeg"
             },
@@ -2280,78 +2054,11 @@ footer a:hover {
                 id: 119,
                 name: "F1-106 CARNAUBA WAX PASTE",
                 description: "Carnauba wax paste F1-106. Traditional paste wax for superior protection.",
-                price: "2699",
+                price: "1900",
                 category: "wash & wax",
                 image_url: "CAR WASH & WAX/F1-106 CARNABUNA WAX PASTE.jpeg"
             },
-            {
-                id: 120,
-                name: "F1-107 CARNAUBA WAX PASTE",
-                description: "Premium carnauba wax paste F1-107. High-quality paste wax for maximum protection.",
-                price: "2699",
-                category: "wash & wax",
-                image_url: "CAR WASH & WAX/F1-107 CARNAUBA WAX PASTE.jpeg"
-            },
-            {
-                id: 121,
-                name: "F1-113 CERAMIC LIQUID WAX",
-                description: "Ceramic liquid wax F1-113. Advanced ceramic technology for superior protection.",
-                price: "2999",
-                category: "wash & wax",
-                image_url: "CAR WASH & WAX/F1-113 CERAMIC LIQUID WAX.jpeg"
-            },
-            {
-                id: 122,
-                name: "F1-114 CERAMIC SPRAY WAX",
-                description: "Ceramic spray wax F1-114. Easy-to-use ceramic protection in spray form.",
-                price: "2799",
-                category: "wash & wax",
-                image_url: "CAR WASH & WAX/F1-114 CERAMIC SPRAY WAX.jpeg"
-            },
-            {
-                id: 123,
-                name: "F1-115 CERAMIC WASH & WAX",
-                description: "Ceramic wash and wax F1-115. Advanced ceramic protection while washing.",
-                price: "2899",
-                category: "wash & wax",
-                image_url: "CAR WASH & WAX/FI-115 CERAMIC WASH&WAX.jpeg"
-            },
-            // Car Wash Shampoos
-            {
-                id: 124,
-                name: "AIM WASH & SHAMPOO",
-                description: "Professional wash and shampoo AW-157. Cleans and shines all painted surfaces. 1 LTR.",
-                price: 250,
-                category: "wash shampoos",
-                image_url: "CAR WASH SHAMPOOS/AW-157 AIM WASH & SHAMPOO.jpeg"
-            },
-            // Lubricants
-            {
-                id: 125,
-                name: "DEARGON ANTI-RUST LUBRICANT SPRAY 100ML",
-                description: "Professional anti-rust lubricant spray. Loosens rusted parts, frees sticky mechanisms, cleans and protects, drives out moisture, stops squeaks. NET 100ml.",
-                price: "899",
-                category: "lubricants",
-                image_url: "CAR LUBRICANTS/deargon-anti-rust-100ml.jpeg"
-            },
-            {
-                id: 126,
-                name: "DEARGON ANTI-RUST LUBRICANT SPRAY 220ML",
-                description: "Professional anti-rust lubricant spray with ISO9001 quality management system. Loosens rusted parts, frees sticky mechanisms, cleans and protects, drives out moisture, stops squeaks. NET 220ml.",
-                price: "1299",
-                category: "lubricants",
-                image_url: "CAR LUBRICANTS/deargon-anti-rust-220ml.jpeg"
-            },
-            {
-                id: 127,
-                
-                name: "DEARGON ANTI-RUST LUBRICANT SPRAY 450ML",
-                description: "International advanced formula anti-rust lubricant spray. Go beyond due to the high quality. Loosens rusted parts, frees sticky mechanisms, cleans and protects, drives out moisture, stops squeaks. NET 450ml.",
-                price: "",
-                category: "lubricants",
-                image_url: "CAR LUBRICANTS/deargon-anti-rust-450ml.jpeg"
-            },
-            // Car Perfumes
+        
         ];
 
         // Fix image paths by removing 'products/' prefix
