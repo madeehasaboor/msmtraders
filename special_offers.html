@@ -230,6 +230,21 @@
         window.viewSpecialDeal = viewSpecialDeal;
         window.closeDealModal = closeDealModal;
     </script>
+    <script>
+        // Auto-open deal when navigated with ?deal= param
+        (function(){
+            const params = new URLSearchParams(window.location.search);
+            const dealParam = params.get('deal');
+            if (dealParam && typeof viewSpecialDeal === 'function') {
+                // Defer until DOM is ready to ensure modal exists
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', function(){ viewSpecialDeal(dealParam); });
+                } else {
+                    viewSpecialDeal(dealParam);
+                }
+            }
+        })();
+    </script>
     <style>
         /* Beige background and black text */
         html { background-color: #f5f5dc !important; }
@@ -1267,7 +1282,7 @@
         // Close deal modal function moved to head section for immediate availability
 
         // Cart functionality (moved from later script section)
-        let cart = [];
+        // reuse existing cart array
 
         // Safe number formatting function
         function safeFormatNumber(num, decimals = 2) {
@@ -1637,7 +1652,7 @@
         });
 
         // Cart functionality
-        let cart = [];
+        // reuse existing cart array
 
         // Safe number formatting function
         function safeFormatNumber(num, decimals = 2) {
