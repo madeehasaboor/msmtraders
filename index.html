@@ -632,6 +632,7 @@
         body { background-color: #f5f5dc !important; padding-top: 0px !important; }
         /* Hero UI optimizer (Tailwind will be used for video element) */
         .hero-slideshow { overflow: hidden; }
+        
     </style>
     
 </head>
@@ -741,8 +742,8 @@
                                             Your browser does not support the video tag.
                                         </video>
                                         
+                                     </div>
                                     </div>
-                  </div>
                     
                 </div>
 
@@ -974,6 +975,19 @@
                     <p class="mb-4">Professional cleaning towels from Rs 450</p>
                     <span class="font-bold" style="color:#16803c;">Up to Rs 650 off!</span>
                 </div>
+
+                <!-- New: Special Car Care Bundle (AIM) Preview -->
+                <a href="special_offers.html?deal=car-care-aim" class="block">
+                    <div class="bg-white rounded-lg p-6 text-center transition-colors border border-[#e5d1a4] hover:shadow-lg">
+                        <div class="w-20 h-20 mx-auto mb-4 rounded-lg overflow-hidden">
+                            <img src="special deals/car care.jpeg" alt="Special Car Care Bundle (AIM)" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl font-bold text-golden mb-2">Special Car Care Bundle (AIM)</h3>
+                        <p class="mb-4">AIM Hard Wax 200Gm + AIM Foam Cleaner 660ML + Microfiber 40×40</p>
+                        <span class="font-bold" style="color:#16803c;">Now Rs 1,800 (save Rs 300)</span>
+                        <div class="mt-3 text-sm text-blue-700 underline">View Deal</div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -1076,6 +1090,7 @@
         setInterval(() => {
             changeSlide(1);
         }, 4000);
+
 
         // Cart functionality
         let cart = [];
