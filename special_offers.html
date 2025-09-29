@@ -115,6 +115,23 @@
             }
         }
 
+        // Auto-open deal from URL query param (?deal=car-care-aim)
+        (function autoOpenDealFromQuery() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const dealType = params.get('deal');
+                if (dealType && dealData[dealType]) {
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', () => viewSpecialDeal(dealType));
+                    } else {
+                        viewSpecialDeal(dealType);
+                    }
+                }
+            } catch (e) {
+                console.warn('Auto-open deal parse failed:', e);
+            }
+        })();
+
         function populateModal(deal, dealType) {
             // Populate modal with deal data
             const titleEl = document.getElementById('deal-modal-title');
@@ -229,21 +246,6 @@
         // Make functions globally accessible
         window.viewSpecialDeal = viewSpecialDeal;
         window.closeDealModal = closeDealModal;
-    </script>
-    <script>
-        // Auto-open deal when navigated with ?deal= param
-        (function(){
-            const params = new URLSearchParams(window.location.search);
-            const dealParam = params.get('deal');
-            if (dealParam && typeof viewSpecialDeal === 'function') {
-                // Defer until DOM is ready to ensure modal exists
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', function(){ viewSpecialDeal(dealParam); });
-                } else {
-                    viewSpecialDeal(dealParam);
-                }
-            }
-        })();
     </script>
     <style>
         /* Beige background and black text */
@@ -672,52 +674,52 @@
             <div class="flex flex-col lg:flex-row gap-8">
                 <!-- Categories Sidebar - Desktop Only -->
                 <div class="hidden lg:block lg:w-1/4">
-                    <div class="bg-gray-900 border border-golden rounded-lg p-6">
-                        <h3 class="text-xl font-bold text-golden mb-6 text-center">Shop by Category</h3>
+                    <div class="bg-[#f5f5dc] border-2 border-yellow-500 rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-black mb-6 text-center">Shop by Category</h3>
                         <ul class="space-y-3">
                             <li>
-                                <a href="car_care.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                <a href="car_care.html" class="flex items-center justify-between p-4 bg-white border-2 border-yellow-500 rounded-lg hover:bg-yellow-50 text-black transition-all duration-300 group">
                                     <div class="flex items-center space-x-3">
-                                        <i class="fas fa-car text-golden group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-golden group-hover:text-black">Car Care</span>
+                                        <i class="fas fa-car text-black text-xl"></i>
+                                        <span class="font-semibold text-black">Car Care</span>
                 </div>
-                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                                    <i class="fas fa-chevron-right text-black"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="microfiber_and_cleaners.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                <a href="microfiber_and_cleaners.html" class="flex items-center justify-between p-4 bg-white border-2 border-yellow-500 rounded-lg hover:bg-yellow-50 text-black transition-all duration-300 group">
                                     <div class="flex items-center space-x-3">
-                                        <i class="fas fa-home text-golden group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-golden group-hover:text-black">House Care</span>
+                                        <i class="fas fa-home text-black text-xl"></i>
+                                        <span class="font-semibold text-black">House Care</span>
             </div>
-                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                                    <i class="fas fa-chevron-right text-black"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="premium_perfumes.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                <a href="premium_perfumes.html" class="flex items-center justify-between p-4 bg-white border-2 border-yellow-500 rounded-lg hover:bg-yellow-50 text-black transition-all duration-300 group">
                                     <div class="flex items-center space-x-3">
-                                        <i class="fas fa-spray-can text-golden group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-golden group-hover:text-black">Premium Perfumes</span>
+                                        <i class="fas fa-spray-can text-black text-xl"></i>
+                                        <span class="font-semibold text-black">Premium Perfumes</span>
                 </div>
-                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                                    <i class="fas fa-chevron-right text-black"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="crockery.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                <a href="crockery.html" class="flex items-center justify-between p-4 bg-white border-2 border-yellow-500 rounded-lg hover:bg-yellow-50 text-black transition-all duration-300 group">
                                     <div class="flex items-center space-x-3">
-                                        <i class="fas fa-utensils text-golden group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-golden group-hover:text-black">Crockery</span>
+                                        <i class="fas fa-utensils text-black text-xl"></i>
+                                        <span class="font-semibold text-black">Crockery</span>
             </div>
-                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                                    <i class="fas fa-chevron-right text-black"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="laptops.html" class="flex items-center justify-between p-4 bg-gray-800 border border-golden/50 rounded-lg hover:bg-golden hover:text-black transition-all duration-300 group">
+                                <a href="laptops.html" class="flex items-center justify-between p-4 bg-white border-2 border-yellow-500 rounded-lg hover:bg-yellow-50 text-black transition-all duration-300 group">
                                     <div class="flex items-center space-x-3">
-                                        <i class="fas fa-laptop text-golden group-hover:text-black text-xl"></i>
-                                        <span class="font-semibold text-golden group-hover:text-black">Laptops</span>
+                                        <i class="fas fa-laptop text-black text-xl"></i>
+                                        <span class="font-semibold text-black">Laptops</span>
         </div>
-                                    <i class="fas fa-chevron-right text-golden group-hover:text-black"></i>
+                                    <i class="fas fa-chevron-right text-black"></i>
                                 </a>
                             </li>
                         </ul>
@@ -1003,48 +1005,48 @@
     <!-- Shopping Cart Modal -->
     <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
         <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
-            <div class="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-yellow-500 max-h-[90vh] sm:max-h-[80vh] overflow-hidden flex flex-col">
+            <div class="bg-[#f5f5dc] text-black rounded-lg shadow-2xl w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto border border-yellow-500 max-h-[92vh] sm:max-h-[88vh] overflow-hidden flex flex-col">
                 <!-- Cart Header -->
                 <div class="flex items-center justify-between p-3 sm:p-4 border-b border-yellow-500 flex-shrink-0">
-                    <h3 class="text-lg sm:text-xl font-bold text-yellow-500">Shopping Cart</h3>
-                    <button id="close-cart" class="text-gray-400 hover:text-yellow-500 text-xl sm:text-2xl font-bold">
+                    <h3 class="text-lg sm:text-xl font-bold">Shopping Cart</h3>
+                    <button id="close-cart" class="text-black hover:text-yellow-700 text-xl sm:text-2xl font-bold">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
                 
                 <!-- Cart Items -->
-                <div id="cart-items" class="flex-1 overflow-y-auto p-3 sm:p-4">
+                <div id="cart-items" class="flex-1 overflow-y-auto p-3 sm:p-4 bg-[#fff7e6]">
                     <!-- Cart items will be dynamically added here -->
                     <div id="empty-cart" class="text-center py-8">
-                        <i class="fas fa-shopping-cart text-4xl text-gray-600 mb-4"></i>
-                        <p class="text-gray-400">Your cart is empty</p>
+                        <i class="fas fa-shopping-cart text-4xl text-gray-500 mb-4"></i>
+                        <p class="text-gray-700">Your cart is empty</p>
                     </div>
                 </div>
                 
                 <!-- Customer Information Form -->
-                <div class="border-t border-yellow-500 p-3 sm:p-4 flex-shrink-0">
-                    <h4 class="text-yellow-500 font-semibold mb-3 text-sm sm:text-base">Customer Information</h4>
+                <div class="border-t border-yellow-500 p-3 sm:p-4 flex-shrink-0 bg-[#f5f5dc]">
+                    <h4 class="font-semibold mb-3 text-sm sm:text-base">Customer Information</h4>
                     <div class="space-y-2 mb-4">
                         <input type="text" id="cart-customer-name" placeholder="Full Name *" 
-                               class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-yellow-500" required>
+                               class="w-full px-3 py-2 bg-white border border-yellow-500 rounded-lg text-black text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
                         <input type="tel" id="cart-customer-phone" placeholder="Phone Number * (03XXXXXXXXX)" 
-                               class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-yellow-500" required>
+                               class="w-full px-3 py-2 bg-white border border-yellow-500 rounded-lg text-black text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
                         <textarea id="cart-customer-address" placeholder="Complete Address *" rows="2"
-                                  class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-yellow-500 resize-none" required></textarea>
+                                  class="w-full px-3 py-2 bg-white border border-yellow-500 rounded-lg text-black text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 resize-none" required></textarea>
                     </div>
                 </div>
                 
                 <!-- Cart Footer -->
-                <div class="border-t border-yellow-500 p-3 sm:p-4 flex-shrink-0">
+                <div class="border-t border-yellow-500 p-3 sm:p-4 flex-shrink-0 bg-[#f5f5dc]">
                     <div class="flex justify-between items-center mb-3 sm:mb-4">
-                        <span class="text-base sm:text-lg font-semibold text-yellow-500">Total:</span>
-                        <span id="cart-total" class="text-lg sm:text-xl font-bold text-yellow-500">Rs 0.00</span>
+                        <span class="text-base sm:text-lg font-semibold">Total:</span>
+                        <span id="cart-total" class="text-lg sm:text-xl font-bold">Rs 0.00</span>
                     </div>
-                    <div class="flex flex-col gap-2">
-                        <button id="clear-cart" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base">
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <button id="clear-cart" class="flex-1 bg-yellow-200 hover:bg-yellow-300 text-black px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base">
                             Clear Cart
                         </button>
-                        <button id="checkout-whatsapp" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base flex items-center justify-center">
+                        <button id="checkout-whatsapp" class="flex-1 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition duration-200 text-sm sm:text-base flex items-center justify-center">
                             <i class="fab fa-whatsapp mr-1 sm:mr-2"></i>
                             Order via WhatsApp
                         </button>
@@ -1116,7 +1118,7 @@
     </footer>
 
     <script>
-        // Cart functionality
+        // Cart functionality (primary declaration)
         let cart = [];
         let cartCount = 0;
 
@@ -1282,7 +1284,8 @@
         // Close deal modal function moved to head section for immediate availability
 
         // Cart functionality (moved from later script section)
-        // reuse existing cart array
+        // cart is declared earlier in the file; reuse the same instance
+        // let cart = [];
 
         // Safe number formatting function
         function safeFormatNumber(num, decimals = 2) {
@@ -1651,8 +1654,8 @@
             });
         });
 
-        // Cart functionality
-        // reuse existing cart array
+        // Cart functionality (secondary duplicate removed)
+        // let cart = [];
 
         // Safe number formatting function
         function safeFormatNumber(num, decimals = 2) {
