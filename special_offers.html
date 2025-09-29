@@ -56,6 +56,21 @@
                     'Complete car care guide'
                 ]
             },
+            'car-care-aim': {
+                title: 'Special Car Care Bundle (AIM)',
+                description: 'AIM Hard Wax 200Gm + AIM Foam Cleaner 660ML + Microfiber Towel 40×40. Limited-time special price!',
+                image: 'special deals/car care.jpeg',
+                originalPrice: 'Rs 2,100',
+                specialPrice: 'Rs 1,800',
+                delivery: 'Rs 200',
+                savings: 'Rs 300',
+                features: [
+                    'AIM Hard Wax 200Gm',
+                    'AIM Foam Cleaner 660ML',
+                    'Microfiber Towel 40×40',
+                    'Shine, clean and protect in one bundle'
+                ]
+            },
             'microfiber': {
                 title: 'Microfiber Bundle',
                 description: 'High-quality microfiber cleaning products for all your cleaning needs. Professional-grade cleaning solutions.',
@@ -797,6 +812,40 @@
                         <div class="flex items-center justify-between">
                             <span class="text-sm text-gray-500">Delivery: Rs 200</span>
                             <button class="bg-golden text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-300" onclick="viewSpecialDeal('car-care')">
+                                View Deal
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car Care AIM Bundle Deal -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative">
+                        <img src="special deals/car care.jpeg" alt="Special Car Care AIM Bundle" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Special Deal
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Special Car Care Bundle (AIM)</h3>
+                        <p class="text-gray-600 mb-3">AIM Hard Wax 200Gm + AIM Foam Cleaner 660ML + Microfiber Towel 40×40</p>
+                        <div class="mb-4">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-sm text-gray-500">Original Price:</span>
+                                <span class="text-sm text-gray-500 line-through">Rs 2,100</span>
+                            </div>
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-sm text-gray-500">Special Price:</span>
+                                <span class="text-lg font-bold text-green-600">Rs 1,800</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">You Save:</span>
+                                <span class="text-sm font-bold text-red-600">Rs 300</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">Delivery: Rs 200</span>
+                            <button class="bg-golden text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-300" onclick="viewSpecialDeal('car-care-aim')">
                                 View Deal
                             </button>
                         </div>
