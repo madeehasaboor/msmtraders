@@ -89,6 +89,22 @@
                     '<div class="text-center py-2 text-blue-600 font-medium">Professional-grade cleaning solutions</div>'
                 ]
             }
+            ,
+            'car-shampoo': {
+                title: 'Car Shampoo Special Bundle',
+                description: 'Formula Protectant Spray 295ML + AW Wash & Wax Shampoo 475ML + Microfiber Towel 40×40.',
+                image: 'special deals/car shampoo.jpeg',
+                originalPrice: 'Rs 2,350',
+                specialPrice: 'Rs 2,099',
+                delivery: 'Rs 200',
+                savings: 'Rs 251',
+                features: [
+                    'Formula Protectant Spray 295ML',
+                    'AW Wash & Wax Shampoo 475ML',
+                    'Microfiber Towel 40×40',
+                    'Great value care bundle'
+                ]
+            }
         };
 
         // View Special Deal function - moved to head for immediate availability
@@ -917,6 +933,40 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Car Shampoo Deal -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative">
+                        <img src="special deals/car shampoo.jpeg" alt="Car Shampoo Bundle" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Special Deal
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Car Shampoo Special Bundle</h3>
+                        <p class="text-gray-600 mb-3">Protectant Spray 295ML + Wash & Wax Shampoo 475ML + Microfiber 40×40</p>
+                        <div class="mb-4">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-sm text-gray-500">Original Price:</span>
+                                <span class="text-sm text-gray-500 line-through">Rs 2,350</span>
+                            </div>
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-sm text-gray-500">Special Price:</span>
+                                <span class="text-lg font-bold text-green-600">Rs 2,099</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">You Save:</span>
+                                <span class="text-sm font-bold text-red-600">Rs 251</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">Delivery: Rs 200</span>
+                            <button class="bg-golden text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-300" onclick="viewSpecialDeal('car-shampoo')">
+                                View Deal
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -924,7 +974,7 @@
     <!-- Special Deal Modal -->
     <div id="deal-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden">
         <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
-            <div class="bg-white rounded-lg shadow-2xl w-full max-w-6xl mx-auto max-h-[95vh] overflow-hidden">
+            <div class="bg-white rounded-lg sm:rounded-xl shadow-2xl w-full max-w-full sm:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto max-h-[96vh] sm:max-h-[94vh] overflow-hidden">
                 <!-- Modal Header -->
                 <div class="flex items-center justify-between p-3 sm:p-4 border-b border-gray-200">
                     <h3 class="text-lg sm:text-2xl font-bold text-gray-900">Special Deal Details</h3>
@@ -934,12 +984,12 @@
                 </div>
                 
                 <!-- Modal Content -->
-                <div class="p-3 sm:p-6 overflow-y-auto max-h-[calc(95vh-80px)]">
-                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-8">
+                <div class="p-3 sm:p-6 overflow-y-auto max-h-[calc(96vh-80px)]">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
                         <!-- Image Section -->
                         <div class="space-y-4">
                             <div class="relative">
-                                <img id="deal-modal-image" src="" alt="Deal Image" class="w-full h-48 sm:h-64 lg:h-80 xl:h-96 object-cover rounded-lg shadow-lg">
+                                <img id="deal-modal-image" src="" alt="Deal Image" class="w-full h-56 sm:h-64 lg:h-80 xl:h-96 object-cover rounded-lg shadow-lg">
                                 <div class="absolute top-2 sm:top-4 left-2 sm:left-4 bg-red-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
                                     Special Deal
                                 </div>
