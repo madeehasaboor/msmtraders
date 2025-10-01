@@ -603,12 +603,13 @@
         .product-card .image-container {
             width: 100%;
             height: 250px;          /* desktop height */
-            display: flex;
+            display: flex !important;
             align-items: center;
             justify-content: center;
             overflow: hidden;       /* hides extra image parts */
             background: #fff;       /* white background */
             border-radius: 8px;     /* optional: rounded edges */
+            visibility: visible !important;
         }
 
         /* Product images */
@@ -616,6 +617,9 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;    /* shows full product without stretching */
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
 
         /* Mobile responsive */
@@ -1001,11 +1005,13 @@ footer a:hover {
 }
 /* Force all text to black */
 html, body, section, nav, footer { color: #000 !important; }
-h1, h2, h3, h4, h5, h6, p, span, a, li, label, small, strong, em, div { color: #000 !important; }
-.text-white, .text-gray-100, .text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500 { color: #000 !important; }
-/* Make product cards yellow */
+h1, h2, li, label, small, strong, em { color: #000 !important; }
+/* Product card titles and prices should remain yellow - KEEP VISIBLE */
 .card, .product-card { background-color: #ffffff !important; border: 2px solid #d4a017 !important; }
-.card h3, .product-card h3 { color: #ffffff !important; }
+.card h3, .product-card h3 { color: #fbbf24 !important; }
+.product-card .text-yellow-400 { color: #fbbf24 !important; }
+.product-card .text-base, .product-card .text-lg { color: #fbbf24 !important; }
+.product-card .price { color: #fbbf24 !important; display: block !important; visibility: visible !important; }
 /* Header and footer yellow */
 nav, .navbar, header { background-color: #fbbf24 !important; border-bottom: 2px solid #d4a017 !important; }
 footer { background-color: #fbbf24 !important; border-top: 2px solid #d4a017 !important; color: #000 !important; }
@@ -1207,7 +1213,7 @@ body { background-color: #f5f5dc !important; }
 
         /* Price styling - Refreshed */
         .product-card .price {
-            color: #fbbf24;
+            color: #fbbf24 !important;
             font-weight: 800;
             font-size: 1.25rem;
             margin-top: 0.5rem;
@@ -2145,471 +2151,452 @@ body { background-color: #f5f5dc !important; }
                     </div>
                 </div>
 
-            <!-- BLU Premium Stainless Steel Collection -->
+            <!-- Tumblers & Bottles Category -->
             <div id="blu" class="mt-16">
                 <div class="mb-8">
-                    <h2 class="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">BLU Premium Stainless Steel Collection</h2>
-                    <p class="text-gray-300 text-lg">Premium stainless steel tumblers, bottles, coolers, cookware, and hydration products</p>
+                    <h2 class="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent mb-4">Tumblers & Bottles</h2>
+                    <p class="text-gray-300 text-lg">Premium stainless steel tumblers and bottles with advanced insulation technology</p>
                 </div>
 
-                <!-- Flip Lid Bottles 18oz Subcategory -->
+                <!-- Tumbler 900ml Subcategory -->
                 <div class="mb-12">
-                    <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-500/30 pb-2">Flip Lid Bottles 18oz</h3>
-                    <p class="text-gray-300 mb-6">Premium 18oz flip lid bottles with advanced insulation technology</p>
+                    <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-500/30 pb-2">TUMBLER 900ML</h3>
+                    <p class="text-gray-300 mb-6">Premium 900ml stainless steel tumblers - Rs 3,500</p>
                     
-                    <!-- Flip Lid Bottles Product Grid -->
                     <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 products-grid">
-                        <!-- BLU Flip Lid Bottle - Black -->
+                        <!-- BLU Tumbler 900ml - Black -->
                         <div class="product-card">
                             <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
                                 <div class="image-container">
-                                    <img src="crockery/BLU/Flip lid 18oz/Flip Lid 18oz black.jpeg" 
-                                         alt="BLU Flip Lid Bottle - Black 18oz" 
+                                    <img src="crockery/BLU/BLU Tumbler 30 OZ900ml/TUMBLERS  990ML 30 OZ BLACK.jpeg" 
+                                         alt="BLU Tumbler 900ml - Black" 
                                          class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                                     <div class="absolute top-2 right-2 bg-black text-white px-2 py-1 rounded-full text-xs font-bold">
-                                        18oz
+                                        900ml
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Flip Lid Bottle - Black</h3>
-                                <p class="price">Rs 2,450</p>
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 900ml - Black</h3>
+                                <p class="price">Rs 3,500</p>
                             </div>
                         </div>
 
-                        <!-- BLU Flip Lid Bottle - White -->
+                        <!-- BLU Tumbler 900ml - Pink -->
                         <div class="product-card">
                             <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
                                 <div class="image-container">
-                                    <img src="crockery/BLU/Flip lid 18oz/Flip Lid 18oz white.jpeg" 
-                                         alt="BLU Flip Lid Bottle - White 18oz" 
+                                    <img src="crockery/BLU/BLU Tumbler 30 OZ900ml/TUMBLERS  990ML 30 OZ PINK.jpeg" 
+                                         alt="BLU Tumbler 900ml - Pink" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                        900ml
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 900ml - Pink</h3>
+                                <p class="price">Rs 3,500</p>
+                            </div>
+                        </div>
+
+                        <!-- BLU Tumbler 900ml - Red -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/BLU Tumbler 30 OZ900ml/TUMBLERS  990ML 30 OZ RED.jpeg" 
+                                         alt="BLU Tumbler 900ml - Red" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                        900ml
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 900ml - Red</h3>
+                                <p class="price">Rs 3,500</p>
+                            </div>
+                        </div>
+
+                        <!-- BLU Tumbler 900ml - White -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/BLU Tumbler 30 OZ900ml/BLU Tumbler 30 OZ 900m WHITE.jpeg" 
+                                         alt="BLU Tumbler 900ml - White" 
                                          class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                                     <div class="absolute top-2 right-2 bg-gray-200 text-black px-2 py-1 rounded-full text-xs font-bold">
-                                        18oz
+                                        900ml
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Flip Lid Bottle - White</h3>
-                                <p class="price">Rs 2,450</p>
-                            </div>
-                        </div>
-
-                        <!-- BLU Flip Lid Bottle - Silver -->
-                        <div class="product-card">
-                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
-                                <div class="image-container">
-                                    <img src="crockery/BLU/Flip lid 18oz/Flip Lid 18oz silver.jpeg" 
-                                         alt="BLU Flip Lid Bottle - Silver 18oz" 
-                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
-                                    <div class="absolute top-2 right-2 bg-gray-400 text-black px-2 py-1 rounded-full text-xs font-bold">
-                                        18oz
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Flip Lid Bottle - Silver</h3>
-                                <p class="price">Rs 2,450</p>
-                            </div>
-                        </div>
-
-                        <!-- BLU Flip Lid Bottle - Baby Pink -->
-                        <div class="product-card">
-                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
-                                <div class="image-container">
-                                    <img src="crockery/BLU/Flip lid 18oz/Flip Lid 18oz baby pink.jpeg" 
-                                         alt="BLU Flip Lid Bottle - Baby Pink 18oz" 
-                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
-                                    <div class="absolute top-2 right-2 bg-pink-300 text-black px-2 py-1 rounded-full text-xs font-bold">
-                                        18oz
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Flip Lid Bottle - Baby Pink</h3>
-                                <p class="price">Rs 2,450</p>
-                            </div>
-                        </div>
-
-                        <!-- BLU Flip Lid Bottle - Blue -->
-                        <div class="product-card">
-                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
-                                <div class="image-container">
-                                    <img src="crockery/BLU/Flip lid 18oz/Flip Lid 18oz blue.jpeg" 
-                                         alt="BLU Flip Lid Bottle - Blue 18oz" 
-                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
-                                    <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                                        18oz
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Flip Lid Bottle - Blue</h3>
-                                <p class="price">Rs 2,450</p>
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 900ml - White</h3>
+                                <p class="price">Rs 3,500</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Screw Lid Cap 24oz Subcategory -->
+                <!-- Tumbler 1200ml Subcategory -->
                 <div class="mb-12">
-                    <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-500/30 pb-2">SCREW LID CAP 24OZ</h3>
-                    <p class="text-gray-300 mb-6">Premium 24oz screw lid bottles with advanced insulation technology and secure screw cap design</p>
+                    <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-500/30 pb-2">TUMBLER 1200ML</h3>
+                    <p class="text-gray-300 mb-6">Premium 1200ml stainless steel tumblers - Rs 4,000</p>
+                    
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 products-grid">
+                        <!-- BLU Tumbler 1200ml - Black -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/BLU Tumbler 40 OZ1200ml/BLU Tumbler 40 OZ 1200 BLACK.jpeg" 
+                                         alt="BLU Tumbler 1200ml - Black" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-black text-white px-2 py-1 rounded-full text-xs font-bold">
+                                        1200ml
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 1200ml - Black</h3>
+                                <p class="price">Rs 4,000</p>
+                            </div>
+                        </div>
+
+                        <!-- BLU Tumbler 1200ml - Pink -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/BLU Tumbler 40 OZ1200ml/BLU Tumbler 40 OZ 1200 PINK.jpeg" 
+                                         alt="BLU Tumbler 1200ml - Pink" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                        1200ml
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 1200ml - Pink</h3>
+                                <p class="price">Rs 4,000</p>
+                            </div>
+                        </div>
+
+                        <!-- BLU Tumbler 1200ml - Purple -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/BLU Tumbler 40 OZ1200ml/BLU Tumbler 40 OZ 1200 PURPLE.jpeg" 
+                                         alt="BLU Tumbler 1200ml - Purple" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                        1200ml
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 1200ml - Purple</h3>
+                                <p class="price">Rs 4,000</p>
+                            </div>
+                        </div>
+
+                        <!-- BLU Tumbler 1200ml - White -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/BLU Tumbler 40 OZ1200ml/BLU Tumbler 40 OZ 1200 WHITE.jpeg" 
+                                         alt="BLU Tumbler 1200ml - White" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-gray-200 text-black px-2 py-1 rounded-full text-xs font-bold">
+                                        1200ml
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 1200ml - White</h3>
+                                <p class="price">Rs 4,000</p>
+                            </div>
+                        </div>
+
+                        <!-- BLU Tumbler 1200ml - Orange -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/BLU Tumbler 40 OZ1200ml/BLU Tumbler 40 OZ 1200 ORANGE.jpeg" 
+                                         alt="BLU Tumbler 1200ml - Orange" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                        1200ml
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 1200ml - Orange</h3>
+                                <p class="price">Rs 4,000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLU Bottles 530ml Subcategory -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-500/30 pb-2">BLU BOTTLES 530ML</h3>
+                    <p class="text-gray-300 mb-6">Premium 530ml stainless steel bottles - Rs 2,500</p>
+                    
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 products-grid">
+                        <!-- BLU Bottle 530ml - White -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/BLU Bottle 18oz 530ml/BLU Bottle 18oz 530ml white.jpeg" 
+                                         alt="BLU Bottle 530ml - White" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-gray-200 text-black px-2 py-1 rounded-full text-xs font-bold">
+                                        530ml
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Bottle 530ml - White</h3>
+                                <p class="price">Rs 2,500</p>
+                            </div>
+                        </div>
+
+                        <!-- BLU Bottle 530ml - Silver -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/BLU Bottle 18oz 530ml/BLU Bottle 18oz 530ml silver.jpeg" 
+                                         alt="BLU Bottle 530ml - Silver" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-gray-400 text-black px-2 py-1 rounded-full text-xs font-bold">
+                                        530ml
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Bottle 530ml - Silver</h3>
+                                <p class="price">Rs 2,500</p>
+                            </div>
+                        </div>
+
+                        <!-- BLU Bottle 530ml - Blue -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/BLU Bottle 18oz 530ml/BLU Bottle 18oz 530ml blue.jpeg" 
+                                         alt="BLU Bottle 530ml - Blue" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                        530ml
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Bottle 530ml - Blue</h3>
+                                <p class="price">Rs 2,500</p>
+                            </div>
+                        </div>
+
+                        <!-- BLU Bottle 530ml - Pink -->
+                        <div class="product-card">
+                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
+                                <div class="image-container">
+                                    <img src="crockery/BLU/BLU Bottle 18oz 530ml/BLU Bottle 18oz 530ml pink.jpeg" 
+                                         alt="BLU Bottle 530ml - Pink" 
+                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
+                                    <div class="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                                        530ml
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2">
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Bottle 530ml - Pink</h3>
+                                <p class="price">Rs 2,500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLU Bottles 706ml Subcategory -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-500/30 pb-2">BLU BOTTLES 706ML</h3>
+                    <p class="text-gray-300 mb-6">Premium 706ml stainless steel bottles - Rs 3,000</p>
                     
                     <!-- Screw Lid Cap Bottles Product Grid -->
                     <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 products-grid">
-                        <!-- BLU Screw Lid Bottle - Black -->
+                        <!-- BLU Bottle 706ml - Black -->
                         <div class="product-card">
                             <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
                                 <div class="image-container">
-                                    <img src="crockery/BLU/SCREW LID 24OZ/SCREW LID 240Z BLACK.jpeg" 
-                                         alt="BLU Screw Lid Bottle - Black 24oz" 
+                                    <img src="crockery/BLU/BLU Bottle 24oz 706ml/BLU Bottles 24 oz 706ml  black.jpeg" 
+                                         alt="BLU Bottle 706ml - Black" 
                                          class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                                     <div class="absolute top-2 right-2 bg-black text-white px-2 py-1 rounded-full text-xs font-bold">
-                                        24oz
+                                        706ml
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Screw Lid Bottle - Black</h3>
-                                <p class="price">Rs 2,800</p>
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Bottle 706ml - Black</h3>
+                                <p class="price">Rs 3,000</p>
                             </div>
                         </div>
 
-                        <!-- BLU Screw Lid Bottle - Blue -->
+                        <!-- BLU Bottle 706ml - Blue -->
                         <div class="product-card">
                             <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
                                 <div class="image-container">
-                                    <img src="crockery/BLU/SCREW LID 24OZ/SCREW LID 240Z BLUE.jpeg" 
-                                         alt="BLU Screw Lid Bottle - Blue 24oz" 
+                                    <img src="crockery/BLU/BLU Bottle 24oz 706ml/BLU Bottles 24 oz 706ml  blue.jpeg" 
+                                         alt="BLU Bottle 706ml - Blue" 
                                          class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                                     <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                                        24oz
+                                        706ml
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Screw Lid Bottle - Blue</h3>
-                                <p class="price">Rs 2,800</p>
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Bottle 706ml - Blue</h3>
+                                <p class="price">Rs 3,000</p>
                             </div>
                         </div>
 
-                        <!-- BLU Screw Lid Bottle - Pink -->
+                        <!-- BLU Bottle 706ml - Pink -->
                         <div class="product-card">
                             <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
                                 <div class="image-container">
-                                    <img src="crockery/BLU/SCREW LID 24OZ/SCREW LID 240Z PINK.jpeg" 
-                                         alt="BLU Screw Lid Bottle - Pink 24oz" 
+                                    <img src="crockery/BLU/BLU Bottle 24oz 706ml/BLU Bottles 24 oz 706ml  pink.jpeg" 
+                                         alt="BLU Bottle 706ml - Pink" 
                                          class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                                     <div class="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                                        24oz
+                                        706ml
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Screw Lid Bottle - Pink</h3>
-                                <p class="price">Rs 2,800</p>
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Bottle 706ml - Pink</h3>
+                                <p class="price">Rs 3,000</p>
                             </div>
                         </div>
 
-                        <!-- BLU Screw Lid Bottle - Silver -->
+                        <!-- BLU Bottle 706ml - Silver -->
                         <div class="product-card">
                             <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
                                 <div class="image-container">
-                                    <img src="crockery/BLU/SCREW LID 24OZ/SCREW LID 240Z SILVER.jpeg" 
-                                         alt="BLU Screw Lid Bottle - Silver 24oz" 
+                                    <img src="crockery/BLU/BLU Bottle 24oz 706ml/BLU Bottles 24 oz 706ml  silver.jpeg" 
+                                         alt="BLU Bottle 706ml - Silver" 
                                          class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                                     <div class="absolute top-2 right-2 bg-gray-400 text-black px-2 py-1 rounded-full text-xs font-bold">
-                                        24oz
+                                        706ml
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Screw Lid Bottle - Silver</h3>
-                                <p class="price">Rs 2,800</p>
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Bottle 706ml - Silver</h3>
+                                <p class="price">Rs 3,000</p>
                             </div>
                         </div>
 
-                        <!-- BLU Screw Lid Bottle - Silver White -->
+                        <!-- BLU Bottle 706ml - White -->
                         <div class="product-card">
                             <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
                                 <div class="image-container">
-                                    <img src="crockery/BLU/SCREW LID 24OZ/SCREW LID 240Z WHITE.jpeg" 
-                                         alt="BLU Screw Lid Bottle - Silver White 24oz" 
+                                    <img src="crockery/BLU/BLU Bottle 24oz 706ml/BLU Bottles 24 oz 706ml  white.jpeg" 
+                                         alt="BLU Bottle 706ml - White" 
                                          class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                                     <div class="absolute top-2 right-2 bg-gray-200 text-black px-2 py-1 rounded-full text-xs font-bold">
-                                        24oz
+                                        706ml
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Screw Lid Bottle - Silver White</h3>
-                                <p class="price">Rs 2,800</p>
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Bottle 706ml - White</h3>
+                                <p class="price">Rs 3,000</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Chug Lid Bottles Subcategory -->
+                <!-- BLU Bottles 946ml Subcategory -->
                 <div class="mb-12">
-                    <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-500/30 pb-2">CHUG LID BOTTLES</h3>
-                    <p class="text-gray-300 mb-6">Premium chug lid bottles with advanced insulation technology and convenient chug lid design for easy drinking</p>
+                    <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-500/30 pb-2">BLU BOTTLES 946ML</h3>
+                    <p class="text-gray-300 mb-6">Premium 946ml stainless steel bottles - Rs 3,500</p>
                     
                     <!-- Chug Lid Bottles Product Grid -->
                     <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 products-grid">
-                        <!-- BLU Chug Lid Bottle - Black -->
+                        <!-- BLU Bottle 946ml - Black -->
                         <div class="product-card">
                             <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
                                 <div class="image-container">
-                                    <img src="crockery/BLU/chug lid/chug lid black.jpeg" 
-                                         alt="BLU Chug Lid Bottle - Black" 
+                                    <img src="crockery/BLU/BLU Bottles 32oz 946ml/BLU Bottles 946ml black.jpeg" 
+                                         alt="BLU Bottle 946ml - Black" 
                                          class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                                     <div class="absolute top-2 right-2 bg-black text-white px-2 py-1 rounded-full text-xs font-bold">
-                                        Chug
+                                        946ml
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Chug Lid Bottle - Black</h3>
-                                <p class="price">Rs 3,200</p>
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Bottle 946ml - Black</h3>
+                                <p class="price">Rs 3,500</p>
                             </div>
                         </div>
 
-                        <!-- BLU Chug Lid Bottle - Navy Blue -->
+                        <!-- BLU Bottle 946ml - Light Blue -->
                         <div class="product-card">
                             <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
                                 <div class="image-container">
-                                    <img src="crockery/BLU/chug lid/chug lid navy blue.jpeg" 
-                                         alt="BLU Chug Lid Bottle - Navy Blue" 
-                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
-                                    <div class="absolute top-2 right-2 bg-blue-800 text-white px-2 py-1 rounded-full text-xs font-bold">
-                                        Chug
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Chug Lid Bottle - Navy Blue</h3>
-                                <p class="price">Rs 3,200</p>
-                            </div>
-                        </div>
-
-                        <!-- BLU Chug Lid Bottle - Sky Blue -->
-                        <div class="product-card">
-                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
-                                <div class="image-container">
-                                    <img src="crockery/BLU/chug lid/chug lid sky blue.jpeg" 
-                                         alt="BLU Chug Lid Bottle - Sky Blue" 
+                                    <img src="crockery/BLU/BLU Bottles 32oz 946ml/BLU Bottles 946ml  light blue.jpeg" 
+                                         alt="BLU Bottle 946ml - Light Blue" 
                                          class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                                     <div class="absolute top-2 right-2 bg-sky-400 text-white px-2 py-1 rounded-full text-xs font-bold">
-                                        Chug
+                                        946ml
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Chug Lid Bottle - Sky Blue</h3>
-                                <p class="price">Rs 3,200</p>
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Bottle 946ml - Light Blue</h3>
+                                <p class="price">Rs 3,500</p>
                             </div>
                         </div>
 
-                        <!-- BLU Chug Lid Bottle - Silver -->
+                        <!-- BLU Bottle 946ml - Silver -->
                         <div class="product-card">
                             <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
                                 <div class="image-container">
-                                    <img src="crockery/BLU/chug lid/chug lid silver.jpeg" 
-                                         alt="BLU Chug Lid Bottle - Silver" 
+                                    <img src="crockery/BLU/BLU Bottles 32oz 946ml/BLU Bottles 946ml silver.jpeg" 
+                                         alt="BLU Bottle 946ml - Silver" 
                                          class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                                     <div class="absolute top-2 right-2 bg-gray-400 text-black px-2 py-1 rounded-full text-xs font-bold">
-                                        Chug
+                                        946ml
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Chug Lid Bottle - Silver</h3>
-                                <p class="price">Rs 3,200</p>
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Bottle 946ml - Silver</h3>
+                                <p class="price">Rs 3,500</p>
                             </div>
                         </div>
 
-                        <!-- BLU Chug Lid Bottle - White -->
+                        <!-- BLU Bottle 946ml - White -->
                         <div class="product-card">
                             <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
                                 <div class="image-container">
-                                    <img src="crockery/BLU/chug lid/chug lid white.jpeg" 
-                                         alt="BLU Chug Lid Bottle - White" 
+                                    <img src="crockery/BLU/BLU Bottles 32oz 946ml/BLU Bottles 946ml white.jpeg" 
+                                         alt="BLU Bottle 946ml - White" 
                                          class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
                                     <div class="absolute top-2 right-2 bg-gray-200 text-black px-2 py-1 rounded-full text-xs font-bold">
-                                        Chug
+                                        946ml
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Chug Lid Bottle - White</h3>
-                                <p class="price">Rs 3,200</p>
+                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Bottle 946ml - White</h3>
+                                <p class="price">Rs 3,500</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Tumbler 30 OZ Subcategory -->
-                <div class="mb-12">
-                    <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-500/30 pb-2">TUMBLER 30 OZ</h3>
-                    <p class="text-gray-300 mb-6">Premium 30oz stainless steel tumblers with advanced insulation technology for hot and cold beverages</p>
-                    
-                    <!-- Tumbler 30 OZ Product Grid -->
-                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 products-grid">
-                        <!-- BLU Tumbler 30 OZ - Black -->
-                        <div class="product-card">
-                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
-                                <div class="image-container">
-                                    <img src="crockery/BLU/tumbler 30 OZ/TUMBLERS 30 OZ BLACK.jpeg" 
-                                         alt="BLU Tumbler 30 OZ - Black" 
-                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
-                                    <div class="absolute top-2 right-2 bg-black text-white px-2 py-1 rounded-full text-xs font-bold">
-                                        30oz
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 30 OZ - Black</h3>
-                                <p class="price">Rs 3,300</p>
-                            </div>
-                        </div>
-
-                        <!-- BLU Tumbler 30 OZ - Pink -->
-                        <div class="product-card">
-                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
-                                <div class="image-container">
-                                    <img src="crockery/BLU/tumbler 30 OZ/TUMBLERS 30 OZ PINK.jpeg" 
-                                         alt="BLU Tumbler 30 OZ - Pink" 
-                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
-                                    <div class="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                                        30oz
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 30 OZ - Pink</h3>
-                                <p class="price">Rs 3,300</p>
-                            </div>
-                        </div>
-
-                        <!-- BLU Tumbler 30 OZ - Red -->
-                        <div class="product-card">
-                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
-                                <div class="image-container">
-                                    <img src="crockery/BLU/tumbler 30 OZ/TUMBLERS 30 OZ RED.jpeg" 
-                                         alt="BLU Tumbler 30 OZ - Red" 
-                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
-                                    <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                                        30oz
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 30 OZ - Red</h3>
-                                <p class="price">Rs 3,300</p>
-                            </div>
-                        </div>
-
-                        <!-- BLU Tumbler 30 OZ - White -->
-                        <div class="product-card">
-                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
-                                <div class="image-container">
-                                    <img src="crockery/BLU/tumbler 30 OZ/TUMBLERS 30 OZ WHITE.jpeg" 
-                                         alt="BLU Tumbler 30 OZ - White" 
-                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
-                                    <div class="absolute top-2 right-2 bg-gray-200 text-black px-2 py-1 rounded-full text-xs font-bold">
-                                        30oz
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 30 OZ - White</h3>
-                                <p class="price">Rs 3,300</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tumbler 40 OZ Subcategory -->
-                <div class="mb-12">
-                    <h3 class="text-2xl font-bold text-yellow-400 mb-6 border-b border-yellow-500/30 pb-2">TUMBLER 40 OZ</h3>
-                    <p class="text-gray-300 mb-6">Premium 40oz stainless steel tumblers with advanced insulation technology for hot and cold beverages</p>
-                    
-                    <!-- Tumbler 40 OZ Product Grid -->
-                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 products-grid">
-                        <!-- BLU Tumbler 40 OZ - Black -->
-                        <div class="product-card">
-                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
-                                <div class="image-container">
-                                    <img src="crockery/BLU/tumbler40oz/tumbler 40oz black.jpeg" 
-                                         alt="BLU Tumbler 40 OZ - Black" 
-                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
-                                    <div class="absolute top-2 right-2 bg-black text-white px-2 py-1 rounded-full text-xs font-bold">
-                                        40oz
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 40 OZ - Black</h3>
-                                <p class="price">Rs 3,725</p>
-                            </div>
-                        </div>
-
-                        <!-- BLU Tumbler 40 OZ - Pink -->
-                        <div class="product-card">
-                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
-                                <div class="image-container">
-                                    <img src="crockery/BLU/tumbler40oz/tumbler 40oz pink.jpeg" 
-                                         alt="BLU Tumbler 40 OZ - Pink" 
-                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
-                                    <div class="absolute top-2 right-2 bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                                        40oz
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 40 OZ - Pink</h3>
-                                <p class="price">Rs 3,725</p>
-                            </div>
-                        </div>
-
-                        <!-- BLU Tumbler 40 OZ - Purple -->
-                        <div class="product-card">
-                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
-                                <div class="image-container">
-                                    <img src="crockery/BLU/tumbler40oz/tumbler 40oz purple.jpeg" 
-                                         alt="BLU Tumbler 40 OZ - Purple" 
-                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
-                                    <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                                        40oz
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 40 OZ - Purple</h3>
-                                <p class="price">Rs 3,725</p>
-                            </div>
-                        </div>
-
-                        <!-- BLU Tumbler 40 OZ - White -->
-                        <div class="product-card">
-                            <div class="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-2xl overflow-hidden">
-                                <div class="image-container">
-                                    <img src="crockery/BLU/tumbler40oz/tumbler 40oz white.jpeg" 
-                                         alt="BLU Tumbler 40 OZ - White" 
-                                         class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="300">
-                                    <div class="absolute top-2 right-2 bg-gray-200 text-black px-2 py-1 rounded-full text-xs font-bold">
-                                        40oz
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center mt-2">
-                                <h3 class="text-base sm:text-lg font-semibold text-yellow-400">BLU Tumbler 40 OZ - White</h3>
-                                <p class="price">Rs 3,725</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </div>
 
             </div>
 
@@ -2865,98 +2852,66 @@ body { background-color: #f5f5dc !important; }
                     price: '18,500',
                     desc: 'Professional 12-piece stainless steel cookware set with superior heat distribution and durability'
                 },
-                'BLU Flip Lid Bottle - Black': {
-                    price: '2,450',
+                'BLU  Bottle 18 0z/530ml - Black': {
+                    price: '2,500',
                     desc: 'Premium 18oz flip lid bottle in black with advanced insulation technology and flip lid design'
                 },
-                'BLU Flip Lid Bottle - White': {
-                    price: '2,450',
+                'BLU Bottle 180z/530ml - White': {
+                    price: '2,500',
                     desc: 'Premium 18oz flip lid bottle in white with advanced insulation technology and flip lid design'
                 },
-                'BLU Flip Lid Bottle - Silver': {
-                    price: '2,450',
+                'BLU Bottle 180z/530ml - Silver': {
+                    price: '2,500',
                     desc: 'Premium 18oz flip lid bottle in silver with advanced insulation technology and flip lid design'
                 },
-                'BLU Flip Lid Bottle - Baby Pink': {
-                    price: '2,450',
+                'BLU Bottle 180z/530ml - Baby Pink': {
+                    price: '2,500',
                     desc: 'Premium 18oz flip lid bottle in baby pink with advanced insulation technology and flip lid design'
                 },
-                'BLU Flip Lid Bottle - Blue': {
-                    price: '2,450',
+                'BLU Bottle 180z/530ml - Blue': {
+                    price: '2,500',
                     desc: 'Premium 18oz flip lid bottle in blue with advanced insulation technology and flip lid design'
                 },
-                'BLU Screw Lid Bottle - Black': {
-                    price: '2,800',
+                'BLU Bottle 24oz/ 706ml  - Black': {
+                    price: '3,000',
                     desc: 'Premium 24oz screw lid bottle in black with advanced insulation technology and secure screw cap design'
                 },
-                'BLU Screw Lid Bottle - Blue': {
-                    price: '2,800',
+                'BLU Bottle 240z/706ml - Blue': {
+                    price: '3,000',
                     desc: 'Premium 24oz screw lid bottle in blue with advanced insulation technology and secure screw cap design'
                 },
-                'BLU Screw Lid Bottle - Pink': {
-                    price: '2,800',
+                'BLU Bottle 240oz/706ml- Pink': {
+                    price: '3,000',
                     desc: 'Premium 24oz screw lid bottle in pink with advanced insulation technology and secure screw cap design'
                 },
-                'BLU Screw Lid Bottle - Silver': {
-                    price: '2,800',
+                'BLU Bottle 24oz/706ml - Silver': {
+                    price: '3,000',
                     desc: 'Premium 24oz screw lid bottle in silver with advanced insulation technology and secure screw cap design'
                 },
-                'BLU Screw Lid Bottle - Silver White': {
-                    price: '2,800',
+                'BLU Bottle 24oz/706ml- Silver White': {
+                    price: '3,000',
                     desc: 'Premium 24oz screw lid bottle in silver white with advanced insulation technology and secure screw cap design'
                 },
-                'BLU Chug Lid Bottle - Black': {
-                    price: '3,200',
+                'BLU Bottle 32oz/946ml - Black': {
+                    price: '3,500',
                     desc: 'Premium chug lid bottle in black with advanced insulation technology and convenient chug lid design for easy drinking'
                 },
-                'BLU Chug Lid Bottle - Navy Blue': {
-                    price: '3,200',
+                'BLU Bottle 32oz/946ml - Navy Blue': {
+                    price: '3,500',
                     desc: 'Premium chug lid bottle in navy blue with advanced insulation technology and convenient chug lid design for easy drinking'
                 },
-                'BLU Chug Lid Bottle - Sky Blue': {
-                    price: '3,200',
+                'BLU Bottle 32oz/946ml - Sky Blue': {
+                    price: '3,500',
                     desc: 'Premium chug lid bottle in sky blue with advanced insulation technology and convenient chug lid design for easy drinking'
                 },
-                'BLU Chug Lid Bottle - Silver': {
-                    price: '3,200',
+                'BLU Bottle 32oz/946ml - Silver': {
+                    price: '3,500',
                     desc: 'Premium chug lid bottle in silver with advanced insulation technology and convenient chug lid design for easy drinking'
                 },
-                'BLU Chug Lid Bottle - White': {
-                    price: '3,200',
+                'BLU Bottle 320z/946ml - White': {
+                    price: '3,500',
                     desc: 'Premium chug lid bottle in white with advanced insulation technology and convenient chug lid design for easy drinking'
                 },
-            'BLU Tumbler 30 OZ - Black': {
-                price: '3,300',
-                desc: 'Premium 30oz stainless steel tumbler in black with advanced insulation technology for hot and cold beverages'
-            },
-            'BLU Tumbler 30 OZ - Pink': {
-                price: '3,300',
-                desc: 'Premium 30oz stainless steel tumbler in pink with advanced insulation technology for hot and cold beverages'
-            },
-            'BLU Tumbler 30 OZ - Red': {
-                price: '3,300',
-                desc: 'Premium 30oz stainless steel tumbler in red with advanced insulation technology for hot and cold beverages'
-            },
-            'BLU Tumbler 30 OZ - White': {
-                price: '3,300',
-                desc: 'Premium 30oz stainless steel tumbler in white with advanced insulation technology for hot and cold beverages'
-            },
-            'BLU Tumbler 40 OZ - Black': {
-                price: '3,725',
-                desc: 'Premium 40oz stainless steel tumbler in black with advanced insulation technology for hot and cold beverages'
-            },
-            'BLU Tumbler 40 OZ - Pink': {
-                price: '3,725',
-                desc: 'Premium 40oz stainless steel tumbler in pink with advanced insulation technology for hot and cold beverages'
-            },
-            'BLU Tumbler 40 OZ - Purple': {
-                price: '3,725',
-                desc: 'Premium 40oz stainless steel tumbler in purple with advanced insulation technology for hot and cold beverages'
-            },
-            'BLU Tumbler 40 OZ - White': {
-                price: '3,725',
-                desc: 'Premium 40oz stainless steel tumbler in white with advanced insulation technology for hot and cold beverages'
-            },
             '7 in 1 Kitchen Masala Rack Wall-mounted Spice Rack': {
                 price: '2,200',
                 desc: 'Master Chef 7-piece wall-mounted spice rack with high quality BPA-free plastic jars for organized kitchen storage'
