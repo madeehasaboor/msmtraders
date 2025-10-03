@@ -104,6 +104,23 @@
                     'Microfiber Towel 40×40',
                     'Great value care bundle'
                 ]
+            },
+            'car-bundle': {
+                title: 'Car Bundle Special Offer',
+                description: 'Complete car cleaning and care bundle with premium products for the ultimate car maintenance experience.',
+                image: 'SPECIAL OFFER CATEGORY/car BUNDLE.jpg',
+                originalPrice: 'Rs 4,000',
+                specialPrice: 'Rs 3,500',
+                delivery: 'Rs 200',
+                savings: 'Rs 500',
+                features: [
+                    'Cosmic Car Polish',
+                    'Car Shampoo 500ML',
+                    'Dashboard Polish Spray 450ML',
+                    'Multi Purpose Foam Cleaner',
+                    'Free Microfibre Cloth',
+                    'Professional car care solution'
+                ]
             }
         };
 
@@ -211,15 +228,15 @@
                 featuresList.innerHTML = '';
                 console.log('✅ Features list found, populating with:', deal.features);
                 deal.features.forEach((feature, index) => {
-                    const li = document.createElement('li');
+                    const div = document.createElement('div');
                     // Check if feature contains HTML (starts with <div)
                     if (feature.startsWith('<div')) {
-                        li.innerHTML = feature;
+                        div.innerHTML = feature;
                     } else {
-                        li.className = 'flex items-start space-x-2';
-                        li.innerHTML = `<i class="fas fa-check text-green-500 mt-1"></i><span>${feature}</span>`;
+                        div.className = 'inline-flex items-center bg-white rounded-full px-2 sm:px-3 py-1 border border-blue-200 shadow-sm hover:shadow-md transition-shadow';
+                        div.innerHTML = `<span class="bg-blue-500 text-white rounded-full w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center text-xs font-bold mr-1 sm:mr-2">${index + 1}</span><span class="whitespace-nowrap text-xs sm:text-sm">${feature}</span>`;
                     }
-                    featuresList.appendChild(li);
+                    featuresList.appendChild(div);
                     console.log(`✅ Feature ${index + 1} added:`, feature);
                 });
             }
@@ -417,10 +434,13 @@
         /* Mobile-first responsive breakpoints */
         @media (max-width: 320px) {
             .grid {
-                gap: 0.75rem;
+                gap: 0.5rem;
             }
             .product-card {
-                min-height: 200px;
+                min-height: 180px;
+            }
+            .modal-content {
+                padding: 0.5rem;
             }
         }
 
@@ -451,6 +471,33 @@
         @media (min-width: 1441px) {
             .grid {
                 gap: 2rem;
+            }
+        }
+
+        /* Enhanced responsive modal */
+        @media (max-width: 640px) {
+            .modal-content {
+                padding: 0.75rem;
+            }
+            .modal-grid {
+                gap: 1rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .modal-content {
+                padding: 1.5rem;
+            }
+            .modal-grid {
+                gap: 2rem;
+            }
+        }
+
+        /* Touch-friendly buttons */
+        @media (max-width: 768px) {
+            button {
+                min-height: 44px;
+                min-width: 44px;
             }
         }
 
@@ -767,35 +814,35 @@
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">Exclusive offers and bundle deals for amazing savings</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
                 <!-- Reed Diffusers Deal -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="relative">
-                        <img src="special deals/reed diffusers deal of 3.jpg" alt="Reed Diffusers Deal" class="w-full h-64 object-cover">
+                        <img src="special deals/reed diffusers deal of 3.jpg" alt="Reed Diffusers Deal" class="w-full h-auto object-contain bg-gray-50">
                         <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                             Special Deal
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Reed Diffusers Bundle</h3>
-                        <p class="text-gray-600 mb-2">Buy 3 reed diffusers of your choice</p>
-                        <div class="mb-3">
+                    <div class="p-3 sm:p-4 lg:p-6">
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-2">Reed Diffusers Bundle</h3>
+                        <p class="text-sm sm:text-base text-gray-600 mb-3">Buy 3 reed diffusers of your choice</p>
+                        <div class="mb-3 sm:mb-4">
                             <div class="flex items-center justify-between mb-1">
-                                <span class="text-sm text-gray-500">Original Price:</span>
-                                <span class="text-sm text-gray-500 line-through">Rs 4,500</span>
+                                <span class="text-xs sm:text-sm text-gray-500">Original Price:</span>
+                                <span class="text-xs sm:text-sm text-gray-500 line-through">Rs 4,500</span>
                             </div>
                             <div class="flex items-center justify-between mb-1">
-                                <span class="text-sm text-gray-500">Special Price:</span>
-                                <span class="text-lg font-bold text-red-600">Rs 4,000</span>
+                                <span class="text-xs sm:text-sm text-gray-500">Special Price:</span>
+                                <span class="text-base sm:text-lg font-bold text-red-600">Rs 4,000</span>
                             </div>
                             <div class="flex items-center justify-between">
-                                <span class="text-sm text-gray-500">Delivery:</span>
-                                <span class="text-sm font-semibold text-green-600">FREE</span>
+                                <span class="text-xs sm:text-sm text-gray-500">Delivery:</span>
+                                <span class="text-xs sm:text-sm font-semibold text-green-600">FREE</span>
                             </div>
                         </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-lg font-bold text-golden">Save Rs 500!</span>
-                            <button class="bg-golden text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-300" onclick="viewSpecialDeal('reed-diffusers')">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
+                            <span class="text-sm sm:text-lg font-bold text-golden">Save Rs 500!</span>
+                            <button class="bg-golden text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-300 text-sm sm:text-base" onclick="viewSpecialDeal('reed-diffusers')">
                                 View Deal
                             </button>
                         </div>
@@ -805,7 +852,7 @@
                 <!-- Car Care Deal -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="relative">
-                        <img src="special deals/car care deal.jpg" alt="Car Care Deal" class="w-full h-64 object-cover">
+                        <img src="special deals/car care deal.jpg" alt="Car Care Deal" class="w-full h-auto object-contain bg-gray-50">
                         <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                             Special Deal
                         </div>
@@ -854,7 +901,7 @@
                 <!-- Car Care AIM Bundle Deal -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="relative">
-                        <img src="special deals/car care.jpeg" alt="Special Car Care AIM Bundle" class="w-full h-64 object-cover">
+                        <img src="special deals/car care.jpeg" alt="Special Car Care AIM Bundle" class="w-full h-auto object-contain bg-gray-50">
                         <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                             Special Deal
                         </div>
@@ -888,7 +935,7 @@
                 <!-- Microfiber Deal -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="relative">
-                        <img src="special deals/microfiber deal.jpg" alt="Microfiber Deal" class="w-full h-64 object-cover">
+                        <img src="special deals/microfiber deal.jpg" alt="Microfiber Deal" class="w-full h-auto object-contain bg-gray-50">
                         <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                             Special Deal
                         </div>
@@ -937,7 +984,7 @@
                 <!-- Car Shampoo Deal -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="relative">
-                        <img src="special deals/car shampoo.jpeg" alt="Car Shampoo Bundle" class="w-full h-64 object-cover">
+                        <img src="special deals/car shampoo.jpeg" alt="Car Shampoo Bundle" class="w-full h-auto object-contain bg-gray-50">
                         <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                             Special Deal
                         </div>
@@ -967,81 +1014,116 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Car Bundle Deal -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative">
+                        <img src="SPECIAL OFFER CATEGORY/car BUNDLE.jpg" alt="Car Bundle Special Offer" class="w-full h-auto object-contain bg-gray-50">
+                        <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            Special Deal
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Car Bundle Special Offer</h3>
+                        <p class="text-gray-600 mb-3">Complete car cleaning and care bundle with premium products</p>
+                        <div class="mb-4">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-sm text-gray-500">Original Price:</span>
+                                <span class="text-sm text-gray-500 line-through">Rs 4,000</span>
+                            </div>
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-sm text-gray-500">Special Price:</span>
+                                <span class="text-lg font-bold text-green-600">Rs 3,500</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">You Save:</span>
+                                <span class="text-sm font-bold text-red-600">Rs 500</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">Delivery: Rs 200</span>
+                            <button class="bg-golden text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-300" onclick="viewSpecialDeal('car-bundle')">
+                                View Deal
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Special Deal Modal -->
-    <div id="deal-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden">
-        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4">
-            <div class="bg-white rounded-lg sm:rounded-xl shadow-2xl w-full max-w-full sm:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto max-h-[96vh] sm:max-h-[94vh] overflow-hidden">
+    <div id="deal-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden cursor-pointer" onclick="closeDealModal()">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4 lg:p-6" onclick="event.stopPropagation()">
+            <div class="bg-white rounded-lg sm:rounded-xl shadow-2xl w-full max-w-full sm:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto max-h-[98vh] sm:max-h-[95vh] lg:max-h-[90vh] overflow-hidden">
                 <!-- Modal Header -->
                 <div class="flex items-center justify-between p-3 sm:p-4 border-b border-gray-200">
-                    <h3 class="text-lg sm:text-2xl font-bold text-gray-900">Special Deal Details</h3>
-                    <button id="close-deal-modal" class="text-gray-400 hover:text-gray-600 text-2xl sm:text-3xl font-bold p-1" onclick="closeDealModal()">
-                        <i class="fas fa-times"></i>
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-900">Special Deal Details</h3>
+                    <button id="close-deal-modal" class="bg-red-600 hover:bg-red-700 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-2xl sm:text-3xl font-bold transition-all duration-200 shadow-xl border-2 border-red-800" onclick="closeDealModal()" style="z-index: 1001;">
+                        ✕
                     </button>
                 </div>
                 
                 <!-- Modal Content -->
-                <div class="p-3 sm:p-6 overflow-y-auto max-h-[calc(96vh-80px)]">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
+                <div class="p-3 sm:p-4 lg:p-6 overflow-hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
                         <!-- Image Section -->
-                        <div class="space-y-4">
+                        <div class="space-y-2">
                             <div class="relative">
-                                <img id="deal-modal-image" src="" alt="Deal Image" class="w-full h-56 sm:h-64 lg:h-80 xl:h-96 object-cover rounded-lg shadow-lg">
-                                <div class="absolute top-2 sm:top-4 left-2 sm:left-4 bg-red-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
+                                <img id="deal-modal-image" src="" alt="Deal Image" class="w-full h-auto max-h-[50vh] sm:max-h-[55vh] lg:max-h-[60vh] object-contain rounded-lg shadow-lg">
+                                <div class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
                                     Special Deal
                                 </div>
                             </div>
                         </div>
                         
                         <!-- Details Section -->
-                        <div class="space-y-4 sm:space-y-6">
+                        <div class="space-y-3 sm:space-y-4">
                             <div>
-                                <h4 id="deal-modal-title" class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-4"></h4>
-                                <p id="deal-modal-description" class="text-sm sm:text-base lg:text-lg text-gray-600 mb-4 sm:mb-6"></p>
+                                <h4 id="deal-modal-title" class="text-lg sm:text-xl font-bold text-gray-900 mb-2"></h4>
+                                <p id="deal-modal-description" class="text-sm sm:text-base text-gray-600 mb-3"></p>
                             </div>
                             
                             <!-- Pricing Section -->
-                            <div class="bg-gray-50 rounded-lg p-4 sm:p-6">
-                                <h5 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Pricing Details</h5>
-                                <div class="space-y-2 sm:space-y-3">
+                            <div class="bg-gray-50 rounded-lg p-3 sm:p-4">
+                                <h5 class="text-base sm:text-lg font-semibold text-gray-900 mb-3">Pricing Details</h5>
+                                <div class="space-y-2">
                                     <div class="flex justify-between items-center">
                                         <span class="text-sm sm:text-base text-gray-600">Original Price:</span>
-                                        <span id="deal-original-price" class="text-sm sm:text-lg text-gray-500 line-through"></span>
+                                        <span id="deal-original-price" class="text-sm sm:text-base text-gray-500 line-through"></span>
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <span class="text-sm sm:text-base text-gray-600">Special Price:</span>
-                                        <span id="deal-special-price" class="text-lg sm:text-2xl font-bold text-red-600"></span>
+                                        <span id="deal-special-price" class="text-lg sm:text-xl font-bold text-red-600"></span>
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <span class="text-sm sm:text-base text-gray-600">Delivery:</span>
-                                        <span id="deal-delivery" class="text-sm sm:text-lg font-semibold text-green-600"></span>
+                                        <span id="deal-delivery" class="text-sm sm:text-base font-semibold text-green-600"></span>
                                     </div>
-                                    <hr class="my-2 sm:my-3">
+                                    <hr class="my-2">
                                     <div class="flex justify-between items-center">
-                                        <span class="text-base sm:text-xl font-bold text-gray-900">You Save:</span>
-                                        <span id="deal-savings" class="text-lg sm:text-2xl font-bold text-golden"></span>
+                                        <span class="text-base sm:text-lg font-bold text-gray-900">You Save:</span>
+                                        <span id="deal-savings" class="text-lg sm:text-xl font-bold text-golden"></span>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Features Section -->
-                            <div class="bg-blue-50 rounded-lg p-4 sm:p-6">
-                                <h5 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">What's Included</h5>
-                                <ul id="deal-features" class="space-y-1 sm:space-y-2 text-sm sm:text-base text-gray-700">
+                            <div class="bg-blue-50 rounded-lg p-3 sm:p-4">
+                                <h5 class="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">What's Included</h5>
+                                <div id="deal-features" class="flex flex-wrap gap-1 sm:gap-2 text-xs sm:text-sm text-gray-700 max-h-24 sm:max-h-28 lg:max-h-32 overflow-y-auto">
                                     <!-- Features will be populated by JavaScript -->
-                                </ul>
+                                </div>
                             </div>
                             
                             <!-- Action Buttons -->
-                            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                                <button id="deal-add-to-cart-btn" class="flex-1 bg-golden hover:bg-yellow-600 text-black px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition duration-300 flex items-center justify-center text-sm sm:text-base" onclick="handleAddToCartFromModal()">
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <button id="deal-add-to-cart-btn" class="flex-1 bg-golden hover:bg-yellow-600 text-black px-4 sm:px-6 py-3 rounded-lg font-semibold transition duration-300 flex items-center justify-center text-sm sm:text-base" onclick="handleAddToCartFromModal()">
                                     <i class="fas fa-shopping-cart mr-2"></i>
                                     Add to Cart
                                 </button>
-                                <button id="deal-close-btn" class="flex-1 bg-gray-600 hover:bg-gray-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition duration-300 text-sm sm:text-base" onclick="closeDealModal()">
+                                <button id="deal-close-btn" class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 sm:px-6 py-3 rounded-lg font-semibold transition duration-300 text-sm sm:text-base flex items-center justify-center" onclick="closeDealModal()">
+                                    <i class="fas fa-times mr-2"></i>
                                     Close
                                 </button>
                             </div>
