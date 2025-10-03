@@ -267,8 +267,13 @@
             }
         })();
 
-        function populateModal(deal, dealType) {
             // Populate modal with deal data
+        function populateModal(deal, dealType) {
+            console.log('=== populateModal DEBUG START ===');
+            console.log('Deal data:', deal);
+            console.log('Deal type:', dealType);
+
+            // Get modal elements
             const titleEl = document.getElementById('deal-modal-title');
             const descEl = document.getElementById('deal-modal-description');
             const imgEl = document.getElementById('deal-modal-image');
@@ -276,16 +281,7 @@
             const specPriceEl = document.getElementById('deal-special-price');
             const deliveryEl = document.getElementById('deal-delivery');
             const savingsEl = document.getElementById('deal-savings');
-
-            console.log('Modal elements found:', {
-                titleEl: !!titleEl,
-                descEl: !!descEl,
-                imgEl: !!imgEl,
-                origPriceEl: !!origPriceEl,
-                specPriceEl: !!specPriceEl,
-                deliveryEl: !!deliveryEl,
-                savingsEl: !!savingsEl
-            });
+            const featuresEl = document.getElementById('deal-features');
 
             // Populate modal content
             if (titleEl) {
@@ -325,22 +321,15 @@
             }
 
             // Populate features
-            const featuresList = document.getElementById('deal-features');
-            if (featuresList) {
-                featuresList.innerHTML = '';
-                console.log('✅ Features list found, populating with:', deal.features);
+            if (featuresEl && deal.features) {
+                featuresEl.innerHTML = '';
                 deal.features.forEach((feature, index) => {
                     const div = document.createElement('div');
-                    // Check if feature contains HTML (starts with <div)
-                    if (feature.startsWith('<div')) {
-                        div.innerHTML = feature;
-                    } else {
-                        div.className = 'inline-flex items-center bg-white rounded-full px-2 sm:px-3 py-1 border border-blue-200 shadow-sm hover:shadow-md transition-shadow';
-                        div.innerHTML = `<span class="bg-blue-500 text-white rounded-full w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center text-xs font-bold mr-1 sm:mr-2">${index + 1}</span><span class="whitespace-nowrap text-xs sm:text-sm">${feature}</span>`;
-                    }
-                    featuresList.appendChild(div);
-                    console.log(`✅ Feature ${index + 1} added:`, feature);
+                    div.className = 'inline-flex items-center bg-white rounded-full px-2 sm:px-3 py-1 border border-blue-200 shadow-sm hover:shadow-md transition-shadow';
+                    div.innerHTML = `<span class="bg-blue-500 text-white rounded-full w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center text-xs font-bold mr-1 sm:mr-2">${index + 1}</span><span class="whitespace-nowrap text-xs sm:text-sm">${feature}</span>`;
+                    featuresEl.appendChild(div);
                 });
+                console.log('✅ Features populated:', deal.features.length, 'features');
             }
 
             // Store current deal for Add to Cart button
@@ -355,32 +344,46 @@
             if (modal) {
                 modal.classList.remove('hidden');
                 console.log('✅ Modal shown successfully');
-                console.log('Modal classes:', modal.className);
             } else {
                 console.error('❌ Modal element not found');
             }
             
-            console.log('=== viewSpecialDeal DEBUG END ===');
+            console.log('=== populateModal DEBUG END ===');
         }
 
-        // Close deal modal function - moved to head for immediate availability
+        // Close deal modal function
         function closeDealModal() {
             console.log('=== closeDealModal DEBUG START ===');
             const modal = document.getElementById('deal-modal');
-            console.log('Modal element found:', !!modal);
             if (modal) {
                 modal.classList.add('hidden');
                 console.log('✅ Modal hidden successfully');
-                console.log('Modal classes after hiding:', modal.className);
             } else {
                 console.error('❌ Modal element not found');
             }
             console.log('=== closeDealModal DEBUG END ===');
         }
 
+        // Handle Add to Cart button click from modal
+        function handleAddToCartFromModal() {
+            console.log('=== handleAddToCartFromModal DEBUG START ===');
+            const addToCartBtn = document.getElementById('deal-add-to-cart-btn');
+            
+            if (addToCartBtn && addToCartBtn.dataset.dealType) {
+                console.log('✅ Calling addDealToCart with:', addToCartBtn.dataset.dealType);
+                addDealToCart(addToCartBtn.dataset.dealType);
+            } else {
+                console.error('❌ Add to Cart button or deal type not found');
+                showNotification('Error: Deal type not found', 'error');
+            }
+            console.log('=== handleAddToCartFromModal DEBUG END ===');
+        }
+
         // Make functions globally accessible
         window.viewSpecialDeal = viewSpecialDeal;
+        window.populateModal = populateModal;
         window.closeDealModal = closeDealModal;
+        window.handleAddToCartFromModal = handleAddToCartFromModal;
     </script>
     <style>
         /* Beige background and black text */
@@ -664,6 +667,58 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.7; }
         }
+        
+        /* Modal Optimizations for Mobile and Laptop */
+        @media (max-width: 640px) {
+            #deal-modal {
+                padding: 0.5rem !important;
+            }
+            
+            #deal-modal .bg-white {
+                max-height: 95vh !important;
+                margin: 0.5rem !important;
+                border-radius: 1rem !important;
+            }
+            
+            #deal-modal .grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            #deal-modal img {
+                max-height: 35vh !important;
+            }
+            
+            #deal-modal button {
+                min-height: 48px !important;
+                font-size: 1rem !important;
+                font-weight: 600 !important;
+            }
+            
+            #deal-modal .overflow-y-auto {
+                max-height: 15vh !important;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            #deal-modal .bg-white {
+                max-width: 80vw !important;
+            }
+            
+            #deal-modal .grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 2rem !important;
+            }
+            
+            #deal-modal img {
+                max-height: 50vh !important;
+            }
+            
+            #deal-modal button {
+                min-height: 52px !important;
+                font-size: 1.125rem !important;
+            }
+        }
     </style>
     <style>
         /* Hamburger menu beige styling */
@@ -761,39 +816,6 @@
             }
         }
         
-        /* Mobile Modal Optimizations */
-        @media (max-width: 640px) {
-            #deal-modal {
-                padding: 0.25rem !important;
-            }
-            
-            #deal-modal .bg-white {
-                max-height: 95vh !important;
-                margin: 0.25rem !important;
-            }
-            
-            #deal-modal .grid {
-                grid-template-columns: 1fr !important;
-                gap: 0.75rem !important;
-            }
-            
-            #deal-modal img {
-                max-height: 30vh !important;
-            }
-            
-            #deal-modal .space-y-2 > * + * {
-                margin-top: 0.5rem !important;
-            }
-            
-            #deal-modal button {
-                min-height: 44px !important; /* iOS touch target size */
-                font-size: 0.875rem !important;
-            }
-            
-            #deal-modal .overflow-y-auto {
-                max-height: 12vh !important;
-            }
-        }
     </style>
 </head>
 <body>
@@ -1164,8 +1186,8 @@
                         <img src="SPECIAL OFFER CATEGORY/car BUNDLE.jpg" alt="Car Bundle Special Offer" class="w-full h-auto object-contain bg-gray-50">
                         <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                             Special Deal
-                        </div>
-                    </div>
+            </div>
+        </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Car Bundle Special Offer</h3>
                         <p class="text-gray-600 mb-3">Complete car cleaning and care bundle with premium products</p>
@@ -1187,19 +1209,19 @@
                             <span class="text-sm text-gray-500">Delivery: Rs 200</span>
                             <button class="bg-golden text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-300" onclick="viewSpecialDeal('car-bundle')">
                                 View Deal
-                            </button>
+                    </button>
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Car Exterior Bundle 1 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <div class="relative">
+                            <div class="relative">
                         <img src="special deals/CAR EXTERIOR BUNDLE 1.jpeg" alt="Car Exterior Bundle 1" class="w-full h-auto object-contain bg-gray-50">
                         <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                            Special Deal
-                        </div>
-                    </div>
+                                    Special Deal
+                                </div>
+                            </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Car Exterior Bundle 1</h3>
                         <p class="text-gray-600 mb-3">Cosmic Polish + Formula Wash & Wax + Microfiber + FREE Leather Spray</p>
@@ -1224,8 +1246,8 @@
                             </button>
                         </div>
                     </div>
-                </div>
-
+                        </div>
+                        
                 <!-- Car Exterior Bundle 2 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="relative">
@@ -1258,16 +1280,16 @@
                             </button>
                         </div>
                     </div>
-                </div>
-
+                            </div>
+                            
                 <!-- Car Exterior Bundle 3 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="relative">
                         <img src="special deals/CAR EXTERIOR BUNDLE 3.jpeg" alt="Car Exterior Bundle 3" class="w-full h-auto object-contain bg-gray-50">
                         <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                             Special Deal
-                        </div>
-                    </div>
+                                    </div>
+                                    </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Car Exterior Bundle 3</h3>
                         <p class="text-gray-600 mb-3">Formula Wash & Wax + Anti Rust + Microfiber + FREE Leather Spray</p>
@@ -1275,7 +1297,7 @@
                             <div class="flex items-center justify-between mb-1">
                                 <span class="text-sm text-gray-500">Original Price:</span>
                                 <span class="text-sm text-gray-500 line-through">Rs 3,500</span>
-                            </div>
+                                    </div>
                             <div class="flex items-center justify-between mb-1">
                                 <span class="text-sm text-gray-500">Special Price:</span>
                                 <span class="text-lg font-bold text-green-600">Rs 3,000</span>
@@ -1290,10 +1312,10 @@
                             <button class="bg-golden text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-300" onclick="viewSpecialDeal('car-exterior-bundle-3')">
                                 View Deal
                             </button>
-                        </div>
-                    </div>
-                </div>
-
+                                    </div>
+                                </div>
+                            </div>
+                            
                 <!-- Car Exterior Bundle 4 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="relative">
@@ -1326,8 +1348,8 @@
                             </button>
                         </div>
                     </div>
-                </div>
-
+                            </div>
+                            
                 <!-- Car Interior Bundle 1 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <div class="relative">
@@ -1357,10 +1379,10 @@
                             <span class="text-sm text-gray-500">Delivery: FREE</span>
                             <button class="bg-golden text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-300" onclick="viewSpecialDeal('car-interior-bundle-1')">
                                 View Deal
-                            </button>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
                 <!-- Car Interior Bundle 2 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
@@ -1368,8 +1390,8 @@
                         <img src="special deals/CAR INTERIOR BUNDLE 2.jpeg" alt="Car Interior Bundle 2" class="w-full h-auto object-contain bg-gray-50">
                         <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                             Special Deal
-                        </div>
-                    </div>
+                </div>
+            </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Car Interior Bundle 2</h3>
                         <p class="text-gray-600 mb-3">AIM Foamy Cleaner + Formula Protectant + Jello Perfume + FREE Microfiber</p>
@@ -1377,11 +1399,11 @@
                             <div class="flex items-center justify-between mb-1">
                                 <span class="text-sm text-gray-500">Original Price:</span>
                                 <span class="text-sm text-gray-500 line-through">Rs 3,500</span>
-                            </div>
+        </div>
                             <div class="flex items-center justify-between mb-1">
                                 <span class="text-sm text-gray-500">Special Price:</span>
                                 <span class="text-lg font-bold text-green-600">Rs 3,000</span>
-                            </div>
+    </div>
                             <div class="flex items-center justify-between">
                                 <span class="text-sm text-gray-500">You Save:</span>
                                 <span class="text-sm font-bold text-red-600">Rs 500</span>
@@ -1399,87 +1421,6 @@
         </div>
     </section>
 
-    <!-- Special Deal Modal -->
-    <div id="deal-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden cursor-pointer" onclick="closeDealModal()">
-        <div class="flex items-center justify-center min-h-screen p-1 sm:p-2 lg:p-4" onclick="event.stopPropagation()">
-            <div class="bg-white rounded-lg sm:rounded-xl shadow-2xl w-full max-w-full sm:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto max-h-[95vh] sm:max-h-[90vh] lg:max-h-[85vh] overflow-hidden flex flex-col">
-                <!-- Modal Header -->
-                <div class="flex items-center justify-between p-2 sm:p-3 lg:p-4 border-b border-gray-200 flex-shrink-0">
-                    <h3 class="text-base sm:text-lg lg:text-xl font-bold text-gray-900">Special Deal Details</h3>
-                    <button id="close-deal-modal" class="bg-red-600 hover:bg-red-700 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 flex items-center justify-center text-lg sm:text-xl lg:text-2xl font-bold transition-all duration-200 shadow-xl border-2 border-red-800" onclick="closeDealModal()" style="z-index: 1001;">
-                        ✕
-                    </button>
-                </div>
-                
-                <!-- Modal Content -->
-                <div class="p-2 sm:p-3 lg:p-4 overflow-y-auto flex-1">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
-                        <!-- Image Section -->
-                        <div class="space-y-2">
-                            <div class="relative">
-                                <img id="deal-modal-image" src="" alt="Deal Image" class="w-full h-auto max-h-[35vh] sm:max-h-[45vh] lg:max-h-[50vh] object-contain rounded-lg shadow-lg">
-                                <div class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                    Special Deal
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Details Section -->
-                        <div class="space-y-2 sm:space-y-3 lg:space-y-4">
-                            <div>
-                                <h4 id="deal-modal-title" class="text-base sm:text-lg lg:text-xl font-bold text-gray-900 mb-1 sm:mb-2"></h4>
-                                <p id="deal-modal-description" class="text-xs sm:text-sm lg:text-base text-gray-600 mb-2 sm:mb-3"></p>
-                            </div>
-                            
-                            <!-- Pricing Section -->
-                            <div class="bg-gray-50 rounded-lg p-2 sm:p-3 lg:p-4">
-                                <h5 class="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">Pricing Details</h5>
-                                <div class="space-y-1 sm:space-y-2">
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-xs sm:text-sm lg:text-base text-gray-600">Original Price:</span>
-                                        <span id="deal-original-price" class="text-xs sm:text-sm lg:text-base text-gray-500 line-through"></span>
-                                    </div>
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-xs sm:text-sm lg:text-base text-gray-600">Special Price:</span>
-                                        <span id="deal-special-price" class="text-sm sm:text-lg lg:text-xl font-bold text-red-600"></span>
-                                    </div>
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-xs sm:text-sm lg:text-base text-gray-600">Delivery:</span>
-                                        <span id="deal-delivery" class="text-xs sm:text-sm lg:text-base font-semibold text-green-600"></span>
-                                    </div>
-                                    <hr class="my-1 sm:my-2">
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-sm sm:text-base lg:text-lg font-bold text-gray-900">You Save:</span>
-                                        <span id="deal-savings" class="text-sm sm:text-lg lg:text-xl font-bold text-golden"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Features Section -->
-                            <div class="bg-blue-50 rounded-lg p-2 sm:p-3 lg:p-4">
-                                <h5 class="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 mb-1 sm:mb-2">What's Included</h5>
-                                <div id="deal-features" class="flex flex-wrap gap-1 sm:gap-2 text-xs sm:text-sm text-gray-700 max-h-16 sm:max-h-20 lg:max-h-24 overflow-y-auto">
-                                    <!-- Features will be populated by JavaScript -->
-                                </div>
-                            </div>
-                            
-                            <!-- Action Buttons -->
-                            <div class="flex flex-col gap-2 sm:gap-3 pt-2 sm:pt-3 border-t border-gray-200">
-                                <button id="deal-add-to-cart-btn" class="w-full bg-golden hover:bg-yellow-600 text-black px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-lg font-semibold transition duration-300 flex items-center justify-center text-xs sm:text-sm lg:text-base" onclick="handleAddToCartFromModal()">
-                                    <i class="fas fa-shopping-cart mr-1 sm:mr-2"></i>
-                                    Add to Cart
-                                </button>
-                                <button id="deal-close-btn" class="w-full bg-red-600 hover:bg-red-700 text-white px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-lg font-semibold transition duration-300 text-xs sm:text-sm lg:text-base flex items-center justify-center" onclick="closeDealModal()">
-                                    <i class="fas fa-times mr-1 sm:mr-2"></i>
-                                    Close
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Shopping Cart Modal -->
     <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
@@ -1529,6 +1470,88 @@
                             <i class="fab fa-whatsapp mr-1 sm:mr-2"></i>
                             Order via WhatsApp
                         </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Special Deal Modal -->
+    <div id="deal-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden cursor-pointer" onclick="closeDealModal()">
+        <div class="flex items-center justify-center min-h-screen p-2 sm:p-4 lg:p-6" onclick="event.stopPropagation()">
+            <div class="bg-white rounded-lg sm:rounded-xl shadow-2xl w-full max-w-full sm:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto max-h-[95vh] sm:max-h-[90vh] lg:max-h-[85vh] overflow-hidden flex flex-col">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between p-3 sm:p-4 lg:p-5 border-b border-gray-200 flex-shrink-0 bg-white">
+                    <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">Special Deal Details</h3>
+                    <button id="close-deal-modal" class="bg-red-600 hover:bg-red-700 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 flex items-center justify-center text-xl sm:text-2xl lg:text-3xl font-bold transition-all duration-200 shadow-lg" onclick="closeDealModal()" style="z-index: 1001;">
+                        ✕
+                    </button>
+                </div>
+                
+                <!-- Modal Content -->
+                <div class="p-3 sm:p-4 lg:p-5 overflow-y-auto flex-1">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 lg:gap-6">
+                        <!-- Image Section -->
+                        <div class="space-y-3">
+                            <div class="relative">
+                                <img id="deal-modal-image" src="" alt="Deal Image" class="w-full h-auto max-h-[40vh] sm:max-h-[45vh] lg:max-h-[50vh] object-contain rounded-lg shadow-lg">
+                                <div class="absolute top-3 left-3 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                                    Special Deal
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Details Section -->
+                        <div class="space-y-3 sm:space-y-4 lg:space-y-5">
+                            <div>
+                                <h4 id="deal-modal-title" class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2 sm:mb-3"></h4>
+                                <p id="deal-modal-description" class="text-sm sm:text-base lg:text-lg text-gray-600 mb-3 sm:mb-4"></p>
+                            </div>
+                            
+                            <!-- Pricing Section -->
+                            <div class="bg-gray-50 rounded-lg p-3 sm:p-4 lg:p-5">
+                                <h5 class="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Pricing Details</h5>
+                                <div class="space-y-2 sm:space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm sm:text-base lg:text-lg text-gray-600">Original Price:</span>
+                                        <span id="deal-original-price" class="text-sm sm:text-base lg:text-lg text-gray-500 line-through"></span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm sm:text-base lg:text-lg text-gray-600">Special Price:</span>
+                                        <span id="deal-special-price" class="text-base sm:text-xl lg:text-2xl font-bold text-red-600"></span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm sm:text-base lg:text-lg text-gray-600">Delivery:</span>
+                                        <span id="deal-delivery" class="text-sm sm:text-base lg:text-lg font-semibold text-green-600"></span>
+                                    </div>
+                                    <hr class="my-2 sm:my-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-base sm:text-lg lg:text-xl font-bold text-gray-900">You Save:</span>
+                                        <span id="deal-savings" class="text-base sm:text-xl lg:text-2xl font-bold text-golden"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Features Section -->
+                            <div class="bg-blue-50 rounded-lg p-3 sm:p-4 lg:p-5">
+                                <h5 class="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">What's Included</h5>
+                                <div id="deal-features" class="flex flex-wrap gap-2 sm:gap-3 text-sm sm:text-base text-gray-700 max-h-20 sm:max-h-24 lg:max-h-28 overflow-y-auto">
+                                    <!-- Features will be populated by JavaScript -->
+                                </div>
+                            </div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-3 sm:pt-4 border-t border-gray-200">
+                                <button id="deal-add-to-cart-btn" class="flex-1 bg-golden hover:bg-yellow-600 text-black px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-lg font-semibold transition duration-300 flex items-center justify-center text-sm sm:text-base lg:text-lg shadow-lg" onclick="handleAddToCartFromModal()">
+                                    <i class="fas fa-shopping-cart mr-2 sm:mr-3"></i>
+                                    Add to Cart
+                                </button>
+                                <button id="deal-close-btn" class="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-lg font-semibold transition duration-300 text-sm sm:text-base lg:text-lg flex items-center justify-center shadow-lg" onclick="closeDealModal()">
+                                    <i class="fas fa-times mr-2 sm:mr-3"></i>
+                                    Close
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1912,8 +1935,6 @@
         // Make functions globally accessible
         window.viewSpecialDeal = viewSpecialDeal;
         window.addDealToCart = addDealToCart;
-        window.handleAddToCartFromModal = handleAddToCartFromModal;
-        window.closeDealModal = closeDealModal;
         window.addToCart = addToCart;
         window.updateCartUI = updateCartUI;
         window.showCartPopup = showCartPopup;
@@ -2381,28 +2402,6 @@
 
         // Functions are now defined in the first script section
 
-        // Handle Add to Cart button click from modal
-        function handleAddToCartFromModal() {
-            console.log('=== handleAddToCartFromModal DEBUG START ===');
-            const addToCartBtn = document.getElementById('deal-add-to-cart-btn');
-            console.log('Add to Cart button found:', !!addToCartBtn);
-            
-            if (addToCartBtn) {
-                console.log('Button dataset:', addToCartBtn.dataset);
-                console.log('Deal type from dataset:', addToCartBtn.dataset.dealType);
-            }
-            
-            if (addToCartBtn && addToCartBtn.dataset.dealType) {
-                console.log('✅ Calling addDealToCart with:', addToCartBtn.dataset.dealType);
-                addDealToCart(addToCartBtn.dataset.dealType);
-            } else {
-                console.error('❌ Deal type not found on button');
-                console.error('Button element:', addToCartBtn);
-                console.error('Button dataset:', addToCartBtn ? addToCartBtn.dataset : 'Button not found');
-                showNotification('Error: Deal type not found', 'error');
-            }
-            console.log('=== handleAddToCartFromModal DEBUG END ===');
-        }
 
         // Add special deal to cart
         function addDealToCart(dealType) {
